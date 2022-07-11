@@ -1,0 +1,22 @@
+#game {
+    float: left;
+    margin: 20px;
+}
+
+#controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#board {
+}
+
+#settings {
+    margin: 20px;
+    float: left;
+    width: 300px;
+}
+
+#settings div {
+    margin-bottom: 10px;
+}

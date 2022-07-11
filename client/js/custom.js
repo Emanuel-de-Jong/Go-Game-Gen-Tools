@@ -1,7 +1,7 @@
 
 let SERVER_URL = "http://localhost:8080/kata/";
 
-var game = new tenuki.Game({ element: document.querySelector(".tenuki-board") });
+var game = new tenuki.Game({ element: document.querySelector("#board") });
 
 function tenukiToKata(x, y) {
 	let xConvert = {

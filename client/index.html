@@ -3,10 +3,106 @@
     <head>
         <link rel="stylesheet" href="css/tenuki.css"></link>
         <link rel="stylesheet" href="css/custom.css"></link>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     </head>
     <body>
-        <div class="tenuki-board" data-include-coordinates=true></div>
+        <div class="row">
+            <div class="col-4">
+                <div id="sgf" class="text-center">
+                    <button type="button" class="btn btn-primary" id="loadSGF">Load</button>
+                    <button type="button" class="btn btn-primary" id="saveSFG">Save</button>
+                </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <div id="game" class="col-4">
+                <div id="board" class="tenuki-board" data-include-coordinates=true></div>
+
+                <div id="controls" class="text-center">
+                    <button type="button" class="btn btn-primary" id="goStart"><<</button>
+                    <button type="button" class="btn btn-primary" id="goPrev"><</button>
+                    <span id="moveNumber">0</span>
+                    <button type="button" class="btn btn-primary" id="goNext">></button>
+                    <button type="button" class="btn btn-primary" id="goEnd">>></button>
+                </div>
+            </div>
+    
+            <div id="settings" class="col-4">
+                <div>
+                    <label for="sizeX" class="form-label">Board size</label>
+                    <div class="row">
+                        <div class="col-3">
+                            <input type="text" class="form-control" id="sizeX" value="19">
+                        </div>
+                        <div class="col-2 text-center">
+                            X
+                        </div>
+                        <div class="col-3">
+                            <input type="text" class="form-control" id="sizeY" value="19">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="color" class="form-label">Color</label>
+                    <select class="form-select" id="color">
+                        <option value="black">Black</option>
+                        <option value="white">White</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="ruleset" class="form-label">Ruleset</label>
+                    <select class="form-select" id="ruleset">
+                        <option value="japanese">Japanese</option>
+                        <option value="chinese">Chinese</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="handicap" class="form-label">Handicap</label>
+                    <select class="form-select" id="handicap">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="komi" class="form-label">Komi</label>
+                    <div class="row">
+                        <div class="col-3">
+                            <input type="text" class="form-control" id="komi" value="6.5">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="maxVisists" class="form-label">Max visits</label>
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="text" class="form-control" id="maxVisists" value="1500">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="premoves" class="form-label">Premoves</label>
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="text" class="form-control" id="premoves" value="20">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary" id="restart">Restart</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <script src="js/tenuki.js"></script>
         <script src="js/custom.js"></script>
     </body>
