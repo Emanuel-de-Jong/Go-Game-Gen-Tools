@@ -44,12 +44,14 @@ public class Kata {
         clearReader();
         write("genmove " + color);
         String move = reader.readLine();
+        System.out.println("genmove " + color + " " + move);
         return move.split(" ")[1];
     }
 
     public void play(String color, String coord) throws Exception {
         clearReader();
         write("play " + color + " " + coord);
+        System.out.println("play " + color + " " + coord);
     }
 
     private void write(String command) throws Exception {

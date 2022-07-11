@@ -99,7 +99,7 @@ function kataToTenuki(coord) {
 	let x = xConvert[coord[0]];
 	let y = yConvert[parseInt(coord.substring(1))];
 	console.log("kataToTenuki " + coord + " = " + x + ", " + y);
-	return [ x, y ];
+	return { "x": x, "y": y };
 }
 
 async function genmove() {
@@ -125,8 +125,8 @@ async function play(x, y) {
 async function turn(x, y) {
 	await play(x, y);
 	let coord = await genmove();
-	console.log("game.playAt(" + coord[0] + ", " + coord[1] + ");");
-	game.playAt(coord[0], coord[1]);
+	console.log("game.playAt(" + coord["y"] + ", " + coord["x"] + ");");
+	game.playAt(coord["y"], coord["x"]);
 }
 
 game.callbacks.postRender = function (game) {
