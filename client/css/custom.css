@@ -3,17 +3,22 @@
     margin: 20px;
 }
 
-#controls {
-    margin-top: 20px;
+#sgf {
+    margin-bottom: 20px;
     text-align: center;
 }
 
 #board {
 }
 
+#controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
 #settings {
     margin: 20px;
-    float: left;
+    margin-top: 76px;
     width: 300px;
 }
 
