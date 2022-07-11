@@ -123,8 +123,8 @@ async function play(x, y, color) {
 }
 
 async function turn(x, y) {
-	await play(x, y, black);
-	let coord = await genmove(white);
+	await play(x, y, "black");
+	let coord = await genmove("white");
 	console.log("game.playAt(" + coord["y"] + ", " + coord["x"] + ");");
 	game.playAt(coord["y"], coord["x"]);
 }
