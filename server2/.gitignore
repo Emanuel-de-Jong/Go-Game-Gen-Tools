@@ -1,3 +1,4 @@
 /__pycache__/
 /gtp_logs/
+/katago/gtp_logs/
 /katago/default_model.bin.gz
