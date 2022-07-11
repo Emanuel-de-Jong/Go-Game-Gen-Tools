@@ -1,5 +1,7 @@
-let boardElement = document.querySelector(".tenuki-board");
-var game = new tenuki.Game({ element: boardElement });
+
+let SERVER_URL = "http://localhost:8080/kata/";
+
+var game = new tenuki.Game({ element: document.querySelector(".tenuki-board") });
 
 function tenukiToKata(x, y) {
 	let xConvert = {
@@ -45,7 +47,9 @@ function tenukiToKata(x, y) {
 		18: 1
 	};
 
-	return "" + xConvert[x] + yConvert[y];
+	let coord = "" + xConvert[x] + yConvert[y];
+	console.log("tenukiToKata " + x + ", " + y + " = " + coord);
+	return coord;
 }
 
 function kataToTenuki(coord) {
@@ -94,36 +98,44 @@ function kataToTenuki(coord) {
 
 	let x = xConvert[coord[0]];
 	let y = yConvert[parseInt(coord.substring(1))];
-	console.log(x);
-	console.log(y);
+	console.log("kataToTenuki " + coord + " = " + x + ", " + y);
 	return [ x, y ];
 }
 
-function genmove() {
-	fetch("http://localhost:8080/kata/genmove?color=white",
+async function genmove() {
+	console.log("genmove " + SERVER_URL + "genmove?color=white");
+	return fetch(SERVER_URL + "genmove?color=white",
 		{ method: "GET" })
 		.then(response => response.text())
 		.then(data => {
-			let coord = kataToTenuki(data);
-			game.playAt(coord[0], coord[1]);
+			return kataToTenuki(data);
+			// let coord = kataToTenuki(data);
+			// console.log("game.playAt(" + coord[0] + ", " + coord[1] + ");");
+			// game.playAt(coord[0], coord[1]);
 		});
 }
 
-function play(x, y) {
-	fetch("http://localhost:8080/kata/play?color=white&coord=" + tenukiToKata(x, y),
+async function play(x, y) {
+	let coord = tenukiToKata(x, y);
+	console.log("play " + SERVER_URL + "play?color=white&coord=" + coord);
+	return fetch(SERVER_URL + "play?color=white&coord=" + coord,
 		{ method: "GET" })
 }
 
+async function turn(x, y) {
+	await play(x, y);
+	let coord = await genmove();
+	console.log("game.playAt(" + coord[0] + ", " + coord[1] + ");");
+	game.playAt(coord[0], coord[1]);
+}
+
 game.callbacks.postRender = function (game) {
-	if (game.currentState().pass) {
-		console.log(game.currentState().color + " passed");
-	}
+	if (game.currentState().pass) {}
 
 	if (game.currentState().playedPoint) {
-		console.log(game.currentState().color + " played " + game.currentState().playedPoint.y + "," + game.currentState().playedPoint.x);
+		console.log(game.currentState().color + " played " + game.currentState().playedPoint.x + ", " + game.currentState().playedPoint.y);
 		if (game.currentState().color == "black") {
-			play(game.currentState().playedPoint.x, game.currentState().playedPoint.y);
-			genmove();
+			turn(game.currentState().playedPoint.x, game.currentState().playedPoint.y);
 		}
 	}
 };
