@@ -102,9 +102,9 @@ function kataToTenuki(coord) {
 	return { "x": x, "y": y };
 }
 
-async function genmove() {
-	console.log("genmove " + SERVER_URL + "genmove?color=white");
-	return fetch(SERVER_URL + "genmove?color=white",
+async function genmove(color) {
+	console.log("genmove " + SERVER_URL + "genmove?color=" + color);
+	return fetch(SERVER_URL + "genmove?color=" + color,
 		{ method: "GET" })
 		.then(response => response.text())
 		.then(data => {
@@ -115,16 +115,16 @@ async function genmove() {
 		});
 }
 
-async function play(x, y) {
+async function play(x, y, color) {
 	let coord = tenukiToKata(x, y);
-	console.log("play " + SERVER_URL + "play?color=white&coord=" + coord);
-	return fetch(SERVER_URL + "play?color=white&coord=" + coord,
+	console.log("play " + SERVER_URL + "play?color=" + color + "&coord=" + coord);
+	return fetch(SERVER_URL + "play?color=" + color + "&coord=" + coord,
 		{ method: "GET" })
 }
 
 async function turn(x, y) {
-	await play(x, y);
-	let coord = await genmove();
+	await play(x, y, black);
+	let coord = await genmove(white);
 	console.log("game.playAt(" + coord["y"] + ", " + coord["x"] + ");");
 	game.playAt(coord["y"], coord["x"]);
 }

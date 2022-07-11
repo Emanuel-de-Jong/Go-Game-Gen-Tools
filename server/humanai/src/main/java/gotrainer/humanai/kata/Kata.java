@@ -43,9 +43,9 @@ public class Kata {
     public String genmove(String color) throws Exception {
         clearReader();
         write("genmove " + color);
-        String move = reader.readLine();
+        String move = reader.readLine().split(" ")[1];
         System.out.println("genmove " + color + " " + move);
-        return move.split(" ")[1];
+        return move;
     }
 
     public void play(String color, String coord) throws Exception {
