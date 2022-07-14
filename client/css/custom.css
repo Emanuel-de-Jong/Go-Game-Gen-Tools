@@ -3,17 +3,9 @@
     margin: 20px;
 }
 
-#sgf {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
 #board {
-}
-
-#controls {
-    margin-top: 20px;
-    text-align: center;
+    width: 800px;
+    height: 1000px;
 }
 
 #settings {

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="css/tenuki.css"></link>
+        <link rel="stylesheet" href="css/besogo.css"></link>
+        <link rel="stylesheet" href="css/board-flat.css"></link>
         <link rel="stylesheet" href="css/custom.css"></link>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     </head>
@@ -9,20 +10,7 @@
         <div class="container">
             <div class="row">
                 <div id="game" class="col">
-                    <div id="sgf">
-                        <button type="button" class="btn btn-primary" id="loadSGF">Load</button>
-                        <button type="button" class="btn btn-primary" id="saveSFG">Save</button>
-                    </div>
-    
-                    <div id="board" class="tenuki-board" data-include-coordinates=true></div>
-    
-                    <div id="controls">
-                        <button type="button" class="btn btn-primary" id="goStart"><<</button>
-                        <button type="button" class="btn btn-primary" id="goPrev"><</button>
-                        <span id="moveNumber">0</span>
-                        <button type="button" class="btn btn-primary" id="goNext">></button>
-                        <button type="button" class="btn btn-primary" id="goEnd">>></button>
-                    </div>
+                    <div id="board"></div>
                 </div>
         
                 <div class="col">
@@ -108,7 +96,7 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-        <script src="js/tenuki.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="js/besogo.all.js"></script>
+        <script defer src="js/custom.js"></script>
     </body>
 </html>

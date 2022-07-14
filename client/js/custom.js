@@ -1,141 +1,170 @@
+(function () {
+	let SERVER_URL = "http://localhost:8080/kata/";
 
-let SERVER_URL = "http://localhost:8080/kata/";
+	const playMove = new Event("playMove");
 
-var game = new tenuki.Game({ element: document.querySelector("#board") });
+	document.addEventListener("playMove", main);
 
-function tenukiToKata(x, y) {
-	let xConvert = {
-		0: "A",
-		1: "B",
-		2: "C",
-		3: "D",
-		4: "E",
-		5: "F",
-		6: "G",
-		7: "H",
-		8: "J",
-		9: "K",
-		10: "L",
-		11: "M",
-		12: "N",
-		13: "O",
-		14: "P",
-		15: "Q",
-		16: "R",
-		17: "S",
-		18: "T"
-	};
-	let yConvert = {
-		0: 19,
-		1: 18,
-		2: 17,
-		3: 16,
-		4: 15,
-		5: 14,
-		6: 13,
-		7: 12,
-		8: 11,
-		9: 10,
-		10: 9,
-		11: 8,
-		12: 7,
-		13: 6,
-		14: 5,
-		15: 4,
-		16: 3,
-		17: 2,
-		18: 1
-	};
+	function main(event) {
+		console.log("asfdkjhgsdfu");
+	}
 
-	let coord = "" + xConvert[x] + yConvert[y];
-	console.log("tenukiToKata " + x + ", " + y + " = " + coord);
-	return coord;
-}
+	let board = document.querySelector("#board");
+	besogo.create(board, { resize: "fixed", panels: "control+tree+file" });
+	console.log(board);
 
-function kataToTenuki(coord) {
-	let xConvert = {
-		"A": 0,
-		"B": 1,
-		"C": 2,
-		"D": 3,
-		"E": 4,
-		"F": 5,
-		"G": 6,
-		"H": 7,
-		"J": 8,
-		"K": 9,
-		"L": 10,
-		"M": 11,
-		"N": 12,
-		"O": 13,
-		"P": 14,
-		"Q": 15,
-		"R": 16,
-		"S": 17,
-		"T": 18
-	};
-	let yConvert = {
-		19: 0,
-		18: 1,
-		17: 2,
-		16: 3,
-		15: 4,
-		14: 5,
-		13: 6,
-		12: 7,
-		11: 8,
-		10: 9,
-		9: 10,
-		8: 11,
-		7: 12,
-		6: 13,
-		5: 14,
-		4: 15,
-		3: 16,
-		2: 17,
-		1: 18
-	};
+	document.querySelector("input[value=\"9x9\"]").remove();
+	document.querySelector("input[value=\"13x13\"]").remove();
+	document.querySelector("input[value=\"19x19\"]").remove();
+	document.querySelector("input[value=\"?x?\"]").remove();
 
-	let x = xConvert[coord[0]];
-	let y = yConvert[parseInt(coord.substring(1))];
-	console.log("kataToTenuki " + coord + " = " + x + ", " + y);
-	return { "x": x, "y": y };
-}
+	let editor = board.besogoEditor;
+	editor.toggleCoordStyle();
+	editor.toggleCoordStyle();
+	
+	editor.addListener((event) => {
+		console.log(event);
+		if (event.stoneChange === true) {
+			let move = editor.getCurrent().move;
+			if (move.color == -1) {
+				turn(move.x, move.y)
+			}
+		}
+	})
 
-async function genmove(color) {
-	console.log("genmove " + SERVER_URL + "genmove?color=" + color);
-	return fetch(SERVER_URL + "genmove?color=" + color,
-		{ method: "GET" })
-		.then(response => response.text())
-		.then(data => {
-			return kataToTenuki(data);
-			// let coord = kataToTenuki(data);
-			// console.log("game.playAt(" + coord[0] + ", " + coord[1] + ");");
-			// game.playAt(coord[0], coord[1]);
-		});
-}
+	function place(x, y, tool) {
+		if (tool == null) {
+			tool = "auto";
+		}
 
-async function play(x, y, color) {
-	let coord = tenukiToKata(x, y);
-	console.log("play " + SERVER_URL + "play?color=" + color + "&coord=" + coord);
-	return fetch(SERVER_URL + "play?color=" + color + "&coord=" + coord,
-		{ method: "GET" })
-}
+		editor.setTool(tool);
+		editor.click(x, y, false, false);
 
-async function turn(x, y) {
-	await play(x, y, "black");
-	let coord = await genmove("white");
-	console.log("game.playAt(" + coord["y"] + ", " + coord["x"] + ");");
-	game.playAt(coord["y"], coord["x"]);
-}
-
-game.callbacks.postRender = function (game) {
-	if (game.currentState().pass) {}
-
-	if (game.currentState().playedPoint) {
-		console.log(game.currentState().color + " played " + game.currentState().playedPoint.x + ", " + game.currentState().playedPoint.y);
-		if (game.currentState().color == "black") {
-			turn(game.currentState().playedPoint.x, game.currentState().playedPoint.y);
+		if (tool === "auto") {
+			document.dispatchEvent(playMove);
 		}
 	}
-};
+
+	function coordNumToName(x, y) {
+		let xConvert = {
+			1: "A",
+			2: "B",
+			3: "C",
+			4: "D",
+			5: "E",
+			6: "F",
+			7: "G",
+			8: "H",
+			9: "J",
+			10: "K",
+			11: "L",
+			12: "M",
+			13: "N",
+			14: "O",
+			15: "P",
+			16: "Q",
+			17: "R",
+			18: "S",
+			19: "T"
+		};
+		let yConvert = {
+			1: 19,
+			2: 18,
+			3: 17,
+			4: 16,
+			5: 15,
+			6: 14,
+			7: 13,
+			8: 12,
+			9: 11,
+			10: 10,
+			11: 9,
+			12: 8,
+			13: 7,
+			14: 6,
+			15: 5,
+			16: 4,
+			17: 3,
+			18: 2,
+			19: 1
+		};
+
+		let coord = "" + xConvert[x] + yConvert[y];
+		console.log("coordNumToName " + x + ", " + y + " = " + coord);
+		return coord;
+	}
+
+	function coordNameToNum(coord) {
+		let xConvert = {
+			"A": 1,
+			"B": 2,
+			"C": 3,
+			"D": 4,
+			"E": 5,
+			"F": 6,
+			"G": 7,
+			"H": 8,
+			"J": 9,
+			"K": 10,
+			"L": 11,
+			"M": 12,
+			"N": 13,
+			"O": 14,
+			"P": 15,
+			"Q": 16,
+			"R": 17,
+			"S": 18,
+			"T": 19
+		};
+		let yConvert = {
+			19: 1,
+			18: 2,
+			17: 3,
+			16: 4,
+			15: 5,
+			14: 6,
+			13: 7,
+			12: 8,
+			11: 9,
+			10: 10,
+			9: 11,
+			8: 12,
+			7: 13,
+			6: 14,
+			5: 15,
+			4: 16,
+			3: 17,
+			2: 18,
+			1: 19,
+		};
+
+		let x = xConvert[coord[0]];
+		let y = yConvert[parseInt(coord.substring(1))];
+		console.log("coordNameToNum " + coord + " = " + x + ", " + y);
+		return { "x": x, "y": y };
+	}
+
+	async function genmove(color) {
+		console.log("genmove " + SERVER_URL + "genmove?color=" + color);
+		return fetch(SERVER_URL + "genmove?color=" + color,
+			{ method: "GET" })
+			.then(response => response.text())
+			.then(data => {
+				return coordNameToNum(data);
+			});
+	}
+
+	async function play(x, y, color) {
+		let coord = coordNumToName(x, y);
+		console.log("play " + SERVER_URL + "play?color=" + color + "&coord=" + coord);
+		return fetch(SERVER_URL + "play?color=" + color + "&coord=" + coord,
+			{ method: "GET" })
+	}
+
+	async function turn(x, y) {
+		await play(x, y, "black");
+		let coord = await genmove("white");
+		console.log("game.playAt(" + coord["y"] + ", " + coord["x"] + ");");
+		place(coord["x"], coord["y"]);
+	}
+})();
