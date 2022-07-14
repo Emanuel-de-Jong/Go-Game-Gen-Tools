@@ -1,17 +1,17 @@
 (function () {
-	let SERVER_URL = "http://localhost:8080/kata/";
+	const SERVER_URL = "http://localhost:8080/kata/";
 
 	const playMove = new Event("playMove");
+
+	var bestCoord;
 
 	document.addEventListener("playMove", main);
 
 	function main(event) {
-		console.log("asfdkjhgsdfu");
 	}
 
 	let board = document.querySelector("#board");
 	besogo.create(board, { resize: "fixed", panels: "control+tree+file" });
-	console.log(board);
 
 	document.querySelector("input[value=\"9x9\"]").remove();
 	document.querySelector("input[value=\"13x13\"]").remove();
@@ -21,14 +21,30 @@
 	let editor = board.besogoEditor;
 	editor.toggleCoordStyle();
 	editor.toggleCoordStyle();
+	editor.setTool("cross");
 	
 	editor.addListener((event) => {
-		console.log(event);
-		if (event.stoneChange === true) {
-			let move = editor.getCurrent().move;
-			if (move.color == -1) {
-				turn(move.x, move.y)
+		if (event.markupChange === true) {
+			let markup = editor.getCurrent().markup;
+			let markupNum;
+			for (let i=0; i<markup.length; i++) {
+				if (markup[i] == 4) {
+					markupNum = i;
+					break;
+				}
 			}
+			console.log(markupNum);
+			let coord = {
+				x: Math.floor(markupNum / 19) + 1,
+				y: (markupNum % 19) + 1
+			}
+			console.log(coord);
+
+			// let move = editor.getCurrent().move;
+			// if (move.color == -1) {
+			// 	// turn(move.x, move.y)
+			// 	place(bestCoord["x"], bestCoord["y"]);
+			// }
 		}
 	})
 
@@ -43,6 +59,8 @@
 		if (tool === "auto") {
 			document.dispatchEvent(playMove);
 		}
+
+		editor.setTool("cross");
 	}
 
 	function coordNumToName(x, y) {
@@ -145,8 +163,8 @@
 	}
 
 	async function genmove(color) {
-		console.log("genmove " + SERVER_URL + "genmove?color=" + color);
-		return fetch(SERVER_URL + "genmove?color=" + color,
+		console.log("genmove");
+		return fetch(SERVER_URL + "genmove?color=" + color == 1 ? "W" : "B",
 			{ method: "GET" })
 			.then(response => response.text())
 			.then(data => {
@@ -154,17 +172,30 @@
 			});
 	}
 
-	async function play(x, y, color) {
+	async function play(color) {
+		let coord = await genmove(color);
+		place(coord["x"], coord["y"]);
+	}
+
+	async function updateServerWithMove(x, y, color) {
 		let coord = coordNumToName(x, y);
-		console.log("play " + SERVER_URL + "play?color=" + color + "&coord=" + coord);
-		return fetch(SERVER_URL + "play?color=" + color + "&coord=" + coord,
+		console.log("play");
+		return fetch(SERVER_URL + "play?color=" + color == 1 ? "W" : "B" + "&coord=" + coord,
 			{ method: "GET" })
 	}
 
 	async function turn(x, y) {
-		await play(x, y, "black");
-		let coord = await genmove("white");
-		console.log("game.playAt(" + coord["y"] + ", " + coord["x"] + ");");
+		await updateServerWithMove(x, y, -1);
+		let coord = await genmove(1);
 		place(coord["x"], coord["y"]);
 	}
+
+	async function createPreMoves() {
+		for (let i=0; i<4; i++) {
+			await play(-1);
+			await play(1);
+		}
+		bestCoord = await genmove(-1);
+	}
+	// createPreMoves();
 })();

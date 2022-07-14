@@ -4,13 +4,12 @@
 }
 
 #board {
-    width: 800px;
-    height: 1000px;
+    width: 700px;
+    height: 900px;
 }
 
 #settings {
     margin: 20px;
-    margin-top: 76px;
     width: 300px;
 }
 
