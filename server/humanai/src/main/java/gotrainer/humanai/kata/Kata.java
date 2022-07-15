@@ -1,6 +1,8 @@
 package gotrainer.humanai.kata;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Kata {
 
@@ -46,6 +48,21 @@ public class Kata {
         String move = reader.readLine().split(" ")[1];
         System.out.println("genmove " + color + " " + move);
         return move;
+    }
+
+    public List<String> analyze(String color) throws Exception {
+        clearReader();
+        write("lz-analyze " + color + " interval 100 minmoves 3 maxmoves 3");
+        reader.readLine(); // Ignore '= '
+        String[] analysis = reader.readLine().split(" ");
+        write("\n");
+        List<String> moves = new ArrayList<>();
+        for (int i=0; i<analysis.length; i++) {
+            if (analysis[i].equals("move")) {
+                moves.add(analysis[i+1]);
+            }
+        }
+        return moves;
     }
 
     public void play(String color, String coord) throws Exception {

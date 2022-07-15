@@ -2,6 +2,8 @@ package gotrainer.humanai.kata;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/kata")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -21,6 +23,11 @@ public class KataController {
     @GetMapping("/genmove")
     public String getGenmove(@RequestParam String color) throws Exception {
         return kata.genmove(color);
+    }
+
+    @GetMapping("/analyze")
+    public List<String> getAnalyze(@RequestParam String color) throws Exception {
+        return kata.analyze(color);
     }
 
     @GetMapping("/play")

@@ -18,6 +18,9 @@
 	document.querySelector("input[value=\"19x19\"]").remove();
 	document.querySelector("input[value=\"?x?\"]").remove();
 
+	document.querySelector("button[title=\"Previous node\"]")
+		.insertAdjacentHTML("afterend", "<span id=\"moveCount\">0</span>");
+
 	let editor = board.besogoEditor;
 	editor.toggleCoordStyle();
 	editor.toggleCoordStyle();
@@ -162,9 +165,13 @@
 		return { "x": x, "y": y };
 	}
 
-	async function genmove(color) {
+	function colorNumToName(num) {
+		return num == 1 ? "W" : "B";
+	}
+
+	async function serverGenmove(color) {
 		console.log("genmove");
-		return fetch(SERVER_URL + "genmove?color=" + color == 1 ? "W" : "B",
+		return fetch(SERVER_URL + "genmove?color=" + colorNumToName(color),
 			{ method: "GET" })
 			.then(response => response.text())
 			.then(data => {
@@ -172,21 +179,35 @@
 			});
 	}
 
-	async function play(color) {
-		let coord = await genmove(color);
-		place(coord["x"], coord["y"]);
+	async function serverAnalyze(color) {
+		console.log("analyze");
+		return fetch(SERVER_URL + "analyze?color=" + colorNumToName(color),
+			{ method: "GET" })
+			.then(response => response.text())
+			.then(data => {
+				let moves = []
+				JSON.parse(data).forEach(element => {
+					moves.push(coordNameToNum(element))
+				});
+				return moves;
+			});
 	}
 
-	async function updateServerWithMove(x, y, color) {
+	async function serverPlay(x, y, color) {
 		let coord = coordNumToName(x, y);
 		console.log("play");
-		return fetch(SERVER_URL + "play?color=" + color == 1 ? "W" : "B" + "&coord=" + coord,
+		return fetch(SERVER_URL + "play?color=" + colorNumToName(color) + "&coord=" + coord,
 			{ method: "GET" })
 	}
 
+	async function play(color) {
+		let coord = await serverGenmove(color);
+		place(coord["x"], coord["y"]);
+	}
+
 	async function turn(x, y) {
-		await updateServerWithMove(x, y, -1);
-		let coord = await genmove(1);
+		await serverPlay(x, y, -1);
+		let coord = await serverGenmove(1);
 		place(coord["x"], coord["y"]);
 	}
 
@@ -195,7 +216,7 @@
 			await play(-1);
 			await play(1);
 		}
-		bestCoord = await genmove(-1);
+		bestCoord = await serverGenmove(-1);
 	}
 	// createPreMoves();
 })();
