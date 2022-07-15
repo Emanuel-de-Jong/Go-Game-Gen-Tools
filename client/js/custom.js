@@ -1,50 +1,60 @@
 (function () {
 
-const playMove = new Event("playMove");
-
-var bestCoord;
-
-document.addEventListener("playMove", main);
+var bestCoords;
 
 async function init() {
 	await server.restart();
 }
 
-function main(event) {
-}
-
 board.editor.addListener((event) => {
     if (event.markupChange === true) {
-        let coord = board.markupToCoord();
-		console.log(coord);
-
-        // let move = editor.getCurrent().move;
-        // if (move.color == -1) {
-        // 	// turn(move.x, move.y)
-        // 	place(bestCoord["x"], bestCoord["y"]);
-        // }
+        turn();
     }
 });
 
-async function play(color, index = 0) {
-	let moves = await server.analyze(color);
-	let coord = moves[index];
-	await server.play(coord["x"], coord["y"], color);
-	board.place(coord["x"], coord["y"]);
+async function turn() {
+	let markupCoord = board.markupToCoord();
+	let correctChoice = false;
+	for (let i=0; i<bestCoords.length; i++) {
+		let coord = bestCoords[i];
+		if (coord["x"] == markupCoord["x"] && coord["y"] == markupCoord["y"]) {
+			correctChoice = true;
+			await play(-1, i, bestCoords);
+			break;
+		}
+	}
+
+	if (!correctChoice) {
+		await play(-1, 0, bestCoords);
+	}
+
+	console.log(correctChoice);
+
+	await play(1);
+	await getBestCoords();
 }
 
-async function turn(x, y) {
-	await server.play(x, y, -1);
-	let coord = await server.genmove(1);
+async function getBestCoords() {
+	bestCoords = await server.analyze(-1);
+	board.editor.setTool("cross");
+}
+
+async function play(color, index = 0, coords) {
+	if (coords == null) {
+		coords = await server.analyze(color);
+	}
+
+	let coord = coords[index];
 	board.place(coord["x"], coord["y"]);
+	await server.play(coord["x"], coord["y"], color);
 }
 
 async function createPreMoves() {
-	for (let i=0; i<4; i++) {
+	for (let i=0; i<1; i++) {
 		await play(-1, utils.randomInt(3));
 		await play(1, utils.randomInt(3));
 	}
-	bestCoord = await server.analyze(-1)[0];
+	await getBestCoords();
 }
 
 init();

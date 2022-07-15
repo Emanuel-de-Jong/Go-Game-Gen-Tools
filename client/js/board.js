@@ -8,7 +8,7 @@ besogo.create(board.element, { resize: "fixed", panels: "control+tree+file" });
 board.editor = board.element.besogoEditor;
 board.editor.toggleCoordStyle();
 board.editor.toggleCoordStyle();
-board.editor.setTool("cross");
+board.editor.setTool("navOnly");
 
 document.querySelector("input[value=\"9x9\"]").remove();
 document.querySelector("input[value=\"13x13\"]").remove();
@@ -21,7 +21,7 @@ document.querySelector("button[title=\"Previous node\"]")
 board.place = function place(x, y, tool = "auto") {
 	board.editor.setTool(tool);
 	board.editor.click(x, y, false, false);
-	board.editor.setTool("cross");
+	board.editor.setTool("navOnly");
 
 	// if (tool === "auto") {
 	// 	document.dispatchEvent(playMove);

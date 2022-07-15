@@ -106,38 +106,40 @@ function colorNumToName(num) {
 var server = {};
 
 server.restart = async function() {
-    console.log("restart");
+    // console.log("restart");
     return fetch(SERVER_URL + "restart",
         { method: "GET" })
 };
 
 server.genmove = async function(color) {
-    console.log("genmove");
+    // console.log("genmove");
     return fetch(SERVER_URL + "genmove?color=" + colorNumToName(color),
         { method: "GET" })
         .then(response => response.text())
-        .then(data => {
-            return coordNameToNum(data);
+        .then(coord => {
+            return coordNameToNum(coord);
         });
 };
 
 server.analyze = async function(color) {
-    console.log("analyze");
+    // console.log("analyze");
     return fetch(SERVER_URL + "analyze?color=" + colorNumToName(color),
         { method: "GET" })
         .then(response => response.text())
-        .then(data => {
-            let moves = []
-            JSON.parse(data).forEach(element => {
-                moves.push(coordNameToNum(element))
+        .then(nameCoordsText => {
+            let numCoords = []
+            let nameCoords = JSON.parse(nameCoordsText);
+            console.log(nameCoords);
+            nameCoords.forEach(element => {
+                numCoords.push(coordNameToNum(element))
             });
-            return moves;
+            return numCoords;
         });
 };
 
 server.play = async function(x, y, color) {
+    // console.log("play");
     let coord = coordNumToName(x, y);
-    console.log("play");
     return fetch(SERVER_URL + "play?color=" + colorNumToName(color) + "&coord=" + coord,
         { method: "GET" })
 };
