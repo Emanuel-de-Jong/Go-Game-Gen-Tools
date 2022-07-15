@@ -8,30 +8,45 @@ var nextButton = document.querySelector('#next');
 
 async function init() {
 	await server.restart();
+	createPreMoves();
+}
+
+async function playPreMove(color) {
+	let coords = await server.analyze(color, PRE_MOVE_OPTIONS, options.preStrength);
+	await play(color, utils.randomInt(PRE_MOVE_OPTIONS), coords);
 }
 
 async function createPreMoves() {
-	let coords;
 	for (let i=0; i<options.preMoves/2; i++) {
-		coords = await server.analyze(-1, PRE_MOVE_OPTIONS, options.preStrength);
-		await play(-1, utils.randomInt(PRE_MOVE_OPTIONS), coords);
-		coords = await server.analyze(1, PRE_MOVE_OPTIONS, options.preStrength);
-		await play(1, utils.randomInt(PRE_MOVE_OPTIONS), coords);
+		await playPreMove(-1);
+		await playPreMove(1);
 	}
+
+	if (options.color == 1) {
+		await playPreMove(-1);
+	}
+
 	await getBestCoords();
 }
 
-board.editor.addListener((event) => {
+board.editor.addListener(async (event) => {
     if (event.markupChange === true && isPlayerControlling) {
 		isPlayerControlling = false;
-        playerTurn();
+        await playerTurn();
     }
 });
 
-nextButton.addEventListener("click", () => {
+nextButton.addEventListener("click", async () => {
 	nextButton.disabled = true;
-	botTurn();
-})
+	await botTurn();
+});
+
+document.querySelector('#restart').addEventListener("click", async () => {
+	options.update();
+	board.create();
+	await init();
+
+});
 
 async function play(color, index = 0, coords) {
 	if (coords == null) {
@@ -44,7 +59,7 @@ async function play(color, index = 0, coords) {
 }
 
 async function getBestCoords() {
-	bestCoords = await server.analyze(-1);
+	bestCoords = await server.analyze(options.color);
 	board.editor.setTool("cross");
 	isPlayerControlling = true;
 }
@@ -55,13 +70,13 @@ async function playerTurn() {
 	for (let i=0; i<bestCoords.length; i++) {
 		if (utils.compCoord(markupCoord, bestCoords[i])) {
 			isCorrectChoice = true;
-			await play(-1, i, bestCoords);
+			await play(options.color, i, bestCoords);
 			break;
 		}
 	}
 
 	if (!isCorrectChoice) {
-		await play(-1, 0, bestCoords);
+		await play(options.color, 0, bestCoords);
 	}
 
 	board.drawCoords(bestCoords);
@@ -73,11 +88,10 @@ async function playerTurn() {
 }
 
 async function botTurn() {
-	await play(1);
+	await play(options.botColor);
 	await getBestCoords();
 }
 
 init();
-createPreMoves();
 
 })();
