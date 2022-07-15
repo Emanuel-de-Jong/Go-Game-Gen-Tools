@@ -18,9 +18,9 @@ document.querySelector("input[value=\"?x?\"]").remove();
 document.querySelector("button[title=\"Previous node\"]")
     .insertAdjacentHTML("afterend", "<span id=\"moveCount\">0</span>");
 
-board.place = function place(x, y, tool = "auto") {
+board.place = function place(coord, tool = "auto") {
 	board.editor.setTool(tool);
-	board.editor.click(x, y, false, false);
+	board.editor.click(coord.x, coord.y, false, false);
 	board.editor.setTool("navOnly");
 
 	// if (tool === "auto") {

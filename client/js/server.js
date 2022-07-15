@@ -1,6 +1,6 @@
 const SERVER_URL = "http://localhost:8080/kata/";
 
-function coordNumToName(x, y) {
+function coordNumToName(numCoord) {
     let xConvert = {
         1: "A",
         2: "B",
@@ -44,12 +44,12 @@ function coordNumToName(x, y) {
         19: 1
     };
 
-    let coord = "" + xConvert[x] + yConvert[y];
+    let nameCoord = "" + xConvert[numCoord.x] + yConvert[numCoord.y];
     // console.log("coordNumToName " + x + ", " + y + " = " + coord);
-    return coord;
+    return nameCoord;
 }
 
-function coordNameToNum(coord) {
+function coordNameToNum(nameCoord) {
     let xConvert = {
         "A": 1,
         "B": 2,
@@ -93,8 +93,8 @@ function coordNameToNum(coord) {
         1: 19,
     };
 
-    let x = xConvert[coord[0]];
-    let y = yConvert[parseInt(coord.substring(1))];
+    let x = xConvert[nameCoord[0]];
+    let y = yConvert[parseInt(nameCoord.substring(1))];
     // console.log("coordNameToNum " + coord + " = " + x + ", " + y);
     return { "x": x, "y": y };
 }
@@ -137,9 +137,9 @@ server.analyze = async function(color) {
         });
 };
 
-server.play = async function(x, y, color) {
+server.play = async function(numCoord, color) {
     // console.log("play");
-    let coord = coordNumToName(x, y);
-    return fetch(SERVER_URL + "play?color=" + colorNumToName(color) + "&coord=" + coord,
+    let nameCoord = coordNumToName(numCoord);
+    return fetch(SERVER_URL + "play?color=" + colorNumToName(color) + "&coord=" + nameCoord,
         { method: "GET" })
 };

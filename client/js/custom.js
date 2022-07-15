@@ -26,8 +26,8 @@ async function play(color, index = 0, coords) {
 	}
 
 	let coord = coords[index];
-	board.place(coord["x"], coord["y"]);
-	await server.play(coord["x"], coord["y"], color);
+	board.place(coord);
+	await server.play(coord, color);
 }
 
 async function getBestCoords() {
@@ -39,8 +39,7 @@ async function turn() {
 	let markupCoord = board.markupToCoord();
 	let correctChoice = false;
 	for (let i=0; i<bestCoords.length; i++) {
-		let coord = bestCoords[i];
-		if (coord["x"] == markupCoord["x"] && coord["y"] == markupCoord["y"]) {
+		if (utils.compCoord(markupCoord, bestCoords[i])) {
 			correctChoice = true;
 			await play(-1, i, bestCoords);
 			break;
