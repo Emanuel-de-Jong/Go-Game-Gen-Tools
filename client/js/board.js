@@ -18,30 +18,6 @@ document.querySelector("input[value=\"?x?\"]").remove();
 document.querySelector("button[title=\"Previous node\"]")
     .insertAdjacentHTML("afterend", "<span id=\"moveCount\">0</span>");
 
-board.editor.addListener((event) => {
-    if (event.markupChange === true) {
-        let markup = board.editor.getCurrent().markup;
-        let markupNum;
-        for (let i=0; i<markup.length; i++) {
-            if (markup[i] == 4) {
-                markupNum = i;
-                break;
-            }
-        }
-        let coord = {
-            x: Math.floor(markupNum / 19) + 1,
-            y: (markupNum % 19) + 1
-        }
-        console.log(coord);
-
-        // let move = editor.getCurrent().move;
-        // if (move.color == -1) {
-        // 	// turn(move.x, move.y)
-        // 	place(bestCoord["x"], bestCoord["y"]);
-        // }
-    }
-});
-
 board.place = function place(x, y, tool = "auto") {
 	board.editor.setTool(tool);
 	board.editor.click(x, y, false, false);
@@ -51,5 +27,21 @@ board.place = function place(x, y, tool = "auto") {
 	// 	document.dispatchEvent(playMove);
 	// }
 };
+
+board.markupToCoord = function(boardW = 19, boardH = 19) {
+	let markup = board.editor.getCurrent().markup;
+	let markupNum;
+	for (let i=0; i<markup.length; i++) {
+		if (markup[i] == 4) {
+			markupNum = i;
+			break;
+		}
+	}
+
+	return {
+		x: Math.floor(markupNum / boardW) + 1,
+		y: (markupNum % boardH) + 1
+	}
+}
 
 })();

@@ -13,6 +13,19 @@ async function init() {
 function main(event) {
 }
 
+board.editor.addListener((event) => {
+    if (event.markupChange === true) {
+        let coord = board.markupToCoord();
+		console.log(coord);
+
+        // let move = editor.getCurrent().move;
+        // if (move.color == -1) {
+        // 	// turn(move.x, move.y)
+        // 	place(bestCoord["x"], bestCoord["y"]);
+        // }
+    }
+});
+
 async function play(color, index = 0) {
 	let moves = await server.analyze(color);
 	let coord = moves[index];
