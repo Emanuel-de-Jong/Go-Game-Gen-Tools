@@ -1,6 +1,8 @@
 (function () {
 
 var bestCoords;
+var isPlayerControlling = false;
+var nextButton = document.querySelector('#next');
 
 async function init() {
 	await server.restart();
@@ -15,10 +17,16 @@ async function createPreMoves() {
 }
 
 board.editor.addListener((event) => {
-    if (event.markupChange === true && board.editor.getTool() == "cross") {
-        turn();
+    if (event.markupChange === true && isPlayerControlling) {
+		isPlayerControlling = false;
+        playerTurn();
     }
 });
+
+nextButton.addEventListener("click", () => {
+	nextButton.disabled = true;
+	botTurn();
+})
 
 async function play(color, index = 0, coords) {
 	if (coords == null) {
@@ -33,29 +41,34 @@ async function play(color, index = 0, coords) {
 async function getBestCoords() {
 	bestCoords = await server.analyze(-1);
 	board.editor.setTool("cross");
+	isPlayerControlling = true;
 }
 
-async function turn() {
+async function playerTurn() {
 	let markupCoord = board.markupToCoord();
-	let correctChoice = false;
+	let isCorrectChoice = false;
 	for (let i=0; i<bestCoords.length; i++) {
 		if (utils.compCoord(markupCoord, bestCoords[i])) {
-			correctChoice = true;
+			isCorrectChoice = true;
 			await play(-1, i, bestCoords);
 			break;
 		}
 	}
 
-	if (!correctChoice) {
+	if (!isCorrectChoice) {
 		await play(-1, 0, bestCoords);
 	}
 
-	await play(1);
 	board.drawCoords(bestCoords);
-	if (!correctChoice) {
-		board.draw(markupCoord, "circle");
+	if (!isCorrectChoice) {
+		board.draw(markupCoord, "cross");
 	}
 
+	nextButton.disabled = false;
+}
+
+async function botTurn() {
+	await play(1);
 	await getBestCoords();
 }
 

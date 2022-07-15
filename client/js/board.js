@@ -11,14 +11,17 @@ board.editor.toggleCoordStyle();
 board.editor.toggleCoordStyle();
 board.editor.setTool("navOnly");
 
-document.querySelector("button[title=\"Variants: [show]/hide\"]").remove();
-document.querySelector("input[value=\"9x9\"]").remove();
-document.querySelector("input[value=\"13x13\"]").remove();
-document.querySelector("input[value=\"19x19\"]").remove();
-document.querySelector("input[value=\"?x?\"]").remove();
+document.querySelector('button[title="Variants: child/[sibling]"]').remove();
+document.querySelector('button[title="Variants: [show]/hide"]').remove();
+document.querySelector('input[value="9x9"]').remove();
+document.querySelector('input[value="13x13"]').remove();
+document.querySelector('input[value="19x19"]').remove();
+document.querySelector('input[value="?x?"]').remove();
 
-document.querySelector("button[title=\"Previous node\"]")
-    .insertAdjacentHTML("afterend", "<span id=\"moveCount\">0</span>");
+document.querySelector(".besogo-board")
+    .insertAdjacentHTML("beforeend", '<button type="button" class="btn btn-secondary" id="next" disabled>></button>');
+document.querySelector('button[title="Previous node"]')
+    .insertAdjacentHTML("afterend", '<span id="moveCount">0</span>');
 
 board.draw = function(coord, tool = "auto") {
 	board.editor.setTool(tool);

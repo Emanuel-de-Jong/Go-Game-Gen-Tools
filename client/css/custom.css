@@ -4,8 +4,15 @@
 }
 
 #board {
+    position: relative;
     width: 700px;
     height: 900px;
+}
+
+#next {
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 #settings {
