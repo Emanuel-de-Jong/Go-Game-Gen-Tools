@@ -109,7 +109,7 @@ server.restart = async function() {
     console.log("restart");
     return fetch(SERVER_URL + "restart",
         { method: "GET" })
-}
+};
 
 server.genmove = async function(color) {
     console.log("genmove");
@@ -119,7 +119,7 @@ server.genmove = async function(color) {
         .then(data => {
             return coordNameToNum(data);
         });
-}
+};
 
 server.analyze = async function(color) {
     console.log("analyze");
@@ -133,11 +133,11 @@ server.analyze = async function(color) {
             });
             return moves;
         });
-}
+};
 
 server.play = async function(x, y, color) {
     let coord = coordNumToName(x, y);
     console.log("play");
     return fetch(SERVER_URL + "play?color=" + colorNumToName(color) + "&coord=" + coord,
         { method: "GET" })
-}
+};
