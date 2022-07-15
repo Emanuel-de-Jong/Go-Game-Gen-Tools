@@ -7,6 +7,14 @@
 
 	document.addEventListener("playMove", main);
 
+	async function init() {
+		await serverRestart();
+	}
+
+	function randomInt(max) {
+		return Math.floor(Math.random() * max);
+	}
+
 	function main(event) {
 	}
 
@@ -51,11 +59,7 @@
 		}
 	})
 
-	function place(x, y, tool) {
-		if (tool == null) {
-			tool = "auto";
-		}
-
+	function place(x, y, tool = "auto") {
 		editor.setTool(tool);
 		editor.click(x, y, false, false);
 
@@ -169,6 +173,12 @@
 		return num == 1 ? "W" : "B";
 	}
 
+	async function serverRestart() {
+		console.log("restart");
+		return fetch(SERVER_URL + "restart",
+			{ method: "GET" })
+	}
+
 	async function serverGenmove(color) {
 		console.log("genmove");
 		return fetch(SERVER_URL + "genmove?color=" + colorNumToName(color),
@@ -200,8 +210,10 @@
 			{ method: "GET" })
 	}
 
-	async function play(color) {
-		let coord = await serverGenmove(color);
+	async function play(color, index = 0) {
+		let moves = await serverAnalyze(color);
+		let coord = moves[index];
+		await serverPlay(coord["x"], coord["y"], color);
 		place(coord["x"], coord["y"]);
 	}
 
@@ -212,11 +224,13 @@
 	}
 
 	async function createPreMoves() {
-		for (let i=0; i<4; i++) {
-			await play(-1);
-			await play(1);
+		for (let i=0; i<6; i++) {
+			await play(-1, randomInt(3));
+			await play(1, randomInt(3));
 		}
-		bestCoord = await serverGenmove(-1);
+		bestCoord = await serverAnalyze(-1)[0];
 	}
-	// createPreMoves();
+
+	init();
+	createPreMoves();
 })();

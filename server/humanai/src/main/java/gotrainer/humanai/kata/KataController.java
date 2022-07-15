@@ -17,21 +17,31 @@ public class KataController {
 
     @GetMapping("/commands")
     public void getCommands() throws Exception {
+        System.out.println("commands");
         kata.commands();
+    }
+
+    @GetMapping("/restart")
+    public void getRestart() throws Exception {
+        System.out.println("restart");
+        kata.restart();
     }
 
     @GetMapping("/genmove")
     public String getGenmove(@RequestParam String color) throws Exception {
+        System.out.println("genmove");
         return kata.genmove(color);
     }
 
     @GetMapping("/analyze")
     public List<String> getAnalyze(@RequestParam String color) throws Exception {
+        System.out.println("analyze");
         return kata.analyze(color);
     }
 
     @GetMapping("/play")
     public void getPlay(@RequestParam String color, @RequestParam String coord) throws Exception {
+        System.out.println("play");
         kata.play(color, coord);
     }
 

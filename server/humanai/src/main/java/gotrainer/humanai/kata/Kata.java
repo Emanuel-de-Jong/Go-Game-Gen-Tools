@@ -42,6 +42,13 @@ public class Kata {
         write("list_commands");
     }
 
+    public void restart() throws Exception {
+        clearReader();
+        write("clear_board");
+        clearReader();
+        write("clear_cache");
+    }
+
     public String genmove(String color) throws Exception {
         clearReader();
         write("genmove " + color);
@@ -52,7 +59,7 @@ public class Kata {
 
     public List<String> analyze(String color) throws Exception {
         clearReader();
-        write("lz-analyze " + color + " interval 100 minmoves 3 maxmoves 3");
+        write("lz-analyze " + color + " interval 50 minmoves 3 maxmoves 3");
         reader.readLine(); // Ignore '= '
         String[] analysis = reader.readLine().split(" ");
         write("\n");
