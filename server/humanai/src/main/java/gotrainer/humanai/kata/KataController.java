@@ -34,9 +34,10 @@ public class KataController {
     }
 
     @GetMapping("/analyze")
-    public List<String> getAnalyze(@RequestParam String color) throws Exception {
+    public List<String> getAnalyze(@RequestParam String color, @RequestParam int moveOptions,
+                                   @RequestParam int strength) throws Exception {
         System.out.println("analyze");
-        return kata.analyze(color);
+        return kata.analyze(color, moveOptions, strength);
     }
 
     @GetMapping("/play")

@@ -20,8 +20,6 @@ document.querySelector('input[value="?x?"]').remove();
 
 document.querySelector(".besogo-board")
     .insertAdjacentHTML("beforeend", '<button type="button" class="btn btn-secondary" id="next" disabled>></button>');
-document.querySelector('button[title="Previous node"]')
-    .insertAdjacentHTML("afterend", '<span id="moveCount">0</span>');
 
 board.draw = function(coord, tool = "auto") {
 	board.editor.setTool(tool);

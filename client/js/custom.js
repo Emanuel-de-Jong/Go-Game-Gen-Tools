@@ -1,5 +1,7 @@
 (function () {
 
+const PRE_MOVE_OPTIONS = 3;
+
 var bestCoords;
 var isPlayerControlling = false;
 var nextButton = document.querySelector('#next');
@@ -9,9 +11,12 @@ async function init() {
 }
 
 async function createPreMoves() {
-	for (let i=0; i<1; i++) {
-		await play(-1, utils.randomInt(3));
-		await play(1, utils.randomInt(3));
+	let coords;
+	for (let i=0; i<options.preMoves/2; i++) {
+		coords = await server.analyze(-1, PRE_MOVE_OPTIONS, options.preStrength);
+		await play(-1, utils.randomInt(PRE_MOVE_OPTIONS), coords);
+		coords = await server.analyze(1, PRE_MOVE_OPTIONS, options.preStrength);
+		await play(1, utils.randomInt(PRE_MOVE_OPTIONS), coords);
 	}
 	await getBestCoords();
 }

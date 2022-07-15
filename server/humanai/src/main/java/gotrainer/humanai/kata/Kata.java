@@ -57,9 +57,10 @@ public class Kata {
         return move;
     }
 
-    public List<String> analyze(String color) throws Exception {
+    public List<String> analyze(String color, int moveOptions, int strength) throws Exception {
         clearReader();
-        write("lz-analyze " + color + " interval 50 minmoves 3 maxmoves 3");
+        write("lz-analyze " + color + " interval " + strength +
+                " minmoves " + moveOptions + " maxmoves " + moveOptions);
         reader.readLine(); // Ignore '= '
         String[] analysis = reader.readLine().split(" ");
         write("\n");

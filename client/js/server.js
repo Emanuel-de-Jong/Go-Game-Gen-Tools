@@ -121,9 +121,9 @@ server.genmove = async function(color) {
         });
 };
 
-server.analyze = async function(color) {
+server.analyze = async function(color, moveOptions = options.moveOptions, strength = options.strength) {
     // console.log("analyze");
-    return fetch(SERVER_URL + "analyze?color=" + colorNumToName(color),
+    return fetch(SERVER_URL + "analyze?color=" + colorNumToName(color) + "&moveOptions=" + moveOptions + "&strength=" + strength,
         { method: "GET" })
         .then(response => response.text())
         .then(nameCoordsText => {
