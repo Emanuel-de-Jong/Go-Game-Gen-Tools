@@ -15,7 +15,7 @@ async function createPreMoves() {
 }
 
 board.editor.addListener((event) => {
-    if (event.markupChange === true) {
+    if (event.markupChange === true && board.editor.getTool() == "cross") {
         turn();
     }
 });
@@ -26,7 +26,7 @@ async function play(color, index = 0, coords) {
 	}
 
 	let coord = coords[index];
-	board.place(coord);
+	board.draw(coord);
 	await server.play(coord, color);
 }
 
@@ -50,9 +50,12 @@ async function turn() {
 		await play(-1, 0, bestCoords);
 	}
 
-	console.log(correctChoice);
-
 	await play(1);
+	board.drawCoords(bestCoords);
+	if (!correctChoice) {
+		board.draw(markupCoord, "circle");
+	}
+
 	await getBestCoords();
 }
 
