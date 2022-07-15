@@ -4,13 +4,15 @@ var board = {};
 
 board.create = function() {
 	board.element = document.querySelector("#board");
-	besogo.create(board.element, { resize: "fixed", panels: "control+tree+file" });
+	besogo.create(board.element, {
+		resize: "fixed",
+		panels: "control+tree+file",
+		coord: "western",
+		tool: "navOnly",
+		variants: 1
+	});
 
 	board.editor = board.element.besogoEditor;
-	board.editor.toggleVariantStyle();
-	board.editor.toggleCoordStyle();
-	board.editor.toggleCoordStyle();
-	board.editor.setTool("navOnly");
 	
 	document.querySelector('button[title="Variants: child/[sibling]"]').remove();
 	document.querySelector('button[title="Variants: [show]/hide"]').remove();
