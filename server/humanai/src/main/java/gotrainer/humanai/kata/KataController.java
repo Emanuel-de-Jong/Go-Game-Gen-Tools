@@ -28,9 +28,9 @@ public class KataController {
     }
 
     @GetMapping("/setboardsize")
-    public void getSetBoardsize(@RequestParam int boardW, @RequestParam int boardH) throws Exception {
+    public void getSetBoardsize(@RequestParam int boardsize) throws Exception {
         System.out.println("setboardsize");
-        kata.setBoardsize(boardW, boardH);
+        kata.setBoardsize(boardsize);
     }
 
     @GetMapping("/setrules")

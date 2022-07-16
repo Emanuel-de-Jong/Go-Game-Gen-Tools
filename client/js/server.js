@@ -22,31 +22,11 @@ function coordNumToName(numCoord) {
         18: "S",
         19: "T"
     };
-    let yConvert = {
-        1: 19,
-        2: 18,
-        3: 17,
-        4: 16,
-        5: 15,
-        6: 14,
-        7: 13,
-        8: 12,
-        9: 11,
-        10: 10,
-        11: 9,
-        12: 8,
-        13: 7,
-        14: 6,
-        15: 5,
-        16: 4,
-        17: 3,
-        18: 2,
-        19: 1
-    };
 
-    let nameCoord = "" + xConvert[numCoord.x] + yConvert[numCoord.y];
-    // console.log("coordNumToName " + x + ", " + y + " = " + coord);
-    return nameCoord;
+    let x = xConvert[numCoord.x];
+    let y = options.boardsize + 1 - numCoord.y;
+    console.log("coordNumToName " + numCoord.x + ", " + numCoord.y + " = " + x + y);
+    return "" + x + y;
 }
 
 function coordNameToNum(nameCoord) {
@@ -71,31 +51,10 @@ function coordNameToNum(nameCoord) {
         "S": 18,
         "T": 19
     };
-    let yConvert = {
-        19: 1,
-        18: 2,
-        17: 3,
-        16: 4,
-        15: 5,
-        14: 6,
-        13: 7,
-        12: 8,
-        11: 9,
-        10: 10,
-        9: 11,
-        8: 12,
-        7: 13,
-        6: 14,
-        5: 15,
-        4: 16,
-        3: 17,
-        2: 18,
-        1: 19,
-    };
 
     let x = xConvert[nameCoord[0]];
-    let y = yConvert[parseInt(nameCoord.substring(1))];
-    // console.log("coordNameToNum " + coord + " = " + x + ", " + y);
+    let y = options.boardsize + 1 - parseInt(nameCoord.substring(1));
+    console.log("coordNameToNum " + nameCoord + " = " + x + ", " + y);
     return { "x": x, "y": y };
 }
 
@@ -120,7 +79,7 @@ server.restart = async function() {
 
 server.setBoardsize = async function() {
     // console.log("setBoardsize");
-    return fetch(SERVER_URL + "setboardsize?boardW=" + options.boardW + "&boardH=" + options.boardH,
+    return fetch(SERVER_URL + "setboardsize?boardsize=" + options.boardsize,
         { method: "GET" })
 };
 

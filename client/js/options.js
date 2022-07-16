@@ -14,8 +14,7 @@ options.update = function() {
     options.streakElement.innerHTML = 0;
     options.topStreakElement.innerHTML = 0;
 
-    options.boardW = parseInt(document.querySelector("#boardW").value);
-    options.boardH = parseInt(document.querySelector("#boardH").value);
+    options.boardsize = parseInt(document.querySelector("#boardsize").value);
     options.color = parseInt(document.querySelector("#color").value);
     options.ruleset = document.querySelector("#ruleset").value;
     options.handicap = parseInt(document.querySelector("#handicap").value);
