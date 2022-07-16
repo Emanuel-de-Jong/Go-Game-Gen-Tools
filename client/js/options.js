@@ -16,6 +16,7 @@ options.update = function() {
 
     options.color = parseInt(document.querySelector("#color").value);
     options.ruleset = document.querySelector("#ruleset").value;
+    options.handicap = parseInt(document.querySelector("#handicap").value);
     options.komi = parseInt(document.querySelector("#komi").value);
     options.botColor = options.color * -1;
     options.preMoves = parseInt(document.querySelector("#preMoves").value);

@@ -11,6 +11,7 @@ async function init() {
 	server.setRules(options.ruleset);
 	server.setKomi(options.komi);
 
+	await board.create();
 	board.editor.addListener(boardEditorListener);
 	nextButton = document.querySelector('#next');
 	nextButton.addEventListener("click", nextButtonClickListener);
@@ -25,7 +26,9 @@ async function playPreMove(color) {
 
 async function createPreMoves() {
 	for (let i=0; i<options.preMoves/2; i++) {
-		await playPreMove(-1);
+		if (i != 0 || options.handicap == 0) {
+			await playPreMove(-1);
+		}
 		await playPreMove(1);
 	}
 
@@ -50,7 +53,6 @@ async function nextButtonClickListener() {
 
 document.querySelector('#restart').addEventListener("click", async () => {
 	options.update();
-	board.create();
 	await init();
 });
 

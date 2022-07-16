@@ -2,7 +2,7 @@ var board = {};
 
 (function () {
 
-board.create = function() {
+board.create = async function() {
 	board.element = document.querySelector("#board");
 	besogo.create(board.element, {
 		resize: "fixed",
@@ -23,6 +23,8 @@ board.create = function() {
 	
 	document.querySelector(".besogo-board")
 		.insertAdjacentHTML("beforeend", '<button type="button" class="btn btn-secondary" id="next" disabled>></button>');
+
+	await board.handicap(options.handicap);
 };
 
 board.draw = function(coord, tool = "auto") {
@@ -60,6 +62,23 @@ board.markupToCoord = function(boardW = 19, boardH = 19) {
 	}
 }
 
-board.create();
+board.handicap = async function(handicap) {
+	let placement = {
+		0: [],
+		2: [ {x:16,y:4}, {x:4,y:16} ],
+		3: [ {x:16,y:4}, {x:4,y:16}, {x:16,y:16} ],
+		4: [ {x:4,y:4}, {x:16,y:4}, {x:4,y:16}, {x:16,y:16} ],
+		5: [ {x:4,y:4}, {x:16,y:4}, {x:10,y:10}, {x:4,y:16}, {x:16,y:16} ],
+		6: [ {x:4,y:4}, {x:16,y:4}, {x:4,y:10}, {x:16,y:10}, {x:4,y:16}, {x:16,y:16} ],
+		7: [ {x:4,y:4}, {x:16,y:4}, {x:4,y:10}, {x:10,y:10}, {x:16,y:10}, {x:4,y:16}, {x:16,y:16} ],
+		8: [ {x:4,y:4}, {x:10,y:4}, {x:16,y:4}, {x:4,y:10}, {x:16,y:10}, {x:4,y:16}, {x:10,y:16}, {x:16,y:16} ],
+		9: [ {x:4,y:4}, {x:10,y:4}, {x:16,y:4}, {x:4,y:10}, {x:10,y:10}, {x:16,y:10}, {x:4,y:16}, {x:10,y:16}, {x:16,y:16} ],
+	}
+
+	placement[handicap].forEach(async (coord) => {
+		board.draw(coord, "playB");
+		await server.play(coord, -1);
+	});
+}
 
 })();
