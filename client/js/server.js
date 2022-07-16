@@ -25,7 +25,7 @@ function coordNumToName(numCoord) {
 
     let x = xConvert[numCoord.x];
     let y = options.boardsize + 1 - numCoord.y;
-    console.log("coordNumToName " + numCoord.x + ", " + numCoord.y + " = " + x + y);
+    // console.log("coordNumToName " + numCoord.x + ", " + numCoord.y + " = " + x + y);
     return "" + x + y;
 }
 
@@ -54,7 +54,7 @@ function coordNameToNum(nameCoord) {
 
     let x = xConvert[nameCoord[0]];
     let y = options.boardsize + 1 - parseInt(nameCoord.substring(1));
-    console.log("coordNameToNum " + nameCoord + " = " + x + ", " + y);
+    // console.log("coordNameToNum " + nameCoord + " = " + x + ", " + y);
     return { "x": x, "y": y };
 }
 

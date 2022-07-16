@@ -44,5 +44,3 @@ options.updateStats = function(isCorrectChoice) {
 }
 
 options.update();
-
-console.log(options);
