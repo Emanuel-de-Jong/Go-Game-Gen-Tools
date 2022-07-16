@@ -91,6 +91,8 @@ async function playerTurn() {
 	}
 
 	nextButton.disabled = false;
+
+	options.updateStats(isCorrectChoice);
 }
 
 async function botTurn() {
