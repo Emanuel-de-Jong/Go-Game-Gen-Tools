@@ -9,6 +9,7 @@ var nextButton;
 async function init() {
 	await server.restart();
 	server.setRules(options.ruleset);
+	server.setKomi(options.komi);
 
 	board.editor.addListener(boardEditorListener);
 	nextButton = document.querySelector('#next');

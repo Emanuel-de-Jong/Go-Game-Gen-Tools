@@ -117,6 +117,12 @@ server.setRules = async function(ruleset) {
         { method: "GET" })
 };
 
+server.setKomi = async function(komi) {
+    // console.log("setKomi");
+    return fetch(SERVER_URL + "setkomi?komi=" + komi,
+        { method: "GET" })
+};
+
 server.genmove = async function(color) {
     // console.log("genmove");
     return fetch(SERVER_URL + "genmove?color=" + colorNumToName(color),

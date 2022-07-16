@@ -33,6 +33,12 @@ public class KataController {
         kata.setRules(ruleset);
     }
 
+    @GetMapping("/setkomi")
+    public void getSetKomi(@RequestParam int komi) throws Exception {
+        System.out.println("setkomi");
+        kata.setKomi(komi);
+    }
+
     @GetMapping("/genmove")
     public String getGenmove(@RequestParam String color) throws Exception {
         System.out.println("genmove");

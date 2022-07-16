@@ -54,6 +54,11 @@ public class Kata {
         write("kata-set-rules " + ruleset);
     }
 
+    public void setKomi(int komi) throws Exception {
+        clearReader();
+        write("komi " + komi);
+    }
+
     public String genmove(String color) throws Exception {
         clearReader();
         write("genmove " + color);
