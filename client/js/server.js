@@ -105,21 +105,34 @@ function colorNumToName(num) {
 
 var server = {};
 
+server.init = async function() {
+    await server.restart();
+    await server.setBoardsize();
+    await server.setRules();
+    await server.setKomi();
+}
+
 server.restart = async function() {
     // console.log("restart");
     return fetch(SERVER_URL + "restart",
         { method: "GET" })
 };
 
-server.setRules = async function(ruleset) {
-    // console.log("setRules");
-    return fetch(SERVER_URL + "setrules?ruleset=" + ruleset,
+server.setBoardsize = async function() {
+    // console.log("setBoardsize");
+    return fetch(SERVER_URL + "setboardsize?boardW=" + options.boardW + "&boardH=" + options.boardH,
         { method: "GET" })
 };
 
-server.setKomi = async function(komi) {
+server.setRules = async function() {
+    // console.log("setRules");
+    return fetch(SERVER_URL + "setrules?ruleset=" + options.ruleset,
+        { method: "GET" })
+};
+
+server.setKomi = async function() {
     // console.log("setKomi");
-    return fetch(SERVER_URL + "setkomi?komi=" + komi,
+    return fetch(SERVER_URL + "setkomi?komi=" + options.komi,
         { method: "GET" })
 };
 

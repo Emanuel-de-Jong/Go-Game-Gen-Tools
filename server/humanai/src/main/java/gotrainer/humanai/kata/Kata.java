@@ -49,6 +49,11 @@ public class Kata {
         write("clear_cache");
     }
 
+    public void setBoardsize(int boardW, int boardH) throws Exception {
+        clearReader();
+        write("rectangular_boardsize " + boardW + " " + boardH);
+    }
+
     public void setRules(String ruleset) throws Exception {
         clearReader();
         write("kata-set-rules " + ruleset);

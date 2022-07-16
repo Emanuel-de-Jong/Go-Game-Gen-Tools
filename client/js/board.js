@@ -9,6 +9,7 @@ board.create = async function() {
 		panels: "control+tree+file",
 		coord: "western",
 		tool: "navOnly",
+		size: options.boardW + ":" + options.boardH,
 		variants: 1
 	});
 
@@ -46,7 +47,7 @@ board.drawCoords = function(coords) {
 	board.editor.setTool("navOnly");
 }
 
-board.markupToCoord = function(boardW = 19, boardH = 19) {
+board.markupToCoord = function() {
 	let markup = board.editor.getCurrent().markup;
 	let markupNum;
 	for (let i=0; i<markup.length; i++) {
@@ -57,8 +58,8 @@ board.markupToCoord = function(boardW = 19, boardH = 19) {
 	}
 
 	return {
-		x: Math.floor(markupNum / boardW) + 1,
-		y: (markupNum % boardH) + 1
+		x: Math.floor(markupNum / options.boardW) + 1,
+		y: (markupNum % options.boardH) + 1
 	}
 }
 

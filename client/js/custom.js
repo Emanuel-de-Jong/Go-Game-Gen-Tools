@@ -7,9 +7,7 @@ var isPlayerControlling = false;
 var nextButton;
 
 async function init() {
-	await server.restart();
-	server.setRules(options.ruleset);
-	server.setKomi(options.komi);
+	await server.init();
 
 	await board.create();
 	board.editor.addListener(boardEditorListener);
