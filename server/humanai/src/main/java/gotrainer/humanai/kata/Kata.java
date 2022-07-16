@@ -49,6 +49,11 @@ public class Kata {
         write("clear_cache");
     }
 
+    public void setRules(String ruleset) throws Exception {
+        clearReader();
+        write("kata-set-rules " + ruleset);
+    }
+
     public String genmove(String color) throws Exception {
         clearReader();
         write("genmove " + color);

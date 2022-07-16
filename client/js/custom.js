@@ -4,10 +4,16 @@ const PRE_MOVE_OPTIONS = 3;
 
 var bestCoords;
 var isPlayerControlling = false;
-var nextButton = document.querySelector('#next');
+var nextButton;
 
 async function init() {
 	await server.restart();
+	server.setRules(options.ruleset);
+
+	board.editor.addListener(boardEditorListener);
+	nextButton = document.querySelector('#next');
+	nextButton.addEventListener("click", nextButtonClickListener);
+
 	createPreMoves();
 }
 
@@ -29,23 +35,22 @@ async function createPreMoves() {
 	await getBestCoords();
 }
 
-board.editor.addListener(async (event) => {
-    if (event.markupChange === true && isPlayerControlling) {
+async function boardEditorListener(event) {
+	if (event.markupChange === true && isPlayerControlling) {
 		isPlayerControlling = false;
         await playerTurn();
     }
-});
+}
 
-nextButton.addEventListener("click", async () => {
+async function nextButtonClickListener() {
 	nextButton.disabled = true;
 	await botTurn();
-});
+}
 
 document.querySelector('#restart').addEventListener("click", async () => {
 	options.update();
 	board.create();
 	await init();
-
 });
 
 async function play(color, index = 0, coords) {

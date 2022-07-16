@@ -111,6 +111,12 @@ server.restart = async function() {
         { method: "GET" })
 };
 
+server.setRules = async function(ruleset) {
+    // console.log("setRules");
+    return fetch(SERVER_URL + "setrules?ruleset=" + ruleset,
+        { method: "GET" })
+};
+
 server.genmove = async function(color) {
     // console.log("genmove");
     return fetch(SERVER_URL + "genmove?color=" + colorNumToName(color),

@@ -27,6 +27,12 @@ public class KataController {
         kata.restart();
     }
 
+    @GetMapping("/setrules")
+    public void getSetRules(@RequestParam String ruleset) throws Exception {
+        System.out.println("setrules");
+        kata.setRules(ruleset);
+    }
+
     @GetMapping("/genmove")
     public String getGenmove(@RequestParam String color) throws Exception {
         System.out.println("genmove");
