@@ -4,7 +4,6 @@ server unreachable alert
 send all moves to server each time
 options live update on change
 strength seperate for W and B
-server stream out to file at close
 fix restart
 handle pass/resign
 show score/winner

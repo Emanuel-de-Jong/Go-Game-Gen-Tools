@@ -14,7 +14,7 @@ async function init() {
 	nextButton = document.querySelector('#next');
 	nextButton.addEventListener("click", nextButtonClickListener);
 
-	createPreMoves();
+	await createPreMoves();
 }
 
 async function playPreMove(color) {

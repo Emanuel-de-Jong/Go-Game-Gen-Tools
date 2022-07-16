@@ -28,6 +28,34 @@ board.create = async function() {
 	await board.handicap();
 };
 
+board.getTree = function() {
+	let root = board.editor.getRoot();
+	if (root.children.length == 0) {
+		return [];
+	}
+
+	let node = root.children[0];
+	let tree = [];
+	let isLastChild = false;
+	while (!isLastChild) {
+		tree.push({
+			color: node.move.color,
+			coord: {
+				x: node.move.x,
+				y: node.move.y
+			}
+		});
+
+		if (node.children.length == 0) {
+			isLastChild = true;
+			break;
+		}
+		node = node.children[0];
+	}
+
+	return tree;
+}
+
 board.draw = function(coord, tool = "auto") {
 	board.editor.setTool(tool);
 	board.editor.click(coord.x, coord.y, false, false);
