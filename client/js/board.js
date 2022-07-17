@@ -10,13 +10,13 @@ board.create = async function() {
 		coord: "western",
 		tool: "navOnly",
 		size: options.boardsize,
-		variants: 1
+		variants: 2
 	});
 
 	board.editor = board.element.besogoEditor;
 	
-	document.querySelector('button[title="Variants: child/[sibling]"]').remove();
-	document.querySelector('button[title="Variants: [show]/hide"]').remove();
+	document.querySelector('button[title="Variants: [child]/sibling"]').remove();
+	document.querySelector('button[title="Variants: show/[hide]"]').remove();
 	document.querySelector('input[value="9x9"]').remove();
 	document.querySelector('input[value="13x13"]').remove();
 	document.querySelector('input[value="19x19"]').remove();
@@ -29,6 +29,17 @@ board.create = async function() {
 
 	await board.handicap();
 };
+
+board.nextColor = function() {
+	let currentMove = board.editor.getCurrent();
+	if (currentMove.children.length > 0) {
+		return currentMove.children[0].move.color;
+	}
+	if (currentMove.move != null) {
+		return currentMove.move.color * -1;
+	}
+	return -1;
+}
 
 board.getMoves = function() {
 	let moves = [];

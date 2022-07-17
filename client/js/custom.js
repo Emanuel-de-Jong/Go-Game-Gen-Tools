@@ -45,6 +45,7 @@ async function boardEditorListener(event) {
 		let currentMove = board.editor.getCurrent();
 		if (board.lastMove.moveNumber+1 != currentMove.moveNumber ||
 			board.lastMove.navTreeY != currentMove.navTreeY) {
+				board.editor.setTool("navOnly");
 				await getBestCoords();
 		}
 	}
@@ -71,7 +72,7 @@ async function play(color, index = 0, coords) {
 }
 
 async function getBestCoords() {
-	bestCoords = await server.analyze(options.color);
+	bestCoords = await server.analyze(board.nextColor());
 	board.editor.setTool("cross");
 	isPlayerControlling = true;
 }
@@ -82,13 +83,13 @@ async function playerTurn() {
 	for (let i=0; i<bestCoords.length; i++) {
 		if (utils.compCoord(markupCoord, bestCoords[i])) {
 			isCorrectChoice = true;
-			await play(options.color, i, bestCoords);
+			await play(board.nextColor(), i, bestCoords);
 			break;
 		}
 	}
 
 	if (!isCorrectChoice) {
-		await play(options.color, 0, bestCoords);
+		await play(board.nextColor(), 0, bestCoords);
 	}
 
 	board.drawCoords(bestCoords);
@@ -102,7 +103,7 @@ async function playerTurn() {
 }
 
 async function botTurn() {
-	await play(options.botColor);
+	await play(board.nextColor());
 	await getBestCoords();
 }
 

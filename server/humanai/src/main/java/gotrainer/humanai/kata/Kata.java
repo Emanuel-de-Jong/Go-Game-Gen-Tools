@@ -101,7 +101,6 @@ public class Kata {
     public void play(String color, String coord) throws Exception {
         clearReader();
         write("play " + color + " " + coord);
-        System.out.println("play " + color + " " + coord);
     }
 
     private void write(String command) throws Exception {
