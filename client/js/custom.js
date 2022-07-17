@@ -4,6 +4,7 @@ const PRE_MOVE_OPTIONS = 3;
 
 var bestCoords;
 var isPlayerControlling = false;
+var isBestCoordsNeeded = false;
 var nextButton;
 
 async function init() {
@@ -45,8 +46,7 @@ async function boardEditorListener(event) {
 		let currentMove = board.editor.getCurrent();
 		if (board.lastMove.moveNumber+1 != currentMove.moveNumber ||
 			board.lastMove.navTreeY != currentMove.navTreeY) {
-				board.editor.setTool("navOnly");
-				await getBestCoords();
+				isBestCoordsNeeded = true;
 		}
 	}
 }
@@ -78,6 +78,12 @@ async function getBestCoords() {
 }
 
 async function playerTurn() {
+	if (isBestCoordsNeeded) {
+		isBestCoordsNeeded = false;
+		board.editor.setTool("navOnly");
+		bestCoords = await server.analyze(board.nextColor());
+	}
+
 	let markupCoord = board.markupToCoord();
 	let isCorrectChoice = false;
 	for (let i=0; i<bestCoords.length; i++) {

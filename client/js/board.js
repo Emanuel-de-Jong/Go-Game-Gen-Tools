@@ -86,6 +86,7 @@ board.markupToCoord = function() {
 	let markupNum;
 	for (let i=0; i<markup.length; i++) {
 		if (markup[i] == 4) {
+			markup[i] = 0;
 			markupNum = i;
 			break;
 		}
