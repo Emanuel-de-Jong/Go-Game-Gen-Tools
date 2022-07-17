@@ -1,5 +1,7 @@
 package gotrainer.humanai.kata;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import gotrainer.humanai.Moves;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +12,8 @@ import java.util.List;
 public class KataController {
 
     public Kata kata;
+
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     public KataController() throws Exception {
         kata = new Kata();
@@ -51,11 +55,12 @@ public class KataController {
         return kata.genmove(color);
     }
 
-    @GetMapping("/analyze")
-    public List<String> getAnalyze(@RequestParam String color, @RequestParam int moveOptions,
+    @PostMapping("/analyze")
+    public List<String> postAnalyze(@RequestBody String movesJson, @RequestParam String color, @RequestParam int moveOptions,
                                    @RequestParam int strength) throws Exception {
         System.out.println("analyze");
-        return kata.analyze(color, moveOptions, strength);
+        Moves moves = objectMapper.readValue(movesJson, Moves.class);
+        return kata.analyze(moves, color, moveOptions, strength);
     }
 
     @GetMapping("/play")

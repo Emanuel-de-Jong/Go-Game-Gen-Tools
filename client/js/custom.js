@@ -41,7 +41,13 @@ async function boardEditorListener(event) {
 	if (event.markupChange === true && isPlayerControlling) {
 		isPlayerControlling = false;
         await playerTurn();
-    }
+    } else if (event.navChange === true) {
+		let currentMove = board.editor.getCurrent();
+		if (board.lastMove.moveNumber+1 != currentMove.moveNumber ||
+			board.lastMove.navTreeY != currentMove.navTreeY) {
+				await getBestCoords();
+		}
+	}
 }
 
 async function nextButtonClickListener() {

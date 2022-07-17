@@ -1,5 +1,8 @@
 package gotrainer.humanai.kata;
 
+import gotrainer.humanai.Move;
+import gotrainer.humanai.Moves;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,20 +75,27 @@ public class Kata {
         return move;
     }
 
-    public List<String> analyze(String color, int moveOptions, int strength) throws Exception {
+    public List<String> analyze(Moves moves, String color, int moveOptions, int strength) throws Exception {
+        restart();
+
+        for (Move move : moves.moves) {
+            play(move.color, move.coord);
+        }
+
         clearReader();
         write("lz-analyze " + color + " interval " + strength +
                 " minmoves " + moveOptions + " maxmoves " + moveOptions);
         reader.readLine(); // Ignore '= '
         String[] analysis = reader.readLine().split(" ");
         write("\n");
-        List<String> moves = new ArrayList<>();
+
+        List<String> moveSuggestions = new ArrayList<>();
         for (int i=0; i<analysis.length; i++) {
             if (analysis[i].equals("move")) {
-                moves.add(analysis[i+1]);
+                moveSuggestions.add(analysis[i+1]);
             }
         }
-        return moves;
+        return moveSuggestions;
     }
 
     public void play(String color, String coord) throws Exception {

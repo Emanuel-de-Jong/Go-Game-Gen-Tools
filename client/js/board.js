@@ -25,20 +25,16 @@ board.create = async function() {
 	document.querySelector(".besogo-board")
 		.insertAdjacentHTML("beforeend", '<button type="button" class="btn btn-secondary" id="next" disabled>></button>');
 
+	board.lastMove = board.editor.getCurrent();
+
 	await board.handicap();
 };
 
-board.getTree = function() {
-	let root = board.editor.getRoot();
-	if (root.children.length == 0) {
-		return [];
-	}
-
-	let node = root.children[0];
-	let tree = [];
-	let isLastChild = false;
-	while (!isLastChild) {
-		tree.push({
+board.getMoves = function() {
+	let moves = [];
+	let node = board.editor.getCurrent();
+	while (node.moveNumber != 0) {
+		moves.push({
 			color: node.move.color,
 			coord: {
 				x: node.move.x,
@@ -46,14 +42,11 @@ board.getTree = function() {
 			}
 		});
 
-		if (node.children.length == 0) {
-			isLastChild = true;
-			break;
-		}
-		node = node.children[0];
+		node = node.parent;
 	}
 
-	return tree;
+	moves = moves.reverse();
+	return moves;
 }
 
 board.draw = function(coord, tool = "auto") {
@@ -61,6 +54,8 @@ board.draw = function(coord, tool = "auto") {
 	board.editor.click(coord.x, coord.y, false, false);
 	board.editor.setTool("navOnly");
 
+	board.lastMove = board.editor.getCurrent();
+	
 	// if (tool === "auto") {
 	// 	document.dispatchEvent(playMove);
 	// }

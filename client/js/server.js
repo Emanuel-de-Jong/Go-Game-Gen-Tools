@@ -73,32 +73,32 @@ server.init = async function() {
 
 server.restart = async function() {
     // console.log("restart");
-    return fetch(SERVER_URL + "restart",
-        { method: "GET" })
+    return fetch(SERVER_URL + "restart", {
+        method: "GET" });
 };
 
 server.setBoardsize = async function() {
     // console.log("setBoardsize");
-    return fetch(SERVER_URL + "setboardsize?boardsize=" + options.boardsize,
-        { method: "GET" })
+    return fetch(SERVER_URL + "setboardsize?boardsize=" + options.boardsize, {
+        method: "GET" });
 };
 
 server.setRules = async function() {
     // console.log("setRules");
-    return fetch(SERVER_URL + "setrules?ruleset=" + options.ruleset,
-        { method: "GET" })
+    return fetch(SERVER_URL + "setrules?ruleset=" + options.ruleset, {
+        method: "GET" });
 };
 
 server.setKomi = async function() {
     // console.log("setKomi");
-    return fetch(SERVER_URL + "setkomi?komi=" + options.komi,
-        { method: "GET" })
+    return fetch(SERVER_URL + "setkomi?komi=" + options.komi, {
+        method: "GET" });
 };
 
 server.genmove = async function(color) {
     // console.log("genmove");
-    return fetch(SERVER_URL + "genmove?color=" + colorNumToName(color),
-        { method: "GET" })
+    return fetch(SERVER_URL + "genmove?color=" + colorNumToName(color), {
+        method: "GET" })
         .then(response => response.text())
         .then(coord => {
             return coordNameToNum(coord);
@@ -107,8 +107,18 @@ server.genmove = async function(color) {
 
 server.analyze = async function(color, moveOptions = options.moveOptions, strength = options.strength) {
     // console.log("analyze");
-    return fetch(SERVER_URL + "analyze?color=" + colorNumToName(color) + "&moveOptions=" + moveOptions + "&strength=" + strength,
-        { method: "GET" })
+    let moves = board.getMoves();
+    let serverMoves = [];
+    moves.forEach(move => {
+        serverMoves.push({
+            color: colorNumToName(move.color),
+            coord: coordNumToName(move.coord)
+        });
+    });
+
+    return fetch(SERVER_URL + "analyze?color=" + colorNumToName(color) + "&moveOptions=" + moveOptions + "&strength=" + strength, {
+        method: "POST",
+        body: '{"moves":' + JSON.stringify(serverMoves) + "}" })
         .then(response => response.text())
         .then(nameCoordsText => {
             let numCoords = []
@@ -124,6 +134,6 @@ server.analyze = async function(color, moveOptions = options.moveOptions, streng
 server.play = async function(numCoord, color) {
     // console.log("play");
     let nameCoord = coordNumToName(numCoord);
-    return fetch(SERVER_URL + "play?color=" + colorNumToName(color) + "&coord=" + nameCoord,
-        { method: "GET" })
+    return fetch(SERVER_URL + "play?color=" + colorNumToName(color) + "&coord=" + nameCoord, {
+        method: "GET" });
 };
