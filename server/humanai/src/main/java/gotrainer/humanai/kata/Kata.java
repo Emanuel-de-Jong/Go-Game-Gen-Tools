@@ -45,6 +45,14 @@ public class Kata {
         write("list_commands");
     }
 
+    public String genmove(String color) throws Exception {
+        clearReader();
+        write("genmove " + color);
+        String move = reader.readLine().split(" ")[1];
+        System.out.println("genmove " + color + " " + move);
+        return move;
+    }
+
     public void restart() throws Exception {
         clearReader();
         write("clear_board");
@@ -65,14 +73,6 @@ public class Kata {
     public void setKomi(int komi) throws Exception {
         clearReader();
         write("komi " + komi);
-    }
-
-    public String genmove(String color) throws Exception {
-        clearReader();
-        write("genmove " + color);
-        String move = reader.readLine().split(" ")[1];
-        System.out.println("genmove " + color + " " + move);
-        return move;
     }
 
     public List<String> analyze(Moves moves, String color, int moveOptions, int strength) throws Exception {

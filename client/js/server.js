@@ -118,6 +118,7 @@ server.analyze = async function(color, moveOptions = options.moveOptions, streng
 
     return fetch(SERVER_URL + "analyze?color=" + colorNumToName(color) + "&moveOptions=" + moveOptions + "&strength=" + strength, {
         method: "POST",
+        headers: { 'Content-Type': 'application/json' },
         body: '{"moves":' + JSON.stringify(serverMoves) + "}" })
         .then(response => response.text())
         .then(nameCoordsText => {

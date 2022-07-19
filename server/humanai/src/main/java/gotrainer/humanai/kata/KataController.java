@@ -1,19 +1,22 @@
 package gotrainer.humanai.kata;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import gotrainer.humanai.Moves;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @RestController
+@Validated
 @RequestMapping("/kata")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class KataController {
 
     public Kata kata;
-
-    private ObjectMapper objectMapper = new ObjectMapper();
 
     public KataController() throws Exception {
         kata = new Kata();
@@ -25,6 +28,12 @@ public class KataController {
         kata.commands();
     }
 
+    @GetMapping("/genmove")
+    public String getGenmove(@RequestParam String color) throws Exception {
+        System.out.println("genmove");
+        return kata.genmove(color);
+    }
+
     @GetMapping("/restart")
     public void getRestart() throws Exception {
         System.out.println("restart");
@@ -32,40 +41,36 @@ public class KataController {
     }
 
     @GetMapping("/setboardsize")
-    public void getSetBoardsize(@RequestParam int boardsize) throws Exception {
+    public void getSetBoardsize(@RequestParam @Pattern(regexp="(9|13|19)") String boardsize) throws Exception {
         System.out.println("setboardsize");
-        kata.setBoardsize(boardsize);
+        kata.setBoardsize(Integer.parseInt(boardsize));
     }
 
     @GetMapping("/setrules")
-    public void getSetRules(@RequestParam String ruleset) throws Exception {
+    public void getSetRules(@RequestParam @Pattern(regexp="(japanese|chinese)") String ruleset) throws Exception {
         System.out.println("setrules");
         kata.setRules(ruleset);
     }
 
     @GetMapping("/setkomi")
-    public void getSetKomi(@RequestParam int komi) throws Exception {
+    public void getSetKomi(@RequestParam @Min(-150) @Max(150) int komi) throws Exception {
         System.out.println("setkomi");
         kata.setKomi(komi);
     }
 
-    @GetMapping("/genmove")
-    public String getGenmove(@RequestParam String color) throws Exception {
-        System.out.println("genmove");
-        return kata.genmove(color);
-    }
-
     @PostMapping("/analyze")
-    public List<String> postAnalyze(@RequestBody String movesJson, @RequestParam String color, @RequestParam int moveOptions,
-                                   @RequestParam int strength) throws Exception {
-        System.out.println("analyze");
-        Moves moves = objectMapper.readValue(movesJson, Moves.class);
+    public List<String> postAnalyze(@RequestBody @Valid Moves moves,
+                                    @RequestParam @Pattern(regexp="(B|W)") String color,
+                                    @RequestParam @Min(1) @Max(25) int moveOptions,
+                                    @RequestParam @Min(25) @Max(1500) int strength) throws Exception {
+//        System.out.println("analyze");
         return kata.analyze(moves, color, moveOptions, strength);
     }
 
     @GetMapping("/play")
-    public void getPlay(@RequestParam String color, @RequestParam String coord) throws Exception {
-        System.out.println("play");
+    public void getPlay(@RequestParam @Pattern(regexp="(B|W)") String color,
+                        @RequestParam @Pattern(regexp="([A-H]|[J-T])(1[0-9]|[1-9])") String coord) throws Exception {
+//        System.out.println("play");
         kata.play(color, coord);
     }
 
