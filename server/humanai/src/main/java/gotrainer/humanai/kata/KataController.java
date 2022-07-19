@@ -22,18 +22,6 @@ public class KataController {
         kata = new Kata();
     }
 
-    @GetMapping("/commands")
-    public void getCommands() throws Exception {
-        System.out.println("commands");
-        kata.commands();
-    }
-
-    @GetMapping("/genmove")
-    public String getGenmove(@RequestParam String color) throws Exception {
-        System.out.println("genmove");
-        return kata.genmove(color);
-    }
-
     @GetMapping("/restart")
     public void getRestart() throws Exception {
         System.out.println("restart");
@@ -65,13 +53,6 @@ public class KataController {
                                     @RequestParam @Min(25) @Max(1500) int strength) throws Exception {
 //        System.out.println("analyze");
         return kata.analyze(moves, color, moveOptions, strength);
-    }
-
-    @GetMapping("/play")
-    public void getPlay(@RequestParam @Pattern(regexp="(B|W)") String color,
-                        @RequestParam @Pattern(regexp="([A-H]|[J-T])(1[0-9]|[1-9])") String coord) throws Exception {
-//        System.out.println("play");
-        kata.play(color, coord);
     }
 
 }

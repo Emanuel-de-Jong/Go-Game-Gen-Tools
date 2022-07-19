@@ -28,29 +28,6 @@ public class Kata {
             System.out.println(line);
         } while (!line.contains("GTP ready"));
         write("version");
-
-//        inputThread = new Thread(() -> {
-//            try {
-//                String line;
-//                while ((line = reader.readLine()) != null) {
-//                    System.out.println(line);
-//                }
-//            } catch (Exception e) {}
-//        });
-//        inputThread.start();
-    }
-
-    public void commands() throws Exception {
-        clearReader();
-        write("list_commands");
-    }
-
-    public String genmove(String color) throws Exception {
-        clearReader();
-        write("genmove " + color);
-        String move = reader.readLine().split(" ")[1];
-        System.out.println("genmove " + color + " " + move);
-        return move;
     }
 
     public void restart() throws Exception {
@@ -110,7 +87,6 @@ public class Kata {
 
     private void clearReader() throws Exception {
         while (!reader.readLine().equals("")) {}
-//        reader.skip(Long.MAX_VALUE);
     }
 
 }

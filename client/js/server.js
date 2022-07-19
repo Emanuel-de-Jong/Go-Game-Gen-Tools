@@ -95,16 +95,6 @@ server.setKomi = async function() {
         method: "GET" });
 };
 
-server.genmove = async function(color) {
-    // console.log("genmove");
-    return fetch(SERVER_URL + "genmove?color=" + colorNumToName(color), {
-        method: "GET" })
-        .then(response => response.text())
-        .then(coord => {
-            return coordNameToNum(coord);
-        });
-};
-
 server.analyze = async function(color, moveOptions = options.moveOptions, strength = options.strength) {
     // console.log("analyze");
     let moves = board.getMoves();
@@ -130,11 +120,4 @@ server.analyze = async function(color, moveOptions = options.moveOptions, streng
             });
             return numCoords;
         });
-};
-
-server.play = async function(numCoord, color) {
-    // console.log("play");
-    let nameCoord = coordNumToName(numCoord);
-    return fetch(SERVER_URL + "play?color=" + colorNumToName(color) + "&coord=" + nameCoord, {
-        method: "GET" });
 };

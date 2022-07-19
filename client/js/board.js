@@ -66,10 +66,6 @@ board.draw = function(coord, tool = "auto") {
 	board.editor.setTool("navOnly");
 
 	board.lastMove = board.editor.getCurrent();
-	
-	// if (tool === "auto") {
-	// 	document.dispatchEvent(playMove);
-	// }
 };
 
 board.drawCoords = function(coords) {
