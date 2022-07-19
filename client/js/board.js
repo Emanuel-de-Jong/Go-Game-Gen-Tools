@@ -69,13 +69,13 @@ board.fillCorners = function() {
 
 board.nextColor = function() {
 	let currentMove = board.editor.getCurrent();
-	if (currentMove.children.length > 0) {
-		return currentMove.children[0].move.color;
-	}
 	if (currentMove.move != null) {
-		return currentMove.move.color * -1;
+		if (currentMove.children.length > 0) {
+			return currentMove.children[0].move.color;
+		}
+		return -1;
 	}
-	return -1;
+	return currentMove.move.color * -1;
 };
 
 board.getMoves = function() {

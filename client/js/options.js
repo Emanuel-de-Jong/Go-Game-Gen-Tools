@@ -22,7 +22,8 @@ options.update = function() {
     options.preMoves = parseInt(document.querySelector("#preMoves").value);
     options.moveOptions = parseInt(document.querySelector("#moveOptions").value);
     options.preStrength = parseInt(document.querySelector("#preStrength").value);
-    options.strength = parseInt(document.querySelector("#strength").value);
+    options.suggestionStrength = parseInt(document.querySelector("#suggestionStrength").value);
+    options.opponentStrength = parseInt(document.querySelector("#opponentStrength").value);
 };
 
 options.updateStats = function(isCorrectChoice) {

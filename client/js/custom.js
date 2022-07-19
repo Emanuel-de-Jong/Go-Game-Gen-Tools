@@ -17,8 +17,8 @@ async function init() {
 }
 
 async function playPreMove(color) {
-	let coords = await server.analyze(color, PRE_MOVE_OPTIONS, options.preStrength);
-	await play(color, utils.randomInt(PRE_MOVE_OPTIONS), coords);
+	let coords = await server.analyze(color, options.preStrength, PRE_MOVE_OPTIONS);
+	board.draw(coords[utils.randomInt(PRE_MOVE_OPTIONS)]);
 }
 
 async function createPreMoves() {
@@ -29,8 +29,7 @@ async function createPreMoves() {
 
 		let cornerCoords = board.fillCorners();
 		for (let i=0; i<4; i++) {
-			let color = i % 2 == 0 ? -1 : 1;
-			await play(color, i, cornerCoords);
+			board.draw(cornerCoords[i]);
 		}
 	}
 
@@ -71,17 +70,8 @@ document.querySelector('#restart').addEventListener("click", async () => {
 	await init();
 });
 
-async function play(color, index = 0, coords) {
-	if (coords == null) {
-		coords = await server.analyze(color);
-	}
-
-	let coord = coords[index];
-	board.draw(coord);
-}
-
 async function getBestCoords() {
-	bestCoords = await server.analyze(board.nextColor());
+	bestCoords = await server.analyze(board.nextColor(), options.suggestionStrength);
 	board.editor.setTool("cross");
 	isPlayerControlling = true;
 }
@@ -90,7 +80,7 @@ async function playerTurn() {
 	if (isBestCoordsNeeded) {
 		isBestCoordsNeeded = false;
 		board.editor.setTool("navOnly");
-		bestCoords = await server.analyze(board.nextColor());
+		bestCoords = await server.analyze(board.nextColor(), options.suggestionStrength);
 	}
 
 	let markupCoord = board.markupToCoord();
@@ -98,13 +88,13 @@ async function playerTurn() {
 	for (let i=0; i<bestCoords.length; i++) {
 		if (utils.compCoord(markupCoord, bestCoords[i])) {
 			isCorrectChoice = true;
-			await play(board.nextColor(), i, bestCoords);
+			board.draw(bestCoords[i]);
 			break;
 		}
 	}
 
 	if (!isCorrectChoice) {
-		await play(board.nextColor(), 0, bestCoords);
+		board.draw(bestCoords[0]);
 	}
 
 	board.drawCoords(bestCoords);
@@ -118,7 +108,8 @@ async function playerTurn() {
 }
 
 async function botTurn() {
-	await play(board.nextColor());
+	let coords = await server.analyze(board.nextColor(), options.opponentStrength)
+	board.draw(coords[0]);
 	await getBestCoords();
 }
 

@@ -58,11 +58,11 @@ function coordNameToNum(nameCoord) {
     return { "x": x, "y": y };
 }
 
-function colorNumToName(num) {
-    return num == 1 ? "W" : "B";
-}
-
 var server = {};
+
+server.colorNumToName = function(num) {
+    return num == 1 ? "W" : "B";
+};
 
 server.init = async function() {
     await server.restart();
@@ -95,18 +95,18 @@ server.setKomi = async function() {
         method: "GET" });
 };
 
-server.analyze = async function(color, moveOptions = options.moveOptions, strength = options.strength) {
+server.analyze = async function(color, strength, moveOptions = options.moveOptions) {
     // console.log("analyze");
     let moves = board.getMoves();
     let serverMoves = [];
     moves.forEach(move => {
         serverMoves.push({
-            color: colorNumToName(move.color),
+            color: server.colorNumToName(move.color),
             coord: coordNumToName(move.coord)
         });
     });
 
-    return fetch(SERVER_URL + "analyze?color=" + colorNumToName(color) + "&moveOptions=" + moveOptions + "&strength=" + strength, {
+    return fetch(SERVER_URL + "analyze?color=" + server.colorNumToName(color) + "&moveOptions=" + moveOptions + "&strength=" + strength, {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: '{"moves":' + JSON.stringify(serverMoves) + "}" })
