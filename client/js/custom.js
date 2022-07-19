@@ -68,7 +68,6 @@ async function play(color, index = 0, coords) {
 
 	let coord = coords[index];
 	board.draw(coord);
-	await server.play(coord, color);
 }
 
 async function getBestCoords() {

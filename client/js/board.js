@@ -137,7 +137,6 @@ board.handicap = async function() {
 
 	placement[options.boardsize][options.handicap].forEach(async (coord) => {
 		board.draw(coord, "playB");
-		await server.play(coord, -1);
 	});
 }
 
