@@ -24,7 +24,19 @@ async function playPreMove(color) {
 }
 
 async function createPreMoves() {
-	for (let i=0; i<options.preMoves/2; i++) {
+	let generatedPreMoves = options.preMoves/2;
+
+	if (options.handicap == 0) {
+		generatedPreMoves -= 2;
+
+		let cornerCoords = board.fillCorners();
+		for (let i=0; i<4; i++) {
+			let color = i % 2 == 0 ? -1 : 1;
+			await play(color, i, cornerCoords);
+		}
+	}
+
+	for (let i=0; i<generatedPreMoves; i++) {
 		if (i != 0 || options.handicap == 0) {
 			await playPreMove(-1);
 		}

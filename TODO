@@ -6,3 +6,5 @@ strength seperate for W and B
 fix restart
 handle pass/resign
 show score/winner
+click next button with enter, space and right mouse
+analyze white and next black while waiting on next button click

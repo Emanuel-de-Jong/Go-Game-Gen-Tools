@@ -11,15 +11,28 @@ utils.compCoord = function(coord1, coord2) {
 	return false;
 };
 
-function addEventsListener(element, events, fn) {
+utils.shuffleArray = function(array) {
+    let currentIndex = array.length;
+    let randomIndex;
+  
+    while (currentIndex != 0) {
+      randomIndex = utils.randomInt(currentIndex);
+      currentIndex--;
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+}
+
+utils.addEventsListener = function(element, events, fn) {
     events.forEach(event => element.addEventListener(event, fn));
 }
 
-function addEventListeners(elements, event, fn) {
+utils.addEventListeners = function(elements, event, fn) {
     elements.forEach(element => element.addEventListener(event, fn));
 }
 
-function addEventsListeners(elements, events, fn) {
+utils.addEventsListeners = function(elements, events, fn) {
     events.forEach(event => {
         elements.forEach(element => {
             element.addEventListener(event, fn)
@@ -27,13 +40,13 @@ function addEventsListeners(elements, events, fn) {
     });
 }
 
-function querySelectorAlls(selectors) {
+utils.querySelectorAlls = function(selectors) {
     let elementArrays = [];
     selectors.forEach(selector => elementArrays.push(Array.from(document.querySelectorAll(selector))));
     return elementArrays.flat();
 }
 
-function getSiblingByClass(element, className) {
+utils.getSiblingByClass = function(element, className) {
     let sibling = element.parentNode.firstElementChild;
 
     while (sibling) {

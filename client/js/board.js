@@ -30,6 +30,36 @@ board.create = async function() {
 	await board.handicap();
 };
 
+board.fillCorners = function() {
+	let cornerOptions = [
+		[ {x:3,y:3}, {x:3,y:4}, {x:4,y:3}, {x:4,y:4} ],
+		[ {x:17,y:3}, {x:17,y:4}, {x:16,y:3}, {x:16,y:4} ],
+		[ {x:3,y:17}, {x:3,y:16}, {x:4,y:17}, {x:4,y:16} ],
+		[ {x:17,y:17}, {x:17,y:16}, {x:16,y:17}, {x:16,y:16} ],
+	];
+	cornerOptions = utils.shuffleArray(cornerOptions);
+
+	let coords = [];
+	for (let i=0; i<4; i++) {
+		let cornerType;
+		let randomInt = utils.randomInt(11);
+		if (randomInt < 1) { // 3-3 1/11
+			cornerType = 0;
+		} else if (randomInt < 3) { // 3-4 2/11
+			cornerType = 1;
+		} else if (randomInt < 5) { // 4-3 2/11
+			cornerType = 2;
+		} else { // 4-4 6/11
+			cornerType = 3;
+		}
+
+		coords.push(cornerOptions[i][cornerType]);
+		let color = i % 2 == 0 ? -1 : 1;
+	}
+
+	return coords;
+}
+
 board.nextColor = function() {
 	let currentMove = board.editor.getCurrent();
 	if (currentMove.children.length > 0) {

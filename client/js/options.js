@@ -53,24 +53,24 @@ function validateInput(input) {
 function showInvalidMessage(input) {
     input.classList.add("form-invalid");
 
-    let messageDiv = getSiblingByClass(input, "form-invalid-message");
+    let messageDiv = utils.getSiblingByClass(input, "form-invalid-message");
     messageDiv.innerHTML = input.validationMessage;
 }
 
 function hideInvalidMessage(input) {
     input.classList.remove("form-invalid");
 
-    let messageDiv = getSiblingByClass(input, "form-invalid-message");
+    let messageDiv = utils.getSiblingByClass(input, "form-invalid-message");
     messageDiv.innerHTML = "";
 }
 
-querySelectorAlls(["input"]).forEach(input => {
+utils.querySelectorAlls(["input"]).forEach(input => {
     input.required = true;
     input.insertAdjacentHTML("afterend", "<div class=\"form-invalid-message\"></div>");
 });
 
 
-addEventListeners(querySelectorAlls(["input"]), "input", (event) => {
+utils.addEventListeners(utils.querySelectorAlls(["input"]), "input", (event) => {
     validateInput(event.target);
 });
 
