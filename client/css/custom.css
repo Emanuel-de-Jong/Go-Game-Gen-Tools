@@ -15,8 +15,15 @@
     right: 5px;
 }
 
+#stats {
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 26px;
+}
+
 #settings {
-    margin: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
     width: 250px;
 }
 
