@@ -8,3 +8,4 @@ fix restart
 handle pass/resign
 show score/winner
 analyze white and next black while waiting on next button click
+retry server request on error

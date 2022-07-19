@@ -65,7 +65,10 @@ server.colorNumToName = function(num) {
 };
 
 server.init = async function() {
-    await server.restart();
+    let status;
+    do {
+        status = (await server.restart()).status;
+    } while (status != 200);
     await server.setBoardsize();
     await server.setRules();
     await server.setKomi();
@@ -74,25 +77,49 @@ server.init = async function() {
 server.restart = async function() {
     // console.log("restart");
     return fetch(SERVER_URL + "restart", {
-        method: "GET" });
+        method: "GET" })
+        .then(response => {
+            return response;
+        })
+        .catch(error => {
+            return error;
+        });
 };
 
 server.setBoardsize = async function() {
     // console.log("setBoardsize");
     return fetch(SERVER_URL + "setboardsize?boardsize=" + options.boardsize, {
-        method: "GET" });
+        method: "GET" })
+        .then(response => {
+            return response;
+        })
+        .catch(error => {
+            return error;
+        });
 };
 
 server.setRules = async function() {
     // console.log("setRules");
     return fetch(SERVER_URL + "setrules?ruleset=" + options.ruleset, {
-        method: "GET" });
+        method: "GET" })
+        .then(response => {
+            return response;
+        })
+        .catch(error => {
+            return error;
+        });
 };
 
 server.setKomi = async function() {
     // console.log("setKomi");
     return fetch(SERVER_URL + "setkomi?komi=" + options.komi, {
-        method: "GET" });
+        method: "GET" })
+        .then(response => {
+            return response;
+        })
+        .catch(error => {
+            return error;
+        });
 };
 
 server.analyze = async function(color, strength, moveOptions = options.moveOptions) {
@@ -119,5 +146,8 @@ server.analyze = async function(color, strength, moveOptions = options.moveOptio
                 numCoords.push(coordNameToNum(element))
             });
             return numCoords;
+        })
+        .catch(error => {
+            return error;
         });
 };
