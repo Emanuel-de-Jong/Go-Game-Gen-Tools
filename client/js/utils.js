@@ -22,15 +22,15 @@ utils.shuffleArray = function(array) {
     }
   
     return array;
-}
+};
 
 utils.addEventsListener = function(element, events, fn) {
     events.forEach(event => element.addEventListener(event, fn));
-}
+};
 
 utils.addEventListeners = function(elements, event, fn) {
     elements.forEach(element => element.addEventListener(event, fn));
-}
+};
 
 utils.addEventsListeners = function(elements, events, fn) {
     events.forEach(event => {
@@ -38,13 +38,13 @@ utils.addEventsListeners = function(elements, events, fn) {
             element.addEventListener(event, fn)
         });
     });
-}
+};
 
 utils.querySelectorAlls = function(selectors) {
     let elementArrays = [];
     selectors.forEach(selector => elementArrays.push(Array.from(document.querySelectorAll(selector))));
     return elementArrays.flat();
-}
+};
 
 utils.getSiblingByClass = function(element, className) {
     let sibling = element.parentNode.firstElementChild;
@@ -55,4 +55,4 @@ utils.getSiblingByClass = function(element, className) {
         
         sibling = sibling.nextElementSibling
     }
-}
+};

@@ -40,7 +40,7 @@ options.updateStats = function(isCorrectChoice) {
     options.percentElement.innerHTML = Math.round((options.correct / (options.correct + options.wrong)) * 100);
     options.streakElement.innerHTML = options.streak;
     options.topStreakElement.innerHTML = options.topStreak;
-}
+};
 
 function validateInput(input) {
     if (input.validity.valid) {

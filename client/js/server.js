@@ -69,7 +69,7 @@ server.init = async function() {
     await server.setBoardsize();
     await server.setRules();
     await server.setKomi();
-}
+};
 
 server.restart = async function() {
     // console.log("restart");

@@ -2,7 +2,7 @@ var board = {};
 
 (function () {
 
-board.create = async function() {
+board.init = async function() {
 	board.element = document.querySelector("#board");
 	besogo.create(board.element, {
 		resize: "fixed",
@@ -24,6 +24,13 @@ board.create = async function() {
 	
 	document.querySelector(".besogo-board")
 		.insertAdjacentHTML("beforeend", '<button type="button" class="btn btn-secondary" id="next" disabled>></button>');
+	board.nextButton = document.querySelector("#next");
+
+	utils.addEventsListener(document, ["keydown", "mousedown"], event => {
+		if (event.code == "Space" || event.code == "Enter" || event.button == 1) {
+			board.nextButton.click();
+		}
+	});
 
 	board.lastMove = board.editor.getCurrent();
 
@@ -58,7 +65,7 @@ board.fillCorners = function() {
 	}
 
 	return coords;
-}
+};
 
 board.nextColor = function() {
 	let currentMove = board.editor.getCurrent();
@@ -69,7 +76,7 @@ board.nextColor = function() {
 		return currentMove.move.color * -1;
 	}
 	return -1;
-}
+};
 
 board.getMoves = function() {
 	let moves = [];
@@ -88,7 +95,7 @@ board.getMoves = function() {
 
 	moves = moves.reverse();
 	return moves;
-}
+};
 
 board.draw = function(coord, tool = "auto") {
 	board.editor.setTool(tool);
@@ -105,7 +112,7 @@ board.drawCoords = function(coords) {
 		board.editor.click(coord.x, coord.y, false, false);
 	});
 	board.editor.setTool("navOnly");
-}
+};
 
 board.markupToCoord = function() {
 	let markup = board.editor.getCurrent().markup;
@@ -122,7 +129,7 @@ board.markupToCoord = function() {
 		x: Math.floor(markupNum / options.boardsize) + 1,
 		y: (markupNum % options.boardsize) + 1
 	}
-}
+};
 
 board.handicap = async function() {
 	let placement = {
@@ -164,6 +171,6 @@ board.handicap = async function() {
 	placement[options.boardsize][options.handicap].forEach(async (coord) => {
 		board.draw(coord, "playB");
 	});
-}
+};
 
 })();

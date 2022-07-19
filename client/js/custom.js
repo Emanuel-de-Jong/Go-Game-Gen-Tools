@@ -5,15 +5,13 @@ const PRE_MOVE_OPTIONS = 3;
 var bestCoords;
 var isPlayerControlling = false;
 var isBestCoordsNeeded = false;
-var nextButton;
 
 async function init() {
 	await server.init();
 
-	await board.create();
+	await board.init();
 	board.editor.addListener(boardEditorListener);
-	nextButton = document.querySelector('#next');
-	nextButton.addEventListener("click", nextButtonClickListener);
+	board.nextButton.addEventListener("click", nextButtonClickListener);
 
 	await createPreMoves();
 }
@@ -64,7 +62,7 @@ async function boardEditorListener(event) {
 }
 
 async function nextButtonClickListener() {
-	nextButton.disabled = true;
+	board.nextButton.disabled = true;
 	await botTurn();
 }
 
@@ -114,7 +112,7 @@ async function playerTurn() {
 		board.draw(markupCoord, "cross");
 	}
 
-	nextButton.disabled = false;
+	board.nextButton.disabled = false;
 
 	options.updateStats(isCorrectChoice);
 }
