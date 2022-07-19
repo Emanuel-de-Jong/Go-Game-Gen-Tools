@@ -1,4 +1,4 @@
-const SERVER_URL = "http://localhost:8080/kata/";
+const SERVER_URL = "http://localhost:9191/kata/";
 
 function coordNumToName(numCoord) {
     let xConvert = {
