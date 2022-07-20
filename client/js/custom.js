@@ -84,27 +84,32 @@ async function playerTurn() {
 	}
 
 	let markupCoord = board.markupToCoord();
-	let isCorrectChoice = false;
+	let isRightChoice = false;
+	let isPerfectChoice = false;
 	for (let i=0; i<bestCoords.length; i++) {
 		if (utils.compCoord(markupCoord, bestCoords[i])) {
-			isCorrectChoice = true;
+			if (i == 0) {
+				isPerfectChoice = true;
+			}
+
+			isRightChoice = true;
 			board.draw(bestCoords[i]);
 			break;
 		}
 	}
 
-	if (!isCorrectChoice) {
+	if (!isRightChoice) {
 		board.draw(bestCoords[0]);
 	}
 
 	board.drawCoords(bestCoords);
-	if (!isCorrectChoice) {
+	if (!isRightChoice) {
 		board.draw(markupCoord, "cross");
 	}
 
 	board.nextButton.disabled = false;
 
-	options.updateStats(isCorrectChoice);
+	options.updateStats(isRightChoice, isPerfectChoice);
 }
 
 async function botTurn() {

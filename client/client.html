@@ -9,17 +9,30 @@
     <body>
         <div class="container">
             <div class="row">
-                <div id="game" class="col">
-                    <div id="board"></div>
+                <div class="col">
+                    <div id="game">
+                        <div id="board"></div>
+                    </div>
                 </div>
         
                 <div class="col">
                     <div id="stats">
-                        <span id="percent">-</span>%
-                        Streak: <span id="streak">0</span>
-                        Top streak: <span id="topStreak">0</span>
+                        <div>
+                            <h3>Right</h3>
+                            Ratio: <span id="rightPercent">-</span>%<br>
+                            Streak: <span id="rightStreak">0</span><br>
+                            Top streak: <span id="rightTopStreak">0</span>
+                        </div>
+                        <div>
+                            <h3>Perfect (A)</h3>
+                            Ratio: <span id="perfectPercent">-</span>%<br>
+                            Streak: <span id="perfectStreak">0</span><br>
+                            Top streak: <span id="perfectTopStreak">0</span>
+                        </div>
                     </div>
-                    
+                </div>
+
+                <div class="col">
                     <form id="settings" novalidate>
                         <div>
                             <div class="row">

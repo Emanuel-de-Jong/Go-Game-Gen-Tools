@@ -1,18 +1,31 @@
 var options = {}
 
-options.percentElement = document.querySelector("#percent");
-options.streakElement = document.querySelector("#streak");
-options.topStreakElement = document.querySelector("#topStreak");
+options.rightPercentElement = document.querySelector("#rightPercent");
+options.rightStreakElement = document.querySelector("#rightStreak");
+options.rightTopStreakElement = document.querySelector("#rightTopStreak");
+
+options.perfectPercentElement = document.querySelector("#perfectPercent");
+options.perfectStreakElement = document.querySelector("#perfectStreak");
+options.perfectTopStreakElement = document.querySelector("#perfectTopStreak");
 
 options.update = function() {
-    options.correct = 0;
-    options.wrong = 0;
-    options.streak = 0;
-    options.topStreak = 0;
+    options.total = 0;
 
-    options.percentElement.innerHTML = "-";
-    options.streakElement.innerHTML = 0;
-    options.topStreakElement.innerHTML = 0;
+    options.rightCorrect = 0;
+    options.rightStreak = 0;
+    options.rightTopStreak = 0;
+
+    options.perfectCorrect = 0;
+    options.perfectStreak = 0;
+    options.perfectTopStreak = 0;
+
+    options.rightPercentElement.innerHTML = "-";
+    options.rightStreakElement.innerHTML = 0;
+    options.rightTopStreakElement.innerHTML = 0;
+
+    options.perfectPercentElement.innerHTML = "-";
+    options.perfectStreakElement.innerHTML = 0;
+    options.perfectTopStreakElement.innerHTML = 0;
 
     options.boardsize = parseInt(document.querySelector("#boardsize").value);
     options.color = parseInt(document.querySelector("#color").value);
@@ -27,21 +40,36 @@ options.update = function() {
     options.opponentStrength = parseInt(document.querySelector("#opponentStrength").value);
 };
 
-options.updateStats = function(isCorrectChoice) {
-    if (isCorrectChoice) {
-        options.correct += 1;
-        options.streak += 1;
-        if (options.streak > options.topStreak) {
-            options.topStreak = options.streak;
+options.updateStats = function(isRight, isPerfect) {
+    options.total += 1;
+
+    if (isRight) {
+        options.rightCorrect += 1;
+        options.rightStreak += 1;
+        if (options.rightStreak > options.rightTopStreak) {
+            options.rightTopStreak = options.rightStreak;
         }
     } else {
-        options.wrong += 1;
-        options.streak = 0;
+        options.rightStreak = 0;
     }
 
-    options.percentElement.innerHTML = Math.round((options.correct / (options.correct + options.wrong)) * 100);
-    options.streakElement.innerHTML = options.streak;
-    options.topStreakElement.innerHTML = options.topStreak;
+    if (isPerfect) {
+        options.perfectCorrect += 1;
+        options.perfectStreak += 1;
+        if (options.perfectStreak > options.perfectTopStreak) {
+            options.perfectTopStreak = options.perfectStreak;
+        }
+    } else {
+        options.perfectStreak = 0;
+    }
+
+    options.rightPercentElement.innerHTML = Math.round((options.rightCorrect / options.total) * 100);
+    options.rightStreakElement.innerHTML = options.rightStreak;
+    options.rightTopStreakElement.innerHTML = options.rightTopStreak;
+
+    options.perfectPercentElement.innerHTML = Math.round((options.perfectCorrect / options.total) * 100);
+    options.perfectStreakElement.innerHTML = options.perfectStreak;
+    options.perfectTopStreakElement.innerHTML = options.perfectTopStreak;
 };
 
 function validateInput(input) {
