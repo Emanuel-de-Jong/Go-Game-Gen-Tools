@@ -4,6 +4,8 @@ import gotrainer.humanai.Moves;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpUtils;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -23,9 +25,11 @@ public class KataController {
     }
 
     @GetMapping("/restart")
-    public void getRestart() throws Exception {
+    @ResponseBody
+    public void getRestart(HttpServletRequest request, @RequestParam @Min(1) @Max(5000) int maxVisits) throws Exception {
+        System.out.println(request.getHeader("Host"));
         System.out.println("restart");
-        kata.restart();
+        kata.restart(maxVisits);
     }
 
     @GetMapping("/setboardsize")
@@ -50,7 +54,7 @@ public class KataController {
     public List<String> postAnalyze(@RequestBody @Valid Moves moves,
                                     @RequestParam @Pattern(regexp="(B|W)") String color,
                                     @RequestParam @Min(1) @Max(25) int moveOptions,
-                                    @RequestParam @Min(25) @Max(1500) int strength) throws Exception {
+                                    @RequestParam @Min(1) @Max(5000) int strength) throws Exception {
 //        System.out.println("analyze");
         return kata.analyze(moves, color, moveOptions, strength);
     }

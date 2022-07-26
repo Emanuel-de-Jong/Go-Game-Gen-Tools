@@ -76,7 +76,7 @@ server.init = async function() {
 
 server.restart = async function() {
     // console.log("restart");
-    return fetch(SERVER_URL + "restart", {
+    return fetch(SERVER_URL + "restart?maxVisits=" + options.suggestionStrength, {
         method: "GET" })
         .then(response => {
             return response;

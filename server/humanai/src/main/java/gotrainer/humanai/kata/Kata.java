@@ -15,7 +15,12 @@ public class Kata {
     public Thread inputThread;
 
     public Kata() throws Exception {
-        ProcessBuilder processBuilder = new ProcessBuilder("katago\\katago.exe", "gtp");
+        start(1500);
+    }
+
+    private void start(int maxVisits) throws Exception {
+        ProcessBuilder processBuilder = new ProcessBuilder("katago\\katago.exe", "gtp",
+                "-override-config", "maxVisits=" + maxVisits);
         processBuilder.redirectErrorStream(true);
         process = processBuilder.start();
 
@@ -30,11 +35,16 @@ public class Kata {
         write("version");
     }
 
-    public void restart() throws Exception {
+    private void clear() throws Exception {
         clearReader();
         write("clear_board");
         clearReader();
         write("clear_cache");
+    }
+
+    public void restart(int maxVisits) throws Exception {
+        write("quit");
+        start(maxVisits);
     }
 
     public void setBoardsize(int boardsize) throws Exception {
@@ -53,18 +63,16 @@ public class Kata {
     }
 
     public List<String> analyze(Moves moves, String color, int moveOptions, int strength) throws Exception {
-        restart();
+        clear();
 
         for (Move move : moves.moves) {
             play(move.color, move.coord);
         }
 
         clearReader();
-        write("lz-analyze " + color + " interval " + strength +
-                " minmoves " + moveOptions + " maxmoves " + moveOptions);
+        write("lz-genmove_analyze " + color + " minmoves " + moveOptions + " maxmoves " + moveOptions);
         reader.readLine(); // Ignore '= '
         String[] analysis = reader.readLine().split(" ");
-        write("\n");
 
         List<String> moveSuggestions = new ArrayList<>();
         for (int i=0; i<analysis.length; i++) {
