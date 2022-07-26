@@ -15,7 +15,7 @@ public class Kata {
     public Thread inputThread;
 
     public Kata() throws Exception {
-        start(1500);
+        start(1000);
     }
 
     private void start(int maxVisits) throws Exception {
