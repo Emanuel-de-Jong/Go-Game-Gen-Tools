@@ -1,6 +1,6 @@
 var board = {};
 
-(function () {
+board.nextButtonEnabledEvent = new Event("nextButtonEnabled");
 
 board.init = async function() {
 	board.element = document.querySelector("#board");
@@ -181,4 +181,11 @@ board.handicap = async function() {
 	});
 };
 
-})();
+board.enableNextButton = function() {
+	board.nextButton.disabled = false;
+	document.dispatchEvent(board.nextButtonEnabledEvent);
+};
+
+board.disableNextButton = function() {
+	board.nextButton.disabled = true;
+};

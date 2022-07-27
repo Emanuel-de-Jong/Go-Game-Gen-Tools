@@ -1,28 +1,30 @@
-(function () {
+var custom = {};
 
-const PRE_MOVE_OPTIONS = 3;
+custom.PRE_MOVE_OPTIONS = 3;
 
-var bestCoords;
-var opponentBestCoordsPromise;
-var isPlayerControlling = false;
-var isJumped = false;
+custom.suggestionReadyEvent = new Event("suggestionReady");
 
-async function init() {
+custom.bestCoords;
+custom.opponentBestCoordsPromise;
+custom.isPlayerControlling = false;
+custom.isJumped = false;
+
+custom.init = async function() {
 	await server.init();
 
 	await board.init();
-	board.editor.addListener(boardEditorListener);
-	board.nextButton.addEventListener("click", nextButtonClickListener);
+	board.editor.addListener(custom.boardEditorListener);
+	board.nextButton.addEventListener("click", custom.nextButtonClickListener);
 
-	await createPreMoves();
-}
+	await custom.createPreMoves();
+};
 
-async function playPreMove(color) {
-	let coords = await server.analyze(color, options.preStrength, PRE_MOVE_OPTIONS);
-	await board.draw(coords[utils.randomInt(PRE_MOVE_OPTIONS)]);
-}
+custom.playPreMove = async function(color) {
+	let coords = await server.analyze(color, options.preStrength, custom.PRE_MOVE_OPTIONS);
+	await board.draw(coords[utils.randomInt(custom.PRE_MOVE_OPTIONS)]);
+};
 
-async function createPreMoves() {
+custom.createPreMoves = async function() {
 	let generatedPreMoves = options.preMoves/2;
 
 	if (options.handicap == 0) {
@@ -36,97 +38,101 @@ async function createPreMoves() {
 
 	for (let i=0; i<generatedPreMoves; i++) {
 		if (i != 0 || options.handicap == 0) {
-			await playPreMove(-1);
+			await custom.playPreMove(-1);
 		}
-		await playPreMove(1);
+		await custom.playPreMove(1);
 	}
 
 	if (options.color == 1) {
-		await playPreMove(-1);
+		await custom.playPreMove(-1);
 	}
 
-	await getBestCoords();
-}
+	await custom.getBestCoords();
+};
 
-async function boardEditorListener(event) {
-	if (event.markupChange === true && isPlayerControlling) {
-		isPlayerControlling = false;
-        await playerTurn();
+custom.boardEditorListener = async function(event) {
+	if (event.markupChange === true && custom.isPlayerControlling) {
+		custom.isPlayerControlling = false;
+        await custom.playerTurn();
     } else if (event.navChange === true) {
 		let currentMove = board.editor.getCurrent();
 		if (board.lastMove.moveNumber+1 != currentMove.moveNumber ||
 			board.lastMove.navTreeY != currentMove.navTreeY) {
-				isJumped = true;
+				custom.isJumped = true;
 		}
 	}
-}
+};
 
-async function nextButtonClickListener() {
-	board.nextButton.disabled = true;
-	await botTurn();
-}
+custom.nextButtonClickListener = async function() {
+	board.disableNextButton();
+	await custom.botTurn();
+};
 
-document.querySelector('#restart').addEventListener("click", async () => {
-	options.update();
-	await init();
-});
-
-async function getBestCoords() {
-	bestCoords = await server.analyze(board.nextColor(), options.suggestionStrength);
+custom.getBestCoords = async function() {
+	custom.bestCoords = await server.analyze(board.nextColor(), options.suggestionStrength);
 	board.editor.setTool("cross");
-	isPlayerControlling = true;
-}
+	custom.isPlayerControlling = true;
+	document.dispatchEvent(custom.suggestionReadyEvent);
+};
 
-function getOpponentBestCoords() {
-	opponentBestCoordsPromise = server.analyze(board.nextColor(), options.opponentStrength);
-}
+custom.getOpponentBestCoords = function() {
+	custom.opponentBestCoordsPromise = server.analyze(board.nextColor(), options.opponentStrength);
+};
 
-async function playerTurn() {
-	if (isJumped) {
-		isJumped = false;
+custom.playerTurn = async function() {
+	if (custom.isJumped) {
+		custom.isJumped = false;
 		board.editor.setTool("navOnly");
 		await server.setBoard();
-		bestCoords = await server.analyze(board.nextColor(), options.suggestionStrength);
+		custom.bestCoords = await server.analyze(board.nextColor(), options.suggestionStrength);
 	}
 
 	let markupCoord = board.markupToCoord();
 	let isRightChoice = false;
 	let isPerfectChoice = false;
-	for (let i=0; i<bestCoords.length; i++) {
-		if (utils.compCoord(markupCoord, bestCoords[i])) {
+	for (let i=0; i<custom.bestCoords.length; i++) {
+		if (utils.compCoord(markupCoord, custom.bestCoords[i])) {
 			if (i == 0) {
 				isPerfectChoice = true;
 			}
 
 			isRightChoice = true;
-			await board.draw(bestCoords[i]);
+			await board.draw(custom.bestCoords[i]);
 			break;
 		}
 	}
 
 	if (!isRightChoice) {
-		await board.draw(bestCoords[0]);
+		await board.draw(custom.bestCoords[0]);
 	}
 
-	getOpponentBestCoords();
+	custom.getOpponentBestCoords();
 
-	board.drawCoords(bestCoords);
+	board.drawCoords(custom.bestCoords);
 	if (!isRightChoice) {
 		await board.draw(markupCoord, "cross");
 	}
 
-	board.nextButton.disabled = false;
+	board.enableNextButton();
 
 	options.updateStats(isRightChoice, isPerfectChoice);
-}
+};
 
-async function botTurn() {
-	let coords = await opponentBestCoordsPromise;
+custom.botTurn = async function() {
+	let coords = await custom.opponentBestCoordsPromise;
 	await board.draw(coords[0]);
 
-	await getBestCoords();
-}
+	await custom.getBestCoords();
+};
 
-init();
+document.querySelector('#restart').addEventListener("click", async () => {
+	options.update();
+	await custom.init();
+});
+
+
+(function () {
+
+	custom.init();
 
 })();

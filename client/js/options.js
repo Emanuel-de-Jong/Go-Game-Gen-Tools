@@ -72,36 +72,35 @@ options.updateStats = function(isRight, isPerfect) {
     options.perfectTopStreakElement.innerHTML = options.perfectTopStreak;
 };
 
-function validateInput(input) {
+options.validateInput = function(input) {
     if (input.validity.valid) {
-        hideInvalidMessage(input);
+        options.hideInvalidMessage(input);
     } else {
-        showInvalidMessage(input);
+        options.showInvalidMessage(input);
     }
-}
+};
 
-function showInvalidMessage(input) {
+options.showInvalidMessage = function(input) {
     input.classList.add("form-invalid");
 
     let messageDiv = utils.getSiblingByClass(input, "form-invalid-message");
     messageDiv.innerHTML = input.validationMessage;
-}
+};
 
-function hideInvalidMessage(input) {
+options.hideInvalidMessage = function(input) {
     input.classList.remove("form-invalid");
 
     let messageDiv = utils.getSiblingByClass(input, "form-invalid-message");
     messageDiv.innerHTML = "";
-}
+};
 
 utils.querySelectorAlls(["input"]).forEach(input => {
     input.required = true;
     input.insertAdjacentHTML("afterend", "<div class=\"form-invalid-message\"></div>");
 });
 
-
 utils.addEventListeners(utils.querySelectorAlls(["input"]), "input", (event) => {
-    validateInput(event.target);
+    options.validateInput(event.target);
 });
 
 options.update();
