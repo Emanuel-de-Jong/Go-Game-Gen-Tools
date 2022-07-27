@@ -69,7 +69,7 @@ public class Kata {
     }
 
     public List<String> analyze(String color, int moveOptions, int strength) throws Exception {
-        write("lz-genmove_analyze " + color + " minmoves " + moveOptions + " maxmoves " + moveOptions);
+        write("kata-genmove_analyze " + color + " minmoves " + moveOptions + " maxmoves " + moveOptions);
         reader.readLine(); // Ignore '= '
         String[] analysis = reader.readLine().split(" ");
         clearReader();
