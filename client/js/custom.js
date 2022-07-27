@@ -18,7 +18,7 @@ async function init() {
 
 async function playPreMove(color) {
 	let coords = await server.analyze(color, options.preStrength, PRE_MOVE_OPTIONS);
-	board.draw(coords[utils.randomInt(PRE_MOVE_OPTIONS)]);
+	await board.draw(coords[utils.randomInt(PRE_MOVE_OPTIONS)]);
 }
 
 async function createPreMoves() {
@@ -29,7 +29,7 @@ async function createPreMoves() {
 
 		let cornerCoords = board.fillCorners();
 		for (let i=0; i<4; i++) {
-			board.draw(cornerCoords[i]);
+			await board.draw(cornerCoords[i]);
 		}
 	}
 
@@ -93,18 +93,18 @@ async function playerTurn() {
 			}
 
 			isRightChoice = true;
-			board.draw(bestCoords[i]);
+			await board.draw(bestCoords[i]);
 			break;
 		}
 	}
 
 	if (!isRightChoice) {
-		board.draw(bestCoords[0]);
+		await board.draw(bestCoords[0]);
 	}
 
 	board.drawCoords(bestCoords);
 	if (!isRightChoice) {
-		board.draw(markupCoord, "cross");
+		await board.draw(markupCoord, "cross");
 	}
 
 	board.nextButton.disabled = false;
@@ -114,7 +114,7 @@ async function playerTurn() {
 
 async function botTurn() {
 	let coords = await server.analyze(board.nextColor(), options.opponentStrength)
-	board.draw(coords[0]);
+	await board.draw(coords[0]);
 	await getBestCoords();
 }
 

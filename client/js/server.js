@@ -122,8 +122,8 @@ server.setKomi = async function() {
         });
 };
 
-server.analyze = async function(color, strength, moveOptions = options.moveOptions) {
-    // console.log("analyze");
+server.setBoard = async function() {
+    // console.log("setBoard");
     let moves = board.getMoves();
     let serverMoves = [];
     moves.forEach(move => {
@@ -133,10 +133,22 @@ server.analyze = async function(color, strength, moveOptions = options.moveOptio
         });
     });
 
-    return fetch(SERVER_URL + "analyze?color=" + server.colorNumToName(color) + "&moveOptions=" + moveOptions + "&strength=" + strength, {
+    return fetch(SERVER_URL + "setboard", {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: '{"moves":' + JSON.stringify(serverMoves) + "}" })
+        .then(response => {
+            return response;
+        })
+        .catch(error => {
+            return error;
+        });
+};
+
+server.analyze = async function(color, strength, moveOptions = options.moveOptions) {
+    // console.log("analyze");
+    return fetch(SERVER_URL + "analyze?color=" + server.colorNumToName(color) + "&moveOptions=" + moveOptions + "&strength=" + strength, {
+        method: "POST" })
         .then(response => response.text())
         .then(nameCoordsText => {
             let numCoords = []
@@ -146,6 +158,18 @@ server.analyze = async function(color, strength, moveOptions = options.moveOptio
                 numCoords.push(coordNameToNum(element))
             });
             return numCoords;
+        })
+        .catch(error => {
+            return error;
+        });
+};
+
+server.play = async function(color, coord) {
+    // console.log("play");
+    return fetch(SERVER_URL + "play?color=" + server.colorNumToName(color) + "&coord=" + coordNumToName(coord), {
+        method: "GET" })
+        .then(response => {
+            return response;
         })
         .catch(error => {
             return error;

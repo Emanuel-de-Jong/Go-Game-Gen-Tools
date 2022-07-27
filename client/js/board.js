@@ -97,12 +97,20 @@ board.getMoves = function() {
 	return moves;
 };
 
-board.draw = function(coord, tool = "auto") {
+board.draw = async function(coord, tool = "auto") {
 	board.editor.setTool(tool);
 	board.editor.click(coord.x, coord.y, false, false);
 	board.editor.setTool("navOnly");
 
 	board.lastMove = board.editor.getCurrent();
+
+	if (tool == "auto") {
+		await server.play(board.lastMove.move.color, coord);
+	} else if (tool == "playB") {
+		await server.play(-1, coord);
+	} else if (tool == "playW") {
+		await server.play(1, coord);
+	}
 };
 
 board.drawCoords = function(coords) {
@@ -169,7 +177,7 @@ board.handicap = async function() {
 	}
 
 	placement[options.boardsize][options.handicap].forEach(async (coord) => {
-		board.draw(coord, "playB");
+		await board.draw(coord, "playB");
 	});
 };
 

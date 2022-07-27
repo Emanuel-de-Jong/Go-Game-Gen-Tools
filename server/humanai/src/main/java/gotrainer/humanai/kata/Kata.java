@@ -12,7 +12,6 @@ public class Kata {
     public Process process;
     public BufferedReader reader;
     public BufferedWriter writer;
-    public Thread inputThread;
 
     public Kata() throws Exception {
         start(1000);
@@ -32,14 +31,13 @@ public class Kata {
             line = reader.readLine();
             System.out.println(line);
         } while (!line.contains("GTP ready"));
-        write("version");
     }
 
     private void clear() throws Exception {
-        clearReader();
         write("clear_board");
         clearReader();
         write("clear_cache");
+        clearReader();
     }
 
     public void restart(int maxVisits) throws Exception {
@@ -48,31 +46,36 @@ public class Kata {
     }
 
     public void setBoardsize(int boardsize) throws Exception {
-        clearReader();
         write("boardsize " + boardsize);
+        clearReader();
     }
 
     public void setRules(String ruleset) throws Exception {
-        clearReader();
         write("kata-set-rules " + ruleset);
+        clearReader();
     }
 
     public void setKomi(int komi) throws Exception {
-        clearReader();
         write("komi " + komi);
+        clearReader();
     }
 
-    public List<String> analyze(Moves moves, String color, int moveOptions, int strength) throws Exception {
+    public void setBoard(Moves moves) throws Exception {
         clear();
 
         for (Move move : moves.moves) {
             play(move.color, move.coord);
         }
+    }
 
-        clearReader();
+    public List<String> analyze(String color, int moveOptions, int strength) throws Exception {
         write("lz-genmove_analyze " + color + " minmoves " + moveOptions + " maxmoves " + moveOptions);
         reader.readLine(); // Ignore '= '
         String[] analysis = reader.readLine().split(" ");
+        clearReader();
+
+        write("undo");
+        clearReader();
 
         List<String> moveSuggestions = new ArrayList<>();
         for (int i=0; i<analysis.length; i++) {
@@ -84,8 +87,8 @@ public class Kata {
     }
 
     public void play(String color, String coord) throws Exception {
-        clearReader();
         write("play " + color + " " + coord);
+        clearReader();
     }
 
     private void write(String command) throws Exception {
