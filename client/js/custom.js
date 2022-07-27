@@ -3,6 +3,7 @@
 const PRE_MOVE_OPTIONS = 3;
 
 var bestCoords;
+var opponentBestCoordsPromise;
 var isPlayerControlling = false;
 var isJumped = false;
 
@@ -76,6 +77,10 @@ async function getBestCoords() {
 	isPlayerControlling = true;
 }
 
+function getOpponentBestCoords() {
+	opponentBestCoordsPromise = server.analyze(board.nextColor(), options.opponentStrength);
+}
+
 async function playerTurn() {
 	if (isJumped) {
 		isJumped = false;
@@ -103,6 +108,8 @@ async function playerTurn() {
 		await board.draw(bestCoords[0]);
 	}
 
+	getOpponentBestCoords();
+
 	board.drawCoords(bestCoords);
 	if (!isRightChoice) {
 		await board.draw(markupCoord, "cross");
@@ -114,8 +121,9 @@ async function playerTurn() {
 }
 
 async function botTurn() {
-	let coords = await server.analyze(board.nextColor(), options.opponentStrength)
+	let coords = await opponentBestCoordsPromise;
 	await board.draw(coords[0]);
+
 	await getBestCoords();
 }
 
