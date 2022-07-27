@@ -3,7 +3,7 @@ var board = {};
 board.nextButtonEnabledEvent = new Event("nextButtonEnabled");
 
 board.init = async function() {
-	board.element = document.querySelector("#board");
+	board.element = document.getElementById("board");
 	besogo.create(board.element, {
 		resize: "fixed",
 		panels: "control+tree+file",
@@ -24,7 +24,7 @@ board.init = async function() {
 	
 	document.querySelector(".besogo-board")
 		.insertAdjacentHTML("beforeend", '<button type="button" class="btn btn-secondary" id="next" disabled>></button>');
-	board.nextButton = document.querySelector("#next");
+	board.nextButton = document.getElementById("next");
 
 	utils.addEventsListener(document, ["keydown", "mousedown"], event => {
 		if (event.code == "Space" || event.code == "Enter" || event.button == 1) {

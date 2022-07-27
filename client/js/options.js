@@ -1,12 +1,12 @@
 var options = {}
 
-options.rightPercentElement = document.querySelector("#rightPercent");
-options.rightStreakElement = document.querySelector("#rightStreak");
-options.rightTopStreakElement = document.querySelector("#rightTopStreak");
+options.rightPercentElement = document.getElementById("rightPercent");
+options.rightStreakElement = document.getElementById("rightStreak");
+options.rightTopStreakElement = document.getElementById("rightTopStreak");
 
-options.perfectPercentElement = document.querySelector("#perfectPercent");
-options.perfectStreakElement = document.querySelector("#perfectStreak");
-options.perfectTopStreakElement = document.querySelector("#perfectTopStreak");
+options.perfectPercentElement = document.getElementById("perfectPercent");
+options.perfectStreakElement = document.getElementById("perfectStreak");
+options.perfectTopStreakElement = document.getElementById("perfectTopStreak");
 
 options.update = function() {
     options.total = 0;
@@ -27,17 +27,17 @@ options.update = function() {
     options.perfectStreakElement.innerHTML = 0;
     options.perfectTopStreakElement.innerHTML = 0;
 
-    options.boardsize = parseInt(document.querySelector("#boardsize").value);
-    options.color = parseInt(document.querySelector("#color").value);
-    options.ruleset = document.querySelector("#ruleset").value;
-    options.handicap = parseInt(document.querySelector("#handicap").value);
-    options.komi = parseInt(document.querySelector("#komi").value);
-    options.preMoves = parseInt(document.querySelector("#preMoves").value);
-    options.moveOptions = parseInt(document.querySelector("#moveOptions").value);
-    options.preStrength = parseInt(document.querySelector("#preStrength").value);
-    options.postStrength = parseInt(document.querySelector("#postStrength").value);
-    options.suggestionStrength = parseInt(document.querySelector("#suggestionStrength").value);
-    options.opponentStrength = parseInt(document.querySelector("#opponentStrength").value);
+    options.boardsize = parseInt(document.getElementById("boardsize").value);
+    options.color = parseInt(document.getElementById("color").value);
+    options.ruleset = document.getElementById("ruleset").value;
+    options.handicap = parseInt(document.getElementById("handicap").value);
+    options.komi = parseInt(document.getElementById("komi").value);
+    options.preMoves = parseInt(document.getElementById("preMoves").value);
+    options.moveOptions = parseInt(document.getElementById("moveOptions").value);
+    options.preStrength = parseInt(document.getElementById("preStrength").value);
+    options.postStrength = parseInt(document.getElementById("postStrength").value);
+    options.suggestionStrength = parseInt(document.getElementById("suggestionStrength").value);
+    options.opponentStrength = parseInt(document.getElementById("opponentStrength").value);
 };
 
 options.updateStats = function(isRight, isPerfect) {
@@ -99,7 +99,7 @@ utils.querySelectorAlls(["input"]).forEach(input => {
     input.insertAdjacentHTML("afterend", "<div class=\"form-invalid-message\"></div>");
 });
 
-utils.addEventListeners(utils.querySelectorAlls(["input"]), "input", (event) => {
+utils.addEventListeners(utils.querySelectorAlls(["#settings input"]), "input", (event) => {
     options.validateInput(event.target);
 });
 

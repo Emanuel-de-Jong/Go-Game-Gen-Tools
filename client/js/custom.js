@@ -125,7 +125,7 @@ custom.botTurn = async function() {
 	await custom.getBestCoords();
 };
 
-document.querySelector('#restart').addEventListener("click", async () => {
+document.getElementById("restart").addEventListener("click", async () => {
 	options.update();
 	await custom.init();
 });

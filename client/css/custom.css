@@ -1,3 +1,9 @@
+#debug {
+    background-color: lightgrey;
+    padding: 15px 25px;
+}
+
+
 .container {
     margin-top: 30px;
 }
@@ -9,7 +15,7 @@
 #board {
     position: relative;
     width: 650px;
-    height: 880px;
+    height: 820px;
 }
 
 #next {
@@ -38,11 +44,11 @@
     margin-bottom: 15px;
 }
 
-input:invalid {
+#settings input:invalid {
     border-color: red !important;
 }
 
-.form-invalid-message {
+#settings .form-invalid-message {
     width: 100%;
     color: red;
     font-size: 0.8125rem;
