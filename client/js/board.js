@@ -73,9 +73,9 @@ board.nextColor = function() {
 		if (currentMove.children.length > 0) {
 			return currentMove.children[0].move.color;
 		}
-		return -1;
+		return currentMove.move.color * -1;
 	}
-	return currentMove.move.color * -1;
+	return -1;
 };
 
 board.getMoves = function() {

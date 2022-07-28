@@ -45,7 +45,7 @@ public class KataController {
     }
 
     @GetMapping("/setkomi")
-    public void getSetKomi(@RequestParam @Min(-150) @Max(150) int komi) throws Exception {
+    public void getSetKomi(@RequestParam @Min(-150) @Max(150) float komi) throws Exception {
         System.out.println("setKomi");
         kata.setKomi(komi);
     }

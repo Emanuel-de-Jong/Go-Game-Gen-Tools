@@ -55,7 +55,7 @@ public class Kata {
         clearReader();
     }
 
-    public void setKomi(int komi) throws Exception {
+    public void setKomi(float komi) throws Exception {
         write("komi " + komi);
         clearReader();
     }
