@@ -80,7 +80,7 @@ public class Kata {
         List<String> moveSuggestions = new ArrayList<>();
         for (int i=0; i<analysis.length; i++) {
             if (analysis[i].equals("move")) {
-                moveSuggestions.add(analysis[i+1]);
+                moveSuggestions.add(analysis[i+1] + " " + analysis[i+3]);
             }
         }
         return moveSuggestions;

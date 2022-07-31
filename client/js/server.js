@@ -55,10 +55,13 @@ server.coordNameToNum = function(nameCoord) {
         "T": 19
     };
 
+    let nums = nameCoord.substring(1).split(" ");
+    
     let x = xConvert[nameCoord[0]];
-    let y = options.boardsize + 1 - parseInt(nameCoord.substring(1));
+    let y = options.boardsize + 1 - parseInt(nums[0]);
+    let visits = parseInt(nums[1]);
     // console.log("server.coordNameToNum " + nameCoord + " = " + x + ", " + y);
-    return { "x": x, "y": y };
+    return { "x": x, "y": y, "visits": visits };
 };
 
 server.colorNumToName = function(num) {

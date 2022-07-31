@@ -18,6 +18,8 @@ board.init = async function() {
 	
 	document.querySelector('button[title="Variants: [child]/sibling"]').remove();
 	document.querySelector('button[title="Variants: show/[hide]"]').remove();
+	// document.querySelector('.besogo-whiteInfo').innerHTML = '<span class="besogo-whiteCaps" title="White captures">0</span>';
+	// document.querySelector('.besogo-blackInfo').innerHTML = '<span class="besogo-blackCaps" title="Black captures">0</span>';
 	document.querySelector('input[value="9x9"]').remove();
 	document.querySelector('input[value="13x13"]').remove();
 	document.querySelector('input[value="19x19"]').remove();
@@ -117,9 +119,22 @@ board.draw = async function(coord, tool = "auto") {
 board.drawCoords = function(coords) {
 	board.editor.setTool("label");
 	board.editor.setLabel("A");
-	coords.forEach(coord => {
+	let visitsHtml = "";
+	for (let i=0; i<coords.length; i++) {
+		let coord = coords[i];
+
 		board.editor.click(coord.x, coord.y, false, false);
-	});
+
+		visitsHtml += "<div>" + String.fromCharCode(i + 65) + ": " + coord.visits + "</div>";
+
+		// let rects = document.querySelectorAll('.besogo-board svg rect[opacity="0"]');
+		// let rect = rects[(coord.x - 1) * options.boardsize + (coord.y - 1)];
+		// rect.insertAdjacentHTML("beforeend", '<div class="visits">' + coord.visits + "</div>");
+	}
+
+	let visitsElement = document.getElementById("visits");
+	visitsElement.innerHTML = visitsHtml;
+
 	board.editor.setTool("navOnly");
 };
 

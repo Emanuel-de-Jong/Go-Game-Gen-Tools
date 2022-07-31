@@ -24,6 +24,12 @@
     right: 5px;
 }
 
+/* .visits {
+    position: absolute;
+    z-index: 1000;
+    box-sizing: border-box;
+} */
+
 
 #stats {
     margin-left: 20px;
