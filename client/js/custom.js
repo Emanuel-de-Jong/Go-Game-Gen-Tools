@@ -57,10 +57,20 @@ custom.boardEditorListener = async function(event) {
     } else if (event.navChange === true) {
 		let currentMove = board.editor.getCurrent();
 		if (board.lastMove.moveNumber+1 != currentMove.moveNumber ||
-			board.lastMove.navTreeY != currentMove.navTreeY) {
-				custom.isJumped = true;
+				board.lastMove.navTreeY != currentMove.navTreeY) {
+			custom.isJumped = true;
+
+			if (!board.nextButton.disabled) {
+				board.disableNextButton();
+				custom.givePlayerControl();
+			}
 		}
 	}
+};
+
+custom.givePlayerControl = async function() {
+	board.editor.setTool("cross");
+	custom.isPlayerControlling = true;
 };
 
 custom.nextButtonClickListener = async function() {
@@ -70,8 +80,7 @@ custom.nextButtonClickListener = async function() {
 
 custom.getBestCoords = async function() {
 	custom.bestCoords = await server.analyze(board.nextColor(), options.suggestionStrength);
-	board.editor.setTool("cross");
-	custom.isPlayerControlling = true;
+	custom.givePlayerControl();
 	document.dispatchEvent(custom.suggestionReadyEvent);
 };
 
@@ -82,7 +91,6 @@ custom.getOpponentBestCoords = function() {
 custom.playerTurn = async function() {
 	if (custom.isJumped) {
 		custom.isJumped = false;
-		board.editor.setTool("navOnly");
 		await server.setBoard();
 		custom.bestCoords = await server.analyze(board.nextColor(), options.suggestionStrength);
 	}

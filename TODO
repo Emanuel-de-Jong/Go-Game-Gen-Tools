@@ -13,8 +13,8 @@ tooltips
 winrate/point graph
 show visits instead of/under alphabet
 keep suggestion history
-don't require next button on tree jump
 toggle using player wrong move instead of AI A pick
 random color option
 fix katago imperfect results
 katago instance per client
+show captures
