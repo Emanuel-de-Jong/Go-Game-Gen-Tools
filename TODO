@@ -17,4 +17,4 @@ toggle using player wrong move instead of AI A pick
 random color option
 fix katago imperfect results
 katago instance per client
-show captures
+don't get bestcoord on tree jump

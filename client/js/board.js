@@ -6,11 +6,12 @@ board.init = async function() {
 	board.element = document.getElementById("board");
 	besogo.create(board.element, {
 		resize: "fixed",
-		panels: "control+tree+file",
+		panels: "control+names+tree+file",
 		coord: "western",
 		tool: "navOnly",
 		size: options.boardsize,
-		variants: 2
+		variants: 2,
+		nowheel: true
 	});
 
 	board.editor = board.element.besogoEditor;
