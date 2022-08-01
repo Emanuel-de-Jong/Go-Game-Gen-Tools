@@ -119,7 +119,9 @@ board.draw = async function(coord, tool = "auto") {
 board.drawCoords = function(coords) {
 	board.editor.setTool("label");
 	board.editor.setLabel("A");
+
 	let visitsHtml = "";
+	// let rects = document.querySelectorAll('.besogo-board svg rect[opacity="0"]');
 	for (let i=0; i<coords.length; i++) {
 		let coord = coords[i];
 
@@ -127,9 +129,10 @@ board.drawCoords = function(coords) {
 
 		visitsHtml += "<div>" + String.fromCharCode(i + 65) + ": " + coord.visits + "</div>";
 
-		// let rects = document.querySelectorAll('.besogo-board svg rect[opacity="0"]');
 		// let rect = rects[(coord.x - 1) * options.boardsize + (coord.y - 1)];
-		// rect.insertAdjacentHTML("beforeend", '<div class="visits">' + coord.visits + "</div>");
+		// rect.style.position = "relative";
+		// rect.style.opacity = 1;
+		// rect.insertAdjacentHTML("afterend", '<div class="visits">' + coord.visits + "</div>");
 	}
 
 	let visitsElement = document.getElementById("visits");
