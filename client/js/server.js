@@ -149,9 +149,9 @@ server.setBoard = async function() {
         });
 };
 
-server.analyze = async function(color, strength, moveOptions = options.moveOptions) {
+server.analyze = async function(color = board.nextColor(), moveOptions = options.moveOptions) {
     // console.log("analyze");
-    return fetch(server.URL + "analyze?color=" + server.colorNumToName(color) + "&moveOptions=" + moveOptions + "&strength=" + strength, {
+    return fetch(server.URL + "analyze?color=" + server.colorNumToName(color) + "&moveOptions=" + moveOptions + "&minimumVisits=" + options.minimumVisits, {
         method: "POST" })
         .then(response => response.text())
         .then(nameCoordsText => {

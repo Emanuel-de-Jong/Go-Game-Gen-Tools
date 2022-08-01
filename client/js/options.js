@@ -38,6 +38,7 @@ options.update = function() {
     options.postStrength = parseInt(document.getElementById("postStrength").value);
     options.suggestionStrength = parseInt(document.getElementById("suggestionStrength").value);
     options.opponentStrength = parseInt(document.getElementById("opponentStrength").value);
+    options.minimumVisits = parseInt(document.getElementById("minimumVisits").value);
 };
 
 options.updateStats = function(isRight, isPerfect) {

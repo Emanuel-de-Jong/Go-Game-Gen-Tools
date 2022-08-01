@@ -68,8 +68,8 @@ public class Kata {
         }
     }
 
-    public List<String> analyze(String color, int moveOptions, int strength) throws Exception {
-        write("kata-genmove_analyze " + color + " maxmoves " + moveOptions);
+    public List<String> analyze(String color, int moveOptions, int minimumVisits) throws Exception {
+        write("kata-genmove_analyze " + color + " minmoves " + moveOptions + " maxmoves " + moveOptions);
         reader.readLine(); // Ignore '= '
         String[] analysis = reader.readLine().split(" ");
         clearReader();
@@ -77,16 +77,16 @@ public class Kata {
         write("undo");
         clearReader();
 
-        List<String> moveSuggestions = new ArrayList<>();
+        List<String> suggestions = new ArrayList<>();
         for (int i=0; i<analysis.length; i++) {
             if (analysis[i].equals("move")) {
                 String visits = analysis[i+3];
-                if (Integer.parseInt(visits) > 5) {
-                    moveSuggestions.add(analysis[i+1] + " " + visits);
+                if (Integer.parseInt(visits) >= minimumVisits || suggestions.size() == 0) {
+                    suggestions.add(analysis[i+1] + " " + visits);
                 }
             }
         }
-        return moveSuggestions;
+        return suggestions;
     }
 
     public void play(String color, String coord) throws Exception {

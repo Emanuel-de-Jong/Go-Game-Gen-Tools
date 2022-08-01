@@ -59,9 +59,9 @@ public class KataController {
     @PostMapping("/analyze")
     public List<String> postAnalyze(@RequestParam @Pattern(regexp="(B|W)") String color,
                                     @RequestParam @Min(1) @Max(25) int moveOptions,
-                                    @RequestParam @Min(100) @Max(5000) int strength) throws Exception {
+                                    @RequestParam @Min(0) @Max(2500) int minimumVisits) throws Exception {
         // System.out.println("analyze");
-        return kata.analyze(color, moveOptions, strength);
+        return kata.analyze(color, moveOptions, minimumVisits);
     }
 
 

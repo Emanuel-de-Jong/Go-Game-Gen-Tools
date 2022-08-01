@@ -20,7 +20,7 @@ custom.init = async function() {
 };
 
 custom.playPreMove = async function(color) {
-	let coords = await server.analyze(color, options.preStrength, custom.PRE_MOVE_OPTIONS);
+	let coords = await server.analyze(color, custom.PRE_MOVE_OPTIONS);
 	await board.draw(coords[utils.randomInt(custom.PRE_MOVE_OPTIONS)]);
 };
 
@@ -79,20 +79,20 @@ custom.nextButtonClickListener = async function() {
 };
 
 custom.getBestCoords = async function() {
-	custom.bestCoords = await server.analyze(board.nextColor(), options.suggestionStrength);
+	custom.bestCoords = await server.analyze();
 	custom.givePlayerControl();
 	document.dispatchEvent(custom.suggestionReadyEvent);
 };
 
 custom.getOpponentBestCoords = function() {
-	custom.opponentBestCoordsPromise = server.analyze(board.nextColor(), options.opponentStrength);
+	custom.opponentBestCoordsPromise = server.analyze();
 };
 
 custom.playerTurn = async function() {
 	if (custom.isJumped) {
 		custom.isJumped = false;
 		await server.setBoard();
-		custom.bestCoords = await server.analyze(board.nextColor(), options.suggestionStrength);
+		custom.bestCoords = await server.analyze();
 	}
 
 	let markupCoord = board.markupToCoord();
