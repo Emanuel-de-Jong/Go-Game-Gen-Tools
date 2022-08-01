@@ -12,7 +12,7 @@ button to let ai finish game
 tooltips
 winrate/point graph
 show visits on board
-keep suggestion history
+keep suggestion and visits history
 toggle using player wrong move instead of AI A pick
 random color option
 katago instance per client

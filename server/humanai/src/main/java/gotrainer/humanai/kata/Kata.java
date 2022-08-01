@@ -69,7 +69,7 @@ public class Kata {
     }
 
     public List<String> analyze(String color, int moveOptions, int strength) throws Exception {
-        write("kata-genmove_analyze " + color + " minmoves " + moveOptions + " maxmoves " + moveOptions);
+        write("kata-genmove_analyze " + color + " maxmoves " + moveOptions);
         reader.readLine(); // Ignore '= '
         String[] analysis = reader.readLine().split(" ");
         clearReader();
@@ -80,7 +80,10 @@ public class Kata {
         List<String> moveSuggestions = new ArrayList<>();
         for (int i=0; i<analysis.length; i++) {
             if (analysis[i].equals("move")) {
-                moveSuggestions.add(analysis[i+1] + " " + analysis[i+3]);
+                String visits = analysis[i+3];
+                if (Integer.parseInt(visits) > 5) {
+                    moveSuggestions.add(analysis[i+1] + " " + visits);
+                }
             }
         }
         return moveSuggestions;
