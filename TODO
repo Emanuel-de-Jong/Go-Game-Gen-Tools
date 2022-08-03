@@ -1,25 +1,41 @@
-rate limit calls to server
-restart server when something goes wrong
-toggle next button usage
-responsive
-server unreachable alert
-options live update on change
-handle pass/resign
-show score/winner
-analyze next black while waiting on next button click
-retry server request on error
-button to let ai finish game
-tooltips
-winrate/point graph
-show visits on board
-keep suggestion and visits history
-toggle using player wrong move instead of AI A pick
-random color option
-katago instance per client
-don't get bestcoord on tree jump
-status bar (e.g. "analyzing suggestions")
-add besogo and katago credits to github and client
-registration system
-leaderboard
-payment
-fix color:white handicap:>0 preMoves:0 last handicap played twice and suggestion overlapping starpoint
+GAME
+    handle pass/resign
+
+CLIENT
+    SETTINGS
+        toggle ai move correction
+        play as both players
+        random color option
+        save/load settings
+        setting presets
+        toggle next button usage
+    INFO
+        tooltips
+        status bar (e.g. "analyzing suggestions")
+        server unreachable alert
+        show score/winner
+        winrate/point graph
+    QOL/PERFORMANCE
+        options live update on change
+        button to let ai finish game
+        retry server request on error
+        start with empty sgf for right komi and player names/ranks
+        keep suggestion and visits history
+        analyze next black while waiting on next button click
+        don't get bestcoord on tree jump
+    VISUAL
+        icon for options that can be updated without restart
+        show visits on board
+        responsive
+        make it pretty
+
+SERVER
+    multiple katago instances per client for different settings and visits
+    rate limit calls to server
+    restart server when something goes wrong
+
+FAR FUTURE
+    add besogo and katago credits to github and client
+    registration system
+    leaderboard
+    payment
