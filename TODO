@@ -22,3 +22,4 @@ add besogo and katago credits to github and client
 registration system
 leaderboard
 payment
+fix color:white handicap:>0 preMoves:0 last handicap played twice and suggestion overlapping starpoint

@@ -70,6 +70,14 @@ board.fillCorners = function() {
 	return coords;
 };
 
+board.lastColor = function() {
+	let currentMove = board.editor.getCurrent();
+	if (currentMove.move != null) {
+		return currentMove.move.color
+	}
+	return 1;
+};
+
 board.nextColor = function() {
 	let currentMove = board.editor.getCurrent();
 	if (currentMove.move != null) {

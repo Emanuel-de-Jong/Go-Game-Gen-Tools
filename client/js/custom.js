@@ -1,7 +1,5 @@
 var custom = {};
 
-custom.PRE_MOVE_OPTIONS = 3;
-
 custom.suggestionReadyEvent = new Event("suggestionReady");
 
 custom.bestCoords;
@@ -20,31 +18,35 @@ custom.init = async function() {
 };
 
 custom.playPreMove = async function(color) {
-	let coords = await server.analyze(color, custom.PRE_MOVE_OPTIONS);
-	await board.draw(coords[utils.randomInt(custom.PRE_MOVE_OPTIONS)]);
+	let coords = await server.analyze(color, options.preOptions);
+	await board.draw(coords[utils.randomInt(options.preOptions)]);
 };
 
 custom.createPreMoves = async function() {
-	let generatedPreMoves = options.preMoves/2;
+	let generatedPreMoves = options.preMoves;
 
 	if (options.handicap == 0) {
-		generatedPreMoves -= 2;
-
+		let cornerCount = generatedPreMoves < 4 ? generatedPreMoves : 4;
 		let cornerCoords = board.fillCorners();
-		for (let i=0; i<4; i++) {
+		for (let i=0; i<cornerCount; i++) {
 			await board.draw(cornerCoords[i]);
+			generatedPreMoves -= 1;
 		}
 	}
 
+	let lastColor = board.lastColor();
 	for (let i=0; i<generatedPreMoves; i++) {
-		if (i != 0 || options.handicap == 0) {
+		if (lastColor == -1) {
+			lastColor = 1;
+			await custom.playPreMove(1);
+		} else {
+			lastColor = -1;
 			await custom.playPreMove(-1);
 		}
-		await custom.playPreMove(1);
 	}
 
-	if (options.color == 1) {
-		await custom.playPreMove(-1);
+	if (options.color == board.lastColor()) {
+		await custom.playPreMove(board.nextColor());
 	}
 
 	await custom.getBestCoords();

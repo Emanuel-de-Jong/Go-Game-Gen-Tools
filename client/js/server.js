@@ -150,7 +150,7 @@ server.setBoard = async function() {
 };
 
 server.analyze = async function(color = board.nextColor(), moveOptions = options.moveOptions) {
-    // console.log("analyze");
+    // console.log("analyze " + color);
     return fetch(server.URL + "analyze?color=" + server.colorNumToName(color) + "&moveOptions=" + moveOptions + "&minimumVisits=" + options.minimumVisits, {
         method: "POST" })
         .then(response => response.text())
@@ -169,7 +169,7 @@ server.analyze = async function(color = board.nextColor(), moveOptions = options
 };
 
 server.play = async function(color, coord) {
-    // console.log("play");
+    // console.log("play " + color + " " + server.coordNumToName(coord));
     return fetch(server.URL + "play?color=" + server.colorNumToName(color) + "&coord=" + server.coordNumToName(coord), {
         method: "GET" })
         .then(response => {

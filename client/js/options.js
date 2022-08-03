@@ -33,6 +33,7 @@ options.update = function() {
     options.handicap = parseInt(document.getElementById("handicap").value);
     options.komi = parseFloat(document.getElementById("komi").value);
     options.preMoves = parseInt(document.getElementById("preMoves").value);
+    options.preOptions = parseInt(document.getElementById("preOptions").value);
     options.moveOptions = parseInt(document.getElementById("moveOptions").value);
     options.preStrength = parseInt(document.getElementById("preStrength").value);
     options.postStrength = parseInt(document.getElementById("postStrength").value);

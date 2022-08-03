@@ -60,7 +60,7 @@ public class KataController {
     public List<String> postAnalyze(@RequestParam @Pattern(regexp="(B|W)") String color,
                                     @RequestParam @Min(1) @Max(25) int moveOptions,
                                     @RequestParam @Min(0) @Max(5000) int minimumVisits) throws Exception {
-        // System.out.println("analyze");
+//         System.out.println("analyze " + color);
         return kata.analyze(color, moveOptions, minimumVisits);
     }
 
@@ -68,7 +68,7 @@ public class KataController {
     @GetMapping("/play")
     public void getPlay(@RequestParam @Pattern(regexp="(B|W)") String color,
                         @RequestParam @Pattern(regexp="([A-H]|[J-T])(1[0-9]|[1-9])") String coord) throws Exception {
-        // System.out.println("play");
+//         System.out.println("play " + color + " " + coord);
         kata.play(color, coord);
     }
 }
