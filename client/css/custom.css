@@ -4,8 +4,8 @@
 }
 
 
-.container {
-    margin-top: 30px;
+main {
+    margin: 30px 240px 0px 240px !important;
 }
 
 
@@ -14,7 +14,7 @@
 
 #board {
     position: relative;
-    width: 650px;
+    width: 630px;
     height: 830px;
 }
 
@@ -51,10 +51,10 @@
 
 
 #settings {
-    width: 220px;
+    width: 450px;
 }
 
-#settings > div {
+#settings .row .col > div {
     margin-bottom: 15px;
 }
 
