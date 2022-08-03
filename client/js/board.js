@@ -203,9 +203,10 @@ board.handicap = async function() {
 		},
 	}
 
-	placement[options.boardsize][options.handicap].forEach(async (coord) => {
+	for (let i=0; i<options.handicap; i++) {
+		let coord = placement[options.boardsize][options.handicap][i];
 		await board.draw(coord, "playB");
-	});
+	}
 };
 
 board.enableNextButton = function() {

@@ -19,7 +19,7 @@ custom.init = async function() {
 
 custom.playPreMove = async function(color) {
 	let coords = await server.analyze(color, options.preOptions);
-	await board.draw(coords[utils.randomInt(options.preOptions)]);
+	await board.draw(coords[utils.randomInt(coords.length)]);
 };
 
 custom.createPreMoves = async function() {
@@ -30,7 +30,7 @@ custom.createPreMoves = async function() {
 		let cornerCoords = board.fillCorners();
 		for (let i=0; i<cornerCount; i++) {
 			await board.draw(cornerCoords[i]);
-			generatedPreMoves -= 1;
+			generatedPreMoves--;
 		}
 	}
 

@@ -1,5 +1,6 @@
 var utils = {};
 
+// 0 to (max-1)
 utils.randomInt = function(max) {
 	return Math.floor(Math.random() * max);
 };

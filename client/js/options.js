@@ -43,11 +43,11 @@ options.update = function() {
 };
 
 options.updateStats = function(isRight, isPerfect) {
-    options.total += 1;
+    options.total++;
 
     if (isRight) {
-        options.rightCorrect += 1;
-        options.rightStreak += 1;
+        options.rightCorrect++;
+        options.rightStreak++;
         if (options.rightStreak > options.rightTopStreak) {
             options.rightTopStreak = options.rightStreak;
         }
@@ -56,8 +56,8 @@ options.updateStats = function(isRight, isPerfect) {
     }
 
     if (isPerfect) {
-        options.perfectCorrect += 1;
-        options.perfectStreak += 1;
+        options.perfectCorrect++;
+        options.perfectStreak++;
         if (options.perfectStreak > options.perfectTopStreak) {
             options.perfectTopStreak = options.perfectStreak;
         }
