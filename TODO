@@ -3,7 +3,6 @@ GAME
 
 CLIENT
     SETTINGS
-        toggle ai move correction
         don't show other options so they aren't spoiled
         play as both players
         random color option

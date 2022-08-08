@@ -97,6 +97,7 @@ custom.playerTurn = async function() {
 		custom.bestCoords = await server.analyze();
 	}
 
+	let coordToPlay;
 	let markupCoord = board.markupToCoord();
 	let isRightChoice = false;
 	let isPerfectChoice = false;
@@ -107,14 +108,20 @@ custom.playerTurn = async function() {
 			}
 
 			isRightChoice = true;
-			await board.draw(custom.bestCoords[i]);
+			coordToPlay = custom.bestCoords[i];
 			break;
 		}
 	}
 
 	if (!isRightChoice) {
-		await board.draw(custom.bestCoords[0]);
+		if (!options.disableAICorrection) {
+			coordToPlay = custom.bestCoords[0];
+		} else {
+			coordToPlay = markupCoord;
+		}
 	}
+
+	await board.draw(coordToPlay);
 
 	custom.getOpponentBestCoords();
 
