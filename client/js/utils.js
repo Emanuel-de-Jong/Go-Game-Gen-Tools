@@ -1,5 +1,12 @@
 var utils = {};
 
+utils.TYPES = {
+    INT: 1,
+    FLOAT: 2,
+    BOOL: 3,
+    STRING: 4
+};
+
 // 0 to (max-1)
 utils.randomInt = function(max) {
 	return Math.floor(Math.random() * max);

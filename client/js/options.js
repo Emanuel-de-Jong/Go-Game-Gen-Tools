@@ -1,5 +1,23 @@
 var options = {}
 
+
+options.SETTINGS = {
+    boardsize: utils.TYPES.INT,
+    color: utils.TYPES.INT,
+    ruleset: utils.TYPES.STRING,
+    handicap: utils.TYPES.INT,
+    komi: utils.TYPES.FLOAT,
+    preMoves: utils.TYPES.INT,
+    preOptions: utils.TYPES.INT,
+    moveOptions: utils.TYPES.INT,
+    preStrength: utils.TYPES.INT,
+    postStrength: utils.TYPES.INT,
+    suggestionStrength: utils.TYPES.INT,
+    opponentStrength: utils.TYPES.INT,
+    minimumVisits: utils.TYPES.INT,
+    disableAICorrection: utils.TYPES.BOOL,
+};
+
 options.rightPercentElement = document.getElementById("rightPercent");
 options.rightStreakElement = document.getElementById("rightStreak");
 options.rightTopStreakElement = document.getElementById("rightTopStreak");
@@ -27,20 +45,29 @@ options.update = function() {
     options.perfectStreakElement.innerHTML = 0;
     options.perfectTopStreakElement.innerHTML = 0;
 
-    options.boardsize = parseInt(document.getElementById("boardsize").value);
-    options.color = parseInt(document.getElementById("color").value);
-    options.ruleset = document.getElementById("ruleset").value;
-    options.handicap = parseInt(document.getElementById("handicap").value);
-    options.komi = parseFloat(document.getElementById("komi").value);
-    options.preMoves = parseInt(document.getElementById("preMoves").value);
-    options.preOptions = parseInt(document.getElementById("preOptions").value);
-    options.moveOptions = parseInt(document.getElementById("moveOptions").value);
-    options.preStrength = parseInt(document.getElementById("preStrength").value);
-    options.postStrength = parseInt(document.getElementById("postStrength").value);
-    options.suggestionStrength = parseInt(document.getElementById("suggestionStrength").value);
-    options.opponentStrength = parseInt(document.getElementById("opponentStrength").value);
-    options.minimumVisits = parseInt(document.getElementById("minimumVisits").value);
+    options.getSettings();
 };
+
+options.getSettings = function() {
+    for (const name of Object.keys(options.SETTINGS)) {
+        options.getSetting(name);
+    }
+};
+
+options.getSetting = function(name) {
+    let type = options.SETTINGS[name];
+
+    let element = document.getElementById(name);
+
+    let value = type == utils.TYPES.BOOL ? element.checked : element.value;
+    if (type == utils.TYPES.INT) {
+        value = parseInt(value);
+    } else if (type == utils.TYPES.FLOAT) {
+        value = parseFloat(value);
+    }
+    
+    options[name] = value;
+}
 
 options.updateStats = function(isRight, isPerfect) {
     options.total++;
@@ -75,11 +102,13 @@ options.updateStats = function(isRight, isPerfect) {
 };
 
 options.validateInput = function(input) {
-    if (input.validity.valid) {
+    let valid = input.validity.valid;
+    if (valid) {
         options.hideInvalidMessage(input);
     } else {
         options.showInvalidMessage(input);
     }
+    return valid;
 };
 
 options.showInvalidMessage = function(input) {
@@ -96,13 +125,18 @@ options.hideInvalidMessage = function(input) {
     messageDiv.innerHTML = "";
 };
 
-utils.querySelectorAlls(["input"]).forEach(input => {
-    input.required = true;
+utils.querySelectorAlls(["input", "select"]).forEach(input => {
+    if (input.type != "checkbox") {
+        input.required = true;
+    }
     input.insertAdjacentHTML("afterend", "<div class=\"form-invalid-message\"></div>");
 });
 
-utils.addEventListeners(utils.querySelectorAlls(["#settings input"]), "input", (event) => {
-    options.validateInput(event.target);
+utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", (event) => {
+    let element = event.target;
+    if (options.validateInput(element)) {
+        options.getSetting(element.id);
+    }
 });
 
 options.update();

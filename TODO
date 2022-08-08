@@ -4,6 +4,7 @@ GAME
 CLIENT
     SETTINGS
         toggle ai move correction
+        don't show other options so they aren't spoiled
         play as both players
         random color option
         save/load settings
@@ -18,6 +19,7 @@ CLIENT
     QOL/PERFORMANCE
         options live update on change
         button to let ai finish game
+        fix having to wait after cross twice after jump
         retry server request on error
         start with empty sgf for right komi and player names/ranks
         keep suggestion and visits history
