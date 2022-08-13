@@ -1,7 +1,7 @@
 # Custom
 /gtp_logs/
 /katago/gtp_logs/
-# /katago/KataGoData/
+/katago/KataGoData/
 /katago/default_model.bin.gz
 
 HELP.md
