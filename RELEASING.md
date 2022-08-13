@@ -1,4 +1,4 @@
-1. Copy `client` dir.
+1. Copy `client` dir content.
 2. Copy `README.md`
 3. Copy `server/humanai/katago` dir.
 4. Remove `gtp_logs` and `KataGoData` in `katago` dir.
