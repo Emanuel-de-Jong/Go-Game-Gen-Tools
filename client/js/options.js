@@ -65,6 +65,10 @@ options.getSetting = function(name) {
     } else if (type == utils.TYPES.FLOAT) {
         value = parseFloat(value);
     }
+
+    if (name == "color" && value == 0) {
+        value = utils.randomInt(2) == 0 ? -1 : 1;
+    }
     
     options[name] = value;
 }
