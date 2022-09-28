@@ -37,7 +37,7 @@ board.init = async function() {
 
 	board.lastMove = board.editor.getCurrent();
 
-	await board.handicap();
+	await board.setHandicap();
 };
 
 board.fillCorners = function() {
@@ -149,7 +149,7 @@ board.drawCoords = function(coords) {
 	board.editor.setTool("navOnly");
 };
 
-board.markupToCoord = function() {
+board.getMarkupCoord = function() {
 	let markup = board.editor.getCurrent().markup;
 	let markupNum;
 	for (let i=0; i<markup.length; i++) {
@@ -166,7 +166,7 @@ board.markupToCoord = function() {
 	}
 };
 
-board.handicap = async function() {
+board.setHandicap = async function() {
 	let placement = {
 		19: {
 			0: [],

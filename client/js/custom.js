@@ -23,19 +23,19 @@ custom.playPreMove = async function(color) {
 };
 
 custom.createPreMoves = async function() {
-	let generatedPreMoves = options.preMoves;
+	let preMovesLeft = options.preMoves;
 
 	if (options.handicap == 0) {
-		let cornerCount = generatedPreMoves < 4 ? generatedPreMoves : 4;
+		let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
 		let cornerCoords = board.fillCorners();
 		for (let i=0; i<cornerCount; i++) {
 			await board.draw(cornerCoords[i]);
-			generatedPreMoves--;
+			preMovesLeft--;
 		}
 	}
 
 	let lastColor = board.lastColor();
-	for (let i=0; i<generatedPreMoves; i++) {
+	for (let i=0; i<preMovesLeft; i++) {
 		if (lastColor == -1) {
 			lastColor = 1;
 			await custom.playPreMove(1);
@@ -98,7 +98,7 @@ custom.playerTurn = async function() {
 	}
 
 	let coordToPlay;
-	let markupCoord = board.markupToCoord();
+	let markupCoord = board.getMarkupCoord();
 	let isRightChoice = false;
 	let isPerfectChoice = false;
 	for (let i=0; i<custom.bestCoords.length; i++) {
