@@ -1,8 +1,9 @@
 var stats = {};
 
 
-stats.winrateElement = document.getElementById("winrate");
-stats.pointsElement = document.getElementById("points");
+stats.scoreColorElement = document.getElementById("scoreColor");
+stats.scoreWinrateElement = document.getElementById("scoreWinrate");
+stats.scorePointsElement = document.getElementById("scorePoints");
 
 stats.rightPercentElement = document.getElementById("rightPercent");
 stats.rightStreakElement = document.getElementById("rightStreak");
@@ -15,8 +16,9 @@ stats.perfectTopStreakElement = document.getElementById("perfectTopStreak");
 stats.visitsElement = document.getElementById("visits");
 
 stats.init = function() {
-    stats.winrateElement.innerHTML = "-";
-    stats.pointsElement.innerHTML = "-";
+    stats.scoreColorElement.innerHTML = "-";
+    stats.scoreWinrateElement.innerHTML = "-";
+    stats.scorePointsElement.innerHTML = "-";
 
     stats.total = 0;
 
@@ -39,9 +41,10 @@ stats.init = function() {
     stats.visitsElement.innerHTML = "";
 };
 
-stats.setScore = function(winrate, points) {
-    stats.winrateElement.innerHTML = winrate.toFixed(2);
-    stats.pointsElement.innerHTML = points.toFixed(1);
+stats.setScore = function(suggestion) {
+    stats.scoreColorElement.innerHTML = board.lastColor() == 1 ? "White" : "Black";
+    stats.scoreWinrateElement.innerHTML = suggestion.winrate.toFixed(2);
+    stats.scorePointsElement.innerHTML = suggestion.scoreLead.toFixed(1);
 };
 
 stats.updateRatio = function(isRight, isPerfect) {

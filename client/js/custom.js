@@ -38,7 +38,7 @@ custom.analyze = async function(color = board.nextColor(), moveOptions = setting
 custom.playPreMove = async function(color) {
 	let suggestions = await custom.analyze(color, settings.preOptions);
 	if (custom.isFinished) return;
-	await board.draw(suggestions[utils.randomInt(suggestions.length)].coord);
+	await board.play(suggestions[utils.randomInt(suggestions.length)]);
 };
 
 custom.createPreMoves = async function() {
@@ -122,7 +122,7 @@ custom.playerTurn = async function() {
 		if (custom.isFinished) return;
 	}
 
-	let coordToPlay;
+	let suggestionToPlay = custom.bestSuggestions[0];
 	let markupCoord = board.getMarkupCoord();
 	let isRightChoice = false;
 	let isPerfectChoice = false;
@@ -133,20 +133,16 @@ custom.playerTurn = async function() {
 			}
 
 			isRightChoice = true;
-			coordToPlay = custom.bestSuggestions[i].coord;
+			suggestionToPlay = custom.bestSuggestions[i];
 			break;
 		}
 	}
-
-	if (!isRightChoice) {
-		if (!settings.disableAICorrection) {
-			coordToPlay = custom.bestSuggestions[0].coord;
-		} else {
-			coordToPlay = markupCoord;
-		}
+	
+	if (!settings.disableAICorrection) {
+		await board.play(suggestionToPlay);
+	} else {
+		await board.draw(markupCoord);
 	}
-
-	await board.draw(coordToPlay);
 
 	custom.getOpponentBestSuggestions();
 
@@ -164,7 +160,7 @@ custom.playerTurn = async function() {
 custom.botTurn = async function() {
 	let suggestions = await custom.opponentBestSuggestionsPromise;
 	if (custom.isFinished) return;
-	await board.draw(suggestions[0].coord);
+	await board.play(suggestions[0]);
 
 	await custom.getBestSuggestions();
 };

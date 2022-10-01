@@ -108,6 +108,11 @@ board.getMoves = function() {
 	return moves;
 };
 
+board.play = async function(suggestion, tool = "auto") {
+	board.draw(suggestion.coord, tool);
+	stats.setScore(suggestion);
+};
+
 board.draw = async function(coord, tool = "auto") {
 	board.editor.setTool(tool);
 	board.editor.click(coord.x, coord.y, false, false);
