@@ -1,4 +1,4 @@
-var options = {}
+var options = {};
 
 
 options.SETTINGS = {
@@ -18,33 +18,7 @@ options.SETTINGS = {
     disableAICorrection: utils.TYPES.BOOL,
 };
 
-options.rightPercentElement = document.getElementById("rightPercent");
-options.rightStreakElement = document.getElementById("rightStreak");
-options.rightTopStreakElement = document.getElementById("rightTopStreak");
-
-options.perfectPercentElement = document.getElementById("perfectPercent");
-options.perfectStreakElement = document.getElementById("perfectStreak");
-options.perfectTopStreakElement = document.getElementById("perfectTopStreak");
-
 options.update = function() {
-    options.total = 0;
-
-    options.rightCorrect = 0;
-    options.rightStreak = 0;
-    options.rightTopStreak = 0;
-
-    options.perfectCorrect = 0;
-    options.perfectStreak = 0;
-    options.perfectTopStreak = 0;
-
-    options.rightPercentElement.innerHTML = "-";
-    options.rightStreakElement.innerHTML = 0;
-    options.rightTopStreakElement.innerHTML = 0;
-
-    options.perfectPercentElement.innerHTML = "-";
-    options.perfectStreakElement.innerHTML = 0;
-    options.perfectTopStreakElement.innerHTML = 0;
-
     options.getSettings();
 };
 
@@ -72,38 +46,6 @@ options.getSetting = function(name) {
     
     options[name] = value;
 }
-
-options.updateStats = function(isRight, isPerfect) {
-    options.total++;
-
-    if (isRight) {
-        options.rightCorrect++;
-        options.rightStreak++;
-        if (options.rightStreak > options.rightTopStreak) {
-            options.rightTopStreak = options.rightStreak;
-        }
-    } else {
-        options.rightStreak = 0;
-    }
-
-    if (isPerfect) {
-        options.perfectCorrect++;
-        options.perfectStreak++;
-        if (options.perfectStreak > options.perfectTopStreak) {
-            options.perfectTopStreak = options.perfectStreak;
-        }
-    } else {
-        options.perfectStreak = 0;
-    }
-
-    options.rightPercentElement.innerHTML = Math.round((options.rightCorrect / options.total) * 100);
-    options.rightStreakElement.innerHTML = options.rightStreak;
-    options.rightTopStreakElement.innerHTML = options.rightTopStreak;
-
-    options.perfectPercentElement.innerHTML = Math.round((options.perfectCorrect / options.total) * 100);
-    options.perfectStreakElement.innerHTML = options.perfectStreak;
-    options.perfectTopStreakElement.innerHTML = options.perfectTopStreak;
-};
 
 options.validateInput = function(input) {
     let valid = input.validity.valid;

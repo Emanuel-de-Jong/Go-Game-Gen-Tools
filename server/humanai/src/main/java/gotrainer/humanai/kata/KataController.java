@@ -1,5 +1,6 @@
 package gotrainer.humanai.kata;
 
+import gotrainer.humanai.MoveSuggestion;
 import gotrainer.humanai.Moves;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -57,9 +58,9 @@ public class KataController {
     }
 
     @PostMapping("/analyze")
-    public List<String> postAnalyze(@RequestParam @Pattern(regexp="(B|W)") String color,
-                                    @RequestParam @Min(1) @Max(25) int moveOptions,
-                                    @RequestParam @Min(0) @Max(5000) int minimumVisits) throws Exception {
+    public List<MoveSuggestion> postAnalyze(@RequestParam @Pattern(regexp="(B|W)") String color,
+                                            @RequestParam @Min(1) @Max(25) int moveOptions,
+                                            @RequestParam @Min(0) @Max(5000) int minimumVisits) throws Exception {
 //         System.out.println("analyze " + color);
         return kata.analyze(color, moveOptions, minimumVisits);
     }

@@ -11,6 +11,8 @@ custom.isFinished = false;
 custom.init = async function() {
 	await server.init();
 
+	stats.init();
+
 	await board.init();
 	board.editor.addListener(custom.boardEditorListener);
 	board.nextButton.addEventListener("click", custom.nextButtonClickListener);
@@ -155,7 +157,7 @@ custom.playerTurn = async function() {
 
 	board.enableNextButton();
 
-	options.updateStats(isRightChoice, isPerfectChoice);
+	stats.update(isRightChoice, isPerfectChoice);
 };
 
 custom.botTurn = async function() {

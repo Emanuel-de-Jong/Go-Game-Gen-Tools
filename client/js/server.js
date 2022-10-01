@@ -153,10 +153,14 @@ server.analyze = async function(color, moveOptions) {
     // console.log("analyze " + color);
     return fetch(server.URL + "analyze?color=" + server.colorNumToName(color) + "&moveOptions=" + moveOptions + "&minimumVisits=" + options.minimumVisits, {
         method: "POST" })
-        .then(response => response.text())
-        .then(nameCoordsText => {
-            let numCoords = []
-            let nameCoords = JSON.parse(nameCoordsText);
+        .then(response => response.json())
+        .then(suggestions => {
+            let numCoords = [];
+            let nameCoords = [];
+            suggestions.forEach(suggestion => {
+                nameCoords.push(suggestion.coord + " " + suggestion.visits);
+            });
+
             console.log(nameCoords);
 
             let isPassed = false;

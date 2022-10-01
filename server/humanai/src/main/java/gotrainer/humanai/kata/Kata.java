@@ -1,6 +1,7 @@
 package gotrainer.humanai.kata;
 
 import gotrainer.humanai.Move;
+import gotrainer.humanai.MoveSuggestion;
 import gotrainer.humanai.Moves;
 
 import java.io.*;
@@ -69,25 +70,41 @@ public class Kata {
         }
     }
 
-    public List<String> analyze(String color, int moveOptions, int minimumVisits) throws Exception {
+    public List<MoveSuggestion> analyze(String color, int moveOptions, int minimumVisits) throws Exception {
         write("kata-genmove_analyze " + color + " minmoves " + moveOptions + " maxmoves " + moveOptions);
         reader.readLine(); // Ignore '= '
         String[] analysis = reader.readLine().split(" ");
-        System.out.println(Arrays.toString(analysis));
         clearReader();
+
+        System.out.println(Arrays.toString(analysis));
 
         write("undo");
         clearReader();
 
-        List<String> suggestions = new ArrayList<>();
+        List<MoveSuggestion> suggestions = new ArrayList<>();
+        MoveSuggestion suggestion = null;
         for (int i=0; i<analysis.length; i++) {
-            if (analysis[i].equals("move")) {
-                String visits = analysis[i+3];
-                if (Integer.parseInt(visits) >= minimumVisits || suggestions.size() == 0) {
-                    suggestions.add(analysis[i+1] + " " + visits);
+            String element = analysis[i];
+            if (element.equals("info")) {
+                if (suggestion != null) {
+                    if (suggestion.visits >= minimumVisits) {
+                        suggestions.add(suggestion);
+                    }
                 }
+                suggestion = new MoveSuggestion();
+            } else if (element.equals("move")) {
+                suggestion.coord = analysis[i+1];
+            } else if (element.equals("visits")) {
+                suggestion.visits = Integer.parseInt(analysis[i+1]);
+            } else if (element.equals("winrate")) {
+                suggestion.winrate = Float.parseFloat(analysis[i+1]);
+            } else if (element.equals("scoreLead")) {
+                suggestion.scoreLead = Float.parseFloat(analysis[i+1]);
+            } else if (element.equals("scoreStdev")) {
+                suggestion.scoreStdev = Float.parseFloat(analysis[i+1]);
             }
         }
+
         return suggestions;
     }
 
