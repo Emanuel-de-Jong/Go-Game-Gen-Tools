@@ -1,5 +1,9 @@
 var stats = {};
 
+
+stats.winrateElement = document.getElementById("winrate");
+stats.pointsElement = document.getElementById("points");
+
 stats.rightPercentElement = document.getElementById("rightPercent");
 stats.rightStreakElement = document.getElementById("rightStreak");
 stats.rightTopStreakElement = document.getElementById("rightTopStreak");
@@ -8,7 +12,12 @@ stats.perfectPercentElement = document.getElementById("perfectPercent");
 stats.perfectStreakElement = document.getElementById("perfectStreak");
 stats.perfectTopStreakElement = document.getElementById("perfectTopStreak");
 
+stats.visitsElement = document.getElementById("visits");
+
 stats.init = function() {
+    stats.winrateElement.innerHTML = "-";
+    stats.pointsElement.innerHTML = "-";
+
     stats.total = 0;
 
     stats.rightCorrect = 0;
@@ -26,9 +35,16 @@ stats.init = function() {
     stats.perfectPercentElement.innerHTML = "-";
     stats.perfectStreakElement.innerHTML = 0;
     stats.perfectTopStreakElement.innerHTML = 0;
+    
+    stats.visitsElement.innerHTML = "";
 };
 
-stats.update = function(isRight, isPerfect) {
+stats.setScore = function(winrate, points) {
+    stats.winrateElement.innerHTML = winrate.toFixed(2);
+    stats.pointsElement.innerHTML = points.toFixed(1);
+};
+
+stats.updateRatio = function(isRight, isPerfect) {
     stats.total++;
 
     if (isRight) {
@@ -58,4 +74,12 @@ stats.update = function(isRight, isPerfect) {
     stats.perfectPercentElement.innerHTML = Math.round((stats.perfectCorrect / stats.total) * 100);
     stats.perfectStreakElement.innerHTML = stats.perfectStreak;
     stats.perfectTopStreakElement.innerHTML = stats.perfectTopStreak;
+};
+
+stats.setVisits = function(coords) {
+	let visitsHtml = "";
+    for (let i=0; i<coords.length; i++) {
+		visitsHtml += "<div>" + String.fromCharCode(i + 65) + ": " + coords[i].visits + "</div>";
+	}
+    stats.visitsElement.innerHTML = visitsHtml;
 };

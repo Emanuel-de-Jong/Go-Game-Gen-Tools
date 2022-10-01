@@ -97,7 +97,7 @@ public class Kata {
             } else if (element.equals("visits")) {
                 suggestion.visits = Integer.parseInt(analysis[i+1]);
             } else if (element.equals("winrate")) {
-                suggestion.winrate = Float.parseFloat(analysis[i+1]);
+                suggestion.winrate = Float.parseFloat(analysis[i+1]) * 100;
             } else if (element.equals("scoreLead")) {
                 suggestion.scoreLead = Float.parseFloat(analysis[i+1]);
             } else if (element.equals("scoreStdev")) {

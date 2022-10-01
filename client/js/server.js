@@ -159,6 +159,7 @@ server.analyze = async function(color, moveOptions) {
             let nameCoords = [];
             suggestions.forEach(suggestion => {
                 nameCoords.push(suggestion.coord + " " + suggestion.visits);
+                stats.setScore(suggestion.winrate, suggestion.scoreLead);
             });
 
             console.log(nameCoords);

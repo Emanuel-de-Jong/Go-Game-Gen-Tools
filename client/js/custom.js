@@ -151,13 +151,14 @@ custom.playerTurn = async function() {
 	custom.getOpponentBestCoords();
 
 	board.drawCoords(custom.bestCoords);
+	stats.setVisits(custom.bestCoords);
 	if (!isRightChoice) {
 		await board.draw(markupCoord, "cross");
 	}
 
 	board.enableNextButton();
 
-	stats.update(isRightChoice, isPerfectChoice);
+	stats.updateRatio(isRightChoice, isPerfectChoice);
 };
 
 custom.botTurn = async function() {

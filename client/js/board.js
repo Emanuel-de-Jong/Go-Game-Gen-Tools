@@ -128,23 +128,17 @@ board.drawCoords = function(coords) {
 	board.editor.setTool("label");
 	board.editor.setLabel("A");
 
-	let visitsHtml = "";
 	// let rects = document.querySelectorAll('.besogo-board svg rect[opacity="0"]');
 	for (let i=0; i<coords.length; i++) {
 		let coord = coords[i];
 
 		board.editor.click(coord.x, coord.y, false, false);
 
-		visitsHtml += "<div>" + String.fromCharCode(i + 65) + ": " + coord.visits + "</div>";
-
 		// let rect = rects[(coord.x - 1) * settings.boardsize + (coord.y - 1)];
 		// rect.style.position = "relative";
 		// rect.style.opacity = 1;
 		// rect.insertAdjacentHTML("afterend", '<div class="visits">' + coord.visits + "</div>");
 	}
-
-	let visitsElement = document.getElementById("visits");
-	visitsElement.innerHTML = visitsHtml;
 
 	board.editor.setTool("navOnly");
 };
