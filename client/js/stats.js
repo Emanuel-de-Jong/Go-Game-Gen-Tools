@@ -76,10 +76,10 @@ stats.updateRatio = function(isRight, isPerfect) {
     stats.perfectTopStreakElement.innerHTML = stats.perfectTopStreak;
 };
 
-stats.setVisits = function(coords) {
+stats.setVisits = function(suggestions) {
 	let visitsHtml = "";
-    for (let i=0; i<coords.length; i++) {
-		visitsHtml += "<div>" + String.fromCharCode(i + 65) + ": " + coords[i].visits + "</div>";
+    for (let i=0; i<suggestions.length; i++) {
+		visitsHtml += "<div>" + String.fromCharCode(i + 65) + ": " + suggestions[i].visits + "</div>";
 	}
     stats.visitsElement.innerHTML = visitsHtml;
 };

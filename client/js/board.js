@@ -95,10 +95,10 @@ board.getMoves = function() {
 	while (node.moveNumber != 0) {
 		moves.push({
 			color: node.move.color,
-			coord: {
-				x: node.move.x,
-				y: node.move.y
-			}
+			coord: new Coord(
+				node.move.x,
+				node.move.y
+			)
 		});
 
 		node = node.parent;
@@ -124,20 +124,20 @@ board.draw = async function(coord, tool = "auto") {
 	}
 };
 
-board.drawCoords = function(coords) {
+board.drawCoords = function(suggestions) {
 	board.editor.setTool("label");
 	board.editor.setLabel("A");
 
 	// let rects = document.querySelectorAll('.besogo-board svg rect[opacity="0"]');
-	for (let i=0; i<coords.length; i++) {
-		let coord = coords[i];
+	for (let i=0; i<suggestions.length; i++) {
+		let coord = suggestions[i].coord;
 
 		board.editor.click(coord.x, coord.y, false, false);
 
 		// let rect = rects[(coord.x - 1) * settings.boardsize + (coord.y - 1)];
 		// rect.style.position = "relative";
 		// rect.style.opacity = 1;
-		// rect.insertAdjacentHTML("afterend", '<div class="visits">' + coord.visits + "</div>");
+		// rect.insertAdjacentHTML("afterend", '<div class="visits">' + suggestions[i].visits + "</div>");
 	}
 
 	board.editor.setTool("navOnly");
@@ -154,10 +154,10 @@ board.getMarkupCoord = function() {
 		}
 	}
 
-	return {
-		x: Math.floor(markupNum / settings.boardsize) + 1,
-		y: (markupNum % settings.boardsize) + 1
-	}
+	return new Coord(
+		Math.floor(markupNum / settings.boardsize) + 1,
+		(markupNum % settings.boardsize) + 1
+	);
 };
 
 board.setHandicap = async function() {

@@ -59,9 +59,7 @@ server.coordNameToNum = function(nameCoord) {
     
     let x = xConvert[nameCoord[0]];
     let y = settings.boardsize + 1 - parseInt(nums[0]);
-    let visits = parseInt(nums[1]);
-    // console.log("server.coordNameToNum " + nameCoord + " = " + x + ", " + y);
-    return { "x": x, "y": y, "visits": visits };
+    return new Coord(x, y);
 };
 
 server.colorNumToName = function(num) {
@@ -154,28 +152,31 @@ server.analyze = async function(color, moveOptions) {
     return fetch(server.URL + "analyze?color=" + server.colorNumToName(color) + "&moveOptions=" + moveOptions + "&minimumVisits=" + settings.minimumVisits, {
         method: "POST" })
         .then(response => response.json())
-        .then(suggestions => {
-            let numCoords = [];
+        .then(suggestionArr => {
+            let suggestions = [];
             let nameCoords = [];
-            suggestions.forEach(suggestion => {
-                nameCoords.push(suggestion.coord + " " + suggestion.visits);
-                stats.setScore(suggestion.winrate, suggestion.scoreLead);
+            let isPassed = false;
+            suggestionArr.forEach(suggestion => {
+                if (isPassed) return;
+                if (suggestion.coord == "pass") {
+                    isPassed = true;
+                    return;
+                }
+
+                nameCoords.push(suggestion.coord);
+
+                suggestions.push(new MoveSuggestion(
+                    server.coordNameToNum(suggestion.coord),
+                    suggestion.visits,
+                    suggestion.winrate,
+                    suggestion.scoreLead,
+                    suggestion.scoreStdev));
             });
 
             console.log(nameCoords);
 
-            let isPassed = false;
-            nameCoords.forEach(element => {
-                if (isPassed) return;
-                if (element.includes("pass")) {
-                    isPassed = true;
-                    return;
-                }
-                numCoords.push(server.coordNameToNum(element))
-            });
-
             if (isPassed) return "pass";
-            return numCoords;
+            return suggestions;
         })
         .catch(error => {
             return error;

@@ -2,8 +2,8 @@ var custom = {};
 
 custom.suggestionReadyEvent = new Event("suggestionReady");
 
-custom.bestCoords;
-custom.opponentBestCoordsPromise;
+custom.bestSuggestions;
+custom.opponentBestSuggestionsPromise;
 custom.isPlayerControlling = false;
 custom.isJumped = false;
 custom.isFinished = false;
@@ -28,17 +28,17 @@ custom.finish = async function() {
 };
 
 custom.analyze = async function(color = board.nextColor(), moveOptions = settings.moveOptions) {
-	let coords = await server.analyze(color, moveOptions);
-	if (coords == "pass") {
+	let suggestions = await server.analyze(color, moveOptions);
+	if (suggestions == "pass") {
 		custom.finish();
 	}
-	return coords;
+	return suggestions;
 };
 
 custom.playPreMove = async function(color) {
-	let coords = await custom.analyze(color, settings.preOptions);
+	let suggestions = await custom.analyze(color, settings.preOptions);
 	if (custom.isFinished) return;
-	await board.draw(coords[utils.randomInt(coords.length)]);
+	await board.draw(suggestions[utils.randomInt(suggestions.length)].coord);
 };
 
 custom.createPreMoves = async function() {
@@ -68,7 +68,7 @@ custom.createPreMoves = async function() {
 		await custom.playPreMove(board.nextColor());
 	}
 
-	await custom.getBestCoords();
+	await custom.getBestSuggestions();
 };
 
 custom.boardEditorListener = async function(event) {
@@ -103,22 +103,22 @@ custom.nextButtonClickListener = async function() {
 	await custom.botTurn();
 };
 
-custom.getBestCoords = async function() {
-	custom.bestCoords = await custom.analyze();
+custom.getBestSuggestions = async function() {
+	custom.bestSuggestions = await custom.analyze();
 	if (custom.isFinished) return;
 	custom.givePlayerControl();
 	document.dispatchEvent(custom.suggestionReadyEvent);
 };
 
-custom.getOpponentBestCoords = function() {
-	custom.opponentBestCoordsPromise = custom.analyze();
+custom.getOpponentBestSuggestions = function() {
+	custom.opponentBestSuggestionsPromise = custom.analyze();
 };
 
 custom.playerTurn = async function() {
 	if (custom.isJumped) {
 		custom.isJumped = false;
 		await server.setBoard();
-		custom.bestCoords = await custom.analyze();
+		custom.bestSuggestions = await custom.analyze();
 		if (custom.isFinished) return;
 	}
 
@@ -126,21 +126,21 @@ custom.playerTurn = async function() {
 	let markupCoord = board.getMarkupCoord();
 	let isRightChoice = false;
 	let isPerfectChoice = false;
-	for (let i=0; i<custom.bestCoords.length; i++) {
-		if (utils.compCoord(markupCoord, custom.bestCoords[i])) {
+	for (let i=0; i<custom.bestSuggestions.length; i++) {
+		if (markupCoord.compare(custom.bestSuggestions[i].coord)) {
 			if (i == 0) {
 				isPerfectChoice = true;
 			}
 
 			isRightChoice = true;
-			coordToPlay = custom.bestCoords[i];
+			coordToPlay = custom.bestSuggestions[i].coord;
 			break;
 		}
 	}
 
 	if (!isRightChoice) {
 		if (!settings.disableAICorrection) {
-			coordToPlay = custom.bestCoords[0];
+			coordToPlay = custom.bestSuggestions[0].coord;
 		} else {
 			coordToPlay = markupCoord;
 		}
@@ -148,10 +148,10 @@ custom.playerTurn = async function() {
 
 	await board.draw(coordToPlay);
 
-	custom.getOpponentBestCoords();
+	custom.getOpponentBestSuggestions();
 
-	board.drawCoords(custom.bestCoords);
-	stats.setVisits(custom.bestCoords);
+	board.drawCoords(custom.bestSuggestions);
+	stats.setVisits(custom.bestSuggestions);
 	if (!isRightChoice) {
 		await board.draw(markupCoord, "cross");
 	}
@@ -162,11 +162,11 @@ custom.playerTurn = async function() {
 };
 
 custom.botTurn = async function() {
-	let coords = await custom.opponentBestCoordsPromise;
+	let suggestions = await custom.opponentBestSuggestionsPromise;
 	if (custom.isFinished) return;
-	await board.draw(coords[0]);
+	await board.draw(suggestions[0].coord);
 
-	await custom.getBestCoords();
+	await custom.getBestSuggestions();
 };
 
 document.getElementById("restart").addEventListener("click", async () => {
