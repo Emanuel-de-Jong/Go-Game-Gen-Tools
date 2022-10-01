@@ -1,5 +1,5 @@
 GAME
-    handle pass/resign
+    handle pass
 
 CLIENT
     SETTINGS
@@ -23,6 +23,7 @@ CLIENT
         keep suggestion and visits history
         analyze next black while waiting on next button click
         don't get bestcoord on tree jump
+        when loading a sgf, use its ruleset and komi
     VISUAL
         icon for options that can be updated without restart
         show visits on board

@@ -149,7 +149,7 @@ server.setBoard = async function() {
         });
 };
 
-server.analyze = async function(color = board.nextColor(), moveOptions = options.moveOptions) {
+server.analyze = async function(color, moveOptions) {
     // console.log("analyze " + color);
     return fetch(server.URL + "analyze?color=" + server.colorNumToName(color) + "&moveOptions=" + moveOptions + "&minimumVisits=" + options.minimumVisits, {
         method: "POST" })
@@ -158,9 +158,18 @@ server.analyze = async function(color = board.nextColor(), moveOptions = options
             let numCoords = []
             let nameCoords = JSON.parse(nameCoordsText);
             console.log(nameCoords);
+
+            let isPassed = false;
             nameCoords.forEach(element => {
+                if (isPassed) return;
+                if (element.includes("pass")) {
+                    isPassed = true;
+                    return;
+                }
                 numCoords.push(server.coordNameToNum(element))
             });
+
+            if (isPassed) return "pass";
             return numCoords;
         })
         .catch(error => {

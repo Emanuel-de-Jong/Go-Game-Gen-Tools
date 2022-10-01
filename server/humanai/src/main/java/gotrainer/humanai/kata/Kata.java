@@ -5,6 +5,7 @@ import gotrainer.humanai.Moves;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Kata {
@@ -72,6 +73,7 @@ public class Kata {
         write("kata-genmove_analyze " + color + " minmoves " + moveOptions + " maxmoves " + moveOptions);
         reader.readLine(); // Ignore '= '
         String[] analysis = reader.readLine().split(" ");
+        System.out.println(Arrays.toString(analysis));
         clearReader();
 
         write("undo");
