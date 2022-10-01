@@ -1,40 +1,42 @@
 CLIENT
     SETTINGS
-        play as both players
+        - play as both players
+        - toggle next button usage
         save/load settings
         setting presets
-        toggle next button usage
     INFO
+        - show result on pass
+        - different score values
+        - winrate/point graph
         tooltips
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
-        show result on pass
-        winrate/point graph
     QOL/PERFORMANCE
-        options live update on change
-        button to let ai finish game
-        fix having to wait after cross twice after jump
+        - button to let ai finish game
+        - fix having to wait after cross twice after jump
+        - start with empty sgf for right komi and player names/ranks
+        - keep suggestion and visits history
+        - analyze next black while waiting on next button click
+        - don't get bestcoord on tree jump
+        - when loading a sgf, use its ruleset and komi
+        - update score with AI correction disabled
+        - update score with handicap/corners
+        - options live update on change
         retry server request on error
-        start with empty sgf for right komi and player names/ranks
-        keep suggestion and visits history
-        analyze next black while waiting on next button click
-        don't get bestcoord on tree jump
-        when loading a sgf, use its ruleset and komi
-        update score with AI correction disabled
-        update score with handicap/corners
     VISUAL
+        - show visits on board
         icon for options that can be updated without restart
-        show visits on board
         responsive
         make it pretty
 
 SERVER
-    multiple katago instances per client for different settings and visits
+    - multiple katago instances per client for different visits
+    multiple users
     rate limit calls to server
     restart server when something goes wrong
 
 FAR FUTURE
-    add besogo and katago credits to github and client
+    add besogo and katago credits
     registration system
     leaderboard
     payment
