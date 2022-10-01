@@ -1,6 +1,5 @@
 CLIENT
     SETTINGS
-        don't show other options so they aren't spoiled
         play as both players
         save/load settings
         setting presets
@@ -9,9 +8,8 @@ CLIENT
         tooltips
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
-        show score/winner
-        winrate/point graph
         show result on pass
+        winrate/point graph
     QOL/PERFORMANCE
         options live update on change
         button to let ai finish game
