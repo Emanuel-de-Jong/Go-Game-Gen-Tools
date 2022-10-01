@@ -1,7 +1,7 @@
-var options = {};
+var settings = {};
 
 
-options.SETTINGS = {
+settings.SETTINGS = {
     boardsize: utils.TYPES.INT,
     color: utils.TYPES.INT,
     ruleset: utils.TYPES.STRING,
@@ -18,18 +18,18 @@ options.SETTINGS = {
     disableAICorrection: utils.TYPES.BOOL,
 };
 
-options.update = function() {
-    options.getSettings();
+settings.update = function() {
+    settings.getSettings();
 };
 
-options.getSettings = function() {
-    for (const name of Object.keys(options.SETTINGS)) {
-        options.getSetting(name);
+settings.getSettings = function() {
+    for (const name of Object.keys(settings.SETTINGS)) {
+        settings.getSetting(name);
     }
 };
 
-options.getSetting = function(name) {
-    let type = options.SETTINGS[name];
+settings.getSetting = function(name) {
+    let type = settings.SETTINGS[name];
 
     let element = document.getElementById(name);
 
@@ -44,27 +44,27 @@ options.getSetting = function(name) {
         value = utils.randomInt(2) == 0 ? -1 : 1;
     }
     
-    options[name] = value;
+    settings[name] = value;
 }
 
-options.validateInput = function(input) {
+settings.validateInput = function(input) {
     let valid = input.validity.valid;
     if (valid) {
-        options.hideInvalidMessage(input);
+        settings.hideInvalidMessage(input);
     } else {
-        options.showInvalidMessage(input);
+        settings.showInvalidMessage(input);
     }
     return valid;
 };
 
-options.showInvalidMessage = function(input) {
+settings.showInvalidMessage = function(input) {
     input.classList.add("form-invalid");
 
     let messageDiv = utils.getSiblingByClass(input, "form-invalid-message");
     messageDiv.innerHTML = input.validationMessage;
 };
 
-options.hideInvalidMessage = function(input) {
+settings.hideInvalidMessage = function(input) {
     input.classList.remove("form-invalid");
 
     let messageDiv = utils.getSiblingByClass(input, "form-invalid-message");
@@ -80,9 +80,9 @@ utils.querySelectorAlls(["input", "select"]).forEach(input => {
 
 utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", (event) => {
     let element = event.target;
-    if (options.validateInput(element)) {
-        options.getSetting(element.id);
+    if (settings.validateInput(element)) {
+        settings.getSetting(element.id);
     }
 });
 
-options.update();
+settings.update();

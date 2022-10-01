@@ -27,7 +27,7 @@ server.coordNumToName = function(numCoord) {
     };
 
     let x = xConvert[numCoord.x];
-    let y = options.boardsize + 1 - numCoord.y;
+    let y = settings.boardsize + 1 - numCoord.y;
     // console.log("server.coordNumToName " + numCoord.x + ", " + numCoord.y + " = " + x + y);
     return "" + x + y;
 };
@@ -58,7 +58,7 @@ server.coordNameToNum = function(nameCoord) {
     let nums = nameCoord.substring(1).split(" ");
     
     let x = xConvert[nameCoord[0]];
-    let y = options.boardsize + 1 - parseInt(nums[0]);
+    let y = settings.boardsize + 1 - parseInt(nums[0]);
     let visits = parseInt(nums[1]);
     // console.log("server.coordNameToNum " + nameCoord + " = " + x + ", " + y);
     return { "x": x, "y": y, "visits": visits };
@@ -80,7 +80,7 @@ server.init = async function() {
 
 server.restart = async function() {
     // console.log("restart");
-    return fetch(server.URL + "restart?maxVisits=" + options.suggestionStrength, {
+    return fetch(server.URL + "restart?maxVisits=" + settings.suggestionStrength, {
         method: "GET" })
         .then(response => {
             return response;
@@ -92,7 +92,7 @@ server.restart = async function() {
 
 server.setBoardsize = async function() {
     // console.log("setBoardsize");
-    return fetch(server.URL + "setboardsize?boardsize=" + options.boardsize, {
+    return fetch(server.URL + "setboardsize?boardsize=" + settings.boardsize, {
         method: "GET" })
         .then(response => {
             return response;
@@ -104,7 +104,7 @@ server.setBoardsize = async function() {
 
 server.setRules = async function() {
     // console.log("setRules");
-    return fetch(server.URL + "setrules?ruleset=" + options.ruleset, {
+    return fetch(server.URL + "setrules?ruleset=" + settings.ruleset, {
         method: "GET" })
         .then(response => {
             return response;
@@ -116,7 +116,7 @@ server.setRules = async function() {
 
 server.setKomi = async function() {
     // console.log("setKomi");
-    return fetch(server.URL + "setkomi?komi=" + options.komi, {
+    return fetch(server.URL + "setkomi?komi=" + settings.komi, {
         method: "GET" })
         .then(response => {
             return response;
@@ -151,7 +151,7 @@ server.setBoard = async function() {
 
 server.analyze = async function(color, moveOptions) {
     // console.log("analyze " + color);
-    return fetch(server.URL + "analyze?color=" + server.colorNumToName(color) + "&moveOptions=" + moveOptions + "&minimumVisits=" + options.minimumVisits, {
+    return fetch(server.URL + "analyze?color=" + server.colorNumToName(color) + "&moveOptions=" + moveOptions + "&minimumVisits=" + settings.minimumVisits, {
         method: "POST" })
         .then(response => response.json())
         .then(suggestions => {

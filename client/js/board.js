@@ -9,7 +9,7 @@ board.init = async function() {
 		panels: "control+names+tree+file",
 		coord: "western",
 		tool: "navOnly",
-		size: options.boardsize,
+		size: settings.boardsize,
 		variants: 2,
 		nowheel: true
 	});
@@ -137,7 +137,7 @@ board.drawCoords = function(coords) {
 
 		visitsHtml += "<div>" + String.fromCharCode(i + 65) + ": " + coord.visits + "</div>";
 
-		// let rect = rects[(coord.x - 1) * options.boardsize + (coord.y - 1)];
+		// let rect = rects[(coord.x - 1) * settings.boardsize + (coord.y - 1)];
 		// rect.style.position = "relative";
 		// rect.style.opacity = 1;
 		// rect.insertAdjacentHTML("afterend", '<div class="visits">' + coord.visits + "</div>");
@@ -161,8 +161,8 @@ board.getMarkupCoord = function() {
 	}
 
 	return {
-		x: Math.floor(markupNum / options.boardsize) + 1,
-		y: (markupNum % options.boardsize) + 1
+		x: Math.floor(markupNum / settings.boardsize) + 1,
+		y: (markupNum % settings.boardsize) + 1
 	}
 };
 
@@ -203,8 +203,8 @@ board.setHandicap = async function() {
 		},
 	}
 
-	for (let i=0; i<options.handicap; i++) {
-		let coord = placement[options.boardsize][options.handicap][i];
+	for (let i=0; i<settings.handicap; i++) {
+		let coord = placement[settings.boardsize][settings.handicap][i];
 		await board.draw(coord, "playB");
 	}
 };

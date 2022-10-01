@@ -27,7 +27,7 @@ custom.finish = async function() {
 	alert("Finished!");
 };
 
-custom.analyze = async function(color = board.nextColor(), moveOptions = options.moveOptions) {
+custom.analyze = async function(color = board.nextColor(), moveOptions = settings.moveOptions) {
 	let coords = await server.analyze(color, moveOptions);
 	if (coords == "pass") {
 		custom.finish();
@@ -36,15 +36,15 @@ custom.analyze = async function(color = board.nextColor(), moveOptions = options
 };
 
 custom.playPreMove = async function(color) {
-	let coords = await custom.analyze(color, options.preOptions);
+	let coords = await custom.analyze(color, settings.preOptions);
 	if (custom.isFinished) return;
 	await board.draw(coords[utils.randomInt(coords.length)]);
 };
 
 custom.createPreMoves = async function() {
-	let preMovesLeft = options.preMoves;
+	let preMovesLeft = settings.preMoves;
 
-	if (options.handicap == 0) {
+	if (settings.handicap == 0) {
 		let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
 		let cornerCoords = board.fillCorners();
 		for (let i=0; i<cornerCount; i++) {
@@ -64,7 +64,7 @@ custom.createPreMoves = async function() {
 		}
 	}
 
-	if (options.color == board.lastColor()) {
+	if (settings.color == board.lastColor()) {
 		await custom.playPreMove(board.nextColor());
 	}
 
@@ -139,7 +139,7 @@ custom.playerTurn = async function() {
 	}
 
 	if (!isRightChoice) {
-		if (!options.disableAICorrection) {
+		if (!settings.disableAICorrection) {
 			coordToPlay = custom.bestCoords[0];
 		} else {
 			coordToPlay = markupCoord;
@@ -169,7 +169,7 @@ custom.botTurn = async function() {
 };
 
 document.getElementById("restart").addEventListener("click", async () => {
-	options.update();
+	settings.update();
 	await custom.init();
 });
 
