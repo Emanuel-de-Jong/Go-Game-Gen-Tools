@@ -89,6 +89,10 @@ board.nextColor = function() {
 	return -1;
 };
 
+board.getMoveNumber = function() {
+	return board.lastMove.moveNumber;
+};
+
 board.getMoves = function() {
 	let moves = [];
 	let node = board.editor.getCurrent();
@@ -110,7 +114,7 @@ board.getMoves = function() {
 
 board.play = async function(suggestion, tool = "auto") {
 	board.draw(suggestion.coord, tool);
-	stats.setScore(suggestion);
+	stats.updateScore(suggestion);
 };
 
 board.draw = async function(coord, tool = "auto") {

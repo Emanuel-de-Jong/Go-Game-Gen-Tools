@@ -6,8 +6,8 @@ CLIENT
         setting presets
     INFO
         - show result on pass
-        - different score values
-        - winrate/point graph
+        - make chart match player color
+        - better chart settings
         tooltips
         status bar (e.g. "analyzing suggestions")
         server unreachable alert

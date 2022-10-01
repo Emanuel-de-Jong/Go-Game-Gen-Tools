@@ -167,6 +167,10 @@ custom.botTurn = async function() {
 
 document.getElementById("restart").addEventListener("click", async () => {
 	settings.update();
+
+	stats.pointChart.destroy();
+	stats.winrateChart.destroy();
+	
 	await custom.init();
 });
 

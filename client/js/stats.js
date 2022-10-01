@@ -1,9 +1,7 @@
 var stats = {};
 
-
-stats.scoreColorElement = document.getElementById("scoreColor");
-stats.scoreWinrateElement = document.getElementById("scoreWinrate");
-stats.scorePointsElement = document.getElementById("scorePoints");
+stats.winrateChartElement = document.getElementById("winrateChart");
+stats.pointChartElement = document.getElementById("pointChart");
 
 stats.rightPercentElement = document.getElementById("rightPercent");
 stats.rightStreakElement = document.getElementById("rightStreak");
@@ -16,9 +14,63 @@ stats.perfectTopStreakElement = document.getElementById("perfectTopStreak");
 stats.visitsElement = document.getElementById("visits");
 
 stats.init = function() {
-    stats.scoreColorElement.innerHTML = "-";
-    stats.scoreWinrateElement.innerHTML = "-";
-    stats.scorePointsElement.innerHTML = "-";
+    stats.winrateChart = new Chart(stats.winrateChartElement, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [
+                {
+                    label: 'Winrate',
+                    data: [],
+                    fill: {
+                        target: { value: 50 },
+                        above: 'rgb(0, 0, 0)',
+                        below: 'rgb(255, 255, 255)'
+                    },
+                },
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    suggestedMin: 45,
+                    suggestedMax: 55
+                }
+            }
+        }
+    });
+    stats.winrateChartLabels = stats.winrateChart.data.labels;
+    stats.winrateChartData = stats.winrateChart.data.datasets[0].data;
+
+    stats.pointChart = new Chart(stats.pointChartElement, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [
+                {
+                    label: 'Points',
+                    data: [],
+                    fill: {
+                        target: { value: 0 },
+                        above: 'rgb(0, 0, 0)',
+                        below: 'rgb(255, 255, 255)'
+                    },
+                },
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    suggestedMin: -5,
+                    suggestedMax: 5
+                }
+            }
+        }
+    });
+    stats.pointChartLabels = stats.pointChart.data.labels;
+    stats.pointChartData = stats.pointChart.data.datasets[0].data;
 
     stats.total = 0;
 
@@ -41,10 +93,14 @@ stats.init = function() {
     stats.visitsElement.innerHTML = "";
 };
 
-stats.setScore = function(suggestion) {
-    stats.scoreColorElement.innerHTML = board.lastColor() == 1 ? "White" : "Black";
-    stats.scoreWinrateElement.innerHTML = suggestion.winrate.toFixed(2);
-    stats.scorePointsElement.innerHTML = suggestion.scoreLead.toFixed(1);
+stats.updateScore = function(suggestion) {
+    stats.winrateChartLabels.push(board.getMoveNumber());
+    stats.winrateChartData.push(suggestion.winrate.toFixed(2));
+    stats.winrateChart.update();
+
+    stats.pointChartLabels.push(board.getMoveNumber());
+    stats.pointChartData.push(suggestion.scoreLead.toFixed(1));
+    stats.pointChart.update();
 };
 
 stats.updateRatio = function(isRight, isPerfect) {
