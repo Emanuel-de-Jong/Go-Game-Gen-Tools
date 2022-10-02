@@ -1,5 +1,8 @@
 var custom = {};
 
+custom.restartElement = document.getElementById("restart");
+custom.selfplayElement = document.getElementById("selfplay");
+
 custom.suggestionReadyEvent = new Event("suggestionReady");
 
 custom.bestSuggestions;
@@ -7,6 +10,8 @@ custom.opponentBestSuggestionsPromise;
 custom.isPlayerControlling = false;
 custom.isJumped = false;
 custom.isFinished = false;
+custom.isSelfplay = false;
+custom.selfplayPromise;
 
 custom.init = async function() {
 	await server.init();
@@ -169,13 +174,38 @@ custom.botTurn = async function() {
 	await custom.getBestSuggestions();
 };
 
-document.getElementById("restart").addEventListener("click", async () => {
+custom.restartElement.addEventListener("click", async () => {
 	settings.update();
 
 	stats.scoreChart.destroy();
 	
 	await custom.init();
 });
+
+custom.selfplayElement.addEventListener("click", async (event) => {
+	if (custom.isSelfplay) {
+		custom.isSelfplay = false;
+		event.target.innerHTML = "Start selfplay";
+
+		await custom.selfplayPromise;
+		custom.bestSuggestions = await custom.analyze();
+		custom.givePlayerControl();
+	} else {
+		custom.isSelfplay = true;
+		event.target.innerHTML = "Stop selfplay";
+
+		custom.takePlayerControl();
+		board.disableNextButton();
+		custom.selfplayPromise = custom.selfplay();
+	}
+});
+
+custom.selfplay = async function() {
+	while (custom.isSelfplay || settings.color != board.nextColor()) {
+		let suggestions = await custom.analyze();
+		board.play(suggestions[0]);
+	}
+};
 
 
 (function () {
