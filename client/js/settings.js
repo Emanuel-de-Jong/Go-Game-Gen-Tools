@@ -16,6 +16,7 @@ settings.SETTINGS = {
     opponentStrength: utils.TYPES.INT,
     minimumVisits: utils.TYPES.INT,
     disableAICorrection: utils.TYPES.BOOL,
+    skipNextButton: utils.TYPES.BOOL,
 };
 
 settings.update = function() {

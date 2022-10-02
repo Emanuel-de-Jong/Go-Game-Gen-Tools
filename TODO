@@ -6,7 +6,6 @@ CLIENT
         setting presets
     INFO
         - show result on pass
-        - make chart match player color
         - chart history for multiple trees and jumps
         tooltips
         status bar (e.g. "analyzing suggestions")

@@ -18,7 +18,8 @@ stats.init = function() {
         data: {
             datasets: [
                 {
-                    label: "Winrate",
+                    label: "Winrate B",
+                    pointRadius: 1,
                     borderColor: "rgb(0, 255, 0)",
                     backgroundColor: "rgba(0, 255, 0, 0.3)",
                     // fill: {
@@ -26,8 +27,9 @@ stats.init = function() {
                     // },
                 },
                 {
-                    label: "Score",
+                    label: "Score B",
                     yAxisID: 'y1',
+                    pointRadius: 1,
                     borderColor: "rgb(0, 0, 255)",
                     backgroundColor: "rgba(0, 0, 255, 0.3)",
                     // fill: {
@@ -38,6 +40,12 @@ stats.init = function() {
         },
         options: {
             responsive: true,
+            // plugins: {
+            //     title: {
+            //         display: true,
+            //         text: "Black",
+            //     },
+            // },
             interaction: {
                 intersect: false,
             },
@@ -50,7 +58,7 @@ stats.init = function() {
                     suggestedMax: 55,
                     title: {
                         display: true,
-                        text: "Winrate",
+                        text: "Winrate B",
                     },
                     afterDataLimits: function(axis) {
                         let maxDiff = axis.max - 50;
@@ -68,7 +76,7 @@ stats.init = function() {
                     suggestedMax: 2,
                     title: {
                         display: true,
-                        text: "Score",
+                        text: "Score B",
                     },
                     grid: {
                         // drawOnChartArea: false,
