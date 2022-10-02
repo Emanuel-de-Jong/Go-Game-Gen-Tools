@@ -1,7 +1,7 @@
 var custom = {};
 
-custom.restartElement = document.getElementById("restart");
-custom.selfplayElement = document.getElementById("selfplay");
+custom.restartButton = document.getElementById("restart");
+custom.selfplayButton = document.getElementById("selfplay");
 
 custom.suggestionReadyEvent = new Event("suggestionReady");
 
@@ -174,7 +174,7 @@ custom.botTurn = async function() {
 	await custom.getBestSuggestions();
 };
 
-custom.restartElement.addEventListener("click", async () => {
+custom.restartButton.addEventListener("click", async () => {
 	settings.update();
 
 	stats.scoreChart.destroy();
@@ -182,27 +182,34 @@ custom.restartElement.addEventListener("click", async () => {
 	await custom.init();
 });
 
-custom.selfplayElement.addEventListener("click", async (event) => {
+custom.selfplayButtonClickListener = async function() {
 	if (custom.isSelfplay) {
 		custom.isSelfplay = false;
-		event.target.innerHTML = "Start selfplay";
+		custom.selfplayButton.innerHTML = "Start selfplay";
 
 		await custom.selfplayPromise;
 		custom.bestSuggestions = await custom.analyze();
 		custom.givePlayerControl();
 	} else {
 		custom.isSelfplay = true;
-		event.target.innerHTML = "Stop selfplay";
+		custom.selfplayButton.innerHTML = "Stop selfplay";
 
 		custom.takePlayerControl();
 		board.disableNextButton();
 		custom.selfplayPromise = custom.selfplay();
 	}
-});
+};
+custom.selfplayButton.addEventListener("click", custom.selfplayButtonClickListener);
 
 custom.selfplay = async function() {
 	while (custom.isSelfplay || settings.color != board.nextColor()) {
 		let suggestions = await custom.analyze();
+		if (custom.isFinished) {
+			custom.isSelfplay = false;
+			custom.selfplayButton.innerHTML = "Start selfplay";
+			return;
+		}
+
 		board.play(suggestions[0]);
 	}
 };
