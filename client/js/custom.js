@@ -147,14 +147,18 @@ custom.playerTurn = async function() {
 	custom.getOpponentBestSuggestions();
 
 	board.drawCoords(custom.bestSuggestions);
-	stats.setVisits(custom.bestSuggestions);
 	if (!isRightChoice) {
 		await board.draw(markupCoord, "cross");
 	}
 
-	board.enableNextButton();
-
 	stats.updateRatio(isRightChoice, isPerfectChoice);
+	stats.setVisits(custom.bestSuggestions);
+
+	if (!settings.skipNextButton) {
+		board.enableNextButton();
+	} else {
+		await custom.nextButtonClickListener();
+	}
 };
 
 custom.botTurn = async function() {

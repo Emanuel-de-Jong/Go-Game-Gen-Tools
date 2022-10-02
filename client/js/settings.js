@@ -19,6 +19,10 @@ settings.SETTINGS = {
     skipNextButton: utils.TYPES.BOOL,
 };
 
+for (const name of Object.keys(settings.SETTINGS)) {
+    settings[name + "Element"] = document.getElementById(name);
+}
+
 settings.update = function() {
     settings.getSettings();
 };
@@ -32,7 +36,7 @@ settings.getSettings = function() {
 settings.getSetting = function(name) {
     let type = settings.SETTINGS[name];
 
-    let element = document.getElementById(name);
+    let element = settings[name + "Element"];
 
     let value = type == utils.TYPES.BOOL ? element.checked : element.value;
     if (type == utils.TYPES.INT) {
@@ -47,6 +51,12 @@ settings.getSetting = function(name) {
     
     settings[name] = value;
 }
+
+// settings.skipNextButtonElement.addEventListener("input", (event) => {
+//     if (event.target.checked) {
+//         board.disableNextButton();
+//     }
+// });
 
 settings.validateInput = function(input) {
     let valid = input.validity.valid;

@@ -1,7 +1,7 @@
 CLIENT
     SETTINGS
         - play as both players
-        - toggle next button usage
+        - Graph color select
         save/load settings
         setting presets
     INFO
