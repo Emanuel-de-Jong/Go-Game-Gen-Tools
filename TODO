@@ -7,7 +7,6 @@ CLIENT
     INFO
         - show result on pass
         - make chart match player color
-        - better chart settings
         - chart history for multiple trees and jumps
         tooltips
         status bar (e.g. "analyzing suggestions")

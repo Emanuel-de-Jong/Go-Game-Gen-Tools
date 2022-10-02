@@ -1,7 +1,6 @@
 var stats = {};
 
-stats.winrateChartElement = document.getElementById("winrateChart");
-stats.pointChartElement = document.getElementById("pointChart");
+stats.scoreChartElement = document.getElementById("scoreChart");
 
 stats.rightPercentElement = document.getElementById("rightPercent");
 stats.rightStreakElement = document.getElementById("rightStreak");
@@ -14,79 +13,58 @@ stats.perfectTopStreakElement = document.getElementById("perfectTopStreak");
 stats.visitsElement = document.getElementById("visits");
 
 stats.init = function() {
-    stats.winrateChart = new Chart(stats.winrateChartElement, {
+    stats.scoreChart = new Chart(stats.scoreChartElement, {
         type: "line",
         data: {
             datasets: [
                 {
                     label: "Winrate",
-                    fill: {
-                        target: { value: 50 },
-                        above: "rgb(0, 0, 0)",
-                        below: "rgb(220, 220, 220)",
-                    },
+                    borderColor: "rgb(0, 255, 0)",
+                    backgroundColor: "rgba(0, 255, 0, 0.3)",
+                },
+                {
+                    label: "Score",
+                    yAxisID: 'y1',
+                    borderColor: "rgb(0, 0, 255)",
+                    backgroundColor: "rgba(0, 0, 255, 0.3)",
                 },
             ],
         },
         options: {
             responsive: true,
-            plugins: {
-                legend: false,
-                title: {
-                    display: true,
-                    text: "Winrate",
-                },
-            },
             interaction: {
                 intersect: false,
+            },
+            animation: {
+                duration: 0,
             },
             scales: {
                 y: {
                     suggestedMin: 45,
                     suggestedMax: 55,
-                },
-            },
-        },
-    });
-    stats.winrateChartLabels = stats.winrateChart.data.labels;
-    stats.winrateChartData = stats.winrateChart.data.datasets[0].data;
-
-    stats.pointChart = new Chart(stats.pointChartElement, {
-        type: "line",
-        data: {
-            datasets: [
-                {
-                    label: "Points",
-                    fill: {
-                        target: { value: 0 },
-                        above: "rgb(0, 0, 0)",
-                        below: "rgb(220, 220, 220)",
+                    title: {
+                        display: true,
+                        text: "Winrate",
                     },
                 },
-            ],
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: false,
-                title: {
-                    display: true,
-                    text: "Points",
-                },
-            },
-            interaction: {
-                intersect: false,
-            },
-            scales: {
-                y: {
-                    suggestedMin: -5,
-                    suggestedMax: 5
+                y1: {
+                    position: "right",
+                    suggestedMin: -2,
+                    suggestedMax: 2,
+                    title: {
+                        display: true,
+                        text: "Score",
+                    },
+                    grid: {
+                        drawOnChartArea: false,
+                    },
                 },
             },
         },
     });
-    stats.pointChartLabels = stats.pointChart.data.labels;
-    stats.pointChartData = stats.pointChart.data.datasets[0].data;
+    stats.scoreChartLabels = stats.scoreChart.data.labels;
+    stats.scoreChartWinrate = stats.scoreChart.data.datasets[0].data;
+    stats.scoreChartScore = stats.scoreChart.data.datasets[1].data;
 
     stats.total = 0;
 
@@ -110,13 +88,10 @@ stats.init = function() {
 };
 
 stats.updateScore = function(suggestion) {
-    stats.winrateChartLabels.push(board.getMoveNumber());
-    stats.winrateChartData.push(suggestion.winrate.toFixed(2));
-    stats.winrateChart.update();
-
-    stats.pointChartLabels.push(board.getMoveNumber());
-    stats.pointChartData.push(suggestion.scoreLead.toFixed(1));
-    stats.pointChart.update();
+    stats.scoreChartLabels.push(board.getMoveNumber());
+    stats.scoreChartWinrate.push(suggestion.winrate.toFixed(2));
+    stats.scoreChartScore.push(suggestion.scoreLead.toFixed(1));
+    stats.scoreChart.update();
 };
 
 stats.updateRatio = function(isRight, isPerfect) {
