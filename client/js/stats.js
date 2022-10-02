@@ -15,59 +15,75 @@ stats.visitsElement = document.getElementById("visits");
 
 stats.init = function() {
     stats.winrateChart = new Chart(stats.winrateChartElement, {
-        type: 'line',
+        type: "line",
         data: {
-            labels: [],
             datasets: [
                 {
-                    label: 'Winrate',
-                    data: [],
+                    label: "Winrate",
                     fill: {
                         target: { value: 50 },
-                        above: 'rgb(0, 0, 0)',
-                        below: 'rgb(255, 255, 255)'
+                        above: "rgb(0, 0, 0)",
+                        below: "rgb(220, 220, 220)",
                     },
                 },
-            ]
+            ],
         },
         options: {
             responsive: true,
+            plugins: {
+                legend: false,
+                title: {
+                    display: true,
+                    text: "Winrate",
+                },
+            },
+            interaction: {
+                intersect: false,
+            },
             scales: {
                 y: {
                     suggestedMin: 45,
-                    suggestedMax: 55
-                }
-            }
-        }
+                    suggestedMax: 55,
+                },
+            },
+        },
     });
     stats.winrateChartLabels = stats.winrateChart.data.labels;
     stats.winrateChartData = stats.winrateChart.data.datasets[0].data;
 
     stats.pointChart = new Chart(stats.pointChartElement, {
-        type: 'line',
+        type: "line",
         data: {
-            labels: [],
             datasets: [
                 {
-                    label: 'Points',
-                    data: [],
+                    label: "Points",
                     fill: {
                         target: { value: 0 },
-                        above: 'rgb(0, 0, 0)',
-                        below: 'rgb(255, 255, 255)'
+                        above: "rgb(0, 0, 0)",
+                        below: "rgb(220, 220, 220)",
                     },
                 },
-            ]
+            ],
         },
         options: {
             responsive: true,
+            plugins: {
+                legend: false,
+                title: {
+                    display: true,
+                    text: "Points",
+                },
+            },
+            interaction: {
+                intersect: false,
+            },
             scales: {
                 y: {
                     suggestedMin: -5,
                     suggestedMax: 5
-                }
-            }
-        }
+                },
+            },
+        },
     });
     stats.pointChartLabels = stats.pointChart.data.labels;
     stats.pointChartData = stats.pointChart.data.datasets[0].data;

@@ -76,8 +76,6 @@ public class Kata {
         String[] analysis = reader.readLine().split(" ");
         clearReader();
 
-        System.out.println(Arrays.toString(analysis));
-
         write("undo");
         clearReader();
 

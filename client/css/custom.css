@@ -40,6 +40,7 @@ main {
 
 
 #stats {
+    max-width: 350px;
     margin-left: 20px;
     margin-right: 20px;
     font-size: 24px;
