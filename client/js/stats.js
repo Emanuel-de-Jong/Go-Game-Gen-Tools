@@ -21,12 +21,18 @@ stats.init = function() {
                     label: "Winrate",
                     borderColor: "rgb(0, 255, 0)",
                     backgroundColor: "rgba(0, 255, 0, 0.3)",
+                    // fill: {
+                    //     target: { value: 50 },
+                    // },
                 },
                 {
                     label: "Score",
                     yAxisID: 'y1',
                     borderColor: "rgb(0, 0, 255)",
                     backgroundColor: "rgba(0, 0, 255, 0.3)",
+                    // fill: {
+                    //     target: { value: 0 },
+                    // },
                 },
             ],
         },
@@ -46,6 +52,15 @@ stats.init = function() {
                         display: true,
                         text: "Winrate",
                     },
+                    afterDataLimits: function(axis) {
+                        let maxDiff = axis.max - 50;
+                        let minDiff = 50 - axis.min;
+                        if (maxDiff > minDiff) {
+                            axis.min = 50 - maxDiff;
+                        } else if (minDiff > maxDiff) {
+                            axis.max = 50 + minDiff;
+                        }
+                    },
                 },
                 y1: {
                     position: "right",
@@ -56,7 +71,18 @@ stats.init = function() {
                         text: "Score",
                     },
                     grid: {
-                        drawOnChartArea: false,
+                        // drawOnChartArea: false,
+                        color: function(context) {
+                            if (context.tick.value == 0) return "#000000";
+                            return "#ffffff";
+                        },
+                    },
+                    afterDataLimits: function(axis) {
+                        if (axis.max > axis.min * -1) {
+                            axis.min = axis.max * -1;
+                        } else if (axis.min * -1 > axis.max) {
+                            axis.max = axis.min * -1;
+                        }
                     },
                 },
             },
@@ -89,8 +115,15 @@ stats.init = function() {
 
 stats.updateScore = function(suggestion) {
     stats.scoreChartLabels.push(board.getMoveNumber());
-    stats.scoreChartWinrate.push(suggestion.winrate.toFixed(2));
-    stats.scoreChartScore.push(suggestion.scoreLead.toFixed(1));
+
+    let winrate = suggestion.winrate.toFixed(2);
+    winrate = board.lastColor() == -1 ? winrate : 100 - winrate;
+    stats.scoreChartWinrate.push(winrate);
+
+    let score = suggestion.scoreLead.toFixed(1);
+    score = board.lastColor() == -1 ? score : score * -1;
+    stats.scoreChartScore.push(score);
+
     stats.scoreChart.update();
 };
 
