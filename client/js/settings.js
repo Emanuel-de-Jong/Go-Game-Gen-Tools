@@ -96,4 +96,8 @@ settings.komiElement.addEventListener("input", () => {
     server.setKomi();
 });
 
+settings.handicapElement.addEventListener("input", () => {
+    board.setHandicap();
+});
+
 settings.update();

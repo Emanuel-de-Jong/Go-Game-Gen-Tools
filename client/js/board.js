@@ -37,7 +37,7 @@ board.init = async function() {
 
 	board.lastMove = board.editor.getCurrent();
 
-	await board.setHandicap();
+	await board.placeHandicap();
 };
 
 board.fillCorners = function() {
@@ -116,6 +116,10 @@ board.setKomi = function() {
 	board.editor.setGameInfo(settings.komi + "", "KM");
 };
 
+board.setHandicap = function() {
+	board.editor.setGameInfo(settings.handicap + "", "HA");
+};
+
 board.play = async function(suggestion, tool = "auto") {
 	board.draw(suggestion.coord, tool);
 	stats.updateScoreChart(suggestion);
@@ -173,7 +177,7 @@ board.getMarkupCoord = function() {
 	);
 };
 
-board.setHandicap = async function() {
+board.placeHandicap = async function() {
 	let placement = {
 		19: {
 			0: [],

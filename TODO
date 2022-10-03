@@ -9,8 +9,8 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
-        - start with empty sgf for right komi and player names/ranks
-        - when loading a sgf, use its ruleset and komi
+        - set board ruleset, names, etc.
+        - when loading a sgf, use its ruleset, komi, etc.
         - options live update on change
         - keep suggestion and visits history
         - update score with AI correction disabled
