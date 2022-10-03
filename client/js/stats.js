@@ -15,93 +15,95 @@ stats.visitsElement = document.getElementById("visits");
 stats.resultDivElement = document.getElementById("resultDiv");
 stats.resultElement = document.getElementById("result");
 
+stats.scoreChart = new Chart(stats.scoreChartElement, {
+    type: "line",
+    data: {
+        datasets: [
+            {
+                label: "Winrate",
+                pointRadius: 1,
+                borderColor: "rgb(0, 255, 0)",
+                backgroundColor: "rgba(0, 255, 0, 0.3)",
+                // fill: {
+                //     target: { value: 50 },
+                // },
+            },
+            {
+                label: "Score",
+                yAxisID: 'y1',
+                pointRadius: 1,
+                borderColor: "rgb(0, 0, 255)",
+                backgroundColor: "rgba(0, 0, 255, 0.3)",
+                // fill: {
+                //     target: { value: 0 },
+                // },
+            },
+        ],
+    },
+    options: {
+        responsive: true,
+        // plugins: {
+        //     title: {
+        //         display: true,
+        //         text: "Black",
+        //     },
+        // },
+        interaction: {
+            intersect: false,
+        },
+        animation: {
+            duration: 0,
+        },
+        scales: {
+            y: {
+                suggestedMin: 45,
+                suggestedMax: 55,
+                title: {
+                    display: true,
+                    text: "Winrate",
+                },
+                afterDataLimits: function(axis) {
+                    let maxDiff = axis.max - 50;
+                    let minDiff = 50 - axis.min;
+                    if (maxDiff > minDiff) {
+                        axis.min = 50 - maxDiff;
+                    } else if (minDiff > maxDiff) {
+                        axis.max = 50 + minDiff;
+                    }
+                },
+            },
+            y1: {
+                position: "right",
+                suggestedMin: -2,
+                suggestedMax: 2,
+                title: {
+                    display: true,
+                    text: "Score",
+                },
+                grid: {
+                    // drawOnChartArea: false,
+                    color: function(context) {
+                        if (context.tick.value == 0) return "#000000";
+                        return "#ffffff";
+                    },
+                },
+                afterDataLimits: function(axis) {
+                    if (axis.max > axis.min * -1) {
+                        axis.min = axis.max * -1;
+                    } else if (axis.min * -1 > axis.max) {
+                        axis.max = axis.min * -1;
+                    }
+                },
+            },
+        },
+    },
+});
+stats.scoreChartLabels = stats.scoreChart.data.labels;
+stats.scoreChartWinrate = stats.scoreChart.data.datasets[0].data;
+stats.scoreChartScore = stats.scoreChart.data.datasets[1].data;
+
 stats.init = function() {
-    stats.scoreChart = new Chart(stats.scoreChartElement, {
-        type: "line",
-        data: {
-            datasets: [
-                {
-                    label: "Winrate",
-                    pointRadius: 1,
-                    borderColor: "rgb(0, 255, 0)",
-                    backgroundColor: "rgba(0, 255, 0, 0.3)",
-                    // fill: {
-                    //     target: { value: 50 },
-                    // },
-                },
-                {
-                    label: "Score",
-                    yAxisID: 'y1',
-                    pointRadius: 1,
-                    borderColor: "rgb(0, 0, 255)",
-                    backgroundColor: "rgba(0, 0, 255, 0.3)",
-                    // fill: {
-                    //     target: { value: 0 },
-                    // },
-                },
-            ],
-        },
-        options: {
-            responsive: true,
-            // plugins: {
-            //     title: {
-            //         display: true,
-            //         text: "Black",
-            //     },
-            // },
-            interaction: {
-                intersect: false,
-            },
-            animation: {
-                duration: 0,
-            },
-            scales: {
-                y: {
-                    suggestedMin: 45,
-                    suggestedMax: 55,
-                    title: {
-                        display: true,
-                        text: "Winrate",
-                    },
-                    afterDataLimits: function(axis) {
-                        let maxDiff = axis.max - 50;
-                        let minDiff = 50 - axis.min;
-                        if (maxDiff > minDiff) {
-                            axis.min = 50 - maxDiff;
-                        } else if (minDiff > maxDiff) {
-                            axis.max = 50 + minDiff;
-                        }
-                    },
-                },
-                y1: {
-                    position: "right",
-                    suggestedMin: -2,
-                    suggestedMax: 2,
-                    title: {
-                        display: true,
-                        text: "Score",
-                    },
-                    grid: {
-                        // drawOnChartArea: false,
-                        color: function(context) {
-                            if (context.tick.value == 0) return "#000000";
-                            return "#ffffff";
-                        },
-                    },
-                    afterDataLimits: function(axis) {
-                        if (axis.max > axis.min * -1) {
-                            axis.min = axis.max * -1;
-                        } else if (axis.min * -1 > axis.max) {
-                            axis.max = axis.min * -1;
-                        }
-                    },
-                },
-            },
-        },
-    });
-    stats.scoreChartLabels = stats.scoreChart.data.labels;
-    stats.scoreChartWinrate = stats.scoreChart.data.datasets[0].data;
-    stats.scoreChartScore = stats.scoreChart.data.datasets[1].data;
+    stats.clearScoreChart();
 
     stats.total = 0;
 
@@ -206,4 +208,11 @@ stats.updateResult = function(suggestion) {
         text = utils.colorNumToName(suggestion.color * -1) + "+" + (suggestion.scoreLead * -1);
     }
     stats.resultElement.innerHTML = text;
+}
+
+stats.clearScoreChart = function() {
+    stats.scoreChartLabels.length = 0;
+    stats.scoreChartWinrate.length = 0;
+    stats.scoreChartScore.length = 0;
+    stats.scoreChart.update();
 }

@@ -87,6 +87,8 @@ custom.boardEditorListener = async function(event) {
 			custom.isJumped = true;
 			custom.isFinished = false;
 
+			stats.clearScoreChart();
+
 			board.disableNextButton();
 			custom.givePlayerControl();
 		}
@@ -176,9 +178,6 @@ custom.botTurn = async function() {
 
 custom.restartButton.addEventListener("click", async () => {
 	settings.update();
-
-	stats.scoreChart.destroy();
-	
 	await custom.init();
 });
 

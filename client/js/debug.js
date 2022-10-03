@@ -1,6 +1,7 @@
 var debug = {};
 
 debug.autoPlayCheckbox = document.getElementById("autoPlay");
+debug.testButton = document.getElementById("test");
 
 debug.autoPlay = function() {
     document.addEventListener("suggestionReady", () => {
@@ -18,6 +19,10 @@ debug.autoPlay = function() {
 
 
 (function () {
+
+    debug.testButton.addEventListener("click", () => {
+        stats.clearScoreChart();
+    });
 
     debug.autoPlay();
 
