@@ -114,7 +114,7 @@ board.getMoves = function() {
 
 board.play = async function(suggestion, tool = "auto") {
 	board.draw(suggestion.coord, tool);
-	stats.updateScore(suggestion);
+	stats.updateScoreChart(suggestion);
 };
 
 board.draw = async function(coord, tool = "auto") {

@@ -18,7 +18,7 @@ stats.init = function() {
         data: {
             datasets: [
                 {
-                    label: "Winrate B",
+                    label: "Winrate",
                     pointRadius: 1,
                     borderColor: "rgb(0, 255, 0)",
                     backgroundColor: "rgba(0, 255, 0, 0.3)",
@@ -27,7 +27,7 @@ stats.init = function() {
                     // },
                 },
                 {
-                    label: "Score B",
+                    label: "Score",
                     yAxisID: 'y1',
                     pointRadius: 1,
                     borderColor: "rgb(0, 0, 255)",
@@ -58,7 +58,7 @@ stats.init = function() {
                     suggestedMax: 55,
                     title: {
                         display: true,
-                        text: "Winrate B",
+                        text: "Winrate",
                     },
                     afterDataLimits: function(axis) {
                         let maxDiff = axis.max - 50;
@@ -76,7 +76,7 @@ stats.init = function() {
                     suggestedMax: 2,
                     title: {
                         display: true,
-                        text: "Score B",
+                        text: "Score",
                     },
                     grid: {
                         // drawOnChartArea: false,
@@ -121,19 +121,37 @@ stats.init = function() {
     stats.visitsElement.innerHTML = "";
 };
 
-stats.updateScore = function(suggestion) {
+stats.updateScoreChart = function(suggestion) {
     stats.scoreChartLabels.push(board.getMoveNumber());
 
     let winrate = suggestion.winrate.toFixed(2);
-    winrate = board.lastColor() == -1 ? winrate : 100 - winrate;
+    winrate = board.lastColor() == settings.scoreChartColorElement.value ? winrate : 100 - winrate;
     stats.scoreChartWinrate.push(winrate);
 
     let score = suggestion.scoreLead.toFixed(1);
-    score = board.lastColor() == -1 ? score : score * -1;
+    score = board.lastColor() == settings.scoreChartColorElement.value ? score : score * -1;
     stats.scoreChartScore.push(score);
 
     stats.scoreChart.update();
 };
+
+settings.scoreChartColorElement.addEventListener("input", () => {
+    for (let i=0; i<stats.scoreChartWinrate.length; i++) {
+        let winrate = stats.scoreChartWinrate[i];
+        if (winrate > 50) {
+            winrate = 50 - (winrate - 50);
+        } else {
+            winrate = 50 + (50 - winrate);
+        }
+        stats.scoreChartWinrate[i] = winrate;
+    }
+
+    for (let i=0; i<stats.scoreChartScore.length; i++) {
+        stats.scoreChartScore[i] = stats.scoreChartScore[i] * -1;
+    }
+
+    stats.scoreChart.update();
+});
 
 stats.updateRatio = function(isRight, isPerfect) {
     stats.total++;

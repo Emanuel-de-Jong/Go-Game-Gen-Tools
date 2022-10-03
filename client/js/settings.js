@@ -7,6 +7,7 @@ settings.SETTINGS = {
     ruleset: utils.TYPES.STRING,
     handicap: utils.TYPES.INT,
     komi: utils.TYPES.FLOAT,
+    scoreChartColor: utils.TYPES.INT,
     preMoves: utils.TYPES.INT,
     preOptions: utils.TYPES.INT,
     moveOptions: utils.TYPES.INT,

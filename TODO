@@ -1,7 +1,6 @@
 CLIENT
     SETTINGS
         - play as both players
-        - Graph color select
         save/load settings
         setting presets
     INFO
