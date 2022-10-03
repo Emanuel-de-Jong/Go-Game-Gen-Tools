@@ -25,17 +25,17 @@ custom.init = async function() {
 	await custom.createPreMoves();
 };
 
-custom.finish = async function() {
+custom.finish = async function(suggestion) {
 	custom.isFinished = true;
 	custom.takePlayerControl();
 	board.disableNextButton();
-	alert("Finished!");
+	stats.updateResult(suggestion);
 };
 
 custom.analyze = async function(color = board.nextColor(), moveOptions = settings.moveOptions) {
 	let suggestions = await server.analyze(color, moveOptions);
-	if (suggestions == "pass") {
-		custom.finish();
+	if (suggestions[0].coord == "pass") {
+		custom.finish(suggestions[0]);
 	}
 	return suggestions;
 };
@@ -49,7 +49,7 @@ custom.playPreMove = async function(color) {
 custom.createPreMoves = async function() {
 	let preMovesLeft = settings.preMoves;
 
-	if (settings.handicap == 0) {
+	if (settings.handicap == 0 && settings.boardsize == 19) {
 		let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
 		let cornerCoords = board.fillCorners();
 		for (let i=0; i<cornerCount; i++) {

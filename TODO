@@ -10,6 +10,7 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL/PERFORMANCE
+        - color in MoveSuggestion
         - fix having to wait after cross twice after jump
         - start with empty sgf for right komi and player names/ranks
         - keep suggestion and visits history

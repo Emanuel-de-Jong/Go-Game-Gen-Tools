@@ -12,6 +12,9 @@ stats.perfectTopStreakElement = document.getElementById("perfectTopStreak");
 
 stats.visitsElement = document.getElementById("visits");
 
+stats.resultDivElement = document.getElementById("resultDiv");
+stats.resultElement = document.getElementById("result");
+
 stats.init = function() {
     stats.scoreChart = new Chart(stats.scoreChartElement, {
         type: "line",
@@ -192,3 +195,15 @@ stats.setVisits = function(suggestions) {
 	}
     stats.visitsElement.innerHTML = visitsHtml;
 };
+
+stats.updateResult = function(suggestion) {
+    stats.resultDivElement.hidden = false;
+
+    let text;
+    if (suggestion.scoreLead >= 0) {
+        text = utils.colorNumToName(board.lastColor()) + " +" + suggestion.scoreLead;
+    } else {
+        text = utils.colorNumToName(board.lastColor() * -1) + " +" + (suggestion.scoreLead * -1);
+    }
+    stats.resultElement.innerHTML = text;
+}

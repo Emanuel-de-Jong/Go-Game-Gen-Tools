@@ -33,6 +33,8 @@ server.coordNumToName = function(numCoord) {
 };
 
 server.coordNameToNum = function(nameCoord) {
+    if (nameCoord == "pass") return nameCoord;
+
     let xConvert = {
         "A": 1,
         "B": 2,
@@ -60,10 +62,6 @@ server.coordNameToNum = function(nameCoord) {
     let x = xConvert[nameCoord[0]];
     let y = settings.boardsize + 1 - parseInt(nums[0]);
     return new Coord(x, y);
-};
-
-server.colorNumToName = function(num) {
-    return num == 1 ? "W" : "B";
 };
 
 server.init = async function() {
@@ -130,7 +128,7 @@ server.setBoard = async function() {
     let serverMoves = [];
     moves.forEach(move => {
         serverMoves.push({
-            color: server.colorNumToName(move.color),
+            color: utils.colorNumToName(move.color),
             coord: server.coordNumToName(move.coord)
         });
     });
@@ -149,7 +147,7 @@ server.setBoard = async function() {
 
 server.analyze = async function(color, moveOptions) {
     // console.log("analyze " + color);
-    return fetch(server.URL + "analyze?color=" + server.colorNumToName(color) + "&moveOptions=" + moveOptions + "&minimumVisits=" + settings.minimumVisits, {
+    return fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) + "&moveOptions=" + moveOptions + "&minimumVisits=" + settings.minimumVisits, {
         method: "POST" })
         .then(response => response.json())
         .then(suggestionArr => {
@@ -160,7 +158,6 @@ server.analyze = async function(color, moveOptions) {
                 if (isPassed) return;
                 if (suggestion.coord == "pass") {
                     isPassed = true;
-                    return;
                 }
 
                 nameCoords.push(suggestion.coord);
@@ -174,7 +171,6 @@ server.analyze = async function(color, moveOptions) {
 
             console.log(nameCoords);
 
-            if (isPassed) return "pass";
             return suggestions;
         })
         .catch(error => {
@@ -184,7 +180,7 @@ server.analyze = async function(color, moveOptions) {
 
 server.play = async function(color, coord) {
     // console.log("play " + color + " " + server.coordNumToName(coord));
-    return fetch(server.URL + "play?color=" + server.colorNumToName(color) + "&coord=" + server.coordNumToName(coord), {
+    return fetch(server.URL + "play?color=" + utils.colorNumToName(color) + "&coord=" + server.coordNumToName(coord), {
         method: "GET" })
         .then(response => {
             return response;
