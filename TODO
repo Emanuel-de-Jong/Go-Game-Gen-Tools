@@ -8,16 +8,13 @@ CLIENT
         tooltips
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
-    QOL/PERFORMANCE
-        - fix having to wait after cross twice after jump
+    QOL
         - start with empty sgf for right komi and player names/ranks
-        - keep suggestion and visits history
-        - analyze next black while waiting on next button click
-        - don't get bestcoord on tree jump
         - when loading a sgf, use its ruleset and komi
+        - options live update on change
+        - keep suggestion and visits history
         - update score with AI correction disabled
         - update score with handicap/corners
-        - options live update on change
         retry server request on error
     VISUAL
         - show visits on board
@@ -30,6 +27,12 @@ SERVER
     multiple users
     rate limit calls to server
     restart server when something goes wrong
+
+CODE QUALITY/BUGS
+    - refactor
+    - analyze next black while waiting on next button click
+    - don't get bestcoord on tree jump
+    - fix having to wait after cross twice after jump
 
 FAR FUTURE
     add besogo and katago credits

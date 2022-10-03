@@ -53,12 +53,6 @@ settings.getSetting = function(name) {
     settings[name] = value;
 }
 
-// settings.skipNextButtonElement.addEventListener("input", (event) => {
-//     if (event.target.checked) {
-//         board.disableNextButton();
-//     }
-// });
-
 settings.validateInput = function(input) {
     let valid = input.validity.valid;
     if (valid) {
@@ -95,6 +89,11 @@ utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings s
     if (settings.validateInput(element)) {
         settings.getSetting(element.id);
     }
+});
+
+settings.komiElement.addEventListener("input", () => {
+    board.setKomi();
+    server.setKomi();
 });
 
 settings.update();

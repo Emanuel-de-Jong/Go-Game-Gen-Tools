@@ -21,7 +21,7 @@ debug.autoPlay = function() {
 (function () {
 
     debug.testButton.addEventListener("click", () => {
-        stats.clearScoreChart();
+        console.log();
     });
 
     debug.autoPlay();

@@ -112,6 +112,10 @@ board.getMoves = function() {
 	return moves;
 };
 
+board.setKomi = function() {
+	board.editor.setGameInfo(settings.komi + "", "KM");
+};
+
 board.play = async function(suggestion, tool = "auto") {
 	board.draw(suggestion.coord, tool);
 	stats.updateScoreChart(suggestion);
