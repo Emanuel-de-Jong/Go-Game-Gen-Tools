@@ -93,7 +93,7 @@ public class Kata {
                 }
                 suggestion = new MoveSuggestion();
             } else if (element.equals("move")) {
-                suggestion.coord = analysis[i+1];
+                suggestion.move = new Move(color, analysis[i+1]);
             } else if (element.equals("visits")) {
                 suggestion.visits = Integer.parseInt(analysis[i+1]);
             } else if (element.equals("winrate")) {

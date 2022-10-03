@@ -11,6 +11,10 @@ utils.colorNumToName = function(num) {
     return num == 1 ? "W" : "B";
 };
 
+utils.colorNameToNum = function(name) {
+    return name == "W" ? 1 : -1;
+};
+
 // 0 to (max-1)
 utils.randomInt = function(max) {
 	return Math.floor(Math.random() * max);

@@ -10,7 +10,14 @@ public class Move {
     public String color;
 
     @NotBlank
-    @Pattern(regexp="([A-H]|[J-T])(1[0-9]|[1-9])")
+    @Pattern(regexp="([A-H]|[J-T])(1[0-9]|[1-9])|pass")
     public String coord;
+
+    public Move() {}
+
+    public Move(String color, String coord) {
+        this.color = color;
+        this.coord = coord;
+    }
 
 }

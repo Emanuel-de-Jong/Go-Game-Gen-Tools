@@ -128,11 +128,11 @@ stats.updateScoreChart = function(suggestion) {
     stats.scoreChartLabels.push(board.getMoveNumber());
 
     let winrate = suggestion.winrate;
-    winrate = board.lastColor() == settings.scoreChartColorElement.value ? winrate : 100 - winrate;
+    winrate = suggestion.color == settings.scoreChartColorElement.value ? winrate : 100 - winrate;
     stats.scoreChartWinrate.push(winrate);
 
     let score = suggestion.scoreLead;
-    score = board.lastColor() == settings.scoreChartColorElement.value ? score : score * -1;
+    score = suggestion.color == settings.scoreChartColorElement.value ? score : score * -1;
     stats.scoreChartScore.push(score);
 
     stats.scoreChart.update();
@@ -201,9 +201,9 @@ stats.updateResult = function(suggestion) {
 
     let text;
     if (suggestion.scoreLead >= 0) {
-        text = utils.colorNumToName(board.lastColor()) + " +" + suggestion.scoreLead;
+        text = utils.colorNumToName(suggestion.color) + "+" + suggestion.scoreLead;
     } else {
-        text = utils.colorNumToName(board.lastColor() * -1) + " +" + (suggestion.scoreLead * -1);
+        text = utils.colorNumToName(suggestion.color * -1) + "+" + (suggestion.scoreLead * -1);
     }
     stats.resultElement.innerHTML = text;
 }

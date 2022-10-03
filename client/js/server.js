@@ -156,20 +156,22 @@ server.analyze = async function(color, moveOptions) {
             let isPassed = false;
             suggestionArr.forEach(suggestion => {
                 if (isPassed) return;
-                if (suggestion.coord == "pass") {
+                if (suggestion.move.coord == "pass") {
                     isPassed = true;
                 }
 
-                nameCoords.push(suggestion.coord);
+                nameCoords.push(suggestion.move.coord);
 
                 suggestions.push(new MoveSuggestion(
-                    server.coordNameToNum(suggestion.coord),
+                    utils.colorNameToNum(suggestion.move.color),
+                    server.coordNameToNum(suggestion.move.coord),
                     suggestion.visits,
                     suggestion.winrate,
                     suggestion.scoreLead));
             });
 
             console.log(nameCoords);
+            // console.log(suggestions);
 
             return suggestions;
         })
