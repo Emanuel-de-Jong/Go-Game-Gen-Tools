@@ -169,8 +169,7 @@ server.analyze = async function(color, moveOptions) {
                     server.coordNameToNum(suggestion.coord),
                     suggestion.visits,
                     suggestion.winrate,
-                    suggestion.scoreLead,
-                    suggestion.scoreStdev));
+                    suggestion.scoreLead));
             });
 
             console.log(nameCoords);

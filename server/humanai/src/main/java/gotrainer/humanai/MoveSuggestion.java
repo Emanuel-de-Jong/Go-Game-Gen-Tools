@@ -6,7 +6,6 @@ public class MoveSuggestion {
     public int visits;
     public float winrate;
     public float scoreLead;
-    public float scoreStdev;
 
 
     public MoveSuggestion() {}
@@ -16,7 +15,6 @@ public class MoveSuggestion {
         this.visits = visits;
         this.winrate = winrate;
         this.scoreLead = scoreLead;
-        this.scoreStdev = scoreStdev;
     }
 
 }

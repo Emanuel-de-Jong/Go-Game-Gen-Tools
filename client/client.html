@@ -27,6 +27,12 @@
                 <div class="col">
                     <div id="stats">
                         <div>
+                            <div>
+                                <select class="form-select" id="scoreChartColor">
+                                    <option value="-1">Black</option>
+                                    <option value="1">White</option>
+                                </select>
+                            </div>
                             <canvas id="scoreChart"></canvas>
                         </div>
                         <div>
@@ -75,12 +81,12 @@
                                 <div>
                                     <div class="row">
                                         <div class="col-6">
-                                            <label for="preStrength" class="form-label">Pre strength</label>
+                                            <label for="preStrength" class="form-label">Pre move strength</label>
                                             <input type="number" class="form-control" id="preStrength" value="1000" min="1" max="5000" disabled>
                                         </div>
                                         <div class="col-6">
-                                            <label for="postStrength" class="form-label">Post strength</label>
-                                            <input type="number" class="form-control" id="postStrength" value="2000" min="1" max="5000" disabled>
+                                            <label for="selfplayStrength" class="form-label">Selfplay strength</label>
+                                            <input type="number" class="form-control" id="selfplayStrength" value="2000" min="1" max="5000" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -158,13 +164,6 @@
                                             <input type="number" class="form-control" id="komi" value="6.5" step="0.5" min="-150" max="150">
                                         </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <label for="scoreChartColor" class="form-label">Chart color</label>
-                                    <select class="form-select" id="scoreChartColor">
-                                        <option value="-1">Black</option>
-                                        <option value="1">White</option>
-                                    </select>
                                 </div>
                                 <div>
                                     <div class="form-check">

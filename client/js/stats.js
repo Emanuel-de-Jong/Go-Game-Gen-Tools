@@ -124,11 +124,11 @@ stats.init = function() {
 stats.updateScoreChart = function(suggestion) {
     stats.scoreChartLabels.push(board.getMoveNumber());
 
-    let winrate = suggestion.winrate.toFixed(2);
+    let winrate = suggestion.winrate;
     winrate = board.lastColor() == settings.scoreChartColorElement.value ? winrate : 100 - winrate;
     stats.scoreChartWinrate.push(winrate);
 
-    let score = suggestion.scoreLead.toFixed(1);
+    let score = suggestion.scoreLead;
     score = board.lastColor() == settings.scoreChartColorElement.value ? score : score * -1;
     stats.scoreChartScore.push(score);
 

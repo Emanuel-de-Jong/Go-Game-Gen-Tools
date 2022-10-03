@@ -12,7 +12,7 @@ settings.SETTINGS = {
     preOptions: utils.TYPES.INT,
     moveOptions: utils.TYPES.INT,
     preStrength: utils.TYPES.INT,
-    postStrength: utils.TYPES.INT,
+    selfplayStrength: utils.TYPES.INT,
     suggestionStrength: utils.TYPES.INT,
     opponentStrength: utils.TYPES.INT,
     minimumVisits: utils.TYPES.INT,

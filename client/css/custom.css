@@ -50,6 +50,10 @@ main {
     margin-bottom: 40px;
 }
 
+#stats #scoreChartColor {
+    max-width: 163px;
+}
+
 
 #settings {
     width: 450px;

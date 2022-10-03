@@ -76,6 +76,8 @@ public class Kata {
         String[] analysis = reader.readLine().split(" ");
         clearReader();
 
+//        System.out.println(Arrays.toString(analysis));
+
         write("undo");
         clearReader();
 
@@ -95,11 +97,9 @@ public class Kata {
             } else if (element.equals("visits")) {
                 suggestion.visits = Integer.parseInt(analysis[i+1]);
             } else if (element.equals("winrate")) {
-                suggestion.winrate = Float.parseFloat(analysis[i+1]) * 100;
+                suggestion.winrate = Math.round(Float.parseFloat(analysis[i+1]) * 10000) / 100f;
             } else if (element.equals("scoreLead")) {
-                suggestion.scoreLead = Float.parseFloat(analysis[i+1]);
-            } else if (element.equals("scoreStdev")) {
-                suggestion.scoreStdev = Float.parseFloat(analysis[i+1]);
+                suggestion.scoreLead = Math.round(Float.parseFloat(analysis[i+1]) * 10) / 10f;
             }
         }
 
