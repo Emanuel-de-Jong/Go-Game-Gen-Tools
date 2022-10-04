@@ -10,6 +10,17 @@ class SGF {
 		this.setPlayers();
 		this.setHandicap();
 		this.setKomi();
+		
+		board.editor.sgfLoadedEvent = new Event("sgfLoadedEvent");
+		besogo.loadSgf = (function() {
+			let cachedFunction = besogo.loadSgf;
+			
+			return function() {
+				cachedFunction.apply(this, arguments);
+				let editor = arguments[1];
+				document.dispatchEvent(editor.sgfLoadedEvent);
+			}
+		})();
 
 		document.addEventListener("sgfLoadedEvent", () => {
 			let gameInfo = board.editor.getGameInfo();
