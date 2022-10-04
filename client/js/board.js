@@ -46,29 +46,31 @@ board.init = async function() {
 
 board.fillCorners = function() {
 	let cornerOptions = [
-		[ {x:3,y:3}, {x:3,y:4}, {x:4,y:3}, {x:4,y:4} ],
-		[ {x:17,y:3}, {x:17,y:4}, {x:16,y:3}, {x:16,y:4} ],
-		[ {x:3,y:17}, {x:3,y:16}, {x:4,y:17}, {x:4,y:16} ],
-		[ {x:17,y:17}, {x:17,y:16}, {x:16,y:17}, {x:16,y:16} ],
+		{ c44: {x:4,y:4}, c34: {x:3,y:4}, c43: {x:4,y:3}, c33: {x:3,y:3}, c45: {x:4,y:5}, c54: {x:5,y:4}, c35: {x:3,y:5}, c53: {x:5,y:3} },
+		{ c44: {x:16,y:4}, c34: {x:17,y:4}, c43: {x:16,y:3}, c33: {x:17,y:3}, c45: {x:16,y:5}, c54: {x:15,y:4}, c35: {x:17,y:5}, c53: {x:15,y:3} },
+		{ c44: {x:4,y:16}, c34: {x:3,y:16}, c43: {x:4,y:17}, c33: {x:3,y:17}, c45: {x:4,y:15}, c54: {x:5,y:16}, c35: {x:3,y:15}, c53: {x:5,y:17} },
+		{ c44: {x:16,y:16}, c34: {x:17,y:16}, c43: {x:16,y:17}, c33: {x:17,y:17}, c45: {x:16,y:15}, c54: {x:15,y:16}, c35: {x:17,y:15}, c53: {x:15,y:17} },
 	];
 	cornerOptions = utils.shuffleArray(cornerOptions);
 
 	let coords = [];
 	for (let i=0; i<4; i++) {
-		let cornerType;
-		let randomInt = utils.randomInt(11);
-		if (randomInt < 1) { // 3-3 1/11
-			cornerType = 0;
-		} else if (randomInt < 3) { // 3-4 2/11
-			cornerType = 1;
-		} else if (randomInt < 5) { // 4-3 2/11
-			cornerType = 2;
-		} else { // 4-4 6/11
-			cornerType = 3;
+		let rndCornerType = utils.randomInt(31 + 1);
+		let rndCornerSide = utils.randomInt(2);
+		let coord;
+		if (rndCornerType < 15) {
+			coord = cornerOptions[i].c44;
+		} else if (rndCornerType < 25) {
+			coord = rndCornerSide ? cornerOptions[i].c34 : cornerOptions[i].c43;
+		} else if (rndCornerType < 27) {
+			coord = cornerOptions[i].c33;
+		} else if (rndCornerType < 29) {
+			coord = rndCornerSide ? cornerOptions[i].c45 : cornerOptions[i].c54;
+		} else {
+			coord = rndCornerSide ? cornerOptions[i].c35 : cornerOptions[i].c53;
 		}
 
-		coords.push(cornerOptions[i][cornerType]);
-		let color = i % 2 == 0 ? -1 : 1;
+		coords.push(coord);
 	}
 
 	return coords;
