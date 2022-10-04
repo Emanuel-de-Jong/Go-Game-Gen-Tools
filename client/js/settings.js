@@ -101,17 +101,32 @@ utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings s
     }
 });
 
-settings.komiElement.addEventListener("input", () => {
-    board.setKomi();
-    server.setKomi();
+settings.suggestionStrengthElement.addEventListener("input", () => {
+    board.setRankPlayer();
+});
+
+settings.opponentStrengthElement.addEventListener("input", () => {
+    board.setRankAI();
+});
+
+settings.colorElement.addEventListener("input", () => {
+    board.setPlayers();
+    board.setRankPlayer();
+    board.setRankAI();
+});
+
+settings.rulesetElement.addEventListener("input", () => {
+    board.setRuleset();
+    server.setRuleset();
 });
 
 settings.handicapElement.addEventListener("input", () => {
     board.setHandicap();
 });
 
-settings.colorElement.addEventListener("input", () => {
-    board.setPlayers();
+settings.komiElement.addEventListener("input", () => {
+    board.setKomi();
+    server.setKomi();
 });
 
 settings.skipNextButtonElement.addEventListener("input", async () => {

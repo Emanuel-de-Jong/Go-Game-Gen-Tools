@@ -16,9 +16,11 @@ board.init = async function() {
 
 	board.editor = board.element.besogoEditor;
 
-	board.setKomi();
-	board.setHandicap();
+	board.setRankPlayer();
+	board.setRankAI();
 	board.setPlayers();
+	board.setHandicap();
+	board.setKomi();
 	
 	document.querySelector('button[title="Variants: [child]/sibling"]').remove();
 	document.querySelector('button[title="Variants: show/[hide]"]').remove();
@@ -132,17 +134,30 @@ board.getMoves = function() {
 	return moves;
 };
 
-board.setKomi = function() {
-	board.editor.setGameInfo(settings.komi + "", "KM");
+board.setRankPlayer = function() {
+	board.editor.setGameInfo(settings.suggestionStrength + "", utils.colorNumToName(settings.color) + "R");
+};
+
+board.setRankAI = function() {
+	board.editor.setGameInfo(settings.opponentStrength + "", utils.colorNumToName(settings.color * -1) + "R");
+};
+
+
+board.setPlayers = function() {
+	board.editor.setGameInfo("Player", "P" + utils.colorNumToName(settings.color));
+	board.editor.setGameInfo("AI", "P" + utils.colorNumToName(settings.color * -1));
+};
+
+board.setRuleset = function() {
+	board.editor.setGameInfo(settings.ruleset, "RU");
 };
 
 board.setHandicap = function() {
 	board.editor.setGameInfo(settings.handicap + "", "HA");
 };
 
-board.setPlayers = function() {
-	board.editor.setGameInfo("Player", "P" + utils.colorNumToName(settings.color));
-	board.editor.setGameInfo("AI", "P" + utils.colorNumToName(settings.color * -1));
+board.setKomi = function() {
+	board.editor.setGameInfo(settings.komi + "", "KM");
 };
 
 board.play = async function(suggestion, tool = "auto") {

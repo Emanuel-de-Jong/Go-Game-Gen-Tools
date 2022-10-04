@@ -70,7 +70,7 @@ server.init = async function() {
         status = (await server.restart()).status;
     } while (status != 200);
     await server.setBoardsize();
-    await server.setRules();
+    await server.setRuleset();
     await server.setKomi();
 };
 
@@ -98,9 +98,9 @@ server.setBoardsize = async function() {
         });
 };
 
-server.setRules = async function() {
-    // console.log("setRules");
-    return fetch(server.URL + "setrules?ruleset=" + settings.ruleset, {
+server.setRuleset = async function() {
+    // console.log("setRuleset");
+    return fetch(server.URL + "setruleset?ruleset=" + settings.ruleset, {
         method: "GET" })
         .then(response => {
             return response;
