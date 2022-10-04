@@ -10,6 +10,7 @@ CLIENT
         server unreachable alert
     QOL
         - when loading a sgf, use its ruleset, komi, etc.
+        - ask if the values of the loaded sgf should be used
         - options live update on change
         - keep suggestion and visits history
         - update score with AI correction disabled

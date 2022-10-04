@@ -11,7 +11,13 @@ class SGF {
 		this.setHandicap();
 		this.setKomi();
 
-		
+		document.addEventListener("sgfLoadedEvent", () => {
+			let gameInfo = board.editor.getGameInfo();
+
+			if (settings.komi != gameInfo.KM) {
+				settings.setSetting("komi", parseFloat(gameInfo.KM));
+			}
+		});
     }
 
     setRankPlayer() {

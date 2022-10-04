@@ -42,6 +42,7 @@ besogo.create = function(container, options) {
 
     // Make the core editor object
     editor = besogo.makeEditor(options.size.x, options.size.y);
+    editor.sgfLoadedEvent = new Event("sgfLoadedEvent");
     container.besogoEditor = editor;
     editor.setTool(options.tool);
     editor.setCoordStyle(options.coord);
@@ -2551,6 +2552,7 @@ besogo.loadSgf = function(sgf, editor) {
     loadNodeTree(sgf, root); // Load the rest of game tree
     editor.loadRoot(root); // Load root into the editor
 
+    document.dispatchEvent(editor.sgfLoadedEvent);
 
     // Loads the game tree
     function loadNodeTree(sgfNode, gameNode) {

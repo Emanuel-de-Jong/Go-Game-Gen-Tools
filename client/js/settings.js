@@ -35,16 +35,16 @@ for (const name of Object.keys(settings.SETTINGS)) {
 }
 
 settings.update = function() {
-    settings.getSettings();
+    settings.updateSettings();
 };
 
-settings.getSettings = function() {
+settings.updateSettings = function() {
     for (const name of Object.keys(settings.SETTINGS)) {
-        settings.getSetting(name);
+        settings.updateSetting(name);
     }
 };
 
-settings.getSetting = function(name) {
+settings.updateSetting = function(name) {
     let type = settings.SETTINGS[name];
 
     let element = settings[name + "Element"];
@@ -61,6 +61,11 @@ settings.getSetting = function(name) {
     }
     
     settings[name] = value;
+}
+
+settings.setSetting = function(name, value) {
+    settings[name + "Element"].value = value;
+    settings[name + "Element"].dispatchEvent(new Event("input"));
 }
 
 settings.validateInput = function(input) {
@@ -97,7 +102,7 @@ utils.querySelectorAlls(["input", "select"]).forEach(input => {
 utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", (event) => {
     let element = event.target;
     if (settings.validateInput(element)) {
-        settings.getSetting(element.id);
+        settings.updateSetting(element.id);
     }
 });
 
