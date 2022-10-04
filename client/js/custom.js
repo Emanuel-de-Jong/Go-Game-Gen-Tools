@@ -32,8 +32,8 @@ custom.finish = async function(suggestion) {
 	stats.updateResult(suggestion);
 };
 
-custom.analyze = async function(color = board.nextColor(), moveOptions = settings.moveOptions) {
-	let suggestions = await server.analyze(color, moveOptions);
+custom.analyze = async function(maxVisits = settings.suggestionStrength, color = board.nextColor(), moveOptions = settings.moveOptions) {
+	let suggestions = await server.analyze(maxVisits, color, moveOptions);
 	if (suggestions[0].coord == "pass") {
 		custom.finish(suggestions[0]);
 	}
@@ -41,7 +41,7 @@ custom.analyze = async function(color = board.nextColor(), moveOptions = setting
 };
 
 custom.playPreMove = async function(color) {
-	let suggestions = await custom.analyze(color, settings.preOptions);
+	let suggestions = await custom.analyze(settings.preStrength, color, settings.preOptions);
 	if (custom.isFinished) return;
 	await board.play(suggestions[utils.randomInt(suggestions.length)]);
 };
@@ -118,7 +118,7 @@ custom.getBestSuggestions = async function() {
 };
 
 custom.getOpponentBestSuggestions = function() {
-	custom.opponentBestSuggestionsPromise = custom.analyze();
+	custom.opponentBestSuggestionsPromise = custom.analyze(settings.opponentStrength);
 };
 
 custom.playerTurn = async function() {
@@ -202,7 +202,7 @@ custom.selfplayButton.addEventListener("click", custom.selfplayButtonClickListen
 
 custom.selfplay = async function() {
 	while (custom.isSelfplay || settings.color != board.nextColor()) {
-		let suggestions = await custom.analyze();
+		let suggestions = await custom.analyze(settings.selfplayStrength);
 		if (custom.isFinished) {
 			custom.isSelfplay = false;
 			custom.selfplayButton.innerHTML = "Start selfplay";

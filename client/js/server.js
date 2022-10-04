@@ -76,7 +76,7 @@ server.init = async function() {
 
 server.restart = async function() {
     // console.log("restart");
-    return fetch(server.URL + "restart?maxVisits=" + settings.suggestionStrength, {
+    return fetch(server.URL + "restart", {
         method: "GET" })
         .then(response => {
             return response;
@@ -145,9 +145,12 @@ server.setBoard = async function() {
         });
 };
 
-server.analyze = async function(color, moveOptions) {
+server.analyze = async function(maxVisits, color, moveOptions) {
     // console.log("analyze " + color);
-    return fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) + "&moveOptions=" + moveOptions + "&minimumVisits=" + settings.minimumVisits, {
+    return fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) +
+            "&moveOptions=" + moveOptions +
+            "&maxVisits=" + maxVisits +
+            "&minimumVisits=" + settings.minimumVisits, {
         method: "POST" })
         .then(response => response.json())
         .then(suggestionArr => {

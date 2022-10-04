@@ -27,10 +27,9 @@ public class KataController {
 
     @GetMapping("/restart")
     @ResponseBody
-    public void getRestart(HttpServletRequest request, @RequestParam @Min(1) @Max(5000) int maxVisits) throws Exception {
-//        System.out.println(request.getHeader("Host"));
+    public void getRestart(HttpServletRequest request) throws Exception {
         System.out.println("restart");
-        kata.restart(maxVisits);
+        kata.restart();
     }
 
     @GetMapping("/setboardsize")
@@ -60,9 +59,10 @@ public class KataController {
     @PostMapping("/analyze")
     public List<MoveSuggestion> postAnalyze(@RequestParam @Pattern(regexp="(B|W)") String color,
                                             @RequestParam @Min(1) @Max(25) int moveOptions,
+                                            @RequestParam @Min(1) @Max(5000) int maxVisits,
                                             @RequestParam @Min(0) @Max(5000) int minimumVisits) throws Exception {
 //         System.out.println("analyze " + color);
-        return kata.analyze(color, moveOptions, minimumVisits);
+        return kata.analyze(color, moveOptions, maxVisits, minimumVisits);
     }
 
 

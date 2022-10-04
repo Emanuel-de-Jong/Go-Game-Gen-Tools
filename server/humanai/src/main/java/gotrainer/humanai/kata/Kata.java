@@ -15,13 +15,14 @@ public class Kata {
     public BufferedReader reader;
     public BufferedWriter writer;
 
+    private int lastMaxVisits = 0;
+
     public Kata() throws Exception {
-        start(1000);
+        start();
     }
 
-    private void start(int maxVisits) throws Exception {
-        ProcessBuilder processBuilder = new ProcessBuilder("katago\\katago.exe", "gtp",
-                "-override-config", "maxVisits=" + maxVisits);
+    private void start() throws Exception {
+        ProcessBuilder processBuilder = new ProcessBuilder("katago\\katago.exe", "gtp");
         processBuilder.redirectErrorStream(true);
         process = processBuilder.start();
 
@@ -42,9 +43,9 @@ public class Kata {
         clearReader();
     }
 
-    public void restart(int maxVisits) throws Exception {
+    public void restart() throws Exception {
         write("quit");
-        start(maxVisits);
+        start();
     }
 
     public void setBoardsize(int boardsize) throws Exception {
@@ -70,7 +71,13 @@ public class Kata {
         }
     }
 
-    public List<MoveSuggestion> analyze(String color, int moveOptions, int minimumVisits) throws Exception {
+    public List<MoveSuggestion> analyze(String color, int moveOptions, int maxVisits, int minimumVisits) throws Exception {
+        if (lastMaxVisits != maxVisits) {
+            lastMaxVisits = maxVisits;
+            write("kata-set-param maxVisits " + maxVisits);
+            clearReader();
+        }
+
         write("kata-genmove_analyze " + color + " minmoves " + moveOptions + " maxmoves " + moveOptions);
         reader.readLine(); // Ignore '= '
         String[] analysis = reader.readLine().split(" ");
@@ -87,7 +94,7 @@ public class Kata {
             String element = analysis[i];
             if (element.equals("info")) {
                 if (suggestion != null) {
-                    if (suggestion.visits >= minimumVisits) {
+                    if (suggestion.visits >= minimumVisits || suggestions.size() == 0) {
                         suggestions.add(suggestion);
                     }
                 }
