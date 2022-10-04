@@ -50,11 +50,17 @@ custom.createPreMoves = async function() {
 	let preMovesLeft = settings.preMoves;
 
 	if (settings.handicap == 0 && settings.boardsize == 19) {
-		let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
-		let cornerCoords = board.fillCorners();
-		for (let i=0; i<cornerCount; i++) {
-			await board.draw(cornerCoords[i]);
-			preMovesLeft--;
+		if (settings.cornerSwitch44 ||
+				settings.cornerSwitch34 ||
+				settings.cornerSwitch33 ||
+				settings.cornerSwitch45 ||
+				settings.cornerSwitch35) {
+			let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
+			let cornerCoords = board.fillCorners();
+			for (let i=0; i<cornerCount; i++) {
+				await board.draw(cornerCoords[i]);
+				preMovesLeft--;
+			}
 		}
 	}
 
@@ -153,7 +159,6 @@ custom.playerTurn = async function() {
 
 	custom.getOpponentBestSuggestions();
 
-	board.drawCoords(custom.bestSuggestions);
 	if (!isRightChoice) {
 		await board.draw(markupCoord, "cross");
 	}
@@ -162,6 +167,7 @@ custom.playerTurn = async function() {
 	stats.setVisits(custom.bestSuggestions);
 
 	if (!settings.skipNextButton) {
+		board.drawCoords(custom.bestSuggestions);
 		board.enableNextButton();
 	} else {
 		await custom.nextButtonClickListener();
@@ -171,6 +177,11 @@ custom.playerTurn = async function() {
 custom.botTurn = async function() {
 	let suggestions = await custom.opponentBestSuggestionsPromise;
 	if (custom.isFinished) return;
+
+	if (settings.skipNextButton) {
+		board.drawCoords(custom.bestSuggestions);
+	}
+	
 	await board.play(suggestions[0]);
 
 	await custom.getBestSuggestions();

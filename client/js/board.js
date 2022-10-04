@@ -54,19 +54,33 @@ board.fillCorners = function() {
 	cornerOptions = utils.shuffleArray(cornerOptions);
 
 	let coords = [];
+	let totalCornerChance = (settings.cornerSwitch44 ? settings.cornerChance44 : 0) +
+		(settings.cornerSwitch34 ? settings.cornerChance34 : 0) +
+		(settings.cornerSwitch33 ? settings.cornerChance33 : 0) +
+		(settings.cornerSwitch45 ? settings.cornerChance45 : 0) +
+		(settings.cornerSwitch35 ? settings.cornerChance35 : 0);
 	for (let i=0; i<4; i++) {
-		let rndCornerType = utils.randomInt(31 + 1);
-		let rndCornerSide = utils.randomInt(2);
 		let coord;
-		if (rndCornerType < 15) {
+		let cornerTypeRange = 0;
+		let rndCornerType = utils.randomInt(totalCornerChance);
+		let rndCornerSide = utils.randomInt(2);
+		if (settings.cornerSwitch44 &&
+				rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance44)) {
 			coord = cornerOptions[i].c44;
-		} else if (rndCornerType < 25) {
+		}
+		else if (settings.cornerSwitch34 &&
+				rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance34)) {
 			coord = rndCornerSide ? cornerOptions[i].c34 : cornerOptions[i].c43;
-		} else if (rndCornerType < 27) {
+		}
+		else if (settings.cornerSwitch33 &&
+				rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance33)) {
 			coord = cornerOptions[i].c33;
-		} else if (rndCornerType < 29) {
+		}
+		else if (settings.cornerSwitch45 &&
+				rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance45)) {
 			coord = rndCornerSide ? cornerOptions[i].c45 : cornerOptions[i].c54;
-		} else {
+		}
+		else {
 			coord = rndCornerSide ? cornerOptions[i].c35 : cornerOptions[i].c53;
 		}
 

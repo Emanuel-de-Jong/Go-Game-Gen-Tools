@@ -18,6 +18,16 @@ settings.SETTINGS = {
     minimumVisits: utils.TYPES.INT,
     disableAICorrection: utils.TYPES.BOOL,
     skipNextButton: utils.TYPES.BOOL,
+    cornerSwitch44: utils.TYPES.BOOL,
+    cornerSwitch34: utils.TYPES.BOOL,
+    cornerSwitch33: utils.TYPES.BOOL,
+    cornerSwitch45: utils.TYPES.BOOL,
+    cornerSwitch35: utils.TYPES.BOOL,
+    cornerChance44: utils.TYPES.INT,
+    cornerChance34: utils.TYPES.INT,
+    cornerChance33: utils.TYPES.INT,
+    cornerChance45: utils.TYPES.INT,
+    cornerChance35: utils.TYPES.INT,
 };
 
 for (const name of Object.keys(settings.SETTINGS)) {

@@ -82,3 +82,12 @@ main {
     color: red;
     font-size: 0.8125rem;
 }
+
+#settings #preCorner input[type=checkbox] {
+    min-width: 16px;
+}
+
+#settings #preCorner input[type=number] {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+}
