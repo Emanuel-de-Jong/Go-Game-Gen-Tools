@@ -16,14 +16,7 @@ board.init = async function() {
 
 	board.editor = board.element.besogoEditor;
 
-	board.editor.setGameInfo(Date(), "DT");
-	board.editor.setGameInfo("GoTrainer-HumanAI", "SO");
-
-	board.setRankPlayer();
-	board.setRankAI();
-	board.setPlayers();
-	board.setHandicap();
-	board.setKomi();
+	board.sgf = new SGF();
 	
 	document.querySelector('button[title="Variants: [child]/sibling"]').remove();
 	document.querySelector('button[title="Variants: show/[hide]"]').remove();
@@ -135,36 +128,6 @@ board.getMoves = function() {
 
 	moves = moves.reverse();
 	return moves;
-};
-
-board.setRankPlayer = function() {
-	board.editor.setGameInfo(settings.suggestionStrength + "", utils.colorNumToName(settings.color) + "R");
-};
-
-board.setRankAI = function() {
-	board.editor.setGameInfo(settings.opponentStrength + "", utils.colorNumToName(settings.color * -1) + "R");
-};
-
-
-board.setPlayers = function() {
-	board.editor.setGameInfo("Player", "P" + utils.colorNumToName(settings.color));
-	board.editor.setGameInfo("AI", "P" + utils.colorNumToName(settings.color * -1));
-};
-
-board.setRuleset = function() {
-	board.editor.setGameInfo(settings.ruleset, "RU");
-};
-
-board.setHandicap = function() {
-	board.editor.setGameInfo(settings.handicap + "", "HA");
-};
-
-board.setKomi = function() {
-	board.editor.setGameInfo(settings.komi + "", "KM");
-};
-
-board.setResult = function(result) {
-	board.editor.setGameInfo(result, "RE");
 };
 
 board.play = async function(suggestion, tool = "auto") {

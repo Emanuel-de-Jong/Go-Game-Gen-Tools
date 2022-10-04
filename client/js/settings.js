@@ -102,30 +102,30 @@ utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings s
 });
 
 settings.suggestionStrengthElement.addEventListener("input", () => {
-    board.setRankPlayer();
+    board.sgf.setRankPlayer();
 });
 
 settings.opponentStrengthElement.addEventListener("input", () => {
-    board.setRankAI();
+    board.sgf.setRankAI();
 });
 
 settings.colorElement.addEventListener("input", () => {
-    board.setPlayers();
-    board.setRankPlayer();
-    board.setRankAI();
+    board.sgf.setPlayers();
+    board.sgf.setRankPlayer();
+    board.sgf.setRankAI();
 });
 
 settings.rulesetElement.addEventListener("input", () => {
-    board.setRuleset();
+    board.sgf.setRuleset();
     server.setRuleset();
 });
 
 settings.handicapElement.addEventListener("input", () => {
-    board.setHandicap();
+    board.sgf.setHandicap();
 });
 
 settings.komiElement.addEventListener("input", () => {
-    board.setKomi();
+    board.sgf.setKomi();
     server.setKomi();
 });
 
