@@ -100,4 +100,16 @@ settings.handicapElement.addEventListener("input", () => {
     board.setHandicap();
 });
 
+settings.colorElement.addEventListener("input", () => {
+    board.setPlayers();
+});
+
+settings.skipNextButtonElement.addEventListener("input", async () => {
+    if (settings.skipNextButtonElement.checked) {
+        if (!board.nextButton.disabled) {
+            board.nextButton.click();
+        }
+    }
+});
+
 settings.update();

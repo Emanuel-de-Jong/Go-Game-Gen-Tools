@@ -15,6 +15,10 @@ board.init = async function() {
 	});
 
 	board.editor = board.element.besogoEditor;
+
+	board.setKomi();
+	board.setHandicap();
+	board.setPlayers();
 	
 	document.querySelector('button[title="Variants: [child]/sibling"]').remove();
 	document.querySelector('button[title="Variants: show/[hide]"]').remove();
@@ -118,6 +122,11 @@ board.setKomi = function() {
 
 board.setHandicap = function() {
 	board.editor.setGameInfo(settings.handicap + "", "HA");
+};
+
+board.setPlayers = function() {
+	board.editor.setGameInfo("Player", "P" + utils.colorNumToName(settings.color));
+	board.editor.setGameInfo("AI", "P" + utils.colorNumToName(settings.color * -1));
 };
 
 board.play = async function(suggestion, tool = "auto") {
