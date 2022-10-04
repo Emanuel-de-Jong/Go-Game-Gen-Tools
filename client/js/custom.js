@@ -29,7 +29,8 @@ custom.finish = async function(suggestion) {
 	custom.isFinished = true;
 	custom.takePlayerControl();
 	board.disableNextButton();
-	stats.updateResult(suggestion);
+	let result = stats.updateResult(suggestion);
+	board.setResult(result);
 };
 
 custom.analyze = async function(maxVisits = settings.suggestionStrength, color = board.nextColor(), moveOptions = settings.moveOptions) {

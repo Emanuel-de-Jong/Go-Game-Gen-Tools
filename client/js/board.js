@@ -16,6 +16,9 @@ board.init = async function() {
 
 	board.editor = board.element.besogoEditor;
 
+	board.editor.setGameInfo(Date(), "DT");
+	board.editor.setGameInfo("GoTrainer-HumanAI", "SO");
+
 	board.setRankPlayer();
 	board.setRankAI();
 	board.setPlayers();
@@ -158,6 +161,10 @@ board.setHandicap = function() {
 
 board.setKomi = function() {
 	board.editor.setGameInfo(settings.komi + "", "KM");
+};
+
+board.setResult = function(result) {
+	board.editor.setGameInfo(result, "RE");
 };
 
 board.play = async function(suggestion, tool = "auto") {

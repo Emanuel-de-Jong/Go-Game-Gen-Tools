@@ -9,7 +9,6 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
-        - set board ruleset, names, etc.
         - when loading a sgf, use its ruleset, komi, etc.
         - options live update on change
         - keep suggestion and visits history
