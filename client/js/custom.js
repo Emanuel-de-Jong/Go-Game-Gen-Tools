@@ -56,10 +56,8 @@ custom.analyze = async function(maxVisits = settings.suggestionStrength, color =
 
 custom.playPreMove = async function(color) {
 	let suggestions = await custom.analyze(settings.preStrength, color, settings.preOptions);
-	if (custom.isFinished) {
-		custom.isPreMovesStopped = true;
-		return;
-	};
+	if (custom.isFinished) custom.isPreMovesStopped = true;
+	if (custom.isPreMovesStopped) return;
 	await board.play(suggestions[utils.randomInt(suggestions.length)]);
 };
 
@@ -240,6 +238,8 @@ custom.selfplay = async function() {
 			custom.selfplayButton.click();
 			return;
 		}
+
+		if (!custom.isSelfplay && settings.color == board.nextColor()) return;
 
 		board.play(suggestions[0]);
 	}
