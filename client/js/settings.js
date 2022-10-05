@@ -34,11 +34,7 @@ for (const name of Object.keys(settings.SETTINGS)) {
     settings[name + "Element"] = document.getElementById(name);
 }
 
-settings.update = function() {
-    settings.updateSettings();
-};
-
-settings.updateSettings = function() {
+settings.init = function() {
     for (const name of Object.keys(settings.SETTINGS)) {
         settings.updateSetting(name);
     }
@@ -142,4 +138,4 @@ settings.skipNextButtonElement.addEventListener("input", async () => {
     }
 });
 
-settings.update();
+settings.init();

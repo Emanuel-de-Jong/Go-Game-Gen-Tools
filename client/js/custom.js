@@ -14,15 +14,20 @@ custom.isSelfplay = false;
 custom.selfplayPromise;
 
 custom.init = async function() {
-	await server.init();
+	await custom.clear(utils.SOURCE.CUSTOM);
+};
 
-	stats.init();
+custom.clear = async function(source) {
+	if (source !== utils.SOURCE.SERVER) await server.init();
 
-	await board.init();
-	board.editor.addListener(custom.boardEditorListener);
-	board.nextButton.addEventListener("click", custom.nextButtonClickListener);
+	if (source !== utils.SOURCE.STATS) stats.init();
 
-	await custom.createPreMoves();
+	if (source !== utils.SOURCE.BOARD) {
+		await board.init();
+		board.editor.addListener(custom.boardEditorListener);
+		board.nextButton.addEventListener("click", custom.nextButtonClickListener);
+		await custom.createPreMoves();
+	}
 };
 
 custom.finish = async function(suggestion) {
@@ -189,8 +194,7 @@ custom.botTurn = async function() {
 };
 
 custom.restartButton.addEventListener("click", async () => {
-	settings.update();
-	await custom.init();
+	await custom.clear(utils.SOURCE.CUSTOM);
 });
 
 custom.selfplayButtonClickListener = async function() {

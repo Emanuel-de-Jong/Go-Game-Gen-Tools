@@ -124,6 +124,9 @@ stats.init = function() {
     stats.perfectTopStreakElement.innerHTML = 0;
     
     stats.visitsElement.innerHTML = "";
+
+    stats.resultElement.innerHTML = "";
+    stats.resultDivElement.hidden = true;
 };
 
 stats.updateScoreChart = function(suggestion) {

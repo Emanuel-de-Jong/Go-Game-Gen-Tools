@@ -22,7 +22,9 @@ class SGF {
 			}
 		})();
 
-		document.addEventListener("sgfLoadedEvent", () => {
+		document.addEventListener("sgfLoadedEvent", async () => {
+			await custom.clear(utils.SOURCE.BOARD);
+
 			let gameInfo = board.editor.getGameInfo();
 
 			if (gameInfo.RE) {

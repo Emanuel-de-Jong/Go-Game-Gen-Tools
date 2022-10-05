@@ -4,7 +4,15 @@ utils.TYPES = {
     INT: 1,
     FLOAT: 2,
     BOOL: 3,
-    STRING: 4
+    STRING: 4,
+};
+
+utils.SOURCE = {
+    CUSTOM: 1,
+    BOARD: 2,
+    SERVER: 3,
+    SETTINGS: 4,
+    STATS: 5,
 };
 
 utils.colorNumToName = function(num) {
