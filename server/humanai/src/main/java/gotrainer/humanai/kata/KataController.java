@@ -38,10 +38,10 @@ public class KataController {
         kata.setBoardsize(Integer.parseInt(boardsize));
     }
 
-    @GetMapping("/setrules")
-    public void getSetRules(@RequestParam @Pattern(regexp="(japanese|chinese)") String ruleset) throws Exception {
+    @GetMapping("/setruleset")
+    public void getSetRuleset(@RequestParam @Pattern(regexp="(japanese|chinese)") String ruleset) throws Exception {
         System.out.println("setRules");
-        kata.setRules(ruleset);
+        kata.setRuleset(ruleset);
     }
 
     @GetMapping("/setkomi")

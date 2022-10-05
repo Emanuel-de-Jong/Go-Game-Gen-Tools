@@ -212,6 +212,11 @@ stats.updateResult = function(suggestion) {
     return result;
 }
 
+stats.setResult = function(result) {
+    stats.resultDivElement.hidden = false;
+    stats.resultElement.innerHTML = result;
+}
+
 stats.clearScoreChart = function() {
     stats.scoreChartLabels.length = 0;
     stats.scoreChartWinrate.length = 0;

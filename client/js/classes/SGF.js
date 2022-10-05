@@ -25,8 +25,23 @@ class SGF {
 		document.addEventListener("sgfLoadedEvent", () => {
 			let gameInfo = board.editor.getGameInfo();
 
+			if (gameInfo.RE) {
+				stats.setResult(gameInfo.RE);
+			}
+
+			if (!confirm("Would you like to use the komi and ruleset of the SGF?")) return;
+
 			if (settings.komi != gameInfo.KM) {
 				settings.setSetting("komi", parseFloat(gameInfo.KM));
+			}
+
+			if (gameInfo.RU) {
+				let ruleset = gameInfo.RU.toLowerCase();
+				if (ruleset.includes("japan")) {
+					settings.setSetting("ruleset", "japanese");
+				} else if (ruleset.includes("chin") || ruleset.includes("korea")) {
+					settings.setSetting("ruleset", "chinese");
+				}
 			}
 		});
     }

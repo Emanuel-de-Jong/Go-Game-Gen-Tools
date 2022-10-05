@@ -1,5 +1,7 @@
 CLIENT
     SETTINGS
+        - only show suggestions stronger than your move (if you played B, show A but not C)
+        - another min visit for displaying suggestions
         - play as both players
         save/load settings
         setting presets
@@ -9,8 +11,7 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
-        - when loading a sgf, use its ruleset, komi, etc.
-        - ask if the values of the loaded sgf should be used
+        - clear chart, visits and result on restart and sgf load
         - options live update on change
         - keep suggestion and visits history
         - update score with AI correction disabled
@@ -29,6 +30,8 @@ SERVER
     restart server when something goes wrong
 
 CODE QUALITY/BUGS
+    - don't play on sgf load
+    - fix client errors on start
     - refactor
     - analyze next black while waiting on next button click
     - don't get bestcoord on tree jump

@@ -53,7 +53,7 @@ public class Kata {
         clearReader();
     }
 
-    public void setRules(String ruleset) throws Exception {
+    public void setRuleset(String ruleset) throws Exception {
         write("kata-set-rules " + ruleset);
         clearReader();
     }
