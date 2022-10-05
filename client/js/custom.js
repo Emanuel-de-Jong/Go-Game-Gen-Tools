@@ -1,6 +1,7 @@
 var custom = {};
 
 custom.restartButton = document.getElementById("restart");
+custom.stopPreMovesButton = document.getElementById("stopPreMoves");
 custom.selfplayButton = document.getElementById("selfplay");
 
 custom.init = async function() {
@@ -15,6 +16,7 @@ custom.clear = async function(source) {
 	custom.isJumped = false;
 	custom.isFinished = false;
 	custom.isSelfplay = false;
+	custom.isPreMovesStopped = false;
 
 	if (source !== utils.SOURCE.SERVER) await server.init();
 
@@ -24,9 +26,16 @@ custom.clear = async function(source) {
 		await board.init();
 		board.editor.addListener(custom.boardEditorListener);
 		board.nextButton.addEventListener("click", custom.nextButtonClickListener);
+
+		custom.stopPreMovesButton.hidden = false;
+		custom.selfplayButton.hidden = true;
 		await custom.createPreMoves();
 	}
 };
+
+custom.stopPreMovesButton.addEventListener("click", () => {
+	custom.isPreMovesStopped = true;
+});
 
 custom.finish = async function(suggestion) {
 	custom.isFinished = true;
@@ -47,7 +56,10 @@ custom.analyze = async function(maxVisits = settings.suggestionStrength, color =
 
 custom.playPreMove = async function(color) {
 	let suggestions = await custom.analyze(settings.preStrength, color, settings.preOptions);
-	if (custom.isFinished) return;
+	if (custom.isFinished) {
+		custom.isPreMovesStopped = true;
+		return;
+	};
 	await board.play(suggestions[utils.randomInt(suggestions.length)]);
 };
 
@@ -71,6 +83,8 @@ custom.createPreMoves = async function() {
 
 	let lastColor = board.lastColor();
 	for (let i=0; i<preMovesLeft; i++) {
+		if (custom.isPreMovesStopped) break;
+
 		if (lastColor == -1) {
 			lastColor = 1;
 			await custom.playPreMove(1);
@@ -84,7 +98,12 @@ custom.createPreMoves = async function() {
 		await custom.playPreMove(board.nextColor());
 	}
 
-	custom.givePlayerControl();
+	custom.stopPreMovesButton.hidden = true;
+	custom.selfplayButton.hidden = false;
+
+	if (!custom.isFinished) {
+		custom.givePlayerControl();
+	}
 };
 
 custom.boardEditorListener = async function(event) {

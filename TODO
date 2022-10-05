@@ -1,6 +1,5 @@
 CLIENT
     SETTINGS
-        - stop pre moves
         - only show suggestions stronger than your move (if you played B, show A but not C)
         - another min visit for displaying suggestions
         - play as both players

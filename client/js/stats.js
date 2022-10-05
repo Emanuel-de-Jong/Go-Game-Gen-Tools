@@ -202,15 +202,14 @@ stats.setVisits = function(suggestions) {
 };
 
 stats.updateResult = function(suggestion) {
-    stats.resultDivElement.hidden = false;
-
     let result;
     if (suggestion.scoreLead >= 0) {
         result = utils.colorNumToName(suggestion.color) + "+" + suggestion.scoreLead;
     } else {
         result = utils.colorNumToName(suggestion.color * -1) + "+" + (suggestion.scoreLead * -1);
     }
-    stats.resultElement.innerHTML = result;
+
+    stats.setResult(result);
 
     return result;
 }
