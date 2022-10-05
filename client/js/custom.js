@@ -11,7 +11,6 @@ custom.init = async function() {
 custom.clear = async function(source) {
 	custom.suggestionsPromise = null;
 	custom.selfplayPromise = null;
-	custom.prevSuggestions = null;
 	custom.suggestionsToShow = [];
 	custom.isPlayerControlling = false;
 	custom.isJumped = false;
@@ -124,18 +123,11 @@ custom.boardEditorListener = async function(event) {
 	}
 };
 
-custom.setSuggestionsPromise = async function(maxVisits = settings.suggestionStrength) {
-	if (custom.suggestionsPromise) {
-		custom.prevSuggestions = await custom.suggestionsPromise;
-	}
-	custom.suggestionsPromise = custom.analyze(maxVisits);
-};
-
 custom.givePlayerControl = async function(isSuggestionNeeded = true) {
 	board.editor.setTool("cross");
 	custom.isPlayerControlling = true;
 	if (isSuggestionNeeded) {
-		await custom.setSuggestionsPromise();
+		custom.suggestionsPromise = custom.analyze();
 	}
 };
 
@@ -153,7 +145,7 @@ custom.playerTurn = async function() {
 	if (custom.isJumped) {
 		custom.isJumped = false;
 		await server.setBoard();
-		await custom.setSuggestionsPromise();
+		custom.suggestionsPromise = custom.analyze();
 	}
 
 	let suggestions = await custom.suggestionsPromise;
@@ -182,7 +174,7 @@ custom.playerTurn = async function() {
 		await board.draw(markupCoord);
 	}
 
-	await custom.setSuggestionsPromise(settings.opponentStrength);
+	custom.suggestionsPromise = custom.analyze(settings.opponentStrength);
 
 	custom.createSuggestionsToShow(suggestions, markupCoord);
 	stats.updateRatio(isRightChoice, isPerfectChoice);
