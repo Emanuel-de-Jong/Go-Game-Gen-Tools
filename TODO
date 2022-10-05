@@ -1,7 +1,7 @@
 CLIENT
     SETTINGS
-        - only show suggestions stronger than your move (if you played B, show A but not C)
         - another min visit for displaying suggestions
+        - max visit difference
         - play as both players
         save/load settings
         setting presets

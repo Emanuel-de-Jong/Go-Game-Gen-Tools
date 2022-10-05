@@ -18,6 +18,7 @@ settings.SETTINGS = {
     minimumVisits: utils.TYPES.INT,
     disableAICorrection: utils.TYPES.BOOL,
     skipNextButton: utils.TYPES.BOOL,
+    hideWeakerOptions: utils.TYPES.BOOL,
     cornerSwitch44: utils.TYPES.BOOL,
     cornerSwitch34: utils.TYPES.BOOL,
     cornerSwitch33: utils.TYPES.BOOL,

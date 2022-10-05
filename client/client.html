@@ -54,7 +54,7 @@
                                 <div id="visits"></div>
                             </div>
                             <div class="col-6">
-                                <div id="resultDiv">
+                                <div id="resultDiv" hidden>
                                     <h3>Result</h3>
                                     <span id="result"></span>
                                 </div>
@@ -132,6 +132,14 @@
                                         <input class="form-check-input" type="checkbox" id="skipNextButton">
                                         <label class="form-check-label" for="skipNextButton">
                                             Skip next button
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="hideWeakerOptions">
+                                        <label class="form-check-label" for="hideWeakerOptions">
+                                            Hide weaker options
                                         </label>
                                     </div>
                                 </div>
@@ -230,7 +238,7 @@
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-primary" id="stopPreMoves">Stop pre moves</button>
-                                    <button type="button" class="btn btn-primary" id="selfplay">Start selfplay</button>
+                                    <button type="button" class="btn btn-primary" id="selfplay" hidden>Start selfplay</button>
                                 </div>
                             </div>
                         </div>

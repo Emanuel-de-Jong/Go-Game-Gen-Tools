@@ -10,8 +10,9 @@ custom.init = async function() {
 
 custom.clear = async function(source) {
 	custom.suggestionsPromise = null;
-	custom.prevSuggestions = null;
 	custom.selfplayPromise = null;
+	custom.prevSuggestions = null;
+	custom.suggestionsToShow = [];
 	custom.isPlayerControlling = false;
 	custom.isJumped = false;
 	custom.isFinished = false;
@@ -183,14 +184,25 @@ custom.playerTurn = async function() {
 
 	await custom.setSuggestionsPromise(settings.opponentStrength);
 
+	custom.createSuggestionsToShow(suggestions, markupCoord);
 	stats.updateRatio(isRightChoice, isPerfectChoice);
-	stats.setVisits(suggestions);
+	stats.setVisits(custom.suggestionsToShow);
 
 	if (!settings.skipNextButton) {
-		board.drawCoords(suggestions);
+		board.drawCoords(custom.suggestionsToShow);
 		board.enableNextButton();
 	} else {
 		await custom.nextButtonClickListener();
+	}
+};
+
+custom.createSuggestionsToShow = function(suggestions, playedCoord) {
+	custom.suggestionsToShow = [];
+	for (let i=0; i<suggestions.length; i++) {
+		custom.suggestionsToShow.push(suggestions[i])
+		if (settings.hideWeakerOptions && suggestions[i].coord.compare(playedCoord)) {
+			break;
+		}
 	}
 };
 
@@ -199,7 +211,7 @@ custom.botTurn = async function() {
 	if (custom.isFinished) return;
 
 	if (settings.skipNextButton) {
-		board.drawCoords(custom.prevSuggestions);
+		board.drawCoords(custom.suggestionsToShow);
 	}
 	
 	await board.play(suggestions[0]);
