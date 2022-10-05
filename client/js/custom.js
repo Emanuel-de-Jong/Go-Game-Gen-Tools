@@ -117,7 +117,7 @@ custom.givePlayerControl = async function(isSuggestionNeeded = true) {
 	board.editor.setTool("cross");
 	custom.isPlayerControlling = true;
 	if (isSuggestionNeeded) {
-		custom.setSuggestionsPromise();
+		await custom.setSuggestionsPromise();
 	}
 };
 
@@ -135,7 +135,7 @@ custom.playerTurn = async function() {
 	if (custom.isJumped) {
 		custom.isJumped = false;
 		await server.setBoard();
-		custom.setSuggestionsPromise();
+		await custom.setSuggestionsPromise();
 	}
 
 	let suggestions = await custom.suggestionsPromise;
@@ -164,7 +164,7 @@ custom.playerTurn = async function() {
 		await board.draw(markupCoord);
 	}
 
-	custom.setSuggestionsPromise(settings.opponentStrength);
+	await custom.setSuggestionsPromise(settings.opponentStrength);
 
 	stats.updateRatio(isRightChoice, isPerfectChoice);
 	stats.setVisits(suggestions);

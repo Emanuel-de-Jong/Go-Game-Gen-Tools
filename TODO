@@ -12,7 +12,6 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
-        - always cross
         - don't server init on clear
         - options live update on change
         - keep suggestion and visits history
