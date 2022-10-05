@@ -1,7 +1,5 @@
 var board = {};
 
-board.nextButtonEnabledEvent = new Event("nextButtonEnabled");
-
 board.init = async function() {
 	board.element = document.getElementById("board");
 	besogo.create(board.element, {
@@ -224,7 +222,7 @@ board.placeHandicap = async function() {
 		},
 	}
 
-	for (let i=0; i<settings.handicap; i++) {
+	for (let i=0; i<placement[settings.boardsize][settings.handicap].length; i++) {
 		let coord = placement[settings.boardsize][settings.handicap][i];
 		await board.draw(coord, "playB");
 	}
@@ -232,7 +230,6 @@ board.placeHandicap = async function() {
 
 board.enableNextButton = function() {
 	board.nextButton.disabled = false;
-	document.dispatchEvent(board.nextButtonEnabledEvent);
 };
 
 board.disableNextButton = function() {

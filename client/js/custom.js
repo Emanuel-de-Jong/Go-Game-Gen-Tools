@@ -3,21 +3,19 @@ var custom = {};
 custom.restartButton = document.getElementById("restart");
 custom.selfplayButton = document.getElementById("selfplay");
 
-custom.suggestionReadyEvent = new Event("suggestionReady");
-
-custom.bestSuggestions;
-custom.opponentBestSuggestionsPromise;
-custom.isPlayerControlling = false;
-custom.isJumped = false;
-custom.isFinished = false;
-custom.isSelfplay = false;
-custom.selfplayPromise;
-
 custom.init = async function() {
 	await custom.clear(utils.SOURCE.CUSTOM);
 };
 
 custom.clear = async function(source) {
+	custom.suggestionsPromise = null;
+	custom.prevSuggestions = null;
+	custom.selfplayPromise = null;
+	custom.isPlayerControlling = false;
+	custom.isJumped = false;
+	custom.isFinished = false;
+	custom.isSelfplay = false;
+
 	if (source !== utils.SOURCE.SERVER) await server.init();
 
 	if (source !== utils.SOURCE.STATS) stats.init();
@@ -34,8 +32,9 @@ custom.finish = async function(suggestion) {
 	custom.isFinished = true;
 	custom.takePlayerControl();
 	board.disableNextButton();
+	
 	let result = stats.updateResult(suggestion);
-	board.setResult(result);
+	board.sgf.setResult(result);
 };
 
 custom.analyze = async function(maxVisits = settings.suggestionStrength, color = board.nextColor(), moveOptions = settings.moveOptions) {
@@ -85,12 +84,11 @@ custom.createPreMoves = async function() {
 		await custom.playPreMove(board.nextColor());
 	}
 
-	await custom.getBestSuggestions();
+	custom.givePlayerControl();
 };
 
 custom.boardEditorListener = async function(event) {
 	if (event.markupChange === true && custom.isPlayerControlling && !board.sgf.isSGFLoading) {
-		console.log(event);
 		custom.takePlayerControl();
         await custom.playerTurn();
     } else if (event.navChange === true) {
@@ -103,14 +101,24 @@ custom.boardEditorListener = async function(event) {
 			stats.clearScoreChart();
 
 			board.disableNextButton();
-			custom.givePlayerControl();
+			custom.givePlayerControl(false);
 		}
 	}
 };
 
-custom.givePlayerControl = async function() {
+custom.setSuggestionsPromise = async function(maxVisits = settings.suggestionStrength) {
+	if (custom.suggestionsPromise) {
+		custom.prevSuggestions = await custom.suggestionsPromise;
+	}
+	custom.suggestionsPromise = custom.analyze(maxVisits);
+};
+
+custom.givePlayerControl = async function(isSuggestionNeeded = true) {
 	board.editor.setTool("cross");
 	custom.isPlayerControlling = true;
+	if (isSuggestionNeeded) {
+		custom.setSuggestionsPromise();
+	}
 };
 
 custom.takePlayerControl = async function() {
@@ -123,58 +131,46 @@ custom.nextButtonClickListener = async function() {
 	await custom.botTurn();
 };
 
-custom.getBestSuggestions = async function() {
-	custom.bestSuggestions = await custom.analyze();
-	if (custom.isFinished) return;
-	custom.givePlayerControl();
-	document.dispatchEvent(custom.suggestionReadyEvent);
-};
-
-custom.getOpponentBestSuggestions = function() {
-	custom.opponentBestSuggestionsPromise = custom.analyze(settings.opponentStrength);
-};
-
 custom.playerTurn = async function() {
 	if (custom.isJumped) {
 		custom.isJumped = false;
 		await server.setBoard();
-		custom.bestSuggestions = await custom.analyze();
-		if (custom.isFinished) return;
+		custom.setSuggestionsPromise();
 	}
 
-	let suggestionToPlay = custom.bestSuggestions[0];
+	let suggestions = await custom.suggestionsPromise;
+	if (custom.isFinished) return;
+
+	let suggestionToPlay = suggestions[0];
 	let markupCoord = board.getMarkupCoord();
 	let isRightChoice = false;
 	let isPerfectChoice = false;
-	for (let i=0; i<custom.bestSuggestions.length; i++) {
-		if (markupCoord.compare(custom.bestSuggestions[i].coord)) {
+	for (let i=0; i<suggestions.length; i++) {
+		if (markupCoord.compare(suggestions[i].coord)) {
 			if (i == 0) {
 				isPerfectChoice = true;
 			}
 
 			isRightChoice = true;
-			suggestionToPlay = custom.bestSuggestions[i];
+			suggestionToPlay = suggestions[i];
 			break;
 		}
 	}
 	
 	if (!settings.disableAICorrection) {
 		await board.play(suggestionToPlay);
+		if (!isRightChoice) await board.draw(markupCoord, "cross");
 	} else {
 		await board.draw(markupCoord);
 	}
 
-	custom.getOpponentBestSuggestions();
-
-	if (!isRightChoice) {
-		await board.draw(markupCoord, "cross");
-	}
+	custom.setSuggestionsPromise(settings.opponentStrength);
 
 	stats.updateRatio(isRightChoice, isPerfectChoice);
-	stats.setVisits(custom.bestSuggestions);
+	stats.setVisits(suggestions);
 
 	if (!settings.skipNextButton) {
-		board.drawCoords(custom.bestSuggestions);
+		board.drawCoords(suggestions);
 		board.enableNextButton();
 	} else {
 		await custom.nextButtonClickListener();
@@ -182,47 +178,47 @@ custom.playerTurn = async function() {
 };
 
 custom.botTurn = async function() {
-	let suggestions = await custom.opponentBestSuggestionsPromise;
+	let suggestions = await custom.suggestionsPromise;
 	if (custom.isFinished) return;
 
 	if (settings.skipNextButton) {
-		board.drawCoords(custom.bestSuggestions);
+		board.drawCoords(custom.prevSuggestions);
 	}
 	
 	await board.play(suggestions[0]);
 
-	await custom.getBestSuggestions();
+	custom.givePlayerControl();
 };
 
 custom.restartButton.addEventListener("click", async () => {
 	await custom.clear(utils.SOURCE.CUSTOM);
 });
 
-custom.selfplayButtonClickListener = async function() {
-	if (custom.isSelfplay) {
-		custom.isSelfplay = false;
-		custom.selfplayButton.innerHTML = "Start selfplay";
-
-		await custom.selfplayPromise;
-		custom.bestSuggestions = await custom.analyze();
-		custom.givePlayerControl();
-	} else {
+custom.selfplayButton.addEventListener("click", async () => {
+	if (!custom.isSelfplay) {
 		custom.isSelfplay = true;
 		custom.selfplayButton.innerHTML = "Stop selfplay";
 
 		custom.takePlayerControl();
 		board.disableNextButton();
 		custom.selfplayPromise = custom.selfplay();
+	} else {
+		custom.isSelfplay = false;
+		custom.selfplayButton.innerHTML = "Start selfplay";
+
+		await custom.selfplayPromise;
+
+		if (!custom.isFinished) {
+			custom.givePlayerControl();
+		}
 	}
-};
-custom.selfplayButton.addEventListener("click", custom.selfplayButtonClickListener);
+});
 
 custom.selfplay = async function() {
 	while (custom.isSelfplay || settings.color != board.nextColor()) {
 		let suggestions = await custom.analyze(settings.selfplayStrength);
 		if (custom.isFinished) {
-			custom.isSelfplay = false;
-			custom.selfplayButton.innerHTML = "Start selfplay";
+			custom.selfplayButton.click();
 			return;
 		}
 

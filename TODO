@@ -1,5 +1,6 @@
 CLIENT
     SETTINGS
+        - stop pre moves
         - only show suggestions stronger than your move (if you played B, show A but not C)
         - another min visit for displaying suggestions
         - play as both players
@@ -11,6 +12,7 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
+        - always cross
         - don't server init on clear
         - options live update on change
         - keep suggestion and visits history
@@ -31,7 +33,6 @@ SERVER
 
 CODE QUALITY/BUGS
     - refactor
-    - analyze next black while waiting on next button click
     - don't get bestcoord on tree jump
     - fix having to wait after cross twice after jump
 
