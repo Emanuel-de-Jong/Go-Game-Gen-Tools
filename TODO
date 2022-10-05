@@ -11,7 +11,7 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
-        - clear chart, visits and result on restart and sgf load
+        - don't server init on clear
         - options live update on change
         - keep suggestion and visits history
         - update score with AI correction disabled
@@ -30,8 +30,6 @@ SERVER
     restart server when something goes wrong
 
 CODE QUALITY/BUGS
-    - don't play on sgf load
-    - fix client errors on start
     - refactor
     - analyze next black while waiting on next button click
     - don't get bestcoord on tree jump

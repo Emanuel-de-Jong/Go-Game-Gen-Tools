@@ -89,7 +89,8 @@ custom.createPreMoves = async function() {
 };
 
 custom.boardEditorListener = async function(event) {
-	if (event.markupChange === true && custom.isPlayerControlling) {
+	if (event.markupChange === true && custom.isPlayerControlling && !board.sgf.isSGFLoading) {
+		console.log(event);
 		custom.takePlayerControl();
         await custom.playerTurn();
     } else if (event.navChange === true) {

@@ -1,5 +1,7 @@
 class SGF {
 
+	isSGFLoading = false;
+
     constructor() {
 		board.editor.setGameInfo("GoTrainer-HumanAI", "GN");
 		board.editor.setGameInfo("GoTrainer-HumanAI", "SO");
@@ -11,18 +13,27 @@ class SGF {
 		this.setHandicap();
 		this.setKomi();
 		
+		board.editor.sgfLoadingEvent = new Event("sgfLoadingEvent");
 		board.editor.sgfLoadedEvent = new Event("sgfLoadedEvent");
+
 		besogo.loadSgf = (function() {
 			let cachedFunction = besogo.loadSgf;
 			
 			return function() {
-				cachedFunction.apply(this, arguments);
 				let editor = arguments[1];
+				document.dispatchEvent(editor.sgfLoadingEvent);
+				cachedFunction.apply(this, arguments);
 				document.dispatchEvent(editor.sgfLoadedEvent);
 			}
 		})();
 
+		document.addEventListener("sgfLoadingEvent", async () => {
+			this.isSGFLoading = true;
+		});
+
 		document.addEventListener("sgfLoadedEvent", async () => {
+			this.isSGFLoading = false;
+
 			await custom.clear(utils.SOURCE.BOARD);
 
 			let gameInfo = board.editor.getGameInfo();
