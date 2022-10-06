@@ -15,7 +15,7 @@ settings.SETTINGS = {
     selfplayStrength: utils.TYPES.INT,
     suggestionStrength: utils.TYPES.INT,
     opponentStrength: utils.TYPES.INT,
-    minimumVisits: utils.TYPES.INT,
+    minVisits: utils.TYPES.INT,
     disableAICorrection: utils.TYPES.BOOL,
     skipNextButton: utils.TYPES.BOOL,
     hideWeakerOptions: utils.TYPES.BOOL,

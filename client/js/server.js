@@ -145,12 +145,12 @@ server.setBoard = async function() {
         });
 };
 
-server.analyze = async function(maxVisits, color, moveOptions, minimumVisits) {
-    // console.log("analyze " + color);
+server.analyze = async function(maxVisits, color, moveOptions, minVisits) {
+    // console.log("analyze " + maxVisits + " " + color + " " + moveOptions + " " + minVisits);
     return fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) +
             "&moveOptions=" + moveOptions +
             "&maxVisits=" + maxVisits +
-            "&minimumVisits=" + minimumVisits, {
+            "&minVisits=" + minVisits, {
         method: "POST" })
         .then(response => response.json())
         .then(suggestionArr => {

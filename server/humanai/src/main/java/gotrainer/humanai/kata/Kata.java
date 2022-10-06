@@ -71,7 +71,9 @@ public class Kata {
         }
     }
 
-    public List<MoveSuggestion> analyze(String color, int moveOptions, int maxVisits, int minimumVisits) throws Exception {
+    public List<MoveSuggestion> analyze(String color, int moveOptions, int maxVisits, int minVisits) throws Exception {
+//        System.out.println(maxVisits + " " + color + " " + moveOptions + " " + minVisits);
+
         if (lastMaxVisits != maxVisits) {
             lastMaxVisits = maxVisits;
             write("kata-set-param maxVisits " + maxVisits);
@@ -92,14 +94,7 @@ public class Kata {
         MoveSuggestion suggestion = null;
         for (int i=0; i<analysis.length; i++) {
             String element = analysis[i];
-            if (element.equals("info")) {
-                if (suggestion != null) {
-                    if (suggestion.visits >= minimumVisits || suggestions.size() == 0) {
-                        suggestions.add(suggestion);
-                    }
-                }
-                suggestion = new MoveSuggestion();
-            } else if (element.equals("move")) {
+            if (element.equals("move")) {
                 suggestion.move = new Move(color, analysis[i+1]);
             } else if (element.equals("visits")) {
                 suggestion.visits = Integer.parseInt(analysis[i+1]);
@@ -107,6 +102,15 @@ public class Kata {
                 suggestion.winrate = Math.round(Float.parseFloat(analysis[i+1]) * 10000) / 100f;
             } else if (element.equals("scoreLead")) {
                 suggestion.scoreLead = Math.round(Float.parseFloat(analysis[i+1]) * 10) / 10f;
+            }
+
+            if (element.equals("info") || i == analysis.length - 1) {
+                if (suggestion != null) {
+                    if (suggestion.visits >= minVisits || suggestions.size() == 0) {
+                        suggestions.add(suggestion);
+                    }
+                }
+                suggestion = new MoveSuggestion();
             }
         }
 

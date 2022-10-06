@@ -60,9 +60,9 @@ public class KataController {
     public List<MoveSuggestion> postAnalyze(@RequestParam @Pattern(regexp="(B|W)") String color,
                                             @RequestParam @Min(1) @Max(25) int moveOptions,
                                             @RequestParam @Min(1) @Max(5000) int maxVisits,
-                                            @RequestParam @Min(0) @Max(5000) int minimumVisits) throws Exception {
+                                            @RequestParam @Min(0) @Max(5000) int minVisits) throws Exception {
 //         System.out.println("analyze " + color);
-        return kata.analyze(color, moveOptions, maxVisits, minimumVisits);
+        return kata.analyze(color, moveOptions, maxVisits, minVisits);
     }
 
 
