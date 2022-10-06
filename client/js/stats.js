@@ -42,12 +42,41 @@ stats.scoreChart = new Chart(stats.scoreChartElement, {
     },
     options: {
         responsive: true,
-        // plugins: {
-        //     title: {
-        //         display: true,
-        //         text: "Black",
-        //     },
-        // },
+        plugins: {
+            legend: {
+                onClick: (event, legendItem, legend) => {
+                    const datasets = legend.legendItems.map((dataset, index) => {
+                        return dataset.text;
+                    });
+                    const index = datasets.indexOf(legendItem.text);
+                    if (legend.chart.isDatasetVisible(index) === true) {
+                        legend.chart.hide(index);
+                    } else {
+                        legend.chart.show(index);
+                    }
+                },
+                labels: {
+                    generateLabels: (chart) => {
+                        let visibility = [];
+                        for (let i=0; i<chart.data.datasets.length; i++) {
+                            if (chart.isDatasetVisible(i) === false) {
+                                visibility.push(true);
+                            } else {
+                                visibility.push(false);
+                            }
+                        }
+                        return chart.data.datasets.map(
+                            (dataset, index) => ({
+                                text: dataset.label + (dataset.data.length ? ": " + dataset.data.slice(-1) : ""),
+                                fillStyle: dataset.backgroundColor,
+                                strokeStyle: dataset.borderColor,
+                                hidden: visibility[index]
+                            })
+                        )
+                    }
+                },
+            },
+        },
         interaction: {
             intersect: false,
         },
