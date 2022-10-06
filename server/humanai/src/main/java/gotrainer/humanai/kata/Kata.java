@@ -17,9 +17,7 @@ public class Kata {
 
     private int lastMaxVisits = 0;
 
-    public Kata() throws Exception {
-        start();
-    }
+    public Kata() throws Exception {}
 
     private void start() throws Exception {
         ProcessBuilder processBuilder = new ProcessBuilder("katago\\katago.exe", "gtp");
@@ -44,7 +42,7 @@ public class Kata {
     }
 
     public void restart() throws Exception {
-        write("quit");
+        if (process != null) write("quit");
         start();
     }
 

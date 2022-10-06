@@ -1,6 +1,5 @@
 CLIENT
     SETTINGS
-        - max visit difference
         - play as both players
         save/load settings
         setting presets
@@ -10,31 +9,29 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
-        - don't server init on clear
-        - options live update on change
+        - fix max visit difference
         - keep suggestion and visits history
         - update score with AI correction disabled
         - update score with handicap/corners
+        - options live update on change
         retry server request on error
     VISUAL
+        - settings in accordion
+        - complex settings in advanced section
         - show visits on board
         icon for options that can be updated without restart
         responsive
         make it pretty
 
 SERVER
-    - multiple katago instances per client for different visits
     multiple users
     rate limit calls to server
     restart server when something goes wrong
 
 CODE QUALITY/BUGS
     - refactor
-    - don't get bestcoord on tree jump
-    - fix having to wait after cross twice after jump
 
 FAR FUTURE
     add besogo and katago credits
     registration system
-    leaderboard
     payment
