@@ -145,12 +145,13 @@ server.setBoard = async function() {
         });
 };
 
-server.analyze = async function(maxVisits, color, moveOptions, minVisits) {
-    // console.log("analyze " + maxVisits + " " + color + " " + moveOptions + " " + minVisits);
+server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc) {
+    // console.log("analyze " + maxVisits + " " + color + " " + moveOptions + " " + minVisitsPerc);
     return fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) +
             "&moveOptions=" + moveOptions +
             "&maxVisits=" + maxVisits +
-            "&minVisits=" + minVisits, {
+            "&minVisitsPerc=" + minVisitsPerc +
+            "&maxVisitDiffPerc=" + maxVisitDiffPerc, {
         method: "POST" })
         .then(response => response.json())
         .then(suggestionArr => {

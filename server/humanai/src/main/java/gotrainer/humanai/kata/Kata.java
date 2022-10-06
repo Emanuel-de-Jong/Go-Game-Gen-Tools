@@ -71,9 +71,9 @@ public class Kata {
         }
     }
 
-    public List<MoveSuggestion> analyze(String color, int moveOptions, int maxVisits, int minVisits) throws Exception {
-//        System.out.println(maxVisits + " " + color + " " + moveOptions + " " + minVisits);
-
+    public List<MoveSuggestion> analyze(String color, int moveOptions, int maxVisits, int minVisitsPerc, int maxVisitDiffPerc) throws Exception {
+        int minVisits = (int) ((minVisitsPerc / 100.0) * maxVisits);
+        int maxVisitDiff = (int) ((maxVisitDiffPerc / 100.0) * maxVisits);
         if (lastMaxVisits != maxVisits) {
             lastMaxVisits = maxVisits;
             write("kata-set-param maxVisits " + maxVisits);
@@ -106,15 +106,30 @@ public class Kata {
 
             if (element.equals("info") || i == analysis.length - 1) {
                 if (suggestion != null) {
-                    if (suggestion.visits >= minVisits || suggestions.size() == 0) {
-                        suggestions.add(suggestion);
-                    }
+                    suggestions.add(suggestion);
                 }
                 suggestion = new MoveSuggestion();
             }
         }
 
-        return suggestions;
+//        for (MoveSuggestion moveSuggestion : suggestions) {
+//            System.out.println(moveSuggestion.move.coord + " " + moveSuggestion.visits);
+//        }
+//        System.out.println(" ");
+
+        List<MoveSuggestion> filteredSuggestions = new ArrayList<>();
+        int lastSuggestionVisits = suggestions.get(0).visits;
+        for (MoveSuggestion moveSuggestion : suggestions) {
+            if (filteredSuggestions.size() > 0 &&
+                    (moveSuggestion.visits < minVisits ||
+                    lastSuggestionVisits - moveSuggestion.visits > maxVisitDiff)) {
+                break;
+            }
+            filteredSuggestions.add(moveSuggestion);
+            lastSuggestionVisits = moveSuggestion.visits;
+        }
+
+        return filteredSuggestions;
     }
 
     public void play(String color, String coord) throws Exception {

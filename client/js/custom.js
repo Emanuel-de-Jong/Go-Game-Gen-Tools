@@ -49,10 +49,10 @@ custom.finish = async function(suggestion) {
 custom.analyze = async function({
 		maxVisits = settings.suggestionStrength,
 		moveOptions = settings.moveOptions,
-		minVisits = settings.minVisits,
-		color = board.nextColor()
-	} = {}) {
-	let suggestions = await server.analyze(maxVisits, color, moveOptions, minVisits);
+		minVisitsPerc = settings.minVisitsPerc,
+		maxVisitDiffPerc = settings.maxVisitDiffPerc,
+		color = board.nextColor() } = {}) {
+	let suggestions = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
 	if (suggestions[0].coord == "pass") {
 		custom.finish(suggestions[0]);
 	}
@@ -60,7 +60,11 @@ custom.analyze = async function({
 };
 
 custom.playPreMove = async function() {
-	let suggestions = await custom.analyze({ maxVisits: settings.preStrength, moveOptions: settings.preOptions, minVisits: 25});
+	let suggestions = await custom.analyze({
+		maxVisits: settings.preStrength,
+		moveOptions: settings.preOptions,
+		minVisitsPerc: 25,
+		maxVisitDiffPerc: 50 });
 	if (custom.isFinished) custom.isPreMovesStopped = true;
 	if (custom.isPreMovesStopped) return;
 	await board.play(suggestions[utils.randomInt(suggestions.length)]);

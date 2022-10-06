@@ -111,12 +111,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label for="minVisits" class="form-label">Minimum visits</label>
-                                            <input type="number" class="form-control" id="minVisits" value="25" min="0" max="5000">
-                                        </div>
+                                <div id="minVisitsPercDiv">
+                                    <label for="minVisitsPerc" class="form-label">Minimum visits</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="minVisitsPerc" value="10" min="0" max="100">
+                                        <span class="input-group-text">%</span>
+                                        <div class="form-invalid-message"></div>
+                                    </div>
+                                </div>
+                                <div id="maxVisitDiffPercDiv">
+                                    <label for="maxVisitDiffPerc" class="form-label">Maximum visit difference</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="maxVisitDiffPerc" value="30" min="0" max="100">
+                                        <span class="input-group-text">%</span>
+                                        <div class="form-invalid-message"></div>
                                     </div>
                                 </div>
                                 <div>

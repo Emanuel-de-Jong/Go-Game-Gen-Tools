@@ -15,7 +15,8 @@ settings.SETTINGS = {
     selfplayStrength: utils.TYPES.INT,
     suggestionStrength: utils.TYPES.INT,
     opponentStrength: utils.TYPES.INT,
-    minVisits: utils.TYPES.INT,
+    minVisitsPerc: utils.TYPES.INT,
+    maxVisitDiffPerc: utils.TYPES.INT,
     disableAICorrection: utils.TYPES.BOOL,
     skipNextButton: utils.TYPES.BOOL,
     hideWeakerOptions: utils.TYPES.BOOL,
@@ -93,7 +94,9 @@ utils.querySelectorAlls(["input", "select"]).forEach(input => {
     if (input.type != "checkbox") {
         input.required = true;
     }
-    input.insertAdjacentHTML("afterend", "<div class=\"form-invalid-message\"></div>");
+    if (utils.getSiblingByClass(input, "form-invalid-message") == null) {
+        input.insertAdjacentHTML("afterend", "<div class=\"form-invalid-message\"></div>");
+    }
 });
 
 utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", (event) => {
