@@ -63,7 +63,7 @@ custom.playPreMove = async function() {
 	let suggestions = await custom.analyze({
 		maxVisits: settings.preStrength,
 		moveOptions: settings.preOptions,
-		minVisitsPerc: 25,
+		minVisitsPerc: 10,
 		maxVisitDiffPerc: 50 });
 	if (custom.isFinished) custom.isPreMovesStopped = true;
 	if (custom.isPreMovesStopped) return;

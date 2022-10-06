@@ -9,16 +9,16 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
-        - fix max visit difference
+        - think of other things to add
+        - options live update on change
         - keep suggestion and visits history
         - update score with AI correction disabled
         - update score with handicap/corners
-        - options live update on change
         retry server request on error
     VISUAL
+        - show visits on board
         - settings in accordion
         - complex settings in advanced section
-        - show visits on board
         icon for options that can be updated without restart
         responsive
         make it pretty

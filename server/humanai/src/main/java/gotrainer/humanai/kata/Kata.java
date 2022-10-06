@@ -70,8 +70,6 @@ public class Kata {
     }
 
     public List<MoveSuggestion> analyze(String color, int moveOptions, int maxVisits, int minVisitsPerc, int maxVisitDiffPerc) throws Exception {
-        int minVisits = (int) ((minVisitsPerc / 100.0) * maxVisits);
-        int maxVisitDiff = (int) ((maxVisitDiffPerc / 100.0) * maxVisits);
         if (lastMaxVisits != maxVisits) {
             lastMaxVisits = maxVisits;
             write("kata-set-param maxVisits " + maxVisits);
@@ -115,16 +113,27 @@ public class Kata {
 //        }
 //        System.out.println(" ");
 
-        List<MoveSuggestion> filteredSuggestions = new ArrayList<>();
-        int lastSuggestionVisits = suggestions.get(0).visits;
+        int highestVisits = 0;
         for (MoveSuggestion moveSuggestion : suggestions) {
-            if (filteredSuggestions.size() > 0 && moveSuggestion.visits < minVisits) {
-//                    (moveSuggestion.visits < minVisits ||
-//                    lastSuggestionVisits - moveSuggestion.visits > maxVisitDiff)) {
+            if (highestVisits < moveSuggestion.visits) {
+                highestVisits = moveSuggestion.visits;
+            }
+        }
+        int maxVisitDiff = (int) Math.round((maxVisitDiffPerc / 100.0) * Math.max(maxVisits, highestVisits));
+        int minVisits = (int) Math.round((minVisitsPerc / 100.0) * maxVisits);
+
+        List<MoveSuggestion> filteredSuggestions = new ArrayList<>();
+        int lastSuggestionVisits = Integer.MAX_VALUE;
+        for (MoveSuggestion moveSuggestion : suggestions) {
+            if (filteredSuggestions.size() > 0 &&
+                    (moveSuggestion.visits < minVisits ||
+                    lastSuggestionVisits - moveSuggestion.visits > maxVisitDiff)) {
                 break;
             }
             filteredSuggestions.add(moveSuggestion);
-            lastSuggestionVisits = moveSuggestion.visits;
+            if (lastSuggestionVisits > moveSuggestion.visits) {
+                lastSuggestionVisits = moveSuggestion.visits;
+            }
         }
 
         return filteredSuggestions;
