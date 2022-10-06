@@ -46,16 +46,21 @@ custom.finish = async function(suggestion) {
 	board.sgf.setResult(result);
 };
 
-custom.analyze = async function(maxVisits = settings.suggestionStrength, color = board.nextColor(), moveOptions = settings.moveOptions) {
-	let suggestions = await server.analyze(maxVisits, color, moveOptions);
+custom.analyze = async function({
+		maxVisits = settings.suggestionStrength,
+		moveOptions = settings.moveOptions,
+		minimumVisits = settings.minimumVisits,
+		color = board.nextColor()
+	} = {}) {
+	let suggestions = await server.analyze(maxVisits, color, moveOptions, minimumVisits);
 	if (suggestions[0].coord == "pass") {
 		custom.finish(suggestions[0]);
 	}
 	return suggestions;
 };
 
-custom.playPreMove = async function(color) {
-	let suggestions = await custom.analyze(settings.preStrength, color, settings.preOptions);
+custom.playPreMove = async function() {
+	let suggestions = await custom.analyze({ maxVisits: settings.preStrength, moveOptions: settings.preOptions, minimumVisits: 0});
 	if (custom.isFinished) custom.isPreMovesStopped = true;
 	if (custom.isPreMovesStopped) return;
 	await board.play(suggestions[utils.randomInt(suggestions.length)]);
@@ -79,21 +84,13 @@ custom.createPreMoves = async function() {
 		}
 	}
 
-	let lastColor = board.lastColor();
 	for (let i=0; i<preMovesLeft; i++) {
 		if (custom.isPreMovesStopped) break;
-
-		if (lastColor == -1) {
-			lastColor = 1;
-			await custom.playPreMove(1);
-		} else {
-			lastColor = -1;
-			await custom.playPreMove(-1);
-		}
+		await custom.playPreMove();
 	}
 
 	if (settings.color == board.lastColor()) {
-		await custom.playPreMove(board.nextColor());
+		await custom.playPreMove();
 	}
 
 	custom.stopPreMovesButton.hidden = true;
@@ -174,7 +171,7 @@ custom.playerTurn = async function() {
 		await board.draw(markupCoord);
 	}
 
-	custom.suggestionsPromise = custom.analyze(settings.opponentStrength);
+	custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentStrength, moveOptions: 1, minimumVisits: 0 });
 
 	custom.createSuggestionsToShow(suggestions, markupCoord);
 	stats.updateRatio(isRightChoice, isPerfectChoice);
@@ -237,7 +234,7 @@ custom.selfplayButton.addEventListener("click", async () => {
 
 custom.selfplay = async function() {
 	while (custom.isSelfplay || settings.color != board.nextColor()) {
-		let suggestions = await custom.analyze(settings.selfplayStrength);
+		let suggestions = await custom.analyze({ maxVisits: settings.selfplayStrength, moveOptions: 1, minimumVisits: 0 });
 		if (custom.isFinished) {
 			custom.selfplayButton.click();
 			return;

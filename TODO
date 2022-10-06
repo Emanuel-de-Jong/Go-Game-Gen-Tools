@@ -1,6 +1,5 @@
 CLIENT
     SETTINGS
-        - another min visit for displaying suggestions
         - max visit difference
         - play as both players
         save/load settings
