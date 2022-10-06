@@ -172,7 +172,7 @@ stats.updateScoreChart = function(suggestion) {
     stats.scoreChart.update();
 };
 
-settings.scoreChartColorElementInputListener = function() {
+stats.scoreChartColorElementInputListener = function() {
     for (let i=0; i<stats.scoreChartWinrate.length; i++) {
         let winrate = stats.scoreChartWinrate[i];
         if (winrate > 50) {

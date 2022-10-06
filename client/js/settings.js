@@ -36,6 +36,15 @@ for (const name of Object.keys(settings.SETTINGS)) {
     settings[name + "Element"] = document.getElementById(name);
 }
 
+utils.querySelectorAlls(["input", "select"]).forEach(input => {
+    if (input.type != "checkbox") {
+        input.required = true;
+    }
+    if (utils.getSiblingByClass(input, "form-invalid-message") == null) {
+        input.insertAdjacentHTML("afterend", "<div class=\"form-invalid-message\"></div>");
+    }
+});
+
 settings.init = function() {
     for (const name of Object.keys(settings.SETTINGS)) {
         settings.updateSetting(name);
@@ -89,15 +98,6 @@ settings.hideInvalidMessage = function(input) {
     let messageDiv = utils.getSiblingByClass(input, "form-invalid-message");
     messageDiv.innerHTML = "";
 };
-
-utils.querySelectorAlls(["input", "select"]).forEach(input => {
-    if (input.type != "checkbox") {
-        input.required = true;
-    }
-    if (utils.getSiblingByClass(input, "form-invalid-message") == null) {
-        input.insertAdjacentHTML("afterend", "<div class=\"form-invalid-message\"></div>");
-    }
-});
 
 settings.inputAndSelectInputListener = function(event) {
     let element = event.target;
