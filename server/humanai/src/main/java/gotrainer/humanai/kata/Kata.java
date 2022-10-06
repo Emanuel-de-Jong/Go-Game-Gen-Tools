@@ -120,9 +120,9 @@ public class Kata {
         List<MoveSuggestion> filteredSuggestions = new ArrayList<>();
         int lastSuggestionVisits = suggestions.get(0).visits;
         for (MoveSuggestion moveSuggestion : suggestions) {
-            if (filteredSuggestions.size() > 0 &&
-                    (moveSuggestion.visits < minVisits ||
-                    lastSuggestionVisits - moveSuggestion.visits > maxVisitDiff)) {
+            if (filteredSuggestions.size() > 0 && moveSuggestion.visits < minVisits) {
+//                    (moveSuggestion.visits < minVisits ||
+//                    lastSuggestionVisits - moveSuggestion.visits > maxVisitDiff)) {
                 break;
             }
             filteredSuggestions.add(moveSuggestion);
