@@ -172,7 +172,7 @@ stats.updateScoreChart = function(suggestion) {
     stats.scoreChart.update();
 };
 
-settings.scoreChartColorElement.addEventListener("input", () => {
+settings.scoreChartColorElementInputListener = function() {
     for (let i=0; i<stats.scoreChartWinrate.length; i++) {
         let winrate = stats.scoreChartWinrate[i];
         if (winrate > 50) {
@@ -188,7 +188,8 @@ settings.scoreChartColorElement.addEventListener("input", () => {
     }
 
     stats.scoreChart.update();
-});
+};
+settings.scoreChartColorElement.addEventListener("input", settings.scoreChartColorElementInputListener);
 
 stats.updateRatio = function(isRight, isPerfect) {
     stats.total++;

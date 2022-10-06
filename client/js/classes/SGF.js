@@ -27,37 +27,40 @@ class SGF {
 			}
 		})();
 
-		document.addEventListener("sgfLoadingEvent", async () => {
-			this.isSGFLoading = true;
-		});
-
-		document.addEventListener("sgfLoadedEvent", async () => {
-			this.isSGFLoading = false;
-
-			await custom.clear(utils.SOURCE.BOARD);
-
-			let gameInfo = board.editor.getGameInfo();
-
-			if (gameInfo.RE) {
-				stats.setResult(gameInfo.RE);
-			}
-
-			if (!confirm("Would you like to use the komi and ruleset of the SGF?")) return;
-
-			if (settings.komi != gameInfo.KM) {
-				settings.setSetting("komi", parseFloat(gameInfo.KM));
-			}
-
-			if (gameInfo.RU) {
-				let ruleset = gameInfo.RU.toLowerCase();
-				if (ruleset.includes("japan")) {
-					settings.setSetting("ruleset", "japanese");
-				} else if (ruleset.includes("chin") || ruleset.includes("korea")) {
-					settings.setSetting("ruleset", "chinese");
-				}
-			}
-		});
+		document.addEventListener("sgfLoadingEvent", this.sgfLoadingEventListener);
+		document.addEventListener("sgfLoadedEvent", this.sgfLoadedEventListener);
     }
+
+	sgfLoadingEventListener() {
+		this.isSGFLoading = true;
+	}
+
+	async sgfLoadedEventListener() {
+		this.isSGFLoading = false;
+
+		await custom.clear(utils.SOURCE.BOARD);
+
+		let gameInfo = board.editor.getGameInfo();
+
+		if (gameInfo.RE) {
+			stats.setResult(gameInfo.RE);
+		}
+
+		if (!confirm("Would you like to use the komi and ruleset of the SGF?")) return;
+
+		if (settings.komi != gameInfo.KM) {
+			settings.setSetting("komi", parseFloat(gameInfo.KM));
+		}
+
+		if (gameInfo.RU) {
+			let ruleset = gameInfo.RU.toLowerCase();
+			if (ruleset.includes("japan")) {
+				settings.setSetting("ruleset", "japanese");
+			} else if (ruleset.includes("chin") || ruleset.includes("korea")) {
+				settings.setSetting("ruleset", "chinese");
+			}
+		}
+	}
 
     setRankPlayer() {
 		board.editor.setGameInfo(settings.suggestionStrength + "", utils.colorNumToName(settings.color) + "R");

@@ -29,15 +29,17 @@ board.init = async function() {
 		.insertAdjacentHTML("beforeend", '<button type="button" class="btn btn-secondary" id="next" disabled>></button>');
 	board.nextButton = document.getElementById("next");
 
-	utils.addEventsListener(document, ["keydown", "mousedown"], event => {
-		if (event.code == "Space" || event.code == "Enter" || event.button == 1) {
-			board.nextButton.click();
-		}
-	});
+	utils.addEventsListener(document, ["keydown", "mousedown"], board.keydownAndMousedownListener);
 
 	board.lastMove = board.editor.getCurrent();
 
 	await board.placeHandicap();
+};
+
+board.keydownAndMousedownListener = function(event) {
+	if (event.code == "Space" || event.code == "Enter" || event.button == 1) {
+		board.nextButton.click();
+	}
 };
 
 board.fillCorners = function() {

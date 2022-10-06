@@ -33,9 +33,10 @@ custom.clear = async function(source) {
 	}
 };
 
-custom.stopPreMovesButton.addEventListener("click", () => {
+custom.stopPreMovesButtonClickListener = function() {
 	custom.isPreMovesStopped = true;
-});
+};
+custom.stopPreMovesButton.addEventListener("click", custom.stopPreMovesButtonClickListener);
 
 custom.finish = async function(suggestion) {
 	custom.isFinished = true;
@@ -212,11 +213,12 @@ custom.botTurn = async function() {
 	custom.givePlayerControl();
 };
 
-custom.restartButton.addEventListener("click", async () => {
+custom.restartButtonClickListener = async function() {
 	await custom.clear(utils.SOURCE.CUSTOM);
-});
+};
+custom.restartButton.addEventListener("click", custom.restartButtonClickListener);
 
-custom.selfplayButton.addEventListener("click", async () => {
+custom.selfplayButtonClickListener = async function() {
 	if (!custom.isSelfplay) {
 		custom.isSelfplay = true;
 		custom.selfplayButton.innerHTML = "Stop selfplay";
@@ -234,7 +236,8 @@ custom.selfplayButton.addEventListener("click", async () => {
 			custom.givePlayerControl();
 		}
 	}
-});
+};
+custom.selfplayButton.addEventListener("click", custom.selfplayButtonClickListener);
 
 custom.selfplay = async function() {
 	while (custom.isSelfplay || settings.color != board.nextColor()) {

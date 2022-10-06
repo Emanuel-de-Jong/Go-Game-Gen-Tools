@@ -99,47 +99,55 @@ utils.querySelectorAlls(["input", "select"]).forEach(input => {
     }
 });
 
-utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", (event) => {
+settings.inputAndSelectInputListener = function(event) {
     let element = event.target;
     if (settings.validateInput(element)) {
         settings.updateSetting(element.id);
     }
-});
+};
+utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", settings.inputAndSelectInputListener);
 
-settings.suggestionStrengthElement.addEventListener("input", () => {
+settings.suggestionStrengthElementInputListener = function() {
     board.sgf.setRankPlayer();
-});
+};
+settings.suggestionStrengthElement.addEventListener("input", settings.suggestionStrengthElementInputListener);
 
-settings.opponentStrengthElement.addEventListener("input", () => {
+settings.opponentStrengthElementInputListener = function() {
     board.sgf.setRankAI();
-});
+};
+settings.opponentStrengthElement.addEventListener("input", settings.opponentStrengthElementInputListener);
 
-settings.colorElement.addEventListener("input", () => {
+settings.colorElementInputListener = function() {
     board.sgf.setPlayers();
     board.sgf.setRankPlayer();
     board.sgf.setRankAI();
-});
+};
+settings.colorElement.addEventListener("input", settings.colorElementInputListener);
 
-settings.rulesetElement.addEventListener("input", () => {
+settings.rulesetElementInputListener = function() {
     board.sgf.setRuleset();
     server.setRuleset();
-});
+};
+settings.rulesetElement.addEventListener("input", settings.rulesetElementInputListener);
 
-settings.handicapElement.addEventListener("input", () => {
+settings.handicapElementInputListener = function() {
     board.sgf.setHandicap();
-});
+};
+settings.handicapElement.addEventListener("input", settings.handicapElementInputListener);
 
-settings.komiElement.addEventListener("input", () => {
+settings.komiElementInputListener = function() {
     board.sgf.setKomi();
     server.setKomi();
-});
+};
+settings.komiElement.addEventListener("input", settings.komiElementInputListener);
 
-settings.skipNextButtonElement.addEventListener("input", async () => {
+settings.skipNextButtonElementInputListener = async function() {
     if (settings.skipNextButtonElement.checked) {
         if (!board.nextButton.disabled) {
             board.nextButton.click();
         }
     }
-});
+};
+settings.skipNextButtonElement.addEventListener("input", settings.skipNextButtonElementInputListener);
 
 settings.init();
