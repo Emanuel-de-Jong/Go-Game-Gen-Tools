@@ -159,15 +159,25 @@ stats.init = function() {
 };
 
 stats.updateScoreChart = function(suggestion) {
-    stats.scoreChartLabels.push(board.getMoveNumber());
+    let moveNumber = board.getMoveNumber();
+    if (stats.scoreChartLabels.includes(moveNumber)) return;
+
+    let index;
+    for (index=0; index<stats.scoreChartLabels.length; index++) {
+        if (stats.scoreChartLabels[index] > moveNumber) {
+            break;
+        }
+    }
+
+    stats.scoreChartLabels.splice(index, 0, moveNumber);
 
     let winrate = suggestion.winrate;
     winrate = suggestion.color == settings.scoreChartColorElement.value ? winrate : 100 - winrate;
-    stats.scoreChartWinrate.push(winrate.toFixed(2));
+    stats.scoreChartWinrate.splice(index, 0, winrate.toFixed(2));
 
     let score = suggestion.scoreLead;
     score = suggestion.color == settings.scoreChartColorElement.value ? score : score * -1;
-    stats.scoreChartScore.push(score.toFixed(1));
+    stats.scoreChartScore.splice(index, 0, score.toFixed(1));
 
     stats.scoreChart.update();
 };

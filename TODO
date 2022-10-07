@@ -10,6 +10,7 @@ CLIENT
         server unreachable alert
     QOL
         - think of other things to add
+        - click chart point to go to that move
         - options live update on change
         - keep suggestion and visits history
         - update score with AI correction disabled
@@ -29,9 +30,11 @@ SERVER
     restart server when something goes wrong
 
 CODE QUALITY/BUGS
+    - fix seeing stone after tree jump and cross
     - fix tree jump besogo maximum call stack size exceeded
     - fix tree jump > click > tree jump before analyze result
     - fix tree jump using wrong cross
+    - fix error when starting selfplay before analyze done
     - refactor
 
 FAR FUTURE
