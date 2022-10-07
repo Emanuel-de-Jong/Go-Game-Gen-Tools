@@ -131,7 +131,7 @@ board.getMoves = function() {
 };
 
 board.play = async function(suggestion, tool = "auto") {
-	board.draw(suggestion.coord, tool);
+	await board.draw(suggestion.coord, tool);
 	stats.updateScoreChart(suggestion);
 };
 

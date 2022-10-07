@@ -124,9 +124,9 @@ settings.colorElementInputListener = function() {
 };
 settings.colorElement.addEventListener("input", settings.colorElementInputListener);
 
-settings.rulesetElementInputListener = function() {
+settings.rulesetElementInputListener = async function() {
     board.sgf.setRuleset();
-    server.setRuleset();
+    await server.setRuleset();
 };
 settings.rulesetElement.addEventListener("input", settings.rulesetElementInputListener);
 
@@ -135,13 +135,13 @@ settings.handicapElementInputListener = function() {
 };
 settings.handicapElement.addEventListener("input", settings.handicapElementInputListener);
 
-settings.komiElementInputListener = function() {
+settings.komiElementInputListener = async function() {
     board.sgf.setKomi();
-    server.setKomi();
+    await server.setKomi();
 };
 settings.komiElement.addEventListener("input", settings.komiElementInputListener);
 
-settings.skipNextButtonElementInputListener = async function() {
+settings.skipNextButtonElementInputListener = function() {
     if (settings.skipNextButtonElement.checked) {
         if (!board.nextButton.disabled) {
             board.nextButton.click();

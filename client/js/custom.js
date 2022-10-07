@@ -38,7 +38,7 @@ custom.stopPreMovesButtonClickListener = function() {
 };
 custom.stopPreMovesButton.addEventListener("click", custom.stopPreMovesButtonClickListener);
 
-custom.finish = async function(suggestion) {
+custom.finish = function(suggestion) {
 	custom.isFinished = true;
 	custom.takePlayerControl();
 	board.disableNextButton();
@@ -125,7 +125,7 @@ custom.boardEditorListener = async function(event) {
 	}
 };
 
-custom.givePlayerControl = async function(isSuggestionNeeded = true) {
+custom.givePlayerControl = function(isSuggestionNeeded = true) {
 	board.editor.setTool("cross");
 	custom.isPlayerControlling = true;
 	if (isSuggestionNeeded) {
@@ -133,7 +133,7 @@ custom.givePlayerControl = async function(isSuggestionNeeded = true) {
 	}
 };
 
-custom.takePlayerControl = async function() {
+custom.takePlayerControl = function() {
 	board.editor.setTool("navOnly");
 	custom.isPlayerControlling = false;
 };
@@ -249,7 +249,7 @@ custom.selfplay = async function() {
 
 		if (!custom.isSelfplay && settings.color == board.nextColor()) return;
 
-		board.play(suggestions[0]);
+		await board.play(suggestions[0]);
 	}
 };
 
