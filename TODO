@@ -29,8 +29,7 @@ SERVER
     restart server when something goes wrong
 
 CODE QUALITY/BUGS
-    - debug overload every function with a console.log
-    - fix tree jumps
+    - fix tree jump besogo maximum call stack size exceeded
     - fix tree jump > click > tree jump before analyze result
     - different rounding method for winrate for float rounding mistakes
     - refactor
