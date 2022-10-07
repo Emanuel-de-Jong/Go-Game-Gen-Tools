@@ -163,11 +163,11 @@ stats.updateScoreChart = function(suggestion) {
 
     let winrate = suggestion.winrate;
     winrate = suggestion.color == settings.scoreChartColorElement.value ? winrate : 100 - winrate;
-    stats.scoreChartWinrate.push(winrate);
+    stats.scoreChartWinrate.push(winrate.toFixed(2));
 
     let score = suggestion.scoreLead;
     score = suggestion.color == settings.scoreChartColorElement.value ? score : score * -1;
-    stats.scoreChartScore.push(score);
+    stats.scoreChartScore.push(score.toFixed(1));
 
     stats.scoreChart.update();
 };
