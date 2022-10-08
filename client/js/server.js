@@ -74,52 +74,59 @@ server.init = async function() {
     await server.setKomi();
 };
 
+server.sendRequest = async function(request) {
+    // before
+    let response = await request;
+    // after
+    return response;
+};
+
 server.restart = async function() {
     // console.log("restart");
-    return fetch(server.URL + "restart", {
+    return server.sendRequest(fetch(server.URL + "restart", {
         method: "GET" })
         .then(response => {
             return response;
         })
         .catch(error => {
             return error;
-        });
+        }));
 };
 
 server.setBoardsize = async function() {
     // console.log("setBoardsize");
-    return fetch(server.URL + "setboardsize?boardsize=" + settings.boardsize, {
+    return server.sendRequest(fetch(server.URL + "setboardsize?boardsize=" + settings.boardsize, {
         method: "GET" })
         .then(response => {
             return response;
         })
         .catch(error => {
             return error;
-        });
+        }));
 };
 
 server.setRuleset = async function() {
     // console.log("setRuleset");
-    return fetch(server.URL + "setruleset?ruleset=" + settings.ruleset, {
+    return server.sendRequest(fetch(server.URL + "setruleset?ruleset=" + settings.ruleset, {
         method: "GET" })
         .then(response => {
             return response;
         })
         .catch(error => {
             return error;
-        });
+        }));
 };
 
 server.setKomi = async function() {
     // console.log("setKomi");
-    return fetch(server.URL + "setkomi?komi=" + settings.komi, {
+    return server.sendRequest(fetch(server.URL + "setkomi?komi=" + settings.komi, {
         method: "GET" })
         .then(response => {
             return response;
         })
         .catch(error => {
             return error;
-        });
+        }));
 };
 
 server.setBoard = async function() {
@@ -133,7 +140,7 @@ server.setBoard = async function() {
         });
     });
 
-    return fetch(server.URL + "setboard", {
+    return server.sendRequest(fetch(server.URL + "setboard", {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: '{"moves":' + JSON.stringify(serverMoves) + "}" })
@@ -142,12 +149,12 @@ server.setBoard = async function() {
         })
         .catch(error => {
             return error;
-        });
+        }));
 };
 
 server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc) {
     // console.log("analyze " + maxVisits + " " + color + " " + moveOptions + " " + minVisitsPerc);
-    return fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) +
+    return server.sendRequest(fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) +
             "&moveOptions=" + moveOptions +
             "&maxVisits=" + maxVisits +
             "&minVisitsPerc=" + minVisitsPerc +
@@ -181,17 +188,17 @@ server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, ma
         })
         .catch(error => {
             return error;
-        });
+        }));
 };
 
 server.play = async function(color, coord) {
     // console.log("play " + color + " " + server.coordNumToName(coord));
-    return fetch(server.URL + "play?color=" + utils.colorNumToName(color) + "&coord=" + server.coordNumToName(coord), {
+    return server.sendRequest(fetch(server.URL + "play?color=" + utils.colorNumToName(color) + "&coord=" + server.coordNumToName(coord), {
         method: "GET" })
         .then(response => {
             return response;
         })
         .catch(error => {
             return error;
-        });
+        }));
 };

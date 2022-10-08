@@ -17,6 +17,8 @@ custom.clear = async function(source) {
 	custom.isFinished = false;
 	custom.isSelfplay = false;
 	custom.isPreMovesStopped = false;
+	custom.playerTurnId = 0;
+	custom.botTurnId = 0;
 
 	if (source !== utils.SOURCE.SERVER) await server.init();
 
@@ -146,13 +148,17 @@ custom.nextButtonClickListener = async function() {
 };
 
 custom.playerTurn = async function() {
+	let playerTurnId = ++custom.playerTurnId;
+	
 	if (custom.isJumped) {
 		custom.isJumped = false;
 		await server.setBoard();
+		if (playerTurnId != custom.playerTurnId) return;
 		custom.suggestionsPromise = custom.analyze();
 	}
 
 	let suggestions = await custom.suggestionsPromise;
+	if (playerTurnId != custom.playerTurnId) return;
 	if (custom.isFinished) return;
 
 	let suggestionToPlay = suggestions[0];
@@ -203,7 +209,10 @@ custom.createSuggestionsToShow = function(suggestions, playedCoord) {
 };
 
 custom.botTurn = async function() {
+	let botTurnId = ++custom.botTurnId;
+
 	let suggestions = await custom.suggestionsPromise;
+	if (botTurnId != custom.botTurnId) return;
 	if (custom.isFinished) return;
 
 	if (settings.skipNextButton) {
