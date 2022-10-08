@@ -9,6 +9,7 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
+        - count as perfect if B has same visits as A
         - think of other things to add
         - options live update on change
         - keep suggestion and visits history

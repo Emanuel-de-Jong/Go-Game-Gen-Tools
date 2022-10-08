@@ -34,6 +34,10 @@ board.init = async function() {
 	board.lastMove = board.editor.getCurrent();
 
 	await board.placeHandicap();
+
+	// console.log(besogo);
+	// console.log(board.editor);
+	// console.log(board.editor.getCurrent());
 };
 
 board.goToNode = function(nodeNumber) {
@@ -165,20 +169,33 @@ board.drawCoords = function(suggestions) {
 	board.editor.setTool("label");
 	board.editor.setLabel("A");
 
-	// let rects = document.querySelectorAll('.besogo-board svg rect[opacity="0"]');
+	// let group = besogo.svgEl("g")
+	// let current = board.editor.getCurrent();
+
 	for (let i=0; i<suggestions.length; i++) {
 		let coord = suggestions[i].coord;
 
 		board.editor.click(coord.x, coord.y, false, false);
 
-		// let rect = rects[(coord.x - 1) * settings.boardsize + (coord.y - 1)];
-		// rect.style.position = "relative";
-		// rect.style.opacity = 1;
-		// rect.insertAdjacentHTML("afterend", '<div class="visits">' + suggestions[i].visits + "</div>");
+		// let x = svgPos(coord.x);
+		// let y = svgPos(coord.y);
+
+		// let stone = current.getStone(coord.x, coord.y);
+		// let color = (stone === -1) ? "white" : "black";
+		// let element = besogo.svgLabel(x, y, color, suggestions[i].visits + "");
+		// group.appendChild(element);
 	}
 
 	board.editor.setTool("navOnly");
 };
+
+// function svgPos(x) {
+// 	const CELL_SIZE = 88;
+// 	const COORD_MARGIN = 75;
+// 	const EXTRA_MARGIN = 6;
+// 	const BOARD_MARGIN = (board.editor.getCoordStyle() === "none" ? 0 : COORD_MARGIN) + EXTRA_MARGIN;
+// 	return BOARD_MARGIN + CELL_SIZE/2 + (x-1) * CELL_SIZE;
+// }
 
 board.getMarkupCoord = function() {
 	let markup = board.editor.getCurrent().markup;
