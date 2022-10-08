@@ -169,33 +169,53 @@ board.drawCoords = function(suggestions) {
 	board.editor.setTool("label");
 	board.editor.setLabel("A");
 
-	// let group = besogo.svgEl("g")
-	// let current = board.editor.getCurrent();
+	// besogo.svgLabel = (function() {
+	// 	let cachedFunc = besogo.svgLabel;
+		
+	// 	return function() {
+	// 		let label = arguments[3];
+	// 		if (!label.includes("custom")) {
+	// 			return cachedFunc.apply(this, arguments);
+	// 		}
+
+	// 		let x = arguments[0];
+	// 		let y = arguments[1];
+	// 		let color = arguments[2];
+
+	// 		let character = label.slice(6, 7);
+	// 		let visits = label.slice(7);
+
+	// 		let characterElement = besogo.svgEl("span", {
+	// 			"font-size": 70
+	// 		});
+	// 		characterElement.appendChild(document.createTextNode(character));
+
+	// 		let mainElement = besogo.svgEl("text", {
+	// 			x: x,
+	// 			y: y,
+	// 			dy: ".65ex", // Seems to work for vertically centering these fonts
+	// 			"font-size": 50,
+	// 			"text-anchor": "middle", // Horizontal centering
+	// 			"font-family": "Helvetica, Arial, sans-serif",
+	// 			fill: color
+	// 		});
+	// 		mainElement.appendChild(characterElement);
+	// 		mainElement.appendChild(document.createTextNode(visits));
+			
+	// 		return mainElement;
+	// 	}
+	// })();
 
 	for (let i=0; i<suggestions.length; i++) {
 		let coord = suggestions[i].coord;
+		
+		// board.editor.setLabel("custom" + String.fromCharCode(i + 65) + suggestions[i].visits);
 
 		board.editor.click(coord.x, coord.y, false, false);
-
-		// let x = svgPos(coord.x);
-		// let y = svgPos(coord.y);
-
-		// let stone = current.getStone(coord.x, coord.y);
-		// let color = (stone === -1) ? "white" : "black";
-		// let element = besogo.svgLabel(x, y, color, suggestions[i].visits + "");
-		// group.appendChild(element);
 	}
 
 	board.editor.setTool("navOnly");
 };
-
-// function svgPos(x) {
-// 	const CELL_SIZE = 88;
-// 	const COORD_MARGIN = 75;
-// 	const EXTRA_MARGIN = 6;
-// 	const BOARD_MARGIN = (board.editor.getCoordStyle() === "none" ? 0 : COORD_MARGIN) + EXTRA_MARGIN;
-// 	return BOARD_MARGIN + CELL_SIZE/2 + (x-1) * CELL_SIZE;
-// }
 
 board.getMarkupCoord = function() {
 	let markup = board.editor.getCurrent().markup;
