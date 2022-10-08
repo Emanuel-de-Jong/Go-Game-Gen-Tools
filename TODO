@@ -33,7 +33,6 @@ CODE QUALITY/BUGS
     - fix tree jump besogo maximum call stack size exceeded
     - fix tree jump > click > tree jump before analyze result
     - fix tree jump using wrong cross
-    - fix error when starting selfplay before analyze done
     - refactor
 
 FAR FUTURE

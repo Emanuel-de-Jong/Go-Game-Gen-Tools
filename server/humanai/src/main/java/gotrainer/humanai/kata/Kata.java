@@ -41,27 +41,27 @@ public class Kata {
         clearReader();
     }
 
-    public void restart() throws Exception {
+    public synchronized void restart() throws Exception {
         if (process != null) write("quit");
         start();
     }
 
-    public void setBoardsize(int boardsize) throws Exception {
+    public synchronized void setBoardsize(int boardsize) throws Exception {
         write("boardsize " + boardsize);
         clearReader();
     }
 
-    public void setRuleset(String ruleset) throws Exception {
+    public synchronized void setRuleset(String ruleset) throws Exception {
         write("kata-set-rules " + ruleset);
         clearReader();
     }
 
-    public void setKomi(float komi) throws Exception {
+    public synchronized void setKomi(float komi) throws Exception {
         write("komi " + komi);
         clearReader();
     }
 
-    public void setBoard(Moves moves) throws Exception {
+    public synchronized void setBoard(Moves moves) throws Exception {
         clear();
 
         for (Move move : moves.moves) {
@@ -69,7 +69,9 @@ public class Kata {
         }
     }
 
-    public List<MoveSuggestion> analyze(String color, int moveOptions, int maxVisits, int minVisitsPerc, int maxVisitDiffPerc) throws Exception {
+    public synchronized List<MoveSuggestion> analyze(String color, int moveOptions, int maxVisits, int minVisitsPerc,
+                                        int maxVisitDiffPerc) throws Exception {
+//        System.out.println(color + " " + moveOptions + " " + maxVisits + " " + minVisitsPerc + " " + maxVisitDiffPerc);
         if (lastMaxVisits != maxVisits) {
             lastMaxVisits = maxVisits;
             write("kata-set-param maxVisits " + maxVisits);
@@ -139,7 +141,7 @@ public class Kata {
         return filteredSuggestions;
     }
 
-    public void play(String color, String coord) throws Exception {
+    public synchronized void play(String color, String coord) throws Exception {
         write("play " + color + " " + coord);
         clearReader();
     }
