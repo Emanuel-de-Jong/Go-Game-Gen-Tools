@@ -118,7 +118,7 @@ custom.boardEditorListener = async function(event) {
 			custom.isFinished = false;
 
 			if (board.lastMove.navTreeY != currentMove.navTreeY) {
-				stats.clearScoreChart();
+				stats.scoreChart.clear();
 			}
 
 			board.disableNextButton();

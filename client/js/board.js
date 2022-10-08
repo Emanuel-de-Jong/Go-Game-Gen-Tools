@@ -142,7 +142,7 @@ board.getMoves = function() {
 
 board.play = async function(suggestion, tool = "auto") {
 	await board.draw(suggestion.coord, tool);
-	stats.updateScoreChart(suggestion);
+	stats.scoreChart.update(suggestion);
 };
 
 board.draw = async function(coord, tool = "auto") {
