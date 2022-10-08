@@ -36,6 +36,16 @@ board.init = async function() {
 	await board.placeHandicap();
 };
 
+board.goToNode = function(nodeNumber) {
+	let currentNodeNumber = board.editor.getCurrent().moveNumber;
+	let nodesToJump = nodeNumber - currentNodeNumber;
+	if (nodesToJump > 0) {
+		board.editor.nextNode(nodesToJump);
+	} else if (nodesToJump < 0) {
+		board.editor.prevNode(nodesToJump * -1);
+	}
+};
+
 board.keydownAndMousedownListener = function(event) {
 	if (event.code == "Space" || event.code == "Enter" || event.button == 1) {
 		board.nextButton.click();

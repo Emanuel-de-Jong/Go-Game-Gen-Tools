@@ -10,7 +10,6 @@ CLIENT
         server unreachable alert
     QOL
         - think of other things to add
-        - click chart point to go to that move
         - options live update on change
         - keep suggestion and visits history
         - update score with AI correction disabled

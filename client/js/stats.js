@@ -79,6 +79,7 @@ stats.scoreChart = new Chart(stats.scoreChartElement, {
         },
         interaction: {
             intersect: false,
+            mode: "index",
         },
         animation: {
             duration: 0,
@@ -127,6 +128,13 @@ stats.scoreChart = new Chart(stats.scoreChartElement, {
         },
     },
 });
+stats.scoreChart.canvas.onclick = (click) => {
+    const points = stats.scoreChart.getElementsAtEventForMode(click, "nearest", { intersect: false }, true);
+    if (points[0]) {
+        board.goToNode(stats.scoreChartLabels[points[0].index]);
+    }
+};
+
 stats.scoreChartLabels = stats.scoreChart.data.labels;
 stats.scoreChartWinrate = stats.scoreChart.data.datasets[0].data;
 stats.scoreChartScore = stats.scoreChart.data.datasets[1].data;
