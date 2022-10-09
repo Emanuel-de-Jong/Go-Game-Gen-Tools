@@ -1,24 +1,22 @@
 CLIENT
     SETTINGS
-        - play as both players
+        play as both players
         save/load settings
         setting presets
     INFO
-        - chart history for multiple trees and jumps
+        chart history for multiple trees and jumps
         tooltips
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
-        - think of other things to add
-        - options live update on change
-        - keep suggestion and visits history
         - update score with AI correction disabled
         - update score with handicap/corners
+        keep suggestion and visits history
         retry server request on error
     VISUAL
-        - show visits on board
-        - settings in accordion
-        - complex settings in advanced section
+        show visits on board
+        settings in accordion
+        complex settings in advanced section
         icon for options that can be updated without restart
         responsive
         make it pretty
@@ -36,6 +34,7 @@ CODE QUALITY/BUGS
     - refactor
 
 FAR FUTURE
+    play a sequence, then click a button that shows what sequence the ai would have played and how good your sequence was in comparison (comparing the winrate/score won/lost during those moves)
     add besogo and katago credits
     registration system
     payment
