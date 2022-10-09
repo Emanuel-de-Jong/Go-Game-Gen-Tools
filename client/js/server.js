@@ -154,8 +154,7 @@ server.setBoard = async function() {
 
 server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc) {
     // console.log("analyze " + maxVisits + " " + color + " " + moveOptions + " " + minVisitsPerc);
-    return server.sendRequest(fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) +
-            "&moveOptions=" + moveOptions +
+    let suggestions = await server.sendRequest(fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) +
             "&maxVisits=" + maxVisits +
             "&minVisitsPerc=" + minVisitsPerc +
             "&maxVisitDiffPerc=" + maxVisitDiffPerc, {
@@ -189,6 +188,23 @@ server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, ma
         .catch(error => {
             return error;
         }));
+    
+    // If error
+    if (!Array.isArray(suggestions)) return suggestions;
+
+    let moveOptionCount = 1;
+    let filteredSuggestions = [];
+    for (let i=0; i<suggestions.length; i++) {
+        if (i != 0 && suggestions[i].visits != suggestions[i - 1].visits) {
+            moveOptionCount++;
+
+            if (moveOptionCount == moveOptions + 1) break;
+        }
+
+        filteredSuggestions[i] = suggestions[i];
+    }
+    
+    return filteredSuggestions;
 };
 
 server.play = async function(color, coord) {

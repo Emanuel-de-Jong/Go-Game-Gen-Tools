@@ -69,7 +69,7 @@ public class Kata {
         }
     }
 
-    public synchronized List<MoveSuggestion> analyze(String color, int moveOptions, int maxVisits, int minVisitsPerc,
+    public synchronized List<MoveSuggestion> analyze(String color, int maxVisits, int minVisitsPerc,
                                         int maxVisitDiffPerc) throws Exception {
 //        System.out.println(color + " " + moveOptions + " " + maxVisits + " " + minVisitsPerc + " " + maxVisitDiffPerc);
         if (lastMaxVisits != maxVisits) {
@@ -78,7 +78,7 @@ public class Kata {
             clearReader();
         }
 
-        write("kata-genmove_analyze " + color + " minmoves " + moveOptions + " maxmoves " + moveOptions);
+        write("kata-genmove_analyze " + color);
         reader.readLine(); // Ignore '= '
         String[] analysis = reader.readLine().split(" ");
         clearReader();

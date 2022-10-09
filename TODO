@@ -9,7 +9,6 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
-        - count same visits as 1 move option (don't limit analyze suggestions)
         - think of other things to add
         - options live update on change
         - keep suggestion and visits history
