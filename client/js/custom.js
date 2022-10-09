@@ -167,7 +167,7 @@ custom.playerTurn = async function() {
 	let isPerfectChoice = false;
 	for (let i=0; i<suggestions.length; i++) {
 		if (markupCoord.compare(suggestions[i].coord)) {
-			if (i == 0) {
+			if (i == 0 || suggestions[i].visits == suggestions[0].visits) {
 				isPerfectChoice = true;
 			}
 
@@ -201,10 +201,19 @@ custom.playerTurn = async function() {
 custom.createSuggestionsToShow = function(suggestions, playedCoord) {
 	custom.suggestionsToShow = [];
 	for (let i=0; i<suggestions.length; i++) {
-		custom.suggestionsToShow.push(suggestions[i])
+		custom.suggestionsToShow.push(suggestions[i]);
 		if (settings.hideWeakerOptions && suggestions[i].coord.compare(playedCoord)) {
 			break;
 		}
+	}
+
+	let gradeIndex = 0;
+	for (let i=0; i<custom.suggestionsToShow.length; i++) {
+		let suggestion = custom.suggestionsToShow[i];
+		if (i != 0 && suggestion.visits != custom.suggestionsToShow[i - 1].visits) {
+			gradeIndex++;
+		}
+		suggestion.grade = String.fromCharCode(gradeIndex + 65);
 	}
 };
 

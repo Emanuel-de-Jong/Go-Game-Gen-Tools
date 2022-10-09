@@ -5,6 +5,7 @@ class MoveSuggestion {
     visits;
     winrate;
     scoreLead;
+    grade;
 
     constructor(color, coord, visits, winrate, scoreLead) {
         this.color = color;

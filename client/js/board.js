@@ -167,7 +167,6 @@ board.draw = async function(coord, tool = "auto") {
 
 board.drawCoords = function(suggestions) {
 	board.editor.setTool("label");
-	board.editor.setLabel("A");
 
 	// besogo.svgLabel = (function() {
 	// 	let cachedFunc = besogo.svgLabel;
@@ -209,6 +208,7 @@ board.drawCoords = function(suggestions) {
 	for (let i=0; i<suggestions.length; i++) {
 		let coord = suggestions[i].coord;
 		
+		board.editor.setLabel(suggestions[i].grade);
 		// board.editor.setLabel("custom" + String.fromCharCode(i + 65) + suggestions[i].visits);
 
 		board.editor.click(coord.x, coord.y, false, false);
