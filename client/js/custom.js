@@ -85,7 +85,7 @@ custom.createPreMoves = async function() {
 			let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
 			let cornerCoords = board.fillCorners();
 			for (let i=0; i<cornerCount; i++) {
-				await board.draw(cornerCoords[i]);
+				await board.play(await server.analyzeMove(cornerCoords[i]));
 				preMovesLeft--;
 			}
 		}

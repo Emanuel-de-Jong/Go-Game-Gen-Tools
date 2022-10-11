@@ -149,19 +149,21 @@ board.play = async function(suggestion, tool = "auto") {
 	stats.scoreChart.update(suggestion);
 };
 
-board.draw = async function(coord, tool = "auto") {
+board.draw = async function(coord, tool = "auto", sendToServer = true) {
 	board.editor.setTool(tool);
 	board.editor.click(coord.x, coord.y, false, false);
 	board.editor.setTool("navOnly");
 
 	board.lastMove = board.editor.getCurrent();
 
-	if (tool == "auto") {
-		await server.play(board.lastMove.move.color, coord);
-	} else if (tool == "playB") {
-		await server.play(-1, coord);
-	} else if (tool == "playW") {
-		await server.play(1, coord);
+	if (sendToServer) {
+		if (tool == "auto") {
+			await server.play(board.lastMove.move.color, coord);
+		} else if (tool == "playB") {
+			await server.play(-1, coord);
+		} else if (tool == "playW") {
+			await server.play(1, coord);
+		}
 	}
 };
 
@@ -271,9 +273,18 @@ board.placeHandicap = async function() {
 		},
 	}
 
-	for (let i=0; i<placement[settings.boardsize][settings.handicap].length; i++) {
-		let coord = placement[settings.boardsize][settings.handicap][i];
-		await board.draw(coord, "playB");
+	if (settings.handicap) {
+		let loopCount = placement[settings.boardsize][settings.handicap].length;
+		for (let i=0; i<loopCount; i++) {
+			let coord = placement[settings.boardsize][settings.handicap][i];
+			if (i < loopCount - 1) {
+				await board.draw(coord, "playB");
+			} else {
+				await board.draw(coord, "playB", false);
+				stats.scoreChart.update(await server.analyzeMove(coord, -1));
+				await server.play(-1, coord);
+			}
+		}
 	}
 };
 
