@@ -146,7 +146,7 @@ board.getMoves = function() {
 
 board.play = async function(suggestion, tool = "auto") {
 	await board.draw(suggestion.coord, tool);
-	stats.scoreChart.update(suggestion);
+	document.dispatchEvent(new CustomEvent("boardPlayEnd", { detail: { suggestion: suggestion } }));
 };
 
 board.draw = async function(coord, tool = "auto", sendToServer = true) {

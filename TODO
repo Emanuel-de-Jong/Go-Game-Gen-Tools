@@ -12,9 +12,6 @@ CLIENT
         server unreachable alert
     QOL
         - clear visits on bot turn
-        - update score with AI correction disabled
-            analyze strength option (0 doesn't send analyze request)
-        - update score with handicap/corners
         keep suggestion and visits history
         retry server request on error
     VISUAL

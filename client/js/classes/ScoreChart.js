@@ -139,10 +139,15 @@ class ScoreChart {
         };
 
         settings.scoreChartColorElement.addEventListener("input", this.settingsColorElementInputListener);
+        document.addEventListener("boardPlayEnd", this.boardPlayEndListener);
     }
 
     settingsColorElementInputListener() {
         stats.scoreChart.reverse();
+    }
+
+    boardPlayEndListener(event) {
+        stats.scoreChart.update(event.detail.suggestion);
     }
 
     reverse() {
