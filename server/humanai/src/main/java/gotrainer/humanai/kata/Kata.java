@@ -93,13 +93,13 @@ public class Kata {
         for (int i=0; i<analysis.length; i++) {
             String element = analysis[i];
             if (element.equals("move")) {
-                suggestion.move = new Move(color, analysis[i+1]);
+                suggestion.setMove(color, analysis[i+1]);
             } else if (element.equals("visits")) {
-                suggestion.visits = Integer.parseInt(analysis[i+1]);
+                suggestion.setVisits(analysis[i+1]);
             } else if (element.equals("winrate")) {
-                suggestion.winrate = Math.round(Float.parseFloat(analysis[i+1]) * 10000) / 100f;
+                suggestion.setWinrate(analysis[i+1]);
             } else if (element.equals("scoreLead")) {
-                suggestion.scoreLead = Math.round(Float.parseFloat(analysis[i+1]) * 10) / 10f;
+                suggestion.setScoreLead(analysis[i+1]);
             }
 
             if (element.equals("info") || i == analysis.length - 1) {
@@ -139,6 +139,31 @@ public class Kata {
         }
 
         return filteredSuggestions;
+    }
+
+    public synchronized MoveSuggestion analyzeMove(String color, int maxVisits, String coord) throws Exception {
+        if (lastMaxVisits != maxVisits) {
+            lastMaxVisits = maxVisits;
+            write("kata-set-param maxVisits " + maxVisits);
+            clearReader();
+        }
+
+        write("kata-genmove_analyze " + color + " allow " + color + " " + coord + " 1");
+        reader.readLine(); // Ignore '= '
+        String[] analysis = reader.readLine().split(" ");
+        clearReader();
+
+        write("undo");
+        clearReader();
+
+        MoveSuggestion suggestion = new MoveSuggestion(
+                color,
+                coord,
+                analysis[4],
+                analysis[8],
+                analysis[14]
+        );
+        return suggestion;
     }
 
     public synchronized void play(String color, String coord) throws Exception {

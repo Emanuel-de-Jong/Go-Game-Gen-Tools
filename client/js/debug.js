@@ -2,8 +2,12 @@ var debug = {};
 
 debug.testButton = document.getElementById("test");
 
-debug.testButtonClickListener = function() {
-    console.log();
+debug.testButtonClickListener = async function() {
+    if (settings.analyzeAllMoves) {
+        console.log(await server.analyzeMove(settings.analysisStrength, board.nextColor(), new Coord(9, 9)));
+    } else {
+        console.log("disabled");
+    }
 };
 
 debug.logAllFuncCalls = function() {

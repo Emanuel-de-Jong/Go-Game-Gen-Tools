@@ -177,7 +177,7 @@ custom.playerTurn = async function() {
 		}
 	}
 	
-	if (!settings.disableAICorrection) {
+	if (!settings.disableAICorrection || isRightChoice) {
 		await board.play(suggestionToPlay);
 		if (!isRightChoice) await board.draw(markupCoord, "cross");
 	} else {

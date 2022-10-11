@@ -207,6 +207,26 @@ server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, ma
     return filteredSuggestions;
 };
 
+server.analyzeMove = async function(maxVisits, color, coord) {
+    return server.sendRequest(fetch(server.URL + "analyzemove?color=" + utils.colorNumToName(color) +
+            "&maxVisits=" + maxVisits +
+            "&coord=" + server.coordNumToName(coord), {
+        method: "POST" })
+        .then(response => response.json())
+        .then(suggestionJson => {
+            return new MoveSuggestion(
+                utils.colorNameToNum(suggestionJson.move.color),
+                server.coordNameToNum(suggestionJson.move.coord),
+                suggestionJson.visits,
+                suggestionJson.winrate,
+                suggestionJson.scoreLead
+            );
+        })
+        .catch(error => {
+            return error;
+        }));
+};
+
 server.play = async function(color, coord) {
     // console.log("play " + color + " " + server.coordNumToName(coord));
     return server.sendRequest(fetch(server.URL + "play?color=" + utils.colorNumToName(color) + "&coord=" + server.coordNumToName(coord), {
