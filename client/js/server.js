@@ -153,7 +153,10 @@ server.setBoard = async function() {
 };
 
 server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc) {
-    // console.log("analyze " + maxVisits + " " + color + " " + moveOptions + " " + minVisitsPerc);
+    // console.log("analyze " + maxVisits + " " + color + " " + moveOptions + " " + minVisitsPerc + " " + maxVisitDiffPerc);
+    minVisitsPerc = settings.minVisitsPercSwitch ? minVisitsPerc : 0;
+    maxVisitDiffPerc = settings.maxVisitDiffPercSwitch ? maxVisitDiffPerc : 100;
+
     let suggestions = await server.sendRequest(fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) +
             "&maxVisits=" + maxVisits +
             "&minVisitsPerc=" + minVisitsPerc +

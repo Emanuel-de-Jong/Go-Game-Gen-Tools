@@ -1,11 +1,9 @@
 CLIENT
     SETTINGS
-        - checkbox to enable/disable for most settings
         play as both players
         save/load settings
         setting presets
     INFO
-        - better name for sgf exports
         chart history for multiple trees and jumps
         tooltips
         status bar (e.g. "analyzing suggestions")
@@ -27,7 +25,6 @@ SERVER
     restart server when something goes wrong
 
 CODE QUALITY/BUGS
-    - name listeners to what they do instead of what event they listen to
     - fix seeing stone after tree jump and cross
     - fix tree jump besogo maximum call stack size exceeded
     - fix tree jump > click > tree jump before analyze result

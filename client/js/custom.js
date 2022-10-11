@@ -80,26 +80,28 @@ custom.playPreMove = async function() {
 };
 
 custom.createPreMoves = async function() {
-	let preMovesLeft = settings.preMoves;
+	if (settings.preMovesSwitch) {
+		let preMovesLeft = settings.preMoves;
 
-	if (settings.handicap == 0 && settings.boardsize == 19) {
-		if (settings.cornerSwitch44 ||
-				settings.cornerSwitch34 ||
-				settings.cornerSwitch33 ||
-				settings.cornerSwitch45 ||
-				settings.cornerSwitch35) {
-			let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
-			let cornerCoords = board.fillCorners();
-			for (let i=0; i<cornerCount; i++) {
-				await board.play(await server.analyzeMove(cornerCoords[i]));
-				preMovesLeft--;
+		if (settings.handicap == 0 && settings.boardsize == 19) {
+			if (settings.cornerSwitch44 ||
+					settings.cornerSwitch34 ||
+					settings.cornerSwitch33 ||
+					settings.cornerSwitch45 ||
+					settings.cornerSwitch35) {
+				let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
+				let cornerCoords = board.fillCorners();
+				for (let i=0; i<cornerCount; i++) {
+					await board.play(await server.analyzeMove(cornerCoords[i]));
+					preMovesLeft--;
+				}
 			}
 		}
-	}
-
-	for (let i=0; i<preMovesLeft; i++) {
-		if (custom.isPreMovesStopped) break;
-		await custom.playPreMove();
+	
+		for (let i=0; i<preMovesLeft; i++) {
+			if (custom.isPreMovesStopped) break;
+			await custom.playPreMove();
+		}
 	}
 
 	if (settings.color == board.lastColor()) {

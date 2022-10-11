@@ -71,7 +71,7 @@ public class Kata {
 
     public synchronized List<MoveSuggestion> analyze(String color, int maxVisits, int minVisitsPerc,
                                         int maxVisitDiffPerc) throws Exception {
-//        System.out.println(color + " " + moveOptions + " " + maxVisits + " " + minVisitsPerc + " " + maxVisitDiffPerc);
+//        System.out.println(color + " " + maxVisits + " " + minVisitsPerc + " " + maxVisitDiffPerc);
         if (lastMaxVisits != maxVisits) {
             lastMaxVisits = maxVisits;
             write("kata-set-param maxVisits " + maxVisits);
