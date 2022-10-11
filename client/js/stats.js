@@ -86,6 +86,10 @@ stats.setVisits = function(suggestions) {
     stats.visitsElement.innerHTML = visitsHtml;
 };
 
+stats.clearVisits = function() {
+    stats.visitsElement.innerHTML = "";
+};
+
 stats.setResult = function(result) {
     stats.resultDivElement.hidden = false;
     stats.resultElement.innerHTML = result;

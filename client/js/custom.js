@@ -262,6 +262,9 @@ custom.selfplayButtonClickListener = async function() {
 
 		custom.takePlayerControl();
 		board.disableNextButton();
+
+		stats.clearVisits();
+
 		custom.selfplayPromise = custom.selfplay();
 	} else {
 		custom.isSelfplay = false;
