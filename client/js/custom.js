@@ -179,12 +179,13 @@ custom.playerTurn = async function() {
 	
 	if (!settings.disableAICorrection || isRightChoice) {
 		await board.play(suggestionToPlay);
-		if (!isRightChoice) await board.draw(markupCoord, "cross");
-	} else {
-		await board.play(await server.analyzeMove(markupCoord));
-	}
 
-	custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentStrength, moveOptions: 1 });
+		if (!isRightChoice) await board.draw(markupCoord, "cross");
+
+		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentStrength, moveOptions: 1 });
+	} else {
+		await board.draw(markupCoord, "auto", false);
+	}
 
 	custom.createSuggestionsToShow(suggestions, markupCoord);
 	stats.updateRatio(isRightChoice, isPerfectChoice);
@@ -192,6 +193,16 @@ custom.playerTurn = async function() {
 
 	if (!settings.skipNextButton) {
 		board.drawCoords(custom.suggestionsToShow);
+	}
+
+	if (settings.disableAICorrection && !isRightChoice) {
+		stats.scoreChart.update(await server.analyzeMove(markupCoord));
+		await server.play(markupCoord);
+
+		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentStrength, moveOptions: 1 });
+	}
+
+	if (!settings.skipNextButton) {
 		board.enableNextButton();
 	} else {
 		await custom.nextButtonClickListener();

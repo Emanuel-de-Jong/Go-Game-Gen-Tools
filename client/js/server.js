@@ -209,7 +209,6 @@ server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, ma
 
 server.analyzeMove = async function(coord, color = board.nextColor()) {
     return server.sendRequest(fetch(server.URL + "analyzemove?color=" + utils.colorNumToName(color) +
-            "&maxVisits=" + settings.analysisStrength +
             "&coord=" + server.coordNumToName(coord), {
         method: "POST" })
         .then(response => response.json())
@@ -227,7 +226,7 @@ server.analyzeMove = async function(coord, color = board.nextColor()) {
         }));
 };
 
-server.play = async function(color, coord) {
+server.play = async function(coord, color = board.lastMove.move.color) {
     // console.log("play " + color + " " + server.coordNumToName(coord));
     return server.sendRequest(fetch(server.URL + "play?color=" + utils.colorNumToName(color) + "&coord=" + server.coordNumToName(coord), {
         method: "GET" })

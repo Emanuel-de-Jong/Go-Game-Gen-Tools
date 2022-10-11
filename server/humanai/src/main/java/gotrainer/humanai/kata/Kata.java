@@ -141,7 +141,8 @@ public class Kata {
         return filteredSuggestions;
     }
 
-    public synchronized MoveSuggestion analyzeMove(String color, int maxVisits, String coord) throws Exception {
+    public synchronized MoveSuggestion analyzeMove(String color, String coord) throws Exception {
+        int maxVisits = 100;
         if (lastMaxVisits != maxVisits) {
             lastMaxVisits = maxVisits;
             write("kata-set-param maxVisits " + maxVisits);

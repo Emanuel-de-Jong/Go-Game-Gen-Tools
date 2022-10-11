@@ -158,11 +158,11 @@ board.draw = async function(coord, tool = "auto", sendToServer = true) {
 
 	if (sendToServer) {
 		if (tool == "auto") {
-			await server.play(board.lastMove.move.color, coord);
+			await server.play(coord);
 		} else if (tool == "playB") {
-			await server.play(-1, coord);
+			await server.play(coord, -1);
 		} else if (tool == "playW") {
-			await server.play(1, coord);
+			await server.play(coord, 1);
 		}
 	}
 };
@@ -282,7 +282,7 @@ board.placeHandicap = async function() {
 			} else {
 				await board.draw(coord, "playB", false);
 				stats.scoreChart.update(await server.analyzeMove(coord, -1));
-				await server.play(-1, coord);
+				await server.play(coord, -1);
 			}
 		}
 	}

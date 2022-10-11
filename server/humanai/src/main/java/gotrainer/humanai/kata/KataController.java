@@ -67,9 +67,8 @@ public class KataController {
 
     @PostMapping("/analyzemove")
     public MoveSuggestion postAnalyzeMove(@RequestParam @Pattern(regexp="(B|W)") String color,
-                                                @RequestParam @Min(1) @Max(5000) int maxVisits,
                                                 @RequestParam @Pattern(regexp="([A-H]|[J-T])(1[0-9]|[1-9])") String coord) throws Exception {
-        return kata.analyzeMove(color, maxVisits, coord);
+        return kata.analyzeMove(color, coord);
     }
 
 
