@@ -56,6 +56,12 @@ stats.boardTreeJumpedListener = function(event) {
 }
 document.addEventListener("boardTreeJumped", stats.boardTreeJumpedListener);
 
+stats.playerPlayedListener = function(event) {
+	stats.updateRatio(event.detail.isRightChoice, event.detail.isPerfectChoice);
+	stats.setVisits(event.detail.suggestionsToShow);
+}
+document.addEventListener("playerPlayed", stats.playerPlayedListener);
+
 stats.updateRatio = function(isRight, isPerfect) {
     stats.total++;
 

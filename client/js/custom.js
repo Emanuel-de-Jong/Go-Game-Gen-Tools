@@ -188,8 +188,10 @@ custom.playerTurn = async function() {
 	}
 
 	custom.createSuggestionsToShow(suggestions, markupCoord);
-	stats.updateRatio(isRightChoice, isPerfectChoice);
-	stats.setVisits(custom.suggestionsToShow);
+	document.dispatchEvent(new CustomEvent("playerPlayed", { detail: {
+		isRightChoice: isRightChoice,
+		isPerfectChoice: isPerfectChoice,
+		suggestionsToShow: custom.suggestionsToShow } }));
 
 	if (!settings.skipNextButton) {
 		board.drawCoords(custom.suggestionsToShow);
