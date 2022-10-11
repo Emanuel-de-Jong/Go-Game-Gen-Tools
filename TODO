@@ -1,15 +1,19 @@
 CLIENT
     SETTINGS
+        - checkbox to enable/disable for most settings
         play as both players
         save/load settings
         setting presets
     INFO
+        - better name for sgf exports
         chart history for multiple trees and jumps
         tooltips
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
+        - clear visits on bot turn
         - update score with AI correction disabled
+            analyze strength option (0 doesn't send analyze request)
         - update score with handicap/corners
         keep suggestion and visits history
         retry server request on error
