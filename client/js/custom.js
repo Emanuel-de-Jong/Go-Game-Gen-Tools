@@ -181,7 +181,7 @@ custom.playerTurn = async function() {
 		await board.play(suggestionToPlay);
 		if (!isRightChoice) await board.draw(markupCoord, "cross");
 	} else {
-		await board.draw(markupCoord);
+		await board.play(await server.analyzeMove(markupCoord));
 	}
 
 	custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentStrength, moveOptions: 1 });

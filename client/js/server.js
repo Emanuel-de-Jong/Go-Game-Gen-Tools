@@ -207,9 +207,9 @@ server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, ma
     return filteredSuggestions;
 };
 
-server.analyzeMove = async function(maxVisits, color, coord) {
+server.analyzeMove = async function(coord, color = board.nextColor()) {
     return server.sendRequest(fetch(server.URL + "analyzemove?color=" + utils.colorNumToName(color) +
-            "&maxVisits=" + maxVisits +
+            "&maxVisits=" + settings.analysisStrength +
             "&coord=" + server.coordNumToName(coord), {
         method: "POST" })
         .then(response => response.json())
