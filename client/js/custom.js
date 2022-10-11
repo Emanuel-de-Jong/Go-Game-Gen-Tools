@@ -26,6 +26,7 @@ custom.clear = async function(source) {
 
 	if (source !== utils.SOURCE.BOARD) {
 		await board.init();
+		board.editor.addListener(custom.boardEditorListener);
 		board.nextButton.addEventListener("click", custom.nextButtonClickListener);
 
 		custom.stopPreMovesButton.hidden = false;
@@ -50,7 +51,8 @@ custom.finish = function(suggestion) {
     } else {
         result = utils.colorNumToName(suggestion.color * -1) + "+" + (suggestion.scoreLead * -1);
     }
-	document.dispatchEvent(new CustomEvent("customFinished", { detail: { result: result } }));
+	stats.setResult(result);
+	board.sgf.setResult(result);
 };
 
 custom.analyze = async function({
@@ -112,22 +114,26 @@ custom.createPreMoves = async function() {
 	}
 };
 
-custom.boardEditorDrawnListener = async function() {
-	if (custom.isPlayerControlling && !board.sgf.isSGFLoading) {
+custom.boardEditorListener = async function(event) {
+	if (event.markupChange === true && custom.isPlayerControlling && !board.sgf.isSGFLoading) {
 		custom.takePlayerControl();
         await custom.playerTurn();
-    }
-};
-document.addEventListener("boardEditorDrawn", custom.boardEditorDrawnListener);
+    } else if (event.navChange === true) {
+		let currentMove = board.editor.getCurrent();
+		if (board.lastMove.navTreeY != currentMove.navTreeY) {
+			stats.scoreChart.clear();
+		}
 
-custom.boardTreeJumpedListener = function() {
-	custom.isJumped = true;
-	custom.isFinished = false;
+		if (board.lastMove.moveNumber+1 != currentMove.moveNumber ||
+				board.lastMove.navTreeY != currentMove.navTreeY) {
+			custom.isJumped = true;
+			custom.isFinished = false;
 
-	board.disableNextButton();
-	custom.givePlayerControl(false);
+			board.disableNextButton();
+			custom.givePlayerControl(false);
+		}
+	}
 };
-document.addEventListener("boardTreeJumped", custom.boardTreeJumpedListener);
 
 custom.givePlayerControl = function(isSuggestionNeeded = true) {
 	board.editor.setTool("cross");
@@ -188,10 +194,8 @@ custom.playerTurn = async function() {
 	}
 
 	custom.createSuggestionsToShow(suggestions, markupCoord);
-	document.dispatchEvent(new CustomEvent("playerPlayed", { detail: {
-		isRightChoice: isRightChoice,
-		isPerfectChoice: isPerfectChoice,
-		suggestionsToShow: custom.suggestionsToShow } }));
+	stats.updateRatio(isRightChoice, isPerfectChoice);
+	stats.setVisits(custom.suggestionsToShow);
 
 	if (!settings.skipNextButton) {
 		board.drawCoords(custom.suggestionsToShow);

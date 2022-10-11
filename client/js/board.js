@@ -30,7 +30,6 @@ board.init = async function() {
 	board.nextButton = document.getElementById("next");
 
 	utils.addEventsListener(document, ["keydown", "mousedown"], board.keydownAndMousedownListener);
-	board.editor.addListener(board.editorListener);
 
 	board.lastMove = board.editor.getCurrent();
 
@@ -39,21 +38,6 @@ board.init = async function() {
 	// console.log(besogo);
 	// console.log(board.editor);
 	// console.log(board.editor.getCurrent());
-};
-
-board.editorListener = function(event) {
-	if (event.markupChange === true) {
-		document.dispatchEvent(new CustomEvent("boardEditorDrawn"));
-    }
-	
-	if (event.navChange === true) {
-		let currentMove = board.editor.getCurrent();
-		let xChanged = board.lastMove.moveNumber+1 != currentMove.moveNumber;
-		let yChanged = board.lastMove.navTreeY != currentMove.navTreeY;
-		if (xChanged || yChanged) {
-			document.dispatchEvent(new CustomEvent("boardTreeJumped", { detail: { xChanged: xChanged, yChanged: yChanged } }));
-		}
-	}
 };
 
 board.goToNode = function(nodeNumber) {
@@ -162,7 +146,7 @@ board.getMoves = function() {
 
 board.play = async function(suggestion, tool = "auto") {
 	await board.draw(suggestion.coord, tool);
-	document.dispatchEvent(new CustomEvent("boardPlayed", { detail: { suggestion: suggestion } }));
+	stats.scoreChart.update(suggestion);
 };
 
 board.draw = async function(coord, tool = "auto", sendToServer = true) {

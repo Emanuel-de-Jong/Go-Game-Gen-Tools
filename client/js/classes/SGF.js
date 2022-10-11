@@ -29,7 +29,6 @@ class SGF {
 
 		document.addEventListener("sgfLoadingEvent", this.sgfLoadingEventListener);
 		document.addEventListener("sgfLoadedEvent", this.sgfLoadedEventListener);
-		document.addEventListener("customFinished", this.customFinishedListener);
     }
 
 	sgfLoadingEventListener() {
@@ -61,10 +60,6 @@ class SGF {
 				settings.setSetting("ruleset", "chinese");
 			}
 		}
-	}
-
-	customFinishedListener(event) {
-		board.sgf.setResult(event.detail.result);
 	}
 
     setRankPlayer() {

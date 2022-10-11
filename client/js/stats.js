@@ -44,24 +44,6 @@ stats.init = function() {
     stats.resultDivElement.hidden = true;
 };
 
-stats.customFinishedListener = function(event) {
-    stats.setResult(event.detail.result);
-}
-document.addEventListener("customFinished", stats.customFinishedListener);
-
-stats.boardTreeJumpedListener = function(event) {
-    if (event.detail.yChanged) {
-        stats.scoreChart.clear();
-    }
-}
-document.addEventListener("boardTreeJumped", stats.boardTreeJumpedListener);
-
-stats.playerPlayedListener = function(event) {
-	stats.updateRatio(event.detail.isRightChoice, event.detail.isPerfectChoice);
-	stats.setVisits(event.detail.suggestionsToShow);
-}
-document.addEventListener("playerPlayed", stats.playerPlayedListener);
-
 stats.updateRatio = function(isRight, isPerfect) {
     stats.total++;
 
