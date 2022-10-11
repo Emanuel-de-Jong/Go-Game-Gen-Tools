@@ -29,6 +29,7 @@ SERVER
 
 CODE QUALITY/BUGS
     - use events (instead of calling stats update funcs in custom, have stats listen to events and update itself)
+    - name listeners to what they do instead of what event they listen to
     - fix seeing stone after tree jump and cross
     - fix tree jump besogo maximum call stack size exceeded
     - fix tree jump > click > tree jump before analyze result

@@ -44,6 +44,18 @@ stats.init = function() {
     stats.resultDivElement.hidden = true;
 };
 
+stats.customFinishedListener = function(event) {
+    stats.setResult(event.detail.result);
+}
+document.addEventListener("customFinished", stats.customFinishedListener);
+
+stats.boardTreeJumpedListener = function(event) {
+    if (event.detail.yChanged) {
+        stats.scoreChart.clear();
+    }
+}
+document.addEventListener("boardTreeJumped", stats.boardTreeJumpedListener);
+
 stats.updateRatio = function(isRight, isPerfect) {
     stats.total++;
 
@@ -85,19 +97,6 @@ stats.setVisits = function(suggestions) {
 	}
     stats.visitsElement.innerHTML = visitsHtml;
 };
-
-stats.updateResult = function(suggestion) {
-    let result;
-    if (suggestion.scoreLead >= 0) {
-        result = utils.colorNumToName(suggestion.color) + "+" + suggestion.scoreLead;
-    } else {
-        result = utils.colorNumToName(suggestion.color * -1) + "+" + (suggestion.scoreLead * -1);
-    }
-
-    stats.setResult(result);
-
-    return result;
-}
 
 stats.setResult = function(result) {
     stats.resultDivElement.hidden = false;

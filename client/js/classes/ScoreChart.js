@@ -139,14 +139,14 @@ class ScoreChart {
         };
 
         settings.scoreChartColorElement.addEventListener("input", this.settingsColorElementInputListener);
-        document.addEventListener("boardPlayEnd", this.boardPlayEndListener);
+        document.addEventListener("boardPlayed", this.boardPlayedListener);
     }
 
     settingsColorElementInputListener() {
         stats.scoreChart.reverse();
     }
 
-    boardPlayEndListener(event) {
+    boardPlayedListener(event) {
         stats.scoreChart.update(event.detail.suggestion);
     }
 
