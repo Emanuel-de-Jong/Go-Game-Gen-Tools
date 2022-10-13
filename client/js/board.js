@@ -219,21 +219,9 @@ board.drawCoords = function(suggestions) {
 	board.editor.setTool("navOnly");
 };
 
-board.getMarkupCoord = function() {
+board.removeMarkup = function(coord) {
 	let markup = board.editor.getCurrent().markup;
-	let markupNum;
-	for (let i=0; i<markup.length; i++) {
-		if (markup[i] == 4) {
-			markup[i] = 0;
-			markupNum = i;
-			break;
-		}
-	}
-
-	return new Coord(
-		Math.floor(markupNum / settings.boardsize) + 1,
-		(markupNum % settings.boardsize) + 1
-	);
+	markup[(coord.x - 1) * settings.boardsize + (coord.y - 1)] = 0;
 };
 
 board.placeHandicap = async function() {

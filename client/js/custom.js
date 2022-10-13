@@ -118,8 +118,11 @@ custom.createPreMoves = async function() {
 
 custom.boardEditorListener = async function(event) {
 	if (event.markupChange === true && custom.isPlayerControlling && !board.sgf.isSGFLoading) {
+		let markupCoord = new Coord(event.x, event.y);
+		board.removeMarkup(markupCoord);
+
 		custom.takePlayerControl();
-        await custom.playerTurn();
+        await custom.playerTurn(markupCoord);
     } else if (event.navChange === true) {
 		let currentMove = board.editor.getCurrent();
 		if (board.lastMove.navTreeY != currentMove.navTreeY) {
@@ -155,7 +158,7 @@ custom.nextButtonClickListener = async function() {
 	await custom.botTurn();
 };
 
-custom.playerTurn = async function() {
+custom.playerTurn = async function(markupCoord) {
 	let playerTurnId = ++custom.playerTurnId;
 	
 	if (custom.isJumped) {
@@ -170,7 +173,6 @@ custom.playerTurn = async function() {
 	if (custom.isFinished) return;
 
 	let suggestionToPlay = suggestions[0];
-	let markupCoord = board.getMarkupCoord();
 	let isRightChoice = false;
 	let isPerfectChoice = false;
 	for (let i=0; i<suggestions.length; i++) {
