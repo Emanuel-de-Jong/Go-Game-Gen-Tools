@@ -127,7 +127,7 @@ custom.boardEditorListener = async function(event) {
 		board.removeMarkup(markupCoord);
 
         await custom.playerTurn(markupCoord);
-    } else if (event.navChange) {
+    } else if (event.navChange && !event.treeChange && !custom.isJumped) {
 		let currentMove = board.editor.getCurrent();
 		if (board.lastMove.navTreeY != currentMove.navTreeY) {
 			stats.scoreChart.clear();
