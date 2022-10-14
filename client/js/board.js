@@ -176,6 +176,10 @@ board.draw = async function(coord, tool = "auto", sendToServer = true) {
 	if (tool == "auto" || tool == "playB" || tool == "playW") {
 		board.playPlaceStoneAudio();
 
+		if (board.lastMove.navTreeY != board.editor.getCurrent().navTreeY) {
+			stats.scoreChart.clear();
+		}
+
 		board.lastMove = board.editor.getCurrent();
 
 		if (sendToServer) {

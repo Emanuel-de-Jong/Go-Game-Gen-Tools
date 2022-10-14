@@ -129,10 +129,6 @@ custom.boardEditorListener = async function(event) {
         await custom.playerTurn(markupCoord);
     } else if (event.navChange && !event.treeChange && !custom.isJumped) {
 		let currentMove = board.editor.getCurrent();
-		if (board.lastMove.navTreeY != currentMove.navTreeY) {
-			stats.scoreChart.clear();
-		}
-
 		if (board.lastMove.moveNumber+1 != currentMove.moveNumber ||
 				board.lastMove.navTreeY != currentMove.navTreeY) {
 			custom.isJumped = true;

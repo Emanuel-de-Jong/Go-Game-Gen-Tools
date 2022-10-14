@@ -1,5 +1,6 @@
 CLIENT
     SETTINGS
+        - ignore pass
         play as both players
         save/load settings
         setting presets
@@ -12,7 +13,7 @@ CLIENT
         keep suggestion and visits history
         retry server request on error
     VISUAL
-        show visits on board
+        - show visits on board
         settings in accordion
         complex settings in advanced section
         icon for options that can be updated without restart
@@ -29,6 +30,8 @@ CODE QUALITY/BUGS
 
 FAR FUTURE
     play a sequence, then click a button that shows what sequence the ai would have played and how good your sequence was in comparison (comparing the winrate/score won/lost during those moves)
+    show visits on board toggle
+    sound toggle
     add besogo and katago credits
     registration system
     payment
