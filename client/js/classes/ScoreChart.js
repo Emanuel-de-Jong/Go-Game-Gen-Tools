@@ -153,11 +153,11 @@ class ScoreChart {
             } else {
                 winrate = 50 + (50 - winrate);
             }
-            this.winrates[i] = winrate;
+            this.winrates[i] = winrate.toFixed(2);
         }
 
         for (let i=0; i<this.scores.length; i++) {
-            this.scores[i] = this.scores[i] * -1;
+            this.scores[i] = (this.scores[i] * -1).toFixed(1);
         }
 
         this.chart.update();
