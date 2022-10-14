@@ -1,5 +1,14 @@
 var board = {};
 
+board.placeStoneAudios = [
+	new Audio("resources/placeStone0.mp3"),
+	new Audio("resources/placeStone1.mp3"),
+	new Audio("resources/placeStone2.mp3"),
+	new Audio("resources/placeStone3.mp3"),
+	new Audio("resources/placeStone4.mp3")
+];
+board.lastPlaceStoneAudioIndex = 0;
+
 board.init = async function() {
 	board.element = document.getElementById("board");
 	besogo.create(board.element, {
@@ -38,6 +47,16 @@ board.init = async function() {
 	// console.log(besogo);
 	// console.log(board.editor);
 	// console.log(board.editor.getCurrent());
+};
+
+board.playPlaceStoneAudio = function() {
+	let placeStoneAudioIndex;
+	do {
+		placeStoneAudioIndex = utils.randomInt(5);
+	} while (placeStoneAudioIndex == board.lastPlaceStoneAudioIndex);
+	board.lastPlaceStoneAudioIndex = placeStoneAudioIndex;
+
+	board.placeStoneAudios[placeStoneAudioIndex].play();
 };
 
 board.goToNode = function(nodeNumber) {
@@ -154,15 +173,19 @@ board.draw = async function(coord, tool = "auto", sendToServer = true) {
 	board.editor.click(coord.x, coord.y, false, false);
 	board.editor.setTool("navOnly");
 
-	board.lastMove = board.editor.getCurrent();
+	if (tool == "auto" || tool == "playB" || tool == "playW") {
+		board.playPlaceStoneAudio();
 
-	if (sendToServer) {
-		if (tool == "auto") {
-			await server.play(coord);
-		} else if (tool == "playB") {
-			await server.play(coord, -1);
-		} else if (tool == "playW") {
-			await server.play(coord, 1);
+		board.lastMove = board.editor.getCurrent();
+
+		if (sendToServer) {
+			if (tool == "auto") {
+				await server.play(coord);
+			} else if (tool == "playB") {
+				await server.play(coord, -1);
+			} else if (tool == "playW") {
+				await server.play(coord, 1);
+			}
 		}
 	}
 };

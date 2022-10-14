@@ -117,14 +117,14 @@ custom.createPreMoves = async function() {
 };
 
 custom.boardEditorListener = async function(event) {
-	if (event.markupChange === true && custom.isPlayerControlling && !board.sgf.isSGFLoading) {
+	if (event.markupChange && custom.isPlayerControlling && !board.sgf.isSGFLoading) {
 		custom.takePlayerControl();
 
 		let markupCoord = new Coord(event.x, event.y);
 		board.removeMarkup(markupCoord);
 
         await custom.playerTurn(markupCoord);
-    } else if (event.navChange === true) {
+    } else if (event.navChange) {
 		let currentMove = board.editor.getCurrent();
 		if (board.lastMove.navTreeY != currentMove.navTreeY) {
 			stats.scoreChart.clear();

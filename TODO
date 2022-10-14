@@ -9,7 +9,6 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
-        - sound
         keep suggestion and visits history
         retry server request on error
     VISUAL
