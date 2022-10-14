@@ -60,7 +60,7 @@ custom.analyze = async function({
 		moveOptions = settings.moveOptions,
 		minVisitsPerc = settings.minVisitsPerc,
 		maxVisitDiffPerc = settings.maxVisitDiffPerc,
-		color = board.nextColor() } = {}) {
+		color = board.getNextColor() } = {}) {
 	let suggestions = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
 	if (suggestions[0].coord == "pass") {
 		custom.finish(suggestions[0]);
@@ -104,7 +104,7 @@ custom.createPreMoves = async function() {
 		}
 	}
 
-	if (settings.color == board.lastColor()) {
+	if (settings.color == board.getColor()) {
 		await custom.playPreMove();
 	}
 
@@ -118,10 +118,11 @@ custom.createPreMoves = async function() {
 
 custom.boardEditorListener = async function(event) {
 	if (event.markupChange === true && custom.isPlayerControlling && !board.sgf.isSGFLoading) {
+		custom.takePlayerControl();
+
 		let markupCoord = new Coord(event.x, event.y);
 		board.removeMarkup(markupCoord);
 
-		custom.takePlayerControl();
         await custom.playerTurn(markupCoord);
     } else if (event.navChange === true) {
 		let currentMove = board.editor.getCurrent();
@@ -284,14 +285,14 @@ custom.selfplayButtonClickListener = async function() {
 custom.selfplayButton.addEventListener("click", custom.selfplayButtonClickListener);
 
 custom.selfplay = async function() {
-	while (custom.isSelfplay || settings.color != board.nextColor()) {
+	while (custom.isSelfplay || settings.color != board.getNextColor()) {
 		let suggestions = await custom.analyze({ maxVisits: settings.selfplayStrength, moveOptions: 1 });
 		if (custom.isFinished) {
 			custom.selfplayButton.click();
 			return;
 		}
 
-		if (!custom.isSelfplay && settings.color == board.nextColor()) return;
+		if (!custom.isSelfplay && settings.color == board.getNextColor()) return;
 
 		await board.play(suggestions[0]);
 	}

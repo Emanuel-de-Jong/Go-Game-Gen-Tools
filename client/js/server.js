@@ -210,7 +210,7 @@ server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, ma
     return filteredSuggestions;
 };
 
-server.analyzeMove = async function(coord, color = board.nextColor()) {
+server.analyzeMove = async function(coord, color = board.getNextColor()) {
     return server.sendRequest(fetch(server.URL + "analyzemove?color=" + utils.colorNumToName(color) +
             "&coord=" + server.coordNumToName(coord), {
         method: "POST" })
@@ -229,7 +229,7 @@ server.analyzeMove = async function(coord, color = board.nextColor()) {
         }));
 };
 
-server.play = async function(coord, color = board.lastMove.move.color) {
+server.play = async function(coord, color = board.getColor()) {
     // console.log("play " + color + " " + server.coordNumToName(coord));
     return server.sendRequest(fetch(server.URL + "play?color=" + utils.colorNumToName(color) + "&coord=" + server.coordNumToName(coord), {
         method: "GET" })

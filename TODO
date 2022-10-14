@@ -9,6 +9,7 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
+        - sound
         keep suggestion and visits history
         retry server request on error
     VISUAL
@@ -27,6 +28,7 @@ SERVER
 CODE QUALITY/BUGS
     - fix tree jump besogo maximum call stack size exceeded
     - fix seeing stone after tree jump and cross
+    - fix tree jump playing for me
     - refactor
 
 FAR FUTURE

@@ -41,7 +41,7 @@ board.init = async function() {
 };
 
 board.goToNode = function(nodeNumber) {
-	let currentNodeNumber = board.editor.getCurrent().moveNumber;
+	let currentNodeNumber = board.getMoveNumber();
 	let nodesToJump = nodeNumber - currentNodeNumber;
 	if (nodesToJump > 0) {
 		board.editor.nextNode(nodesToJump);
@@ -102,7 +102,7 @@ board.fillCorners = function() {
 	return coords;
 };
 
-board.lastColor = function() {
+board.getColor = function() {
 	let currentMove = board.editor.getCurrent();
 	if (currentMove.move != null) {
 		return currentMove.move.color
@@ -110,7 +110,7 @@ board.lastColor = function() {
 	return 1;
 };
 
-board.nextColor = function() {
+board.getNextColor = function() {
 	let currentMove = board.editor.getCurrent();
 	if (currentMove.move != null) {
 		if (currentMove.children.length > 0) {
@@ -122,7 +122,7 @@ board.nextColor = function() {
 };
 
 board.getMoveNumber = function() {
-	return board.lastMove.moveNumber;
+	return board.editor.getCurrent().moveNumber;
 };
 
 board.getMoves = function() {
