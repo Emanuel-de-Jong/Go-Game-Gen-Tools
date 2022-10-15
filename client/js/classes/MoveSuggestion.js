@@ -15,4 +15,8 @@ class MoveSuggestion {
         this.scoreLead = scoreLead;
     }
 
+    isPass() {
+        return this.coord == "pass";
+    }
+
 }

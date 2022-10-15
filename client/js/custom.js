@@ -14,7 +14,7 @@ custom.clear = async function(source) {
 	custom.suggestionsToShow = [];
 	custom.isPlayerControlling = false;
 	custom.isJumped = false;
-	custom.isFinished = false;
+	custom.isPassed = false;
 	custom.isSelfplay = false;
 	custom.isPreMovesStopped = false;
 	custom.playerTurnId = 0;
@@ -40,11 +40,11 @@ custom.stopPreMovesButtonClickListener = function() {
 };
 custom.stopPreMovesButton.addEventListener("click", custom.stopPreMovesButtonClickListener);
 
-custom.finish = function(suggestion) {
-	custom.isFinished = true;
+custom.pass = function(suggestion) {
+	custom.isPassed = true;
 	custom.takePlayerControl();
 	board.disableNextButton();
-	
+
 	let result;
     if (suggestion.scoreLead >= 0) {
         result = utils.colorNumToName(suggestion.color) + "+" + suggestion.scoreLead;
@@ -53,6 +53,8 @@ custom.finish = function(suggestion) {
     }
 	stats.setResult(result);
 	board.sgf.setResult(result);
+
+	board.pass();
 };
 
 custom.analyze = async function({
@@ -62,10 +64,19 @@ custom.analyze = async function({
 		maxVisitDiffPerc = settings.maxVisitDiffPerc,
 		color = board.getNextColor() } = {}) {
 	let suggestions = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
-	if (suggestions[0].coord == "pass") {
-		custom.finish(suggestions[0]);
+	
+	let suggestionsWithoutPass = [];
+	for (let i=0; i<suggestions.length; i++) {
+		if (!suggestions[i].isPass()) {
+			suggestionsWithoutPass.push(suggestions[i]);
+		}
 	}
-	return suggestions;
+
+	if (suggestions[0].isPass()) {
+		custom.pass(suggestions[0]);
+	}
+
+	return suggestionsWithoutPass;
 };
 
 custom.playPreMove = async function() {
@@ -74,7 +85,7 @@ custom.playPreMove = async function() {
 		moveOptions: settings.preOptions,
 		minVisitsPerc: 10,
 		maxVisitDiffPerc: 50 });
-	if (custom.isFinished) custom.isPreMovesStopped = true;
+	if (custom.isPassed) custom.isPreMovesStopped = true;
 	if (custom.isPreMovesStopped) return;
 	await board.play(suggestions[utils.randomInt(suggestions.length)]);
 };
@@ -114,8 +125,8 @@ custom.createPreMoves = async function() {
 	custom.stopPreMovesButton.hidden = true;
 	custom.selfplayButton.hidden = false;
 
-	if (!custom.isFinished) {
-		custom.givePlayerControl();
+	if (!custom.isPassed) {
+	custom.givePlayerControl();
 	}
 };
 
@@ -132,7 +143,7 @@ custom.boardEditorListener = async function(event) {
 		if (board.lastMove.moveNumber+1 != currentMove.moveNumber ||
 				board.lastMove.navTreeY != currentMove.navTreeY) {
 			custom.isJumped = true;
-			custom.isFinished = false;
+			custom.isPassed = false;
 
 			board.disableNextButton();
 			custom.givePlayerControl(false);
@@ -169,8 +180,8 @@ custom.playerTurn = async function(markupCoord) {
 	}
 
 	let suggestions = await custom.suggestionsPromise;
+	if (custom.isPassed) return;
 	if (playerTurnId != custom.playerTurnId) return;
-	if (custom.isFinished) return;
 
 	let suggestionToPlay = suggestions[0];
 	let isRightChoice = false;
@@ -242,8 +253,8 @@ custom.botTurn = async function() {
 	let botTurnId = ++custom.botTurnId;
 
 	let suggestions = await custom.suggestionsPromise;
+	if (custom.isPassed) return;
 	if (botTurnId != custom.botTurnId) return;
-	if (custom.isFinished) return;
 
 	if (settings.skipNextButton) {
 		board.drawCoords(custom.suggestionsToShow);
@@ -276,8 +287,8 @@ custom.selfplayButtonClickListener = async function() {
 
 		await custom.selfplayPromise;
 
-		if (!custom.isFinished) {
-			custom.givePlayerControl();
+		if (!custom.isPassed) {
+		custom.givePlayerControl();
 		}
 	}
 };
@@ -286,7 +297,7 @@ custom.selfplayButton.addEventListener("click", custom.selfplayButtonClickListen
 custom.selfplay = async function() {
 	while (custom.isSelfplay || settings.color != board.getNextColor()) {
 		let suggestions = await custom.analyze({ maxVisits: settings.selfplayStrength, moveOptions: 1 });
-		if (custom.isFinished) {
+		if (custom.isPassed) {
 			custom.selfplayButton.click();
 			return;
 		}

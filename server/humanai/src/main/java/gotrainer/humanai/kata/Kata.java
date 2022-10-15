@@ -128,6 +128,7 @@ public class Kata {
         int lastSuggestionVisits = Integer.MAX_VALUE;
         for (MoveSuggestion moveSuggestion : suggestions) {
             if (filteredSuggestions.size() > 0 &&
+                    !filteredSuggestions.get(filteredSuggestions.size() - 1).move.coord.equals("pass") &&
                     (moveSuggestion.visits < minVisits ||
                     lastSuggestionVisits - moveSuggestion.visits > maxVisitDiff)) {
                 break;

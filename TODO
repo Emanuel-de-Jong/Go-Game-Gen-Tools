@@ -1,6 +1,7 @@
 CLIENT
     SETTINGS
-        - ignore pass
+        - opponent inperfections to get otherwise impossible scenarios (maybe opponent move options?)
+        play after pass
         play as both players
         save/load settings
         setting presets
@@ -10,6 +11,7 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
+        - change komi on board/ruleset change
         keep suggestion and visits history
         retry server request on error
     VISUAL
@@ -30,7 +32,6 @@ CODE QUALITY/BUGS
 FAR FUTURE
     play a sequence, then click a button that shows what sequence the ai would have played and how good your sequence was in comparison (comparing the winrate/score won/lost during those moves)
     sound toggle
-    opponent inperfections to get otherwise impossible scenarios (maybe opponent move options?)
     add besogo and katago credits
     registration system
     payment

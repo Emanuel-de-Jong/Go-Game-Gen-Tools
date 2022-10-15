@@ -87,7 +87,6 @@ class ScoreChart {
                 text: "Score",
             },
             grid: {
-                // drawOnChartArea: false,
                 color: function(context) {
                     if (context.tick.value == 0) return "#000000";
                     return "#ffffff";

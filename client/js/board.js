@@ -27,8 +27,6 @@ board.init = async function() {
 	
 	document.querySelector('button[title="Variants: [child]/sibling"]').remove();
 	document.querySelector('button[title="Variants: show/[hide]"]').remove();
-	// document.querySelector('.besogo-whiteInfo').innerHTML = '<span class="besogo-whiteCaps" title="White captures">0</span>';
-	// document.querySelector('.besogo-blackInfo').innerHTML = '<span class="besogo-blackCaps" title="Black captures">0</span>';
 	document.querySelector('input[value="9x9"]').remove();
 	document.querySelector('input[value="13x13"]').remove();
 	document.querySelector('input[value="19x19"]').remove();
@@ -47,6 +45,10 @@ board.init = async function() {
 	// console.log(besogo);
 	// console.log(board.editor);
 	// console.log(board.editor.getCurrent());
+};
+
+board.pass = function() {
+	board.editor.click(0, 0, false);
 };
 
 board.playPlaceStoneAudio = function() {
