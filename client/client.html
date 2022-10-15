@@ -150,6 +150,20 @@
                                                 <option value="9">9</option>
                                             </select>
                                         </div>
+                                        <div class="col-6">
+                                            <label for="handicap" class="form-label">Handicap</label>
+                                            <select class="form-select" id="handicap">
+                                                <option value="0">0</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div>
@@ -168,24 +182,16 @@
                                     </select>
                                 </div>
                                 <div>
+                                    <label for="komi" class="form-label">Komi</label>
+                                    <select class="form-select" id="komiChangeStyle">
+                                        <option value="auto">Automatic</option>
+                                        <option value="custom">Custom</option>
+                                    </select>
+                                </div>
+                                <div>
                                     <div class="row">
                                         <div class="col-6">
-                                            <label for="handicap" class="form-label">Handicap</label>
-                                            <select class="form-select" id="handicap">
-                                                <option value="0">0</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-6">
-                                            <label for="komi" class="form-label">Komi</label>
-                                            <input type="number" class="form-control" id="komi" value="6.5" step="0.5" min="-150" max="150">
+                                            <input type="number" class="form-control" id="komi" value="6.5" step="0.5" min="-150" max="150" disabled>
                                         </div>
                                     </div>
                                 </div>

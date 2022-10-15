@@ -5,6 +5,7 @@ settings.SETTINGS = {
     boardsize: utils.TYPES.INT,
     color: utils.TYPES.INT,
     ruleset: utils.TYPES.STRING,
+    komiChangeStyle: utils.TYPES.STRING,
     handicap: utils.TYPES.INT,
     komi: utils.TYPES.FLOAT,
     scoreChartColor: utils.TYPES.INT,
@@ -152,5 +153,55 @@ settings.skipNextButtonElementInputListener = function() {
     }
 };
 settings.skipNextButtonElement.addEventListener("input", settings.skipNextButtonElementInputListener);
+
+settings.komiChangeStyleElementInputListener = function() {
+    if (settings.komiChangeStyle == "auto") {
+        settings.komiElement.disabled = true;
+        settings.setKomi();
+    } else {
+        settings.komiElement.disabled = false;
+    }
+};
+settings.komiChangeStyleElement.addEventListener("input", settings.komiChangeStyleElementInputListener);
+
+settings.setKomi = function() {
+    if (settings.komiChangeStyle != "auto") return;
+
+    let komi;
+    if (settings.handicap != 0) {
+        komi = 0.5;
+    } else {
+        if (settings.ruleset == "japanese") {
+            switch (settings.boardsize) {
+                case 19:
+                    komi = 6.5;
+                    break;
+                case 13:
+                    komi = 5.5;
+                    break;
+                case 9:
+                    komi = 2.5;
+                    break;
+            }
+        } else if (settings.ruleset == "chinese") {
+            switch (settings.boardsize) {
+                case 19:
+                    komi = 7.5;
+                    break;
+                case 13:
+                    komi = 6.5;
+                    break;
+                case 9:
+                    komi = 3.5;
+                    break;
+            }
+        }
+    }
+
+    settings.setSetting("komi", komi);
+};
+settings.handicapElement.addEventListener("input", settings.setKomi);
+settings.rulesetElement.addEventListener("input", settings.setKomi);
+settings.boardsizeElement.addEventListener("input", settings.setKomi);
 
 settings.init();
