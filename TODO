@@ -31,6 +31,7 @@ CODE QUALITY/BUGS
 FAR FUTURE
     play a sequence, then click a button that shows what sequence the ai would have played and how good your sequence was in comparison (comparing the winrate/score won/lost during those moves)
     sound toggle
+    settings to change automatic komi per ruleset and boardsize
     add besogo and katago credits
     registration system
     payment
