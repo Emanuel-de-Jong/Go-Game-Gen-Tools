@@ -167,7 +167,9 @@ settings.komiChangeStyleElement.addEventListener("input", settings.komiChangeSty
 settings.setKomi = function() {
     if (settings.komiChangeStyle != "auto") return;
 
+    let oldKomi = settings.komi;
     let komi;
+
     if (settings.handicap != 0) {
         komi = 0.5;
     } else {
@@ -177,10 +179,10 @@ settings.setKomi = function() {
                     komi = 6.5;
                     break;
                 case 13:
-                    komi = 5.5;
+                    komi = 6.5;
                     break;
                 case 9:
-                    komi = 2.5;
+                    komi = 6.5;
                     break;
             }
         } else if (settings.ruleset == "chinese") {
@@ -192,13 +194,15 @@ settings.setKomi = function() {
                     komi = 6.5;
                     break;
                 case 9:
-                    komi = 3.5;
+                    komi = 6.5;
                     break;
             }
         }
     }
 
-    settings.setSetting("komi", komi);
+    if (komi != oldKomi) {
+        settings.setSetting("komi", komi);
+    }
 };
 settings.handicapElement.addEventListener("input", settings.setKomi);
 settings.rulesetElement.addEventListener("input", settings.setKomi);
