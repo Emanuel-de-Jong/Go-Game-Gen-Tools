@@ -63,11 +63,11 @@ class SGF {
 	}
 
     setRankPlayer() {
-		board.editor.setGameInfo(settings.suggestionStrength + "", utils.colorNumToName(settings.color) + "R");
+		board.editor.setGameInfo(settings.suggestionVisits + "", utils.colorNumToName(settings.color) + "R");
 	}
 	
 	setRankAI() {
-		board.editor.setGameInfo(settings.opponentStrength + "", utils.colorNumToName(settings.color * -1) + "R");
+		board.editor.setGameInfo(settings.opponentVisits + "", utils.colorNumToName(settings.color * -1) + "R");
 	}
 	
 	setPlayers() {

@@ -58,7 +58,7 @@ custom.pass = function(suggestion) {
 };
 
 custom.analyze = async function({
-		maxVisits = settings.suggestionStrength,
+		maxVisits = settings.suggestionVisits,
 		moveOptions = settings.moveOptions,
 		minVisitsPerc = settings.minVisitsPerc,
 		maxVisitDiffPerc = settings.maxVisitDiffPerc,
@@ -81,7 +81,7 @@ custom.analyze = async function({
 
 custom.playPreMove = async function() {
 	let suggestions = await custom.analyze({
-		maxVisits: settings.preStrength,
+		maxVisits: settings.preVisits,
 		moveOptions: settings.preOptions,
 		minVisitsPerc: 10,
 		maxVisitDiffPerc: 50 });
@@ -210,7 +210,7 @@ custom.playerTurn = async function(markupCoord) {
 
 		if (!isRightChoice) await board.draw(markupCoord, "cross");
 
-		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentStrength, moveOptions: opponentMoveOptions });
+		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentVisits, moveOptions: opponentMoveOptions });
 	} else {
 		await board.draw(markupCoord, "auto", false);
 	}
@@ -227,7 +227,7 @@ custom.playerTurn = async function(markupCoord) {
 		stats.scoreChart.update(await server.analyzeMove(markupCoord));
 		await server.play(markupCoord);
 
-		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentStrength, moveOptions: opponentMoveOptions });
+		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentVisits, moveOptions: opponentMoveOptions });
 	}
 
 	if (!settings.skipNextButton) {
@@ -311,7 +311,7 @@ custom.selfplayButton.addEventListener("click", custom.selfplayButtonClickListen
 
 custom.selfplay = async function() {
 	while (custom.isSelfplay || settings.color != board.getNextColor()) {
-		let suggestions = await custom.analyze({ maxVisits: settings.selfplayStrength, moveOptions: 1 });
+		let suggestions = await custom.analyze({ maxVisits: settings.selfplayVisits, moveOptions: 1 });
 		if (custom.isPassed) {
 			custom.selfplayButton.click();
 			return;

@@ -65,14 +65,14 @@
 
                 <div class="col">
                     <form id="settings" novalidate>
-                        <div class="row">
-                            <div class="col">
+                        <div class="row" id="settingsButtonDiv">
+                            <div class="col-6">
                                 <div>
                                     <button type="button" class="btn btn-primary" id="restart">Restart</button>
                                 </div>
                             </div>
 
-                            <div class="col">
+                            <div class="col-6">
                                 <div class="text-end">
                                     <button type="button" class="btn btn-primary" id="stopPreMoves">Stop pre moves</button>
                                     <button type="button" class="btn btn-primary" id="selfplay" hidden>Start selfplay</button>
@@ -87,85 +87,86 @@
                                         Basics
                                     </button>
                                 </h2>
-                                <div id="basicsSettings" class="accordion-collapse collapse show" aria-labelledby="basicsSettingsHeader" data-bs-parent="#settingsAccordion">
+                                <div id="basicsSettings" class="accordion-collapse collapse show" aria-labelledby="basicsSettingsHeader">
                                     <div class="accordion-body">
                                         <div class="row">
-                                            <div class="col">
-                                                <div>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <label for="boardsize" class="form-label">Board size</label>
-                                                            <select class="form-select" id="boardsize">
-                                                                <option value="19">19</option>
-                                                                <option value="13">13</option>
-                                                                <option value="9">9</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <label for="handicap" class="form-label">Handicap</label>
-                                                            <select class="form-select" id="handicap">
-                                                                <option value="0">0</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                                <option value="6">6</option>
-                                                                <option value="7">7</option>
-                                                                <option value="8">8</option>
-                                                                <option value="9">9</option>
-                                                            </select>
-                                                        </div>
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="boardsize" class="form-label">Board size</label>
+                                                        <select class="form-select" id="boardsize">
+                                                            <option value="19">19</option>
+                                                            <option value="13">13</option>
+                                                            <option value="9">9</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="handicap" class="form-label">Handicap</label>
+                                                        <select class="form-select" id="handicap">
+                                                            <option value="0">0</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                            <option value="8">8</option>
+                                                            <option value="9">9</option>
+                                                        </select>
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <label for="color" class="form-label">Color</label>
-                                                    <select class="form-select" id="color">
-                                                        <option value="-1">Black</option>
-                                                        <option value="1">White</option>
-                                                        <option value="0">Random</option>
-                                                    </select>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label for="color" class="form-label">Color</label>
+                                                        <select class="form-select" id="color">
+                                                            <option value="-1">Black</option>
+                                                            <option value="1">White</option>
+                                                            <option value="0">Random</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <label for="preMoves" class="form-label">Pre moves</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-text">
-                                                            <input class="form-check-input mt-0" type="checkbox" id="preMovesSwitch" checked>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label for="preMoves" class="form-label">Pre moves</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-text">
+                                                                <input class="form-check-input mt-0" type="checkbox" id="preMovesSwitch" checked>
+                                                            </div>
+                                                            <input type="number" class="form-control" id="preMoves" value="4" min="0" max="350">
                                                         </div>
-                                                        <input type="number" class="form-control" id="preMoves" value="4" min="0" max="350">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col">
-                                                <div>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <label for="preStrength" class="form-label">Pre move strength</label>
-                                                            <input type="number" class="form-control" id="preStrength" value="100" min="2" max="5000">
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <label for="selfplayStrength" class="form-label">Selfplay strength</label>
-                                                            <input type="number" class="form-control" id="selfplayStrength" value="500" min="2" max="5000">
-                                                        </div>
+
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="preVisits" class="form-label">Pre move strength</label>
+                                                        <input type="number" class="form-control" id="preVisits" value="100" min="2" max="5000">
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="selfplayVisits" class="form-label">Selfplay strength</label>
+                                                        <input type="number" class="form-control" id="selfplayVisits" value="500" min="2" max="5000">
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <label for="suggestionStrength" class="form-label">Suggestion strength</label>
-                                                            <input type="number" class="form-control" id="suggestionStrength" value="250" min="2" max="5000">
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <label for="opponentStrength" class="form-label">Opponent strength</label>
-                                                            <input type="number" class="form-control" id="opponentStrength" value="200" min="2" max="5000">
-                                                        </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="suggestionVisits" class="form-label">Suggestion strength</label>
+                                                        <input type="number" class="form-control" id="suggestionVisits" value="250" min="2" max="5000">
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="opponentVisits" class="form-label">Opponent strength</label>
+                                                        <input type="number" class="form-control" id="opponentVisits" value="200" min="2" max="5000">
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="disableAICorrection">
-                                                        <label class="form-check-label" for="disableAICorrection">
-                                                            Disable AI correction
-                                                        </label>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="disableAICorrection">
+                                                            <label class="form-check-label" for="disableAICorrection">
+                                                                Disable AI correction
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -176,36 +177,38 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="gameSettingsHeader">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gameSettings" aria-expanded="true" aria-controls="gameSettings">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#gameSettings" aria-expanded="true" aria-controls="gameSettings">
                                         Game
                                     </button>
                                 </h2>
-                                <div id="gameSettings" class="accordion-collapse collapse" aria-labelledby="gameSettingsHeader" data-bs-parent="#settingsAccordion">
+                                <div id="gameSettings" class="accordion-collapse collapse show" aria-labelledby="gameSettingsHeader">
                                     <div class="accordion-body">
                                         <div class="row">
-                                            <div class="col">
-                                                <div>
-                                                    <label for="ruleset" class="form-label">Ruleset</label>
-                                                    <select class="form-select" id="ruleset">
-                                                        <option value="japanese">Japanese</option>
-                                                        <option value="chinese">Chinese</option>
-                                                    </select>
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label for="ruleset" class="form-label">Ruleset</label>
+                                                        <select class="form-select" id="ruleset">
+                                                            <option value="japanese">Japanese</option>
+                                                            <option value="chinese">Chinese</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                 
-                                            <div class="col">
-                                                <div>
-                                                    <label for="komi" class="form-label">Komi</label>
-                                                    <select class="form-select" id="komiChangeStyle">
-                                                        <option value="auto">Automatic</option>
-                                                        <option value="custom">Custom</option>
-                                                    </select>
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label for="komi" class="form-label">Komi</label>
+                                                        <select class="form-select" id="komiChangeStyle">
+                                                            <option value="auto">Automatic</option>
+                                                            <option value="custom">Custom</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <input type="number" class="form-control" id="komi" value="6.5" step="0.5" min="-150" max="150" disabled>
-                                                        </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <input type="number" class="form-control" id="komi" value="6.5" step="0.5" min="-150" max="150" disabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -216,59 +219,61 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="preMovesSettingsHeader">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#preMovesSettings" aria-expanded="true" aria-controls="preMovesSettings">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#preMovesSettings" aria-expanded="true" aria-controls="preMovesSettings">
                                         Pre moves
                                     </button>
                                 </h2>
-                                <div id="preMovesSettings" class="accordion-collapse collapse" aria-labelledby="preMovesSettingsHeader" data-bs-parent="#settingsAccordion">
+                                <div id="preMovesSettings" class="accordion-collapse collapse show" aria-labelledby="preMovesSettingsHeader">
                                     <div class="accordion-body">
                                         <div class="row">
-                                            <div class="col">
+                                            <div class="col-6">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <label for="preOptions" class="form-label">Pre move options</label>
+                                                        <label for="preOptions" class="form-label">Options</label>
                                                         <input type="number" class="form-control" id="preOptions" value="3" min="1" max="10">
                                                     </div>
                                                 </div>
                                             </div>
                 
-                                            <div class="col">
-                                                <div id="preCorner">
-                                                    <label for="cornerChance44" class="form-label">Pre move corners</label>
-                                                    <div class="input-group">
-                                                        <span class="input-group-text">4-4</span>
-                                                        <div class="input-group-text">
-                                                            <input class="form-check-input mt-0" type="checkbox" id="cornerSwitch44" checked>
+                                            <div class="col-6">
+                                                <div class="row" id="preCorner">
+                                                    <div class="col-12">
+                                                        <label for="cornerChance44" class="form-label">Corners</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">4-4</span>
+                                                            <div class="input-group-text">
+                                                                <input class="form-check-input mt-0" type="checkbox" id="cornerSwitch44" checked>
+                                                            </div>
+                                                            <input type="number" class="form-control" id="cornerChance44" value="16" min="0" max="1000">
                                                         </div>
-                                                        <input type="number" class="form-control" id="cornerChance44" value="16" min="0" max="1000">
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <span class="input-group-text">3-4</span>
-                                                        <div class="input-group-text">
-                                                            <input class="form-check-input mt-0" type="checkbox" id="cornerSwitch34" checked>
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">3-4</span>
+                                                            <div class="input-group-text">
+                                                                <input class="form-check-input mt-0" type="checkbox" id="cornerSwitch34" checked>
+                                                            </div>
+                                                            <input type="number" class="form-control" id="cornerChance34" value="8" min="0" max="1000">
                                                         </div>
-                                                        <input type="number" class="form-control" id="cornerChance34" value="8" min="0" max="1000">
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <span class="input-group-text">3-3</span>
-                                                        <div class="input-group-text">
-                                                            <input class="form-check-input mt-0" type="checkbox" id="cornerSwitch33" checked>
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">3-3</span>
+                                                            <div class="input-group-text">
+                                                                <input class="form-check-input mt-0" type="checkbox" id="cornerSwitch33" checked>
+                                                            </div>
+                                                            <input type="number" class="form-control" id="cornerChance33" value="2" min="0" max="1000">
                                                         </div>
-                                                        <input type="number" class="form-control" id="cornerChance33" value="2" min="0" max="1000">
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <span class="input-group-text">4-5</span>
-                                                        <div class="input-group-text">
-                                                            <input class="form-check-input mt-0" type="checkbox" id="cornerSwitch45" checked>
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">4-5</span>
+                                                            <div class="input-group-text">
+                                                                <input class="form-check-input mt-0" type="checkbox" id="cornerSwitch45" checked>
+                                                            </div>
+                                                            <input type="number" class="form-control" id="cornerChance45" value="2" min="0" max="1000">
                                                         </div>
-                                                        <input type="number" class="form-control" id="cornerChance45" value="2" min="0" max="1000">
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <span class="input-group-text">3-5</span>
-                                                        <div class="input-group-text">
-                                                            <input class="form-check-input mt-0" type="checkbox" id="cornerSwitch35" checked>
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">3-5</span>
+                                                            <div class="input-group-text">
+                                                                <input class="form-check-input mt-0" type="checkbox" id="cornerSwitch35" checked>
+                                                            </div>
+                                                            <input type="number" class="form-control" id="cornerChance35" value="2" min="0" max="1000">
                                                         </div>
-                                                        <input type="number" class="form-control" id="cornerChance35" value="2" min="0" max="1000">
                                                     </div>
                                                 </div>
                                             </div>
@@ -279,53 +284,57 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="filtersSettingsHeader">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filtersSettings" aria-expanded="true" aria-controls="filtersSettings">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#filtersSettings" aria-expanded="true" aria-controls="filtersSettings">
                                         Filters
                                     </button>
                                 </h2>
-                                <div id="filtersSettings" class="accordion-collapse collapse" aria-labelledby="filtersSettingsHeader" data-bs-parent="#settingsAccordion">
+                                <div id="filtersSettings" class="accordion-collapse collapse show" aria-labelledby="filtersSettingsHeader">
                                     <div class="accordion-body">
                                         <div class="row">
-                                            <div class="col">
-                                                <div>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <label for="moveOptions" class="form-label">Move options</label>
-                                                            <input type="number" class="form-control" id="moveOptions" value="4" min="1" max="25">
-                                                        </div>
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="moveOptions" class="form-label">Suggestion options</label>
+                                                        <input type="number" class="form-control" id="moveOptions" value="4" min="1" max="25">
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="hideWeakerOptions">
-                                                        <label class="form-check-label" for="hideWeakerOptions">
-                                                            Hide weaker options
-                                                        </label>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="hideWeakerOptions">
+                                                            <label class="form-check-label" for="hideWeakerOptions">
+                                                                Hide weaker options
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                 
-                                            <div class="col">
-                                                <div id="minVisitsPercDiv">
-                                                    <label for="minVisitsPerc" class="form-label">Minimum visits</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-text">
-                                                            <input class="form-check-input mt-0" type="checkbox" id="minVisitsPercSwitch" checked>
+                                            <div class="col-6">
+                                                <div class="row" id="minVisitsPercDiv">
+                                                    <div class="col-12">
+                                                        <label for="minVisitsPerc" class="form-label">Min strength</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-text">
+                                                                <input class="form-check-input mt-0" type="checkbox" id="minVisitsPercSwitch" checked>
+                                                            </div>
+                                                            <input type="number" class="form-control" id="minVisitsPerc" value="10" step="0.1" min="0" max="100">
+                                                            <span class="input-group-text">%</span>
+                                                            <div class="form-invalid-message"></div>
                                                         </div>
-                                                        <input type="number" class="form-control" id="minVisitsPerc" value="10" step="0.1" min="0" max="100">
-                                                        <span class="input-group-text">%</span>
-                                                        <div class="form-invalid-message"></div>
                                                     </div>
                                                 </div>
-                                                <div id="maxVisitDiffPercDiv">
-                                                    <label for="maxVisitDiffPerc" class="form-label">Maximum visit difference</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-text">
-                                                            <input class="form-check-input mt-0" type="checkbox" id="maxVisitDiffPercSwitch">
+                                                <div class="row" id="maxVisitDiffPercDiv">
+                                                    <div class="col-12">
+                                                        <label for="maxVisitDiffPerc" class="form-label">Max strength difference</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-text">
+                                                                <input class="form-check-input mt-0" type="checkbox" id="maxVisitDiffPercSwitch">
+                                                            </div>
+                                                            <input type="number" class="form-control" id="maxVisitDiffPerc" value="40" step="0.1" min="0" max="100">
+                                                            <span class="input-group-text">%</span>
+                                                            <div class="form-invalid-message"></div>
                                                         </div>
-                                                        <input type="number" class="form-control" id="maxVisitDiffPerc" value="40" step="0.1" min="0" max="100">
-                                                        <span class="input-group-text">%</span>
-                                                        <div class="form-invalid-message"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -336,32 +345,36 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="opponentSettingsHeader">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#opponentSettings" aria-expanded="true" aria-controls="opponentSettings">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#opponentSettings" aria-expanded="true" aria-controls="opponentSettings">
                                         Opponent
                                     </button>
                                 </h2>
-                                <div id="opponentSettings" class="accordion-collapse collapse" aria-labelledby="opponentSettingsHeader" data-bs-parent="#settingsAccordion">
+                                <div id="opponentSettings" class="accordion-collapse collapse show" aria-labelledby="opponentSettingsHeader">
                                     <div class="accordion-body">
                                         <div class="row">
-                                            <div class="col">
-                                                <div>
-                                                    <label for="opponentMoveOptions" class="form-label">Opponent move options</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-text">
-                                                            <input class="form-check-input mt-0" type="checkbox" id="opponentMoveOptionsSwitch">
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label for="opponentMoveOptions" class="form-label">Options</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-text">
+                                                                <input class="form-check-input mt-0" type="checkbox" id="opponentMoveOptionsSwitch">
+                                                            </div>
+                                                            <input type="number" class="form-control" id="opponentMoveOptions" value="3" min="1" max="10">
                                                         </div>
-                                                        <input type="number" class="form-control" id="opponentMoveOptions" value="3" min="1" max="10">
                                                     </div>
                                                 </div>
                                             </div>
                 
-                                            <div class="col">
-                                                <div id="opponentMoveOptionPercDiv">
-                                                    <label for="opponentMoveOptionPerc" class="form-label">Opponent move option chance</label>
-                                                    <div class="input-group">
-                                                        <input type="number" class="form-control" id="opponentMoveOptionPerc" value="7.5" step="0.1" min="0" max="100">
-                                                        <span class="input-group-text">%</span>
-                                                        <div class="form-invalid-message"></div>
+                                            <div class="col-6">
+                                                <div class="row" id="opponentMoveOptionPercDiv">
+                                                    <div class="col-12">
+                                                        <label for="opponentMoveOptionPerc" class="form-label">Option chance</label>
+                                                        <div class="input-group">
+                                                            <input type="number" class="form-control" id="opponentMoveOptionPerc" value="7.5" step="0.1" min="0" max="100">
+                                                            <span class="input-group-text">%</span>
+                                                            <div class="form-invalid-message"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -372,25 +385,27 @@
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="controlSettingsHeader">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#controlSettings" aria-expanded="false" aria-controls="controlSettings">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#controlSettings" aria-expanded="false" aria-controls="controlSettings">
                                         Control
                                     </button>
                                 </h2>
-                                <div id="controlSettings" class="accordion-collapse collapse" aria-labelledby="controlSettingsHeader" data-bs-parent="#settingsAccordion">
+                                <div id="controlSettings" class="accordion-collapse collapse show" aria-labelledby="controlSettingsHeader">
                                     <div class="accordion-body">
                                         <div class="row">
-                                            <div class="col">
-                                                <div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="skipNextButton">
-                                                        <label class="form-check-label" for="skipNextButton">
-                                                            Skip next button
-                                                        </label>
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="skipNextButton">
+                                                            <label class="form-check-label" for="skipNextButton">
+                                                                Skip next button
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                 
-                                            <div class="col">
+                                            <div class="col-6">
                                             </div>
                                         </div>
                                     </div>

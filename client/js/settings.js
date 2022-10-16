@@ -16,10 +16,10 @@ settings.SETTINGS = {
     opponentMoveOptionsSwitch: utils.TYPES.BOOL,
     opponentMoveOptions: utils.TYPES.INT,
     opponentMoveOptionPerc: utils.TYPES.FLOAT,
-    preStrength: utils.TYPES.INT,
-    selfplayStrength: utils.TYPES.INT,
-    suggestionStrength: utils.TYPES.INT,
-    opponentStrength: utils.TYPES.INT,
+    preVisits: utils.TYPES.INT,
+    selfplayVisits: utils.TYPES.INT,
+    suggestionVisits: utils.TYPES.INT,
+    opponentVisits: utils.TYPES.INT,
     minVisitsPercSwitch: utils.TYPES.BOOL,
     minVisitsPerc: utils.TYPES.FLOAT,
     maxVisitDiffPercSwitch: utils.TYPES.BOOL,
@@ -114,15 +114,15 @@ settings.inputAndSelectInputListener = function(event) {
 };
 utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", settings.inputAndSelectInputListener);
 
-settings.suggestionStrengthElementInputListener = function() {
+settings.suggestionVisitsElementInputListener = function() {
     board.sgf.setRankPlayer();
 };
-settings.suggestionStrengthElement.addEventListener("input", settings.suggestionStrengthElementInputListener);
+settings.suggestionVisitsElement.addEventListener("input", settings.suggestionVisitsElementInputListener);
 
-settings.opponentStrengthElementInputListener = function() {
+settings.opponentVisitsElementInputListener = function() {
     board.sgf.setRankAI();
 };
-settings.opponentStrengthElement.addEventListener("input", settings.opponentStrengthElementInputListener);
+settings.opponentVisitsElement.addEventListener("input", settings.opponentVisitsElementInputListener);
 
 settings.colorElementInputListener = function() {
     board.sgf.setPlayers();

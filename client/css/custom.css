@@ -52,8 +52,7 @@ main {
     width: 450px;
 }
 
-#settings .row .col > div,
-#settings .accordion-body > div {
+#settings .accordion-body .row .row {
     margin-bottom: 15px;
 }
 
@@ -84,6 +83,10 @@ main {
 #settings #maxVisitDiffPercDiv input[type=number] {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+}
+
+#settings #settingsButtonDiv {
+    margin-bottom: 20px;
 }
 
 #settings .accordion-button {
