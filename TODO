@@ -13,8 +13,6 @@ CLIENT
         keep suggestion and visits history
         retry server request on error
     VISUAL
-        - settings in accordion
-        - complex settings in advanced section
         icon for options that can be updated without restart
         responsive
         make it pretty

@@ -7,7 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     </head>
     <body>
-        <div id="debug" hidden>
+        <div id="debug">
             <ul>
                 <li>
                     <button type="button" class="btn btn-secondary" id="test">Test</button>
@@ -70,49 +70,120 @@
                                 <div>
                                     <button type="button" class="btn btn-primary" id="restart">Restart</button>
                                 </div>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label for="boardsize" class="form-label">Board size</label>
-                                            <select class="form-select" id="boardsize">
-                                                <option value="19">19</option>
-                                                <option value="13">13</option>
-                                                <option value="9">9</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-6">
-                                            <label for="handicap" class="form-label">Handicap</label>
-                                            <select class="form-select" id="handicap">
-                                                <option value="0">0</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                            </select>
+                            </div>
+
+                            <div class="col">
+                                <div class="text-end">
+                                    <button type="button" class="btn btn-primary" id="stopPreMoves">Stop pre moves</button>
+                                    <button type="button" class="btn btn-primary" id="selfplay" hidden>Start selfplay</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion accordion-flush" id="settingsAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="basicsSettingsHeader">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#basicsSettings" aria-expanded="true" aria-controls="basicsSettings">
+                                        Basics
+                                    </button>
+                                </h2>
+                                <div id="basicsSettings" class="accordion-collapse collapse show" aria-labelledby="basicsSettingsHeader" data-bs-parent="#settingsAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="boardsize" class="form-label">Board size</label>
+                                                            <select class="form-select" id="boardsize">
+                                                                <option value="19">19</option>
+                                                                <option value="13">13</option>
+                                                                <option value="9">9</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label for="handicap" class="form-label">Handicap</label>
+                                                            <select class="form-select" id="handicap">
+                                                                <option value="0">0</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <option value="6">6</option>
+                                                                <option value="7">7</option>
+                                                                <option value="8">8</option>
+                                                                <option value="9">9</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label for="color" class="form-label">Color</label>
+                                                    <select class="form-select" id="color">
+                                                        <option value="-1">Black</option>
+                                                        <option value="1">White</option>
+                                                        <option value="0">Random</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label for="preMoves" class="form-label">Pre moves</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-text">
+                                                            <input class="form-check-input mt-0" type="checkbox" id="preMovesSwitch" checked>
+                                                        </div>
+                                                        <input type="number" class="form-control" id="preMoves" value="4" min="0" max="350">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="preStrength" class="form-label">Pre move strength</label>
+                                                            <input type="number" class="form-control" id="preStrength" value="100" min="2" max="5000">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label for="selfplayStrength" class="form-label">Selfplay strength</label>
+                                                            <input type="number" class="form-control" id="selfplayStrength" value="500" min="2" max="5000">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="suggestionStrength" class="form-label">Suggestion strength</label>
+                                                            <input type="number" class="form-control" id="suggestionStrength" value="250" min="2" max="5000">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label for="opponentStrength" class="form-label">Opponent strength</label>
+                                                            <input type="number" class="form-control" id="opponentStrength" value="200" min="2" max="5000">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="disableAICorrection">
+                                                        <label class="form-check-label" for="disableAICorrection">
+                                                            Disable AI correction
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <label for="color" class="form-label">Color</label>
-                                    <select class="form-select" id="color">
-                                        <option value="-1">Black</option>
-                                        <option value="1">White</option>
-                                        <option value="0">Random</option>
-                                    </select>
-                                </div>
-                                <div class="accordion accordion-flush" id="settingsLeftAccordion">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="gameSettingsHeader">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gameSettings" aria-expanded="true" aria-controls="gameSettings">
-                                                Game
-                                            </button>
-                                        </h2>
-                                        <div id="gameSettings" class="accordion-collapse collapse" aria-labelledby="gameSettingsHeader" data-bs-parent="#settingsLeftAccordion">
-                                            <div class="accordion-body">
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="gameSettingsHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gameSettings" aria-expanded="true" aria-controls="gameSettings">
+                                        Game
+                                    </button>
+                                </h2>
+                                <div id="gameSettings" class="accordion-collapse collapse" aria-labelledby="gameSettingsHeader" data-bs-parent="#settingsAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col">
                                                 <div>
                                                     <label for="ruleset" class="form-label">Ruleset</label>
                                                     <select class="form-select" id="ruleset">
@@ -120,6 +191,9 @@
                                                         <option value="chinese">Chinese</option>
                                                     </select>
                                                 </div>
+                                            </div>
+                
+                                            <div class="col">
                                                 <div>
                                                     <label for="komi" class="form-label">Komi</label>
                                                     <select class="form-select" id="komiChangeStyle">
@@ -137,90 +211,28 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="controlSettingsHeader">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#controlSettings" aria-expanded="false" aria-controls="controlSettings">
-                                                Control
-                                            </button>
-                                        </h2>
-                                        <div id="controlSettings" class="accordion-collapse collapse" aria-labelledby="controlSettingsHeader" data-bs-parent="#settingsLeftAccordion">
-                                            <div class="accordion-body">
-                                                <div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="skipNextButton">
-                                                        <label class="form-check-label" for="skipNextButton">
-                                                            Skip next button
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col">
-                                <div>
-                                    <button type="button" class="btn btn-primary" id="stopPreMoves">Stop pre moves</button>
-                                    <button type="button" class="btn btn-primary" id="selfplay" hidden>Start selfplay</button>
-                                </div>
-                                <div>
-                                    <label for="preMoves" class="form-label">Pre moves</label>
-                                    <div class="input-group">
-                                        <div class="input-group-text">
-                                            <input class="form-check-input mt-0" type="checkbox" id="preMovesSwitch" checked>
-                                        </div>
-                                        <input type="number" class="form-control" id="preMoves" value="4" min="0" max="350">
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label for="preStrength" class="form-label">Pre move strength</label>
-                                            <input type="number" class="form-control" id="preStrength" value="100" min="2" max="5000">
-                                        </div>
-                                        <div class="col-6">
-                                            <label for="selfplayStrength" class="form-label">Selfplay strength</label>
-                                            <input type="number" class="form-control" id="selfplayStrength" value="500" min="2" max="5000">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label for="suggestionStrength" class="form-label">Suggestion strength</label>
-                                            <input type="number" class="form-control" id="suggestionStrength" value="250" min="2" max="5000">
-                                        </div>
-                                        <div class="col-6">
-                                            <label for="opponentStrength" class="form-label">Opponent strength</label>
-                                            <input type="number" class="form-control" id="opponentStrength" value="200" min="2" max="5000">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="disableAICorrection">
-                                        <label class="form-check-label" for="disableAICorrection">
-                                            Disable AI correction
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="accordion accordion-flush" id="settingsRightAccordion">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="preMovesSettingsHeader">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#preMovesSettings" aria-expanded="true" aria-controls="preMovesSettings">
-                                                Pre moves
-                                            </button>
-                                        </h2>
-                                        <div id="preMovesSettings" class="accordion-collapse collapse" aria-labelledby="preMovesSettingsHeader" data-bs-parent="#settingsRightAccordion">
-                                            <div class="accordion-body">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="preMovesSettingsHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#preMovesSettings" aria-expanded="true" aria-controls="preMovesSettings">
+                                        Pre moves
+                                    </button>
+                                </h2>
+                                <div id="preMovesSettings" class="accordion-collapse collapse" aria-labelledby="preMovesSettingsHeader" data-bs-parent="#settingsAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col">
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <label for="preOptions" class="form-label">Pre move options</label>
                                                         <input type="number" class="form-control" id="preOptions" value="3" min="1" max="10">
                                                     </div>
                                                 </div>
+                                            </div>
+                
+                                            <div class="col">
                                                 <div id="preCorner">
                                                     <label for="cornerChance44" class="form-label">Pre move corners</label>
                                                     <div class="input-group">
@@ -262,15 +274,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
 
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="filtersSettingsHeader">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filtersSettings" aria-expanded="true" aria-controls="filtersSettings">
-                                                Filters
-                                            </button>
-                                        </h2>
-                                        <div id="filtersSettings" class="accordion-collapse collapse" aria-labelledby="filtersSettingsHeader" data-bs-parent="#settingsRightAccordion">
-                                            <div class="accordion-body">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="filtersSettingsHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filtersSettings" aria-expanded="true" aria-controls="filtersSettings">
+                                        Filters
+                                    </button>
+                                </h2>
+                                <div id="filtersSettings" class="accordion-collapse collapse" aria-labelledby="filtersSettingsHeader" data-bs-parent="#settingsAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col">
                                                 <div>
                                                     <div class="row">
                                                         <div class="col-6">
@@ -279,6 +295,17 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="hideWeakerOptions">
+                                                        <label class="form-check-label" for="hideWeakerOptions">
+                                                            Hide weaker options
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="col">
                                                 <div id="minVisitsPercDiv">
                                                     <label for="minVisitsPerc" class="form-label">Minimum visits</label>
                                                     <div class="input-group">
@@ -301,26 +328,22 @@
                                                         <div class="form-invalid-message"></div>
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="hideWeakerOptions">
-                                                        <label class="form-check-label" for="hideWeakerOptions">
-                                                            Hide weaker options
-                                                        </label>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
 
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="opponentSettingsHeader">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#opponentSettings" aria-expanded="true" aria-controls="opponentSettings">
-                                                Opponent
-                                            </button>
-                                        </h2>
-                                        <div id="opponentSettings" class="accordion-collapse collapse" aria-labelledby="opponentSettingsHeader" data-bs-parent="#settingsRightAccordion">
-                                            <div class="accordion-body">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="opponentSettingsHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#opponentSettings" aria-expanded="true" aria-controls="opponentSettings">
+                                        Opponent
+                                    </button>
+                                </h2>
+                                <div id="opponentSettings" class="accordion-collapse collapse" aria-labelledby="opponentSettingsHeader" data-bs-parent="#settingsAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col">
                                                 <div>
                                                     <label for="opponentMoveOptions" class="form-label">Opponent move options</label>
                                                     <div class="input-group">
@@ -330,6 +353,9 @@
                                                         <input type="number" class="form-control" id="opponentMoveOptions" value="3" min="1" max="10">
                                                     </div>
                                                 </div>
+                                            </div>
+                
+                                            <div class="col">
                                                 <div id="opponentMoveOptionPercDiv">
                                                     <label for="opponentMoveOptionPerc" class="form-label">Opponent move option chance</label>
                                                     <div class="input-group">
@@ -338,6 +364,33 @@
                                                         <div class="form-invalid-message"></div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="controlSettingsHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#controlSettings" aria-expanded="false" aria-controls="controlSettings">
+                                        Control
+                                    </button>
+                                </h2>
+                                <div id="controlSettings" class="accordion-collapse collapse" aria-labelledby="controlSettingsHeader" data-bs-parent="#settingsAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="skipNextButton">
+                                                        <label class="form-check-label" for="skipNextButton">
+                                                            Skip next button
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="col">
                                             </div>
                                         </div>
                                     </div>
