@@ -1,6 +1,5 @@
 CLIENT
     SETTINGS
-        - opponent inperfections to get otherwise impossible scenarios (maybe opponent move options?)
         play after pass
         play as both players
         save/load settings

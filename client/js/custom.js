@@ -198,12 +198,19 @@ custom.playerTurn = async function(markupCoord) {
 		}
 	}
 	
+	let opponentMoveOptions = 1;
+	if (settings.opponentMoveOptionsSwitch) {
+		if ((utils.randomInt(100) + 1) <= settings.opponentMoveOptionPerc) {
+			opponentMoveOptions = settings.opponentMoveOptions;
+		}
+	}
+
 	if (!settings.disableAICorrection || isRightChoice) {
 		await board.play(suggestionToPlay);
 
 		if (!isRightChoice) await board.draw(markupCoord, "cross");
 
-		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentStrength, moveOptions: 1 });
+		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentStrength, moveOptions: opponentMoveOptions });
 	} else {
 		await board.draw(markupCoord, "auto", false);
 	}
@@ -220,7 +227,7 @@ custom.playerTurn = async function(markupCoord) {
 		stats.scoreChart.update(await server.analyzeMove(markupCoord));
 		await server.play(markupCoord);
 
-		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentStrength, moveOptions: 1 });
+		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentStrength, moveOptions: opponentMoveOptions });
 	}
 
 	if (!settings.skipNextButton) {
@@ -260,7 +267,15 @@ custom.botTurn = async function() {
 		board.drawCoords(custom.suggestionsToShow);
 	}
 	
-	await board.play(suggestions[0]);
+	let suggestionToPlay;
+	if (suggestions.length == 1) {
+		suggestionToPlay = suggestions[0];
+	} else {
+		// from second to last
+		suggestionToPlay = suggestions[utils.randomInt(suggestions.length - 1) + 1];
+	}
+
+	await board.play(suggestionToPlay);
 
 	custom.givePlayerControl();
 };
