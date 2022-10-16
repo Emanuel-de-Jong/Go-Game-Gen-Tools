@@ -69,8 +69,8 @@ public class Kata {
         }
     }
 
-    public synchronized List<MoveSuggestion> analyze(String color, int maxVisits, int minVisitsPerc,
-                                        int maxVisitDiffPerc) throws Exception {
+    public synchronized List<MoveSuggestion> analyze(String color, int maxVisits, float minVisitsPerc,
+                                                     float maxVisitDiffPerc) throws Exception {
 //        System.out.println(color + " " + maxVisits + " " + minVisitsPerc + " " + maxVisitDiffPerc);
         if (lastMaxVisits != maxVisits) {
             lastMaxVisits = maxVisits;

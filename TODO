@@ -14,8 +14,8 @@ CLIENT
         keep suggestion and visits history
         retry server request on error
     VISUAL
-        settings in accordion
-        complex settings in advanced section
+        - settings in accordion
+        - complex settings in advanced section
         icon for options that can be updated without restart
         responsive
         make it pretty
@@ -26,7 +26,6 @@ SERVER
     restart server when something goes wrong
 
 CODE QUALITY/BUGS
-    - maybe change visit filters to LCB filters
     - refactor
 
 FAR FUTURE

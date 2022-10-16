@@ -59,8 +59,8 @@ public class KataController {
     @PostMapping("/analyze")
     public List<MoveSuggestion> postAnalyze(@RequestParam @Pattern(regexp="(B|W)") String color,
                                             @RequestParam @Min(2) @Max(5000) int maxVisits,
-                                            @RequestParam @Min(0) @Max(100) int minVisitsPerc,
-                                            @RequestParam @Min(0) @Max(100) int maxVisitDiffPerc) throws Exception {
+                                            @RequestParam @Min(0) @Max(100) float minVisitsPerc,
+                                            @RequestParam @Min(0) @Max(100) float maxVisitDiffPerc) throws Exception {
 //         System.out.println("analyze " + color);
         return kata.analyze(color, maxVisits, minVisitsPerc, maxVisitDiffPerc);
     }
