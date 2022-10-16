@@ -86,3 +86,12 @@ main {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
+
+#settings .accordion-button {
+    padding-left: 10px;
+}
+
+#settings .accordion-body {
+    padding-left: 0;
+    padding-right: 0;
+}
