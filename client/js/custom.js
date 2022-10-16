@@ -18,7 +18,7 @@ custom.clear = async function(source) {
 	custom.isSelfplay = false;
 	custom.isPreMovesStopped = false;
 	custom.playerTurnId = 0;
-	custom.botTurnId = 0;
+	custom.opponentTurnId = 0;
 
 	if (source !== utils.SOURCE.SERVER) await server.init();
 
@@ -59,7 +59,7 @@ custom.pass = function(suggestion) {
 
 custom.analyze = async function({
 		maxVisits = settings.suggestionVisits,
-		moveOptions = settings.moveOptions,
+		moveOptions = settings.suggestionOptions,
 		minVisitsPerc = settings.minVisitsPerc,
 		maxVisitDiffPerc = settings.maxVisitDiffPerc,
 		color = board.getNextColor() } = {}) {
@@ -166,7 +166,7 @@ custom.takePlayerControl = function() {
 
 custom.nextButtonClickListener = async function() {
 	board.disableNextButton();
-	await custom.botTurn();
+	await custom.opponentTurn();
 };
 
 custom.playerTurn = async function(markupCoord) {
@@ -199,9 +199,9 @@ custom.playerTurn = async function(markupCoord) {
 	}
 	
 	let opponentMoveOptions = 1;
-	if (settings.opponentMoveOptionsSwitch) {
-		if ((utils.randomInt(100) + 1) <= settings.opponentMoveOptionPerc) {
-			opponentMoveOptions = settings.opponentMoveOptions;
+	if (settings.opponentOptionsSwitch) {
+		if ((utils.randomInt(100) + 1) <= settings.opponentOptionPerc) {
+			opponentMoveOptions = settings.opponentOptions;
 		}
 	}
 
@@ -256,12 +256,12 @@ custom.createSuggestionsToShow = function(suggestions, playedCoord) {
 	}
 };
 
-custom.botTurn = async function() {
-	let botTurnId = ++custom.botTurnId;
+custom.opponentTurn = async function() {
+	let opponentTurnId = ++custom.opponentTurnId;
 
 	let suggestions = await custom.suggestionsPromise;
 	if (custom.isPassed) return;
-	if (botTurnId != custom.botTurnId) return;
+	if (opponentTurnId != custom.opponentTurnId) return;
 
 	if (settings.skipNextButton) {
 		board.drawCoords(custom.suggestionsToShow);

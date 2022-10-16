@@ -2,31 +2,24 @@ var settings = {};
 
 
 settings.SETTINGS = {
-    boardsize: utils.TYPES.INT,
-    color: utils.TYPES.INT,
-    ruleset: utils.TYPES.STRING,
-    komiChangeStyle: utils.TYPES.STRING,
-    handicap: utils.TYPES.INT,
-    komi: utils.TYPES.FLOAT,
     scoreChartColor: utils.TYPES.INT,
+
+    boardsize: utils.TYPES.INT,
+    handicap: utils.TYPES.INT,
+    color: utils.TYPES.INT,
     preMovesSwitch: utils.TYPES.BOOL,
     preMoves: utils.TYPES.INT,
-    preOptions: utils.TYPES.INT,
-    moveOptions: utils.TYPES.INT,
-    opponentMoveOptionsSwitch: utils.TYPES.BOOL,
-    opponentMoveOptions: utils.TYPES.INT,
-    opponentMoveOptionPerc: utils.TYPES.FLOAT,
     preVisits: utils.TYPES.INT,
     selfplayVisits: utils.TYPES.INT,
     suggestionVisits: utils.TYPES.INT,
     opponentVisits: utils.TYPES.INT,
-    minVisitsPercSwitch: utils.TYPES.BOOL,
-    minVisitsPerc: utils.TYPES.FLOAT,
-    maxVisitDiffPercSwitch: utils.TYPES.BOOL,
-    maxVisitDiffPerc: utils.TYPES.FLOAT,
     disableAICorrection: utils.TYPES.BOOL,
-    skipNextButton: utils.TYPES.BOOL,
-    hideWeakerOptions: utils.TYPES.BOOL,
+
+    ruleset: utils.TYPES.STRING,
+    komiChangeStyle: utils.TYPES.STRING,
+    komi: utils.TYPES.FLOAT,
+
+    preOptions: utils.TYPES.INT,
     cornerSwitch44: utils.TYPES.BOOL,
     cornerSwitch34: utils.TYPES.BOOL,
     cornerSwitch33: utils.TYPES.BOOL,
@@ -37,6 +30,19 @@ settings.SETTINGS = {
     cornerChance33: utils.TYPES.INT,
     cornerChance45: utils.TYPES.INT,
     cornerChance35: utils.TYPES.INT,
+
+    suggestionOptions: utils.TYPES.INT,
+    hideWeakerOptions: utils.TYPES.BOOL,
+    minVisitsPercSwitch: utils.TYPES.BOOL,
+    minVisitsPerc: utils.TYPES.FLOAT,
+    maxVisitDiffPercSwitch: utils.TYPES.BOOL,
+    maxVisitDiffPerc: utils.TYPES.FLOAT,
+    
+    opponentOptionsSwitch: utils.TYPES.BOOL,
+    opponentOptions: utils.TYPES.INT,
+    opponentOptionPerc: utils.TYPES.FLOAT,
+    
+    skipNextButton: utils.TYPES.BOOL,
 };
 
 for (const name of Object.keys(settings.SETTINGS)) {
