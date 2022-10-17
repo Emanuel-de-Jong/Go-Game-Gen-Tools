@@ -89,14 +89,20 @@ custom.analyze = async function({
 };
 
 custom.playPreMove = async function() {
+	let preOptions = 1;
+	if ((utils.randomInt(100) + 1) <= settings.preOptionPerc) {
+		preOptions = settings.preOptions;
+	}
+
 	let suggestions = await custom.analyze({
 		maxVisits: settings.preVisits,
-		moveOptions: settings.preOptions,
+		moveOptions: preOptions,
 		minVisitsPerc: 10,
 		maxVisitDiffPerc: 50 });
 	if (custom.isPassed) custom.isPreMovesStopped = true;
 	if (custom.isPreMovesStopped) return;
-	await board.play(suggestions[utils.randomInt(suggestions.length)], "Pre move");
+
+	await board.play(suggestions[utils.randomInt(suggestions.length)], custom.createPreMoveComment());
 };
 
 custom.createPreMoves = async function() {
@@ -207,10 +213,10 @@ custom.playerTurn = async function(markupCoord) {
 		}
 	}
 	
-	let opponentMoveOptions = 1;
+	let opponentOptions = 1;
 	if (settings.opponentOptionsSwitch) {
 		if ((utils.randomInt(100) + 1) <= settings.opponentOptionPerc) {
-			opponentMoveOptions = settings.opponentOptions;
+			opponentOptions = settings.opponentOptions;
 		}
 	}
 
@@ -219,7 +225,7 @@ custom.playerTurn = async function(markupCoord) {
 
 		if (!isRightChoice) await board.draw(markupCoord, "cross");
 
-		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentVisits, moveOptions: opponentMoveOptions });
+		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentVisits, moveOptions: opponentOptions });
 	} else {
 		await board.draw(markupCoord, "auto", false, "Player");
 	}
@@ -266,16 +272,8 @@ custom.opponentTurn = async function() {
 	if (settings.skipNextButton) {
 		board.drawCoords(custom.suggestionsToShow);
 	}
-	
-	let suggestionToPlay;
-	if (suggestions.length == 1) {
-		suggestionToPlay = suggestions[0];
-	} else {
-		// from second to last
-		suggestionToPlay = suggestions[utils.randomInt(suggestions.length - 1) + 1];
-	}
 
-	await board.play(suggestionToPlay, "Opponent");
+	await board.play(suggestions[utils.randomInt(suggestions.length)], "Opponent");
 
 	custom.givePlayerControl();
 };
@@ -303,7 +301,7 @@ custom.selfplayButtonClickListener = async function() {
 		await custom.selfplayPromise;
 
 		if (!custom.isPassed) {
-		custom.givePlayerControl();
+			custom.givePlayerControl();
 		}
 	}
 };
@@ -329,3 +327,21 @@ custom.selfplay = async function() {
 	custom.init();
 
 })();
+
+custom.createCommentGrades = function() {
+	comment = "";
+	for (let i=0; i<custom.suggestionsToShow.length; i++) {
+		let suggestion = custom.suggestionsToShow[i];
+        if (i != 0 && suggestion.visits == custom.suggestionsToShow[i - 1].visits) continue;
+
+		comment += "\n" + suggestion.grade + ": " + suggestion.visits;
+	}
+
+	return comment;
+}
+
+custom.createPreMoveComment = function() {
+	return "Pre move" +
+	"\nOptions: " + settings.preOptions +
+	custom.createCommentGrades();
+}

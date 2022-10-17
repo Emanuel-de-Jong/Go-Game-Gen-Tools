@@ -20,6 +20,7 @@ settings.SETTINGS = {
     komi: utils.TYPES.FLOAT,
 
     preOptions: utils.TYPES.INT,
+    preOptionPerc: utils.TYPES.FLOAT,
     cornerSwitch44: utils.TYPES.BOOL,
     cornerSwitch34: utils.TYPES.BOOL,
     cornerSwitch33: utils.TYPES.BOOL,

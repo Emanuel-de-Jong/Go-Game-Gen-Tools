@@ -1,6 +1,5 @@
 CLIENT
     SETTINGS
-        - pre option chance
         play after pass
         play as both players
         save/load settings
