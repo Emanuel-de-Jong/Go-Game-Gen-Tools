@@ -111,7 +111,7 @@ custom.playPreMove = async function() {
 	if (custom.isPassed) custom.isPreMovesStopped = true;
 	if (custom.isPreMovesStopped) return;
 
-	await board.play(custom.suggestions[utils.randomInt(custom.suggestions.length)], custom.createPreMoveComment());
+	await board.play(custom.suggestions[utils.randomInt(custom.suggestions.length)], custom.createPreComment());
 };
 
 custom.createPreMoves = async function() {
@@ -258,13 +258,13 @@ custom.playerTurn = async function(markupCoord) {
 	}
 
 	if (!settings.disableAICorrection || isRightChoice) {
-		await board.play(suggestionToPlay, "Player");
+		await board.play(suggestionToPlay, custom.createPlayerComment());
 
 		if (!isRightChoice) await board.draw(markupCoord, "cross");
 
 		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentVisits, moveOptions: opponentOptions });
 	} else {
-		await board.draw(markupCoord, "auto", false, "Player");
+		await board.draw(markupCoord, "auto", false, custom.createPlayerComment());
 	}
 
 	stats.setVisits(custom.suggestions);
@@ -299,7 +299,7 @@ custom.opponentTurn = async function() {
 		board.drawCoords(custom.suggestions);
 	}
 
-	await board.play(custom.suggestions[utils.randomInt(custom.suggestions.length)], "Opponent");
+	await board.play(custom.suggestions[utils.randomInt(custom.suggestions.length)], custom.createOpponentComment());
 
 	custom.givePlayerControl();
 };
@@ -341,7 +341,7 @@ custom.selfplay = async function() {
 
 		if (!custom.isSelfplay && settings.color == board.getNextColor()) return;
 
-		await board.play(custom.suggestions[0], "Selfplay");
+		await board.play(custom.suggestions[0], custom.createSelfplayComment());
 	}
 };
 
@@ -362,10 +362,36 @@ custom.createCommentGrades = function() {
 	}
 
 	return comment;
-}
+};
 
-custom.createPreMoveComment = function() {
+custom.createPreComment = function() {
 	return "Pre move" +
+	"\nStrength: " + settings.preVisits +
 	"\nOptions: " + settings.preOptions +
+	"\nOption chance: " + settings.preOptionPerc +
 	custom.createCommentGrades();
-}
+};
+
+custom.createSelfplayComment = function() {
+	return "Selfplay move" +
+	"\nStrength: " + settings.selfplayVisits +
+	custom.createCommentGrades();
+};
+
+custom.createPlayerComment = function() {
+	return "Player move" +
+	"\nStrength: " + settings.suggestionVisits +
+	"\nOptions: " + settings.suggestionOptions +
+	"\nHide weaker options: " + settings.hideWeakerOptions +
+	(settings.minVisitsPercSwitch ? "\nMin strength: " + settings.minVisitsPerc : "") +
+	(settings.maxVisitDiffPercSwitch ? "\nMax strength difference" + settings.maxVisitDiffPerc : "") +
+	custom.createCommentGrades();
+};
+
+custom.createOpponentComment = function() {
+	return "Opponent move" +
+	"\nStrength: " + settings.opponentVisits +
+	(settings.opponentOptionsSwitch ? "\nOptions: " + settings.opponentOptions : "") +
+	"\nOption chance: " + settings.opponentOptionPerc +
+	custom.createCommentGrades();
+};
