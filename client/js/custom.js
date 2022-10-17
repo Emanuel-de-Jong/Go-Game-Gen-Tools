@@ -9,9 +9,10 @@ custom.init = async function() {
 };
 
 custom.clear = async function(source) {
-	custom.suggestionsPromise = null;
-	custom.selfplayPromise = null;
-	custom.suggestionsToShow = [];
+	custom.suggestionsPromise;
+	custom.suggestions;
+	custom.suggestionsHistory = [];
+	custom.selfplayPromise;
 	custom.isPlayerControlling = false;
 	custom.isJumped = false;
 	custom.isPassed = false;
@@ -63,29 +64,37 @@ custom.analyze = async function({
 		minVisitsPerc = settings.minVisitsPerc,
 		maxVisitDiffPerc = settings.maxVisitDiffPerc,
 		color = board.getNextColor() } = {}) {
-	let suggestions = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
+	let suggestionsWithPass = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
 	
-	let suggestionsWithoutPass = [];
-	for (let i=0; i<suggestions.length; i++) {
-		if (!suggestions[i].isPass()) {
-			suggestionsWithoutPass.push(suggestions[i]);
+	custom.suggestions = [];
+	for (let i=0; i<suggestionsWithPass.length; i++) {
+		if (!suggestionsWithPass[i].isPass()) {
+			custom.suggestions.push(suggestionsWithPass[i]);
 		}
 	}
 
-	if (suggestions[0].isPass()) {
-		custom.pass(suggestions[0]);
+	if (suggestionsWithPass[0].isPass()) {
+		custom.pass(suggestionsWithPass[0]);
 	}
 
 	let gradeIndex = 0;
-	for (let i=0; i<suggestionsWithoutPass.length; i++) {
-		let suggestion = suggestionsWithoutPass[i];
-		if (i != 0 && suggestion.visits != suggestionsWithoutPass[i - 1].visits) {
+	for (let i=0; i<custom.suggestions.length; i++) {
+		let suggestion = custom.suggestions[i];
+		if (i != 0 && suggestion.visits != custom.suggestions[i - 1].visits) {
 			gradeIndex++;
 		}
 		suggestion.grade = String.fromCharCode(gradeIndex + 65);
 	}
 
-	return suggestionsWithoutPass;
+	custom.updateSuggestionsHistory();
+};
+
+custom.updateSuggestionsHistory = function() {
+	let currentMove = board.editor.getCurrent();
+	if (!custom.suggestionsHistory[currentMove.navTreeY]) {
+		custom.suggestionsHistory[currentMove.navTreeY] = [];
+	}
+	custom.suggestionsHistory[currentMove.navTreeY][currentMove.moveNumber] = custom.suggestions;
 };
 
 custom.playPreMove = async function() {
@@ -94,7 +103,7 @@ custom.playPreMove = async function() {
 		preOptions = settings.preOptions;
 	}
 
-	let suggestions = await custom.analyze({
+	await custom.analyze({
 		maxVisits: settings.preVisits,
 		moveOptions: preOptions,
 		minVisitsPerc: 10,
@@ -102,7 +111,7 @@ custom.playPreMove = async function() {
 	if (custom.isPassed) custom.isPreMovesStopped = true;
 	if (custom.isPreMovesStopped) return;
 
-	await board.play(suggestions[utils.randomInt(suggestions.length)], custom.createPreMoveComment());
+	await board.play(custom.suggestions[utils.randomInt(custom.suggestions.length)], custom.createPreMoveComment());
 };
 
 custom.createPreMoves = async function() {
@@ -146,22 +155,37 @@ custom.createPreMoves = async function() {
 };
 
 custom.boardEditorListener = async function(event) {
-	if (event.markupChange && custom.isPlayerControlling && !board.sgf.isSGFLoading) {
+	if (event.markupChange && event.mark == 4 && custom.isPlayerControlling && !board.sgf.isSGFLoading) {
 		custom.takePlayerControl();
 
 		let markupCoord = new Coord(event.x, event.y);
 		board.removeMarkup(markupCoord);
 
         await custom.playerTurn(markupCoord);
-    } else if (event.navChange && !event.treeChange && !custom.isJumped) {
-		let currentMove = board.editor.getCurrent();
-		if (board.lastMove.moveNumber+1 != currentMove.moveNumber ||
-				board.lastMove.navTreeY != currentMove.navTreeY) {
-			custom.isJumped = true;
-			custom.isPassed = false;
+    } else if (event.navChange) {
+		stats.clearVisits();
 
-			board.disableNextButton();
-			custom.givePlayerControl(false);
+		let currentMove = board.editor.getCurrent();
+		if ((board.lastMove.moveNumber+1 != currentMove.moveNumber ||
+				board.lastMove.navTreeY != currentMove.navTreeY)) {
+			
+			custom.suggestions = null;
+			if (custom.suggestionsHistory[currentMove.navTreeY]) {
+				custom.suggestions = custom.suggestionsHistory[currentMove.navTreeY][currentMove.moveNumber];
+			}
+
+			if (custom.suggestions) {
+				stats.setVisits(custom.suggestions);
+				board.drawCoords(custom.suggestions);
+			}
+	
+			if (!event.treeChange && !custom.isJumped) {
+				custom.isJumped = true;
+				custom.isPassed = false;
+	
+				board.disableNextButton();
+				custom.givePlayerControl(false);
+			}
 		}
 	}
 };
@@ -194,23 +218,36 @@ custom.playerTurn = async function(markupCoord) {
 		custom.suggestionsPromise = custom.analyze();
 	}
 
-	let suggestions = await custom.suggestionsPromise;
+	await custom.suggestionsPromise;
 	if (custom.isPassed) return;
 	if (playerTurnId != custom.playerTurnId) return;
 
-	let suggestionToPlay = suggestions[0];
+	let suggestionToPlay = custom.suggestions[0];
 	let isRightChoice = false;
 	let isPerfectChoice = false;
-	for (let i=0; i<suggestions.length; i++) {
-		if (markupCoord.compare(suggestions[i].coord)) {
-			if (i == 0 || suggestions[i].visits == suggestions[0].visits) {
+	for (let i=0; i<custom.suggestions.length; i++) {
+		if (markupCoord.compare(custom.suggestions[i].coord)) {
+			if (i == 0 || custom.suggestions[i].visits == custom.suggestions[0].visits) {
 				isPerfectChoice = true;
 			}
 
 			isRightChoice = true;
-			suggestionToPlay = suggestions[i];
+			suggestionToPlay = custom.suggestions[i];
 			break;
 		}
+	}
+
+	if (settings.hideWeakerOptions && suggestionToPlay) {
+		let suggestions = custom.suggestions;
+		custom.suggestions = [];
+		for (let i=0; i<suggestions.length; i++) {
+			custom.suggestions.push(suggestions[i]);
+			if (suggestions[i].coord.compare(markupCoord)) {
+				break;
+			}
+		}
+
+		custom.updateSuggestionsHistory();
 	}
 	
 	let opponentOptions = 1;
@@ -230,19 +267,18 @@ custom.playerTurn = async function(markupCoord) {
 		await board.draw(markupCoord, "auto", false, "Player");
 	}
 
-	custom.createSuggestionsToShow(suggestions, markupCoord);
+	stats.setVisits(custom.suggestions);
 	stats.updateRatio(isRightChoice, isPerfectChoice);
-	stats.setVisits(custom.suggestionsToShow);
 
 	if (!settings.skipNextButton) {
-		board.drawCoords(custom.suggestionsToShow);
+		board.drawCoords(custom.suggestions);
 	}
 
 	if (settings.disableAICorrection && !isRightChoice) {
 		stats.scoreChart.update(await server.analyzeMove(markupCoord));
 		await server.play(markupCoord);
 
-		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentVisits, moveOptions: opponentMoveOptions });
+		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentVisits, moveOptions: opponentOptions });
 	}
 
 	if (!settings.skipNextButton) {
@@ -252,28 +288,18 @@ custom.playerTurn = async function(markupCoord) {
 	}
 };
 
-custom.createSuggestionsToShow = function(suggestions, playedCoord) {
-	custom.suggestionsToShow = [];
-	for (let i=0; i<suggestions.length; i++) {
-		custom.suggestionsToShow.push(suggestions[i]);
-		if (settings.hideWeakerOptions && suggestions[i].coord.compare(playedCoord)) {
-			break;
-		}
-	}
-};
-
 custom.opponentTurn = async function() {
 	let opponentTurnId = ++custom.opponentTurnId;
 
-	let suggestions = await custom.suggestionsPromise;
+	await custom.suggestionsPromise;
 	if (custom.isPassed) return;
 	if (opponentTurnId != custom.opponentTurnId) return;
 
 	if (settings.skipNextButton) {
-		board.drawCoords(custom.suggestionsToShow);
+		board.drawCoords(custom.suggestions);
 	}
 
-	await board.play(suggestions[utils.randomInt(suggestions.length)], "Opponent");
+	await board.play(custom.suggestions[utils.randomInt(custom.suggestions.length)], "Opponent");
 
 	custom.givePlayerControl();
 };
@@ -291,8 +317,6 @@ custom.selfplayButtonClickListener = async function() {
 		custom.takePlayerControl();
 		board.disableNextButton();
 
-		stats.clearVisits();
-
 		custom.selfplayPromise = custom.selfplay();
 	} else {
 		custom.isSelfplay = false;
@@ -309,7 +333,7 @@ custom.selfplayButton.addEventListener("click", custom.selfplayButtonClickListen
 
 custom.selfplay = async function() {
 	while (custom.isSelfplay || settings.color != board.getNextColor()) {
-		let suggestions = await custom.analyze({ maxVisits: settings.selfplayVisits, moveOptions: 1 });
+		await custom.analyze({ maxVisits: settings.selfplayVisits, moveOptions: 1 });
 		if (custom.isPassed) {
 			custom.selfplayButton.click();
 			return;
@@ -317,7 +341,7 @@ custom.selfplay = async function() {
 
 		if (!custom.isSelfplay && settings.color == board.getNextColor()) return;
 
-		await board.play(suggestions[0], "Selfplay");
+		await board.play(custom.suggestions[0], "Selfplay");
 	}
 };
 
@@ -330,9 +354,9 @@ custom.selfplay = async function() {
 
 custom.createCommentGrades = function() {
 	comment = "";
-	for (let i=0; i<custom.suggestionsToShow.length; i++) {
-		let suggestion = custom.suggestionsToShow[i];
-        if (i != 0 && suggestion.visits == custom.suggestionsToShow[i - 1].visits) continue;
+	for (let i=0; i<custom.suggestions.length; i++) {
+		let suggestion = custom.suggestions[i];
+        if (i != 0 && suggestion.visits == custom.suggestions[i - 1].visits) continue;
 
 		comment += "\n" + suggestion.grade + ": " + suggestion.visits;
 	}

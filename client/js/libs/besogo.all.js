@@ -2066,7 +2066,7 @@ besogo.makeEditor = function(sizeX, sizeY) {
                     setLabel( mark.slice(0, mark.length - 1) + temp );
                 }
             }
-            notifyListeners({ markupChange: true, x: i, y: j }); // Notify markup change
+            notifyListeners({ markupChange: true, x: i, y: j, mark: mark }); // Notify markup change
         }
     }
 

@@ -204,6 +204,13 @@ board.draw = async function(coord, tool = "auto", sendToServer = true, comment) 
 };
 
 board.drawCoords = function(suggestions) {
+	let markup = board.editor.getCurrent().markup;
+	for (let i=0; i<markup.length; i++) {
+		if (markup[i] && markup[i] != 4) {
+			markup[i] = 0;
+		}
+	}
+
 	board.editor.setTool("label");
 	for (let i=0; i<suggestions.length; i++) {
 		let coord = suggestions[i].coord;
