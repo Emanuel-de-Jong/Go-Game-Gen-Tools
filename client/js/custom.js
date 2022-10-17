@@ -91,10 +91,13 @@ custom.analyze = async function({
 
 custom.updateSuggestionsHistory = function() {
 	let currentMove = board.editor.getCurrent();
-	if (!custom.suggestionsHistory[currentMove.navTreeY]) {
-		custom.suggestionsHistory[currentMove.navTreeY] = [];
+	let y = currentMove.navTreeY;
+	let x = currentMove.moveNumber + 1;
+
+	if (!custom.suggestionsHistory[y]) {
+		custom.suggestionsHistory[y] = [];
 	}
-	custom.suggestionsHistory[currentMove.navTreeY][currentMove.moveNumber] = custom.suggestions;
+	custom.suggestionsHistory[y][x] = custom.suggestions;
 };
 
 custom.playPreMove = async function() {

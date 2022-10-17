@@ -91,4 +91,9 @@ class SGF {
 		board.editor.setGameInfo(result, "RE");
 	}
 
+	setComment(comment) {
+		board.editor.setComment(comment);
+		board.commentElement.scrollTop = 0;
+	}
+
 }

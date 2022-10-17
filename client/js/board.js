@@ -25,19 +25,21 @@ board.init = async function() {
 
 	board.sgf = new SGF();
 	
-	document.querySelector('button[title="Variants: [child]/sibling"]').remove();
-	document.querySelector('button[title="Variants: show/[hide]"]').remove();
-	document.querySelector('input[value="9x9"]').remove();
-	document.querySelector('input[value="13x13"]').remove();
-	document.querySelector('input[value="19x19"]').remove();
-	document.querySelector('input[value="?x?"]').remove();
-	document.querySelector('input[value="Comment"]').remove();
-	document.querySelector('input[value="Edit Info"]').remove();
-	document.querySelector('input[value="Info"]').remove();
+	document.querySelector('#game button[title="Variants: [child]/sibling"]').remove();
+	document.querySelector('#game button[title="Variants: show/[hide]"]').remove();
+	document.querySelector('#game input[value="9x9"]').remove();
+	document.querySelector('#game input[value="13x13"]').remove();
+	document.querySelector('#game input[value="19x19"]').remove();
+	document.querySelector('#game input[value="?x?"]').remove();
+	document.querySelector('#game input[value="Comment"]').remove();
+	document.querySelector('#game input[value="Edit Info"]').remove();
+	document.querySelector('#game input[value="Info"]').remove();
 	
-	document.querySelector(".besogo-board")
+	document.querySelector("#game .besogo-board")
 		.insertAdjacentHTML("beforeend", '<button type="button" class="btn btn-secondary" id="next" disabled>></button>');
 	board.nextButton = document.getElementById("next");
+
+	board.commentElement = document.querySelector('#game .besogo-comment textarea');
 
 	utils.addEventsListener(document, ["keydown", "mousedown"], board.keydownAndMousedownListener);
 
@@ -179,7 +181,7 @@ board.draw = async function(coord, tool = "auto", sendToServer = true, comment) 
 	board.editor.setTool("navOnly");
 
 	if (comment) {
-		board.editor.setComment(comment);
+		board.sgf.setComment(comment);
 	}
 
 	if (tool == "auto" || tool == "playB" || tool == "playW") {

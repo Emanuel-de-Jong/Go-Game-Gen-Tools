@@ -22,7 +22,7 @@ main {
 #game #board {
     position: relative;
     width: 630px;
-    height: 900px;
+    height: 882px;
 }
 
 #game #next {
