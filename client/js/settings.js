@@ -217,5 +217,3 @@ settings.setKomi = function() {
 settings.handicapElement.addEventListener("input", settings.setKomi);
 settings.rulesetElement.addEventListener("input", settings.setKomi);
 settings.boardsizeElement.addEventListener("input", settings.setKomi);
-
-settings.init();

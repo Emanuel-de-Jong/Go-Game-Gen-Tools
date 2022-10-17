@@ -9,7 +9,7 @@ board.placeStoneAudios = [
 ];
 board.lastPlaceStoneAudioIndex = 0;
 
-board.init = async function() {
+board.clear = async function() {
 	board.element = document.getElementById("board");
 	besogo.create(board.element, {
 		resize: "fixed",

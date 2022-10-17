@@ -17,7 +17,7 @@ stats.resultElement = document.getElementById("result");
 
 stats.scoreChart = new ScoreChart(stats.scoreChartElement);
 
-stats.init = function() {
+stats.clear = function() {
     stats.scoreChart.clear();
 
     stats.total = 0;

@@ -64,7 +64,7 @@ server.coordNameToNum = function(nameCoord) {
     return new Coord(x, y);
 };
 
-server.init = async function() {
+server.clear = async function() {
     let status;
     do {
         status = (await server.restart()).status;

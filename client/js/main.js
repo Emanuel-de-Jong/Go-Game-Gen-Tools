@@ -1,18 +1,13 @@
 var main = {};
 
-main.restartButton = document.getElementById("restart");
 main.stopPreMovesButton = document.getElementById("stopPreMoves");
 main.selfplayButton = document.getElementById("selfplay");
 
-main.init = async function() {
-	await main.clear(utils.SOURCE.MAIN);
-};
-
-main.clear = async function(source) {
-	main.suggestionsPromise;
-	main.suggestions;
+main.clear = function() {
+	main.suggestionsPromise = null;
+	main.suggestions = null;
 	main.suggestionsHistory = [];
-	main.selfplayPromise;
+	main.selfplayPromise = null;
 	main.isPlayerControlling = false;
 	main.isJumped = false;
 	main.isPassed = false;
@@ -20,20 +15,6 @@ main.clear = async function(source) {
 	main.isPreMovesStopped = false;
 	main.playerTurnId = 0;
 	main.opponentTurnId = 0;
-
-	if (source !== utils.SOURCE.SERVER) await server.init();
-
-	if (source !== utils.SOURCE.STATS) stats.init();
-
-	if (source !== utils.SOURCE.BOARD) {
-		await board.init();
-		board.editor.addListener(main.boardEditorListener);
-		board.nextButton.addEventListener("click", main.nextButtonClickListener);
-
-		main.stopPreMovesButton.hidden = false;
-		main.selfplayButton.hidden = true;
-		await main.createPreMoves();
-	}
 };
 
 main.stopPreMovesButtonClickListener = function() {
@@ -307,11 +288,6 @@ main.opponentTurn = async function() {
 	main.givePlayerControl();
 };
 
-main.restartButtonClickListener = async function() {
-	await main.clear(utils.SOURCE.MAIN);
-};
-main.restartButton.addEventListener("click", main.restartButtonClickListener);
-
 main.selfplayButtonClickListener = async function() {
 	if (!main.isSelfplay) {
 		main.isSelfplay = true;
@@ -347,13 +323,6 @@ main.selfplay = async function() {
 		await board.play(main.suggestions[0], main.createSelfplayComment());
 	}
 };
-
-
-(function () {
-
-	main.init();
-
-})();
 
 main.createCommentGrades = function() {
 	comment = "";

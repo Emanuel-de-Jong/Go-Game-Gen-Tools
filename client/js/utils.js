@@ -8,11 +8,12 @@ utils.TYPES = {
 };
 
 utils.SOURCE = {
-    MAIN: 1,
-    BOARD: 2,
-    SERVER: 3,
-    SETTINGS: 4,
-    STATS: 5,
+    INIT: 1,
+    MAIN: 2,
+    BOARD: 3,
+    SERVER: 4,
+    SETTINGS: 5,
+    STATS: 6,
 };
 
 utils.colorNumToName = function(num) {

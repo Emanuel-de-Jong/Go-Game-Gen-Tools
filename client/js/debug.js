@@ -2,9 +2,14 @@ var debug = {};
 
 debug.testButton = document.getElementById("test");
 
+debug.init = function() {
+    // debug.logAllFuncCalls();
+}
+
 debug.testButtonClickListener = async function() {
     console.log();
 };
+debug.testButton.addEventListener("click", debug.testButtonClickListener);
 
 debug.logAllFuncCalls = function() {
     let objs = [
@@ -55,10 +60,3 @@ debug.logAllFuncCalls = function() {
         }
     }
 };
-
-(function () {
-
-    debug.testButton.addEventListener("click", debug.testButtonClickListener);
-    // debug.logAllFuncCalls();
-
-})();
