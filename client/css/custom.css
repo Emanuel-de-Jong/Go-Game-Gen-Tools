@@ -89,11 +89,12 @@ main {
     margin-bottom: 20px;
 }
 
-#settings .accordion-button {
-    padding: 8px 20px 8px 10px;
+
+.accordion-button {
+    padding: 8px 20px 8px 10px !important;
 }
 
-#settings .accordion-body {
-    padding-left: 0;
-    padding-right: 0;
+.accordion-body {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }

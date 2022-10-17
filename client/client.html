@@ -25,14 +25,25 @@
         
                 <div class="col">
                     <div id="stats">
-                        <div>
-                            <div>
-                                <select class="form-select" id="scoreChartColor">
-                                    <option value="-1">Black</option>
-                                    <option value="1">White</option>
-                                </select>
+                        <div class="accordion accordion-flush">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="scoreChartAccordionHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#scoreChartAccordionBody" aria-expanded="true" aria-controls="scoreChartAccordionBody">
+                                        Score chart
+                                    </button>
+                                </h3>
+                                <div id="scoreChartAccordionBody" class="accordion-collapse collapse" aria-labelledby="scoreChartAccordionHeader">
+                                    <div class="accordion-body">
+                                        <div>
+                                            <select class="form-select" id="scoreChartColor">
+                                                <option value="-1">Black</option>
+                                                <option value="1">White</option>
+                                            </select>
+                                        </div>
+                                        <canvas id="scoreChart"></canvas>
+                                    </div>
+                                </div>
                             </div>
-                            <canvas id="scoreChart"></canvas>
                         </div>
                         <div class="row">
                             <div class="col-6">
@@ -82,11 +93,11 @@
 
                         <div class="accordion accordion-flush" id="settingsAccordion">
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="basicsSettingsHeader">
+                                <h3 class="accordion-header" id="basicsSettingsHeader">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#basicsSettings" aria-expanded="true" aria-controls="basicsSettings">
                                         Basics
                                     </button>
-                                </h2>
+                                </h3>
                                 <div id="basicsSettings" class="accordion-collapse collapse show" aria-labelledby="basicsSettingsHeader">
                                     <div class="accordion-body">
                                         <div class="row">
@@ -176,11 +187,11 @@
                             </div>
 
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="gameSettingsHeader">
+                                <h3 class="accordion-header" id="gameSettingsHeader">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#gameSettings" aria-expanded="true" aria-controls="gameSettings">
                                         Game
                                     </button>
-                                </h2>
+                                </h3>
                                 <div id="gameSettings" class="accordion-collapse collapse show" aria-labelledby="gameSettingsHeader">
                                     <div class="accordion-body">
                                         <div class="row">
@@ -218,11 +229,11 @@
                             </div>
 
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="preMovesSettingsHeader">
+                                <h3 class="accordion-header" id="preMovesSettingsHeader">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#preMovesSettings" aria-expanded="true" aria-controls="preMovesSettings">
                                         Pre moves
                                     </button>
-                                </h2>
+                                </h3>
                                 <div id="preMovesSettings" class="accordion-collapse collapse show" aria-labelledby="preMovesSettingsHeader">
                                     <div class="accordion-body">
                                         <div class="row">
@@ -283,11 +294,11 @@
                             </div>
 
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="filtersSettingsHeader">
+                                <h3 class="accordion-header" id="filtersSettingsHeader">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#filtersSettings" aria-expanded="true" aria-controls="filtersSettings">
                                         Filters
                                     </button>
-                                </h2>
+                                </h3>
                                 <div id="filtersSettings" class="accordion-collapse collapse show" aria-labelledby="filtersSettingsHeader">
                                     <div class="accordion-body">
                                         <div class="row">
@@ -344,11 +355,11 @@
                             </div>
 
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="opponentSettingsHeader">
+                                <h3 class="accordion-header" id="opponentSettingsHeader">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#opponentSettings" aria-expanded="true" aria-controls="opponentSettings">
                                         Opponent
                                     </button>
-                                </h2>
+                                </h3>
                                 <div id="opponentSettings" class="accordion-collapse collapse show" aria-labelledby="opponentSettingsHeader">
                                     <div class="accordion-body">
                                         <div class="row">
@@ -384,11 +395,11 @@
                             </div>
 
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="controlSettingsHeader">
+                                <h3 class="accordion-header" id="controlSettingsHeader">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#controlSettings" aria-expanded="false" aria-controls="controlSettings">
                                         Control
                                     </button>
-                                </h2>
+                                </h3>
                                 <div id="controlSettings" class="accordion-collapse collapse show" aria-labelledby="controlSettingsHeader">
                                     <div class="accordion-body">
                                         <div class="row">
