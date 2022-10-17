@@ -13,7 +13,7 @@ board.init = async function() {
 	board.element = document.getElementById("board");
 	besogo.create(board.element, {
 		resize: "fixed",
-		panels: "control+names+tree+file",
+		panels: "control+names+tree+comment+file",
 		coord: "western",
 		tool: "navOnly",
 		size: settings.boardsize,
@@ -31,6 +31,9 @@ board.init = async function() {
 	document.querySelector('input[value="13x13"]').remove();
 	document.querySelector('input[value="19x19"]').remove();
 	document.querySelector('input[value="?x?"]').remove();
+	document.querySelector('input[value="Comment"]').remove();
+	document.querySelector('input[value="Edit Info"]').remove();
+	document.querySelector('input[value="Info"]').remove();
 	
 	document.querySelector(".besogo-board")
 		.insertAdjacentHTML("beforeend", '<button type="button" class="btn btn-secondary" id="next" disabled>></button>');
@@ -165,15 +168,19 @@ board.getMoves = function() {
 	return moves;
 };
 
-board.play = async function(suggestion, tool = "auto") {
-	await board.draw(suggestion.coord, tool);
+board.play = async function(suggestion, comment, tool = "auto") {
+	await board.draw(suggestion.coord, tool, true, comment);
 	stats.scoreChart.update(suggestion);
 };
 
-board.draw = async function(coord, tool = "auto", sendToServer = true) {
+board.draw = async function(coord, tool = "auto", sendToServer = true, comment) {
 	board.editor.setTool(tool);
 	board.editor.click(coord.x, coord.y, false, false);
 	board.editor.setTool("navOnly");
+
+	if (comment) {
+		board.editor.setComment(comment);
+	}
 
 	if (tool == "auto" || tool == "playB" || tool == "playW") {
 		board.playPlaceStoneAudio();
@@ -255,9 +262,9 @@ board.placeHandicap = async function() {
 		for (let i=0; i<loopCount; i++) {
 			let coord = placement[settings.boardsize][settings.handicap][i];
 			if (i < loopCount - 1) {
-				await board.draw(coord, "playB");
+				await board.draw(coord, "playB", true, "Handicap");
 			} else {
-				await board.draw(coord, "playB", false);
+				await board.draw(coord, "playB", false, "Handicap");
 				stats.scoreChart.update(await server.analyzeMove(coord, -1));
 				await server.play(coord, -1);
 			}

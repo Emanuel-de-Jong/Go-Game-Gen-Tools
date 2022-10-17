@@ -1,5 +1,6 @@
 CLIENT
     SETTINGS
+        - pre option chance
         play after pass
         play as both players
         save/load settings
@@ -10,7 +11,9 @@ CLIENT
         status bar (e.g. "analyzing suggestions")
         server unreachable alert
     QOL
-        keep suggestion and visits history
+        - keep suggestion and visits history
+        - clear markup before setting cross and suggestions
+        - show suggestions on pre moves and selfplay
         retry server request on error
     VISUAL
         icon for options that can be updated without restart

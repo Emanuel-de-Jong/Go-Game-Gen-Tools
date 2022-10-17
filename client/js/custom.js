@@ -76,6 +76,15 @@ custom.analyze = async function({
 		custom.pass(suggestions[0]);
 	}
 
+	let gradeIndex = 0;
+	for (let i=0; i<suggestionsWithoutPass.length; i++) {
+		let suggestion = suggestionsWithoutPass[i];
+		if (i != 0 && suggestion.visits != suggestionsWithoutPass[i - 1].visits) {
+			gradeIndex++;
+		}
+		suggestion.grade = String.fromCharCode(gradeIndex + 65);
+	}
+
 	return suggestionsWithoutPass;
 };
 
@@ -87,7 +96,7 @@ custom.playPreMove = async function() {
 		maxVisitDiffPerc: 50 });
 	if (custom.isPassed) custom.isPreMovesStopped = true;
 	if (custom.isPreMovesStopped) return;
-	await board.play(suggestions[utils.randomInt(suggestions.length)]);
+	await board.play(suggestions[utils.randomInt(suggestions.length)], "Pre move");
 };
 
 custom.createPreMoves = async function() {
@@ -106,7 +115,7 @@ custom.createPreMoves = async function() {
 					let suggestion = await server.analyzeMove(cornerCoords[i]);
 					if (custom.isPreMovesStopped) break;
 
-					await board.play(suggestion);
+					await board.play(suggestion, "Corner pre move");
 					preMovesLeft--;
 				}
 			}
@@ -206,13 +215,13 @@ custom.playerTurn = async function(markupCoord) {
 	}
 
 	if (!settings.disableAICorrection || isRightChoice) {
-		await board.play(suggestionToPlay);
+		await board.play(suggestionToPlay, "Player");
 
 		if (!isRightChoice) await board.draw(markupCoord, "cross");
 
 		custom.suggestionsPromise = custom.analyze({ maxVisits: settings.opponentVisits, moveOptions: opponentMoveOptions });
 	} else {
-		await board.draw(markupCoord, "auto", false);
+		await board.draw(markupCoord, "auto", false, "Player");
 	}
 
 	custom.createSuggestionsToShow(suggestions, markupCoord);
@@ -245,15 +254,6 @@ custom.createSuggestionsToShow = function(suggestions, playedCoord) {
 			break;
 		}
 	}
-
-	let gradeIndex = 0;
-	for (let i=0; i<custom.suggestionsToShow.length; i++) {
-		let suggestion = custom.suggestionsToShow[i];
-		if (i != 0 && suggestion.visits != custom.suggestionsToShow[i - 1].visits) {
-			gradeIndex++;
-		}
-		suggestion.grade = String.fromCharCode(gradeIndex + 65);
-	}
 };
 
 custom.opponentTurn = async function() {
@@ -275,7 +275,7 @@ custom.opponentTurn = async function() {
 		suggestionToPlay = suggestions[utils.randomInt(suggestions.length - 1) + 1];
 	}
 
-	await board.play(suggestionToPlay);
+	await board.play(suggestionToPlay, "Opponent");
 
 	custom.givePlayerControl();
 };
@@ -319,7 +319,7 @@ custom.selfplay = async function() {
 
 		if (!custom.isSelfplay && settings.color == board.getNextColor()) return;
 
-		await board.play(suggestions[0]);
+		await board.play(suggestions[0], "Selfplay");
 	}
 };
 

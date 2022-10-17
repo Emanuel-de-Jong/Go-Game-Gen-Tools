@@ -22,7 +22,7 @@ main {
 #game #board {
     position: relative;
     width: 630px;
-    height: 830px;
+    height: 900px;
 }
 
 #game #next {
@@ -71,14 +71,14 @@ main {
 }
 
 #settings .input-group input[type=number],
-#settings #opponentMoveOptionPercDiv span,
+#settings #opponentOptionPercDiv span,
 #settings #minVisitsPercDiv span,
 #settings #maxVisitDiffPercDiv span {
     border-top-right-radius: 0.375rem;
     border-bottom-right-radius: 0.375rem;
 }
 
-#settings #opponentMoveOptionPercDiv input[type=number],
+#settings #opponentOptionPercDiv input[type=number],
 #settings #minVisitsPercDiv input[type=number],
 #settings #maxVisitDiffPercDiv input[type=number] {
     border-top-right-radius: 0;
