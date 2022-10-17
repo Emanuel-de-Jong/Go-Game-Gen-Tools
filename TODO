@@ -23,6 +23,7 @@ SERVER
 
 CODE QUALITY/BUGS
     - refactor
+    - testing
 
 FAR FUTURE
     play a sequence, then click a button that shows what sequence the ai would have played and how good your sequence was in comparison (comparing the winrate/score won/lost during those moves)

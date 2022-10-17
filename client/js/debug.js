@@ -9,7 +9,7 @@ debug.testButtonClickListener = async function() {
 debug.logAllFuncCalls = function() {
     let objs = [
         board,
-        custom,
+        main,
         debug,
         server,
         settings,

@@ -8,7 +8,7 @@ utils.TYPES = {
 };
 
 utils.SOURCE = {
-    CUSTOM: 1,
+    MAIN: 1,
     BOARD: 2,
     SERVER: 3,
     SETTINGS: 4,

@@ -38,7 +38,7 @@ class SGF {
 	async sgfLoadedEventListener() {
 		this.isSGFLoading = false;
 
-		await custom.clear(utils.SOURCE.BOARD);
+		await main.clear(utils.SOURCE.BOARD);
 
 		let gameInfo = board.editor.getGameInfo();
 
