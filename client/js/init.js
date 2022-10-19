@@ -1,27 +1,31 @@
 var init = {};
 
 init.init = async function() {
-    settings.init();
-    await init.clear(utils.SOURCE.INIT);
-	debug.init();
+	await settings.init();
+	await server.init();
+	await board.init();
+	await sgf.init();
+	await scoreChart.init();
+	await stats.init();
+	await debug.init();
+	await main.init();
+	await init.start();
 };
 
 init.clear = async function(source) {
-    if (source !== utils.SOURCE.MAIN) main.clear();
+	await settings.clear();
+	await server.clear();
+	await board.clear();
+	await sgf.clear();
+	await scoreChart.clear();
+	await stats.clear();
+	await debug.clear();
+	await main.clear();
+	await init.start();
+};
 
-    if (source !== utils.SOURCE.SERVER) await server.clear();
-
-	if (source !== utils.SOURCE.STATS) stats.clear();
-
-	if (source !== utils.SOURCE.BOARD) {
-		await board.clear();
-		board.editor.addListener(main.boardEditorListener);
-		board.nextButton.addEventListener("click", main.nextButtonClickListener);
-
-		main.stopPreMovesButton.hidden = false;
-		main.selfplayButton.hidden = true;
-		await main.createPreMoves();
-	}
+init.start = async function() {
+	await main.createPreMoves();
 };
 
 init.restartButtonClickListener = async function() {

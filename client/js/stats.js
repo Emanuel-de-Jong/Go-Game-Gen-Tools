@@ -1,7 +1,5 @@
 var stats = {};
 
-stats.scoreChartElement = document.getElementById("scoreChart");
-
 stats.rightPercentElement = document.getElementById("rightPercent");
 stats.rightStreakElement = document.getElementById("rightStreak");
 stats.rightTopStreakElement = document.getElementById("rightTopStreak");
@@ -15,11 +13,11 @@ stats.visitsElement = document.getElementById("visits");
 stats.resultDivElement = document.getElementById("resultDiv");
 stats.resultElement = document.getElementById("result");
 
-stats.scoreChart = new ScoreChart(stats.scoreChartElement);
+stats.init = async function() {
+    await stats.clear();
+};
 
-stats.clear = function() {
-    stats.scoreChart.clear();
-
+stats.clear = async function() {
     stats.total = 0;
 
     stats.rightCorrect = 0;

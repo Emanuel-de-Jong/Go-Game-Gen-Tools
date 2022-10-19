@@ -9,6 +9,10 @@ board.placeStoneAudios = [
 ];
 board.lastPlaceStoneAudioIndex = 0;
 
+board.init = async function() {
+	await board.clear();
+};
+
 board.clear = async function() {
 	board.element = document.getElementById("board");
 	besogo.create(board.element, {
@@ -22,8 +26,6 @@ board.clear = async function() {
 	});
 
 	board.editor = board.element.besogoEditor;
-
-	board.sgf = new SGF();
 	
 	document.querySelector('#game button[title="Variants: [child]/sibling"]').remove();
 	document.querySelector('#game button[title="Variants: show/[hide]"]').remove();
@@ -41,11 +43,12 @@ board.clear = async function() {
 
 	board.commentElement = document.querySelector('#game .besogo-comment textarea');
 
-	utils.addEventsListener(document, ["keydown", "mousedown"], board.keydownAndMousedownListener);
-
 	board.lastMove = board.editor.getCurrent();
 
 	await board.placeHandicap();
+	
+	board.editor.addListener(main.boardEditorListener);
+	board.nextButton.addEventListener("click", main.nextButtonClickListener);
 
 	// console.log(besogo);
 	// console.log(board.editor);
@@ -81,6 +84,7 @@ board.keydownAndMousedownListener = function(event) {
 		board.nextButton.click();
 	}
 };
+utils.addEventsListener(document, ["keydown", "mousedown"], board.keydownAndMousedownListener);
 
 board.fillCorners = function() {
 	let cornerOptions = [
@@ -172,7 +176,7 @@ board.getMoves = function() {
 
 board.play = async function(suggestion, comment, tool = "auto") {
 	await board.draw(suggestion.coord, tool, true, comment);
-	stats.scoreChart.update(suggestion);
+	scoreChart.update(suggestion);
 };
 
 board.draw = async function(coord, tool = "auto", sendToServer = true, comment) {
@@ -181,14 +185,14 @@ board.draw = async function(coord, tool = "auto", sendToServer = true, comment) 
 	board.editor.setTool("navOnly");
 
 	if (comment) {
-		board.sgf.setComment(comment);
+		sgf.setComment(comment);
 	}
 
 	if (tool == "auto" || tool == "playB" || tool == "playW") {
 		board.playPlaceStoneAudio();
 
 		if (board.lastMove.navTreeY != board.editor.getCurrent().navTreeY) {
-			stats.scoreChart.clear();
+			scoreChart.clear();
 		}
 
 		board.lastMove = board.editor.getCurrent();
@@ -274,7 +278,7 @@ board.placeHandicap = async function() {
 				await board.draw(coord, "playB", true, "Handicap");
 			} else {
 				await board.draw(coord, "playB", false, "Handicap");
-				stats.scoreChart.update(await server.analyzeMove(coord, -1));
+				scoreChart.update(await server.analyzeMove(coord, -1));
 				await server.play(coord, -1);
 			}
 		}

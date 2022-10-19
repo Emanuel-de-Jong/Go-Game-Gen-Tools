@@ -2,9 +2,15 @@ var debug = {};
 
 debug.testButton = document.getElementById("test");
 
-debug.init = function() {
+debug.init = async function() {
     // debug.logAllFuncCalls();
+    
+	await debug.clear();
 }
+
+debug.clear = async function() {
+
+};
 
 debug.testButtonClickListener = async function() {
     console.log();

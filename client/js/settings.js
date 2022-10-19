@@ -50,6 +50,18 @@ for (const name of Object.keys(settings.SETTINGS)) {
     settings[name + "Element"] = document.getElementById(name);
 }
 
+settings.init = async function() {
+    for (const name of Object.keys(settings.SETTINGS)) {
+        settings.updateSetting(name);
+    }
+
+	await settings.clear();
+};
+
+settings.clear = async function() {
+
+};
+
 utils.querySelectorAlls(["input", "select"]).forEach(input => {
     if (input.type != "checkbox") {
         input.required = true;
@@ -58,12 +70,6 @@ utils.querySelectorAlls(["input", "select"]).forEach(input => {
         input.insertAdjacentHTML("afterend", "<div class=\"form-invalid-message\"></div>");
     }
 });
-
-settings.init = function() {
-    for (const name of Object.keys(settings.SETTINGS)) {
-        settings.updateSetting(name);
-    }
-};
 
 settings.updateSetting = function(name) {
     let type = settings.SETTINGS[name];
@@ -122,35 +128,35 @@ settings.inputAndSelectInputListener = function(event) {
 utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", settings.inputAndSelectInputListener);
 
 settings.suggestionVisitsElementInputListener = function() {
-    board.sgf.setRankPlayer();
+    sgf.setRankPlayer();
 };
 settings.suggestionVisitsElement.addEventListener("input", settings.suggestionVisitsElementInputListener);
 
 settings.opponentVisitsElementInputListener = function() {
-    board.sgf.setRankAI();
+    sgf.setRankAI();
 };
 settings.opponentVisitsElement.addEventListener("input", settings.opponentVisitsElementInputListener);
 
 settings.colorElementInputListener = function() {
-    board.sgf.setPlayers();
-    board.sgf.setRankPlayer();
-    board.sgf.setRankAI();
+    sgf.setPlayers();
+    sgf.setRankPlayer();
+    sgf.setRankAI();
 };
 settings.colorElement.addEventListener("input", settings.colorElementInputListener);
 
 settings.rulesetElementInputListener = async function() {
-    board.sgf.setRuleset();
+    sgf.setRuleset();
     await server.setRuleset();
 };
 settings.rulesetElement.addEventListener("input", settings.rulesetElementInputListener);
 
 settings.handicapElementInputListener = function() {
-    board.sgf.setHandicap();
+    sgf.setHandicap();
 };
 settings.handicapElement.addEventListener("input", settings.handicapElementInputListener);
 
 settings.komiElementInputListener = async function() {
-    board.sgf.setKomi();
+    sgf.setKomi();
     await server.setKomi();
 };
 settings.komiElement.addEventListener("input", settings.komiElementInputListener);

@@ -3,7 +3,11 @@ var main = {};
 main.stopPreMovesButton = document.getElementById("stopPreMoves");
 main.selfplayButton = document.getElementById("selfplay");
 
-main.clear = function() {
+main.init = async function() {
+	await main.clear();
+};
+
+main.clear = async function() {
 	main.suggestionsPromise = null;
 	main.suggestions = null;
 	main.suggestionsHistory = [];
@@ -34,7 +38,7 @@ main.pass = function(suggestion) {
         result = utils.colorNumToName(suggestion.color * -1) + "+" + (suggestion.scoreLead * -1);
     }
 	stats.setResult(result);
-	board.sgf.setResult(result);
+	sgf.setResult(result);
 
 	board.pass();
 };
@@ -99,6 +103,9 @@ main.playPreMove = async function() {
 };
 
 main.createPreMoves = async function() {
+	main.stopPreMovesButton.hidden = false;
+	main.selfplayButton.hidden = true;
+
 	if (settings.preMovesSwitch) {
 		let preMovesLeft = settings.preMoves;
 
@@ -139,7 +146,7 @@ main.createPreMoves = async function() {
 };
 
 main.boardEditorListener = async function(event) {
-	if (event.markupChange && event.mark == 4 && main.isPlayerControlling && !board.sgf.isSGFLoading) {
+	if (event.markupChange && event.mark == 4 && main.isPlayerControlling && !sgf.isSGFLoading) {
 		main.takePlayerControl();
 
 		let markupCoord = new Coord(event.x, event.y);
@@ -259,7 +266,7 @@ main.playerTurn = async function(markupCoord) {
 	}
 
 	if (settings.disableAICorrection && !isRightChoice) {
-		stats.scoreChart.update(await server.analyzeMove(markupCoord));
+		scoreChart.update(await server.analyzeMove(markupCoord));
 		await server.play(markupCoord);
 
 		main.suggestionsPromise = main.analyze({ maxVisits: settings.opponentVisits, moveOptions: opponentOptions });

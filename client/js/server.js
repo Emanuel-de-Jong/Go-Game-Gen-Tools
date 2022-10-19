@@ -3,6 +3,20 @@ var server = {};
 
 server.URL = "http://localhost:9191/kata/";
 
+server.init = async function() {
+    await server.clear();
+};
+
+server.clear = async function() {
+    let status;
+    do {
+        status = (await server.restart()).status;
+    } while (status != 200);
+    await server.setBoardsize();
+    await server.setRuleset();
+    await server.setKomi();
+};
+
 server.coordNumToName = function(numCoord) {
     let xConvert = {
         1: "A",
@@ -62,16 +76,6 @@ server.coordNameToNum = function(nameCoord) {
     let x = xConvert[nameCoord[0]];
     let y = settings.boardsize + 1 - parseInt(nums[0]);
     return new Coord(x, y);
-};
-
-server.clear = async function() {
-    let status;
-    do {
-        status = (await server.restart()).status;
-    } while (status != 200);
-    await server.setBoardsize();
-    await server.setRuleset();
-    await server.setKomi();
 };
 
 server.sendRequest = async function(request) {
