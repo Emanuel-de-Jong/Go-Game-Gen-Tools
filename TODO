@@ -22,6 +22,8 @@ SERVER
     restart server when something goes wrong
 
 CODE QUALITY/BUGS
+    - MoveSuggestions class with filter functions
+    - fix can't place after jump
     - refactor
     - testing
 
