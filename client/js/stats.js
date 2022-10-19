@@ -15,11 +15,11 @@ stats.resultDivElement = document.getElementById("resultDiv");
 stats.resultElement = document.getElementById("result");
 
 
-stats.init = async function() {
-    await stats.clear();
+stats.init = function() {
+    stats.clear();
 };
 
-stats.clear = async function() {
+stats.clear = function() {
     stats.total = 0;
 
     stats.rightCorrect = 0;

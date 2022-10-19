@@ -2,26 +2,26 @@ var init = {};
 
 
 init.init = async function() {
-	await settings.init();
+	settings.init();
 	await server.init();
 	await board.init();
-	await sgf.init();
-	await scoreChart.init();
-	await stats.init();
-	await debug.init();
-	await main.init();
+	sgf.init();
+	scoreChart.init();
+	stats.init();
+	debug.init();
+	main.init();
 	await init.start();
 };
 
 init.clear = async function() {
-	await settings.clear();
+	settings.clear();
 	await server.clear();
 	await board.clear();
-	await sgf.clear();
-	await scoreChart.clear();
-	await stats.clear();
-	await debug.clear();
-	await main.clear();
+	sgf.clear();
+	scoreChart.clear();
+	stats.clear();
+	debug.clear();
+	main.clear();
 	await init.start();
 };
 

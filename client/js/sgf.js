@@ -1,7 +1,7 @@
 var sgf = {};
 
 
-sgf.init = async function() {
+sgf.init = function() {
 	besogo.loadSgf = (function() {
 		let cachedFunction = besogo.loadSgf;
 		
@@ -13,10 +13,10 @@ sgf.init = async function() {
 		}
 	})();
 	
-	await sgf.clear();
+	sgf.clear();
 };
 
-sgf.clear = async function() {
+sgf.clear = function() {
 	sgf.isSGFLoading = false;
 
 	board.editor.setGameInfo("GoTrainer-HumanAI", "GN");
@@ -43,9 +43,9 @@ sgf.sgfLoadedEventListener = async function() {
 	sgf.isSGFLoading = false;
 
 	await server.clear();
-	await scoreChart.clear();
-	await stats.clear();
-	await main.clear();
+	scoreChart.clear();
+	stats.clear();
+	main.clear();
 
 	let gameInfo = board.editor.getGameInfo();
 

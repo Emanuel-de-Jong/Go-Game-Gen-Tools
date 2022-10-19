@@ -5,11 +5,11 @@ main.stopPreMovesButton = document.getElementById("stopPreMoves");
 main.selfplayButton = document.getElementById("selfplay");
 
 
-main.init = async function() {
-	await main.clear();
+main.init = function() {
+	main.clear();
 };
 
-main.clear = async function() {
+main.clear = function() {
 	main.suggestionsPromise = null;
 	main.suggestions = null;
 	main.suggestionsHistory = [];

@@ -4,13 +4,13 @@ var debug = {};
 debug.testButton = document.getElementById("test");
 
 
-debug.init = async function() {
+debug.init = function() {
     // debug.logAllFuncCalls();
     
-	await debug.clear();
+	debug.clear();
 }
 
-debug.clear = async function() {
+debug.clear = function() {
 
 };
 

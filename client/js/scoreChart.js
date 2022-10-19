@@ -127,11 +127,11 @@ scoreChart.winrates = scoreChart.chart.data.datasets[0].data;
 scoreChart.scores = scoreChart.chart.data.datasets[1].data;
 
 
-scoreChart.init = async function() {
+scoreChart.init = function() {
     
 };
 
-scoreChart.clear = async function() {
+scoreChart.clear = function() {
     scoreChart.labels.length = 0;
     scoreChart.winrates.length = 0;
     scoreChart.scores.length = 0;

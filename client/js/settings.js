@@ -51,7 +51,7 @@ for (const name of Object.keys(settings.SETTINGS)) {
 }
 
 
-settings.init = async function() {
+settings.init = function() {
     utils.querySelectorAlls(["input", "select"]).forEach(input => {
         if (input.type != "checkbox") {
             input.required = true;
@@ -65,10 +65,10 @@ settings.init = async function() {
         settings.updateSetting(name);
     }
 
-	await settings.clear();
+	settings.clear();
 };
 
-settings.clear = async function() {
+settings.clear = function() {
 
 };
 
