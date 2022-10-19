@@ -14,11 +14,11 @@ main.clear = function() {
 	main.suggestions = null;
 	main.suggestionsHistory = [];
 	main.selfplayPromise = null;
+	main.isPreMovesStopped = false;
 	main.isPlayerControlling = false;
 	main.isJumped = false;
-	main.isPassed = false;
 	main.isSelfplay = false;
-	main.isPreMovesStopped = false;
+	main.isPassed = false;
 	main.playerTurnId = 0;
 	main.opponentTurnId = 0;
 };
@@ -78,23 +78,19 @@ main.playPreMove = async function() {
 		preOptions = settings.preOptions;
 	}
 
-	await main.analyze({
-		maxVisits: settings.preVisits,
-		moveOptions: preOptions,
-		minVisitsPerc: 10,
-		maxVisitDiffPerc: 50 });
+	await main.analyze(settings.preVisits, preOptions, 10, 50);
 	if (main.isPassed) main.isPreMovesStopped = true;
 	if (main.isPreMovesStopped) return;
 
 	await board.play(main.suggestions[utils.randomInt(main.suggestions.length)], main.createPreComment());
 };
 
-main.analyze = async function({
+main.analyze = async function(
 		maxVisits = settings.suggestionVisits,
 		moveOptions = settings.suggestionOptions,
 		minVisitsPerc = settings.minVisitsPerc,
 		maxVisitDiffPerc = settings.maxVisitDiffPerc,
-		color = board.getNextColor() } = {}) {
+		color = board.getNextColor()) {
 	let suggestionsWithPass = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
 	
 	main.suggestions = [];
@@ -270,7 +266,7 @@ main.playerTurn = async function(markupCoord) {
 
 		if (!isRightChoice) await board.draw(markupCoord, "cross");
 
-		main.suggestionsPromise = main.analyze({ maxVisits: settings.opponentVisits, moveOptions: opponentOptions });
+		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions);
 	} else {
 		await board.draw(markupCoord, "auto", false, main.createPlayerComment());
 	}
@@ -286,7 +282,7 @@ main.playerTurn = async function(markupCoord) {
 		scoreChart.update(await server.analyzeMove(markupCoord));
 		await server.play(markupCoord);
 
-		main.suggestionsPromise = main.analyze({ maxVisits: settings.opponentVisits, moveOptions: opponentOptions });
+		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions);
 	}
 
 	if (!settings.skipNextButton) {
@@ -348,7 +344,7 @@ main.treeJumpedCheckListener = function(event) {
 
 main.selfplay = async function() {
 	while (main.isSelfplay || settings.color != board.getNextColor()) {
-		await main.analyze({ maxVisits: settings.selfplayVisits, moveOptions: 1 });
+		await main.analyze(settings.selfplayVisits, 1);
 		if (main.isPassed) {
 			main.selfplayButton.click();
 			return;
