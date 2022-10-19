@@ -241,7 +241,22 @@ main.playerTurn = async function(markupCoord) {
 		}
 	}
 
-	if (settings.hideWeakerOptions && suggestionToPlay) {
+	main.hideWeakerSuggestions(markupCoord);
+
+	stats.updateRatio(isRightChoice, isPerfectChoice);
+	stats.setVisits(main.suggestions);
+	
+	await main.playerPlay(isRightChoice, suggestionToPlay, markupCoord);
+
+	if (!settings.skipNextButton) {
+		board.nextButton.disabled = false;
+	} else {
+		await main.nextButtonClickListener();
+	}
+};
+
+main.hideWeakerSuggestions = function(markupCoord) {
+	if (settings.hideWeakerOptions) {
 		let suggestions = main.suggestions;
 		main.suggestions = [];
 		for (let i=0; i<suggestions.length; i++) {
@@ -253,13 +268,10 @@ main.playerTurn = async function(markupCoord) {
 
 		main.updateSuggestionsHistory();
 	}
-	
-	let opponentOptions = 1;
-	if (settings.opponentOptionsSwitch) {
-		if ((utils.randomInt(100) + 1) <= settings.opponentOptionPerc) {
-			opponentOptions = settings.opponentOptions;
-		}
-	}
+};
+
+main.playerPlay = async function(isRightChoice, suggestionToPlay, markupCoord) {
+	let opponentOptions = main.getOpponentOptions();
 
 	if (!settings.disableAICorrection || isRightChoice) {
 		await board.play(suggestionToPlay, main.createPlayerComment());
@@ -271,9 +283,6 @@ main.playerTurn = async function(markupCoord) {
 		await board.draw(markupCoord, "auto", false, main.createPlayerComment());
 	}
 
-	stats.setVisits(main.suggestions);
-	stats.updateRatio(isRightChoice, isPerfectChoice);
-
 	if (!settings.skipNextButton) {
 		board.drawCoords(main.suggestions);
 	}
@@ -284,12 +293,16 @@ main.playerTurn = async function(markupCoord) {
 
 		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions);
 	}
+};
 
-	if (!settings.skipNextButton) {
-		board.nextButton.disabled = false;
-	} else {
-		await main.nextButtonClickListener();
+main.getOpponentOptions = function() {
+	let opponentOptions = 1;
+	if (settings.opponentOptionsSwitch) {
+		if ((utils.randomInt(100) + 1) <= settings.opponentOptionPerc) {
+			opponentOptions = settings.opponentOptions;
+		}
 	}
+	return opponentOptions;
 };
 
 main.nextButtonClickListener = async function() {
