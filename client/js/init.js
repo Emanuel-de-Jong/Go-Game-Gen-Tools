@@ -1,5 +1,6 @@
 var init = {};
 
+
 init.init = async function() {
 	await settings.init();
 	await server.init();
@@ -12,7 +13,7 @@ init.init = async function() {
 	await init.start();
 };
 
-init.clear = async function(source) {
+init.clear = async function() {
 	await settings.clear();
 	await server.clear();
 	await board.clear();
@@ -24,12 +25,13 @@ init.clear = async function(source) {
 	await init.start();
 };
 
+
 init.start = async function() {
 	await main.createPreMoves();
 };
 
 init.restartButtonClickListener = async function() {
-	await init.clear(utils.SOURCE.INIT);
+	await init.clear();
 };
 document.getElementById("restart").addEventListener("click", init.restartButtonClickListener);
 

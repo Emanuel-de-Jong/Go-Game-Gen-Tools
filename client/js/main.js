@@ -1,7 +1,9 @@
 var main = {};
 
+
 main.stopPreMovesButton = document.getElementById("stopPreMoves");
 main.selfplayButton = document.getElementById("selfplay");
+
 
 main.init = async function() {
 	await main.clear();
@@ -20,6 +22,7 @@ main.clear = async function() {
 	main.playerTurnId = 0;
 	main.opponentTurnId = 0;
 };
+
 
 main.stopPreMovesButtonClickListener = function() {
 	main.isPreMovesStopped = true;

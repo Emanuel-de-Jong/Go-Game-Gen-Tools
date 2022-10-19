@@ -1,5 +1,6 @@
 var stats = {};
 
+
 stats.rightPercentElement = document.getElementById("rightPercent");
 stats.rightStreakElement = document.getElementById("rightStreak");
 stats.rightTopStreakElement = document.getElementById("rightTopStreak");
@@ -12,6 +13,7 @@ stats.visitsElement = document.getElementById("visits");
 
 stats.resultDivElement = document.getElementById("resultDiv");
 stats.resultElement = document.getElementById("result");
+
 
 stats.init = async function() {
     await stats.clear();
@@ -41,6 +43,7 @@ stats.clear = async function() {
     stats.resultElement.innerHTML = "";
     stats.resultDivElement.hidden = true;
 };
+
 
 stats.updateRatio = function(isRight, isPerfect) {
     stats.total++;

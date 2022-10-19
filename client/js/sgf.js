@@ -1,8 +1,24 @@
 var sgf = {};
 
-sgf.isSGFLoading = false;
 
 sgf.init = async function() {
+	besogo.loadSgf = (function() {
+		let cachedFunction = besogo.loadSgf;
+		
+		return function() {
+			let editor = arguments[1];
+			document.dispatchEvent(editor.sgfLoadingEvent);
+			cachedFunction.apply(this, arguments);
+			document.dispatchEvent(editor.sgfLoadedEvent);
+		}
+	})();
+	
+	await sgf.clear();
+};
+
+sgf.clear = async function() {
+	sgf.isSGFLoading = false;
+
 	board.editor.setGameInfo("GoTrainer-HumanAI", "GN");
 	board.editor.setGameInfo("GoTrainer-HumanAI", "SO");
 	board.editor.setGameInfo(Date(), "DT");
@@ -15,36 +31,21 @@ sgf.init = async function() {
 	
 	board.editor.sgfLoadingEvent = new Event("sgfLoadingEvent");
 	board.editor.sgfLoadedEvent = new Event("sgfLoadedEvent");
-
-	besogo.loadSgf = (function() {
-		let cachedFunction = besogo.loadSgf;
-		
-		return function() {
-			let editor = arguments[1];
-			document.dispatchEvent(editor.sgfLoadingEvent);
-			cachedFunction.apply(this, arguments);
-			document.dispatchEvent(editor.sgfLoadedEvent);
-		}
-	})();
-
-	document.addEventListener("sgfLoadingEvent", sgf.sgfLoadingEventListener);
-	document.addEventListener("sgfLoadedEvent", sgf.sgfLoadedEventListener);
-	
-	await sgf.clear();
 };
 
-sgf.clear = async function() {
-
-};
 
 sgf.sgfLoadingEventListener = function() {
 	sgf.isSGFLoading = true;
 };
+document.addEventListener("sgfLoadingEvent", sgf.sgfLoadingEventListener);
 
 sgf.sgfLoadedEventListener = async function() {
 	sgf.isSGFLoading = false;
 
-	await main.clear(utils.SOURCE.BOARD);
+	await server.clear();
+	await scoreChart.clear();
+	await stats.clear();
+	await main.clear();
 
 	let gameInfo = board.editor.getGameInfo();
 
@@ -67,6 +68,7 @@ sgf.sgfLoadedEventListener = async function() {
 		}
 	}
 };
+document.addEventListener("sgfLoadedEvent", sgf.sgfLoadedEventListener);
 
 sgf.setRankPlayer = function() {
 	board.editor.setGameInfo(settings.suggestionVisits + "", utils.colorNumToName(settings.color) + "R");

@@ -1,5 +1,6 @@
 var scoreChart = {};
 
+
 scoreChart.DATA = {
     datasets: [
         {
@@ -119,21 +120,15 @@ scoreChart.CONFIG = {
     },
 };
 
-scoreChart.init = async function() {
-    scoreChart.element = document.getElementById("scoreChart");
-    scoreChart.chart = new Chart(scoreChart.element, scoreChart.CONFIG);
-    scoreChart.labels = scoreChart.chart.data.labels;
-    scoreChart.winrates = scoreChart.chart.data.datasets[0].data;
-    scoreChart.scores = scoreChart.chart.data.datasets[1].data;
-    
-    scoreChart.chart.canvas.onclick = (click) => {
-        const points = scoreChart.chart.getElementsAtEventForMode(click, "nearest", { intersect: false }, true);
-        if (points[0]) {
-            board.goToNode(scoreChart.labels[points[0].index]);
-        }
-    };
+scoreChart.element = document.getElementById("scoreChart");
+scoreChart.chart = new Chart(scoreChart.element, scoreChart.CONFIG);
+scoreChart.labels = scoreChart.chart.data.labels;
+scoreChart.winrates = scoreChart.chart.data.datasets[0].data;
+scoreChart.scores = scoreChart.chart.data.datasets[1].data;
 
-	await scoreChart.clear();
+
+scoreChart.init = async function() {
+    
 };
 
 scoreChart.clear = async function() {
@@ -142,6 +137,15 @@ scoreChart.clear = async function() {
     scoreChart.scores.length = 0;
     scoreChart.chart.update();
 };
+
+
+scoreChart.canvasClickListener = function(click) {
+    const points = scoreChart.chart.getElementsAtEventForMode(click, "nearest", { intersect: false }, true);
+    if (points[0]) {
+        board.goToNode(scoreChart.labels[points[0].index]);
+    }
+};
+scoreChart.chart.canvas.onclick = scoreChart.canvasClickListener;
 
 scoreChart.settingsColorElementInputListener = function() {
     scoreChart.reverse();

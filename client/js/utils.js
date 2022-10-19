@@ -1,5 +1,6 @@
 var utils = {};
 
+
 utils.TYPES = {
     INT: 1,
     FLOAT: 2,
@@ -15,6 +16,7 @@ utils.SOURCE = {
     SETTINGS: 5,
     STATS: 6,
 };
+
 
 utils.colorNumToName = function(num) {
     return num == 1 ? "W" : "B";

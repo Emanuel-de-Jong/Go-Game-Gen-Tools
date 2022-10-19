@@ -1,6 +1,8 @@
 var debug = {};
 
+
 debug.testButton = document.getElementById("test");
+
 
 debug.init = async function() {
     // debug.logAllFuncCalls();
@@ -11,6 +13,7 @@ debug.init = async function() {
 debug.clear = async function() {
 
 };
+
 
 debug.testButtonClickListener = async function() {
     console.log();

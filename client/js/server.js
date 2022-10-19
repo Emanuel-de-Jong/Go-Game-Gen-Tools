@@ -1,7 +1,9 @@
 
 var server = {};
 
+
 server.URL = "http://localhost:9191/kata/";
+
 
 server.init = async function() {
     await server.clear();
@@ -16,6 +18,7 @@ server.clear = async function() {
     await server.setRuleset();
     await server.setKomi();
 };
+
 
 server.coordNumToName = function(numCoord) {
     let xConvert = {

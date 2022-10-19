@@ -50,7 +50,17 @@ for (const name of Object.keys(settings.SETTINGS)) {
     settings[name + "Element"] = document.getElementById(name);
 }
 
+
 settings.init = async function() {
+    utils.querySelectorAlls(["input", "select"]).forEach(input => {
+        if (input.type != "checkbox") {
+            input.required = true;
+        }
+        if (utils.getSiblingByClass(input, "form-invalid-message") == null) {
+            input.insertAdjacentHTML("afterend", "<div class=\"form-invalid-message\"></div>");
+        }
+    });
+
     for (const name of Object.keys(settings.SETTINGS)) {
         settings.updateSetting(name);
     }
@@ -62,14 +72,6 @@ settings.clear = async function() {
 
 };
 
-utils.querySelectorAlls(["input", "select"]).forEach(input => {
-    if (input.type != "checkbox") {
-        input.required = true;
-    }
-    if (utils.getSiblingByClass(input, "form-invalid-message") == null) {
-        input.insertAdjacentHTML("afterend", "<div class=\"form-invalid-message\"></div>");
-    }
-});
 
 settings.updateSetting = function(name) {
     let type = settings.SETTINGS[name];

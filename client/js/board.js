@@ -1,5 +1,6 @@
 var board = {};
 
+
 board.placeStoneAudios = [
 	new Audio("resources/placeStone0.mp3"),
 	new Audio("resources/placeStone1.mp3"),
@@ -8,6 +9,7 @@ board.placeStoneAudios = [
 	new Audio("resources/placeStone4.mp3")
 ];
 board.lastPlaceStoneAudioIndex = 0;
+
 
 board.init = async function() {
 	await board.clear();
@@ -54,6 +56,7 @@ board.clear = async function() {
 	// console.log(board.editor);
 	// console.log(board.editor.getCurrent());
 };
+
 
 board.pass = function() {
 	board.editor.click(0, 0, false);
