@@ -210,7 +210,7 @@ main.playerMarkupPlacedCheckListener = async function(event) {
 
         await main.playerTurn(markupCoord);
     }
-}
+};
 
 main.playerTurn = async function(markupCoord) {
 	let playerTurnId = ++main.playerTurnId;
@@ -353,7 +353,7 @@ main.treeJumpedCheckListener = function(event) {
 			}
 		}
 	}
-}
+};
 
 main.selfplay = async function() {
 	while (main.isSelfplay || settings.color != board.getNextColor()) {

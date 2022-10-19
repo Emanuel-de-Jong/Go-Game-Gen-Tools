@@ -72,14 +72,8 @@ server.analyzeMove = async function(coord, color = board.getNextColor()) {
             "&coord=" + server.coordNumToName(coord), {
         method: "POST" })
         .then(response => response.json())
-        .then(suggestionJson => {
-            return new MoveSuggestion(
-                utils.colorNameToNum(suggestionJson.move.color),
-                server.coordNameToNum(suggestionJson.move.coord),
-                suggestionJson.visits,
-                suggestionJson.winrate,
-                suggestionJson.scoreLead
-            );
+        .then(serverSuggestion => {
+            return server.suggestionServerToClient(serverSuggestion);
         })
         .catch(error => {
             return error;
@@ -91,44 +85,38 @@ server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, ma
     minVisitsPerc = settings.minVisitsPercSwitch ? minVisitsPerc : 0;
     maxVisitDiffPerc = settings.maxVisitDiffPercSwitch ? maxVisitDiffPerc : 100;
 
-    let suggestions = await server.sendRequest(fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) +
+    return await server.sendRequest(fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) +
             "&maxVisits=" + maxVisits +
             "&minVisitsPerc=" + minVisitsPerc +
             "&maxVisitDiffPerc=" + maxVisitDiffPerc, {
         method: "POST" })
         .then(response => response.json())
-        .then(suggestionArr => {
+        .then(serverSuggestions => {
             let suggestions = [];
             let nameCoords = [];
-            let isPassed = false;
-            suggestionArr.forEach(suggestion => {
-                if (isPassed) return;
-                if (suggestion.move.coord == "pass") {
-                    isPassed = true;
-                }
+            // let isPassed = false;
+            serverSuggestions.forEach(suggestion => {
+                // if (isPassed) return;
+                // if (suggestion.move.coord == "pass") {
+                //     isPassed = true;
+                // }
 
                 nameCoords.push(suggestion.move.coord);
 
-                suggestions.push(new MoveSuggestion(
-                    utils.colorNameToNum(suggestion.move.color),
-                    server.coordNameToNum(suggestion.move.coord),
-                    suggestion.visits,
-                    suggestion.winrate,
-                    suggestion.scoreLead));
+                suggestions.push(server.suggestionServerToClient(suggestion));
             });
 
-            console.log(nameCoords);
             // console.log(suggestions);
+            console.log(nameCoords);
 
-            return suggestions;
+            return server.filterSuggestionsByMoveOptions(suggestions);
         })
         .catch(error => {
             return error;
         }));
-    
-    // If error
-    if (!Array.isArray(suggestions)) return suggestions;
+};
 
+server.filterSuggestionsByMoveOptions = function(suggestions, moveOptions) {
     let moveOptionCount = 1;
     let filteredSuggestions = [];
     for (let i=0; i<suggestions.length; i++) {
@@ -140,9 +128,8 @@ server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, ma
 
         filteredSuggestions[i] = suggestions[i];
     }
-    
     return filteredSuggestions;
-};
+}
 
 server.setBoard = async function() {
     // console.log("setBoard");
@@ -184,6 +171,16 @@ server.sendRequest = async function(request) {
     let response = await request;
     // after
     return response;
+};
+
+server.suggestionServerToClient = function(serverSuggestion) {
+    return new MoveSuggestion(
+        utils.colorNameToNum(serverSuggestion.move.color),
+        server.coordNameToNum(serverSuggestion.move.coord),
+        serverSuggestion.visits,
+        serverSuggestion.winrate,
+        serverSuggestion.scoreLead
+    );
 };
 
 server.coordNumToName = function(numCoord) {
