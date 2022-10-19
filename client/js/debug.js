@@ -15,11 +15,6 @@ debug.clear = function() {
 };
 
 
-debug.testButtonClickListener = async function() {
-    console.log();
-};
-debug.testButton.addEventListener("click", debug.testButtonClickListener);
-
 debug.logAllFuncCalls = function() {
     let objs = [
         board,
@@ -69,3 +64,8 @@ debug.logAllFuncCalls = function() {
         }
     }
 };
+
+debug.testButtonClickListener = async function() {
+    console.log();
+};
+debug.testButton.addEventListener("click", debug.testButtonClickListener);

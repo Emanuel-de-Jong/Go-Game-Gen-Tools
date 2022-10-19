@@ -97,6 +97,14 @@ settings.setSetting = function(name, value) {
     settings[name + "Element"].dispatchEvent(new Event("input"));
 }
 
+settings.inputAndSelectInputListener = function(event) {
+    let element = event.target;
+    if (settings.validateInput(element)) {
+        settings.updateSetting(element.id);
+    }
+};
+utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", settings.inputAndSelectInputListener);
+
 settings.validateInput = function(input) {
     let valid = input.validity.valid;
     if (valid) {
@@ -121,13 +129,17 @@ settings.hideInvalidMessage = function(input) {
     messageDiv.innerHTML = "";
 };
 
-settings.inputAndSelectInputListener = function(event) {
-    let element = event.target;
-    if (settings.validateInput(element)) {
-        settings.updateSetting(element.id);
-    }
+settings.handicapElementInputListener = function() {
+    sgf.setHandicap();
 };
-utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", settings.inputAndSelectInputListener);
+settings.handicapElement.addEventListener("input", settings.handicapElementInputListener);
+
+settings.colorElementInputListener = function() {
+    sgf.setPlayers();
+    sgf.setRankPlayer();
+    sgf.setRankAI();
+};
+settings.colorElement.addEventListener("input", settings.colorElementInputListener);
 
 settings.suggestionVisitsElementInputListener = function() {
     sgf.setRankPlayer();
@@ -139,38 +151,11 @@ settings.opponentVisitsElementInputListener = function() {
 };
 settings.opponentVisitsElement.addEventListener("input", settings.opponentVisitsElementInputListener);
 
-settings.colorElementInputListener = function() {
-    sgf.setPlayers();
-    sgf.setRankPlayer();
-    sgf.setRankAI();
-};
-settings.colorElement.addEventListener("input", settings.colorElementInputListener);
-
 settings.rulesetElementInputListener = async function() {
     sgf.setRuleset();
     await server.setRuleset();
 };
 settings.rulesetElement.addEventListener("input", settings.rulesetElementInputListener);
-
-settings.handicapElementInputListener = function() {
-    sgf.setHandicap();
-};
-settings.handicapElement.addEventListener("input", settings.handicapElementInputListener);
-
-settings.komiElementInputListener = async function() {
-    sgf.setKomi();
-    await server.setKomi();
-};
-settings.komiElement.addEventListener("input", settings.komiElementInputListener);
-
-settings.skipNextButtonElementInputListener = function() {
-    if (settings.skipNextButtonElement.checked) {
-        if (!board.nextButton.disabled) {
-            board.nextButton.click();
-        }
-    }
-};
-settings.skipNextButtonElement.addEventListener("input", settings.skipNextButtonElementInputListener);
 
 settings.komiChangeStyleElementInputListener = function() {
     if (settings.komiChangeStyle == "auto") {
@@ -181,6 +166,12 @@ settings.komiChangeStyleElementInputListener = function() {
     }
 };
 settings.komiChangeStyleElement.addEventListener("input", settings.komiChangeStyleElementInputListener);
+
+settings.komiElementInputListener = async function() {
+    sgf.setKomi();
+    await server.setKomi();
+};
+settings.komiElement.addEventListener("input", settings.komiElementInputListener);
 
 settings.setKomi = function() {
     if (settings.komiChangeStyle != "auto") return;
@@ -225,3 +216,12 @@ settings.setKomi = function() {
 settings.handicapElement.addEventListener("input", settings.setKomi);
 settings.rulesetElement.addEventListener("input", settings.setKomi);
 settings.boardsizeElement.addEventListener("input", settings.setKomi);
+
+settings.skipNextButtonElementInputListener = function() {
+    if (settings.skipNextButtonElement.checked) {
+        if (!board.nextButton.disabled) {
+            board.nextButton.click();
+        }
+    }
+};
+settings.skipNextButtonElement.addEventListener("input", settings.skipNextButtonElementInputListener);

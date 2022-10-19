@@ -24,87 +24,6 @@ main.clear = function() {
 };
 
 
-main.stopPreMovesButtonClickListener = function() {
-	main.isPreMovesStopped = true;
-};
-main.stopPreMovesButton.addEventListener("click", main.stopPreMovesButtonClickListener);
-
-main.pass = function(suggestion) {
-	main.isPassed = true;
-	main.takePlayerControl();
-	board.disableNextButton();
-
-	let result;
-    if (suggestion.scoreLead >= 0) {
-        result = utils.colorNumToName(suggestion.color) + "+" + suggestion.scoreLead;
-    } else {
-        result = utils.colorNumToName(suggestion.color * -1) + "+" + (suggestion.scoreLead * -1);
-    }
-	stats.setResult(result);
-	sgf.setResult(result);
-
-	board.pass();
-};
-
-main.analyze = async function({
-		maxVisits = settings.suggestionVisits,
-		moveOptions = settings.suggestionOptions,
-		minVisitsPerc = settings.minVisitsPerc,
-		maxVisitDiffPerc = settings.maxVisitDiffPerc,
-		color = board.getNextColor() } = {}) {
-	let suggestionsWithPass = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
-	
-	main.suggestions = [];
-	for (let i=0; i<suggestionsWithPass.length; i++) {
-		if (!suggestionsWithPass[i].isPass()) {
-			main.suggestions.push(suggestionsWithPass[i]);
-		}
-	}
-
-	if (suggestionsWithPass[0].isPass()) {
-		main.pass(suggestionsWithPass[0]);
-	}
-
-	let gradeIndex = 0;
-	for (let i=0; i<main.suggestions.length; i++) {
-		let suggestion = main.suggestions[i];
-		if (i != 0 && suggestion.visits != main.suggestions[i - 1].visits) {
-			gradeIndex++;
-		}
-		suggestion.grade = String.fromCharCode(gradeIndex + 65);
-	}
-
-	main.updateSuggestionsHistory();
-};
-
-main.updateSuggestionsHistory = function() {
-	let currentMove = board.editor.getCurrent();
-	let y = currentMove.navTreeY;
-	let x = currentMove.moveNumber + 1;
-
-	if (!main.suggestionsHistory[y]) {
-		main.suggestionsHistory[y] = [];
-	}
-	main.suggestionsHistory[y][x] = main.suggestions;
-};
-
-main.playPreMove = async function() {
-	let preOptions = 1;
-	if ((utils.randomInt(100) + 1) <= settings.preOptionPerc) {
-		preOptions = settings.preOptions;
-	}
-
-	await main.analyze({
-		maxVisits: settings.preVisits,
-		moveOptions: preOptions,
-		minVisitsPerc: 10,
-		maxVisitDiffPerc: 50 });
-	if (main.isPassed) main.isPreMovesStopped = true;
-	if (main.isPreMovesStopped) return;
-
-	await board.play(main.suggestions[utils.randomInt(main.suggestions.length)], main.createPreComment());
-};
-
 main.createPreMoves = async function() {
 	main.stopPreMovesButton.hidden = false;
 	main.selfplayButton.hidden = true;
@@ -148,40 +67,74 @@ main.createPreMoves = async function() {
 	}
 };
 
-main.boardEditorListener = async function(event) {
-	if (event.markupChange && event.mark == 4 && main.isPlayerControlling && !sgf.isSGFLoading) {
-		main.takePlayerControl();
+main.stopPreMovesButtonClickListener = function() {
+	main.isPreMovesStopped = true;
+};
+main.stopPreMovesButton.addEventListener("click", main.stopPreMovesButtonClickListener);
 
-		let markupCoord = new Coord(event.x, event.y);
-		board.removeMarkup(markupCoord);
+main.playPreMove = async function() {
+	let preOptions = 1;
+	if ((utils.randomInt(100) + 1) <= settings.preOptionPerc) {
+		preOptions = settings.preOptions;
+	}
 
-        await main.playerTurn(markupCoord);
-    } else if (event.navChange) {
-		stats.clearVisits();
+	await main.analyze({
+		maxVisits: settings.preVisits,
+		moveOptions: preOptions,
+		minVisitsPerc: 10,
+		maxVisitDiffPerc: 50 });
+	if (main.isPassed) main.isPreMovesStopped = true;
+	if (main.isPreMovesStopped) return;
 
-		let currentMove = board.editor.getCurrent();
-		if ((board.lastMove.moveNumber+1 != currentMove.moveNumber ||
-				board.lastMove.navTreeY != currentMove.navTreeY)) {
-			
-			main.suggestions = null;
-			if (main.suggestionsHistory[currentMove.navTreeY]) {
-				main.suggestions = main.suggestionsHistory[currentMove.navTreeY][currentMove.moveNumber];
-			}
+	await board.play(main.suggestions[utils.randomInt(main.suggestions.length)], main.createPreComment());
+};
 
-			if (main.suggestions) {
-				stats.setVisits(main.suggestions);
-				board.drawCoords(main.suggestions);
-			}
+main.analyze = async function({
+		maxVisits = settings.suggestionVisits,
+		moveOptions = settings.suggestionOptions,
+		minVisitsPerc = settings.minVisitsPerc,
+		maxVisitDiffPerc = settings.maxVisitDiffPerc,
+		color = board.getNextColor() } = {}) {
+	let suggestionsWithPass = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
 	
-			if (!event.treeChange && !main.isJumped) {
-				main.isJumped = true;
-				main.isPassed = false;
-	
-				board.disableNextButton();
-				main.givePlayerControl(false);
-			}
+	main.suggestions = [];
+	for (let i=0; i<suggestionsWithPass.length; i++) {
+		if (!suggestionsWithPass[i].isPass()) {
+			main.suggestions.push(suggestionsWithPass[i]);
 		}
 	}
+
+	if (suggestionsWithPass[0].isPass()) {
+		main.pass(suggestionsWithPass[0]);
+	}
+
+	let gradeIndex = 0;
+	for (let i=0; i<main.suggestions.length; i++) {
+		let suggestion = main.suggestions[i];
+		if (i != 0 && suggestion.visits != main.suggestions[i - 1].visits) {
+			gradeIndex++;
+		}
+		suggestion.grade = String.fromCharCode(gradeIndex + 65);
+	}
+
+	main.updateSuggestionsHistory();
+};
+
+main.pass = function(suggestion) {
+	main.isPassed = true;
+	main.takePlayerControl();
+	board.nextButton.disabled = true;
+
+	let result;
+    if (suggestion.scoreLead >= 0) {
+        result = utils.colorNumToName(suggestion.color) + "+" + suggestion.scoreLead;
+    } else {
+        result = utils.colorNumToName(suggestion.color * -1) + "+" + (suggestion.scoreLead * -1);
+    }
+	stats.setResult(result);
+	sgf.setResult(result);
+
+	board.pass();
 };
 
 main.givePlayerControl = function(isSuggestionNeeded = true) {
@@ -197,10 +150,71 @@ main.takePlayerControl = function() {
 	main.isPlayerControlling = false;
 };
 
-main.nextButtonClickListener = async function() {
-	board.disableNextButton();
-	await main.opponentTurn();
+main.updateSuggestionsHistory = function() {
+	let currentMove = board.editor.getCurrent();
+	let y = currentMove.navTreeY;
+	let x = currentMove.moveNumber + 1;
+
+	if (!main.suggestionsHistory[y]) {
+		main.suggestionsHistory[y] = [];
+	}
+	main.suggestionsHistory[y][x] = main.suggestions;
 };
+
+main.createPreComment = function() {
+	return "Pre move" +
+	"\nStrength: " + settings.preVisits +
+	"\nOptions: " + settings.preOptions +
+	"\nOption chance: " + settings.preOptionPerc +
+	main.createCommentGrades();
+};
+
+main.createPlayerComment = function() {
+	return "Player move" +
+	"\nStrength: " + settings.suggestionVisits +
+	"\nOptions: " + settings.suggestionOptions +
+	"\nHide weaker options: " + settings.hideWeakerOptions +
+	(settings.minVisitsPercSwitch ? "\nMin strength: " + settings.minVisitsPerc : "") +
+	(settings.maxVisitDiffPercSwitch ? "\nMax strength difference" + settings.maxVisitDiffPerc : "") +
+	main.createCommentGrades();
+};
+
+main.createOpponentComment = function() {
+	return "Opponent move" +
+	"\nStrength: " + settings.opponentVisits +
+	(settings.opponentOptionsSwitch ? "\nOptions: " + settings.opponentOptions : "") +
+	"\nOption chance: " + settings.opponentOptionPerc +
+	main.createCommentGrades();
+};
+
+main.createSelfplayComment = function() {
+	return "Selfplay move" +
+	"\nStrength: " + settings.selfplayVisits +
+	main.createCommentGrades();
+};
+
+main.createCommentGrades = function() {
+	comment = "";
+	for (let i=0; i<main.suggestions.length; i++) {
+		let suggestion = main.suggestions[i];
+        if (i != 0 && suggestion.visits == main.suggestions[i - 1].visits) continue;
+
+		comment += "\n" + suggestion.grade + ": " + suggestion.visits;
+	}
+
+	return comment;
+};
+
+main.playerMarkupPlacedCheckListener = async function(event) {
+	if (event.markupChange && event.mark == 4 && main.isPlayerControlling && !sgf.isSGFLoading) {
+		main.takePlayerControl();
+
+		let markupCoord = new Coord(event.x, event.y);
+		board.removeMarkup(markupCoord);
+
+        await main.playerTurn(markupCoord);
+    }
+}
 
 main.playerTurn = async function(markupCoord) {
 	let playerTurnId = ++main.playerTurnId;
@@ -276,10 +290,15 @@ main.playerTurn = async function(markupCoord) {
 	}
 
 	if (!settings.skipNextButton) {
-		board.enableNextButton();
+		board.nextButton.disabled = false;
 	} else {
 		await main.nextButtonClickListener();
 	}
+};
+
+main.nextButtonClickListener = async function() {
+	board.nextButton.disabled = true;
+	await main.opponentTurn();
 };
 
 main.opponentTurn = async function() {
@@ -298,27 +317,34 @@ main.opponentTurn = async function() {
 	main.givePlayerControl();
 };
 
-main.selfplayButtonClickListener = async function() {
-	if (!main.isSelfplay) {
-		main.isSelfplay = true;
-		main.selfplayButton.innerHTML = "Stop selfplay";
+main.treeJumpedCheckListener = function(event) {
+	if (event.navChange) {
+		stats.clearVisits();
 
-		main.takePlayerControl();
-		board.disableNextButton();
+		let currentMove = board.editor.getCurrent();
+		if ((board.lastMove.moveNumber+1 != currentMove.moveNumber ||
+				board.lastMove.navTreeY != currentMove.navTreeY)) {
+			
+			main.suggestions = null;
+			if (main.suggestionsHistory[currentMove.navTreeY]) {
+				main.suggestions = main.suggestionsHistory[currentMove.navTreeY][currentMove.moveNumber];
+			}
 
-		main.selfplayPromise = main.selfplay();
-	} else {
-		main.isSelfplay = false;
-		main.selfplayButton.innerHTML = "Start selfplay";
-
-		await main.selfplayPromise;
-
-		if (!main.isPassed) {
-			main.givePlayerControl();
+			if (main.suggestions) {
+				stats.setVisits(main.suggestions);
+				board.drawCoords(main.suggestions);
+			}
+	
+			if (!event.treeChange && !main.isJumped) {
+				main.isJumped = true;
+				main.isPassed = false;
+	
+				board.nextButton.disabled = true;
+				main.givePlayerControl(false);
+			}
 		}
 	}
-};
-main.selfplayButton.addEventListener("click", main.selfplayButtonClickListener);
+}
 
 main.selfplay = async function() {
 	while (main.isSelfplay || settings.color != board.getNextColor()) {
@@ -334,46 +360,24 @@ main.selfplay = async function() {
 	}
 };
 
-main.createCommentGrades = function() {
-	comment = "";
-	for (let i=0; i<main.suggestions.length; i++) {
-		let suggestion = main.suggestions[i];
-        if (i != 0 && suggestion.visits == main.suggestions[i - 1].visits) continue;
+main.selfplayButtonClickListener = async function() {
+	if (!main.isSelfplay) {
+		main.isSelfplay = true;
+		main.selfplayButton.innerHTML = "Stop selfplay";
 
-		comment += "\n" + suggestion.grade + ": " + suggestion.visits;
+		main.takePlayerControl();
+		board.nextButton.disabled = true;
+
+		main.selfplayPromise = main.selfplay();
+	} else {
+		main.isSelfplay = false;
+		main.selfplayButton.innerHTML = "Start selfplay";
+
+		await main.selfplayPromise;
+
+		if (!main.isPassed) {
+			main.givePlayerControl();
+		}
 	}
-
-	return comment;
 };
-
-main.createPreComment = function() {
-	return "Pre move" +
-	"\nStrength: " + settings.preVisits +
-	"\nOptions: " + settings.preOptions +
-	"\nOption chance: " + settings.preOptionPerc +
-	main.createCommentGrades();
-};
-
-main.createSelfplayComment = function() {
-	return "Selfplay move" +
-	"\nStrength: " + settings.selfplayVisits +
-	main.createCommentGrades();
-};
-
-main.createPlayerComment = function() {
-	return "Player move" +
-	"\nStrength: " + settings.suggestionVisits +
-	"\nOptions: " + settings.suggestionOptions +
-	"\nHide weaker options: " + settings.hideWeakerOptions +
-	(settings.minVisitsPercSwitch ? "\nMin strength: " + settings.minVisitsPerc : "") +
-	(settings.maxVisitDiffPercSwitch ? "\nMax strength difference" + settings.maxVisitDiffPerc : "") +
-	main.createCommentGrades();
-};
-
-main.createOpponentComment = function() {
-	return "Opponent move" +
-	"\nStrength: " + settings.opponentVisits +
-	(settings.opponentOptionsSwitch ? "\nOptions: " + settings.opponentOptions : "") +
-	"\nOption chance: " + settings.opponentOptionPerc +
-	main.createCommentGrades();
-};
+main.selfplayButton.addEventListener("click", main.selfplayButtonClickListener);

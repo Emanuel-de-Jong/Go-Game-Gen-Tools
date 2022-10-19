@@ -147,29 +147,6 @@ scoreChart.canvasClickListener = function(click) {
 };
 scoreChart.chart.canvas.onclick = scoreChart.canvasClickListener;
 
-scoreChart.settingsColorElementInputListener = function() {
-    scoreChart.reverse();
-};
-settings.scoreChartColorElement.addEventListener("input", scoreChart.settingsColorElementInputListener);
-
-scoreChart.reverse = function() {
-    for (let i=0; i<scoreChart.winrates.length; i++) {
-        let winrate = scoreChart.winrates[i];
-        if (winrate > 50) {
-            winrate = 50 - (winrate - 50);
-        } else {
-            winrate = 50 + (50 - winrate);
-        }
-        scoreChart.winrates[i] = winrate.toFixed(2);
-    }
-
-    for (let i=0; i<scoreChart.scores.length; i++) {
-        scoreChart.scores[i] = (scoreChart.scores[i] * -1).toFixed(1);
-    }
-
-    scoreChart.chart.update();
-};
-
 scoreChart.update = function(suggestion) {
     let moveNumber = board.getMoveNumber();
     if (scoreChart.labels.includes(moveNumber)) return;
@@ -190,6 +167,29 @@ scoreChart.update = function(suggestion) {
     let score = suggestion.scoreLead;
     score = suggestion.color == settings.scoreChartColorElement.value ? score : score * -1;
     scoreChart.scores.splice(index, 0, score.toFixed(1));
+
+    scoreChart.chart.update();
+};
+
+scoreChart.settingsColorElementInputListener = function() {
+    scoreChart.reverse();
+};
+settings.scoreChartColorElement.addEventListener("input", scoreChart.settingsColorElementInputListener);
+
+scoreChart.reverse = function() {
+    for (let i=0; i<scoreChart.winrates.length; i++) {
+        let winrate = scoreChart.winrates[i];
+        if (winrate > 50) {
+            winrate = 50 - (winrate - 50);
+        } else {
+            winrate = 50 + (50 - winrate);
+        }
+        scoreChart.winrates[i] = winrate.toFixed(2);
+    }
+
+    for (let i=0; i<scoreChart.scores.length; i++) {
+        scoreChart.scores[i] = (scoreChart.scores[i] * -1).toFixed(1);
+    }
 
     scoreChart.chart.update();
 };

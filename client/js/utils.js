@@ -8,15 +8,6 @@ utils.TYPES = {
     STRING: 4,
 };
 
-utils.SOURCE = {
-    INIT: 1,
-    MAIN: 2,
-    BOARD: 3,
-    SERVER: 4,
-    SETTINGS: 5,
-    STATS: 6,
-};
-
 
 utils.colorNumToName = function(num) {
     return num == 1 ? "W" : "B";

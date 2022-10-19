@@ -47,19 +47,103 @@ board.clear = async function() {
 
 	board.lastMove = board.editor.getCurrent();
 
-	await board.placeHandicap();
-	
-	board.editor.addListener(main.boardEditorListener);
+	board.editor.addListener(main.playerMarkupPlacedCheckListener);
+	board.editor.addListener(main.treeJumpedCheckListener);
 	board.nextButton.addEventListener("click", main.nextButtonClickListener);
 
+	await board.placeHandicap();
+	
 	// console.log(besogo);
 	// console.log(board.editor);
 	// console.log(board.editor.getCurrent());
 };
 
 
-board.pass = function() {
-	board.editor.click(0, 0, false);
+board.placeHandicap = async function() {
+	let placement = {
+		19: {
+			0: [],
+			2: [ {x:16,y:4}, {x:4,y:16} ],
+			3: [ {x:16,y:4}, {x:4,y:16}, {x:16,y:16} ],
+			4: [ {x:4,y:4}, {x:16,y:4}, {x:4,y:16}, {x:16,y:16} ],
+			5: [ {x:4,y:4}, {x:16,y:4}, {x:10,y:10}, {x:4,y:16}, {x:16,y:16} ],
+			6: [ {x:4,y:4}, {x:16,y:4}, {x:4,y:10}, {x:16,y:10}, {x:4,y:16}, {x:16,y:16} ],
+			7: [ {x:4,y:4}, {x:16,y:4}, {x:4,y:10}, {x:10,y:10}, {x:16,y:10}, {x:4,y:16}, {x:16,y:16} ],
+			8: [ {x:4,y:4}, {x:10,y:4}, {x:16,y:4}, {x:4,y:10}, {x:16,y:10}, {x:4,y:16}, {x:10,y:16}, {x:16,y:16} ],
+			9: [ {x:4,y:4}, {x:10,y:4}, {x:16,y:4}, {x:4,y:10}, {x:10,y:10}, {x:16,y:10}, {x:4,y:16}, {x:10,y:16}, {x:16,y:16} ],
+		},
+		13: {
+			0: [],
+			2: [ {x:10,y:4}, {x:4,y:10} ],
+			3: [ {x:10,y:4}, {x:4,y:10}, {x:10,y:10} ],
+			4: [ {x:4,y:4}, {x:10,y:4}, {x:4,y:10}, {x:10,y:10} ],
+			5: [ {x:4,y:4}, {x:10,y:4}, {x:7,y:7}, {x:4,y:10}, {x:10,y:10} ],
+			6: [ {x:4,y:4}, {x:10,y:4}, {x:4,y:7}, {x:10,y:7}, {x:4,y:10}, {x:10,y:10} ],
+			7: [ {x:4,y:4}, {x:10,y:4}, {x:4,y:7}, {x:7,y:7}, {x:10,y:7}, {x:4,y:10}, {x:10,y:10} ],
+			8: [ {x:4,y:4}, {x:7,y:4}, {x:10,y:4}, {x:4,y:7}, {x:10,y:7}, {x:4,y:10}, {x:7,y:10}, {x:10,y:10} ],
+			9: [ {x:4,y:4}, {x:7,y:4}, {x:10,y:4}, {x:4,y:7}, {x:7,y:7}, {x:10,y:7}, {x:4,y:10}, {x:7,y:10}, {x:10,y:10} ],
+		},
+		9: {
+			0: [],
+			2: [ {x:7,y:3}, {x:3,y:7} ],
+			3: [ {x:7,y:3}, {x:3,y:7}, {x:7,y:7} ],
+			4: [ {x:3,y:3}, {x:7,y:3}, {x:3,y:7}, {x:7,y:7} ],
+			5: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
+			6: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
+			7: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
+			8: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
+			9: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
+		},
+	}
+
+	if (settings.handicap) {
+		let loopCount = placement[settings.boardsize][settings.handicap].length;
+		for (let i=0; i<loopCount; i++) {
+			let coord = placement[settings.boardsize][settings.handicap][i];
+			if (i < loopCount - 1) {
+				await board.draw(coord, "playB", true, "Handicap");
+			} else {
+				await board.draw(coord, "playB", false, "Handicap");
+				scoreChart.update(await server.analyzeMove(coord, -1));
+				await server.play(coord, -1);
+			}
+		}
+	}
+};
+
+board.play = async function(suggestion, comment, tool = "auto") {
+	await board.draw(suggestion.coord, tool, true, comment);
+	scoreChart.update(suggestion);
+};
+
+board.draw = async function(coord, tool = "auto", sendToServer = true, comment) {
+	board.editor.setTool(tool);
+	board.editor.click(coord.x, coord.y, false, false);
+	board.editor.setTool("navOnly");
+
+	if (comment) {
+		sgf.setComment(comment);
+	}
+
+	if (tool == "auto" || tool == "playB" || tool == "playW") {
+		board.playPlaceStoneAudio();
+
+		if (board.lastMove.navTreeY != board.editor.getCurrent().navTreeY) {
+			scoreChart.clear();
+		}
+
+		board.lastMove = board.editor.getCurrent();
+
+		if (sendToServer) {
+			if (tool == "auto") {
+				await server.play(coord);
+			} else if (tool == "playB") {
+				await server.play(coord, -1);
+			} else if (tool == "playW") {
+				await server.play(coord, 1);
+			}
+		}
+	}
 };
 
 board.playPlaceStoneAudio = function() {
@@ -71,23 +155,6 @@ board.playPlaceStoneAudio = function() {
 
 	board.placeStoneAudios[placeStoneAudioIndex].play();
 };
-
-board.goToNode = function(nodeNumber) {
-	let currentNodeNumber = board.getMoveNumber();
-	let nodesToJump = nodeNumber - currentNodeNumber;
-	if (nodesToJump > 0) {
-		board.editor.nextNode(nodesToJump);
-	} else if (nodesToJump < 0) {
-		board.editor.prevNode(nodesToJump * -1);
-	}
-};
-
-board.keydownAndMousedownListener = function(event) {
-	if (event.code == "Space" || event.code == "Enter" || event.button == 1) {
-		board.nextButton.click();
-	}
-};
-utils.addEventsListener(document, ["keydown", "mousedown"], board.keydownAndMousedownListener);
 
 board.fillCorners = function() {
 	let cornerOptions = [
@@ -154,6 +221,44 @@ board.getNextColor = function() {
 	return -1;
 };
 
+board.pass = function() {
+	board.editor.click(0, 0, false);
+};
+
+board.removeMarkup = function(coord) {
+	let markup = board.editor.getCurrent().markup;
+	markup[(coord.x - 1) * settings.boardsize + (coord.y - 1)] = 0;
+};
+
+board.drawCoords = function(suggestions) {
+	let markup = board.editor.getCurrent().markup;
+	for (let i=0; i<markup.length; i++) {
+		if (markup[i] && markup[i] != 4) {
+			markup[i] = 0;
+		}
+	}
+
+	board.editor.setTool("label");
+	for (let i=0; i<suggestions.length; i++) {
+		let coord = suggestions[i].coord;
+		
+		board.editor.setLabel(suggestions[i].grade);
+		board.editor.click(coord.x, coord.y, false, false);
+	}
+
+	board.editor.setTool("navOnly");
+};
+
+board.goToNode = function(nodeNumber) {
+	let currentNodeNumber = board.getMoveNumber();
+	let nodesToJump = nodeNumber - currentNodeNumber;
+	if (nodesToJump > 0) {
+		board.editor.nextNode(nodesToJump);
+	} else if (nodesToJump < 0) {
+		board.editor.prevNode(nodesToJump * -1);
+	}
+};
+
 board.getMoveNumber = function() {
 	return board.editor.getCurrent().moveNumber;
 };
@@ -177,121 +282,9 @@ board.getMoves = function() {
 	return moves;
 };
 
-board.play = async function(suggestion, comment, tool = "auto") {
-	await board.draw(suggestion.coord, tool, true, comment);
-	scoreChart.update(suggestion);
-};
-
-board.draw = async function(coord, tool = "auto", sendToServer = true, comment) {
-	board.editor.setTool(tool);
-	board.editor.click(coord.x, coord.y, false, false);
-	board.editor.setTool("navOnly");
-
-	if (comment) {
-		sgf.setComment(comment);
-	}
-
-	if (tool == "auto" || tool == "playB" || tool == "playW") {
-		board.playPlaceStoneAudio();
-
-		if (board.lastMove.navTreeY != board.editor.getCurrent().navTreeY) {
-			scoreChart.clear();
-		}
-
-		board.lastMove = board.editor.getCurrent();
-
-		if (sendToServer) {
-			if (tool == "auto") {
-				await server.play(coord);
-			} else if (tool == "playB") {
-				await server.play(coord, -1);
-			} else if (tool == "playW") {
-				await server.play(coord, 1);
-			}
-		}
+board.keydownAndMousedownListener = function(event) {
+	if (event.code == "Space" || event.code == "Enter" || event.button == 1) {
+		board.nextButton.click();
 	}
 };
-
-board.drawCoords = function(suggestions) {
-	let markup = board.editor.getCurrent().markup;
-	for (let i=0; i<markup.length; i++) {
-		if (markup[i] && markup[i] != 4) {
-			markup[i] = 0;
-		}
-	}
-
-	board.editor.setTool("label");
-	for (let i=0; i<suggestions.length; i++) {
-		let coord = suggestions[i].coord;
-		
-		board.editor.setLabel(suggestions[i].grade);
-		board.editor.click(coord.x, coord.y, false, false);
-	}
-
-	board.editor.setTool("navOnly");
-};
-
-board.removeMarkup = function(coord) {
-	let markup = board.editor.getCurrent().markup;
-	markup[(coord.x - 1) * settings.boardsize + (coord.y - 1)] = 0;
-};
-
-board.placeHandicap = async function() {
-	let placement = {
-		19: {
-			0: [],
-			2: [ {x:16,y:4}, {x:4,y:16} ],
-			3: [ {x:16,y:4}, {x:4,y:16}, {x:16,y:16} ],
-			4: [ {x:4,y:4}, {x:16,y:4}, {x:4,y:16}, {x:16,y:16} ],
-			5: [ {x:4,y:4}, {x:16,y:4}, {x:10,y:10}, {x:4,y:16}, {x:16,y:16} ],
-			6: [ {x:4,y:4}, {x:16,y:4}, {x:4,y:10}, {x:16,y:10}, {x:4,y:16}, {x:16,y:16} ],
-			7: [ {x:4,y:4}, {x:16,y:4}, {x:4,y:10}, {x:10,y:10}, {x:16,y:10}, {x:4,y:16}, {x:16,y:16} ],
-			8: [ {x:4,y:4}, {x:10,y:4}, {x:16,y:4}, {x:4,y:10}, {x:16,y:10}, {x:4,y:16}, {x:10,y:16}, {x:16,y:16} ],
-			9: [ {x:4,y:4}, {x:10,y:4}, {x:16,y:4}, {x:4,y:10}, {x:10,y:10}, {x:16,y:10}, {x:4,y:16}, {x:10,y:16}, {x:16,y:16} ],
-		},
-		13: {
-			0: [],
-			2: [ {x:10,y:4}, {x:4,y:10} ],
-			3: [ {x:10,y:4}, {x:4,y:10}, {x:10,y:10} ],
-			4: [ {x:4,y:4}, {x:10,y:4}, {x:4,y:10}, {x:10,y:10} ],
-			5: [ {x:4,y:4}, {x:10,y:4}, {x:7,y:7}, {x:4,y:10}, {x:10,y:10} ],
-			6: [ {x:4,y:4}, {x:10,y:4}, {x:4,y:7}, {x:10,y:7}, {x:4,y:10}, {x:10,y:10} ],
-			7: [ {x:4,y:4}, {x:10,y:4}, {x:4,y:7}, {x:7,y:7}, {x:10,y:7}, {x:4,y:10}, {x:10,y:10} ],
-			8: [ {x:4,y:4}, {x:7,y:4}, {x:10,y:4}, {x:4,y:7}, {x:10,y:7}, {x:4,y:10}, {x:7,y:10}, {x:10,y:10} ],
-			9: [ {x:4,y:4}, {x:7,y:4}, {x:10,y:4}, {x:4,y:7}, {x:7,y:7}, {x:10,y:7}, {x:4,y:10}, {x:7,y:10}, {x:10,y:10} ],
-		},
-		9: {
-			0: [],
-			2: [ {x:7,y:3}, {x:3,y:7} ],
-			3: [ {x:7,y:3}, {x:3,y:7}, {x:7,y:7} ],
-			4: [ {x:3,y:3}, {x:7,y:3}, {x:3,y:7}, {x:7,y:7} ],
-			5: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
-			6: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
-			7: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
-			8: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
-			9: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
-		},
-	}
-
-	if (settings.handicap) {
-		let loopCount = placement[settings.boardsize][settings.handicap].length;
-		for (let i=0; i<loopCount; i++) {
-			let coord = placement[settings.boardsize][settings.handicap][i];
-			if (i < loopCount - 1) {
-				await board.draw(coord, "playB", true, "Handicap");
-			} else {
-				await board.draw(coord, "playB", false, "Handicap");
-				scoreChart.update(await server.analyzeMove(coord, -1));
-				await server.play(coord, -1);
-			}
-		}
-	}
-};
-
-board.enableNextButton = function() {
-	board.nextButton.disabled = false;
-};
-
-board.disableNextButton = function() {
-	board.nextButton.disabled = true;
-};
+utils.addEventsListener(document, ["keydown", "mousedown"], board.keydownAndMousedownListener);

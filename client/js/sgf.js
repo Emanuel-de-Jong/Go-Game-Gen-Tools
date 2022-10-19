@@ -23,10 +23,11 @@ sgf.clear = function() {
 	board.editor.setGameInfo("GoTrainer-HumanAI", "SO");
 	board.editor.setGameInfo(Date(), "DT");
 
+	sgf.setPlayers();
 	sgf.setRankPlayer();
 	sgf.setRankAI();
-	sgf.setPlayers();
 	sgf.setHandicap();
+	sgf.setRuleset();
 	sgf.setKomi();
 	
 	board.editor.sgfLoadingEvent = new Event("sgfLoadingEvent");
@@ -70,6 +71,12 @@ sgf.sgfLoadedEventListener = async function() {
 };
 document.addEventListener("sgfLoadedEvent", sgf.sgfLoadedEventListener);
 
+
+sgf.setPlayers = function() {
+	board.editor.setGameInfo("Player", "P" + utils.colorNumToName(settings.color));
+	board.editor.setGameInfo("AI", "P" + utils.colorNumToName(settings.color * -1));
+};
+
 sgf.setRankPlayer = function() {
 	board.editor.setGameInfo(settings.suggestionVisits + "", utils.colorNumToName(settings.color) + "R");
 };
@@ -78,17 +85,12 @@ sgf.setRankAI = function() {
 	board.editor.setGameInfo(settings.opponentVisits + "", utils.colorNumToName(settings.color * -1) + "R");
 };
 
-sgf.setPlayers = function() {
-	board.editor.setGameInfo("Player", "P" + utils.colorNumToName(settings.color));
-	board.editor.setGameInfo("AI", "P" + utils.colorNumToName(settings.color * -1));
+sgf.setHandicap = function() {
+	board.editor.setGameInfo(settings.handicap + "", "HA");
 };
 
 sgf.setRuleset = function() {
 	board.editor.setGameInfo(settings.ruleset, "RU");
-};
-
-sgf.setHandicap = function() {
-	board.editor.setGameInfo(settings.handicap + "", "HA");
 };
 
 sgf.setKomi = function() {

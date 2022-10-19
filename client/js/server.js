@@ -1,4 +1,3 @@
-
 var server = {};
 
 
@@ -19,74 +18,6 @@ server.clear = async function() {
     await server.setKomi();
 };
 
-
-server.coordNumToName = function(numCoord) {
-    let xConvert = {
-        1: "A",
-        2: "B",
-        3: "C",
-        4: "D",
-        5: "E",
-        6: "F",
-        7: "G",
-        8: "H",
-        9: "J",
-        10: "K",
-        11: "L",
-        12: "M",
-        13: "N",
-        14: "O",
-        15: "P",
-        16: "Q",
-        17: "R",
-        18: "S",
-        19: "T"
-    };
-
-    let x = xConvert[numCoord.x];
-    let y = settings.boardsize + 1 - numCoord.y;
-    // console.log("server.coordNumToName " + numCoord.x + ", " + numCoord.y + " = " + x + y);
-    return "" + x + y;
-};
-
-server.coordNameToNum = function(nameCoord) {
-    if (nameCoord == "pass") return nameCoord;
-
-    let xConvert = {
-        "A": 1,
-        "B": 2,
-        "C": 3,
-        "D": 4,
-        "E": 5,
-        "F": 6,
-        "G": 7,
-        "H": 8,
-        "J": 9,
-        "K": 10,
-        "L": 11,
-        "M": 12,
-        "N": 13,
-        "O": 14,
-        "P": 15,
-        "Q": 16,
-        "R": 17,
-        "S": 18,
-        "T": 19
-    };
-
-    let nums = nameCoord.substring(1).split(" ");
-    
-    let x = xConvert[nameCoord[0]];
-    let y = settings.boardsize + 1 - parseInt(nums[0]);
-    return new Coord(x, y);
-};
-
-server.sendRequest = async function(request) {
-    // before
-    let response = await request;
-    // after
-    return response;
-};
 
 server.restart = async function() {
     // console.log("restart");
@@ -136,23 +67,19 @@ server.setKomi = async function() {
         }));
 };
 
-server.setBoard = async function() {
-    // console.log("setBoard");
-    let moves = board.getMoves();
-    let serverMoves = [];
-    moves.forEach(move => {
-        serverMoves.push({
-            color: utils.colorNumToName(move.color),
-            coord: server.coordNumToName(move.coord)
-        });
-    });
-
-    return server.sendRequest(fetch(server.URL + "setboard", {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: '{"moves":' + JSON.stringify(serverMoves) + "}" })
-        .then(response => {
-            return response;
+server.analyzeMove = async function(coord, color = board.getNextColor()) {
+    return server.sendRequest(fetch(server.URL + "analyzemove?color=" + utils.colorNumToName(color) +
+            "&coord=" + server.coordNumToName(coord), {
+        method: "POST" })
+        .then(response => response.json())
+        .then(suggestionJson => {
+            return new MoveSuggestion(
+                utils.colorNameToNum(suggestionJson.move.color),
+                server.coordNameToNum(suggestionJson.move.coord),
+                suggestionJson.visits,
+                suggestionJson.winrate,
+                suggestionJson.scoreLead
+            );
         })
         .catch(error => {
             return error;
@@ -217,19 +144,23 @@ server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, ma
     return filteredSuggestions;
 };
 
-server.analyzeMove = async function(coord, color = board.getNextColor()) {
-    return server.sendRequest(fetch(server.URL + "analyzemove?color=" + utils.colorNumToName(color) +
-            "&coord=" + server.coordNumToName(coord), {
-        method: "POST" })
-        .then(response => response.json())
-        .then(suggestionJson => {
-            return new MoveSuggestion(
-                utils.colorNameToNum(suggestionJson.move.color),
-                server.coordNameToNum(suggestionJson.move.coord),
-                suggestionJson.visits,
-                suggestionJson.winrate,
-                suggestionJson.scoreLead
-            );
+server.setBoard = async function() {
+    // console.log("setBoard");
+    let moves = board.getMoves();
+    let serverMoves = [];
+    moves.forEach(move => {
+        serverMoves.push({
+            color: utils.colorNumToName(move.color),
+            coord: server.coordNumToName(move.coord)
+        });
+    });
+
+    return server.sendRequest(fetch(server.URL + "setboard", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: '{"moves":' + JSON.stringify(serverMoves) + "}" })
+        .then(response => {
+            return response;
         })
         .catch(error => {
             return error;
@@ -246,4 +177,72 @@ server.play = async function(coord, color = board.getColor()) {
         .catch(error => {
             return error;
         }));
+};
+
+server.sendRequest = async function(request) {
+    // before
+    let response = await request;
+    // after
+    return response;
+};
+
+server.coordNumToName = function(numCoord) {
+    let xConvert = {
+        1: "A",
+        2: "B",
+        3: "C",
+        4: "D",
+        5: "E",
+        6: "F",
+        7: "G",
+        8: "H",
+        9: "J",
+        10: "K",
+        11: "L",
+        12: "M",
+        13: "N",
+        14: "O",
+        15: "P",
+        16: "Q",
+        17: "R",
+        18: "S",
+        19: "T"
+    };
+
+    let x = xConvert[numCoord.x];
+    let y = settings.boardsize + 1 - numCoord.y;
+    // console.log("server.coordNumToName " + numCoord.x + ", " + numCoord.y + " = " + x + y);
+    return "" + x + y;
+};
+
+server.coordNameToNum = function(nameCoord) {
+    if (nameCoord == "pass") return nameCoord;
+
+    let xConvert = {
+        "A": 1,
+        "B": 2,
+        "C": 3,
+        "D": 4,
+        "E": 5,
+        "F": 6,
+        "G": 7,
+        "H": 8,
+        "J": 9,
+        "K": 10,
+        "L": 11,
+        "M": 12,
+        "N": 13,
+        "O": 14,
+        "P": 15,
+        "Q": 16,
+        "R": 17,
+        "S": 18,
+        "T": 19
+    };
+
+    let nums = nameCoord.substring(1).split(" ");
+    
+    let x = xConvert[nameCoord[0]];
+    let y = settings.boardsize + 1 - parseInt(nums[0]);
+    return new Coord(x, y);
 };

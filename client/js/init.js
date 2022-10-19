@@ -1,6 +1,9 @@
 var init = {};
 
 
+init.restartButton = document.getElementById("restart");
+
+
 init.init = async function() {
 	settings.init();
 	await server.init();
@@ -33,7 +36,7 @@ init.start = async function() {
 init.restartButtonClickListener = async function() {
 	await init.clear();
 };
-document.getElementById("restart").addEventListener("click", init.restartButtonClickListener);
+init.restartButton.addEventListener("click", init.restartButtonClickListener);
 
 
 (function () {
