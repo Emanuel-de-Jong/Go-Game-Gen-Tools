@@ -73,7 +73,7 @@ server.analyzeMove = async function(coord, color = board.getNextColor()) {
         method: "POST" })
         .then(response => response.json())
         .then(serverSuggestion => {
-            return server.suggestionServerToClient(serverSuggestion);
+            return new MoveSuggestion(serverSuggestion);
         })
         .catch(error => {
             return error;
@@ -92,44 +92,14 @@ server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, ma
         method: "POST" })
         .then(response => response.json())
         .then(serverSuggestions => {
-            let suggestions = [];
-            let nameCoords = [];
-            // let isPassed = false;
-            serverSuggestions.forEach(suggestion => {
-                // if (isPassed) return;
-                // if (suggestion.move.coord == "pass") {
-                //     isPassed = true;
-                // }
-
-                nameCoords.push(suggestion.move.coord);
-
-                suggestions.push(server.suggestionServerToClient(suggestion));
-            });
-
-            // console.log(suggestions);
-            console.log(nameCoords);
-
-            return server.filterSuggestionsByMoveOptions(suggestions);
+            let suggestions = new MoveSuggestionList(serverSuggestions);
+            suggestions.filterByMoveOptions(moveOptions);
+            return suggestions;
         })
         .catch(error => {
             return error;
         }));
 };
-
-server.filterSuggestionsByMoveOptions = function(suggestions, moveOptions) {
-    let moveOptionCount = 1;
-    let filteredSuggestions = [];
-    for (let i=0; i<suggestions.length; i++) {
-        if (i != 0 && suggestions[i].visits != suggestions[i - 1].visits) {
-            moveOptionCount++;
-
-            if (moveOptionCount == moveOptions + 1) break;
-        }
-
-        filteredSuggestions[i] = suggestions[i];
-    }
-    return filteredSuggestions;
-}
 
 server.setBoard = async function() {
     // console.log("setBoard");
@@ -171,16 +141,6 @@ server.sendRequest = async function(request) {
     let response = await request;
     // after
     return response;
-};
-
-server.suggestionServerToClient = function(serverSuggestion) {
-    return new MoveSuggestion(
-        utils.colorNameToNum(serverSuggestion.move.color),
-        server.coordNameToNum(serverSuggestion.move.coord),
-        serverSuggestion.visits,
-        serverSuggestion.winrate,
-        serverSuggestion.scoreLead
-    );
 };
 
 server.coordNumToName = function(numCoord) {

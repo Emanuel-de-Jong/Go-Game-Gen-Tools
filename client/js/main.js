@@ -91,27 +91,14 @@ main.analyze = async function(
 		minVisitsPerc = settings.minVisitsPerc,
 		maxVisitDiffPerc = settings.maxVisitDiffPerc,
 		color = board.getNextColor()) {
-	let suggestionsWithPass = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
-	
-	main.suggestions = [];
-	for (let i=0; i<suggestionsWithPass.length; i++) {
-		if (!suggestionsWithPass[i].isPass()) {
-			main.suggestions.push(suggestionsWithPass[i]);
-		}
+	main.suggestions = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
+
+	let firstSuggestion = main.suggestions.filterByPass();
+	if (firstSuggestion.isPass()) {
+		main.pass(firstSuggestion);
 	}
 
-	if (suggestionsWithPass[0].isPass()) {
-		main.pass(suggestionsWithPass[0]);
-	}
-
-	let gradeIndex = 0;
-	for (let i=0; i<main.suggestions.length; i++) {
-		let suggestion = main.suggestions[i];
-		if (i != 0 && suggestion.visits != main.suggestions[i - 1].visits) {
-			gradeIndex++;
-		}
-		suggestion.grade = String.fromCharCode(gradeIndex + 65);
-	}
+	main.suggestions.addGrades();
 
 	main.updateSuggestionsHistory();
 };
