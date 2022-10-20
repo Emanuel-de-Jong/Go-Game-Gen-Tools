@@ -238,10 +238,10 @@ board.drawCoords = function(suggestions) {
 	}
 
 	board.editor.setTool("label");
-	for (let i=0; i<suggestions.length; i++) {
-		let coord = suggestions[i].coord;
+	for (let i=0; i<suggestions.length(); i++) {
+		let coord = suggestions.get(i).coord;
 		
-		board.editor.setLabel(suggestions[i].grade);
+		board.editor.setLabel(suggestions.get(i).grade);
 		board.editor.click(coord.x, coord.y, false, false);
 	}
 

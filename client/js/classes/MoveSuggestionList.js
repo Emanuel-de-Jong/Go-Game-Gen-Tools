@@ -42,7 +42,7 @@ class MoveSuggestionList {
     filterByMoveOptions(moveOptions) {
         let moveOptionCount = 1;
         let index;
-        for (index=0; i<this.suggestions.length; index++) {
+        for (index=0; index<this.suggestions.length; index++) {
             if (index != 0 && this.suggestions[index].visits != this.suggestions[index - 1].visits) {
                 moveOptionCount++;
                 if (moveOptionCount == moveOptions) break;
@@ -64,6 +64,17 @@ class MoveSuggestionList {
         return firstSuggestion;
     }
 
+    filterWeakerThan(suggestion) {
+        let index;
+        for (index=0; index<this.suggestions.length; index++) {
+            if (this.suggestions[index].coord.compare(suggestion)) {
+                break;
+            }
+        }
+
+        this.suggestions = this.suggestions.splice(0, index);
+    }
+
 
     get(index) {
         return this.suggestions[index];
@@ -71,6 +82,10 @@ class MoveSuggestionList {
 
     set(index, suggestion) {
         this.suggestions[index] = suggestion;
+    }
+
+    length() {
+        return this.suggestions.length;
     }
 
 }

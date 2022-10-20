@@ -82,7 +82,7 @@ main.playPreMove = async function() {
 	if (main.isPassed) main.isPreMovesStopped = true;
 	if (main.isPreMovesStopped) return;
 
-	await board.play(main.suggestions[utils.randomInt(main.suggestions.length)], main.createPreComment());
+	await board.play(main.suggestions.get(utils.randomInt(main.suggestions.length())), main.createPreComment());
 };
 
 main.analyze = async function(
@@ -178,9 +178,9 @@ main.createSelfplayComment = function() {
 
 main.createCommentGrades = function() {
 	comment = "";
-	for (let i=0; i<main.suggestions.length; i++) {
-		let suggestion = main.suggestions[i];
-        if (i != 0 && suggestion.visits == main.suggestions[i - 1].visits) continue;
+	for (let i=0; i<main.suggestions.length(); i++) {
+		let suggestion = main.suggestions.get(i);
+        if (i != 0 && suggestion.visits == main.suggestions.get(i - 1).visits) continue;
 
 		comment += "\n" + suggestion.grade + ": " + suggestion.visits;
 	}
@@ -213,22 +213,25 @@ main.playerTurn = async function(markupCoord) {
 	if (main.isPassed) return;
 	if (playerTurnId != main.playerTurnId) return;
 
-	let suggestionToPlay = main.suggestions[0];
+	let suggestionToPlay = main.suggestions.get(0);
 	let isRightChoice = false;
 	let isPerfectChoice = false;
-	for (let i=0; i<main.suggestions.length; i++) {
-		if (markupCoord.compare(main.suggestions[i].coord)) {
-			if (i == 0 || main.suggestions[i].visits == main.suggestions[0].visits) {
+	for (let i=0; i<main.suggestions.length(); i++) {
+		if (markupCoord.compare(main.suggestions.get(i).coord)) {
+			if (i == 0 || main.suggestions.get(i).visits == main.suggestions.get(0).visits) {
 				isPerfectChoice = true;
 			}
 
 			isRightChoice = true;
-			suggestionToPlay = main.suggestions[i];
+			suggestionToPlay = main.suggestions.get(i);
 			break;
 		}
 	}
 
-	main.hideWeakerSuggestions(markupCoord);
+	if (settings.hideWeakerOptions) {
+		main.suggestions.filterWeakerThan(markupCoord);
+		main.updateSuggestionsHistory();
+	}
 
 	stats.updateRatio(isRightChoice, isPerfectChoice);
 	stats.setVisits(main.suggestions);
@@ -239,21 +242,6 @@ main.playerTurn = async function(markupCoord) {
 		board.nextButton.disabled = false;
 	} else {
 		await main.nextButtonClickListener();
-	}
-};
-
-main.hideWeakerSuggestions = function(markupCoord) {
-	if (settings.hideWeakerOptions) {
-		let suggestions = main.suggestions;
-		main.suggestions = [];
-		for (let i=0; i<suggestions.length; i++) {
-			main.suggestions.push(suggestions[i]);
-			if (suggestions[i].coord.compare(markupCoord)) {
-				break;
-			}
-		}
-
-		main.updateSuggestionsHistory();
 	}
 };
 
@@ -308,7 +296,7 @@ main.opponentTurn = async function() {
 		board.drawCoords(main.suggestions);
 	}
 
-	await board.play(main.suggestions[utils.randomInt(main.suggestions.length)], main.createOpponentComment());
+	await board.play(main.suggestions.get(utils.randomInt(main.suggestions.length())), main.createOpponentComment());
 
 	main.givePlayerControl();
 };
@@ -352,7 +340,7 @@ main.selfplay = async function() {
 
 		if (!main.isSelfplay && settings.color == board.getNextColor()) return;
 
-		await board.play(main.suggestions[0], main.createSelfplayComment());
+		await board.play(main.suggestions.get(0), main.createSelfplayComment());
 	}
 };
 

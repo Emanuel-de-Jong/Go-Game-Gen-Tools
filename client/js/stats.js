@@ -79,10 +79,11 @@ stats.updateRatio = function(isRight, isPerfect) {
 
 stats.setVisits = function(suggestions) {
 	let visitsHtml = "";
-    for (let i=0; i<suggestions.length; i++) {
-        if (i != 0 && suggestions[i].visits == suggestions[i - 1].visits) continue;
+    for (let i=0; i<suggestions.length(); i++) {
+        let suggestion = suggestions.get(i);
+        if (i != 0 && suggestion.visits == suggestions.get(i - 1).visits) continue;
 
-		visitsHtml += "<div>" + suggestions[i].grade + ": " + suggestions[i].visits + "</div>";
+		visitsHtml += "<div>" + suggestion.grade + ": " + suggestion.visits + "</div>";
 	}
     stats.visitsElement.innerHTML = visitsHtml;
 };
