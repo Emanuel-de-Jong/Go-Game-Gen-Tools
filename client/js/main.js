@@ -1,6 +1,10 @@
 var main = {};
 
 
+main.BASE_MIN_VISITS_PERC = 10;
+main.BASE_MAX_VISIT_DIFF_PERC = 50;
+
+
 main.init = function() {
 	main.clear();
 };
@@ -18,7 +22,7 @@ main.clear = function() {
 
 
 main.analyze = async function(maxVisits, moveOptions, minVisitsPerc, maxVisitDiffPerc, color) {
-	main.suggestions = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
+	main.suggestions = await server.analyze(maxVisits, moveOptions, minVisitsPerc, maxVisitDiffPerc, color);
 
 	main.pass(main.suggestions.passSuggestion);
 
@@ -135,7 +139,7 @@ main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPla
 
 		if (!isRightChoice) await board.draw(markupCoord, "cross");
 
-		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions);
+		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions, main.BASE_MIN_VISITS_PERC, main.BASE_MAX_VISIT_DIFF_PERC);
 	} else {
 		await board.draw(markupCoord, "auto", false, utils.MOVE_TYPE.PLAYER);
 	}
@@ -151,7 +155,7 @@ main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPla
 		scoreChart.update(await server.analyzeMove(markupCoord));
 		await server.play(markupCoord);
 
-		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions);
+		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions, main.BASE_MIN_VISITS_PERC, main.BASE_MAX_VISIT_DIFF_PERC);
 	}
 };
 

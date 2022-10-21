@@ -86,7 +86,7 @@ server.analyze = async function(
         minVisitsPerc = settings.minVisitsPerc,
         maxVisitDiffPerc = settings.maxVisitDiffPerc,
         color = board.getNextColor()) {
-    // console.log("analyze " + maxVisits + " " + color + " " + moveOptions + " " + minVisitsPerc + " " + maxVisitDiffPerc);
+    // console.log("analyze " + maxVisits + " " + moveOptions + " " + minVisitsPerc + " " + maxVisitDiffPerc + " " + color);
     
     minVisitsPerc = settings.minVisitsPercSwitch ? minVisitsPerc : 0;
     maxVisitDiffPerc = settings.maxVisitDiffPercSwitch ? maxVisitDiffPerc : 100;

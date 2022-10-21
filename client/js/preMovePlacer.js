@@ -116,7 +116,7 @@ preMovePlacer.play = async function() {
 		preOptions = settings.preOptions;
 	}
 
-	await main.analyze(settings.preVisits, preOptions, 10, 50);
+	await main.analyze(settings.preVisits, preOptions, main.BASE_MIN_VISITS_PERC, main.BASE_MAX_VISIT_DIFF_PERC);
 	if (main.isPassed) preMovePlacer.isStopped = true;
 	if (preMovePlacer.isStopped) return;
 
