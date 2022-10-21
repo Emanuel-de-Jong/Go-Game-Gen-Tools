@@ -12,9 +12,9 @@ init.init = async function() {
 	stats.init();
 	debug.init();
 	main.init();
+	preMovePlacer.init();
+	selfplay.init();
 	await server.init();
-	await preMovePlacer.init();
-	await selfplay.init();
 	await init.start();
 };
 
@@ -26,15 +26,15 @@ init.clear = async function() {
 	stats.clear();
 	debug.clear();
 	main.clear();
+	preMovePlacer.clear();
+	selfplay.clear();
 	await server.clear();
-	await preMovePlacer.clear();
-	await selfplay.clear();
 	await init.start();
 };
 
 
 init.start = async function() {
-	await preMovePlacer.createPreMoves();
+	await preMovePlacer.start();
 };
 
 init.restartButtonClickListener = async function() {

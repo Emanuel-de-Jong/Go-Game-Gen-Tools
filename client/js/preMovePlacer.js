@@ -1,23 +1,23 @@
 var preMovePlacer = {};
 
 
-preMovePlacer.stopPreMovesButton = document.getElementById("stopPreMoves");
+preMovePlacer.stopButton = document.getElementById("stopPreMoves");
 
 
-preMovePlacer.init = async function() {
-    await preMovePlacer.clear();
+preMovePlacer.init = function() {
+    preMovePlacer.clear();
 };
 
-preMovePlacer.clear = async function() {
-	preMovePlacer.isPreMovesStopped = false;
+preMovePlacer.clear = function() {
+	preMovePlacer.isStopped = false;
 };
 
 
-preMovePlacer.createPreMoves = async function() {
+preMovePlacer.start = async function() {
 	await board.placeHandicap();
 	
-	preMovePlacer.stopPreMovesButton.hidden = false;
-	selfplay.selfplayButton.hidden = true;
+	preMovePlacer.stopButton.hidden = false;
+	selfplay.button.hidden = true;
 
 	if (settings.preMovesSwitch) {
 		let preMovesLeft = settings.preMoves;
@@ -32,7 +32,7 @@ preMovePlacer.createPreMoves = async function() {
 				let cornerCoords = preMovePlacer.fillCorners(cornerCount);
 				for (let i=0; i<cornerCount; i++) {
 					let suggestion = await server.analyzeMove(cornerCoords[i]);
-					if (preMovePlacer.isPreMovesStopped) break;
+					if (preMovePlacer.isStopped) break;
 
 					await board.play(suggestion, utils.MOVE_TYPE.PRE_CORNER);
 					preMovesLeft--;
@@ -41,27 +41,27 @@ preMovePlacer.createPreMoves = async function() {
 		}
 	
 		for (let i=0; i<preMovesLeft; i++) {
-			if (preMovePlacer.isPreMovesStopped) break;
-			await preMovePlacer.playPreMove();
+			if (preMovePlacer.isStopped) break;
+			await preMovePlacer.play();
 		}
 	}
 
 	if (settings.color == board.getColor()) {
-		await preMovePlacer.playPreMove();
+		await preMovePlacer.play();
 	}
 
-	preMovePlacer.stopPreMovesButton.hidden = true;
-	selfplay.selfplayButton.hidden = false;
+	preMovePlacer.stopButton.hidden = true;
+	selfplay.button.hidden = false;
 
 	if (!main.isPassed) {
 	    main.givePlayerControl();
 	}
 };
 
-preMovePlacer.stopPreMovesButtonClickListener = function() {
-	preMovePlacer.isPreMovesStopped = true;
+preMovePlacer.stopButtonClickListener = function() {
+	preMovePlacer.isStopped = true;
 };
-preMovePlacer.stopPreMovesButton.addEventListener("click", preMovePlacer.stopPreMovesButtonClickListener);
+preMovePlacer.stopButton.addEventListener("click", preMovePlacer.stopButtonClickListener);
 
 preMovePlacer.fillCorners = function(cornerCount) {
 	let cornerOptions = [
@@ -110,15 +110,15 @@ preMovePlacer.fillCorners = function(cornerCount) {
 	return coords;
 };
 
-preMovePlacer.playPreMove = async function() {
+preMovePlacer.play = async function() {
 	let preOptions = 1;
 	if ((utils.randomInt(100) + 1) <= settings.preOptionPerc) {
 		preOptions = settings.preOptions;
 	}
 
 	await main.analyze(settings.preVisits, preOptions, 10, 50);
-	if (main.isPassed) preMovePlacer.isPreMovesStopped = true;
-	if (preMovePlacer.isPreMovesStopped) return;
+	if (main.isPassed) preMovePlacer.isStopped = true;
+	if (preMovePlacer.isStopped) return;
 
 	await board.play(main.suggestions.get(utils.randomInt(main.suggestions.length())), utils.MOVE_TYPE.PRE);
 };

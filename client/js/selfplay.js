@@ -1,51 +1,51 @@
 var selfplay = {};
 
 
-selfplay.selfplayButton = document.getElementById("selfplay");
+selfplay.button = document.getElementById("selfplay");
 
 
-selfplay.init = async function() {
-    await selfplay.clear();
+selfplay.init = function() {
+    selfplay.clear();
 };
 
-selfplay.clear = async function() {
-	selfplay.isSelfplay = false;
-	selfplay.selfplayPromise = null;
+selfplay.clear = function() {
+	selfplay.isPlaying = false;
+	selfplay.startPromise = null;
 };
 
 
-selfplay.selfplay = async function() {
-	while (selfplay.isSelfplay || settings.color != board.getNextColor()) {
+selfplay.start = async function() {
+	while (selfplay.isPlaying || settings.color != board.getNextColor()) {
 		await main.analyze(settings.selfplayVisits, 1);
 		if (main.isPassed) {
-			selfplay.selfplayButton.click();
+			selfplay.button.click();
 			return;
 		}
 
-		if (!selfplay.isSelfplay && settings.color == board.getNextColor()) return;
+		if (!selfplay.isPlaying && settings.color == board.getNextColor()) return;
 
 		await board.play(main.suggestions.get(0), utils.MOVE_TYPE.SELFPLAY);
 	}
 };
 
-selfplay.selfplayButtonClickListener = async function() {
-	if (!selfplay.isSelfplay) {
-		selfplay.isSelfplay = true;
-		selfplay.selfplayButton.innerHTML = "Stop selfplay";
+selfplay.buttonClickListener = async function() {
+	if (!selfplay.isPlaying) {
+		selfplay.isPlaying = true;
+		selfplay.button.innerHTML = "Stop selfplay";
 
 		main.takePlayerControl();
 		board.nextButton.disabled = true;
 
-		selfplay.selfplayPromise = selfplay.selfplay();
+		selfplay.startPromise = selfplay.start();
 	} else {
-		selfplay.isSelfplay = false;
-		selfplay.selfplayButton.innerHTML = "Start selfplay";
+		selfplay.isPlaying = false;
+		selfplay.button.innerHTML = "Start selfplay";
 
-		await selfplay.selfplayPromise;
+		await selfplay.startPromise;
 
 		if (!main.isPassed) {
 			main.givePlayerControl();
 		}
 	}
 };
-selfplay.selfplayButton.addEventListener("click", selfplay.selfplayButtonClickListener);
+selfplay.button.addEventListener("click", selfplay.buttonClickListener);
