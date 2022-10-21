@@ -15,6 +15,8 @@ selfplay.clear = function() {
 
 
 selfplay.start = async function() {
+	await main.handleJumped();
+
 	while (selfplay.isPlaying || settings.color != board.getNextColor()) {
 		await main.analyze(settings.selfplayVisits, 1);
 		if (main.isPassed) {

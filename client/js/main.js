@@ -82,12 +82,8 @@ main.playerMarkupPlacedCheckListener = async function(event) {
 main.playerTurn = async function(markupCoord) {
 	let playerTurnId = ++main.playerTurnId;
 	
-	if (main.isJumped) {
-		main.isJumped = false;
-		await server.setBoard();
-		if (playerTurnId != main.playerTurnId) return;
-		main.suggestionsPromise = main.analyze();
-	}
+	await main.handleJumped();
+	if (playerTurnId != main.playerTurnId) return;
 
 	await main.suggestionsPromise;
 	if (main.isPassed) return;
@@ -121,6 +117,14 @@ main.playerTurn = async function(markupCoord) {
 		await main.nextButtonClickListener();
 	}
 };
+
+main.handleJumped = async function() {
+	if (main.isJumped) {
+		await server.setBoard();
+		main.suggestionsPromise = main.analyze();
+		main.isJumped = false;
+	}
+}
 
 main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPlay, markupCoord) {
 	let opponentOptions = main.getOpponentOptions();
