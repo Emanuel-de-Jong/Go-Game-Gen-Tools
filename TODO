@@ -22,7 +22,6 @@ SERVER
     restart server when something goes wrong
 
 CODE QUALITY/BUGS
-    - refactor
     - testing
 
 FAR FUTURE

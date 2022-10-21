@@ -80,8 +80,14 @@ server.analyzeMove = async function(coord, color = board.getNextColor()) {
         }));
 };
 
-server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc) {
+server.analyze = async function(
+        maxVisits = settings.suggestionVisits,
+        moveOptions = settings.suggestionOptions,
+        minVisitsPerc = settings.minVisitsPerc,
+        maxVisitDiffPerc = settings.maxVisitDiffPerc,
+        color = board.getNextColor()) {
     // console.log("analyze " + maxVisits + " " + color + " " + moveOptions + " " + minVisitsPerc + " " + maxVisitDiffPerc);
+    
     minVisitsPerc = settings.minVisitsPercSwitch ? minVisitsPerc : 0;
     maxVisitDiffPerc = settings.maxVisitDiffPercSwitch ? maxVisitDiffPerc : 100;
 

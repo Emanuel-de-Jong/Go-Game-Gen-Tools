@@ -17,12 +17,7 @@ main.clear = function() {
 };
 
 
-main.analyze = async function(
-		maxVisits = settings.suggestionVisits,
-		moveOptions = settings.suggestionOptions,
-		minVisitsPerc = settings.minVisitsPerc,
-		maxVisitDiffPerc = settings.maxVisitDiffPerc,
-		color = board.getNextColor()) {
+main.analyze = async function(maxVisits, moveOptions, minVisitsPerc, maxVisitDiffPerc, color) {
 	main.suggestions = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
 
 	main.pass(main.suggestions.passSuggestion);
