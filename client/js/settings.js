@@ -211,6 +211,7 @@ settings.setKomi = function() {
 
     if (komi != oldKomi) {
         settings.setSetting("komi", komi);
+        sgf.setKomi();
     }
 };
 settings.handicapElement.addEventListener("input", settings.setKomi);

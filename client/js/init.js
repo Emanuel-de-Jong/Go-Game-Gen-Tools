@@ -42,6 +42,16 @@ init.restartButtonClickListener = async function() {
 };
 init.restartButton.addEventListener("click", init.restartButtonClickListener);
 
+init.sgfLoadedEventListener = async function() {
+	scoreChart.clear();
+	stats.clear();
+	main.clear();
+	await server.clear();
+	await preMovePlacer.clear();
+	await selfplay.clear();
+};
+document.addEventListener("sgfLoadedEvent", init.sgfLoadedEventListener);
+
 
 (function () {
 

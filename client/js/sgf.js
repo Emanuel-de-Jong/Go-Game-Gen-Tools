@@ -13,6 +13,8 @@ sgf.init = function() {
 		}
 	})();
 	
+	document.addEventListener("sgfLoadedEvent", sgf.sgfLoadedEventListener);
+
 	sgf.clear();
 };
 
@@ -41,13 +43,6 @@ sgf.sgfLoadingEventListener = function() {
 document.addEventListener("sgfLoadingEvent", sgf.sgfLoadingEventListener);
 
 sgf.sgfLoadedEventListener = async function() {
-	sgf.isSGFLoading = false;
-
-	await server.clear();
-	scoreChart.clear();
-	stats.clear();
-	main.clear();
-
 	let gameInfo = board.editor.getGameInfo();
 
 	if (gameInfo.RE) {
@@ -56,9 +51,8 @@ sgf.sgfLoadedEventListener = async function() {
 
 	if (!confirm("Would you like to use the komi and ruleset of the SGF?")) return;
 
-	if (settings.komi != gameInfo.KM) {
-		settings.setSetting("komi", parseFloat(gameInfo.KM));
-	}
+	settings.setSetting("komiChangeStyle", "custom");
+	settings.setSetting("komi", parseFloat(gameInfo.KM));
 
 	if (gameInfo.RU) {
 		let ruleset = gameInfo.RU.toLowerCase();
@@ -68,8 +62,9 @@ sgf.sgfLoadedEventListener = async function() {
 			settings.setSetting("ruleset", "chinese");
 		}
 	}
+
+	sgf.isSGFLoading = false;
 };
-document.addEventListener("sgfLoadedEvent", sgf.sgfLoadedEventListener);
 
 
 sgf.setPlayers = function() {
