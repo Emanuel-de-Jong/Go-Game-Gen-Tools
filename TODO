@@ -22,7 +22,6 @@ SERVER
     restart server when something goes wrong
 
 CODE QUALITY/BUGS
-    - fix can't play on handicap
     - refactor
     - testing
 

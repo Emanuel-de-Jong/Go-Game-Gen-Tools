@@ -14,6 +14,8 @@ preMovePlacer.clear = async function() {
 
 
 preMovePlacer.createPreMoves = async function() {
+	await board.placeHandicap();
+	
 	preMovePlacer.stopPreMovesButton.hidden = false;
 	selfplay.selfplayButton.hidden = true;
 

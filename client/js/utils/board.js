@@ -46,11 +46,11 @@ board.placeStoneAudios = [
 board.lastPlaceStoneAudioIndex = 0;
 
 
-board.init = async function() {
-	await board.clear();
+board.init = function() {
+	board.clear();
 };
 
-board.clear = async function() {
+board.clear = function() {
 	board.element = document.getElementById("board");
 	besogo.create(board.element, {
 		resize: "fixed",
@@ -85,8 +85,6 @@ board.clear = async function() {
 	board.editor.addListener(main.playerMarkupPlacedCheckListener);
 	board.editor.addListener(main.treeJumpedCheckListener);
 	board.nextButton.addEventListener("click", main.nextButtonClickListener);
-
-	await board.placeHandicap();
 	
 	// console.log(besogo);
 	// console.log(board.editor);

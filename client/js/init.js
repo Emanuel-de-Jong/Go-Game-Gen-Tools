@@ -6,7 +6,7 @@ init.restartButton = document.getElementById("restart");
 
 init.init = async function() {
 	settings.init();
-	await board.init();
+	board.init();
 	sgf.init();
 	scoreChart.init();
 	stats.init();
@@ -20,7 +20,7 @@ init.init = async function() {
 
 init.clear = async function() {
 	settings.clear();
-	await board.clear();
+	board.clear();
 	sgf.clear();
 	scoreChart.clear();
 	stats.clear();
