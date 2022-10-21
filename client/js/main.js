@@ -1,10 +1,6 @@
 var main = {};
 
 
-main.stopPreMovesButton = document.getElementById("stopPreMoves");
-main.selfplayButton = document.getElementById("selfplay");
-
-
 main.init = function() {
 	main.clear();
 };
@@ -13,124 +9,13 @@ main.clear = function() {
 	main.suggestionsPromise = null;
 	main.suggestions = null;
 	main.suggestionsHistory = [];
-	main.selfplayPromise = null;
-	main.isPreMovesStopped = false;
 	main.isPlayerControlling = false;
 	main.isJumped = false;
-	main.isSelfplay = false;
 	main.isPassed = false;
 	main.playerTurnId = 0;
 	main.opponentTurnId = 0;
 };
 
-
-main.createPreMoves = async function() {
-	main.stopPreMovesButton.hidden = false;
-	main.selfplayButton.hidden = true;
-
-	if (settings.preMovesSwitch) {
-		let preMovesLeft = settings.preMoves;
-
-		if (settings.handicap == 0 && settings.boardsize == 19) {
-			if (settings.cornerSwitch44 ||
-					settings.cornerSwitch34 ||
-					settings.cornerSwitch33 ||
-					settings.cornerSwitch45 ||
-					settings.cornerSwitch35) {
-				let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
-				let cornerCoords = main.fillCorners(cornerCount);
-				for (let i=0; i<cornerCount; i++) {
-					let suggestion = await server.analyzeMove(cornerCoords[i]);
-					if (main.isPreMovesStopped) break;
-
-					await board.play(suggestion, "Corner pre move");
-					preMovesLeft--;
-				}
-			}
-		}
-	
-		for (let i=0; i<preMovesLeft; i++) {
-			if (main.isPreMovesStopped) break;
-			await main.playPreMove();
-		}
-	}
-
-	if (settings.color == board.getColor()) {
-		await main.playPreMove();
-	}
-
-	main.stopPreMovesButton.hidden = true;
-	main.selfplayButton.hidden = false;
-
-	if (!main.isPassed) {
-	main.givePlayerControl();
-	}
-};
-
-main.stopPreMovesButtonClickListener = function() {
-	main.isPreMovesStopped = true;
-};
-main.stopPreMovesButton.addEventListener("click", main.stopPreMovesButtonClickListener);
-
-main.fillCorners = function(cornerCount) {
-	let cornerOptions = [
-		{ c44: {x:4,y:4}, c34: {x:3,y:4}, c43: {x:4,y:3}, c33: {x:3,y:3}, c45: {x:4,y:5}, c54: {x:5,y:4}, c35: {x:3,y:5}, c53: {x:5,y:3} },
-		{ c44: {x:16,y:4}, c34: {x:17,y:4}, c43: {x:16,y:3}, c33: {x:17,y:3}, c45: {x:16,y:5}, c54: {x:15,y:4}, c35: {x:17,y:5}, c53: {x:15,y:3} },
-		{ c44: {x:4,y:16}, c34: {x:3,y:16}, c43: {x:4,y:17}, c33: {x:3,y:17}, c45: {x:4,y:15}, c54: {x:5,y:16}, c35: {x:3,y:15}, c53: {x:5,y:17} },
-		{ c44: {x:16,y:16}, c34: {x:17,y:16}, c43: {x:16,y:17}, c33: {x:17,y:17}, c45: {x:16,y:15}, c54: {x:15,y:16}, c35: {x:17,y:15}, c53: {x:15,y:17} },
-	];
-	cornerOptions = utils.shuffleArray(cornerOptions);
-
-	let coords = [];
-	let totalCornerChance = (settings.cornerSwitch44 ? settings.cornerChance44 : 0) +
-		(settings.cornerSwitch34 ? settings.cornerChance34 : 0) +
-		(settings.cornerSwitch33 ? settings.cornerChance33 : 0) +
-		(settings.cornerSwitch45 ? settings.cornerChance45 : 0) +
-		(settings.cornerSwitch35 ? settings.cornerChance35 : 0);
-	
-	for (let i=0; i<cornerCount; i++) {
-		let coord;
-		let cornerTypeRange = 0;
-		let rndCornerType = utils.randomInt(totalCornerChance);
-		let rndCornerSide = utils.randomInt(2);
-		if (settings.cornerSwitch44 &&
-				rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance44)) {
-			coord = cornerOptions[i].c44;
-		}
-		else if (settings.cornerSwitch34 &&
-				rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance34)) {
-			coord = rndCornerSide ? cornerOptions[i].c34 : cornerOptions[i].c43;
-		}
-		else if (settings.cornerSwitch33 &&
-				rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance33)) {
-			coord = cornerOptions[i].c33;
-		}
-		else if (settings.cornerSwitch45 &&
-				rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance45)) {
-			coord = rndCornerSide ? cornerOptions[i].c45 : cornerOptions[i].c54;
-		}
-		else {
-			coord = rndCornerSide ? cornerOptions[i].c35 : cornerOptions[i].c53;
-		}
-
-		coords.push(coord);
-	}
-
-	return coords;
-};
-
-main.playPreMove = async function() {
-	let preOptions = 1;
-	if ((utils.randomInt(100) + 1) <= settings.preOptionPerc) {
-		preOptions = settings.preOptions;
-	}
-
-	await main.analyze(settings.preVisits, preOptions, 10, 50);
-	if (main.isPassed) main.isPreMovesStopped = true;
-	if (main.isPreMovesStopped) return;
-
-	await board.play(main.suggestions.get(utils.randomInt(main.suggestions.length())), main.createPreComment());
-};
 
 main.analyze = async function(
 		maxVisits = settings.suggestionVisits,
@@ -191,14 +76,6 @@ main.updateSuggestionsHistory = function() {
 	main.suggestionsHistory[y][x] = main.suggestions;
 };
 
-main.createPreComment = function() {
-	return "Pre move" +
-	"\nStrength: " + settings.preVisits +
-	"\nOptions: " + settings.preOptions +
-	"\nOption chance: " + settings.preOptionPerc +
-	main.createCommentGrades();
-};
-
 main.createPlayerComment = function() {
 	return "Player move" +
 	"\nStrength: " + settings.suggestionVisits +
@@ -214,12 +91,6 @@ main.createOpponentComment = function() {
 	"\nStrength: " + settings.opponentVisits +
 	(settings.opponentOptionsSwitch ? "\nOptions: " + settings.opponentOptions : "") +
 	"\nOption chance: " + settings.opponentOptionPerc +
-	main.createCommentGrades();
-};
-
-main.createSelfplayComment = function() {
-	return "Selfplay move" +
-	"\nStrength: " + settings.selfplayVisits +
 	main.createCommentGrades();
 };
 
@@ -375,39 +246,3 @@ main.treeJumpedCheckListener = function(event) {
 		}
 	}
 };
-
-main.selfplay = async function() {
-	while (main.isSelfplay || settings.color != board.getNextColor()) {
-		await main.analyze(settings.selfplayVisits, 1);
-		if (main.isPassed) {
-			main.selfplayButton.click();
-			return;
-		}
-
-		if (!main.isSelfplay && settings.color == board.getNextColor()) return;
-
-		await board.play(main.suggestions.get(0), main.createSelfplayComment());
-	}
-};
-
-main.selfplayButtonClickListener = async function() {
-	if (!main.isSelfplay) {
-		main.isSelfplay = true;
-		main.selfplayButton.innerHTML = "Stop selfplay";
-
-		main.takePlayerControl();
-		board.nextButton.disabled = true;
-
-		main.selfplayPromise = main.selfplay();
-	} else {
-		main.isSelfplay = false;
-		main.selfplayButton.innerHTML = "Start selfplay";
-
-		await main.selfplayPromise;
-
-		if (!main.isPassed) {
-			main.givePlayerControl();
-		}
-	}
-};
-main.selfplayButton.addEventListener("click", main.selfplayButtonClickListener);
