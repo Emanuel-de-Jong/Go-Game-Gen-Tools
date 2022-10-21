@@ -2,48 +2,48 @@ var settings = {};
 
 
 settings.SETTINGS = {
-    scoreChartColor: utils.TYPES.INT,
+    scoreChartColor: utils.TYPE.INT,
 
-    boardsize: utils.TYPES.INT,
-    handicap: utils.TYPES.INT,
-    color: utils.TYPES.INT,
-    preMovesSwitch: utils.TYPES.BOOL,
-    preMoves: utils.TYPES.INT,
-    preVisits: utils.TYPES.INT,
-    selfplayVisits: utils.TYPES.INT,
-    suggestionVisits: utils.TYPES.INT,
-    opponentVisits: utils.TYPES.INT,
-    disableAICorrection: utils.TYPES.BOOL,
+    boardsize: utils.TYPE.INT,
+    handicap: utils.TYPE.INT,
+    color: utils.TYPE.INT,
+    preMovesSwitch: utils.TYPE.BOOL,
+    preMoves: utils.TYPE.INT,
+    preVisits: utils.TYPE.INT,
+    selfplayVisits: utils.TYPE.INT,
+    suggestionVisits: utils.TYPE.INT,
+    opponentVisits: utils.TYPE.INT,
+    disableAICorrection: utils.TYPE.BOOL,
 
-    ruleset: utils.TYPES.STRING,
-    komiChangeStyle: utils.TYPES.STRING,
-    komi: utils.TYPES.FLOAT,
+    ruleset: utils.TYPE.STRING,
+    komiChangeStyle: utils.TYPE.STRING,
+    komi: utils.TYPE.FLOAT,
 
-    preOptions: utils.TYPES.INT,
-    preOptionPerc: utils.TYPES.FLOAT,
-    cornerSwitch44: utils.TYPES.BOOL,
-    cornerSwitch34: utils.TYPES.BOOL,
-    cornerSwitch33: utils.TYPES.BOOL,
-    cornerSwitch45: utils.TYPES.BOOL,
-    cornerSwitch35: utils.TYPES.BOOL,
-    cornerChance44: utils.TYPES.INT,
-    cornerChance34: utils.TYPES.INT,
-    cornerChance33: utils.TYPES.INT,
-    cornerChance45: utils.TYPES.INT,
-    cornerChance35: utils.TYPES.INT,
+    preOptions: utils.TYPE.INT,
+    preOptionPerc: utils.TYPE.FLOAT,
+    cornerSwitch44: utils.TYPE.BOOL,
+    cornerSwitch34: utils.TYPE.BOOL,
+    cornerSwitch33: utils.TYPE.BOOL,
+    cornerSwitch45: utils.TYPE.BOOL,
+    cornerSwitch35: utils.TYPE.BOOL,
+    cornerChance44: utils.TYPE.INT,
+    cornerChance34: utils.TYPE.INT,
+    cornerChance33: utils.TYPE.INT,
+    cornerChance45: utils.TYPE.INT,
+    cornerChance35: utils.TYPE.INT,
 
-    suggestionOptions: utils.TYPES.INT,
-    hideWeakerOptions: utils.TYPES.BOOL,
-    minVisitsPercSwitch: utils.TYPES.BOOL,
-    minVisitsPerc: utils.TYPES.FLOAT,
-    maxVisitDiffPercSwitch: utils.TYPES.BOOL,
-    maxVisitDiffPerc: utils.TYPES.FLOAT,
+    suggestionOptions: utils.TYPE.INT,
+    hideWeakerOptions: utils.TYPE.BOOL,
+    minVisitsPercSwitch: utils.TYPE.BOOL,
+    minVisitsPerc: utils.TYPE.FLOAT,
+    maxVisitDiffPercSwitch: utils.TYPE.BOOL,
+    maxVisitDiffPerc: utils.TYPE.FLOAT,
     
-    opponentOptionsSwitch: utils.TYPES.BOOL,
-    opponentOptions: utils.TYPES.INT,
-    opponentOptionPerc: utils.TYPES.FLOAT,
+    opponentOptionsSwitch: utils.TYPE.BOOL,
+    opponentOptions: utils.TYPE.INT,
+    opponentOptionPerc: utils.TYPE.FLOAT,
     
-    skipNextButton: utils.TYPES.BOOL,
+    skipNextButton: utils.TYPE.BOOL,
 };
 
 for (const name of Object.keys(settings.SETTINGS)) {
@@ -78,10 +78,10 @@ settings.updateSetting = function(name) {
 
     let element = settings[name + "Element"];
 
-    let value = type == utils.TYPES.BOOL ? element.checked : element.value;
-    if (type == utils.TYPES.INT) {
+    let value = type == utils.TYPE.BOOL ? element.checked : element.value;
+    if (type == utils.TYPE.INT) {
         value = parseInt(value);
-    } else if (type == utils.TYPES.FLOAT) {
+    } else if (type == utils.TYPE.FLOAT) {
         value = parseFloat(value);
     }
 

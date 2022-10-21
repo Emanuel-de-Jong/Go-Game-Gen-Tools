@@ -1,11 +1,22 @@
 var utils = {};
 
 
-utils.TYPES = {
+utils.TYPE = {
+    NONE: 0,
     INT: 1,
     FLOAT: 2,
     BOOL: 3,
     STRING: 4,
+};
+
+utils.MOVE_TYPE = {
+    NONE: 0,
+    HANDICAP: 1,
+    PRE_CORNER: 2,
+    PRE: 3,
+    SELFPLAY: 4,
+    PLAYER: 5,
+    OPPONENT: 6,
 };
 
 

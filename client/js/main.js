@@ -76,36 +76,6 @@ main.updateSuggestionsHistory = function() {
 	main.suggestionsHistory[y][x] = main.suggestions;
 };
 
-main.createPlayerComment = function() {
-	return "Player move" +
-	"\nStrength: " + settings.suggestionVisits +
-	"\nOptions: " + settings.suggestionOptions +
-	"\nHide weaker options: " + settings.hideWeakerOptions +
-	(settings.minVisitsPercSwitch ? "\nMin strength: " + settings.minVisitsPerc : "") +
-	(settings.maxVisitDiffPercSwitch ? "\nMax strength difference" + settings.maxVisitDiffPerc : "") +
-	main.createCommentGrades();
-};
-
-main.createOpponentComment = function() {
-	return "Opponent move" +
-	"\nStrength: " + settings.opponentVisits +
-	(settings.opponentOptionsSwitch ? "\nOptions: " + settings.opponentOptions : "") +
-	"\nOption chance: " + settings.opponentOptionPerc +
-	main.createCommentGrades();
-};
-
-main.createCommentGrades = function() {
-	comment = "";
-	for (let i=0; i<main.suggestions.length(); i++) {
-		let suggestion = main.suggestions.get(i);
-        if (i != 0 && suggestion.visits == main.suggestions.get(i - 1).visits) continue;
-
-		comment += "\n" + suggestion.grade + ": " + suggestion.visits;
-	}
-
-	return comment;
-};
-
 main.playerMarkupPlacedCheckListener = async function(event) {
 	if (event.markupChange && event.mark == 4 && main.isPlayerControlling && !sgf.isSGFLoading) {
 		main.takePlayerControl();
@@ -165,13 +135,13 @@ main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPla
 
 	let suggestions = main.suggestions;
 	if (!settings.disableAICorrection || isRightChoice) {
-		await board.play(suggestionToPlay, main.createPlayerComment());
+		await board.play(suggestionToPlay, utils.MOVE_TYPE.PLAYER);
 
 		if (!isRightChoice) await board.draw(markupCoord, "cross");
 
 		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions);
 	} else {
-		await board.draw(markupCoord, "auto", false, main.createPlayerComment());
+		await board.draw(markupCoord, "auto", false, utils.MOVE_TYPE.PLAYER);
 	}
 
 	stats.updateRatio(isRightChoice, isPerfectChoice);
@@ -215,7 +185,7 @@ main.opponentTurn = async function() {
 		board.drawCoords(main.suggestions);
 	}
 
-	await board.play(main.suggestions.get(utils.randomInt(main.suggestions.length())), main.createOpponentComment());
+	await board.play(main.suggestions.get(utils.randomInt(main.suggestions.length())), utils.MOVE_TYPE.OPPONENT);
 
 	main.givePlayerControl();
 };

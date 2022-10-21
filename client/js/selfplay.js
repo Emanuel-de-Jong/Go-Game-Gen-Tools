@@ -24,14 +24,8 @@ selfplay.selfplay = async function() {
 
 		if (!selfplay.isSelfplay && settings.color == board.getNextColor()) return;
 
-		await board.play(main.suggestions.get(0), selfplay.createSelfplayComment());
+		await board.play(main.suggestions.get(0), utils.MOVE_TYPE.SELFPLAY);
 	}
-};
-
-selfplay.createSelfplayComment = function() {
-	return "Selfplay move" +
-	"\nStrength: " + settings.selfplayVisits +
-	main.createCommentGrades();
 };
 
 selfplay.selfplayButtonClickListener = async function() {

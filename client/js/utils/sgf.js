@@ -42,7 +42,7 @@ sgf.sgfLoadingEventListener = function() {
 };
 document.addEventListener("sgfLoadingEvent", sgf.sgfLoadingEventListener);
 
-sgf.sgfLoadedEventListener = async function() {
+sgf.sgfLoadedEventListener = function() {
 	let gameInfo = board.editor.getGameInfo();
 
 	if (gameInfo.RE) {
@@ -64,6 +64,51 @@ sgf.sgfLoadedEventListener = async function() {
 	}
 
 	sgf.isSGFLoading = false;
+};
+
+
+sgf.createPreComment = function() {
+	return "Pre move" +
+	"\nStrength: " + settings.preVisits +
+	"\nOptions: " + settings.preOptions +
+	"\nOption chance: " + settings.preOptionPerc +
+	sgf.createCommentGrades();
+};
+
+sgf.createSelfplayComment = function() {
+	return "Selfplay move" +
+	"\nStrength: " + settings.selfplayVisits +
+	sgf.createCommentGrades();
+};
+
+sgf.createPlayerComment = function() {
+	return "Player move" +
+	"\nStrength: " + settings.suggestionVisits +
+	"\nOptions: " + settings.suggestionOptions +
+	"\nHide weaker options: " + settings.hideWeakerOptions +
+	(settings.minVisitsPercSwitch ? "\nMin strength: " + settings.minVisitsPerc : "") +
+	(settings.maxVisitDiffPercSwitch ? "\nMax strength difference" + settings.maxVisitDiffPerc : "") +
+	sgf.createCommentGrades();
+};
+
+sgf.createOpponentComment = function() {
+	return "Opponent move" +
+	"\nStrength: " + settings.opponentVisits +
+	(settings.opponentOptionsSwitch ? "\nOptions: " + settings.opponentOptions : "") +
+	"\nOption chance: " + settings.opponentOptionPerc +
+	sgf.createCommentGrades();
+};
+
+sgf.createCommentGrades = function() {
+	comment = "";
+	for (let i=0; i<main.suggestions.length(); i++) {
+		let suggestion = main.suggestions.get(i);
+        if (i != 0 && suggestion.visits == main.suggestions.get(i - 1).visits) continue;
+
+		comment += "\n" + suggestion.grade + ": " + suggestion.visits;
+	}
+
+	return comment;
 };
 
 
@@ -96,7 +141,31 @@ sgf.setResult = function(result) {
 	board.editor.setGameInfo(result, "RE");
 };
 
-sgf.setComment = function(comment) {
+sgf.setComment = function(moveType) {
+	if (moveType == utils.MOVE_TYPE.NONE) return;
+
+	let comment;
+	switch (moveType) {
+		case utils.MOVE_TYPE.HANDICAP:
+			comment = "Handicap move";
+			break;
+		case utils.MOVE_TYPE.PRE_CORNER:
+			comment = "Corner pre move";
+			break;
+		case utils.MOVE_TYPE.PRE:
+			comment = sgf.createPreComment();
+			break;
+		case utils.MOVE_TYPE.SELFPLAY:
+			comment = sgf.createSelfplayComment();
+			break;
+		case utils.MOVE_TYPE.PLAYER:
+			comment = sgf.createPlayerComment();
+			break;
+		case utils.MOVE_TYPE.OPPONENT:
+			comment = sgf.createOpponentComment();
+			break;
+	}
+
 	board.editor.setComment(comment);
 	board.commentElement.scrollTop = 0;
 };

@@ -32,7 +32,7 @@ preMovePlacer.createPreMoves = async function() {
 					let suggestion = await server.analyzeMove(cornerCoords[i]);
 					if (preMovePlacer.isPreMovesStopped) break;
 
-					await board.play(suggestion, "Corner pre move");
+					await board.play(suggestion, utils.MOVE_TYPE.PRE_CORNER);
 					preMovesLeft--;
 				}
 			}
@@ -118,13 +118,5 @@ preMovePlacer.playPreMove = async function() {
 	if (main.isPassed) preMovePlacer.isPreMovesStopped = true;
 	if (preMovePlacer.isPreMovesStopped) return;
 
-	await board.play(main.suggestions.get(utils.randomInt(main.suggestions.length())), preMovePlacer.createPreComment());
-};
-
-preMovePlacer.createPreComment = function() {
-	return "Pre move" +
-	"\nStrength: " + settings.preVisits +
-	"\nOptions: " + settings.preOptions +
-	"\nOption chance: " + settings.preOptionPerc +
-	main.createCommentGrades();
+	await board.play(main.suggestions.get(utils.randomInt(main.suggestions.length())), utils.MOVE_TYPE.PRE);
 };
