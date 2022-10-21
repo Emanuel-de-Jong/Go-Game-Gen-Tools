@@ -245,6 +245,7 @@ main.playerTurn = async function(markupCoord) {
 main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPlay, markupCoord) {
 	let opponentOptions = main.getOpponentOptions();
 
+	let suggestions = main.suggestions;
 	if (!settings.disableAICorrection || isRightChoice) {
 		await board.play(suggestionToPlay, main.createPlayerComment());
 
@@ -256,10 +257,10 @@ main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPla
 	}
 
 	stats.updateRatio(isRightChoice, isPerfectChoice);
-	stats.setVisits(main.suggestions);
+	stats.setVisits(suggestions);
 
 	if (!settings.skipNextButton) {
-		board.drawCoords(main.suggestions);
+		board.drawCoords(suggestions);
 	}
 
 	if (settings.disableAICorrection && !isRightChoice) {
@@ -318,13 +319,13 @@ main.treeJumpedCheckListener = function(event) {
 				stats.setVisits(main.suggestions);
 				board.drawCoords(main.suggestions);
 			}
+
+			main.givePlayerControl(false);
 	
 			if (!event.treeChange && !main.isJumped) {
 				main.isJumped = true;
 				main.isPassed = false;
-	
 				board.nextButton.disabled = true;
-				main.givePlayerControl(false);
 			}
 		}
 	}
