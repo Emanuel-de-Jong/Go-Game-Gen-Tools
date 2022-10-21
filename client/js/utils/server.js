@@ -93,7 +93,9 @@ server.analyze = async function(maxVisits, color, moveOptions, minVisitsPerc, ma
         .then(response => response.json())
         .then(serverSuggestions => {
             let suggestions = new MoveSuggestionList(serverSuggestions);
+            suggestions.filterByPass();
             suggestions.filterByMoveOptions(moveOptions);
+            suggestions.addGrades();
             return suggestions;
         })
         .catch(error => {

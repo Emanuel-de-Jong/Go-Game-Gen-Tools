@@ -1,6 +1,8 @@
 class MoveSuggestionList {
 
     suggestions = [];
+    passSuggestion;
+    isPass = false;
 
 
     constructor(serverSuggestions, suggestions) {
@@ -8,6 +10,11 @@ class MoveSuggestionList {
             this.suggestions = suggestions;
         } else {
             this.fillWithServerSuggestions(serverSuggestions);
+        }
+
+        if (this.suggestions.length != 0 && this.suggestions[0].isPass()) {
+            this.isPass = true;
+            this.passSuggestion = this.suggestions[0];
         }
     }
 
@@ -32,10 +39,13 @@ class MoveSuggestionList {
     addGrades() {
         let gradeIndex = 0;
         for (let i=0; i<this.suggestions.length; i++) {
-            if (i != 0 && this.suggestions[i].visits != this.suggestions[i - 1].visits) {
+            let suggestion = this.suggestions[i];
+            if (suggestion.isPass()) continue;
+
+            if (i != 0 && suggestion.visits != this.suggestions[i - 1].visits) {
                 gradeIndex++;
             }
-            this.suggestions[i].grade = String.fromCharCode(gradeIndex + 65);
+            suggestion.grade = String.fromCharCode(gradeIndex + 65);
         }
     }
 

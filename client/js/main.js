@@ -25,17 +25,14 @@ main.analyze = async function(
 		color = board.getNextColor()) {
 	main.suggestions = await server.analyze(maxVisits, color, moveOptions, minVisitsPerc, maxVisitDiffPerc);
 
-	let firstSuggestion = main.suggestions.filterByPass();
-	if (firstSuggestion.isPass()) {
-		main.pass(firstSuggestion);
-	}
-
-	main.suggestions.addGrades();
+	main.pass(main.suggestions.passSuggestion);
 
 	main.updateSuggestionsHistory();
 };
 
 main.pass = function(suggestion) {
+	if (!suggestion) return;
+
 	main.isPassed = true;
 	main.takePlayerControl();
 	board.nextButton.disabled = true;
