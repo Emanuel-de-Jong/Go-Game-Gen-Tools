@@ -232,11 +232,8 @@ main.playerTurn = async function(markupCoord) {
 		main.suggestions.filterWeakerThan(markupCoord);
 		main.updateSuggestionsHistory();
 	}
-
-	stats.updateRatio(isRightChoice, isPerfectChoice);
-	stats.setVisits(main.suggestions);
 	
-	await main.playerPlay(isRightChoice, suggestionToPlay, markupCoord);
+	await main.playerPlay(isRightChoice, isPerfectChoice, suggestionToPlay, markupCoord);
 
 	if (!settings.skipNextButton) {
 		board.nextButton.disabled = false;
@@ -245,7 +242,7 @@ main.playerTurn = async function(markupCoord) {
 	}
 };
 
-main.playerPlay = async function(isRightChoice, suggestionToPlay, markupCoord) {
+main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPlay, markupCoord) {
 	let opponentOptions = main.getOpponentOptions();
 
 	if (!settings.disableAICorrection || isRightChoice) {
@@ -257,6 +254,9 @@ main.playerPlay = async function(isRightChoice, suggestionToPlay, markupCoord) {
 	} else {
 		await board.draw(markupCoord, "auto", false, main.createPlayerComment());
 	}
+
+	stats.updateRatio(isRightChoice, isPerfectChoice);
+	stats.setVisits(main.suggestions);
 
 	if (!settings.skipNextButton) {
 		board.drawCoords(main.suggestions);

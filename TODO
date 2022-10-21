@@ -22,10 +22,7 @@ SERVER
     restart server when something goes wrong
 
 CODE QUALITY/BUGS
-    - MoveSuggestions class with filter functions
     - fix can't place after jump
-    - fix clearVisits clears too often
-    - check if more funcs can be added to MoveSuggestionList (e.g. getRandom(max))
     - refactor
     - testing
 

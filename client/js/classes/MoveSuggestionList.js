@@ -45,7 +45,7 @@ class MoveSuggestionList {
         for (index=0; index<this.suggestions.length; index++) {
             if (index != 0 && this.suggestions[index].visits != this.suggestions[index - 1].visits) {
                 moveOptionCount++;
-                if (moveOptionCount == moveOptions) break;
+                if (moveOptionCount == moveOptions + 1) break;
             }
         }
         
