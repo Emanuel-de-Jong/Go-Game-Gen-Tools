@@ -22,6 +22,9 @@ SERVER
     restart server when something goes wrong
 
 CODE QUALITY/BUGS
+    add grades in server to use katago maxmoves and decrease package size
+    maybe move more MoveSuggestionList functions to server
+    maybe remove pass suggestions and add isPassed and passSuggestion server side
 
 FAR FUTURE
     play a sequence, then click a button that shows what sequence the ai would have played and how good your sequence was in comparison (comparing the winrate/score won/lost during those moves)
