@@ -1,10 +1,11 @@
 var debug = {};
 
 
-debug.testButton = document.getElementById("test");
-
-
 debug.init = function() {
+    debug.testButton = document.getElementById("test");
+    
+    debug.testButton.addEventListener("click", debug.testButtonClickListener);
+    
     // debug.logAllFuncCalls();
     
 	debug.clear();
@@ -68,4 +69,3 @@ debug.logAllFuncCalls = function() {
 debug.testButtonClickListener = async function() {
     console.log();
 };
-debug.testButton.addEventListener("click", debug.testButtonClickListener);

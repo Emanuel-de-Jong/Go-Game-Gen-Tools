@@ -1,10 +1,12 @@
 var init = {};
 
 
-init.restartButton = document.getElementById("restart");
-
-
 init.init = async function() {
+	init.restartButton = document.getElementById("restart");
+
+	init.restartButton.addEventListener("click", init.restartButtonClickListener);
+	document.addEventListener("sgfLoadedEvent", init.sgfLoadedEventListener);
+
 	settings.init();
 	board.init();
 	sgf.init();
@@ -40,7 +42,6 @@ init.start = async function() {
 init.restartButtonClickListener = async function() {
 	await init.clear();
 };
-init.restartButton.addEventListener("click", init.restartButtonClickListener);
 
 init.sgfLoadedEventListener = async function() {
 	scoreChart.clear();
@@ -50,7 +51,6 @@ init.sgfLoadedEventListener = async function() {
 	await preMovePlacer.clear();
 	await selfplay.clear();
 };
-document.addEventListener("sgfLoadedEvent", init.sgfLoadedEventListener);
 
 
 (function () {

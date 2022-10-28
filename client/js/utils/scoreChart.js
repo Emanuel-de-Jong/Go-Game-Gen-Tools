@@ -120,14 +120,16 @@ scoreChart.CONFIG = {
     },
 };
 
-scoreChart.element = document.getElementById("scoreChart");
-scoreChart.chart = new Chart(scoreChart.element, scoreChart.CONFIG);
-scoreChart.labels = scoreChart.chart.data.labels;
-scoreChart.winrates = scoreChart.chart.data.datasets[0].data;
-scoreChart.scores = scoreChart.chart.data.datasets[1].data;
-
 
 scoreChart.init = function() {
+    scoreChart.element = document.getElementById("scoreChart");
+    scoreChart.chart = new Chart(scoreChart.element, scoreChart.CONFIG);
+    scoreChart.labels = scoreChart.chart.data.labels;
+    scoreChart.winrates = scoreChart.chart.data.datasets[0].data;
+    scoreChart.scores = scoreChart.chart.data.datasets[1].data;
+    
+    scoreChart.chart.canvas.onclick = scoreChart.canvasClickListener;
+    settings.scoreChartColorElement.addEventListener("input", scoreChart.settingsColorElementInputListener);
     
 };
 
@@ -145,7 +147,6 @@ scoreChart.canvasClickListener = function(click) {
         board.goToNode(scoreChart.labels[points[0].index]);
     }
 };
-scoreChart.chart.canvas.onclick = scoreChart.canvasClickListener;
 
 scoreChart.update = function(suggestion) {
     let moveNumber = board.getMoveNumber();
@@ -174,7 +175,6 @@ scoreChart.update = function(suggestion) {
 scoreChart.settingsColorElementInputListener = function() {
     scoreChart.reverse();
 };
-settings.scoreChartColorElement.addEventListener("input", scoreChart.settingsColorElementInputListener);
 
 scoreChart.reverse = function() {
     for (let i=0; i<scoreChart.winrates.length; i++) {

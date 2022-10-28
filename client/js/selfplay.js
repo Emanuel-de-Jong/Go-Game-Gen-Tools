@@ -1,10 +1,11 @@
 var selfplay = {};
 
 
-selfplay.button = document.getElementById("selfplay");
-
-
 selfplay.init = function() {
+	selfplay.button = document.getElementById("selfplay");
+
+	selfplay.button.addEventListener("click", selfplay.buttonClickListener);
+	
     selfplay.clear();
 };
 
@@ -50,4 +51,3 @@ selfplay.buttonClickListener = async function() {
 		}
 	}
 };
-selfplay.button.addEventListener("click", selfplay.buttonClickListener);

@@ -1,10 +1,11 @@
 var preMovePlacer = {};
 
 
-preMovePlacer.stopButton = document.getElementById("stopPreMoves");
-
-
 preMovePlacer.init = function() {
+	preMovePlacer.stopButton = document.getElementById("stopPreMoves");
+
+	preMovePlacer.stopButton.addEventListener("click", preMovePlacer.stopButtonClickListener);
+	
     preMovePlacer.clear();
 };
 
@@ -61,7 +62,6 @@ preMovePlacer.start = async function() {
 preMovePlacer.stopButtonClickListener = function() {
 	preMovePlacer.isStopped = true;
 };
-preMovePlacer.stopButton.addEventListener("click", preMovePlacer.stopButtonClickListener);
 
 preMovePlacer.fillCorners = function(cornerCount) {
 	let cornerOptions = [

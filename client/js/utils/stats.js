@@ -1,21 +1,20 @@
 var stats = {};
 
 
-stats.rightPercentElement = document.getElementById("rightPercent");
-stats.rightStreakElement = document.getElementById("rightStreak");
-stats.rightTopStreakElement = document.getElementById("rightTopStreak");
-
-stats.perfectPercentElement = document.getElementById("perfectPercent");
-stats.perfectStreakElement = document.getElementById("perfectStreak");
-stats.perfectTopStreakElement = document.getElementById("perfectTopStreak");
-
-stats.visitsElement = document.getElementById("visits");
-
-stats.resultDivElement = document.getElementById("resultDiv");
-stats.resultElement = document.getElementById("result");
-
-
 stats.init = function() {
+    stats.rightPercentElement = document.getElementById("rightPercent");
+    stats.rightStreakElement = document.getElementById("rightStreak");
+    stats.rightTopStreakElement = document.getElementById("rightTopStreak");
+    
+    stats.perfectPercentElement = document.getElementById("perfectPercent");
+    stats.perfectStreakElement = document.getElementById("perfectStreak");
+    stats.perfectTopStreakElement = document.getElementById("perfectTopStreak");
+    
+    stats.visitsElement = document.getElementById("visits");
+    
+    stats.resultDivElement = document.getElementById("resultDiv");
+    stats.resultElement = document.getElementById("result");
+    
     stats.clear();
 };
 

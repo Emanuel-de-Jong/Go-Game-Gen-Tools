@@ -46,12 +46,25 @@ settings.SETTINGS = {
     skipNextButton: utils.TYPE.BOOL,
 };
 
-for (const name of Object.keys(settings.SETTINGS)) {
-    settings[name + "Element"] = document.getElementById(name);
-}
-
 
 settings.init = function() {
+    for (const name of Object.keys(settings.SETTINGS)) {
+        settings[name + "Element"] = document.getElementById(name);
+    }
+
+    utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", settings.inputAndSelectInputListener);
+    settings.handicapElement.addEventListener("input", settings.handicapElementInputListener);
+    settings.colorElement.addEventListener("input", settings.colorElementInputListener);
+    settings.suggestionVisitsElement.addEventListener("input", settings.suggestionVisitsElementInputListener);
+    settings.opponentVisitsElement.addEventListener("input", settings.opponentVisitsElementInputListener);
+    settings.rulesetElement.addEventListener("input", settings.rulesetElementInputListener);
+    settings.komiChangeStyleElement.addEventListener("input", settings.komiChangeStyleElementInputListener);
+    settings.komiElement.addEventListener("input", settings.komiElementInputListener);
+    settings.handicapElement.addEventListener("input", settings.setKomi);
+    settings.rulesetElement.addEventListener("input", settings.setKomi);
+    settings.boardsizeElement.addEventListener("input", settings.setKomi);
+    settings.skipNextButtonElement.addEventListener("input", settings.skipNextButtonElementInputListener);
+
     utils.querySelectorAlls(["input", "select"]).forEach(input => {
         if (input.type != "checkbox") {
             input.required = true;
@@ -103,7 +116,6 @@ settings.inputAndSelectInputListener = function(event) {
         settings.updateSetting(element.id);
     }
 };
-utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", settings.inputAndSelectInputListener);
 
 settings.validateInput = function(input) {
     let valid = input.validity.valid;
@@ -132,30 +144,25 @@ settings.hideInvalidMessage = function(input) {
 settings.handicapElementInputListener = function() {
     sgf.setHandicap();
 };
-settings.handicapElement.addEventListener("input", settings.handicapElementInputListener);
 
 settings.colorElementInputListener = function() {
     sgf.setPlayers();
     sgf.setRankPlayer();
     sgf.setRankAI();
 };
-settings.colorElement.addEventListener("input", settings.colorElementInputListener);
 
 settings.suggestionVisitsElementInputListener = function() {
     sgf.setRankPlayer();
 };
-settings.suggestionVisitsElement.addEventListener("input", settings.suggestionVisitsElementInputListener);
 
 settings.opponentVisitsElementInputListener = function() {
     sgf.setRankAI();
 };
-settings.opponentVisitsElement.addEventListener("input", settings.opponentVisitsElementInputListener);
 
 settings.rulesetElementInputListener = async function() {
     sgf.setRuleset();
     await server.setRuleset();
 };
-settings.rulesetElement.addEventListener("input", settings.rulesetElementInputListener);
 
 settings.komiChangeStyleElementInputListener = function() {
     if (settings.komiChangeStyle == "auto") {
@@ -165,13 +172,11 @@ settings.komiChangeStyleElementInputListener = function() {
         settings.komiElement.disabled = false;
     }
 };
-settings.komiChangeStyleElement.addEventListener("input", settings.komiChangeStyleElementInputListener);
 
 settings.komiElementInputListener = async function() {
     sgf.setKomi();
     await server.setKomi();
 };
-settings.komiElement.addEventListener("input", settings.komiElementInputListener);
 
 settings.setKomi = function() {
     if (settings.komiChangeStyle != "auto") return;
@@ -214,9 +219,6 @@ settings.setKomi = function() {
         sgf.setKomi();
     }
 };
-settings.handicapElement.addEventListener("input", settings.setKomi);
-settings.rulesetElement.addEventListener("input", settings.setKomi);
-settings.boardsizeElement.addEventListener("input", settings.setKomi);
 
 settings.skipNextButtonElementInputListener = function() {
     if (settings.skipNextButtonElement.checked) {
@@ -225,4 +227,3 @@ settings.skipNextButtonElementInputListener = function() {
         }
     }
 };
-settings.skipNextButtonElement.addEventListener("input", settings.skipNextButtonElementInputListener);

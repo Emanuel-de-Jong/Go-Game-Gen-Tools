@@ -2,6 +2,8 @@ var sgf = {};
 
 
 sgf.init = function() {
+	document.addEventListener("sgfLoadingEvent", sgf.sgfLoadingEventListener);
+	
 	besogo.loadSgf = (function() {
 		let cachedFunction = besogo.loadSgf;
 		
@@ -40,7 +42,6 @@ sgf.clear = function() {
 sgf.sgfLoadingEventListener = function() {
 	sgf.isSGFLoading = true;
 };
-document.addEventListener("sgfLoadingEvent", sgf.sgfLoadingEventListener);
 
 sgf.sgfLoadedEventListener = function() {
 	let gameInfo = board.editor.getGameInfo();

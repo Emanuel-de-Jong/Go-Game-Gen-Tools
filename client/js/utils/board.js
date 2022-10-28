@@ -36,17 +36,19 @@ board.HANDICAP_COORDS = {
 	},
 };
 
-board.placeStoneAudios = [
-	new Audio("resources/placeStone0.mp3"),
-	new Audio("resources/placeStone1.mp3"),
-	new Audio("resources/placeStone2.mp3"),
-	new Audio("resources/placeStone3.mp3"),
-	new Audio("resources/placeStone4.mp3")
-];
-board.lastPlaceStoneAudioIndex = 0;
-
 
 board.init = function() {
+	board.placeStoneAudios = [
+		new Audio("resources/placeStone0.mp3"),
+		new Audio("resources/placeStone1.mp3"),
+		new Audio("resources/placeStone2.mp3"),
+		new Audio("resources/placeStone3.mp3"),
+		new Audio("resources/placeStone4.mp3")
+	];
+	board.lastPlaceStoneAudioIndex = 0;
+
+	utils.addEventsListener(document, ["keydown", "mousedown"], board.keydownAndMousedownListener);
+	
 	board.clear();
 };
 
@@ -236,4 +238,3 @@ board.keydownAndMousedownListener = function(event) {
 		board.nextButton.click();
 	}
 };
-utils.addEventsListener(document, ["keydown", "mousedown"], board.keydownAndMousedownListener);
