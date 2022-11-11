@@ -120,5 +120,28 @@ preMovePlacer.play = async function() {
 	if (main.isPassed) preMovePlacer.isStopped = true;
 	if (preMovePlacer.isStopped) return;
 
-	await board.play(main.suggestions.get(utils.randomInt(main.suggestions.length())), utils.MOVE_TYPE.PRE);
+	let suggestionsByGrade = [[]];
+	let index = 0;
+	let grade = "A";
+	for (let i=0; i<main.suggestions.length(); i++) {
+		let suggestion = main.suggestions.get(i);
+
+		if (grade != suggestion.grade) {
+			grade = suggestion.grade;
+			index++;
+			suggestionsByGrade[index] = [];
+		}
+
+		suggestionsByGrade[index].push(suggestion);
+	}
+
+	let suggestions = suggestionsByGrade[suggestionsByGrade.length-1];
+	for (let i=0; i<suggestionsByGrade.length-1; i++) {
+		if (utils.randomInt(3) < 2) {
+			suggestions = suggestionsByGrade[i];
+			break;
+		}
+	}
+
+	await board.play(suggestions[utils.randomInt(suggestions.length)], utils.MOVE_TYPE.PRE);
 };

@@ -1,8 +1,8 @@
 var main = {};
 
 
-main.BASE_MIN_VISITS_PERC = 10;
-main.BASE_MAX_VISIT_DIFF_PERC = 50;
+main.BASE_MIN_VISITS_PERC = 2;
+main.BASE_MAX_VISIT_DIFF_PERC = 100;
 
 
 main.init = function() {
