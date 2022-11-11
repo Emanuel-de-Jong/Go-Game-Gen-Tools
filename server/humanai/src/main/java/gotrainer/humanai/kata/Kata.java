@@ -175,13 +175,13 @@ public class Kata {
         clearReader();
     }
 
-    public synchronized void sgf() throws Exception {
+    public synchronized void sgf(int preOptions) throws Exception {
         write("printsgf");
         String sgfStr = reader.readLine().substring(2);
         clearReader();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM_HH-mm-ss");
-        File sgf = new File("sgfs//" + dtf.format(LocalDateTime.now()) + ".sgf");
+        File sgf = new File("sgfs//" + preOptions + "_" + dtf.format(LocalDateTime.now()) + ".sgf");
         if (sgf.exists()) sgf.delete();
 
         if (sgf.createNewFile()) {

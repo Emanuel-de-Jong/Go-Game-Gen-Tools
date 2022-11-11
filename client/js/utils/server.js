@@ -145,7 +145,7 @@ server.play = async function(coord, color = board.getColor()) {
 };
 
 server.sgf = async function() {
-    return server.sendRequest(fetch(server.URL + "sgf", {
+    return server.sendRequest(fetch(server.URL + "sgf?preOptions=" + settings.preOptions, {
         method: "GET" })
         .then(response => {
             return response;

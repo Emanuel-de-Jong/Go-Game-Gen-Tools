@@ -80,7 +80,7 @@ public class KataController {
     }
 
     @GetMapping("/sgf")
-    public void getSGF() throws Exception {
-        kata.sgf();
+    public void getSGF(@RequestParam int preOptions) throws Exception {
+        kata.sgf(preOptions);
     }
 }

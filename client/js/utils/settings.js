@@ -78,14 +78,18 @@ settings.init = function() {
         settings.updateSetting(name);
     }
 
-	settings.clear();
-};
-
-settings.clear = function() {
     if (utils.randomInt(2) == 1) {
         settings.setSetting("preOptions", 1);
     } else {
         settings.setSetting("preOptions", preMovePlacer.PRE_OPTIONS);
+    }
+};
+
+settings.clear = function() {
+    if (settings.preOptions == 1) {
+        settings.setSetting("preOptions", preMovePlacer.PRE_OPTIONS);
+    } else {
+        settings.setSetting("preOptions", 1);
     }
 };
 
