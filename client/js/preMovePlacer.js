@@ -35,10 +35,10 @@ preMovePlacer.start = async function() {
 				let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
 				let cornerCoords = preMovePlacer.fillCorners(cornerCount);
 				for (let i=0; i<cornerCount; i++) {
-					let suggestion = await server.analyzeMove(cornerCoords[i]);
+					// let suggestion = await server.analyzeMove(cornerCoords[i]);
 					if (preMovePlacer.isStopped) break;
 
-					await board.play(suggestion, utils.MOVE_TYPE.PRE_CORNER);
+					await board.draw(cornerCoords[i]);
 					preMovesLeft--;
 				}
 			}
