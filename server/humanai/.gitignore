@@ -3,6 +3,7 @@
 /katago/gtp_logs/
 /katago/KataGoData/
 /katago/default_model.bin.gz
+sgfs/
 
 HELP.md
 .gradle

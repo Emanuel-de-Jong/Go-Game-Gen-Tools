@@ -74,11 +74,11 @@ public class Kata {
     public synchronized List<MoveSuggestion> analyze(String color, int maxVisits, float minVisitsPerc,
                                                      float maxVisitDiffPerc) throws Exception {
 //        System.out.println(color + " " + maxVisits + " " + minVisitsPerc + " " + maxVisitDiffPerc);
-        if (lastMaxVisits != maxVisits) {
-            lastMaxVisits = maxVisits;
-            write("kata-set-param maxVisits " + maxVisits);
-            clearReader();
-        }
+//        if (lastMaxVisits != maxVisits) {
+//            lastMaxVisits = maxVisits;
+//            write("kata-set-param maxVisits " + maxVisits);
+//            clearReader();
+//        }
 
         write("kata-genmove_analyze " + color);
         reader.readLine(); // Ignore '= '
@@ -145,12 +145,12 @@ public class Kata {
     }
 
     public synchronized MoveSuggestion analyzeMove(String color, String coord) throws Exception {
-        int maxVisits = 100;
-        if (lastMaxVisits != maxVisits) {
-            lastMaxVisits = maxVisits;
-            write("kata-set-param maxVisits " + maxVisits);
-            clearReader();
-        }
+//        int maxVisits = 100;
+//        if (lastMaxVisits != maxVisits) {
+//            lastMaxVisits = maxVisits;
+//            write("kata-set-param maxVisits " + maxVisits);
+//            clearReader();
+//        }
 
         write("kata-genmove_analyze " + color + " allow " + color + " " + coord + " 1");
         reader.readLine(); // Ignore '= '
