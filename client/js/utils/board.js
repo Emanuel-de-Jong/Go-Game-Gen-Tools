@@ -150,7 +150,7 @@ board.playPlaceStoneAudio = function() {
 	} while (placeStoneAudioIndex == board.lastPlaceStoneAudioIndex);
 	board.lastPlaceStoneAudioIndex = placeStoneAudioIndex;
 
-	board.placeStoneAudios[placeStoneAudioIndex].play();
+	// board.placeStoneAudios[placeStoneAudioIndex].play();
 };
 
 board.getColor = function() {

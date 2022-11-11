@@ -1,6 +1,9 @@
 var preMovePlacer = {};
 
 
+preMovePlacer.PRE_OPTIONS = 5;
+
+
 preMovePlacer.init = function() {
 	preMovePlacer.stopButton = document.getElementById("stopPreMoves");
 
@@ -43,7 +46,7 @@ preMovePlacer.start = async function() {
 	
 		for (let i=0; i<preMovesLeft; i++) {
 			if (preMovePlacer.isStopped) break;
-			await preMovePlacer.play();
+			await preMovePlacer.play(i == 0);
 		}
 	}
 
@@ -110,11 +113,13 @@ preMovePlacer.fillCorners = function(cornerCount) {
 	return coords;
 };
 
-preMovePlacer.play = async function() {
+preMovePlacer.play = async function(isFirstMove = false) {
 	let preOptions = 1;
 	if ((utils.randomInt(100) + 1) <= settings.preOptionPerc) {
 		preOptions = settings.preOptions;
 	}
+
+	if (isFirstMove) preOptions = preMovePlacer.PRE_OPTIONS;
 
 	await main.analyze(settings.preVisits, preOptions, main.BASE_MIN_VISITS_PERC, main.BASE_MAX_VISIT_DIFF_PERC);
 	if (main.isPassed) preMovePlacer.isStopped = true;

@@ -85,7 +85,7 @@ settings.clear = function() {
     if (utils.randomInt(2) == 1) {
         settings.setSetting("preOptions", 1);
     } else {
-        settings.setSetting("preOptions", 5);
+        settings.setSetting("preOptions", preMovePlacer.PRE_OPTIONS);
     }
 };
 
