@@ -50,6 +50,10 @@ preMovePlacer.start = async function() {
 		}
 	}
 
+	await server.sgf();
+	init.clear();
+	return;
+
 	if (settings.color == board.getColor()) {
 		await preMovePlacer.play();
 	}
