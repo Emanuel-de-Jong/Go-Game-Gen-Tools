@@ -59,6 +59,39 @@ namespace AIPatterns
             return game;
         }
 
+        public static void FilterByCount(GameWrap game, int minCount)
+        {
+            game.ToStart();
+            FilterByCount(game.Game.RootNode, minCount);
+        }
+
+        private static void FilterByCount(GoNode node, int minCount)
+        {
+            List<GoNode> nodesToRemove = new List<GoNode>();
+            foreach (GoNode childNode in node.ChildNodes)
+            {
+                GoMoveNode? move = childNode as GoMoveNode;
+                if (move != null)
+                {
+                    int.TryParse(move.Comment, out int count);
+                    if (count < minCount)
+                    {
+                        nodesToRemove.Add(childNode);
+                    }
+                }
+            }
+
+            foreach (GoNode childNode in nodesToRemove)
+            {
+                node.ChildNodes.Remove(childNode);
+            }
+
+            foreach (GoNode childNode in node.ChildNodes)
+            {
+                FilterByCount(childNode, minCount);
+            }
+        }
+
         public static void AddMarkup(GameWrap game)
         {
             game.ToStart();

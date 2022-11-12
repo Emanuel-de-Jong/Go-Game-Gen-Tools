@@ -53,7 +53,6 @@ namespace AIPatterns
         void AddSequenceFromGame(GameWrap game)
         {
             game.ToStart();
-
             Stone? stone = GetNextStoneInRange(game);
             if (stone == null) return;
             bool isFirstStoneBlack = stone.IsBlack;
@@ -63,9 +62,35 @@ namespace AIPatterns
             if (!IsStoneInRange(stone, SECOND_STONE_RANGE_X, SECOND_STONE_RANGE_Y)) return;
 
             game.ToStart();
+            do
+            {
+                stone = GetNextStoneInRange(game);
+                if (stone == null) return;
+
+            } while (G.BOARD_SIZE_INDEX - stone.X == stone.Y);
+
+            if (G.BOARD_SIZE_INDEX - stone.X > stone.Y)
+            {
+                game = GameUtils.Rotate(game);
+                game = GameUtils.Flip(game, false);
+            }
+
+            game.ToStart();
             bool moveOutOfRange = false;
             bool lastColorBlack = false;
             Sequence sequence = new();
+
+            stone = GetNextStoneInRange(game);
+            if (!isFirstStoneBlack) stone.IsBlack = !stone.IsBlack;
+            sequence.Add(stone);
+
+            stone = GetNextStoneInRange(game);
+            if (!isFirstStoneBlack) stone.IsBlack = !stone.IsBlack;
+            if (stone.IsBlack)
+            {
+                sequence.Add(new Stone(20, 20, true));
+            }
+            sequence.Add(stone);
 
             while (game.ToNextMove())
             {
