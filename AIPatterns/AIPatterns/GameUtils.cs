@@ -63,48 +63,5 @@ namespace AIPatterns
         {
             Console.WriteLine(stone.X + ", " + stone.Y + ": " + (stone.IsBlack ? "B" : "W"));
         }
-
-        public static GameWrap SequenceListToGame(SequenceList sequenceList)
-        {
-            GameWrap game = new();
-
-            foreach (Sequence sequence in sequenceList)
-            {
-                foreach (Stone stone in sequence)
-                {
-                    if (!game.Continue(stone))
-                    {
-                        game.PlaceStone(stone);
-                    }
-                }
-                game.ToStart();
-            }
-
-            return game;
-        }
-
-        public static StoneTreeNode SequenceListToStoneTree(SequenceList sequenceList)
-        {
-            StoneTreeNode root = new();
-
-            foreach (Sequence sequence in sequenceList)
-            {
-                StoneTreeNode currentNode = root;
-
-                foreach (Stone stone in sequence)
-                {
-                    StoneTreeNode? childNode = currentNode.Find(stone);
-                    if (childNode == null)
-                    {
-                        childNode = new StoneTreeNode(stone);
-                        currentNode.Add(childNode);
-                    }
-
-                    currentNode = childNode;
-                }
-            }
-
-            return root;
-        }
     }
 }

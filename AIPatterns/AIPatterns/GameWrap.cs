@@ -99,6 +99,16 @@ namespace AIPatterns
             Game.AddStone(stone);
         }
 
+        public void CommentNode(string comment)
+        {
+            Game.CommentNode(comment);
+        }
+
+        public void CommentCount(int count)
+        {
+            Game.CommentNode(count.ToString());
+        }
+
         public bool Continue(Stone stone)
         {
             return Game.Continue(stone);

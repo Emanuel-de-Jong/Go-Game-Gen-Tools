@@ -21,20 +21,27 @@ namespace AIPatterns
         void Start()
         {
             SequenceGenerator sequenceGenerator = new();
-            SequenceList sequenceList = sequenceGenerator.Generate(@"E:\Media\Downloads\AIPatterns\AIPatterns\sgfs\");
+            SequenceList sequenceList = sequenceGenerator.Generate(@"E:\Media\Documents\MEGAsync\Go\Learning\AI-Josekis\");
 
-            StoneTreeNode StoneTree = GameUtils.SequenceListToStoneTree(sequenceList);
+            //StoneTreeNode StoneTree = TreeBuilder.SequenceListToStoneTree(sequenceList);
 
-            PatternFinder patternFinder = new(StoneTree);
-
-            GameWrap game = GameUtils.SequenceListToGame(sequenceList);
+            GameWrap game = TreeBuilder.SequenceListToGame(sequenceList);
+            TreeBuilder.AddMarkup(game);
 
             game.SaveAsSgf(@"E:\Media\Downloads\AI-Josekis.sgf");
         }
 
         void Test()
         {
-            GameWrap game = GameUtils.OpenFile(@"E:\Media\Documents\MEGAsync\Go\Learning\AI-Josekis\1_12-11_13-54-07.sgf");
+            GameWrap game = GameUtils.OpenFile(@"E:\Media\Downloads\test.sgf");
+            game.PlaceStone(new Stone(20, 20, true));
+            game.PlaceStone(new Stone(6, 14, false));
+            game.Game.currentNode.EnsureMarkup();
+            game.Game.currentNode.Markup.Marks.Add(new Mark(17, 17, MarkType.Square));
+            game.SaveAsSgf(@"E:\Media\Downloads\test2.sgf");
+
+
+
             //    GameWrap game = new GameWrap();
             //    game.PlaceStone(new Stone(3, 6, true));
 

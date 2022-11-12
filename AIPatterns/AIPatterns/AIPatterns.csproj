@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="sgfs\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="IGOEnchi.GoGameSgf" Version="1.0.7" />
   </ItemGroup>
 
