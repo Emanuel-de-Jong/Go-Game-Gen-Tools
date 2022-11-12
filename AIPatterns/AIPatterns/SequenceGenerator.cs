@@ -63,12 +63,39 @@ namespace AIPatterns
             if (!IsStoneInRange(stone, SECOND_STONE_RANGE_X, SECOND_STONE_RANGE_Y)) return;
 
             game.ToStart();
+            bool moveOutOfRange = false;
+            bool lastColorBlack = false;
             Sequence sequence = new();
-            while ((stone = GetNextStoneInRange(game)) != null)
-            {
-                if (!isFirstStoneBlack) stone.IsBlack = !stone.IsBlack;
-                sequence.Add(stone);
 
+            while (game.ToNextMove())
+            {
+                GoMoveNode? move = game.Game.CurrentNode as GoMoveNode;
+                if (move != null)
+                {
+                    if (IsStoneInRange(move.Stone))
+                    {
+                        stone = move.Stone;
+                        if (!isFirstStoneBlack) stone.IsBlack = !stone.IsBlack;
+
+                        if (moveOutOfRange)
+                        {
+                            sequence.Add(new Stone(20, 20, true));
+
+                            if (stone.IsBlack != lastColorBlack)
+                            {
+                                sequence.Add(new Stone(20, 20, true));
+                            }
+                        }
+
+                        sequence.Add(stone);
+
+                        moveOutOfRange = false;
+                        lastColorBlack = stone.IsBlack;
+                    } else
+                    {
+                        moveOutOfRange = true;
+                    }
+                }
             }
 
             sequenceList.Add(sequence);
@@ -79,13 +106,9 @@ namespace AIPatterns
             while (game.ToNextMove())
             {
                 GoMoveNode? move = game.Game.CurrentNode as GoMoveNode;
-                if (move != null)
+                if (move != null && IsStoneInRange(move.Stone))
                 {
-                    if (IsStoneInRange(move.Stone))
-                    {
-                        return move.Stone;
-                    }
-
+                    return move.Stone;
                 }
             }
 

@@ -85,7 +85,14 @@ namespace AIPatterns
             {
                 GoMoveNode move = moveCounts[i].Key;
                 string text = ((char)(65 + i)).ToString();
-                node.Markup.Labels.Add(new TextLabel(move.Stone.X, move.Stone.Y, text));
+
+                if (move.Stone.X == 20)
+                {
+                    node.Comment = "Pass: " + text;
+                } else
+                {
+                    node.Markup.Labels.Add(new TextLabel(move.Stone.X, move.Stone.Y, text));
+                }
             }
 
             foreach (GoNode childNode in node.ChildNodes)
