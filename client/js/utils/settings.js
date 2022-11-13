@@ -78,19 +78,25 @@ settings.init = function() {
         settings.updateSetting(name);
     }
 
-    if (utils.randomInt(2) == 1) {
+    settings.preOptionsCount = 0;
+    if (utils.randomInt(3) == 0) {
         settings.setSetting("preOptions", 1);
     } else {
         settings.setSetting("preOptions", preMovePlacer.PRE_OPTIONS);
+        settings.preOptionsCount++;
     }
 };
 
 settings.clear = function() {
-    if (settings.preOptions == 1) {
+    if (settings.preOptionsCount < 2) {
         settings.setSetting("preOptions", preMovePlacer.PRE_OPTIONS);
+        settings.preOptionsCount++;
     } else {
         settings.setSetting("preOptions", 1);
+        settings.preOptionsCount = 0;
     }
+
+    settings.setSetting("color", 0);
 };
 
 

@@ -1,7 +1,7 @@
 var preMovePlacer = {};
 
 
-preMovePlacer.PRE_OPTIONS = 5;
+preMovePlacer.PRE_OPTIONS = 1;
 
 
 preMovePlacer.init = function() {
@@ -145,10 +145,13 @@ preMovePlacer.play = async function(isFirstMove = false) {
 	}
 
 	let suggestions = suggestionsByGrade[suggestionsByGrade.length-1];
-	for (let i=0; i<suggestionsByGrade.length-1; i++) {
-		if (utils.randomInt(3) < 2) {
-			suggestions = suggestionsByGrade[i];
-			break;
+
+	if (suggestions[0].color != settings.color) {
+		for (let i=0; i<suggestionsByGrade.length-1; i++) {
+			if (utils.randomInt(3) < 2) {
+				suggestions = suggestionsByGrade[i];
+				break;
+			}
 		}
 	}
 

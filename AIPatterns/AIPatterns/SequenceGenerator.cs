@@ -76,8 +76,6 @@ namespace AIPatterns
             }
 
             game.ToStart();
-            bool moveOutOfRange = false;
-            bool lastColorBlack = false;
             Sequence sequence = new();
 
             stone = GetNextStoneInRange(game);
@@ -92,6 +90,8 @@ namespace AIPatterns
             }
             sequence.Add(stone);
 
+            bool moveOutOfRange = false;
+            bool lastColorBlack = stone.IsBlack;
             while (game.ToNextMove())
             {
                 GoMoveNode? move = game.Game.CurrentNode as GoMoveNode;
