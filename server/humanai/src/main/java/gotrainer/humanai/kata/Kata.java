@@ -181,7 +181,7 @@ public class Kata {
         clearReader();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM_HH-mm-ss");
-        File sgf = new File("E:\\Media\\Documents\\MEGAsync\\Go\\Learning\\AI-Josekis\\" + preOptions + "_" + dtf.format(LocalDateTime.now()) + ".sgf");
+        File sgf = new File("sgfs\\" + preOptions + "_" + dtf.format(LocalDateTime.now()) + ".sgf");
         if (sgf.exists()) sgf.delete();
 
         if (sgf.createNewFile()) {

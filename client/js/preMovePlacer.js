@@ -2,72 +2,37 @@ var preMovePlacer = {};
 
 
 preMovePlacer.PRE_OPTIONS = 1;
-
+preMovePlacer.BASE_MIN_VISITS_PERC = 5;
+preMovePlacer.BASE_MAX_VISIT_DIFF_PERC = 100;
 
 preMovePlacer.init = function() {
-	preMovePlacer.stopButton = document.getElementById("stopPreMoves");
-
-	preMovePlacer.stopButton.addEventListener("click", preMovePlacer.stopButtonClickListener);
-	
     preMovePlacer.clear();
 };
 
 preMovePlacer.clear = function() {
-	preMovePlacer.isStopped = false;
+	preMovePlacer.suggestions = null;
 };
 
 
 preMovePlacer.start = async function() {
-	await board.placeHandicap();
-	
-	preMovePlacer.stopButton.hidden = false;
-	selfplay.button.hidden = true;
+	let preMovesLeft = settings.preMoves;
 
-	if (settings.preMovesSwitch) {
-		let preMovesLeft = settings.preMoves;
+	let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
+	let cornerCoords = preMovePlacer.fillCorners(cornerCount);
+	for (let i=0; i<cornerCount; i++) {
+		if (preMovePlacer.isStopped) break;
 
-		if (settings.handicap == 0 && settings.boardsize == 19) {
-			if (settings.cornerSwitch44 ||
-					settings.cornerSwitch34 ||
-					settings.cornerSwitch33 ||
-					settings.cornerSwitch45 ||
-					settings.cornerSwitch35) {
-				let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
-				let cornerCoords = preMovePlacer.fillCorners(cornerCount);
-				for (let i=0; i<cornerCount; i++) {
-					// let suggestion = await server.analyzeMove(cornerCoords[i]);
-					if (preMovePlacer.isStopped) break;
+		await board.draw(cornerCoords[i]);
+		preMovesLeft--;
+	}
 
-					await board.draw(cornerCoords[i]);
-					preMovesLeft--;
-				}
-			}
-		}
-	
-		for (let i=0; i<preMovesLeft; i++) {
-			if (preMovePlacer.isStopped) break;
-			await preMovePlacer.play(i == 0);
-		}
+	for (let i=0; i<preMovesLeft; i++) {
+		if (preMovePlacer.isStopped) break;
+		await preMovePlacer.play(i == 0);
 	}
 
 	await server.sgf();
 	init.clear();
-	return;
-
-	if (settings.color == board.getColor()) {
-		await preMovePlacer.play();
-	}
-
-	preMovePlacer.stopButton.hidden = true;
-	selfplay.button.hidden = false;
-
-	if (!main.isPassed) {
-	    main.givePlayerControl();
-	}
-};
-
-preMovePlacer.stopButtonClickListener = function() {
-	preMovePlacer.isStopped = true;
 };
 
 preMovePlacer.fillCorners = function(cornerCount) {
@@ -80,11 +45,11 @@ preMovePlacer.fillCorners = function(cornerCount) {
 	cornerOptions = utils.shuffleArray(cornerOptions);
 
 	let coords = [];
-	let totalCornerChance = (settings.cornerSwitch44 ? settings.cornerChance44 : 0) +
-		(settings.cornerSwitch34 ? settings.cornerChance34 : 0) +
-		(settings.cornerSwitch33 ? settings.cornerChance33 : 0) +
-		(settings.cornerSwitch45 ? settings.cornerChance45 : 0) +
-		(settings.cornerSwitch35 ? settings.cornerChance35 : 0);
+	let totalCornerChance = settings.cornerChance44 +
+		settings.cornerChance34 +
+		settings.cornerChance33 +
+		settings.cornerChance45 +
+		settings.cornerChance35;
 	
 	for (let i=0; i<cornerCount; i++) {
 		let coord;
@@ -118,22 +83,17 @@ preMovePlacer.fillCorners = function(cornerCount) {
 };
 
 preMovePlacer.play = async function(isFirstMove = false) {
-	let preOptions = 1;
-	if ((utils.randomInt(100) + 1) <= settings.preOptionPerc) {
-		preOptions = settings.preOptions;
-	}
-
+	let preOptions = settings.preOptions;
 	if (isFirstMove) preOptions = preMovePlacer.PRE_OPTIONS;
 
-	await main.analyze(settings.preVisits, preOptions, main.BASE_MIN_VISITS_PERC, main.BASE_MAX_VISIT_DIFF_PERC);
-	if (main.isPassed) preMovePlacer.isStopped = true;
+	preMovePlacer.suggestions = await server.analyze(settings.preVisits, preOptions, preMovePlacer.BASE_MIN_VISITS_PERC, preMovePlacer.BASE_MAX_VISIT_DIFF_PERC);
 	if (preMovePlacer.isStopped) return;
 
 	let suggestionsByGrade = [[]];
 	let index = 0;
 	let grade = "A";
-	for (let i=0; i<main.suggestions.length(); i++) {
-		let suggestion = main.suggestions.get(i);
+	for (let i=0; i<preMovePlacer.suggestions.length(); i++) {
+		let suggestion = preMovePlacer.suggestions.get(i);
 
 		if (grade != suggestion.grade) {
 			grade = suggestion.grade;
@@ -155,5 +115,5 @@ preMovePlacer.play = async function(isFirstMove = false) {
 		}
 	}
 
-	await board.play(suggestions[utils.randomInt(suggestions.length)], utils.MOVE_TYPE.PRE);
+	await board.play(suggestions[utils.randomInt(suggestions.length)]);
 };

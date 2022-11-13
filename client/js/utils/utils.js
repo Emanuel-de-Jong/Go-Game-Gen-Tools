@@ -9,16 +9,6 @@ utils.TYPE = {
     STRING: 4,
 };
 
-utils.MOVE_TYPE = {
-    NONE: 0,
-    HANDICAP: 1,
-    PRE_CORNER: 2,
-    PRE: 3,
-    SELFPLAY: 4,
-    PLAYER: 5,
-    OPPONENT: 6,
-};
-
 
 utils.colorNumToName = function(num) {
     return num == 1 ? "W" : "B";
