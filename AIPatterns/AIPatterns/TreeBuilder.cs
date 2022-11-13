@@ -10,41 +10,17 @@ namespace AIPatterns
 {
     internal class TreeBuilder
     {
-        public static StoneTreeNode SequenceListToStoneTree(SequenceList sequenceList)
-        {
-            StoneTreeNode root = new();
-
-            foreach (Sequence sequence in sequenceList)
-            {
-                StoneTreeNode currentNode = root;
-
-                foreach (Stone stone in sequence)
-                {
-                    StoneTreeNode? childNode = currentNode.Find(stone);
-                    if (childNode == null)
-                    {
-                        childNode = new StoneTreeNode(stone);
-                        currentNode.Add(childNode);
-                    }
-
-                    currentNode = childNode;
-                }
-            }
-
-            return root;
-        }
-
         public static GameWrap SequenceListToGame(SequenceList sequenceList)
         {
             GameWrap game = new();
 
             foreach (Sequence sequence in sequenceList)
             {
-                foreach (Stone stone in sequence)
+                foreach (KeyValuePair<Stone, List<Stone>> pair in sequence)
                 {
-                    if (!game.Continue(stone))
+                    if (!game.Continue(pair.Key))
                     {
-                        game.PlaceStone(stone);
+                        game.PlaceStone(pair.Key);
                     }
 
                     string countStr = game.Game.CurrentComment;
@@ -52,6 +28,14 @@ namespace AIPatterns
 
                     count++;
                     game.CommentCount(count);
+
+                    GoNode node = game.Game.CurrentNode;
+                    node.EnsureMarkup();
+                    node.Markup.Marks.Clear();
+                    foreach (Stone stone in pair.Value)
+                    {
+                        node.Markup.Marks.Add(new Mark(stone.X, stone.Y, stone.IsBlack ? MarkType.Mark : MarkType.Triangle));
+                    }
                 }
                 game.ToStart();
             }
@@ -121,7 +105,7 @@ namespace AIPatterns
 
                 if (move.Stone.X == 20)
                 {
-                    node.Comment = "Pass: " + text;
+                    node.Comment += "\nPass: " + text;
                 } else
                 {
                     node.Markup.Labels.Add(new TextLabel(move.Stone.X, move.Stone.Y, text));

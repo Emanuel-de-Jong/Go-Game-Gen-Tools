@@ -76,19 +76,21 @@ namespace AIPatterns
             }
 
             game.ToStart();
+
+            List<Stone> allStones = new();
             Sequence sequence = new();
 
-            stone = GetNextStoneInRange(game);
+            stone = GetNextStoneInRange(game, allStones);
             if (!isFirstStoneBlack) stone.IsBlack = !stone.IsBlack;
-            sequence.Add(stone);
+            sequence.Add(stone, allStones);
 
-            stone = GetNextStoneInRange(game);
+            stone = GetNextStoneInRange(game, allStones);
             if (!isFirstStoneBlack) stone.IsBlack = !stone.IsBlack;
             if (stone.IsBlack)
             {
-                sequence.Add(new Stone(20, 20, true));
+                sequence.Add(new Stone(20, 20, true), allStones);
             }
-            sequence.Add(stone);
+            sequence.Add(stone, allStones);
 
             bool moveOutOfRange = false;
             bool lastColorBlack = stone.IsBlack;
@@ -97,27 +99,32 @@ namespace AIPatterns
                 GoMoveNode? move = game.Game.CurrentNode as GoMoveNode;
                 if (move != null)
                 {
+                    stone = move.Stone;
                     if (IsStoneInRange(move.Stone))
                     {
-                        stone = move.Stone;
                         if (!isFirstStoneBlack) stone.IsBlack = !stone.IsBlack;
 
                         if (moveOutOfRange)
                         {
-                            sequence.Add(new Stone(20, 20, true));
+                            sequence.Add(new Stone(20, 20, true), allStones);
 
                             if (stone.IsBlack != lastColorBlack)
                             {
-                                sequence.Add(new Stone(20, 20, true));
+                                sequence.Add(new Stone(20, 20, true), allStones);
                             }
                         }
 
-                        sequence.Add(stone);
+                        sequence.Add(stone, allStones);
 
                         moveOutOfRange = false;
                         lastColorBlack = stone.IsBlack;
                     } else
                     {
+                        if (stone.X != 20)
+                        {
+                            allStones.Add(stone);
+                        }
+
                         moveOutOfRange = true;
                     }
                 }
@@ -128,12 +135,25 @@ namespace AIPatterns
 
         Stone? GetNextStoneInRange(GameWrap game)
         {
+            return GetNextStoneInRange(game, null);
+        }
+
+        Stone? GetNextStoneInRange(GameWrap game, List<Stone>? allStones)
+        {
             while (game.ToNextMove())
             {
                 GoMoveNode? move = game.Game.CurrentNode as GoMoveNode;
-                if (move != null && IsStoneInRange(move.Stone))
+                if (move != null)
                 {
-                    return move.Stone;
+                    Stone stone = move.Stone;
+                    if (IsStoneInRange(stone))
+                    {
+                        return stone;
+                    }
+                    else if (allStones != null && stone.X != 20)
+                    {
+                        allStones.Add(stone);
+                    }
                 }
             }
 

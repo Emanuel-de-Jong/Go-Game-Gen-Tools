@@ -89,6 +89,11 @@ namespace AIPatterns
             return Game.ToNextMove();
         }
 
+        public bool ToNextMainMove()
+        {
+            return Game.ToNextMainMove();
+        }
+
         public void PlaceStone(Stone stone)
         {
             Game.PlaceStone(stone);

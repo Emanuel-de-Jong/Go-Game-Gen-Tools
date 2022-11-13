@@ -1,1 +1,1 @@
-﻿
+﻿Write in sgf comments which side and moves are inperfect

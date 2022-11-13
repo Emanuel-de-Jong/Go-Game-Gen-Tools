@@ -7,18 +7,23 @@ using System.Threading.Tasks;
 
 namespace AIPatterns
 {
-    internal class Sequence : List<Stone>
+    internal class Sequence : List<KeyValuePair<Stone, List<Stone>>>
     {
         public GameWrap ToGame()
         {
             GameWrap game = new();
 
-            foreach (Stone stone in this)
+            foreach (KeyValuePair<Stone, List<Stone>> pair in this)
             {
-                game.PlaceStone(stone);
+                game.PlaceStone(pair.Key);
             }
 
             return game;
+        }
+
+        public void Add(Stone stone, List<Stone> allStones)
+        {
+            Add(new KeyValuePair<Stone, List<Stone>>(stone, new List<Stone>(allStones)));
         }
 
         public void PrintBoard(bool fromStart = true)
