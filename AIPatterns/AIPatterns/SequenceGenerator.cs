@@ -105,7 +105,7 @@ namespace AIPatterns
             stone = GetNextStoneInRange(game);
             if (stone.IsBlack)
             {
-                sequence.Add(new Stone(20, 20, true), game.Game.currentNode.ParentNode.BoardCopy);
+                sequence.Add(new Stone(20, 20, false), game.Game.currentNode.ParentNode.BoardCopy);
             }
             sequence.Add(stone, game);
 

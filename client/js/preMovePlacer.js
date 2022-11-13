@@ -1,7 +1,7 @@
 var preMovePlacer = {};
 
 
-preMovePlacer.PRE_OPTIONS = 5;
+preMovePlacer.PRE_OPTIONS = 1;
 
 
 preMovePlacer.init = function() {

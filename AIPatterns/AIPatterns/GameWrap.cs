@@ -1,6 +1,7 @@
 ﻿using IGOEnchi.GoGameLogic;
 using IGOEnchi.GoGameSgf;
 using IGOEnchi.SmartGameLib.io;
+using IGOEnchi.SmartGameLib.models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +56,8 @@ namespace AIPatterns
 
         public void SaveAsSgf(string path)
         {
+            Game.Info.Komi = 6.5f;
+
             var builder = new GoSgfBuilder(Game);
             var sgf = builder.ToSGFTree();
 
