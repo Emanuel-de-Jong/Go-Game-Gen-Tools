@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace AIPatterns
 {
@@ -98,16 +99,16 @@ namespace AIPatterns
 
             // Add first stone
             game.ToStart();
-            stone = GetNextStoneInRange(game, allStones);
-            sequence.Add(stone, allStones);
+            stone = GetNextStoneInRange(game);
+            sequence.Add(stone, game);
 
             // Add second stone
-            stone = GetNextStoneInRange(game, allStones);
+            stone = GetNextStoneInRange(game);
             if (stone.IsBlack)
             {
-                sequence.Add(new Stone(20, 20, true), allStones);
+                sequence.Add(new Stone(20, 20, true), game);
             }
-            sequence.Add(stone, allStones);
+            sequence.Add(stone, game);
 
             // Add other stones
             bool moveOutOfRange = false;
@@ -122,15 +123,15 @@ namespace AIPatterns
                     {
                         if (moveOutOfRange)
                         {
-                            sequence.Add(new Stone(20, 20, !lastColorBlack), allStones);
+                            sequence.Add(new Stone(20, 20, !lastColorBlack), game);
 
                             if (stone.IsBlack != lastColorBlack)
                             {
-                                sequence.Add(new Stone(20, 20, lastColorBlack), allStones);
+                                sequence.Add(new Stone(20, 20, lastColorBlack), game);
                             }
                         }
 
-                        sequence.Add(stone, allStones);
+                        sequence.Add(stone, game);
 
                         moveOutOfRange = false;
                         lastColorBlack = stone.IsBlack;
@@ -146,30 +147,19 @@ namespace AIPatterns
                 }
             }
 
+            var board = game.Game.board;
+
             sequenceList.Add(sequence);
         }
 
         Stone? GetNextStoneInRange(GameWrap game)
         {
-            return GetNextStoneInRange(game, null);
-        }
-
-        Stone? GetNextStoneInRange(GameWrap game, List<Stone>? allStones)
-        {
             while (game.ToNextMove())
             {
                 GoMoveNode? move = game.Game.CurrentNode as GoMoveNode;
-                if (move != null)
+                if (move != null && IsStoneInRange(move.Stone))
                 {
-                    Stone stone = move.Stone;
-                    if (IsStoneInRange(stone))
-                    {
-                        return stone;
-                    }
-                    else if (allStones != null && stone.X != 20)
-                    {
-                        allStones.Add(stone);
-                    }
+                    return move.Stone;
                 }
             }
 

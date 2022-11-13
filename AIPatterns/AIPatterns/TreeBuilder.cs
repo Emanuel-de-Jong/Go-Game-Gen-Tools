@@ -16,11 +16,11 @@ namespace AIPatterns
 
             foreach (Sequence sequence in sequenceList)
             {
-                foreach (KeyValuePair<Stone, List<Stone>> pair in sequence)
+                foreach (SequenceItem item in sequence)
                 {
-                    if (!game.Continue(pair.Key))
+                    if (!game.Continue(item.Stone))
                     {
-                        game.PlaceStone(pair.Key);
+                        game.PlaceStone(item.Stone);
                     }
 
                     string countStr = game.Game.CurrentComment;
@@ -32,9 +32,17 @@ namespace AIPatterns
                     GoNode node = game.Game.CurrentNode;
                     node.EnsureMarkup();
                     node.Markup.Marks.Clear();
-                    foreach (Stone stone in pair.Value)
+                    for (int y=0; y<G.BOARD_SIZE; y++)
                     {
-                        node.Markup.Marks.Add(new Mark(stone.X, stone.Y, stone.IsBlack ? MarkType.Mark : MarkType.Triangle));
+                        for (int x=0; x< G.BOARD_SIZE; x++)
+                        {
+                            if (item.BlackAndWhite[x, y])
+                            {
+                                Stone stone = new(x, y, item.Black[x, y]);
+                                if (game.Game.board.BlackAndWhite[x, y]) continue;
+                                node.Markup.Marks.Add(new Mark(stone.X, stone.Y, stone.IsBlack ? MarkType.Mark : MarkType.Triangle));
+                            }
+                        }
                     }
                 }
                 game.ToStart();
