@@ -26,6 +26,11 @@ namespace AIPatterns
             Add(new SequenceItem(stone, game.Game.board));
         }
 
+        public void Add(Stone stone, Board board)
+        {
+            Add(new SequenceItem(stone, board));
+        }
+
         public void PrintBoard(bool fromStart = true)
         {
             ToGame().PrintBoard(fromStart);

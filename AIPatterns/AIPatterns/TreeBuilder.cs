@@ -125,5 +125,40 @@ namespace AIPatterns
                 AddMarkup(childNode);
             }
         }
+
+        public static void RemoveRedundentPasses(GameWrap game)
+        {
+            game.ToStart();
+            RemoveRedundentPasses(game.Game.RootNode);
+            RemoveRedundentPasses(game.Game.RootNode);
+        }
+
+        private static bool RemoveRedundentPasses(GoNode node)
+        {
+            if (!node.HasChildren)
+            {
+                GoMoveNode? move = node as GoMoveNode;
+                if (move != null && move.Stone.X == 20)
+                {
+                    return false;
+                }
+            }
+
+            List<GoNode> nodesToRemove = new();
+            foreach (GoNode childNode in node.ChildNodes)
+            {
+                if (!RemoveRedundentPasses(childNode))
+                {
+                    nodesToRemove.Add(childNode);
+                }
+            }
+
+            foreach (GoNode childNode in nodesToRemove)
+            {
+                node.RemoveNode(childNode);
+            }
+
+            return true;
+        }
     }
 }

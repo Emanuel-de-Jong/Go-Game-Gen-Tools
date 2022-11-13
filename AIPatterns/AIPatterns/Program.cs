@@ -27,6 +27,7 @@ namespace AIPatterns
 
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList);
             TreeBuilder.FilterByCount(game, 4);
+            TreeBuilder.RemoveRedundentPasses(game);
             TreeBuilder.AddMarkup(game);
 
             game.SaveAsSgf(@"E:\Media\Downloads\AI-Josekis.sgf");

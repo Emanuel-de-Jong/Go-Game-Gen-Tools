@@ -94,7 +94,6 @@ namespace AIPatterns
                 game = GameUtils.Flip(game, false);
             }
 
-            List<Stone> allStones = new();
             Sequence sequence = new();
 
             // Add first stone
@@ -106,7 +105,7 @@ namespace AIPatterns
             stone = GetNextStoneInRange(game);
             if (stone.IsBlack)
             {
-                sequence.Add(new Stone(20, 20, true), game);
+                sequence.Add(new Stone(20, 20, true), game.Game.currentNode.ParentNode.BoardCopy);
             }
             sequence.Add(stone, game);
 
@@ -123,11 +122,11 @@ namespace AIPatterns
                     {
                         if (moveOutOfRange)
                         {
-                            sequence.Add(new Stone(20, 20, !lastColorBlack), game);
+                            sequence.Add(new Stone(20, 20, !lastColorBlack), game.Game.currentNode.ParentNode.BoardCopy);
 
                             if (stone.IsBlack != lastColorBlack)
                             {
-                                sequence.Add(new Stone(20, 20, lastColorBlack), game);
+                                sequence.Add(new Stone(20, 20, lastColorBlack), game.Game.currentNode.ParentNode.BoardCopy);
                             }
                         }
 
@@ -137,11 +136,6 @@ namespace AIPatterns
                         lastColorBlack = stone.IsBlack;
                     } else
                     {
-                        if (stone.X != 20)
-                        {
-                            allStones.Add(stone);
-                        }
-
                         moveOutOfRange = true;
                     }
                 }
