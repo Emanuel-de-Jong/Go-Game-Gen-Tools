@@ -52,15 +52,32 @@ namespace AIPatterns
 
         void AddSequenceFromGame(GameWrap game)
         {
+            // Check if first stone exists and is black
             game.ToStart();
             Stone? stone = GetNextStoneInRange(game);
             if (stone == null) return;
             bool isFirstStoneBlack = stone.IsBlack;
 
+            // Check if second stone exists and is in range
             stone = GetNextStoneInRange(game);
             if (stone == null) return;
             if (!IsStoneInRange(stone, SECOND_STONE_RANGE_X, SECOND_STONE_RANGE_Y)) return;
 
+            // Swap all stone colors if first stone not black
+            if (!isFirstStoneBlack)
+            {
+                game.ToStart();
+                while (game.ToNextMove())
+                {
+                    GoMoveNode? move = game.Game.CurrentNode as GoMoveNode;
+                    if (move != null)
+                    {
+                        move.Stone.IsBlack = !move.Stone.IsBlack;
+                    }
+                }
+            }
+
+            // Find first non diagnally centered stone
             game.ToStart();
             do
             {
@@ -69,29 +86,30 @@ namespace AIPatterns
 
             } while (G.BOARD_SIZE_INDEX - stone.X == stone.Y);
 
+            // Flip board if stone on wrong side
             if (G.BOARD_SIZE_INDEX - stone.X > stone.Y)
             {
                 game = GameUtils.Rotate(game);
                 game = GameUtils.Flip(game, false);
             }
 
-            game.ToStart();
-
             List<Stone> allStones = new();
             Sequence sequence = new();
 
+            // Add first stone
+            game.ToStart();
             stone = GetNextStoneInRange(game, allStones);
-            if (!isFirstStoneBlack) stone.IsBlack = !stone.IsBlack;
             sequence.Add(stone, allStones);
 
+            // Add second stone
             stone = GetNextStoneInRange(game, allStones);
-            if (!isFirstStoneBlack) stone.IsBlack = !stone.IsBlack;
             if (stone.IsBlack)
             {
                 sequence.Add(new Stone(20, 20, true), allStones);
             }
             sequence.Add(stone, allStones);
 
+            // Add other stones
             bool moveOutOfRange = false;
             bool lastColorBlack = stone.IsBlack;
             while (game.ToNextMove())
@@ -102,15 +120,13 @@ namespace AIPatterns
                     stone = move.Stone;
                     if (IsStoneInRange(move.Stone))
                     {
-                        if (!isFirstStoneBlack) stone.IsBlack = !stone.IsBlack;
-
                         if (moveOutOfRange)
                         {
-                            sequence.Add(new Stone(20, 20, true), allStones);
+                            sequence.Add(new Stone(20, 20, !lastColorBlack), allStones);
 
                             if (stone.IsBlack != lastColorBlack)
                             {
-                                sequence.Add(new Stone(20, 20, true), allStones);
+                                sequence.Add(new Stone(20, 20, lastColorBlack), allStones);
                             }
                         }
 
