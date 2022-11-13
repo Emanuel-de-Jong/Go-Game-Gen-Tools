@@ -59,8 +59,7 @@ namespace AIPatterns
 
         private static void FilterByCount(GoNode node, int minCount)
         {
-            List<GoNode> nodesToRemove = new List<GoNode>();
-            foreach (GoNode childNode in node.ChildNodes)
+            foreach (GoNode childNode in new List<GoNode>(node.ChildNodes))
             {
                 GoMoveNode? move = childNode as GoMoveNode;
                 if (move != null)
@@ -68,14 +67,9 @@ namespace AIPatterns
                     int.TryParse(move.Comment, out int count);
                     if (count < minCount)
                     {
-                        nodesToRemove.Add(childNode);
+                        node.RemoveNode(childNode);
                     }
                 }
-            }
-
-            foreach (GoNode childNode in nodesToRemove)
-            {
-                node.ChildNodes.Remove(childNode);
             }
 
             foreach (GoNode childNode in node.ChildNodes)
@@ -144,18 +138,12 @@ namespace AIPatterns
                 }
             }
 
-            List<GoNode> nodesToRemove = new();
-            foreach (GoNode childNode in node.ChildNodes)
+            foreach (GoNode childNode in new List<GoNode>(node.ChildNodes))
             {
                 if (!RemoveRedundentPasses(childNode))
                 {
-                    nodesToRemove.Add(childNode);
+                    node.RemoveNode(childNode);
                 }
-            }
-
-            foreach (GoNode childNode in nodesToRemove)
-            {
-                node.RemoveNode(childNode);
             }
 
             return true;
