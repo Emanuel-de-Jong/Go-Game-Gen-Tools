@@ -105,7 +105,7 @@ namespace AIPatterns
 
                 if (move.Stone.X == 20)
                 {
-                    node.Comment += "\nPass: " + text;
+                    node.Comment = "Pass: " + text + "\n" + node.Comment;
                 } else
                 {
                     node.Markup.Labels.Add(new TextLabel(move.Stone.X, move.Stone.Y, text));

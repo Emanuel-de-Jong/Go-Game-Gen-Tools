@@ -26,7 +26,7 @@ namespace AIPatterns
             //StoneTreeNode StoneTree = TreeBuilder.SequenceListToStoneTree(sequenceList);
 
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList);
-            TreeBuilder.FilterByCount(game, 3);
+            TreeBuilder.FilterByCount(game, 4);
             TreeBuilder.AddMarkup(game);
 
             game.SaveAsSgf(@"E:\Media\Downloads\AI-Josekis.sgf");
