@@ -141,8 +141,6 @@ namespace AIPatterns
                 }
             }
 
-            var board = game.Game.board;
-
             sequenceList.Add(sequence);
         }
 

@@ -59,17 +59,30 @@ namespace AIPatterns
 
         private static void FilterByCount(GoNode node, int minCount)
         {
+            GoMoveNode? move = node as GoMoveNode;
+
             foreach (GoNode childNode in new List<GoNode>(node.ChildNodes))
             {
-                GoMoveNode? move = childNode as GoMoveNode;
-                if (move != null)
+                GoMoveNode? childMove = childNode as GoMoveNode;
+                if (childMove == null) continue;
+
+                int.TryParse(childMove.Comment, out int count);
+                if (count >= minCount) continue;
+
+                bool removeChild = false;
+                if (move != null && move.Stone.X == 20)
                 {
-                    int.TryParse(move.Comment, out int count);
-                    if (count < minCount)
+                    removeChild = true;
+                } else
+                {
+                    foreach (GoNode childNode2 in node.ChildNodes)
                     {
-                        node.RemoveNode(childNode);
+                        int.TryParse(childNode2.Comment, out int count2);
+                        if (count2 > count) removeChild = true;
                     }
                 }
+
+                if (removeChild) node.RemoveNode(childNode);
             }
 
             foreach (GoNode childNode in node.ChildNodes)
