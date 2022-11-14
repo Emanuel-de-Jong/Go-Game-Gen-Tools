@@ -2,13 +2,13 @@ var settings = {};
 
 
 settings.init = function() {
-    settings.preVisits = 3000;
+    settings.preVisits = 3500;
     settings.preMoves = 60;
     settings.color = utils.randomInt(2) == 0 ? -1 : 1;
     settings.cornerChance44 = 40;
     settings.cornerChance34 = 30;
-    settings.cornerChance33 = 10;
-    settings.cornerChance45 = 15;
+    settings.cornerChance33 = 15;
+    settings.cornerChance45 = 10;
     settings.cornerChance35 = 5;
 
     settings.boardsize = 19;

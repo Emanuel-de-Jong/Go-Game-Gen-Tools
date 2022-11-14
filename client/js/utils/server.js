@@ -145,7 +145,18 @@ server.play = async function(coord, color = board.getColor()) {
 };
 
 server.sgf = async function() {
-    return server.sendRequest(fetch(server.URL + "sgf?preOptions=" + settings.preOptions, {
+    return server.sendRequest(fetch(server.URL +
+        "sgf?options=" + settings.preOptions +
+        "&color=" + settings.color +
+        "&visits=" + settings.preVisits +
+        "&moves=" + settings.preMoves +
+        "&minVisitsPerc=" + preMovePlacer.BASE_MIN_VISITS_PERC +
+        "&cornerChance44=" + settings.cornerChance44 +
+        "&cornerChance34=" + settings.cornerChance34 +
+        "&cornerChance33=" + settings.cornerChance33 +
+        "&cornerChance45=" + settings.cornerChance45 +
+        "&cornerChance35=" + settings.cornerChance35
+        , {
         method: "GET" })
         .then(response => {
             return response;

@@ -175,13 +175,31 @@ public class Kata {
         clearReader();
     }
 
-    public synchronized void sgf(int preOptions) throws Exception {
+    public synchronized void sgf(int options,
+                                 int color,
+                                 int visits,
+                                 int moves,
+                                 int minVisitsPerc,
+                                 int cornerChance44,
+                                 int cornerChance34,
+                                 int cornerChance33,
+                                 int cornerChance45,
+                                 int cornerChance35) throws Exception {
         write("printsgf");
         String sgfStr = reader.readLine().substring(2);
         clearReader();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM_HH-mm-ss");
-        File sgf = new File("sgfs\\" + preOptions + "_" + dtf.format(LocalDateTime.now()) + ".sgf");
+        File sgf = new File("sgfs\\"
+                + options +
+                "_" + color +
+                "_" + visits +
+                "_" + moves +
+                "_" + minVisitsPerc +
+                "_" + cornerChance44 + "-" + cornerChance34 + "-" + cornerChance33 + "-" + cornerChance45 + "-" + cornerChance35 +
+                "_" + dtf.format(LocalDateTime.now()) +
+                ".sgf");
+
         if (sgf.exists()) sgf.delete();
 
         if (sgf.createNewFile()) {
