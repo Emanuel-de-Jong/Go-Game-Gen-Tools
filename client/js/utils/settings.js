@@ -8,7 +8,7 @@ settings.init = function() {
     settings.cornerChance44 = 40;
     settings.cornerChance34 = 30;
     settings.cornerChance33 = 15;
-    settings.cornerChance45 = 10;
+    settings.cornerChance45 = 5;
     settings.cornerChance35 = 5;
 
     settings.boardsize = 19;
