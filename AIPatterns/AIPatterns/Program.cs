@@ -29,7 +29,40 @@ namespace AIPatterns
             //StoneTreeNode StoneTree = TreeBuilder.SequenceListToStoneTree(sequenceList);
 
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList);
-            TreeBuilder.FilterByCount(game, 6);
+            
+            //TreeBuilder.FilterByCount(game.Game.RootNode, 6);
+
+            foreach (GoNode node in game.Game.RootNode.ChildNodes)
+            {
+                GoMoveNode? move = node as GoMoveNode;
+                if (move == null) continue;
+
+                int minCount = 6;
+
+                Stone stone = move.Stone;
+                if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 3) // 4-4
+                {
+                    minCount = 6;
+                } else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 3) // 3-4
+                {
+                    minCount = 6;
+                }
+                else if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 4) // 4-5
+                {
+                    minCount = 4;
+                }
+                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 4) // 3-5
+                {
+                    minCount = 4;
+                }
+                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 2) // 3-3
+                {
+                    minCount = 3;
+                }
+
+                TreeBuilder.FilterByCount(node, minCount);
+            }
+
             TreeBuilder.RemoveRedundentPasses(game);
             TreeBuilder.AddMarkup(game);
 

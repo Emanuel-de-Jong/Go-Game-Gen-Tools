@@ -51,13 +51,12 @@ namespace AIPatterns
             return game;
         }
 
-        public static void FilterByCount(GameWrap game, int minCount)
+        public static void FilterByCount(GoNode node, int minCount)
         {
-            game.ToStart();
-            FilterByCount(game.Game.RootNode, minCount);
+            FilterByCountLoop(node, minCount);
         }
 
-        private static void FilterByCount(GoNode node, int minCount)
+        private static void FilterByCountLoop(GoNode node, int minCount)
         {
             GoMoveNode? move = node as GoMoveNode;
 
@@ -101,17 +100,17 @@ namespace AIPatterns
 
             foreach (GoNode childNode in node.ChildNodes)
             {
-                FilterByCount(childNode, minCount);
+                FilterByCountLoop(childNode, minCount);
             }
         }
 
         public static void AddMarkup(GameWrap game)
         {
             game.ToStart();
-            AddMarkup(game.Game.RootNode);
+            AddMarkupLoop(game.Game.RootNode);
         }
 
-        private static void AddMarkup(GoNode node)
+        private static void AddMarkupLoop(GoNode node)
         {
             List<KeyValuePair<GoMoveNode, int>> moveCounts = new();
             foreach (GoNode childNode in node.ChildNodes)
@@ -143,19 +142,19 @@ namespace AIPatterns
 
             foreach (GoNode childNode in node.ChildNodes)
             {
-                AddMarkup(childNode);
+                AddMarkupLoop(childNode);
             }
         }
 
         public static void RemoveRedundentPasses(GameWrap game)
         {
             game.ToStart();
-            RemoveRedundentPasses(game.Game.RootNode);
-            RemoveRedundentPasses(game.Game.RootNode);
-            RemoveRedundentPasses(game.Game.RootNode);
+            RemoveRedundentPassesLoop(game.Game.RootNode);
+            RemoveRedundentPassesLoop(game.Game.RootNode);
+            RemoveRedundentPassesLoop(game.Game.RootNode);
         }
 
-        private static bool RemoveRedundentPasses(GoNode node)
+        private static bool RemoveRedundentPassesLoop(GoNode node)
         {
             if (!node.HasChildren)
             {
@@ -168,7 +167,7 @@ namespace AIPatterns
 
             foreach (GoNode childNode in new List<GoNode>(node.ChildNodes))
             {
-                if (!RemoveRedundentPasses(childNode))
+                if (!RemoveRedundentPassesLoop(childNode))
                 {
                     node.RemoveNode(childNode);
                 }

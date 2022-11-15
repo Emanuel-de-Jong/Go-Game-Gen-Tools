@@ -1,5 +1,4 @@
 ﻿Order tree strains by grade
 Increase area by stones instead of static
-Remove count per start corner move (count as rounded percentage of highest comment count)
 Random playout
 Write in sgf comments which side and moves are inperfect
