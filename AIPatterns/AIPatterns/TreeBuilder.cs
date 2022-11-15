@@ -135,11 +135,13 @@ namespace AIPatterns
                 node.RemoveNode(move);
                 node.ChildNodes.Insert(i, move);
 
-                string text = ((char)(65 + i)).ToString();
+                string grade = ((char)(65 + i)).ToString();
+
+                node.Comment += "\n" + grade + ": " + moveCounts[i].Value;
 
                 if (move.Stone.X == 20)
                 {
-                    node.Comment = "Pass: " + text + "\n" + node.Comment;
+                    node.Comment += " Pass";
                 } else
                 {
                     if (isFirstNonPassMove)
@@ -148,7 +150,7 @@ namespace AIPatterns
                         node.GetChild(i);
                     }
 
-                    node.Markup.Labels.Add(new TextLabel(move.Stone.X, move.Stone.Y, text));
+                    node.Markup.Labels.Add(new TextLabel(move.Stone.X, move.Stone.Y, grade));
                 }
             }
 
