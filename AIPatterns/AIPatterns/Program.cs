@@ -21,12 +21,15 @@ namespace AIPatterns
         void Start()
         {
             SequenceGenerator sequenceGenerator = new();
-            SequenceList sequenceList = sequenceGenerator.Generate(@"E:\Media\Documents\MEGAsync\Go\Learning\AI-Josekis\");
+            SequenceList sequenceList = sequenceGenerator.Generate(new string[] {
+                @"E:\Media\Documents\MEGAsync\Go\Learning\AI-Josekis\",
+                @"E:\Media\Documents\MEGAsync\Go\Learning\AI-Josekis\1s with first stone 5"
+                });
 
             //StoneTreeNode StoneTree = TreeBuilder.SequenceListToStoneTree(sequenceList);
 
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList);
-            TreeBuilder.FilterByCount(game, 4);
+            TreeBuilder.FilterByCount(game, 6);
             TreeBuilder.RemoveRedundentPasses(game);
             TreeBuilder.AddMarkup(game);
 

@@ -21,9 +21,9 @@ namespace AIPatterns
             return game;
         }
 
-        public void Add(Stone stone, GameWrap game)
+        public void Add(GoMoveNode move, GameWrap game)
         {
-            Add(new SequenceItem(stone, game.Game.board));
+            Add(new SequenceItem(move.Stone, game.Game.board));
         }
 
         public void Add(Stone stone, Board board)

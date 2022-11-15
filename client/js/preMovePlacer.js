@@ -80,7 +80,7 @@ preMovePlacer.fillCorners = function(cornerCount) {
 
 preMovePlacer.play = async function(isFirstMove = false) {
 	let preOptions = settings.preOptions;
-	if (isFirstMove) preOptions = preMovePlacer.PRE_OPTIONS;
+	// if (isFirstMove) preOptions = preMovePlacer.PRE_OPTIONS;
 
 	preMovePlacer.suggestions = await server.analyze(settings.preVisits, preOptions, preMovePlacer.BASE_MIN_VISITS_PERC, preMovePlacer.BASE_MAX_VISIT_DIFF_PERC);
 	if (preMovePlacer.isStopped) return;

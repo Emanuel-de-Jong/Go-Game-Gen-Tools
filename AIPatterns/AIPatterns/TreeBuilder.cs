@@ -61,7 +61,8 @@ namespace AIPatterns
         {
             GoMoveNode? move = node as GoMoveNode;
 
-            foreach (GoNode childNode in new List<GoNode>(node.ChildNodes))
+            List<GoNode> childNodes = new List<GoNode>(node.ChildNodes);
+            foreach (GoNode childNode in childNodes)
             {
                 GoMoveNode? childMove = childNode as GoMoveNode;
                 if (childMove == null) continue;
@@ -75,10 +76,23 @@ namespace AIPatterns
                     removeChild = true;
                 } else
                 {
-                    foreach (GoNode childNode2 in node.ChildNodes)
+                    foreach (GoNode childNode2 in childNodes)
                     {
-                        int.TryParse(childNode2.Comment, out int count2);
-                        if (count2 > count) removeChild = true;
+                        GoMoveNode? childMove2 = childNode2 as GoMoveNode;
+                        if (childMove2 == null) continue;
+
+                        if (childMove2.Stone.X == 20)
+                        {
+                            removeChild = true;
+                            break;
+                        }
+
+                        int.TryParse(childMove2.Comment, out int count2);
+                        if (count2 > count || (count2 == count && childMove2.Stone.X == 20))
+                        {
+                            removeChild = true;
+                            break;
+                        }
                     }
                 }
 
@@ -136,6 +150,7 @@ namespace AIPatterns
         public static void RemoveRedundentPasses(GameWrap game)
         {
             game.ToStart();
+            RemoveRedundentPasses(game.Game.RootNode);
             RemoveRedundentPasses(game.Game.RootNode);
             RemoveRedundentPasses(game.Game.RootNode);
         }
