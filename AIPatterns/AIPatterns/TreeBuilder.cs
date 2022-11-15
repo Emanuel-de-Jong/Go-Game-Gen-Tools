@@ -126,9 +126,15 @@ namespace AIPatterns
             moveCounts.Sort((pair1, pair2) => pair1.Value.CompareTo(pair2.Value) * -1);
 
             node.EnsureMarkup();
+
+            bool isFirstNonPassMove = true;
             for (int i=0; i<moveCounts.Count; i++)
             {
                 GoMoveNode move = moveCounts[i].Key;
+
+                node.RemoveNode(move);
+                node.ChildNodes.Insert(i, move);
+
                 string text = ((char)(65 + i)).ToString();
 
                 if (move.Stone.X == 20)
@@ -136,6 +142,12 @@ namespace AIPatterns
                     node.Comment = "Pass: " + text + "\n" + node.Comment;
                 } else
                 {
+                    if (isFirstNonPassMove)
+                    {
+                        isFirstNonPassMove = false;
+                        node.GetChild(i);
+                    }
+
                     node.Markup.Labels.Add(new TextLabel(move.Stone.X, move.Stone.Y, text));
                 }
             }

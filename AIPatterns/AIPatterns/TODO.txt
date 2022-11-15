@@ -1,4 +1,2 @@
-﻿Order tree strains by grade
-Increase area by stones instead of static
-Random playout
+﻿Random playout
 Write in sgf comments which side and moves are inperfect
