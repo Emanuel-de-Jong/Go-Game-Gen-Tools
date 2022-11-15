@@ -190,14 +190,15 @@ public class Kata {
         clearReader();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM_HH-mm-ss");
-        File sgf = new File("sgfs\\"
-                + options +
+        File sgf = new File("sgfs\\" +
+                dtf.format(LocalDateTime.now()) +
+                "_" + options +
                 "_" + color +
                 "_" + visits +
                 "_" + moves +
                 "_" + minVisitsPerc +
                 "_" + cornerChance44 + "-" + cornerChance34 + "-" + cornerChance33 + "-" + cornerChance45 + "-" + cornerChance35 +
-                "_" + dtf.format(LocalDateTime.now()) +
+                "_0.3" +
                 ".sgf");
 
         if (sgf.exists()) sgf.delete();
