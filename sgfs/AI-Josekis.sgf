@@ -1,0 +1,1981 @@
+(;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[
+A: 1685
+B: 1207
+C: 251
+D: 247
+E: 151]LB[pd:A][qd:B][pe:C][qe:D][qc:E](;B[pd]C[1685
+A: 976
+B: 341 Pass
+C: 335
+D: 32]LB[qc:A][qf:C][qd:D]TR[ec]MA[ep](;W[qc]C[976
+A: 966
+B: 10 Pass]LB[qd:A]MA[cc][dd][ce][cf][cg][cp][ep]TR[ec][ed][de][df][dg][dh][pp](;B[qd]C[966
+A: 957]LB[pc:A]MA[cc][dd][ce][cf][cg][cp][ep]TR[ec][ed][de][df][dg][dh][pp]
+;W[pc]C[957
+A: 466
+B: 397
+C: 79
+D: 15 Pass]LB[nc:A][od:B][oc:C]MA[cc][dd][ce][cf][cg][cp][ep]TR[ec][ed][de][df][dg][dh][pp](;B[nc]C[466
+A: 412
+B: 53]LB[oc:A][nb:B]MA[cc][dd][ce][cf][cg][cp][ep]TR[ec][ed][de][df][dg][dh][pp](;W[oc]C[412
+A: 409]LB[od:A]MA[cc][dd][ce][cf][cg][cp][ep]TR[ec][ed][de][df][dg][dh][pp]
+;B[od]C[409
+A: 409]LB[nb:A]MA[cc][dd][ce][cf][cg][cp][ep]TR[ec][ed][de][df][dg][dh][pp]
+;W[nb]C[409
+A: 266 Pass
+B: 59
+C: 41
+D: 33]LB[rc:B][mc:C][pj:D]MA[cc][dd][ce][cf][cg][cp][ep]TR[ec][ed][de][df][dg][dh][pp](;B[]C[266
+A: 112 Pass
+B: 95
+C: 11
+D: 11
+E: 8]LB[mc:B][nd:C][ph:D][pi:E]TR[dd][om][np][eq][kq][nq]MA[dn][qn][io][cp][pp][iq][oq](;W[]C[112
+A: 48
+B: 29
+C: 14
+D: 8]LB[mc:A][rc:B][pk:C][pj:D]TR[dd][om][np][eq][kq][nq]MA[dn][qn][io][cp][pp][iq][oq](;B[mc]C[48
+A: 48]LB[mb:A]MA[dd][ql][om][np][eq][kq][nq][dr]TR[dn][qn][io][cp][pp][dq][iq][oq][cr]
+;W[mb]C[48
+A: 46]LB[lc:A]MA[dd][ql][om][np][eq][kq][nq][dr]TR[dn][qn][io][cp][pp][dq][iq][oq][cr]
+;B[lc]C[46]MA[dd][ql][om][np][eq][kq][nq][dr]TR[dn][qn][io][cp][pp][dq][iq][oq][cr])
+(;B[rc]C[29
+A: 24]LB[rb:A]MA[cc][cd][ce][bf][bg][qo][cp][dp][ep][qp][fq][gq][hq][qq][pr][qr]TR[dc][dd][de][cf][cg][ch][qm][qn][po][pp][cq][dq][eq][pq][fr][gr][or]
+;W[rb]C[24
+A: 13]LB[ob:A]MA[cc][cd][ce][bf][bg][qo][cp][dp][ep][qp][fq][gq][hq][qq][pr][qr]TR[dc][dd][de][cf][cg][ch][qm][qn][po][pp][cq][dq][eq][pq][fr][gr][or]
+;B[ob]C[13
+A: 6]LB[oa:A]MA[cc][cd][ce][bf][bg][qo][cp][dp][ep][qp][fq][gq][hq][qq][pr][qr]TR[dc][dd][de][cf][cg][ch][qm][qn][po][pp][cq][dq][eq][pq][fr][gr][or]
+;W[oa]C[6
+A: 6]LB[mb:A]MA[cc][cd][ce][bf][bg][qo][cp][dp][ep][qp][fq][gq][hq][qq][pr][qr]TR[dc][dd][de][cf][cg][ch][qm][qn][po][pp][cq][dq][eq][pq][fr][gr][or]
+;B[mb]C[6
+A: 6]LB[pb:A]MA[cc][cd][ce][bf][bg][qo][cp][dp][ep][qp][fq][gq][hq][qq][pr][qr]TR[dc][dd][de][cf][cg][ch][qm][qn][po][pp][cq][dq][eq][pq][fr][gr][or]
+;W[pb]C[6
+A: 4]LB[mc:A]MA[cc][cd][ce][bf][bg][qo][cp][dp][ep][qp][fq][gq][hq][qq][pr][qr]TR[dc][dd][de][cf][cg][ch][qm][qn][po][pp][cq][dq][eq][pq][fr][gr][or]
+;B[mc]C[4]TR[dc][ed][kp][op][pq]MA[ce][pl][do][qo][dq])
+(;B[pk]C[14]TR[cc][dh][dk][qm][qn][eo][fp][pp][eq][oq][cr]MA[fl][pm][dn][do][ho][no][cp][hq][nq][nr])
+(;B[pj]C[8]TR[cc][cl][cm][cn][dp][dq]MA[bm][bn][cp][np][qp][cq])
+)
+(;W[mc]C[95
+A: 95]LB[nd:A]TR[ec][cd][cp][dp][ep]MA[op][qp][cq][dq][fq]
+;B[nd]C[95
+A: 55
+B: 20
+C: 17 Pass]LB[rc:A][lb:B]TR[ec][cd][cp][dp][ep]MA[op][qp][cq][dq][fq](;W[rc]C[55
+A: 37 Pass]TR[ec][cd][cp][dp][ep]MA[op][qp][cq][dq][fq]
+;B[]C[37
+A: 8]LB[md:A]TR[ec][cd][cp][dp][ep]MA[op][qp][cq][dq][fq]
+;W[md]C[8]TR[ec][cd][cp][dp][ep]MA[op][qp][cq][dq][fq][gr])
+(;W[lb]C[20
+A: 13]LB[rc:A]MA[ec][cq]TR[cd][pp]
+;B[rc]C[13
+A: 13]LB[rb:A]MA[cc][cd][ce][bg][co][dq]TR[dc][dd][de][df][pp]
+;W[rb]C[13
+A: 11]LB[md:A]MA[cc][cd][ce][bg][co][dq]TR[dc][dd][de][df][pp]
+;B[md]C[11
+A: 11]LB[ld:A]MA[cc][cd][ce][bg][co][dq]TR[dc][dd][de][df][pp]
+;W[ld]C[11
+A: 11]LB[le:A]MA[cc][cd][ce][bg][co][dq]TR[dc][dd][de][df][pp]
+;B[le]C[11
+A: 11]LB[kd:A]MA[cc][cd][ce][bg][co][dq]TR[dc][dd][de][df][pp]
+;W[kd]C[11]MA[cc][cd][ce][bg][co][dq]TR[dc][dd][de][df][pp])
+(;W[]C[17
+A: 15 Pass]MA[cc][cd][cq]TR[dc][dd][pp]
+;B[]C[15
+A: 14]LB[rc:A]MA[cc][cd][cq]TR[dc][dd][pp]
+;W[rc]C[14]MA[cc][cd][ce][bf][cq]TR[dc][dd][de][cf][pp])
+)
+(;W[nd]C[11
+A: 11]LB[mc:A]TR[cc][po][qo][lp][mp][np][op]MA[do][pp][dq][kq][mq][nq][oq][qq]
+;B[mc]C[11
+A: 11]LB[mb:A]TR[cc][po][qo][lp][mp][np][op]MA[do][pp][dq][kq][mq][nq][oq][qq]
+;W[mb]C[11
+A: 7]LB[lc:A]TR[cc][po][qo][lp][mp][np][op]MA[do][pp][dq][kq][mq][nq][oq][qq]
+;B[lc]C[7
+A: 7]LB[ne:A]TR[cc][po][qo][lp][mp][np][op]MA[do][pp][dq][kq][mq][nq][oq][qq]
+;W[ne]C[7]TR[cc][po][qo][lp][mp][np][op]MA[do][pp][dq][kq][mq][nq][oq][qq])
+(;W[ph]C[11]MA[fb][cc][dc][ec][do][cp]TR[fc][cd][dd][ed][pp][eq])
+(;W[pi]C[8]TR[dd][co][pq]MA[qo][ep][dq])
+)
+(;B[rc]C[59
+A: 44
+B: 15]LB[rb:A][mc:B]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq](;W[rb]C[44
+A: 38]LB[ob:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;B[ob]C[38
+A: 15
+B: 12
+C: 8]LB[rd:A][pb:B][oa:C]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq](;W[rd]C[15
+A: 15]LB[qb:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;B[qb]C[15
+A: 15]LB[sc:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;W[sc]C[15
+A: 15]LB[pb:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;B[pb]C[15
+A: 15]LB[rc:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;W[rc]C[15
+A: 15]LB[mb:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;B[mb]C[15
+A: 15]LB[nd:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;W[nd]C[15
+A: 15]LB[mc:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;B[mc]C[15
+A: 12]LB[oe:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;W[oe]C[12
+A: 12]LB[ne:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;B[ne]C[12
+A: 12]LB[md:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;W[md]C[12
+A: 6]LB[of:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;B[of]C[6
+A: 6]LB[qf:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;W[qf]C[6
+A: 4]LB[pe:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;B[pe]C[4
+A: 4]LB[ld:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;W[ld]C[4
+A: 4]LB[kc:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;B[kc]C[4
+A: 3]LB[ph:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;W[ph]C[3
+A: 3]LB[oh:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;B[oh]C[3
+A: 3]LB[pi:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;W[pi]C[3
+A: 3]LB[lf:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;B[lf]C[3
+A: 3]LB[qk:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
+;W[qk]C[3]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq])
+(;W[pb]C[12
+A: 12]LB[mb:A]TR[dd][bl][cm][dn][jn][ko][cp][ip][jp][dq][eq][hq]MA[ck][cl][el][fm][ep][fp][kp][np][qp][fq][jq][kq]
+;B[mb]C[12]TR[dd][bl][cm][dn][jn][ko][cp][ip][jp][dq][eq][hq]MA[ck][cl][el][fm][ep][fp][kp][np][qp][fq][jq][kq])
+(;W[oa]C[8
+A: 7]LB[mb:A]TR[dc][de][qq]MA[cn][dp]
+;B[mb]C[7
+A: 7]LB[pb:A]TR[dc][de][qq]MA[cn][dp]
+;W[pb]C[7
+A: 5]LB[mc:A]TR[dc][de][qq]MA[cn][dp]
+;B[mc]C[5]MA[dd][ip][np][eq]TR[dn][cp][op][qp][oq])
+)
+(;W[mc]C[15
+A: 15]LB[nd:A]MA[eb][ec][ee][ef][pl][cp][dp][ep][fp][np][rp][bq][fq][oq][pq][qq][gr][nr][rr]TR[dc][cd][de][ch][lm][no][op][pp][qp][cq][dq][eq][gq][mq][nq][rq][fr][hr][mr]
+;B[nd]C[15
+A: 15]LB[lb:A]MA[eb][ec][ee][ef][pl][cp][dp][ep][fp][np][rp][bq][fq][oq][pq][qq][gr][nr][rr]TR[dc][cd][de][ch][lm][no][op][pp][qp][cq][dq][eq][gq][mq][nq][rq][fr][hr][mr]
+;W[lb]C[15
+A: 13]LB[qb:A]MA[eb][ec][ee][ef][pl][cp][dp][ep][fp][np][rp][bq][fq][oq][pq][qq][gr][nr][rr]TR[dc][cd][de][ch][lm][no][op][pp][qp][cq][dq][eq][gq][mq][nq][rq][fr][hr][mr]
+;B[qb]C[13
+A: 12]LB[pb:A]MA[dc][cf][cn][dn][do]TR[co][cp][dq][fq][qq]
+;W[pb]C[12
+A: 12]LB[pa:A]MA[dc][cf][cn][dn][do]TR[co][cp][dq][fq][qq]
+;B[pa]C[12
+A: 12]LB[ob:A]MA[dc][cf][cn][dn][do]TR[co][cp][dq][fq][qq]
+;W[ob]C[12]MA[dc][cf][cn][dn][do]TR[co][cp][dq][fq][qq])
+)
+(;B[mc]C[41
+A: 41]LB[mb:A]MA[cc][dd][ce][cf][cg][cp][ep]TR[ec][ed][de][df][dg][dh][pp]
+;W[mb]C[41
+A: 40]LB[lc:A]MA[cc][dd][ce][cf][cg][cp][ep]TR[ec][ed][de][df][dg][dh][pp]
+;B[lc]C[40]MA[cc][dd][ce][cf][cg][cp][ep]TR[ec][ed][de][df][dg][dh][pp])
+(;B[pj]C[33
+A: 33 Pass]TR[cc][do][cp]MA[op][qp][eq]
+;W[]C[33
+A: 11 Pass
+B: 9]LB[rj:B]TR[cc][do][cp]MA[op][qp][eq](;B[]C[11
+A: 8]LB[mc:A]TR[fc][cd][op][pp][qp][nq]MA[cq][oq][pq][qq][nr]
+;W[mc]C[8
+A: 8]LB[nd:A]MA[fa][eb][gb][bc][cc][dc][fc][el][em][gm][fn][fo][ko][mo][gp][op][qp][gq][jq]TR[bb][cb][db][ec][cd][dd][ed][cm][fm][en][eo][dp][fp][fq][kq][lq][or][qr]
+;B[nd]C[8]MA[fa][eb][gb][bc][cc][dc][fc][el][em][gm][fn][fo][ko][mo][gp][op][qp][gq][jq]TR[bb][cb][db][ec][cd][dd][ed][cm][fm][en][eo][dp][fp][fq][kq][lq][or][qr])
+(;B[rj]C[9]MA[fa][eb][gb][cc][dc][fc][gn][gp][lp][op][qp]TR[cb][db][ec][cd][dd][ed][ck][ql][dp][fp][fq])
+)
+)
+(;W[nb]C[53
+A: 28
+B: 19]LB[mc:A][mb:B]TR[cd][cp]MA[pp](;B[mc]C[28
+A: 25]LB[mb:A]MA[dd][kp][oq]TR[dn][pn][qp][dq]
+;W[mb]C[25
+A: 25]LB[lc:A]MA[dd][kp][oq]TR[dn][pn][qp][dq]
+;B[lc]C[25]MA[dd][kp][oq]TR[dn][pn][qp][dq])
+(;B[mb]C[19
+A: 17]LB[oc:A]TR[cd][cp]MA[pp]
+;W[oc]C[17
+A: 17]LB[nd:A]TR[cd][cp]MA[pp]
+;B[nd]C[17
+A: 17]LB[od:A]TR[cd][cp]MA[pp]
+;W[od]C[17
+A: 17]LB[oe:A]TR[cd][cp]MA[pp]
+;B[oe]C[17
+A: 12]LB[pe:A]TR[cd][cp]MA[pp]
+;W[pe]C[12
+A: 12]LB[re:A]MA[dc][ce][dq][hq][cr][dr][er][fr]TR[ck][do][dp][ep][qp][bq][cq][eq]
+;B[re]C[12
+A: 12]LB[pf:A]MA[dc][ce][dq][hq][cr][dr][er][fr]TR[ck][do][dp][ep][qp][bq][cq][eq]
+;W[pf]C[12
+A: 12]LB[of:A]MA[dc][ce][dq][hq][cr][dr][er][fr]TR[ck][do][dp][ep][qp][bq][cq][eq]
+;B[of]C[12
+A: 12]LB[og:A]MA[dc][ce][dq][hq][cr][dr][er][fr]TR[ck][do][dp][ep][qp][bq][cq][eq]
+;W[og]C[12
+A: 8]LB[ne:A]MA[dc][ce][dq][hq][cr][dr][er][fr]TR[ck][do][dp][ep][qp][bq][cq][eq]
+;B[ne]C[8
+A: 5]LB[rc:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr]
+;W[rc]C[5
+A: 5]LB[pg:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr]
+;B[pg]C[5
+A: 4]LB[qf:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr]
+;W[qf]C[4
+A: 4]LB[qg:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr]
+;B[qg]C[4
+A: 4]LB[rf:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr]
+;W[rf]C[4
+A: 4]LB[rg:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr]
+;B[rg]C[4
+A: 4]LB[sf:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr]
+;W[sf]C[4
+A: 3]LB[oh:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr]
+;B[oh]C[3
+A: 3]LB[ng:A]TR[cc][cp][fp]MA[pp][nq]
+;W[ng]C[3
+A: 3]LB[nh:A]TR[cc][cp][fp]MA[pp][nq]
+;B[nh]C[3
+A: 3]LB[mg:A]TR[cc][cp][fp]MA[pp][nq]
+;W[mg]C[3
+A: 3]LB[li:A]TR[cc][cp][fp]MA[pp][nq]
+;B[li]C[3]TR[cc][cp][fp]MA[pp][nq])
+)
+)
+(;B[od]C[397
+A: 237
+B: 89
+C: 70]LB[nb:A][nc:B][oc:C]TR[dd][dp]MA[pq](;W[nb]C[237
+A: 227 Pass]TR[dc][cp][dp][ep]MA[pp][cq][dq][fq]
+;B[]C[227
+A: 82 Pass
+B: 25
+C: 22
+D: 22
+E: 21
+F: 13
+G: 12]LB[mc:B][qj:C][ph:D][qk:E][pi:F][qh:G]TR[dc][cp][dp][ep]MA[pp][cq][dq][fq](;W[]C[82
+A: 19
+B: 11
+C: 11
+D: 8
+E: 7
+F: 7]LB[mc:A][qj:B][pj:C][pk:D][id:E][qk:F]TR[dc][cp][dp][ep]MA[pp][cq][dq][fq](;B[mc]C[19
+A: 16 Pass]MA[cc][dc][dd][df][cn][dn][fn][cp][cq]TR[cd][ce][cf][ch][do][dp][qp][dq][nq][cr]
+;W[]C[16
+A: 10]LB[mb:A]MA[cc][dc][dd][df][cn][dn][fn][cp][cq]TR[cd][ce][cf][ch][do][dp][qp][dq][nq][cr]
+;B[mb]C[10
+A: 9]LB[nc:A]MA[cc][dc][dd][df][cn][dn][fn][cp][cq]TR[cd][ce][cf][ch][ck][do][dp][qp][dq][nq][cr]
+;W[nc]C[9
+A: 9]LB[nd:A]MA[cc][dc][dd][df][cn][dn][fn][cp][cq]TR[cd][ce][cf][ch][ck][do][dp][qp][dq][nq][cr]
+;B[nd]C[9
+A: 9]LB[rd:A]MA[cc][dc][dd][df][cn][dn][fn][cp][cq]TR[cd][ce][cf][ch][ck][do][dp][qp][dq][nq][cr]
+;W[rd]C[9
+A: 9]LB[re:A]MA[cc][dc][dd][df][cn][dn][fn][cp][cq]TR[cd][ce][cf][ch][ck][do][dp][qp][dq][nq][cr]
+;B[re]C[9
+A: 9]LB[rc:A]MA[cc][dc][dd][df][cn][dn][fn][cp][cq]TR[cd][ce][cf][ch][ck][do][dp][qp][dq][nq][cr]
+;W[rc]C[9]MA[cc][dc][dd][df][cn][dn][fn][cp][cq]TR[cd][ce][cf][ch][ck][do][dp][qp][dq][nq][cr])
+(;B[qj]C[11]TR[fc][cd][cg][cp][dp][ep][fq][gq][hq]MA[ci][po][cq][dq][eq][pq][fr][gr])
+(;B[pj]C[11]TR[bb][dc][gc][ed][ee][ch][eh][dk][dn][dq]MA[bc][ce][fe][df][ef][fg][qn][jq][pq])
+(;B[pk]C[8]MA[cc][cd][ce][de][bg][hi][gl][fm][bn][gn][qn][co][do][go][cp][ep][fp][cq][eq][jq][nq][cr][dr][pr]TR[dd][ee][df][ef][ch][cj][gj][hk][bm][im][cn][dn][en][hn][eo][fo][ho][oo][gp][ip][pp][gq][er])
+(;B[id]C[7]MA[dc][cd][df][ff][cg][qm][rn][co][ep][fp][qp][qq]TR[ec][ed][ch][dh][cl][po][lp][pp][dq][eq][gq][pq])
+(;B[qk]C[7]TR[dc][cl][cm][pm][bn][qn][qo][cp][dp][ep][kq][nq]MA[dm][cn][en][on][pn][do][fo][fp][pp][qp][cq][dq][fq])
+)
+(;W[mc]C[25
+A: 9 Pass
+B: 7]LB[ph:B]MA[cc][cd][ce][bf][qn][pq]TR[dc][dd][de][cf][do][dq](;B[]C[9
+A: 7]LB[qh:A]TR[cc][do][dp][dq]MA[bn][cp][hp][pp][cq]
+;W[qh]C[7]TR[cc][do][dp][dq]MA[bn][cp][hp][pp][cq][nq])
+(;B[ph]C[7]MA[cc][cd][ce][bf][qn][pq]TR[dc][dd][de][cf][do][dq])
+)
+(;W[qj]C[22
+A: 14 Pass]TR[dd][nn][on][pn][qo][ep][fp][jp][pp][rp][fq][jq][pq][rr]MA[om][pm][qm][cn][qn][cp][dq][eq][kq][nq][qq][kr][or][pr]
+;B[]C[14
+A: 10]LB[ph:A]TR[dc][ed][dq]MA[ce][op][qp]
+;W[ph]C[10]TR[dc][de][di][cp][dp][ep][bq]MA[dk][ql][po][cq][dq][gq][pq][br][fr])
+(;W[ph]C[22]TR[cc][dn][do][mp][np][op][pp][qp][eq][lq][nq]MA[ol][ql][cm][co][cp][mq][oq][pq][qq][lr][mr][nr])
+(;W[qk]C[21]MA[dd][cn][qn][fq][iq]TR[cf][fo][dp][pp])
+(;W[pi]C[13]TR[dc][de][cp][dp][ep]MA[po][cq][dq][pq][fr])
+(;W[qh]C[12]TR[dd][dk][dl][dm][gm][hm][pm][ep][fp][lp][pp][fq][gr]MA[cl][cm][im][cn][hn][in][no][cp][hp][dq][eq][nq][hr])
+)
+(;W[nc]C[89
+A: 57 Pass
+B: 29]LB[rc:B]TR[dd][dp]MA[pq](;B[]C[57
+A: 33
+B: 21]LB[nd:A][mb:B]TR[dd][dp]MA[pq](;W[nd]C[33
+A: 20 Pass
+B: 11]LB[rc:B]TR[dd][cp][dp][ep]MA[cq][dq][pq][fr](;B[]C[20
+A: 18]LB[ne:A]TR[dd][cp][dp][ep]MA[cq][dq][pq][fr]
+;W[ne]C[18
+A: 8
+B: 8]LB[rc:A][qh:B]MA[fc][cq][dq][pq][fr]TR[dd][cp][dp][ep](;B[rc]C[8
+A: 8]LB[rb:A]MA[fc][cq][dq][pq][fr]TR[dd][cp][dp][ep]
+;W[rb]C[8
+A: 7]LB[qh:A]MA[fc][cq][dq][pq][fr]TR[dd][cp][dp][ep]
+;B[qh]C[7]MA[fc][cq][dq][pq][fr]TR[dd][cp][dp][ep])
+(;B[qh]C[8]MA[fc][cq][dq][pq][fr]TR[dd][cp][dp][ep])
+)
+(;B[rc]C[11]TR[dd][cp][dp][ep]MA[cq][dq][pq][fr])
+)
+(;W[mb]C[21]TR[cd][ed][cp][dp][ep][fp][fq]MA[qp][bq][cq][dq][eq][gq][oq][fr])
+)
+(;B[rc]C[29
+A: 22]LB[nd:A]TR[dd][do][dp][dq]MA[bn][cp][cq][pq]
+;W[nd]C[22
+A: 22 Pass]TR[dd][do][dp][dq]MA[bn][cp][cq][pq]
+;B[]C[22
+A: 19]LB[nf:A]MA[dd][do][dp][dq]TR[bn][cp][cq][pq]
+;W[nf]C[19
+A: 19 Pass]TR[dd][do][dp][dq]MA[bn][qn][cp][cq][pq]
+;B[]C[19
+A: 15 Pass]MA[dd][do][dp][dq]TR[bn][qn][cp][cq][pq]
+;W[]C[15
+A: 12]LB[kc:A]TR[dd][do][dp][dq]MA[bn][qn][cp][cq][pq]
+;B[kc]C[12
+A: 12 Pass]TR[cc][cd][dd][fd][cm][do][dp][dq]MA[dc][ec][fc][hc][bn][qn][cp][cq][pq]
+;W[]C[12
+A: 9]LB[oc:A]TR[cc][cd][dd][fd][cm][do][dp][dq]MA[dc][ec][fc][hc][bn][qn][cp][cq][pq]
+;B[oc]C[9
+A: 8]LB[ob:A]TR[cc][cd][dd][fd][bm][cm][an][dn][do][dp][dq][er]MA[dc][ec][fc][hc][bn][cn][qn][cp][cq][pq][cr][dr]
+;W[ob]C[8]TR[cc][cd][dd][fd][bm][cm][an][dn][do][dp][dq][er]MA[dc][ec][fc][hc][bn][cn][qn][cp][cq][pq][cr][dr])
+)
+(;W[oc]C[70
+A: 38
+B: 18
+C: 13]LB[nc:A][nd:B][mc:C]TR[dd][cq]MA[pq](;B[nc]C[38
+A: 38]LB[nb:A]TR[dd][cq]MA[pq]
+;W[nb]C[38
+A: 35 Pass]TR[dd][cq]MA[pq]
+;B[]C[35
+A: 7]LB[nd:A]MA[dd][cq]TR[pq]
+;W[nd]C[7
+A: 7]LB[mc:A]MA[fb][gb][cc][dc][ec][gi][co][do][bp][ep][fp][qp][bq][eq][gq][ar][er][gr]TR[fc][gc][hc][cd][dd][ed][cl][dm][bn][en][eo][dp][dq][oq][br][cr][dr][fr]
+;B[mc]C[7]MA[fb][gb][cc][dc][ec][gi][co][do][bp][ep][fp][qp][bq][eq][gq][ar][er][gr]TR[fc][gc][hc][cd][dd][ed][cl][dm][bn][en][eo][dp][dq][oq][br][cr][dr][fr])
+(;B[nd]C[18
+A: 15]LB[mb:A]TR[fc][cd][qo]MA[do][dq][pq]
+;W[mb]C[15
+A: 13 Pass]MA[cc][rn][qo][qp][qq]TR[qn][po][cp][ep][pp][pq]
+;B[]C[13
+A: 9 Pass]TR[cc][rn][qo][qp][qq]MA[qn][po][cp][ep][pp][pq]
+;W[]C[9
+A: 9]LB[pk:A]TR[ec][cd][qn][po][pp][pq]MA[rn][qo][dp][qp][qq]
+;B[pk]C[9
+A: 9 Pass]TR[ec][cd][ol][pm][pn][qn][po][pp][pq][qr]MA[pl][rl][qm][rn][qo][dp][qp][qq][rr]
+;W[]C[9
+A: 7 Pass]TR[ec][cd][ol][pm][pn][qn][po][pp][pq][qr]MA[pl][rl][qm][rn][qo][dp][qp][qq][rr]
+;B[]C[7
+A: 7]LB[ld:A]TR[ec][cd][ol][pm][pn][qn][po][pp][pq][qr]MA[pl][rl][qm][rn][qo][dp][qp][qq][rr]
+;W[ld]C[7]TR[ec][cd][ol][pm][pn][qn][po][pp][jq][pq][qr]MA[pl][rl][qm][cn][rn][qo][dp][qp][qq][rr])
+(;B[mc]C[13]MA[cc][cd][ce][bf][rn][qo][cp][dp][ep][qp][fq][qq]TR[dc][dd][de][cf][qn][po][pp][cq][dq][eq][pq][fr])
+)
+)
+(;B[oc]C[79
+A: 79]LB[ob:A]MA[fc][dd][hd][ce][cj][cm][hp][eq][hq][cr][hr][ir]TR[cf][df][gf][do][fo][ho][io][cp][ip][iq][qq][jr]
+;W[ob]C[79
+A: 79]LB[nb:A]MA[fc][dd][hd][ce][cj][cm][hp][eq][hq][cr][hr][ir]TR[cf][df][gf][do][fo][ho][io][cp][ip][iq][qq][jr]
+;B[nb]C[79
+A: 79]LB[nc:A]MA[fc][dd][hd][ce][cj][cm][hp][eq][hq][cr][hr][ir]TR[cf][df][gf][do][fo][ho][io][cp][ip][iq][qq][jr]
+;W[nc]C[79
+A: 79]LB[od:A]MA[fc][dd][hd][ce][cj][cm][hp][eq][hq][cr][hr][ir]TR[cf][df][gf][do][fo][ho][io][cp][ip][iq][qq][jr]
+;B[od]C[79
+A: 78]LB[mb:A]MA[fc][dd][hd][ce][cj][cm][hp][eq][hq][cr][hr][ir]TR[cf][df][gf][do][fo][ho][io][cp][ip][iq][qq][jr]
+;W[mb]C[78
+A: 78]LB[pb:A]MA[fc][dd][hd][ce][cj][cm][hp][eq][hq][cr][hr][ir]TR[cf][df][gf][do][fo][ho][io][cp][ip][iq][qq][jr]
+;B[pb]C[78
+A: 78]LB[na:A]MA[fc][dd][hd][ce][cj][cm][hp][eq][hq][cr][hr][ir]TR[cf][df][gf][do][fo][ho][io][cp][ip][iq][qq][jr]
+;W[na]C[78
+A: 77]LB[qb:A]MA[fc][dd][hd][ce][cj][cm][hp][eq][hq][cr][hr][ir]TR[cf][df][gf][do][fo][ho][io][cp][ip][iq][qq][jr]
+;B[qb]C[77
+A: 70 Pass]MA[fc][dd][hd][ce][cj][cm][hp][eq][hq][cr][hr][ir]TR[cf][df][gf][do][fo][ho][io][cp][ip][iq][qq][jr]
+;W[]C[70
+A: 39 Pass
+B: 15
+C: 7]LB[qk:B][me:C]MA[fc][dd][hd][ce][cj][cm][hp][eq][hq][cr][hr][ir]TR[cf][df][gf][do][fo][ho][io][cp][ip][iq][qq][jr](;B[]C[39
+A: 23
+B: 14]LB[rc:A][qk:B]TR[dd][ep][fp][pp][fq]MA[cn][cp][dq][eq](;W[rc]C[23
+A: 23]LB[rb:A]MA[fb][bc][cc][dc][ec][gc][fp][dq]TR[fc][cd][dd][ed][fd][dk][co][op][qp]
+;B[rb]C[23]MA[fb][bc][cc][dc][ec][gc][fp][dq]TR[fc][cd][dd][ed][fd][dk][co][op][qp])
+(;W[qk]C[14
+A: 14 Pass]MA[fc][cn][cp][dq][eq]TR[dd][ep][fp][pp][fq][nq]
+;B[]C[14
+A: 9 Pass]MA[fc][cn][cp][dq][eq]TR[dd][ep][fp][pp][fq][nq]
+;W[]C[9
+A: 9]LB[jc:A]MA[fc][dd][ep][fp][pp][fq]TR[cn][cp][dq][eq][nq]
+;B[jc]C[9]TR[dc][dd][fd][fe][fm][ep][fp][lp][pp][fq][nq]MA[ec][fc][gd][cf][cn][jn][cp][jp][dq][eq])
+)
+(;B[qk]C[15
+A: 15 Pass]MA[fb][cc][dc][ec][cl][co][np][pp]TR[fc][cd][dd][ed][po][ep][kp][dq][pq][qq]
+;W[]C[15
+A: 7]LB[me:A]MA[fb][cc][dc][ec][cl][co][np][pp]TR[fc][cd][dd][ed][po][ep][kp][dq][pq][qq]
+;B[me]C[7]MA[fb][cc][dc][ec][cl][co][np][pp]TR[fc][cd][dd][ed][oo][po][ep][kp][dq][pq][qq])
+(;B[me]C[7]TR[fc][dk][co][do][ep][fp][gp][pp]MA[dd][cf][dp][cq][eq][fq][hr])
+)
+(;B[]C[15
+A: 14 Pass]TR[cc][rn][qo][qp][qq]MA[qn][po][cp][pp][pq]
+;W[]C[14
+A: 9]LB[nc:A]TR[cc][rn][qo][qp][qq]MA[qn][po][cp][pp][pq]
+;B[nc]C[9
+A: 7]LB[oc:A]MA[fc][qm][rn][bo][co][qo][cp][ep][qp][qq]TR[dd][cf][pn][qn][po][bp][pp][cq][dq][pq][fr]
+;W[oc]C[7
+A: 7]LB[od:A]TR[ca][bb][cc][dd][cf][po][eq][pq]MA[cb][eb][dc][fc][do][cp][hq]
+;B[od]C[7
+A: 7]LB[nb:A]TR[ca][bb][cc][dd][cf][po][eq][pq]MA[cb][eb][dc][fc][do][cp][hq]
+;W[nb]C[7]TR[ca][bb][cc][dd][cf][po][eq][pq]MA[cb][eb][dc][fc][do][cp][hq])
+)
+(;B[]C[10
+A: 9 Pass]MA[dc][cf][op][pp][qp][nq]TR[dp][oq][pq][qq][nr]
+;W[]C[9
+A: 9]LB[qd:A]MA[dc][cf][op][pp][qp][nq]TR[dp][oq][pq][qq][nr]
+;B[qd]C[9
+A: 8]LB[pc:A]TR[dc][cf][np][op][pp][qp][nq]MA[dp][mq][oq][pq][qq][nr]
+;W[pc]C[8
+A: 6]LB[nc:A]TR[dc][cf][np][op][pp][qp][nq]MA[dp][mq][oq][pq][qq][nr]
+;B[nc]C[6
+A: 5]LB[oc:A]TR[dc][cf][np][op][pp][qp][nq]MA[dp][mq][oq][pq][qq][nr]
+;W[oc]C[5
+A: 5]LB[od:A]TR[dc][cf][np][op][pp][qp][nq]MA[dp][mq][oq][pq][qq][nr]
+;B[od]C[5
+A: 5]LB[nb:A]TR[dc][cf][np][op][pp][qp][nq]MA[dp][mq][oq][pq][qq][nr]
+;W[nb]C[5]TR[dc][cf][np][op][pp][qp][nq]MA[dp][mq][oq][pq][qq][nr])
+)
+(;W[]C[341
+A: 310
+B: 15
+C: 8
+D: 7]LB[qf:A][qg:B][qh:C][pf:D](;B[qf]C[310
+A: 216 Pass
+B: 51
+C: 14
+D: 10]LB[nc:B][pg:C][kc:D]MA[cc][ed][do][cp]TR[ce][di][qo][eq][pq](;W[]C[216
+A: 123 Pass
+B: 39
+C: 14]LB[kc:B][jc:C]MA[cc][ed][do][cp]TR[ce][di][qo][eq][pq](;B[]C[123
+A: 44
+B: 39
+C: 8]LB[pg:A][nc:B][jc:C]MA[cc][ed][do][cp]TR[ce][di][qo][eq][pq](;W[pg]C[44
+A: 31]LB[pf:A]MA[cc][cd][cf][cg][ci][bj][cm][em][fn][bo]TR[de][df][dh][ei][ck][ek][do][po][cp][jp][dq][qq]
+;B[pf]C[31
+A: 13 Pass
+B: 12]LB[qg:B]MA[cc][dk][dn]TR[fp][ip][qp][cq][oq](;W[]C[13
+A: 12]LB[kc:A]MA[bc][dc][bd][dd][ce][de][bn][co][cp][cq]TR[cc][cd][be][af][cf][bg][cn][do][po][dp][jp][dq][pq]
+;B[kc]C[12
+A: 12]LB[ng:A]MA[bc][dc][bd][dd][ce][de][bn][co][cp][cq]TR[cc][cd][be][af][cf][bg][pl][cn][do][po][dp][jp][dq][pq]
+;W[ng]C[12]MA[bc][dc][bd][dd][ce][de][bn][co][cp][cq]TR[cc][cd][be][af][cf][bg][pl][cn][do][po][dp][jp][dq][pq])
+(;W[qg]C[12]MA[bc][dc][bd][dd][ce][de][bn][co][cp][cq]TR[cc][cd][be][af][cf][bg][cn][do][po][dp][jp][dq][pq])
+)
+(;W[nc]C[39
+A: 11
+B: 9]LB[kc:A][oc:B]TR[ec][dp][pp]MA[cd][df](;B[kc]C[11
+A: 7]LB[pe:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;W[pe]C[7
+A: 5]LB[oe:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;B[oe]C[5
+A: 5]LB[pc:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;W[pc]C[5
+A: 5]LB[qc:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;B[qc]C[5
+A: 5]LB[qd:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;W[qd]C[5
+A: 5]LB[od:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;B[od]C[5
+A: 5]LB[rc:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;W[rc]C[5
+A: 5]LB[qb:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;B[qb]C[5
+A: 5]LB[qe:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;W[qe]C[5
+A: 5]LB[pf:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;B[pf]C[5
+A: 5]LB[rb:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;W[rb]C[5
+A: 5]LB[re:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;B[re]C[5
+A: 5]LB[rd:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;W[rd]C[5
+A: 5]LB[oc:A]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr]
+;B[oc]C[5]TR[cc][pn][ko][qp][kq][pq][qr]MA[dn][io][dq][iq][oq][pr])
+(;B[oc]C[9
+A: 9]LB[nd:A]TR[ec][dp][pp]MA[cd][df]
+;W[nd]C[9]TR[ec][dp][pp]MA[cd][df])
+)
+(;W[jc]C[8]MA[eb][ec][hc][dd][de][di][ei][ej][fj][fk][em][qo][dp][fp]TR[cc][dc][cd][ed][fd][bf][ef][eh][dj][dk][ek][cn][bp][np][hq][pq])
+)
+(;B[kc]C[39
+A: 12]LB[pj:A]TR[bc][dc][bd][dd][ce][de][cn][qo][qp][nq][pq]MA[cc][cd][be][af][cf][bg][pn][qn][po][dp]
+;W[pj]C[12
+A: 11]LB[ph:A]TR[bc][dc][bd][dd][ce][de][cn][qo][qp][nq][pq]MA[cc][cd][be][af][cf][bg][pn][qn][po][dp]
+;B[ph]C[11
+A: 10]LB[nj:A]TR[bc][dc][bd][dd][ce][de][cn][qo][qp][nq][pq]MA[cc][cd][be][af][cf][bg][pn][qn][po][dp]
+;W[nj]C[10
+A: 10 Pass]TR[bc][dc][bd][dd][ce][de][cn][qo][qp][nq][pq]MA[cc][cd][be][af][cf][bg][pn][qn][po][dp]
+;B[]C[10
+A: 10 Pass]TR[bc][dc][bd][dd][ce][de][cn][qo][qp][nq][pq]MA[cc][cd][be][af][cf][bg][pn][qn][po][dp]
+;W[]C[10
+A: 10]LB[lj:A]TR[bc][dc][bd][dd][ce][de][cn][qo][qp][nq][pq]MA[cc][cd][be][af][cf][bg][pn][qn][po][dp]
+;B[lj]C[10]TR[bc][dc][bd][dd][ce][de][cn][co][do][fo][qo][cp][ep][qp][cq][fq][nq][pq][cr]MA[cc][cd][be][af][cf][bg][dl][cm][em][dn][en][mn][pn][qn][eo][po][dp][dq][dr])
+(;B[jc]C[14]MA[ec][cd][ed][cj][om][np][qp][kq]TR[fd][ff][pl][pm][oo][po][cp][ep][iq][pq][qq])
+)
+(;W[nc]C[51
+A: 26 Pass
+B: 10
+C: 9]LB[kc:B][oc:C]TR[dc][ed][cq]MA[ce][pp](;B[]C[26
+A: 14]LB[pc:A]MA[dc][de][pp]TR[cq]
+;W[pc]C[14
+A: 14]LB[qc:A]TR[dc][de][op][pp][qp][nq]MA[cq][oq][pq][qq][nr]
+;B[qc]C[14
+A: 14]LB[qb:A]TR[dc][de][op][pp][qp][nq]MA[cq][oq][pq][qq][nr]
+;W[qb]C[14
+A: 8]LB[oc:A]TR[dc][de][op][pp][qp][nq]MA[cq][oq][pq][qq][nr]
+;B[oc]C[8
+A: 8]LB[pb:A]TR[dc][de][op][pp][qp][nq]MA[cq][oq][pq][qq][nr]
+;W[pb]C[8
+A: 4]LB[nd:A]TR[dc][de][op][pp][qp][nq]MA[cq][oq][pq][qq][nr]
+;B[nd]C[4
+A: 4]LB[ob:A]TR[dc][de][op][pp][qp][nq]MA[cq][oq][pq][qq][nr]
+;W[ob]C[4
+A: 4]LB[od:A]TR[dc][de][op][pp][qp][nq]MA[cq][oq][pq][qq][nr]
+;B[od]C[4
+A: 4]LB[mc:A]TR[dc][de][op][pp][qp][nq]MA[cq][oq][pq][qq][nr]
+;W[mc]C[4
+A: 4]LB[md:A]TR[dc][de][op][pp][qp][nq]MA[cq][oq][pq][qq][nr]
+;B[md]C[4]TR[dc][de][op][pp][qp][nq]MA[cq][oq][pq][qq][nr])
+(;B[kc]C[10]TR[dc][ed][dn][do][eq][qq]MA[ce][cm][co][cp])
+(;B[oc]C[9
+A: 9]LB[nd:A]TR[dc][ed][cq]MA[ce][pp]
+;W[nd]C[9]TR[dc][ed][cq]MA[ce][pp])
+)
+(;W[pg]C[14]TR[cc][pn][ko][qp][kq]MA[dn][dq][iq][oq])
+(;W[kc]C[10]TR[cc][cd][bf][po][cp][pp][pq][qr]MA[dc][dd][de][pn][qn][qp][qq])
+)
+(;B[qg]C[15]TR[dc][ed][ek][fk][dl][pl][ql][dm][cn][dn][kn][bo][do][ko][oo][po][ro][lp][qp][cq][eq][lq][rq]MA[ce][ej][dk][cl][bm][cm][om][qm][bn][nn][qn][co][lo][no][bp][cp][mp][op][mq][pq][qq])
+(;B[qh]C[8]TR[dc][ec][cd][cf][cp][pp][lq][nq][oq][qq]MA[fc][ed][fd][po][qo][mp][np][op])
+(;B[pf]C[7]TR[cc][qn][pq]MA[cq])
+)
+(;W[qf]C[335
+A: 156 Pass
+B: 85
+C: 23
+D: 15
+E: 8
+F: 8
+G: 7]LB[nc:B][qh:C][nd:D][pf:E][qe:F][ph:G]TR[cd][ed][cm][cn][co][dp][op][pp][qp][cq][lq][mq][nq]MA[cl][dl][dm][dn][do][ep][eq][oq][pq][qq][mr][nr](;B[]C[156
+A: 78
+B: 49 Pass
+C: 10]LB[nc:A][qc:C]TR[dc][fc][cd][ce][po][qo][pp][rp][pq][rq]MA[de][cf][df][rm][cn][qn][sn][ro][dp][qp][qq](;W[nc]C[78
+A: 30
+B: 23
+C: 21]LB[ne:A][nd:B][pf:C]TR[dc][fc][cd][ce][dj][fj][po][qo][pp][rp][pq][rq]MA[de][cf][df][gf][dl][rm][cn][qn][sn][ro][dp][qp][iq][qq](;B[ne]C[30
+A: 17
+B: 11]LB[lc:A][kc:B]MA[dd][cq][dq][fr]TR[cp][dp][ep][pp](;W[lc]C[17
+A: 14 Pass]MA[dd][cq][dq][fr]TR[cp][dp][ep][pp]
+;B[]C[14
+A: 13 Pass]MA[dd][cq][dq][fr]TR[cp][dp][ep][pp]
+;W[]C[13
+A: 7]LB[qj:A]MA[dd][cq][dq][fr]TR[cp][dp][ep][pp]
+;B[qj]C[7
+A: 7]LB[qh:A]TR[fc][ql][cp][dp][ep][np][pp]MA[dd][cf][on][qn][cq][dq][fr]
+;W[qh]C[7]TR[fc][ql][cp][dp][ep][np][pp]MA[dd][cf][on][qn][cq][dq][fr])
+(;W[kc]C[11]MA[dd][cq][dq][fr]TR[cp][dp][ep][pp])
+)
+(;B[nd]C[23
+A: 23]LB[md:A]TR[cc][cd][bf][po][cp][pp][lq][mq][pq][nr]MA[dc][dd][de][on][pn][qn][no][mp][op][qp][nq][qq]
+;W[md]C[23
+A: 22]LB[ne:A]TR[cc][cd][bf][po][cp][pp][lq][mq][pq][nr]MA[dc][dd][de][on][pn][qn][no][mp][op][qp][nq][qq]
+;B[ne]C[22
+A: 15]LB[pc:A]TR[cc][cd][bf][po][cp][pp][lq][mq][pq][nr]MA[dc][dd][de][on][pn][qn][no][mp][op][qp][nq][qq]
+;W[pc]C[15
+A: 14]LB[qc:A]MA[fb][bc][cc][dc][ec][gc][do][cp]TR[fc][cd][dd][ed][fd][eq][qq]
+;B[qc]C[14
+A: 14]LB[oc:A]MA[fb][bc][cc][dc][ec][gc][do][cp]TR[fc][cd][dd][ed][fd][eq][qq]
+;W[oc]C[14
+A: 9]LB[qd:A]MA[fb][bc][cc][dc][ec][gc][do][cp]TR[fc][cd][dd][ed][fd][eq][qq]
+;B[qd]C[9]MA[dd][cq][dq][fr]TR[cp][dp][ep][pp])
+(;B[pf]C[21
+A: 21]LB[pg:A]TR[dc][fc][cd][ce][dj][fj][po][qo][pp][rp][pq][rq]MA[de][cf][df][gf][dl][rm][cn][qn][sn][ro][dp][qp][iq][qq]
+;W[pg]C[21
+A: 19]LB[of:A]TR[dc][fc][cd][ce][dj][fj][po][qo][pp][rp][pq][rq]MA[de][cf][df][gf][dl][rm][cn][qn][sn][ro][dp][qp][iq][qq]
+;B[of]C[19
+A: 11]LB[qd:A]TR[dc][fc][cd][ce][dj][fj][po][qo][pp][rp][pq][rq]MA[de][cf][df][gf][dl][rm][cn][qn][sn][ro][dp][qp][iq][qq]
+;W[qd]C[11
+A: 6]LB[qc:A]TR[dc][fc][cd][ce][dj][fj][po][qo][pp][rp][pq][rq]MA[de][cf][df][gf][dl][rm][cn][qn][sn][ro][dp][qp][iq][qq]
+;B[qc]C[6
+A: 6]LB[qe:A]TR[dc][fc][cd][ce][dj][fj][po][qo][pp][rp][pq][rq]MA[de][cf][df][gf][dl][rm][cn][qn][sn][ro][dp][qp][iq][qq]
+;W[qe]C[6]TR[dc][fc][cd][ce][dj][fj][po][qo][pp][rp][pq][rq]MA[de][cf][df][gf][dl][rm][cn][qn][sn][ro][dp][qp][iq][qq])
+)
+(;W[]C[49
+A: 17
+B: 10]LB[qh:A][nc:B]TR[fb][gb][cc][dc][dn][pn][cp][pq]MA[fc][gc][hc][cd][dd][ip][eq](;B[qh]C[17
+A: 7]LB[of:A]TR[cc][cd][bf][po][cp][pp][lq][pq][qr]MA[dc][dd][de][on][pn][qn][qp][qq][rr]
+;W[of]C[7
+A: 7]LB[nd:A]TR[fb][cc][dc][cn][no][dp][pp]MA[cd][dd][ed][qn][fq][lq][nq]
+;B[nd]C[7
+A: 7]LB[qj:A]TR[fb][cc][dc][cn][no][dp][pp]MA[cd][dd][ed][qn][fq][lq][nq]
+;W[qj]C[7]TR[fb][cc][dc][cn][no][dp][pp]MA[cd][dd][ed][qn][fq][lq][nq])
+(;B[nc]C[10]TR[dc][fd][dn][do][jo][cp][fp][jp][lp][np][cq][jq][nq][br][cs]MA[ce][di][pn][eo][ho][dp][kp][pp][dq][hq][lq][oq][cr][er])
+)
+(;W[qc]C[10]MA[hc][cd][dh][cn][dn][do]TR[co][cp][dq][fq][qq])
+)
+(;B[nc]C[85
+A: 50 Pass
+B: 24
+C: 7]LB[qd:B][pk:C]MA[fc][dd]TR[np][qp][cq](;W[]C[50
+A: 32 Pass]MA[dd][cg][cn][dn][do]TR[co][cp][fp][dq][qq]
+;B[]C[32
+A: 16]LB[qd:A]MA[dd][cg][cn][dn][do]TR[co][cp][fp][dq][qq]
+;W[qd]C[16
+A: 16]LB[qc:A]MA[cb][cc][cd][ce][bf][cg][cp][dp][ep][eq][cr][dr]TR[dc][dd][de][cf][df][ei][qn][cq][dq][fq][pq][er][gr][fs]
+;B[qc]C[16
+A: 15]LB[rc:A]MA[cb][cc][cd][ce][bf][cg][cp][dp][ep][eq][cr][dr]TR[dc][dd][de][cf][df][ei][qn][cq][dq][fq][pq][er][gr][fs]
+;W[rc]C[15
+A: 12]LB[qe:A]TR[bb][cb][eb][dc][cd][ce][de][af][cf][bg][fl][bm][gm][cn][dn][eo][fo][dp][qp][dq][gq][oq][er]MA[fb][bc][cc][dd][ed][ee][df][cg][dg][bh][ch][dk][em][bn][en][bo][co][do][cp][cq][cr][dr]
+;B[qe]C[12
+A: 12]LB[rd:A]TR[bb][cb][eb][dc][cd][ce][de][af][cf][bg][fl][bm][gm][cn][dn][eo][fo][dp][qp][dq][gq][oq][er]MA[fb][bc][cc][dd][ed][ee][df][cg][dg][bh][ch][dk][em][bn][en][bo][co][do][cp][cq][cr][dr]
+;W[rd]C[12]TR[bb][cb][eb][dc][cd][ce][de][af][cf][bg][fl][bm][gm][cn][dn][eo][fo][dp][qp][dq][gq][oq][er]MA[fb][bc][cc][dd][ed][ee][df][cg][dg][bh][ch][dk][em][bn][en][bo][co][do][cp][cq][cr][dr])
+(;W[qd]C[24
+A: 24]LB[qc:A]MA[dc][ed][pq][qq][nr]TR[ce][op][pp][qp][cq]
+;B[qc]C[24
+A: 24]LB[rc:A]MA[dc][ed][pq][qq][nr]TR[ce][op][pp][qp][cq]
+;W[rc]C[24
+A: 18]LB[qe:A]MA[dc][ed][pq][qq][nr]TR[ce][op][pp][qp][cq]
+;B[qe]C[18
+A: 18]LB[rd:A]MA[cd][ed]TR[cq][qq]
+;W[rd]C[18
+A: 9
+B: 7]LB[pf:A][pe:B]MA[cd][ed]TR[cq][qq](;B[pf]C[9
+A: 8]LB[re:A]TR[dc][fd][cp][dp][eq][fq]MA[ce][cj][co][fp][qq]
+;W[re]C[8
+A: 8]LB[pe:A]TR[dc][fd][cp][dp][eq][fq]MA[ce][cj][co][fp][qq]
+;B[pe]C[8
+A: 8]LB[qg:A]TR[dc][fd][cp][dp][eq][fq]MA[ce][cj][co][fp][qq]
+;W[qg]C[8]TR[dc][fd][cp][dp][eq][fq]MA[ce][cj][co][fp][qq])
+(;B[pe]C[7
+A: 6]LB[re:A]MA[dd]TR[cq][qq]
+;W[re]C[6]MA[dd]TR[cq][qq])
+)
+(;W[pk]C[7]MA[fc][dd]TR[np][qp][cq])
+)
+(;B[qh]C[23]MA[dd][on][rn][po][qo][ro][qp][qq][pr][qr]TR[rm][pn][qn][no][oo][cp][pp][eq][mq][pq][or])
+(;B[nd]C[15]MA[fb][bc][cc][dc][ec][gc][cp][dp][ep][bq][fq][er][gr]TR[fc][cd][dd][ed][fd][ch][qn][cq][dq][eq][pq][br][dr][fr])
+(;B[pf]C[8
+A: 6]LB[pg:A]TR[ec][bl][cm][bn][co][cp][cq][qq]MA[hc][cd][de][cn][dn][do][dp][dq]
+;W[pg]C[6
+A: 6]LB[of:A]MA[ec][qo][dp][pp][qp][fq][oq][qq][pr]TR[cd][df][pm][on][qn][oo][po][op][nq][or]
+;B[of]C[6
+A: 3]LB[qd:A]MA[ec][qo][dp][pp][qp][fq][oq][qq][pr]TR[cd][df][pm][on][qn][oo][po][op][nq][or]
+;W[qd]C[3
+A: 2]LB[qc:A]MA[ec][qo][dp][pp][qp][fq][oq][qq][pr]TR[cd][df][pm][on][qn][oo][po][op][nq][or]
+;B[qc]C[2
+A: 1
+B: 1]LB[re:A][qe:B]MA[fc][cd][rm][rn][qo][pp][iq][lq][qq]TR[ql][rl][pn][qn][co][po][op][dq][oq](;W[re]C[1
+A: 1]LB[rc:A]MA[gb][cc][dc][fc][pp][nq]TR[cd][dd][ed][ci][cp][ep]
+;B[rc]C[1
+A: 1]LB[qj:A]MA[gb][cc][dc][fc][pp][nq]TR[cd][dd][ed][ci][cp][ep]
+;W[qj]C[1
+A: 1]LB[pi:A]MA[gb][cc][dc][fc][pp][nq]TR[cd][dd][ed][ci][cp][ep]
+;B[pi]C[1
+A: 1]LB[qi:A]MA[gb][cc][dc][fc][pp][nq]TR[cd][dd][ed][ci][cp][ep]
+;W[qi]C[1
+A: 1]LB[ph:A]MA[gb][cc][dc][fc][pp][nq]TR[cd][dd][ed][ci][cp][ep]
+;B[ph]C[1
+A: 1]LB[qg:A]MA[gb][cc][dc][fc][pp][nq]TR[cd][dd][ed][ci][cp][ep]
+;W[qg]C[1
+A: 1]LB[og:A]MA[gb][cc][dc][fc][pp][nq]TR[cd][dd][ed][ci][cp][ep]
+;B[og]C[1]MA[gb][cc][dc][fc][pp][nq]TR[cd][dd][ed][ci][cp][ep])
+(;W[qe]C[1
+A: 1]LB[pc:A]MA[fc][cd][rm][rn][qo][pp][iq][lq][qq]TR[ql][rl][pn][qn][co][po][op][dq][oq]
+;B[pc]C[1
+A: 1]LB[jd:A]MA[fc][cd][rm][rn][qo][pp][iq][lq][qq]TR[ql][rl][pn][qn][co][po][op][dq][oq]
+;W[jd]C[1
+A: 1]LB[lc:A]MA[fc][cd][rm][rn][qo][pp][iq][lq][qq]TR[ql][rl][pn][qn][co][po][op][dq][oq]
+;B[lc]C[1]MA[fc][cd][rm][rn][qo][pp][iq][lq][qq]TR[ql][rl][pn][qn][co][po][op][dq][oq])
+)
+(;B[qe]C[8
+A: 8]LB[pf:A]MA[ec][bm][cm][pm][qm][cn][do][qo][dp][qp][dq][iq][cr]TR[hc][cd][de][bn][pn][ao][co][po][bp][cp][kp][cq][oq][br]
+;W[pf]C[8]MA[ec][bm][cm][pm][qm][cn][do][qo][dp][qp][dq][iq][cr]TR[hc][cd][de][bn][pn][ao][co][po][bp][cp][kp][cq][oq][br])
+(;B[ph]C[7]MA[cc][cd][bf][pn][qn][po][dp]TR[dc][dd][de][qo][qp][nq][pq])
+)
+(;W[qd]C[32
+A: 25]LB[qc:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;B[qc]C[25
+A: 25]LB[qe:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;W[qe]C[25
+A: 21]LB[pc:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;B[pc]C[21
+A: 17]LB[qh:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;W[qh]C[17
+A: 15]LB[pf:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;B[pf]C[15
+A: 15]LB[qf:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;W[qf]C[15
+A: 15 Pass]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;B[]C[15
+A: 13]LB[qk:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;W[qk]C[13
+A: 9 Pass]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[gc][cd][dd][ed][nn][pn][qn][qp][qq]
+;B[]C[9
+A: 9 Pass]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[gc][cd][dd][ed][nn][pn][qn][qp][qq]
+;W[]C[9
+A: 9]LB[pg:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[gc][cd][dd][ed][nn][pn][qn][qp][qq]
+;B[pg]C[9]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr])
+)
+(;B[qd]C[1207
+A: 534
+B: 466 Pass
+C: 191
+D: 14]LB[oc:A][od:C][pd:D]TR[qo]MA[dp](;W[oc]C[534
+A: 188
+B: 185 Pass
+C: 100
+D: 24
+E: 15]LB[pe:A][pf:C][pc:D][lc:E]TR[dc][ce][qo]MA[dp][op][qq](;B[pe]C[188
+A: 169 Pass
+B: 6
+C: 6]LB[pk:B][lc:C]TR[dc][ce][qo]MA[dp][op][qq](;W[]C[169
+A: 77 Pass
+B: 43
+C: 13
+D: 13]LB[lc:B][nd:C][qk:D]TR[cc]MA[dp][pp](;B[]C[77
+A: 28
+B: 13
+C: 8
+D: 6]LB[lc:A][ld:B][qi:C][qk:D]TR[cc]MA[dp][pp](;W[lc]C[28]MA[bc][dc][bd][dd][ce][de][cl][cn][co][dp][cq]TR[cc][cd][be][af][cf][bg][dm][dn][do][ep][pp][eq])
+(;W[ld]C[13]TR[fc][dd][cn][qq]MA[co][dp][fp])
+(;W[qi]C[8]MA[fb][cc][dc][hl][hm][nm][jn][kn][pn][qn][fo][ho][gp][jp][kp][qp][lq][oq][pq][kr]TR[cd][dd][ed][ck][il][km][lm][ln][po][dp][hp][ip][np][op][fq][gq][hq][jq][kq][nq][ir][lr])
+(;W[qk]C[6]TR[dc][dl][mn][on][pn][rn][qo][cp][dp][ep][qp][rp][qq][pr][rr][qs]MA[ol][qm][rm][qn][po][ro][lp][np][pp][cq][dq][gq][pq][fr][or])
+)
+(;B[lc]C[43
+A: 19 Pass
+B: 16]LB[nd:B]MA[cd][fd]TR[cp][pp][fq](;W[]C[19
+A: 13 Pass]TR[dd][cm][dm][rm][qn][co][po][ro][cp][pp][pq][qr]MA[dn][rn][do][qo][ip][qp][rp][eq][qq][rr]
+;B[]C[13
+A: 8]LB[nd:A]TR[dd][cm][dm][rm][qn][co][po][ro][cp][pp][pq][qr]MA[dn][rn][do][qo][ip][qp][rp][eq][qq][rr]
+;W[nd]C[8]TR[cc][pp][cq][dq][eq][nq][fr][gr]MA[cp][dp][ep][fq][gq][hq])
+(;W[nd]C[16
+A: 7]LB[ic:A]MA[cd][fd]TR[cp][pp][fq]
+;B[ic]C[7]TR[cd][ed][dj][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr])
+)
+(;B[nd]C[13]TR[fc][dd][ci][do][cq][dq]MA[cf][dp][fp][pp])
+(;B[qk]C[13]TR[dc][ck][rl][rm][rn][qo][cp][dp][ep][qp][qq]MA[ql][qm][qn][po][pp][cq][dq][gq][pq][fr])
+)
+(;W[pk]C[6]TR[dc][ce][qo]MA[dp][op][qq])
+(;W[lc]C[6]MA[dc][ce]TR[dp][pp])
+)
+(;B[]C[185
+A: 93
+B: 66 Pass
+C: 9
+D: 6]LB[pe:A][pf:C][qg:D]MA[dc][fc][cd][ce]TR[de][cf][df][dp][pp](;W[pe]C[93
+A: 75
+B: 8]LB[qe:A][pc:B]MA[fb][hb][cc][dc][ec][gc][ch][cp][dp][ep]TR[fc][cd][dd][ed][fd][cq][dq][qq][fr](;B[qe]C[75
+A: 70]LB[pf:A]MA[fb][hb][cc][dc][ec][gc][ch][cp][dp][ep]TR[fc][cd][dd][ed][fd][cq][dq][qq][fr]
+;W[pf]C[70
+A: 51
+B: 12
+C: 7]LB[qg:A][qf:B][rg:C]MA[fb][hb][cc][dc][ec][gc][ch][cp][dp][ep]TR[fc][cd][dd][ed][fd][cq][dq][qq][fr](;B[qg]C[51
+A: 46 Pass]MA[fb][hb][cc][dc][ec][gc][ch][cp][dp][ep]TR[fc][cd][dd][ed][fd][cq][dq][qq][fr]
+;W[]C[46
+A: 21 Pass
+B: 14]LB[pg:B]TR[fb][hb][cc][dc][ec][gc][ch][cp][dp][ep]MA[fc][cd][dd][ed][fd][cq][dq][qq][fr](;B[]C[21
+A: 8]LB[pg:A]TR[fb][hb][cc][dc][ec][gc][ch][cp][dp][ep]MA[fc][cd][dd][ed][fd][cq][dq][qq][fr]
+;W[pg]C[8
+A: 8]LB[qh:A]MA[cb][dc][cl][do][dp][ep][bq][cq][eq]TR[cc][de][pp][dq][hq][cr][dr][er][fr]
+;B[qh]C[8]MA[cb][dc][cl][do][dp][ep][bq][cq][eq]TR[cc][de][pp][dq][hq][cr][dr][er][fr])
+(;B[pg]C[14]TR[cc][pn][op][pq]MA[cn][qo][dp])
+)
+(;B[qf]C[12
+A: 12]LB[pg:A]TR[cc][qp]MA[cq][oq]
+;W[pg]C[12
+A: 11]LB[qg:A]TR[cc][qp]MA[cq][oq]
+;B[qg]C[11]TR[cc][qp]MA[cq][oq])
+(;B[rg]C[7]TR[cc][qm][qn][qo][qp]MA[pm][pn][po][ip][cq][oq])
+)
+(;B[pc]C[8]MA[cc][cn][po][dq][oq]TR[ec][be][df][qp])
+)
+(;W[]C[66
+A: 19
+B: 17
+C: 8]LB[pc:A][pe:B][pf:C]MA[dc][fc][cd][ce]TR[de][cf][df][dp][pp](;B[pc]C[19
+A: 18]LB[od:A]MA[dc][fc][cd][ce][ci][dk][dl][cn][bp][fp][gp][hp][aq][bq][cq][dq][eq][br][fr]TR[de][cf][df][gf][el][en][hn][do][fo][cp][dp][ep][pp][fq][gq][iq][cr][dr][er][gr]
+;W[od]C[18
+A: 11
+B: 7]LB[qf:A][pf:B]MA[dc][fc][cd][ce][ci][dk][dl][cn][bp][fp][gp][hp][aq][bq][cq][dq][eq][br][fr]TR[de][cf][df][gf][el][en][hn][do][fo][cp][dp][ep][pp][fq][gq][iq][cr][dr][er][gr](;B[qf]C[11]MA[dc][fc][cd][ce][ci][dk][dl][cn][bp][fp][gp][hp][aq][bq][cq][dq][eq][br][fr]TR[de][cf][df][gf][el][en][hn][do][fo][cp][dp][ep][pp][fq][gq][iq][cr][dr][er][gr])
+(;B[pf]C[7]TR[dc][cm][qn][co][cp]MA[ce][dn][do][pp][eq])
+)
+(;B[pe]C[17]TR[dc][ec][gc][pp]MA[ed][fd][ce][dq])
+(;B[pf]C[8]TR[dc][ch][eh][cp][dp][ep][fq][oq][pq][qq][nr]MA[gd][de][op][pp][qp][cq][dq][eq][nq][fr])
+)
+(;W[pf]C[9]TR[dd][op][pq]MA[cn][qo][dp])
+(;W[qg]C[6]MA[cb][dc][dd][ce][de][pq][qq][nr]TR[cc][cd][cf][dp][op][pp][qp])
+)
+(;B[pf]C[100
+A: 62 Pass
+B: 23
+C: 10]LB[kd:B][qh:C]MA[dd][cf]TR[dp][pp](;W[]C[62
+A: 30 Pass
+B: 15
+C: 8]LB[kc:B][lc:C]MA[dd][cf]TR[dp][pp](;B[]C[30
+A: 11
+B: 9]LB[qh:A][kd:B]MA[cc][cd][ce][bf][dp]TR[dc][dd][de][cf][po][pq](;W[qh]C[11
+A: 6]LB[mc:A]TR[fc][dd][op][pp][qp][nq]MA[cq][oq][pq][qq][nr]
+;B[mc]C[6]TR[fc][dd][op][pp][qp][nq]MA[cq][oq][pq][qq][nr])
+(;W[kd]C[9]MA[cc][cd][ce][bf][co][do][bp][dp][bq][dq]TR[dc][dd][de][cf][bm][an][cn][bo][po][cp][cq][pq])
+)
+(;B[kc]C[15]MA[ec][dd][cf]TR[fc][fd][dp][pp])
+(;B[lc]C[8]TR[cc][ql][qo][pp][nq]MA[pn][qn][cp][fq])
+)
+(;W[kd]C[23
+A: 20 Pass]MA[dc][df]TR[dp][pp]
+;B[]C[20
+A: 6]LB[qh:A]MA[dc][df]TR[dp][pp]
+;W[qh]C[6]TR[dc][ce][de][pn][qq]MA[df][ff][cn][op][dq])
+(;W[qh]C[10]TR[cc][do][po][dp][dq][qq]MA[bn][cp][cq][lq][oq])
+)
+(;B[pc]C[24
+A: 22]LB[od:A]MA[fb][dc][gc][hc][dd][de][bj][ck][cn][en][rn][bo][eo][ep][gp][ip][jp][qp][eq][fq][qq]TR[cc][fc][cd][ed][gd][fe][cf][df][ef][dm][dn][do][fo][po][bp][dp][fp][pp][dq][hq][iq][pq][kr]
+;W[od]C[22
+A: 15
+B: 6]LB[qf:A][pf:B]MA[fb][dc][gc][hc][dd][de][bj][ck][cn][en][rn][bo][eo][ep][gp][ip][jp][qp][eq][fq][qq]TR[cc][fc][cd][ed][gd][fe][cf][df][ef][dm][dn][do][fo][po][bp][dp][fp][pp][dq][hq][iq][pq][kr](;B[qf]C[15]MA[dd]TR[cp][pp])
+(;B[pf]C[6]MA[fb][dc][gc][hc][dd][de][bj][ck][cn][en][rn][bo][eo][ep][gp][ip][jp][qp][eq][fq][qq]TR[cc][fc][cd][ed][gd][fe][cf][df][ef][dm][dn][do][fo][po][bp][dp][fp][pp][dq][hq][iq][pq][kr])
+)
+(;B[lc]C[15
+A: 8]LB[pe:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;W[pe]C[8
+A: 5]LB[pd:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;B[pd]C[5
+A: 5]LB[od:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;W[od]C[5
+A: 5]LB[oe:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;B[oe]C[5
+A: 4]LB[pf:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;W[pf]C[4
+A: 3]LB[of:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;B[of]C[3
+A: 3]LB[re:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;W[re]C[3
+A: 3]LB[rd:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;B[rd]C[3
+A: 3]LB[pg:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;W[pg]C[3
+A: 2]LB[og:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;B[og]C[2
+A: 2]LB[pc:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;W[pc]C[2
+A: 1
+B: 1]LB[qb:A][rb:B]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr](;B[qb]C[1
+A: 1]LB[qc:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;W[qc]C[1
+A: 1]LB[rc:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;B[rc]C[1
+A: 1]LB[rb:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;W[rb]C[1
+A: 1]LB[ra:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;B[ra]C[1
+A: 1]LB[sb:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;W[sb]C[1
+A: 1]LB[sc:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;B[sc]C[1
+A: 1]LB[ne:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;W[ne]C[1
+A: 1]LB[pb:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;B[pb]C[1
+A: 1]LB[md:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;W[md]C[1
+A: 1]LB[mf:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;B[mf]C[1
+A: 1]LB[ld:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;W[ld]C[1
+A: 1]LB[ph:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;B[ph]C[1
+A: 1]LB[qh:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;W[qh]C[1
+A: 1]LB[qi:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;B[qi]C[1
+A: 1]LB[pi:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;W[pi]C[1
+A: 1]LB[oh:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;B[oh]C[1
+A: 1]LB[ri:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;W[ri]C[1
+A: 1]LB[qg:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;B[qg]C[1
+A: 1]LB[qj:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;W[qj]C[1
+A: 1]LB[qe:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;B[qe]C[1
+A: 1]LB[kc:A]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq]
+;W[kc]C[1]MA[dd][ql][qn][qo][pp][qq]TR[pm][pn][po][dp][op][oq])
+(;B[rb]C[1
+A: 1]LB[qb:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;W[qb]C[1
+A: 1]LB[qc:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;B[qc]C[1
+A: 1]LB[pb:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;W[pb]C[1
+A: 1]LB[rf:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;B[rf]C[1
+A: 1]LB[qe:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;W[qe]C[1
+A: 1]LB[se:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;B[se]C[1
+A: 1]LB[ph:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;W[ph]C[1
+A: 1]LB[rh:A]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr]
+;B[rh]C[1]TR[bb][cc][cd][cf][df][ef][ck][cl][dn][do][po][dp][hp][pp][dq][hq][pq][er][fr]MA[cb][dc][hc][dd][de][cj][bn][cn][in][rn][cp][ip][qp][cq][fq][qq][cr][dr])
+)
+)
+(;W[]C[466
+A: 207
+B: 167
+C: 75
+D: 7]LB[od:A][nc:B][nd:C][oc:D]TR[dd]MA[qp](;B[od]C[207
+A: 183 Pass
+B: 9
+C: 6]LB[id:B][nd:C]TR[dd][cp][eq]MA[pp](;W[]C[183
+A: 66 Pass
+B: 55
+C: 21
+D: 10]LB[pj:B][jc:C][qk:D]MA[dd][cp][eq]TR[pp](;B[]C[66
+A: 9
+B: 8
+C: 8
+D: 7
+E: 6]LB[qj:A][mc:B][nd:C][jc:D][pj:E]TR[fb][cc][dc][ec][do][dp][qp][dq]MA[fc][cd][dd][ed][bn][cp][cq](;W[qj]C[9]TR[dc][ce][cp][ep]MA[pp][nq])
+(;W[mc]C[8]TR[cc][fc][co][do][no][ip][dq][nq]MA[cf][dj][dn][fn][qn][pp])
+(;W[nd]C[8
+A: 6]LB[ne:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;B[ne]C[6
+A: 6]LB[oc:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;W[oc]C[6
+A: 5]LB[oe:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;B[oe]C[5
+A: 5]LB[pc:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;W[pc]C[5
+A: 5]LB[md:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;B[md]C[5
+A: 4]LB[pd:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;W[pd]C[4
+A: 4]LB[pe:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;B[pe]C[4
+A: 4]LB[qc:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;W[qc]C[4
+A: 2
+B: 2]LB[nc:A][re:B]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr](;B[nc]C[2
+A: 2]LB[qe:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;W[qe]C[2
+A: 2]LB[qf:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;B[qf]C[2
+A: 2]LB[rd:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;W[rd]C[2]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr])
+(;B[re]C[2
+A: 1
+B: 1]LB[rd:A][nc:B]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr](;W[rd]C[1
+A: 1]LB[nc:A]TR[dc][qo][dp][np][op]MA[mq][oq][pq]
+;B[nc]C[1
+A: 1]LB[qe:A]TR[dc][qo][dp][np][op]MA[mq][oq][pq]
+;W[qe]C[1
+A: 1]LB[qf:A]TR[dc][qo][dp][np][op]MA[mq][oq][pq]
+;B[qf]C[1]TR[dc][qo][dp][np][op]MA[mq][oq][pq])
+(;W[nc]C[1
+A: 1]LB[rc:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;B[rc]C[1
+A: 1]LB[mc:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;W[mc]C[1
+A: 1]LB[ld:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;B[ld]C[1
+A: 1]LB[lc:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;W[lc]C[1
+A: 1]LB[kd:A]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr]
+;B[kd]C[1]TR[dc][de][cp][dp][ep][fq]MA[cq][dq][eq][qq][fr])
+)
+)
+(;W[jc]C[7
+A: 6]LB[lc:A]TR[cc][cd][bf][po][cp][ep][ip][pp][pq]MA[dc][dd][de][qm][rn][kp][qp][qq]
+;B[lc]C[6]TR[cc][cd][bf][po][cp][ep][ip][pp][pq]MA[dc][dd][de][qm][rn][kp][qp][qq])
+(;W[pj]C[6]TR[fb][gb][cc][dc][ec][do][dp][hp][qp][dq][nq][cr]MA[fc][gc][hc][cd][dd][ed][cm][bn][cp][cq][br])
+)
+(;B[pj]C[55
+A: 45 Pass
+B: 8]LB[mc:B]MA[ec][op][pp][qp][nq]TR[cd][de][cq][oq][pq][qq][nr](;W[]C[45
+A: 22 Pass
+B: 13]LB[ld:B]TR[ec][op][pp][qp][nq]MA[cd][de][cq][oq][pq][qq][nr](;B[]C[22
+A: 9]LB[lc:A]TR[ec][op][pp][qp][nq]MA[cd][de][cq][oq][pq][qq][nr]
+;W[lc]C[9]TR[fc][dd][fd][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gc][gd][op][pp][qp][cq][dq][fq][nq][er][gr][fs])
+(;B[ld]C[13
+A: 12 Pass]TR[fc][dd][fd][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[]C[12
+A: 12 Pass]MA[fc][dd][fd][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]TR[gd][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[]C[12
+A: 10]LB[qh:A]MA[fc][dd][fd][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]TR[gd][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[qh]C[10
+A: 8]LB[rj:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[rj]C[8
+A: 4
+B: 4]LB[ne:A][nh:B]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs](;W[ne]C[4
+A: 2
+B: 2]LB[nd:A][og:B]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs](;B[nd]C[2
+A: 2]LB[oi:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[oi]C[2
+A: 2]LB[oj:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[oj]C[2
+A: 2]LB[pe:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[pe]C[2
+A: 2]LB[pd:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[pd]C[2
+A: 2]LB[ni:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[ni]C[2
+A: 1
+B: 1]LB[mk:A][nj:B]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs](;B[mk]C[1
+A: 1]LB[li:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[li]C[1]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs])
+(;B[nj]C[1
+A: 1]LB[mi:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[mi]C[1
+A: 1]LB[lk:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[lk]C[1]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs])
+)
+(;B[og]C[2
+A: 2]LB[nd:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[nd]C[2
+A: 2]LB[nc:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[nc]C[2
+A: 2]LB[oe:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[oe]C[2
+A: 2]LB[pd:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[pd]C[2
+A: 2]LB[oh:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[oh]C[2
+A: 2]LB[pg:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[pg]C[2
+A: 2]LB[qi:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[qi]C[2
+A: 1
+B: 1]LB[qj:A][qg:B]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs](;B[qj]C[1
+A: 1]LB[mc:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;W[mc]C[1
+A: 1]LB[md:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;B[md]C[1
+A: 1]LB[oi:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;W[oi]C[1
+A: 1]LB[nk:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;B[nk]C[1
+A: 1]LB[qf:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;W[qf]C[1
+A: 1]LB[mf:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;B[mf]C[1
+A: 1]LB[re:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;W[re]C[1
+A: 1]LB[rd:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;B[rd]C[1
+A: 1]LB[mj:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;W[mj]C[1
+A: 1]LB[mh:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;B[mh]C[1
+A: 1]LB[nj:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;W[nj]C[1
+A: 1]LB[mk:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;B[mk]C[1
+A: 1]LB[lj:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;W[lj]C[1
+A: 1]LB[lk:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;B[lk]C[1
+A: 1]LB[kj:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
+;W[kj]C[1]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs])
+(;B[qg]C[1
+A: 1]LB[rg:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[rg]C[1
+A: 1]LB[rf:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[rf]C[1
+A: 1]LB[jc:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[jc]C[1
+A: 1]LB[jd:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[jd]C[1
+A: 1]LB[id:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[id]C[1
+A: 1]LB[je:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[je]C[1
+A: 1]LB[ib:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[ib]C[1
+A: 1]LB[oi:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[oi]C[1
+A: 1]LB[ie:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[ie]C[1]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs])
+)
+)
+(;W[nh]C[4
+A: 3]LB[nj:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;B[nj]C[3
+A: 2]LB[lh:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs]
+;W[lh]C[2]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs])
+)
+)
+(;W[mc]C[8]TR[cc][eq][hq][qq]MA[dn][cp])
+)
+(;B[jc]C[21]TR[cc][cd][bf][ql][qm][cn][qn][po][pp][dq][gq][pq]MA[dc][dd][de][rm][rn][qo][qp][iq][qq])
+(;B[qk]C[10]MA[ca][bb][db][cc][cd][ce][bf][df][cm][mp][qq]TR[eb][dc][dd][de][cf][ef][bg][cg][fj][bn][do][dq])
+)
+(;W[id]C[9]TR[cc][cd][bf][po][cp][ep][pp][pq]MA[dc][dd][de][rn][qp][qq])
+(;W[nd]C[6
+A: 5]LB[ne:A]TR[dc][qo][dp]MA[pq]
+;B[ne]C[5]TR[dc][qo][dp]MA[pq])
+)
+(;B[nc]C[167
+A: 158 Pass]MA[dd][eq]TR[do][cp][np][qp]
+;W[]C[158
+A: 80 Pass
+B: 8
+C: 8
+D: 7]LB[pi:B][qj:C][qk:D]MA[dd][eq]TR[do][cp][np][qp](;B[]C[80
+A: 16
+B: 9
+C: 6
+D: 6
+E: 6]LB[pd:A][pj:B][qj:C][lc:D][qi:E]TR[fb][cc][dc][op][pp][qp][nq]MA[cd][dd][ed][dq][oq][pq][qq][nr](;W[pd]C[16
+A: 8
+B: 6]LB[pe:A][pc:B]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq](;B[pe]C[8
+A: 6]LB[qc:A]MA[ca][bb][db][fb][gb][cc][dc][ec][fd][fe][fg][dh][cl][en][cp][dp][ep][fp][fq][gq][hq]TR[ab][bc][fc][gc][hc][cd][dd][ed][dk][fk][gm][fo][ho][qo][ip][cq][dq][eq][iq][pq][fr][gr]
+;W[qc]C[6
+A: 5]LB[pc:A]TR[dd][co][op][qp]MA[ep][dq]
+;B[pc]C[5
+A: 5]LB[od:A]TR[dd][co][op][qp]MA[ep][dq]
+;W[od]C[5
+A: 5]LB[oc:A]TR[dd][co][op][qp]MA[ep][dq]
+;B[oc]C[5
+A: 5]LB[qe:A]TR[dd][co][op][qp]MA[ep][dq]
+;W[qe]C[5
+A: 5]LB[rd:A]TR[dd][co][op][qp]MA[ep][dq]
+;B[rd]C[5
+A: 5]LB[pf:A]TR[dd][co][op][qp]MA[ep][dq]
+;W[pf]C[5
+A: 5]LB[oe:A]TR[dd][co][op][qp]MA[ep][dq]
+;B[oe]C[5
+A: 5]LB[nd:A]TR[dd][co][op][qp]MA[ep][dq]
+;W[nd]C[5
+A: 3]LB[md:A]TR[dd][co][op][qp]MA[ep][dq]
+;B[md]C[3
+A: 3]LB[ne:A]TR[dd][co][op][qp]MA[ep][dq]
+;W[ne]C[3
+A: 3]LB[of:A]TR[dd][co][op][qp]MA[ep][dq]
+;B[of]C[3
+A: 2]LB[me:A]TR[dd][co][op][qp]MA[ep][dq]
+;W[me]C[2
+A: 2]LB[qf:A]TR[dd][co][op][qp]MA[ep][dq]
+;B[qf]C[2
+A: 2]LB[mc:A]TR[dd][co][op][qp]MA[ep][dq]
+;W[mc]C[2
+A: 2]LB[mb:A]TR[dd][co][op][qp]MA[ep][dq]
+;B[mb]C[2
+A: 2]LB[ld:A]TR[dd][co][op][qp]MA[ep][dq]
+;W[ld]C[2
+A: 2]LB[lb:A]TR[dd][co][op][qp]MA[ep][dq]
+;B[lb]C[2
+A: 2]LB[kc:A]TR[dd][co][op][qp]MA[ep][dq]
+;W[kc]C[2
+A: 2]LB[kb:A]TR[dd][co][op][qp]MA[ep][dq]
+;B[kb]C[2
+A: 2]LB[ic:A]TR[dd][co][op][qp]MA[ep][dq]
+;W[ic]C[2
+A: 2]LB[jc:A]TR[dd][co][op][qp]MA[ep][dq]
+;B[jc]C[2
+A: 2]LB[jd:A]TR[dd][co][op][qp]MA[ep][dq]
+;W[jd]C[2
+A: 2]LB[jb:A]TR[dd][co][op][qp]MA[ep][dq]
+;B[jb]C[2]TR[dd][co][op][qp]MA[ep][dq])
+(;B[pc]C[6
+A: 6]LB[qe:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;W[qe]C[6
+A: 3
+B: 3]LB[rd:A][od:B]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq](;B[rd]C[3
+A: 2]LB[qc:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;W[qc]C[2
+A: 2]LB[od:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;B[od]C[2
+A: 2]LB[pe:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;W[pe]C[2
+A: 2]LB[rc:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;B[rc]C[2
+A: 2]LB[oe:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;W[oe]C[2
+A: 1
+B: 1]LB[pi:A][ne:B]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq](;B[pi]C[1
+A: 1]LB[md:A]TR[dc][de][cl][bm][em][nm][bo][eo][go][gp][np][op][pp][qp][eq][hq][kq][nq][er][hr][ir][jr][kr][or]MA[pl][dn][hn][qn][ho][bp][cp][hp][kp][dq][gq][iq][jq][lq][mq][oq][pq][qq][dr][lr][nr][pr]
+;W[md]C[1
+A: 1]LB[mc:A]TR[dc][de][cl][bm][em][nm][bo][eo][go][gp][np][op][pp][qp][eq][hq][kq][nq][er][hr][ir][jr][kr][or]MA[pl][dn][hn][qn][ho][bp][cp][hp][kp][dq][gq][iq][jq][lq][mq][oq][pq][qq][dr][lr][nr][pr]
+;B[mc]C[1]TR[dc][de][cl][bm][em][nm][bo][eo][go][gp][np][op][pp][qp][eq][hq][kq][nq][er][hr][ir][jr][kr][or]MA[pl][dn][hn][qn][ho][bp][cp][hp][kp][dq][gq][iq][jq][lq][mq][oq][pq][qq][dr][lr][nr][pr])
+(;B[ne]C[1
+A: 1]LB[nf:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;W[nf]C[1
+A: 1]LB[me:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;B[me]C[1
+A: 1]LB[mf:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;W[mf]C[1
+A: 1]LB[le:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;B[le]C[1
+A: 1]LB[qb:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;W[qb]C[1
+A: 1]LB[rb:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;B[rb]C[1
+A: 1]LB[qi:A]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq]
+;W[qi]C[1]MA[dc][cg][pp][oq][qq][mr][nr]TR[ce][cn][po][qo][np][op][dq][nq])
+)
+(;B[od]C[3
+A: 3]LB[pe:A]TR[cd][ed][eq][pq]MA[po][cp]
+;W[pe]C[3
+A: 3]LB[rd:A]TR[cd][ed][eq][pq]MA[po][cp]
+;B[rd]C[3]TR[cd][ed][eq][pq]MA[po][cp])
+)
+)
+(;W[pj]C[9]MA[fc][dd][ci][ei][eq][cr]TR[cf][ck][do][ho][cp][np][qp][hq])
+(;W[qj]C[6]MA[bb][cb][dc][dd][ce][de][ci][cl][dl][fl][cn][in][ln][co][go][cp][gp][lp][mp][rp][fq][iq][nq][pq][qq][rq][nr][or]TR[cc][cd][be][cf][df][ff][il][dm][km][dn][kn][ko][ro][dp][fp][hp][kp][np][op][pp][qp][cq][dq][gq][hq][kq][mq][mr][ns])
+(;W[lc]C[6]TR[dc][ec][cd][cf][ol][rl][qm][cn][dn][rn][qo][ro][qp][rp][cq][qq]MA[fc][ed][fd][fg][pn][qn][do][po][pp][sp][fq][iq][pq][rq][qr])
+(;W[qi]C[6]MA[fb][cc][dc][op][pp][qp][lq][mq][nq]TR[cd][dd][ed][do][dq][oq][pq][qq][mr][nr])
+)
+(;B[pi]C[8]TR[dd][fd][qq]MA[cq])
+(;B[qj]C[8]TR[cc][cd][bf][cm][do][eo][ho][cp][kp][np][qp][hq]MA[dc][dd][de][en][gn][fo][fp][eq][cr])
+(;B[qk]C[7]MA[ec][om][rm][pn][qn][qo][cp][dp][ep][qp][fq][qq][pr][qr]TR[cd][de][rl][pm][qm][nn][on][po][pp][cq][dq][eq][nq][pq][fr][or])
+)
+(;B[nd]C[75
+A: 69 Pass]MA[fb][bc][cc][dc][ec][bd][ed][ce][fe][qp]TR[gb][fc][cd][dd][fd][be][ee][he][ef][ff][dp]
+;W[]C[69
+A: 37 Pass
+B: 14
+C: 7]LB[pj:B][pi:C]MA[fb][bc][cc][dc][ec][bd][ed][ce][fe][qp]TR[gb][fc][cd][dd][fd][be][ee][he][ef][ff][dp](;B[]C[37
+A: 12
+B: 9]LB[pk:A][lc:B]TR[dd][dp]MA[pq](;W[pk]C[12]TR[dd][qo][dp]MA[np][pq])
+(;W[lc]C[9]TR[cd][ed][cn][dp]MA[pn][fq][pq])
+)
+(;B[pj]C[14]MA[cc][cd][bf][bg][op][pp][qp][nq]TR[dc][dd][cf][cg][ch][cq][oq][pq][qq][nr])
+(;B[pi]C[7]MA[cc][qn]TR[dp][pp][fq][nq])
+)
+(;B[oc]C[7]TR[cc][dp]MA[pq])
+)
+(;W[od]C[191
+A: 134
+B: 40 Pass
+C: 11]LB[oc:A][lc:C]TR[dd][pp]MA[dp](;B[oc]C[134
+A: 133]LB[nc:A]TR[dd][pp]MA[dp]
+;W[nc]C[133
+A: 133]LB[pc:A]TR[dd][pp]MA[dp]
+;B[pc]C[133
+A: 132]LB[nd:A]TR[dd][pp]MA[dp]
+;W[nd]C[132
+A: 85
+B: 38]LB[qf:A][pf:B]TR[dd][pp]MA[dp](;B[qf]C[85
+A: 69 Pass
+B: 12]LB[jd:B]TR[dd][pp]MA[dp](;W[]C[69
+A: 18
+B: 17 Pass
+C: 6]LB[jd:A][ld:C]TR[dd][pp]MA[dp](;B[jd]C[18
+A: 16 Pass]TR[fc][dd][ci][pp][cq][dq][fq][er][gr][fs]MA[cp][dp][ep][eq][nq][cr][dr]
+;W[]C[16
+A: 12]LB[jf:A]TR[fc][dd][ci][pp][cq][dq][fq][er][gr][fs]MA[cp][dp][ep][eq][nq][cr][dr]
+;B[jf]C[12
+A: 12]LB[ng:A]TR[fc][dd][hd][ci][pp][cq][dq][fq][er][gr][fs]MA[cp][dp][ep][eq][nq][cr][dr]
+;W[ng]C[12
+A: 11 Pass]TR[fc][dd][hd][ci][pp][cq][dq][fq][er][gr][fs]MA[cp][dp][ep][eq][nq][cr][dr]
+;B[]C[11
+A: 10]LB[jh:A]TR[fc][dd][hd][ci][pp][cq][dq][fq][er][gr][fs]MA[cp][dp][ep][eq][nq][cr][dr]
+;W[jh]C[10]TR[fc][dd][hd][ci][mo][no][oo][lp][np][pp][qp][rp][cq][dq][fq][mq][er][gr][fs]MA[on][qn][po][cp][dp][ep][op][eq][nq][oq][pq][qq][rq][cr][dr])
+(;B[]C[17
+A: 6
+B: 6]LB[id:A][jd:B]TR[dd][pp]MA[dp](;W[id]C[6]MA[fc][cp][dp][ep]TR[dd][pp][cq][dq][fr])
+(;W[jd]C[6]MA[fc][cp][dp][ep]TR[dd][pp][cq][dq][fr])
+)
+(;B[ld]C[6
+A: 3]LB[mg:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[mg]C[3
+A: 1
+B: 1
+C: 1]LB[og:A][lf:B][lb:C]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr](;B[og]C[1
+A: 1]LB[kd:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[kd]C[1
+A: 1]LB[lc:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;B[lc]C[1
+A: 1]LB[le:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[le]C[1
+A: 1]LB[me:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;B[me]C[1
+A: 1]LB[jc:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[jc]C[1
+A: 1]LB[lb:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;B[lb]C[1
+A: 1]LB[lf:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[lf]C[1
+A: 1]LB[nf:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;B[nf]C[1]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr])
+(;B[lf]C[1
+A: 1]LB[pg:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[pg]C[1
+A: 1]LB[qg:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;B[qg]C[1
+A: 1]LB[lg:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[lg]C[1
+A: 1]LB[kf:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;B[kf]C[1
+A: 1]LB[ph:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[ph]C[1
+A: 1]LB[kg:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;B[kg]C[1]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr])
+(;B[lb]C[1
+A: 1]LB[pg:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[pg]C[1
+A: 1]LB[qg:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;B[qg]C[1
+A: 1]LB[mb:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[mb]C[1
+A: 1]LB[lf:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;B[lf]C[1
+A: 1]LB[lg:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[lg]C[1
+A: 1]LB[kf:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;B[kf]C[1
+A: 1]LB[ph:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[ph]C[1
+A: 1]LB[qh:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;B[qh]C[1
+A: 1]LB[pi:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;W[pi]C[1
+A: 1]LB[kg:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
+;B[kg]C[1]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr])
+)
+)
+(;W[jd]C[12]TR[cc][cq]MA[qo][pq])
+)
+(;B[pf]C[38
+A: 13]LB[jd:A]TR[dd][en][fn][bo][eo][ho][cp][dp][fp][fq][gr]MA[co][fo][bp][ep][np][qp][bq][cq][dq][eq][fr]
+;W[jd]C[13]TR[dd][en][fn][bo][eo][ho][cp][dp][fp][fq][gr]MA[co][fo][bp][ep][np][qp][bq][cq][dq][eq][fr])
+)
+(;B[]C[40
+A: 16
+B: 12 Pass
+C: 9]LB[qc:A][qe:C]TR[ec][cd][cl][cn][dn][do][ep][eq]MA[bm][bn][co][qo][dp][cq][iq][pq](;W[qc]C[16
+A: 9]LB[rc:A]MA[cb][cc][hc][dd][ed][ce][de][mq][oq][pq]TR[bc][bd][cd][be][bf][ch][qo][dp][np][op]
+;B[rc]C[9
+A: 7]LB[pc:A]MA[cb][cc][hc][dd][ed][ce][de][mq][oq][pq]TR[bc][bd][cd][be][bf][ch][qo][dp][np][op]
+;W[pc]C[7
+A: 4]LB[qg:A]MA[cb][cc][hc][dd][ed][ce][de][pq]TR[bc][bd][cd][be][bf][ch][qo][dp]
+;B[qg]C[4]MA[cb][cc][hc][dd][ed][ce][de][pq]TR[bc][bd][cd][be][bf][ch][qo][dp])
+(;W[]C[12
+A: 6]LB[lc:A]TR[dc][qq]MA[ce][dp]
+;B[lc]C[6]MA[ec][de][df][cq]TR[cd][ce][cg][pq])
+(;W[qe]C[9
+A: 7]LB[re:A]TR[cd][dq]MA[ed][co][pp]
+;B[re]C[7
+A: 7]LB[pe:A]TR[cd][dq]MA[ed][co][pp]
+;W[pe]C[7
+A: 6]LB[rf:A]TR[cd][dq]MA[ed][co][pp]
+;B[rf]C[6
+A: 6]LB[qc:A]TR[cd][dq]MA[ed][co][pp]
+;W[qc]C[6
+A: 6]LB[rc:A]TR[cd][dq]MA[ed][co][pp]
+;B[rc]C[6
+A: 6]LB[pd:A]TR[cd][dq]MA[ed][co][pp]
+;W[pd]C[6
+A: 6]LB[rd:A]TR[cd][dq]MA[ed][co][pp]
+;B[rd]C[6
+A: 6]LB[qb:A]TR[cd][dq]MA[ed][co][pp]
+;W[qb]C[6
+A: 6]LB[qh:A]TR[cd][dq]MA[ed][co][pp]
+;B[qh]C[6
+A: 4]LB[lc:A]TR[cd][dq]MA[ed][co][pp]
+;W[lc]C[4]TR[cd][dq]MA[ed][co][pp])
+)
+(;B[lc]C[11
+A: 5]LB[pf:A]MA[ec][de][df][ep][dq]TR[cd][ce][cg][co][pp]
+;W[pf]C[5]MA[dc][de]TR[cq][qq])
+)
+(;W[pd]C[14
+A: 8]LB[qc:A]MA[dd][dm][dn][do][qo][dp][pp][qp][eq][oq][qq][dr][er][fr][pr]TR[cl][cm][pm][on][qn][co][oo][po][cp][ep][op][cq][dq][fq][nq]
+;B[qc]C[8]MA[dd][dm][dn][do][qo][dp][pp][qp][eq][oq][qq][dr][er][fr][pr]TR[cl][cm][pm][on][qn][co][oo][po][cp][ep][op][cq][dq][fq][nq])
+)
+(;B[pe]C[251
+A: 131
+B: 103 Pass
+C: 17]LB[qc:A][pc:C](;W[qc]C[131
+A: 98
+B: 18
+C: 10]LB[oc:A][pc:B][od:C]TR[ce][cp]MA[oq](;B[oc]C[98
+A: 91]LB[pd:A]TR[ce][cp]MA[oq]
+;W[pd]C[91
+A: 91]LB[od:A]TR[ce][cp]MA[oq]
+;B[od]C[91
+A: 91]LB[qe:A]TR[ce][cp]MA[oq]
+;W[qe]C[91
+A: 60
+B: 25]LB[pf:A][qf:B]TR[ce][cp]MA[oq](;B[pf]C[60
+A: 60]LB[qf:A]TR[dd][op]MA[cq]
+;W[qf]C[60
+A: 60]LB[pg:A]TR[dd][op]MA[cq]
+;B[pg]C[60
+A: 29
+B: 22
+C: 9]LB[rh:A][qh:B][qg:C]TR[dd][op]MA[cq](;W[rh]C[29
+A: 12 Pass
+B: 9
+C: 6]LB[jd:B][kd:C]TR[dc][cq]MA[pq](;B[]C[12
+A: 5
+B: 5]LB[ld:A][kc:B]TR[dc][cq]MA[pq](;W[ld]C[5]TR[cc][de][cp][dp][ep]MA[dc][qp][cq][dq][fr])
+(;W[kc]C[5]MA[ec][eq]TR[cd][pq])
+)
+(;B[jd]C[9]MA[dd]TR[dq][pq])
+(;B[kd]C[6]TR[dd][dp]MA[pp])
+)
+(;W[qh]C[22
+A: 17 Pass]MA[dd]TR[cp][pp]
+;B[]C[17
+A: 12 Pass]MA[dd]TR[cp][pp]
+;W[]C[12
+A: 8]LB[ph:A]MA[dd][qp]TR[cq]
+;B[ph]C[8
+A: 8]LB[qi:A]TR[dd][po][qp]MA[cq][oq]
+;W[qi]C[8]TR[dd][po][qp]MA[cq][oq])
+(;W[qg]C[9
+A: 9]LB[ph:A]TR[dd][op]MA[cq]
+;B[ph]C[9]TR[dd][op]MA[cq])
+)
+(;B[qf]C[25
+A: 25]LB[rf:A]TR[ce][cp]MA[oq]
+;W[rf]C[25
+A: 25]LB[pf:A]TR[ce][cp]MA[oq]
+;B[pf]C[25
+A: 25]LB[rg:A]TR[ce][cp]MA[oq]
+;W[rg]C[25
+A: 23 Pass]TR[ce][cp]MA[oq]
+;B[]C[23
+A: 11 Pass
+B: 4
+C: 4]LB[kc:B][ph:C]MA[ce][cp]TR[oq](;W[]C[11
+A: 6]LB[qh:A]MA[ce][cp]TR[oq]
+;B[qh]C[6]TR[dc][ce][cp]MA[qp][oq])
+(;W[kc]C[4]TR[cd][dp]MA[qo][pq])
+(;W[ph]C[4]MA[dd][qo]TR[cq][pq])
+)
+)
+(;B[pc]C[18
+A: 14]LB[pb:A]TR[dd][pp]MA[dp]
+;W[pb]C[14
+A: 14]LB[oc:A]TR[dd][pp]MA[dp]
+;B[oc]C[14
+A: 12]LB[qd:A]TR[dd][pp]MA[dp]
+;W[qd]C[12
+A: 8
+B: 4]LB[ob:A][qe:B]TR[dd][pp]MA[dp](;B[ob]C[8
+A: 8]LB[rf:A]TR[dd][pp]MA[dp]
+;W[rf]C[8]TR[dd][pp]MA[dp])
+(;B[qe]C[4
+A: 4]LB[ob:A]TR[dd][qq]MA[dp]
+;W[ob]C[4
+A: 4]LB[mc:A]TR[dd][qq]MA[dp]
+;B[mc]C[4]TR[dd][qq]MA[dp])
+)
+(;B[od]C[10
+A: 5 Pass
+B: 5]LB[re:B]TR[dc][dp]MA[qq](;W[]C[5
+A: 4]LB[pc:A]TR[cc][dp]MA[pq]
+;B[pc]C[4]TR[cc][qo][dp]MA[pq])
+(;W[re]C[5
+A: 5]LB[pc:A]TR[dc][dp]MA[qq]
+;B[pc]C[5
+A: 3]LB[qb:A]TR[dc][dp]MA[qq]
+;W[qb]C[3]TR[dc][dp]MA[qq])
+)
+)
+(;W[]C[103
+A: 103]LB[pc:A]
+;B[pc]C[103
+A: 101 Pass]MA[cc][ec][fc][gc][dd][dp]TR[ed][fd][gd][hd][ce][de][pp]
+;W[]C[101
+A: 60 Pass
+B: 10
+C: 6
+D: 4]LB[jd:B][ic:C][qj:D]TR[cc][ec][fc][gc][dd][dp]MA[ed][fd][gd][hd][ce][de][pp](;B[]C[60
+A: 22
+B: 9
+C: 8
+D: 4]LB[pf:A][jc:B][qg:C][qj:D]TR[cc][ec][fc][gc][dd][dp]MA[ed][fd][gd][hd][ce][de][pp](;W[pf]C[22
+A: 9
+B: 8
+C: 5]LB[qe:A][of:B][qf:C]MA[ea][bb][db][fb][cc][dc][ec][dk][cq]TR[gb][bc][fc][cd][dd][ed][gd][qn][pp](;B[qe]C[9]TR[dd][qo][dp]MA[np][pq])
+(;B[of]C[8
+A: 8]LB[qe:A]MA[ea][bb][db][fb][cc][dc][ec][dk][cq]TR[gb][bc][fc][cd][dd][ed][gd][qn][pp]
+;W[qe]C[8
+A: 7]LB[oe:A]MA[ea][bb][db][fb][cc][dc][ec][dk][cq]TR[gb][bc][fc][cd][dd][ed][gd][qn][pp]
+;B[oe]C[7
+A: 6]LB[qd:A]MA[ea][bb][db][fb][cc][dc][ec][dk][cq]TR[gb][bc][fc][cd][dd][ed][gd][qn][pp]
+;W[qd]C[6
+A: 5]LB[pg:A]MA[ea][bb][db][fb][cc][dc][ec][dk][cq]TR[gb][bc][fc][cd][dd][ed][gd][qn][pp]
+;B[pg]C[5
+A: 5]LB[pd:A]MA[ea][bb][db][fb][cc][dc][ec][dk][cq]TR[gb][bc][fc][cd][dd][ed][gd][qn][pp]
+;W[pd]C[5
+A: 5]LB[od:A]MA[ea][bb][db][fb][cc][dc][ec][dk][cq]TR[gb][bc][fc][cd][dd][ed][gd][qn][pp]
+;B[od]C[5
+A: 5]LB[qc:A]MA[ea][bb][db][fb][cc][dc][ec][dk][cq]TR[gb][bc][fc][cd][dd][ed][gd][qn][pp]
+;W[qc]C[5
+A: 3]LB[qf:A]MA[ea][bb][db][fb][cc][dc][ec][dk][cq]TR[gb][bc][fc][cd][dd][ed][gd][qn][pp]
+;B[qf]C[3
+A: 3]LB[oc:A]MA[dc][de]TR[dp][op][qp]
+;W[oc]C[3
+A: 3]LB[nc:A]MA[dc][de]TR[dp][op][qp]
+;B[nc]C[3
+A: 3]LB[pb:A]MA[dc][de]TR[dp][op][qp]
+;W[pb]C[3]MA[dc][de]TR[dp][op][qp])
+(;B[qf]C[5
+A: 5]LB[qg:A]MA[fb][gb][cc][dc][ec][ci][ei][do][cp][fp]TR[fc][gc][hc][cd][dd][ed][qn][eq][fq][hq][pq]
+;W[qg]C[5
+A: 5]LB[pg:A]MA[fb][gb][cc][dc][ec][ci][ei][do][cp][fp]TR[fc][gc][hc][cd][dd][ed][qn][eq][fq][hq][pq]
+;B[pg]C[5
+A: 5]LB[of:A]MA[fb][gb][cc][dc][ec][ci][ei][do][cp][fp]TR[fc][gc][hc][cd][dd][ed][qn][eq][fq][hq][pq]
+;W[of]C[5
+A: 3]LB[og:A]MA[fb][gb][cc][dc][ec][ci][ei][do][cp][fp]TR[fc][gc][hc][cd][dd][ed][qn][eq][fq][hq][pq]
+;B[og]C[3
+A: 3]LB[qe:A]MA[fb][gb][cc][dc][ec][ci][ei][do][cp][fp]TR[fc][gc][hc][cd][dd][ed][qn][eq][fq][hq][pq]
+;W[qe]C[3
+A: 3]LB[rf:A]MA[fb][gb][cc][dc][ec][ci][ei][do][cp][fp]TR[fc][gc][hc][cd][dd][ed][qn][eq][fq][hq][pq]
+;B[rf]C[3
+A: 2]LB[nf:A]MA[fb][gb][cc][dc][ec][ci][ei][do][cp][fp]TR[fc][gc][hc][cd][dd][ed][qn][eq][fq][hq][pq]
+;W[nf]C[2
+A: 2]LB[re:A]MA[cc][bn][co][cp][cq]TR[cn][do][dp][qp][dq][oq]
+;B[re]C[2
+A: 2]LB[qd:A]MA[cc][bn][co][cp][cq]TR[cn][do][dp][qp][dq][oq]
+;W[qd]C[2
+A: 2]LB[pd:A]MA[cc][bn][co][cp][cq]TR[cn][do][dp][qp][dq][oq]
+;B[pd]C[2
+A: 2]LB[rg:A]MA[cc][bn][co][cp][cq]TR[cn][do][dp][qp][dq][oq]
+;W[rg]C[2
+A: 2]LB[rd:A]MA[cc][bn][co][cp][cq]TR[cn][do][dp][qp][dq][oq]
+;B[rd]C[2
+A: 2]LB[ng:A]MA[cc][bn][co][cp][cq]TR[cn][do][dp][qp][dq][oq]
+;W[ng]C[2
+A: 2]LB[oi:A]MA[cc][bn][co][cp][cq]TR[cn][do][dp][qp][dq][oq]
+;B[oi]C[2
+A: 2]LB[qj:A]MA[cc][bn][co][cp][cq]TR[cn][do][dp][qp][dq][oq]
+;W[qj]C[2]MA[cc][bn][co][cp][cq]TR[cn][do][dp][qp][dq][oq])
+)
+(;W[jc]C[9]TR[cc][fm][qm][qn][ep][fp][pp][fq][mq]MA[pm][cn][cp][jp][lp][dq][eq][lq])
+(;W[qg]C[8]TR[bb][bc][dc][bd][dd][ce][de][cm][rm][bn][pn][co][cp][qp][cq][pq][cr]MA[cb][cc][cd][be][af][cf][bg][ql][cn][dn][do][dp][kp][op][dq][oq][or])
+(;W[qj]C[4]MA[cc][dc][ec][bd][dd][ce][np][pp][nq]TR[fc][ed][gd][be][de][ee][fe][cf][cp][ep][mp])
+)
+(;B[jd]C[10
+A: 9 Pass]MA[cc]TR[cn][dp][qq]
+;W[]C[9
+A: 4]LB[ph:A]TR[cc]MA[cn][dp][qq]
+;B[ph]C[4]MA[cc]TR[cn][dp][iq][qq])
+(;B[ic]C[6]MA[cc][ec][fc][gc][dd][cp][dp][ep][fq]TR[ed][fd][gd][hd][ce][de][cq][dq][eq][qq][fr])
+(;B[qj]C[4]MA[fb][gb][cc][dc][ec][pp][gq][jq][nq]TR[fc][gc][hc][cd][dd][ed][dj][qn][cp][ep][mp])
+)
+(;W[pc]C[17
+A: 9
+B: 5]LB[qc:A][oc:B]MA[cd]TR[qo][dp](;B[qc]C[9]MA[cc][dd][ce][cf][bh][pp]TR[ec][ed][de][df][dg][cp])
+(;B[oc]C[5
+A: 5]LB[ob:A]MA[cd]TR[qo][dp]
+;W[ob]C[5
+A: 5]LB[od:A]MA[cd]TR[qo][dp]
+;B[od]C[5
+A: 5]LB[nb:A]MA[cd]TR[qo][dp]
+;W[nb]C[5
+A: 5]LB[qc:A]MA[cd]TR[qo][dp]
+;B[qc]C[5
+A: 5]LB[qb:A]MA[cd]TR[qo][dp]
+;W[qb]C[5
+A: 5]LB[pd:A]MA[cd]TR[qo][dp]
+;B[pd]C[5
+A: 5]LB[pb:A]MA[cd]TR[qo][dp]
+;W[pb]C[5]MA[cd]TR[qo][dp])
+)
+)
+(;B[qe]C[247
+A: 123 Pass
+B: 92
+C: 32]LB[qc:B][pc:C]TR[de](;W[]C[123
+A: 123]LB[pc:A]MA[cd][pp]TR[co]
+;B[pc]C[123
+A: 121 Pass]TR[cd][pp][cq]MA[co]
+;W[]C[121
+A: 59 Pass
+B: 8
+C: 7
+D: 7
+E: 7
+F: 6
+G: 6
+H: 5]LB[jc:B][kd:C][pj:D][pk:E][ic:F][jd:G][id:H]MA[cd][pp][cq]TR[co](;B[]C[59
+A: 14
+B: 7
+C: 5
+D: 5
+E: 4]LB[pf:A][kc:B][pk:C][jc:D][pj:E]MA[dc]TR[dp][qq](;W[pf]C[14
+A: 6]LB[pe:A]TR[cc][fd][ej][fp][jp][np][op][cq][nq]MA[dh][dj][ck][dn][qn][qp][oq][pq]
+;B[pe]C[6]TR[cc][fd][ej][fp][jp][np][op][cq][nq]MA[dh][dj][ck][dn][qn][qp][oq][pq])
+(;W[kc]C[7]TR[cc][fc][fd][nm][om][pm][qm][pn][co][ho][ko][lo][dp][fp][jp][lp][np][op][pp][fq][nq][gr]MA[gc][gd][cg][cj][cm][in][on][qn][po][ip][kp][qp][gq][hq][jq][kq][lq][oq][pq][rq][hr])
+(;W[pk]C[5]TR[cd][ed][dn][qo][cp][pp][dq][eq]MA[ep][fp][lp][qp][fq][pq][qq])
+(;W[jc]C[5]TR[cc][df][bj][cj][dj][ej][ek][cl][dl][qn][ip][eq][qq]MA[hc][ci][bk][ck][dk][bl][el][fl][dn][cp][np][kq])
+(;W[pj]C[4]MA[cc][cd][bf][po][qo][lp][mp][np][op]TR[dc][dd][de][dp][pp][kq][lq][nq][oq][qq])
+)
+(;B[jc]C[8]TR[cc][cd][hd][cf][bg][pn][qn][do][po][pp][dq][pq]MA[dc][dd][de][pm][qm][rn][qo][qp][qq][qr])
+(;B[kd]C[7
+A: 4]LB[pf:A]MA[fc][qq]TR[dd][cf][cp][ep]
+;W[pf]C[4
+A: 2
+B: 2]LB[pe:A][pj:B]MA[fc][qq]TR[dd][cf][cp][ep](;B[pe]C[2
+A: 1
+B: 1]LB[nf:A][pj:B]MA[fc][qq]TR[dd][cf][cp][ep](;W[nf]C[1
+A: 1]LB[kg:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;B[kg]C[1
+A: 1]LB[oe:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;W[oe]C[1
+A: 1]LB[og:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;B[og]C[1
+A: 1]LB[of:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;W[of]C[1
+A: 1]LB[rg:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;B[rg]C[1
+A: 1]LB[oc:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;W[oc]C[1
+A: 1]LB[ob:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;B[ob]C[1
+A: 1]LB[nc:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;W[nc]C[1
+A: 1]LB[pb:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;B[pb]C[1
+A: 1]LB[oi:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;W[oi]C[1
+A: 1]LB[ph:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;B[ph]C[1
+A: 1]LB[ng:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;W[ng]C[1
+A: 1]LB[li:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;B[li]C[1
+A: 1]LB[nj:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;W[nj]C[1
+A: 1]LB[mk:A]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn]
+;B[mk]C[1]TR[cb][db][cc][cd][ce][dn][pp][dq][nq]MA[eb][dc][fc][dd][de][cg][qn])
+(;W[pj]C[1]MA[fc][qq]TR[dd][cf][cp][ep])
+)
+(;B[pj]C[2]TR[cd][ed][dp][fq]MA[op][qp])
+)
+(;B[pj]C[7]TR[dd][fd][nq][qq]MA[qn][cq])
+(;B[pk]C[7]TR[fc][dd][cq]MA[qq])
+(;B[ic]C[6]MA[cc][dd][ce][bf][bg][qp]TR[ec][ed][de][cf][df][ch][cp][eq])
+(;B[jd]C[6
+A: 4]LB[pf:A]MA[ec][gc][di][dj][dk][ek][el][hl][em][pn][fo][fp][cq][dq][eq][qq][br]TR[cd][fd][de][ch][cj][ck][fk][dl][cm][hn][bo][co][dp][ep][hp][kp][fq][gq][nq]
+;W[pf]C[4
+A: 2]LB[pe:A]MA[ec][gc][di][dj][dk][ek][el][hl][em][pn][fo][fp][cq][dq][eq][qq][br]TR[cd][fd][de][ch][cj][ck][fk][dl][cm][hn][bo][co][dp][ep][hp][kp][fq][gq][nq]
+;B[pe]C[2]MA[ec][gc][di][dj][dk][ek][el][hl][em][pn][fo][fp][cq][dq][eq][qq][br]TR[cd][fd][de][ch][cj][ck][fk][dl][cm][hn][bo][co][dp][ep][hp][kp][fq][gq][nq])
+(;B[id]C[5]MA[ec][cq]TR[cd][df][qn][pq])
+)
+(;W[qc]C[92
+A: 75
+B: 9 Pass
+C: 6]LB[od:A][nd:C]TR[de][pp]MA[dp](;B[od]C[75
+A: 69]LB[pd:A]TR[de][pp]MA[dp]
+;W[pd]C[69
+A: 69]LB[pe:A]TR[de][pp]MA[dp]
+;B[pe]C[69
+A: 69]LB[oc:A]TR[de][pp]MA[dp]
+;W[oc]C[69
+A: 47
+B: 17]LB[nd:A][nc:B]TR[de][pp]MA[dp](;B[nd]C[47
+A: 47]LB[nc:A]TR[de][pp]MA[dp]
+;W[nc]C[47
+A: 47]LB[md:A]TR[de][pp]MA[dp]
+;B[md]C[47
+A: 25
+B: 15
+C: 6]LB[lb:A][lc:B][mc:C]TR[de][pp]MA[dp](;W[lb]C[25
+A: 13 Pass
+B: 8
+C: 4]LB[pj:B][pi:C]MA[dd]TR[cq][pq](;B[]C[13
+A: 7]LB[qi:A]TR[dd]MA[cq][pq]
+;W[qi]C[7]MA[dd][po][qp]TR[qm][cq][pq])
+(;B[pj]C[8
+A: 8 Pass]TR[dd][dp]MA[pp]
+;W[]C[8
+A: 6 Pass]MA[dd][pp]TR[dp]
+;B[]C[6
+A: 4]LB[ph:A]MA[dd][dp]TR[pq]
+;W[ph]C[4]TR[dd][po][dp]MA[qp][pq])
+(;B[pi]C[4]MA[cc]TR[dp][pp])
+)
+(;W[lc]C[15
+A: 15 Pass]TR[cc][dq]MA[qq]
+;B[]C[15
+A: 9 Pass]MA[cc][dq]TR[qq]
+;W[]C[9
+A: 7]LB[ld:A]MA[cc][dq]TR[qq]
+;B[ld]C[7
+A: 7]LB[kc:A]TR[cc][cp][dq]MA[co][qq]
+;W[kc]C[7]TR[cc][cp][dq]MA[co][qq])
+(;W[mc]C[6
+A: 6]LB[ld:A]TR[de][pp]MA[dp]
+;B[ld]C[6]TR[de][pp]MA[dp])
+)
+(;B[nc]C[17
+A: 17]LB[nb:A]TR[cd][qo]MA[cq][qq]
+;W[nb]C[17
+A: 17]LB[nd:A]TR[cd][qo]MA[cq][qq]
+;B[nd]C[17
+A: 17]LB[mb:A]TR[cd][qo]MA[cq][qq]
+;W[mb]C[17
+A: 15 Pass]TR[cd][qo]MA[cq][qq]
+;B[]C[15
+A: 6 Pass]MA[cd][qo]TR[cq][qq]
+;W[]C[6
+A: 4]LB[lc:A]MA[cc]TR[pp][dq]
+;B[lc]C[4]MA[cc][co]TR[ep][pp][dq])
+)
+(;B[]C[9
+A: 5]LB[od:A]MA[dd][co]TR[qp]
+;W[od]C[5]TR[dd][qp]MA[co][dq])
+(;B[nd]C[6]TR[cd][pq]MA[dq])
+)
+(;W[pc]C[32
+A: 29 Pass]TR[cc][pp]MA[dp]
+;B[]C[29
+A: 10
+B: 7 Pass
+C: 4]LB[od:A][qd:C]TR[cc][pp]MA[dp](;W[od]C[10
+A: 9 Pass]TR[cc][op][pp][qp][nq]MA[dp][oq][pq][qq][nr]
+;B[]C[9
+A: 4]LB[qh:A]MA[fb][cc][dc][ec][cq]TR[fc][cd][dd][ed][pp]
+;W[qh]C[4]MA[fb][hb][cc][dc][ec][gc][cq]TR[fc][cd][dd][ed][fd][pp])
+(;W[]C[7
+A: 5]LB[od:A]MA[dc][pp]TR[cp]
+;B[od]C[5
+A: 5]LB[oc:A]TR[dc][cd][fd][ce][dn][cp][qq]MA[de][cf][df][dj][pp][eq]
+;W[oc]C[5]TR[dc][cd][fd][ce][dn][cp][qq]MA[de][cf][df][dj][pp][eq])
+(;W[qd]C[4]MA[ec][cp]TR[cd][qq])
+)
+)
+(;B[qc]C[151
+A: 36 Pass
+B: 31
+C: 24
+D: 20
+E: 18
+F: 9
+G: 9]LB[pd:B][qf:C][pf:D][qe:E][qh:F][qg:G]TR[cq](;W[]C[36
+A: 24
+B: 5
+C: 4]LB[pf:A][pg:B][pe:C]MA[pp](;B[pf]C[24
+A: 14 Pass
+B: 5
+C: 3]LB[od:B][kc:C]TR[eb][fb][gb][cc][dc][fj][dl][el][rm][dn][pn][qn][co][lo][po][gp][hp][jp][pp][dq][gq][pq][or]MA[ec][fc][gc][hc][cd][dd][ei][dk][cl][bm][rn][qo][qp][eq][hq][iq][kq][nq][qq][pr][rr][qs](;W[]C[14
+A: 3]LB[kc:A]MA[eb][fb][gb][cc][dc][fj][dl][el][dn][qn][co][lo][po][gp][hp][jp][pp][dq][gq][nq][pq][pr][qr][qs]TR[ec][fc][gc][hc][cd][dd][ei][dk][cl][bm][rm][pn][rn][qo][qp][eq][hq][iq][kq][qq][or][rr]
+;B[kc]C[3]MA[dc][cd][ed][gd][bk][cl][bm][mm][ln][nn][pn][co][eo][no][po][qo][cp][np][rp][cq][nq][mr][or]TR[ec][ci][dk][dl][nl][cm][dm][nm][qm][rm][on][qn][sn][do][jo][mo][oo][ro][dp][fp][kp][op][qp][dq][oq][pr][os])
+(;W[od]C[5
+A: 3]LB[pd:A]TR[ec][cd][ed][qm][on][qn][po][ro][pp][pq][qr]MA[fd][pn][rn][qo][qp][rp][cq][qq][rr]
+;B[pd]C[3
+A: 2]LB[kc:A]TR[cb][db][cc][ec][cd][ce][de][bf][ef][cn][dp][qq]MA[eb][dc][dd][ee][fe][cf][df][ff][bg][eh]
+;W[kc]C[2]TR[cb][db][cc][ec][cd][ce][de][bf][ef][cn][dp][qq]MA[eb][dc][dd][ee][fe][cf][df][ff][bg][eh])
+(;W[kc]C[3]MA[ec][pl][rm][rn][qo][kp][pp][qq]TR[cd][df][pn][qn][po][dp][op][gq][oq])
+)
+(;B[pg]C[5]MA[fc][cd][pm][fn][pn][go][io][ko][mo][no][po][fp][op][fq][nq][pq]TR[ol][pl][nn][on][qn][eo][fo][oo][qo][cp][ep][ip][pp][qp][eq][kq][qq][fr])
+(;B[pe]C[4]TR[dc][fc][cd][ce][qn][cp][fp][hp][qp][jq][nq][qq][pr][qr]MA[de][cf][df][dj][cm][lo][po][pp][lq][pq][nr][or])
+)
+(;W[pd]C[31
+A: 29]LB[qd:A]MA[cd][fd][di][cn]TR[dp][pp][fq][nq]
+;B[qd]C[29
+A: 20
+B: 7]LB[pf:A][pe:B]MA[cd][fd][di][cn]TR[dp][pp][fq][nq](;W[pf]C[20
+A: 12
+B: 5]LB[pe:A][od:B]MA[cd][fd][di][cn]TR[dp][pp][fq][nq](;B[pe]C[12
+A: 12]LB[oe:A]MA[cd][fd][di][cn]TR[dp][pp][fq][nq]
+;W[oe]C[12
+A: 12]LB[qe:A]MA[cd][fd][di][cn]TR[dp][pp][fq][nq]
+;B[qe]C[12
+A: 9
+B: 3]LB[oh:A][mf:B]MA[cd][fd][di][cn]TR[dp][pp][fq][nq](;W[oh]C[9]MA[cd][fd][di][cn]TR[dp][pp][fq][nq])
+(;W[mf]C[3]MA[bb][cc][bd][cd][ce][bf][df][ef][eh][ej][kn][ln][mn][no][np][cq][oq][pq][qq][sq][nr][pr][rr]TR[cb][dc][dd][hd][be][de][cf][bg][cg][cj][ql][ko][lo][ro][hp][op][pp][qp][mq][nq][rq][mr][or])
+)
+(;B[od]C[5]TR[fc][cd][pm][pn][po][op][cq][dq][eq][oq][fr][gr]MA[ql][qn][qo][cp][dp][ep][lp][pp][fq][gq][hq][qq])
+)
+(;W[pe]C[7
+A: 3]LB[ob:A]MA[cc][dj][fk][fm][dn][fn][kn][fo][bp][fp][hp][kp][lp][aq][cq][dq][eq][iq][jq][lq][br][dr][fr]TR[dl][bm][em][en][bo][eo][ho][jo][cp][dp][ep][gp][jp][fq][gq][kq][qq][er][gr][ir][jr][kr]
+;B[ob]C[3]MA[cc][dj][fk][fm][dn][fn][kn][fo][bp][fp][hp][kp][lp][aq][cq][dq][eq][iq][jq][lq][br][dr][fr]TR[dl][bm][em][en][bo][eo][ho][jo][cp][dp][ep][gp][jp][fq][gq][kq][qq][er][gr][ir][jr][kr])
+)
+(;W[qf]C[24
+A: 9
+B: 7]LB[nd:A][nc:B]TR[cd][fd][ci][ei][cm][co][eo][fo][go][ho][bp][pp][mq][nq]MA[hi][ck][ek][gk][hm][qn][cp][fp][gp][hp][mp][bq][dq](;B[nd]C[9
+A: 4]LB[qi:A]TR[cc][np][pp]MA[dk][cp][fq]
+;W[qi]C[4
+A: 4 Pass]TR[cc][np][pp]MA[dk][cp][fq]
+;B[]C[4
+A: 4]LB[lc:A]TR[cc][np][pp]MA[dk][cp][fq]
+;W[lc]C[4]TR[cc][fc][np][pp]MA[cf][dk][cp][fq][lq])
+(;B[nc]C[7
+A: 3]LB[pj:A]MA[ec][dd][fd][df][cm][bn][co][cp][cq][cr]TR[fc][bf][cn][dn][do][dp][hp][qp][dq][nq]
+;W[pj]C[3]MA[ec][dd][fd][df][cm][bn][co][cp][cq][cr]TR[fc][bf][cn][dn][do][dp][hp][qp][dq][nq])
+)
+(;W[pf]C[20
+A: 6
+B: 6]LB[nd:A][nc:B]TR[dc][ce][qo][pp][nq]MA[pn][qn][cp][fq](;B[nd]C[6
+A: 4]LB[pi:A]TR[cc][bm][bn][co][cp][op][pp][qp][cq][lq][mq][nq]MA[cl][cm][cn][do][dp][dq][oq][pq][qq][mr][nr]
+;W[pi]C[4
+A: 4 Pass]TR[cc][bm][bn][co][cp][op][pp][qp][cq][lq][mq][nq]MA[cl][cm][cn][do][dp][dq][oq][pq][qq][mr][nr]
+;B[]C[4
+A: 3 Pass]TR[cc][bm][bn][co][cp][op][pp][qp][cq][lq][mq][nq]MA[cl][cm][cn][do][dp][dq][oq][pq][qq][mr][nr]
+;W[]C[3
+A: 3]LB[oj:A]TR[cc][bm][bn][co][cp][op][pp][qp][cq][lq][mq][nq]MA[cl][cm][cn][do][dp][dq][oq][pq][qq][mr][nr]
+;B[oj]C[3
+A: 3]LB[pd:A]TR[cc][bm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;W[pd]C[3
+A: 3]LB[pc:A]TR[cc][bm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;B[pc]C[3
+A: 3]LB[qd:A]TR[cc][bm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;W[qd]C[3
+A: 3]LB[od:A]TR[cc][bm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;B[od]C[3
+A: 3 Pass]TR[cc][bm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;W[]C[3
+A: 3]LB[oi:A]TR[cc][bm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;B[oi]C[3
+A: 2]LB[ph:A]TR[cc][bm][mm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;W[ph]C[2
+A: 2]LB[pj:A]TR[cc][bm][mm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;B[pj]C[2
+A: 2]LB[ng:A]TR[cc][bm][mm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;W[ng]C[2
+A: 1
+B: 1]LB[kd:A][ri:B]TR[cc][bm][mm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr](;B[kd]C[1]TR[cc][bm][mm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr])
+(;B[ri]C[1
+A: 1]LB[rh:A]TR[cc][bm][mm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;W[rh]C[1
+A: 1]LB[qi:A]TR[cc][bm][mm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;B[qi]C[1
+A: 1]LB[qh:A]TR[cc][bm][mm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;W[qh]C[1
+A: 1]LB[jc:A]TR[cc][bm][mm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr]
+;B[jc]C[1]TR[cc][bm][mm][om][bn][co][cp][ip][op][pp][qp][cq][lq][mq][nq]MA[cl][pl][cm][cn][do][no][dp][dq][oq][pq][qq][mr][nr])
+)
+(;B[nc]C[6
+A: 2
+B: 2]LB[pi:A][od:B]TR[dc][ce][qo][pp][nq]MA[pn][qn][cp][fq](;W[pi]C[2]TR[cc][bm][bn][co][cp][op][pp][qp][cq][lq][mq][nq]MA[cl][cm][cn][do][dp][dq][oq][pq][qq][mr][nr])
+(;W[od]C[2
+A: 2]LB[oc:A]TR[ec][cd][ed][qo][pp][nq]MA[fd][cn][pn][qn][dq]
+;B[oc]C[2
+A: 1
+B: 1]LB[pd:A][pj:B]TR[ec][cd][ed][qo][pp][nq]MA[fd][cn][pn][qn][dq](;W[pd]C[1
+A: 1]LB[pc:A]TR[fc][dd][cp][dq][fq][oq][pq][qq][mr][nr]MA[ck][co][do][op][pp][qp][lq][mq][nq]
+;B[pc]C[1
+A: 1]LB[qj:A]TR[fc][dd][cp][dq][fq][oq][pq][qq][mr][nr]MA[ck][co][do][op][pp][qp][lq][mq][nq]
+;W[qj]C[1]TR[fc][dd][cp][dq][fq][oq][pq][qq][mr][nr]MA[ck][co][do][op][pp][qp][lq][mq][nq])
+(;W[pj]C[1]TR[ec][cd][ed][qo][pp][nq]MA[fd][cn][pn][qn][dq])
+)
+)
+)
+(;W[qe]C[18
+A: 11
+B: 3]LB[od:A][qh:B]MA[bb][fb][hb][cc][dc][ec][gc][dh][ci][di][dj][fj][fk][cl][el][cm][dm][em][hm][fn][fo][cp][dp][ep][fp][gp][fq]TR[bc][fc][cd][dd][ed][fd][cg][dg][ch][eh][ek][dl][fl][fm][bn][cn][dn][en][gn][bp][qp][cq][dq][eq][gq][nq][fr][hr][gs](;B[od]C[11
+A: 4]LB[qh:A]MA[bb][fb][hb][cc][dc][ec][gc][dh][ci][di][dj][fj][fk][cl][el][cm][dm][em][hm][fn][fo][cp][dp][ep][fp][gp][fq]TR[bc][fc][cd][dd][ed][fd][cg][dg][ch][eh][ek][dl][fl][fm][bn][cn][dn][en][gn][bp][qp][cq][dq][eq][gq][nq][fr][hr][gs]
+;W[qh]C[4]MA[ec][fc][hc][dh][bi][dj][dk][dl][ll][cm][hm][pm][bn][fn][in][ln][bo][co][dp][eq][fq][gr]TR[cd][fd][de][cg][ch][ck][gk][fl][il][bm][cn][dn][qn][eo][go][mo][ep][kp][pp][gq][hq][hr])
+(;B[qh]C[3
+A: 1
+B: 1
+C: 1]LB[pg:A][oe:B][nd:C]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq](;W[pg]C[1
+A: 1]LB[od:A]TR[db][fb][cc][ec][cd][dd][ce][pn][do][no][po][np][pp][rp][dq][qq]MA[fc][ed][de][ee][cf][ef][dg][pl][nn][qn][oo][mp][op][nq][oq][pq]
+;B[od]C[1
+A: 1]LB[ph:A]TR[db][fb][cc][ec][cd][dd][ce][pn][do][no][po][np][pp][rp][dq][qq]MA[fc][ed][de][ee][cf][ef][dg][pl][nn][qn][oo][mp][op][nq][oq][pq]
+;W[ph]C[1
+A: 1]LB[qi:A]TR[db][fb][cc][ec][cd][dd][ce][pn][do][no][po][np][pp][rp][dq][qq]MA[fc][ed][de][ee][cf][ef][dg][pl][nn][qn][oo][mp][op][nq][oq][pq]
+;B[qi]C[1
+A: 1]LB[pi:A]TR[db][fb][cc][ec][cd][dd][ce][pn][do][no][po][np][pp][rp][dq][qq]MA[fc][ed][de][ee][cf][ef][dg][pl][nn][qn][oo][mp][op][nq][oq][pq]
+;W[pi]C[1
+A: 1]LB[qj:A]TR[db][fb][cc][ec][cd][dd][ce][pn][do][no][po][np][pp][rp][dq][qq]MA[fc][ed][de][ee][cf][ef][dg][pl][nn][qn][oo][mp][op][nq][oq][pq]
+;B[qj]C[1]TR[db][fb][cc][ec][cd][dd][ce][pn][do][no][po][np][pp][rp][dq][qq]MA[fc][ed][de][ee][cf][ef][dg][pl][nn][qn][oo][mp][op][nq][oq][pq])
+(;W[oe]C[1
+A: 1]LB[oi:A]TR[cc][pl][ql][pm][pn][dp]MA[qm][on][qn][po][ro][qp][pq]
+;B[oi]C[1
+A: 1]LB[oc:A]TR[cc][pl][ql][pm][pn][dp]MA[qm][on][qn][po][ro][qp][pq]
+;W[oc]C[1]TR[cc][pl][ql][pm][pn][dp]MA[qm][on][qn][po][ro][qp][pq])
+(;W[nd]C[1
+A: 1]LB[oc:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;B[oc]C[1
+A: 1]LB[ph:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;W[ph]C[1
+A: 1]LB[pg:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;B[pg]C[1
+A: 1]LB[nc:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;W[nc]C[1
+A: 1]LB[ob:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;B[ob]C[1
+A: 1]LB[rc:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;W[rc]C[1
+A: 1]LB[of:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;B[of]C[1
+A: 1]LB[oe:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;W[oe]C[1
+A: 1]LB[rd:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;B[rd]C[1
+A: 1]LB[qd:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;W[qd]C[1
+A: 1]LB[rb:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;B[rb]C[1
+A: 1]LB[nf:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;W[nf]C[1
+A: 1]LB[ng:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;B[ng]C[1
+A: 1]LB[pc:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;W[pc]C[1
+A: 1]LB[qb:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;B[qb]C[1
+A: 1]LB[mf:A]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq]
+;W[mf]C[1]TR[cc][fc][dk][ek][km][pm][qm][in][on][qn][go][no][oo][ro][mp][op][hq][mq][pq]MA[cf][dj][il][pl][ql][rl][dm][nm][om][mn][pn][ko][mo][po][dp][fp][np][kq])
+)
+)
+(;W[qh]C[9
+A: 5 Pass]MA[fb][cc][dc][ec][no][oo][po][ro][kp][lp][mp][op][qp][rq]TR[fc][cd][dd][ed][do][np][pp][dq][lq][mq][nq][oq][pq][qq]
+;B[]C[5
+A: 4]LB[qe:A]TR[fb][cc][dc][jo][dp][kp][fq][kq][lq][mq][oq][pq][mr][nr][pr]MA[cd][dd][ed][kn][ko][qo][jp][lp][mp][np][op][nq][qq][or]
+;W[qe]C[4
+A: 1
+B: 1
+C: 1
+D: 1]LB[pe:A][oc:B][nc:C][od:D]TR[fb][cc][dc][jo][dp][kp][fq][kq][lq][mq][oq][pq][mr][nr][pr]MA[cd][dd][ed][cn][kn][ko][qo][jp][lp][mp][np][op][nq][qq][or](;B[pe]C[1
+A: 1]LB[pf:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;W[pf]C[1
+A: 1]LB[qd:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;B[qd]C[1
+A: 1]LB[oe:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;W[oe]C[1
+A: 1]LB[pd:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;B[pd]C[1
+A: 1]LB[of:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;W[of]C[1
+A: 1]LB[qf:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;B[qf]C[1
+A: 1]LB[nc:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;W[nc]C[1
+A: 1]LB[mc:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;B[mc]C[1
+A: 1]LB[nb:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;W[nb]C[1
+A: 1]LB[ie:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;B[ie]C[1
+A: 1]LB[re:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;W[re]C[1
+A: 1]LB[rf:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;B[rf]C[1
+A: 1]LB[qg:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;W[qg]C[1
+A: 1]LB[rd:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;B[rd]C[1
+A: 1]LB[pb:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;W[pb]C[1
+A: 1]LB[me:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;B[me]C[1
+A: 1]LB[md:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;W[md]C[1
+A: 1]LB[ld:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;B[ld]C[1
+A: 1]LB[nd:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;W[nd]C[1
+A: 1]LB[qb:A]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq]
+;B[qb]C[1]TR[dc][ec][gc][gd][ci][rm][rn][no][qo][fp][gp][ip][lp][pp][cq][jq][qq]MA[ed][fd][ce][dh][di][dk][ql][rl][dn][pn][qn][go][ho][oo][po][op][oq])
+(;B[oc]C[1]TR[cc][qq]MA[cf][cp][fq])
+(;B[nc]C[1]TR[cc][pn][qp]MA[fp][kp][cq][oq])
+(;B[od]C[1]TR[fb][cc][dc][jo][dp][kp][fq][kq][lq][mq][oq][pq][mr][nr][pr]MA[cd][dd][ed][cn][kn][ko][qo][jp][lp][mp][np][op][nq][qq][or])
+)
+(;W[qg]C[9
+A: 4]LB[nd:A]MA[cc][jq]TR[qn][pp][cq]
+;B[nd]C[4
+A: 4]LB[qe:A]MA[cc][jq]TR[qn][pp][cq]
+;W[qe]C[4]MA[cc][jq]TR[qn][pp][cq])
+)
+)
