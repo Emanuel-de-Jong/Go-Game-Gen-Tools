@@ -4,7 +4,6 @@ var settings = {};
 settings.init = function() {
     settings.preVisits = 3500;
     settings.preMoves = 60;
-    settings.color = utils.randomInt(2) == 0 ? -1 : 1;
     settings.cornerChance44 = 40;
     settings.cornerChance34 = 30;
     settings.cornerChance33 = 15;
@@ -20,13 +19,9 @@ settings.init = function() {
     settings.maxVisitDiffPercSwitch = false;
     settings.maxVisitDiffPerc = 40;
 
-    settings.preOptionsCount = 0;
-    if (utils.randomInt(3) == 0) {
-        settings.preOptions = 1;
-    } else {
-        settings.preOptions = preMovePlacer.PRE_OPTIONS;
-        settings.preOptionsCount++;
-    }
+    settings.preOptionsCount = utils.randomInt(3);
+
+    settings.clear();
 };
 
 settings.clear = function() {
@@ -39,4 +34,7 @@ settings.clear = function() {
     }
 
     settings.color = utils.randomInt(2) == 0 ? -1 : 1;
+
+    // settings.onlyCommonCorners = utils.randomInt(5) == 0 ? true : false;
+    settings.onlyCommonCorners = false;
 };

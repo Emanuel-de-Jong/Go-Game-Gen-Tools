@@ -47,9 +47,9 @@ preMovePlacer.fillCorners = function(cornerCount) {
 	let coords = [];
 	let totalCornerChance = settings.cornerChance44 +
 		settings.cornerChance34 +
-		settings.cornerChance33 +
-		settings.cornerChance45 +
-		settings.cornerChance35;
+		(settings.onlyCommonCorners ? 0 : settings.cornerChance33) +
+		(settings.onlyCommonCorners ? 0 : settings.cornerChance45) +
+		(settings.onlyCommonCorners ? 0 : settings.cornerChance35);
 	
 	for (let i=0; i<cornerCount; i++) {
 		let coord;
@@ -62,10 +62,10 @@ preMovePlacer.fillCorners = function(cornerCount) {
 		else if (rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance34)) {
 			coord = rndCornerSide ? cornerOptions[i].c34 : cornerOptions[i].c43;
 		}
-		else if (rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance33)) {
+		else if (!settings.onlyCommonCorners && rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance33)) {
 			coord = cornerOptions[i].c33;
 		}
-		else if (rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance45)) {
+		else if (!settings.onlyCommonCorners && rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance45)) {
 			coord = rndCornerSide ? cornerOptions[i].c45 : cornerOptions[i].c54;
 		}
 		else {

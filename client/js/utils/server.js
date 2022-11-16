@@ -153,9 +153,9 @@ server.sgf = async function() {
         "&minVisitsPerc=" + preMovePlacer.BASE_MIN_VISITS_PERC +
         "&cornerChance44=" + settings.cornerChance44 +
         "&cornerChance34=" + settings.cornerChance34 +
-        "&cornerChance33=" + settings.cornerChance33 +
-        "&cornerChance45=" + settings.cornerChance45 +
-        "&cornerChance35=" + settings.cornerChance35
+        "&cornerChance33=" + (settings.onlyCommonCorners ? 0 : settings.cornerChance33) +
+        "&cornerChance45=" + (settings.onlyCommonCorners ? 0 : settings.cornerChance45) +
+        "&cornerChance35=" + (settings.onlyCommonCorners ? 0 : settings.cornerChance35)
         , {
         method: "GET" })
         .then(response => {
