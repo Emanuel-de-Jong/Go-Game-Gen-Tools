@@ -22,8 +22,7 @@ namespace AIPatterns
         {
             SequenceGenerator sequenceGenerator = new();
             SequenceList sequenceList = sequenceGenerator.Generate(new string[] {
-                @"E:\Media\Documents\MEGAsync\Go\Learning\AI-Josekis\",
-                @"E:\Media\Documents\MEGAsync\Go\Learning\AI-Josekis\1s with first stone 5"
+                @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning",
                 });
 
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList);
