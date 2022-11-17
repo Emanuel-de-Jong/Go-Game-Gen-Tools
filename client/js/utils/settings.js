@@ -2,7 +2,7 @@ var settings = {};
 
 
 settings.init = function() {
-    settings.preVisits = 3500;
+    settings.preVisits = 3000;
     settings.preMoves = 60;
     settings.cornerChance44 = 40;
     settings.cornerChance34 = 30;
