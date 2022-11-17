@@ -25,10 +25,22 @@ namespace AIPatterns
                 @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning",
                 });
 
-            GameWrap game = TreeBuilder.SequenceListToGame(sequenceList);
-            
-            //TreeBuilder.FilterByCount(game.Game.RootNode, 6);
+            string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
+            createFullSgf(sequenceList, savePathDir + "AI-Josekis-All.sgf");
+            createFilteredSGF(sequenceList, savePathDir + "AI-Josekis.sgf");
+        }
 
+        void createFullSgf(SequenceList sequenceList, string savePath)
+        {
+            GameWrap game = TreeBuilder.SequenceListToGame(sequenceList);
+            TreeBuilder.AddMarkup(game);
+
+            game.SaveAsSgf(savePath);
+        }
+
+        void createFilteredSGF(SequenceList sequenceList, string savePath)
+        {
+            GameWrap game = TreeBuilder.SequenceListToGame(sequenceList);
             foreach (GoNode node in game.Game.RootNode.ChildNodes)
             {
                 GoMoveNode? move = node as GoMoveNode;
@@ -36,22 +48,23 @@ namespace AIPatterns
 
                 int minCount = 0;
                 Stone stone = move.Stone;
-                if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 3) // 4-4 1685
-                {
-                    minCount = 7;
-                } else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 3) // 3-4 1207
+                if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 3) // 4-4 2060
                 {
                     minCount = 6;
                 }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 4) // 4-5 251
+                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 3) // 3-4 1511
                 {
-                    minCount = 4;
+                    minCount = 5;
                 }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 4) // 3-5 247
+                else if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 4) // 4-5 302
                 {
-                    minCount = 4;
+                    minCount = 3;
                 }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 2) // 3-3 151
+                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 4) // 3-5 277
+                {
+                    minCount = 3;
+                }
+                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 2) // 3-3 209
                 {
                     minCount = 3;
                 }
@@ -62,7 +75,7 @@ namespace AIPatterns
             TreeBuilder.RemoveRedundentPasses(game);
             TreeBuilder.AddMarkup(game);
 
-            game.SaveAsSgf(@"E:\Media\Downloads\AI-Josekis.sgf");
+            game.SaveAsSgf(savePath);
         }
 
         void Test()
