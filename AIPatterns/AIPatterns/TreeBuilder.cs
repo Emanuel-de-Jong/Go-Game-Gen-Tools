@@ -70,7 +70,7 @@ namespace AIPatterns
                 if (count >= minCount) continue;
 
                 bool removeChild = false;
-                if (move != null && move.Stone.X == 20)
+                if (move != null && StoneUtils.IsPass(move.Stone))
                 {
                     removeChild = true;
                 } else
@@ -80,14 +80,14 @@ namespace AIPatterns
                         GoMoveNode? childMove2 = childNode2 as GoMoveNode;
                         if (childMove2 == null) continue;
 
-                        if (childMove2.Stone.X == 20)
+                        if (StoneUtils.IsPass(childMove2.Stone))
                         {
                             removeChild = true;
                             break;
                         }
 
                         int.TryParse(childMove2.Comment, out int count2);
-                        if (count2 > count || (count2 == count && childMove2.Stone.X == 20))
+                        if (count2 > count || (count2 == count && StoneUtils.IsPass(childMove2.Stone)))
                         {
                             removeChild = true;
                             break;
@@ -139,7 +139,7 @@ namespace AIPatterns
 
                 node.Comment += "\n" + grade + ": " + moveCounts[i].Value;
 
-                if (move.Stone.X == 20)
+                if (StoneUtils.IsPass(move.Stone))
                 {
                     node.Comment += " Pass";
                 } else
@@ -173,7 +173,7 @@ namespace AIPatterns
             if (!node.HasChildren)
             {
                 GoMoveNode? move = node as GoMoveNode;
-                if (move != null && move.Stone.X == 20)
+                if (move != null && StoneUtils.IsPass(move.Stone))
                 {
                     return false;
                 }

@@ -58,10 +58,5 @@ namespace AIPatterns
 
             return game;
         }
-
-        public static void PrintStone(Stone stone)
-        {
-            Console.WriteLine(stone.X + ", " + stone.Y + ": " + (stone.IsBlack ? "B" : "W"));
-        }
     }
 }
