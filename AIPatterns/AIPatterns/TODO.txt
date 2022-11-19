@@ -1,2 +1,3 @@
-﻿Random playout
+﻿Change pass grade when noPassCount is higher or overrulePass is true
+Random playout
 Write in sgf comments which side and moves are inperfect

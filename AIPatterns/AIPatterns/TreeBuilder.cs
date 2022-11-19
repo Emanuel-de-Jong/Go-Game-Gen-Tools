@@ -180,7 +180,6 @@ namespace AIPatterns
 
             node.EnsureMarkup();
 
-            bool isFirstNonPassMove = true;
             for (int i=0; i<moveCounts.Count; i++)
             {
                 GoMoveNode move = moveCounts[i].Key;
@@ -197,12 +196,6 @@ namespace AIPatterns
                     node.Comment += " Pass";
                 } else
                 {
-                    if (isFirstNonPassMove)
-                    {
-                        isFirstNonPassMove = false;
-                        node.GetChild(i);
-                    }
-
                     node.Markup.Labels.Add(new TextLabel(move.Stone.X, move.Stone.Y, grade));
                 }
             }
