@@ -19,12 +19,21 @@ namespace AIPatterns
                 SequenceItem lastItem = null;
                 foreach (SequenceItem item in sequence)
                 {
+                    if (StoneUtils.IsPass(item))
+                    {
+                        new Comment(game).IncPassCount();
+                    }
+                    else
+                    {
+                        new Comment(game).IncNoPassCount();
+                    }
+
                     if (!game.Continue(item.Stone))
                     {
                         game.PlaceStone(item.Stone);
                     }
 
-                    new Comment(game).IncrementCount();
+                    new Comment(game).IncCount();
 
                     GoNode node = game.Game.CurrentNode;
                     node.EnsureMarkup();
@@ -48,7 +57,7 @@ namespace AIPatterns
                         StoneUtils.IsPass(item))
                     {
                         game.Game.ToPreviousMove(true);
-                        new Comment(game).IncrementCount();
+                        new Comment(game).IncCount();
 
                         game.Game.ToPreviousMove(true);
                     }
@@ -85,28 +94,23 @@ namespace AIPatterns
                 }
             }
 
-            bool overrulePass = false;
-            int passCount = 0;
+            Comment comment = new(node);
 
+            bool overrulePass = false;
             if (childPass != null)
             {
-                passCount = Comment.GetCount(childPass);
-
-                int noPassCount = 0;
                 bool hasStone = false;
                 foreach (GoMoveNode childMove in childMoves)
                 {
                     int count = Comment.GetCount(childMove);
-                    if (count >= minCount || count > passCount)
+                    if (count >= minCount || count > comment.PassCount)
                     {
                         hasStone = true;
                         break;
                     }
-
-                    noPassCount += count;
                 }
 
-                if (!hasStone && noPassCount > passCount)
+                if (!hasStone && comment.NoPassCount > comment.PassCount)
                 {
                     overrulePass = true;
                 }
@@ -125,7 +129,7 @@ namespace AIPatterns
                 if (isParentPass)
                 {
                     removeChild = true;
-                } else if (!overrulePass && count <= passCount)
+                } else if (!overrulePass && count <= comment.PassCount)
                 {
                     removeChild = true;
                 } else
@@ -158,18 +162,21 @@ namespace AIPatterns
 
         private static void AddMarkupLoop(GoNode node)
         {
-            List<KeyValuePair<GoMoveNode, int>> moveCounts = new();
+            Comment comment = new(node);
+            node.Comment = "Count: " + comment.Count +
+                "\nNo pass: " + comment.NoPassCount;
+
+            List<KeyValuePair<GoMoveNode, Comment>> moveCounts = new();
             foreach (GoNode childNode in node.ChildNodes)
             {
                 GoMoveNode? move = childNode as GoMoveNode;
                 if (move != null)
                 {
-                    int count = Comment.GetCount(move);
-                    moveCounts.Add(new KeyValuePair<GoMoveNode, int>(move, count));
+                    moveCounts.Add(new KeyValuePair<GoMoveNode, Comment>(move, new Comment(move)));
                 }
             }
 
-            moveCounts.Sort((pair1, pair2) => pair1.Value.CompareTo(pair2.Value) * -1);
+            moveCounts.Sort((pair1, pair2) => pair1.Value.Count.CompareTo(pair2.Value.Count) * -1);
 
             node.EnsureMarkup();
 
@@ -183,7 +190,7 @@ namespace AIPatterns
 
                 string grade = ((char)(65 + i)).ToString();
 
-                node.Comment += "\n" + grade + ": " + moveCounts[i].Value;
+                node.Comment += "\n" + grade + ": " + moveCounts[i].Value.Count;
 
                 if (StoneUtils.IsPass(move))
                 {

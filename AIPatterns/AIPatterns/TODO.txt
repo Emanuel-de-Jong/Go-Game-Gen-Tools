@@ -1,3 +1,2 @@
-﻿noPassCount on every node
-Random playout
+﻿Random playout
 Write in sgf comments which side and moves are inperfect

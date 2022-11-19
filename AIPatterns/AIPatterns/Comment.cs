@@ -10,6 +10,7 @@ namespace AIPatterns
     internal class Comment
     {
         public int Count { get; set; }
+        public int PassCount { get; set; }
         public int NoPassCount { get; set; }
         public GameWrap? Game { get; set; }
         public GoNode? Node { get; set; }
@@ -17,14 +18,12 @@ namespace AIPatterns
         public Comment(GameWrap? game)
         {
             Game = game;
-
             FillFromString(game?.Game.CurrentComment);
         }
 
         public Comment(GoNode? node)
         {
             Node = node;
-
             FillFromString(node?.Comment);
         }
 
@@ -34,20 +33,37 @@ namespace AIPatterns
 
             string[] commentSections = commentStr.Split("\n");
 
-            if (commentSections.Length >= 1)
+            if (commentSections.Length > 0)
             {
                 Count = int.Parse(commentSections[0]);
             }
 
-            if (commentSections.Length >= 2)
+            if (commentSections.Length > 1)
             {
-                NoPassCount = int.Parse(commentSections[1]);
+                PassCount = int.Parse(commentSections[1]);
+            }
+
+            if (commentSections.Length > 2)
+            {
+                NoPassCount = int.Parse(commentSections[2]);
             }
         }
 
-        public void IncrementCount()
+        public void IncCount()
         {
             Count++;
+            Apply();
+        }
+
+        public void IncPassCount()
+        {
+            PassCount++;
+            Apply();
+        }
+
+        public void IncNoPassCount()
+        {
+            NoPassCount++;
             Apply();
         }
 
@@ -69,6 +85,7 @@ namespace AIPatterns
         public override string ToString()
         {
             return Count +
+                "\n" + PassCount +
                 "\n" + NoPassCount;
         }
 
