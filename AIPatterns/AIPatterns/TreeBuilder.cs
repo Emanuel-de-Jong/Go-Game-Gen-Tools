@@ -24,7 +24,7 @@ namespace AIPatterns
                         game.PlaceStone(item.Stone);
                     }
 
-                    IncrementCount(game);
+                    new Comment(game).IncrementCount();
 
                     GoNode node = game.Game.CurrentNode;
                     node.EnsureMarkup();
@@ -48,7 +48,7 @@ namespace AIPatterns
                         StoneUtils.IsPass(item))
                     {
                         game.Game.ToPreviousMove(true);
-                        IncrementCount(game);
+                        new Comment(game).IncrementCount();
 
                         game.Game.ToPreviousMove(true);
                     }
@@ -59,15 +59,6 @@ namespace AIPatterns
             }
 
             return game;
-        }
-
-        public static void IncrementCount(GameWrap game)
-        {
-            string countStr = game.Game.CurrentComment;
-            int.TryParse(countStr, out int count);
-
-            count++;
-            game.CommentCount(count);
         }
 
         public static void FilterByCount(GoNode node, int minCount)
@@ -99,13 +90,13 @@ namespace AIPatterns
 
             if (childPass != null)
             {
-                int.TryParse(childPass.Comment, out passCount);
+                passCount = Comment.GetCount(childPass);
 
                 int noPassCount = 0;
                 bool hasStone = false;
                 foreach (GoMoveNode childMove in childMoves)
                 {
-                    int.TryParse(childMove.Comment, out int count);
+                    int count = Comment.GetCount(childMove);
                     if (count >= minCount || count > passCount)
                     {
                         hasStone = true;
@@ -127,7 +118,7 @@ namespace AIPatterns
 
             foreach (GoMoveNode childMove in childMoves)
             {
-                int.TryParse(childMove.Comment, out int count);
+                int count = Comment.GetCount(childMove);
                 if (count >= minCount) continue;
 
                 bool removeChild = false;
@@ -141,7 +132,7 @@ namespace AIPatterns
                 {
                     foreach (GoMoveNode childMove2 in childMoves)
                     {
-                        int.TryParse(childMove2.Comment, out int count2);
+                        int count2 = Comment.GetCount(childMove2);
                         if (count < count2)
                         {
                             removeChild = true;
@@ -173,7 +164,7 @@ namespace AIPatterns
                 GoMoveNode? move = childNode as GoMoveNode;
                 if (move != null)
                 {
-                    int.TryParse(move.Comment, out int count);
+                    int count = Comment.GetCount(move);
                     moveCounts.Add(new KeyValuePair<GoMoveNode, int>(move, count));
                 }
             }
