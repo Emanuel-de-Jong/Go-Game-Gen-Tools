@@ -72,8 +72,8 @@ namespace AIPatterns
                 TreeBuilder.FilterByCount(node, minCount);
             }
 
-            TreeBuilder.RemoveRedundentPasses(game);
             TreeBuilder.AddMarkup(game);
+            TreeBuilder.RemoveRedundentPasses(game);
 
             game.SaveAsSgf(savePath);
         }

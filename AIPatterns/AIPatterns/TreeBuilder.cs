@@ -44,8 +44,8 @@ namespace AIPatterns
 
                     if (combineIdenticalSequences &&
                         lastItem != null &&
-                        StoneUtils.IsPass(lastItem.Stone) &&
-                        StoneUtils.IsPass(item.Stone))
+                        StoneUtils.IsPass(lastItem) &&
+                        StoneUtils.IsPass(item))
                     {
                         game.Game.ToPreviousMove(true);
                         IncrementCount(game);
@@ -77,30 +77,72 @@ namespace AIPatterns
 
         private static void FilterByCountLoop(GoNode node, int minCount)
         {
-            GoMoveNode? move = node as GoMoveNode;
-
-            List<GoNode> childNodes = new List<GoNode>(node.ChildNodes);
-            foreach (GoNode childNode in childNodes)
+            GoMoveNode childPass = null;
+            List<GoMoveNode> childMoves = new();
+            foreach (GoNode childNode in node.ChildNodes)
             {
                 GoMoveNode? childMove = childNode as GoMoveNode;
-                if (childMove == null) continue;
+                if (childMove != null)
+                {
+                    if (StoneUtils.IsPass(childMove))
+                    {
+                        childPass = childMove;
+                    } else
+                    {
+                        childMoves.Add(childMove);
+                    }
+                }
+            }
 
+            bool overrulePass = false;
+            int passCount = 0;
+
+            if (childPass != null)
+            {
+                int.TryParse(childPass.Comment, out passCount);
+
+                int noPassCount = 0;
+                bool hasStone = false;
+                foreach (GoMoveNode childMove in childMoves)
+                {
+                    int.TryParse(childMove.Comment, out int count);
+                    if (count >= minCount || count > passCount)
+                    {
+                        hasStone = true;
+                        break;
+                    }
+
+                    noPassCount += count;
+                }
+
+                if (!hasStone && noPassCount > passCount)
+                {
+                    overrulePass = true;
+                }
+            }
+
+            bool isParentPass = false;
+            GoMoveNode? move = node as GoMoveNode;
+            if (move != null && StoneUtils.IsPass(move)) isParentPass = true;
+
+            foreach (GoMoveNode childMove in childMoves)
+            {
                 int.TryParse(childMove.Comment, out int count);
                 if (count >= minCount) continue;
 
                 bool removeChild = false;
-                if (move != null && StoneUtils.IsPass(move.Stone))
+                if (isParentPass)
+                {
+                    removeChild = true;
+                } else if (!overrulePass && count <= passCount)
                 {
                     removeChild = true;
                 } else
                 {
-                    foreach (GoNode childNode2 in childNodes)
+                    foreach (GoMoveNode childMove2 in childMoves)
                     {
-                        GoMoveNode? childMove2 = childNode2 as GoMoveNode;
-                        if (childMove2 == null) continue;
-
                         int.TryParse(childMove2.Comment, out int count2);
-                        if (count2 > count || (count2 == count && StoneUtils.IsPass(childMove2.Stone)))
+                        if (count < count2)
                         {
                             removeChild = true;
                             break;
@@ -108,7 +150,7 @@ namespace AIPatterns
                     }
                 }
 
-                if (removeChild) node.RemoveNode(childNode);
+                if (removeChild) node.RemoveNode(childMove);
             }
 
             foreach (GoNode childNode in node.ChildNodes)
@@ -152,7 +194,7 @@ namespace AIPatterns
 
                 node.Comment += "\n" + grade + ": " + moveCounts[i].Value;
 
-                if (StoneUtils.IsPass(move.Stone))
+                if (StoneUtils.IsPass(move))
                 {
                     node.Comment += " Pass";
                 } else
@@ -186,7 +228,7 @@ namespace AIPatterns
             if (!node.HasChildren)
             {
                 GoMoveNode? move = node as GoMoveNode;
-                if (move != null && StoneUtils.IsPass(move.Stone))
+                if (move != null && StoneUtils.IsPass(move))
                 {
                     return false;
                 }
