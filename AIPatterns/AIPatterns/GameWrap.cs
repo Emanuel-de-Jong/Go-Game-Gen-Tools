@@ -76,7 +76,7 @@ namespace AIPatterns
                 GoMoveNode? move = Game.CurrentNode as GoMoveNode;
                 if (move != null)
                 {
-                    GameUtils.PrintStone(move.Stone);
+                    StoneUtils.Print(move.Stone);
                 }
             }
             while (ToNextMove());

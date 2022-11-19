@@ -10,12 +10,13 @@ namespace AIPatterns
 {
     internal class TreeBuilder
     {
-        public static GameWrap SequenceListToGame(SequenceList sequenceList)
+        public static GameWrap SequenceListToGame(SequenceList sequenceList, bool combineIdenticalSequences)
         {
             GameWrap game = new();
 
             foreach (Sequence sequence in sequenceList)
             {
+                SequenceItem lastItem = null;
                 foreach (SequenceItem item in sequence)
                 {
                     if (!game.Continue(item.Stone))
@@ -23,11 +24,7 @@ namespace AIPatterns
                         game.PlaceStone(item.Stone);
                     }
 
-                    string countStr = game.Game.CurrentComment;
-                    int.TryParse(countStr, out int count);
-
-                    count++;
-                    game.CommentCount(count);
+                    IncrementCount(game);
 
                     GoNode node = game.Game.CurrentNode;
                     node.EnsureMarkup();
@@ -44,11 +41,33 @@ namespace AIPatterns
                             }
                         }
                     }
+
+                    if (combineIdenticalSequences &&
+                        lastItem != null &&
+                        StoneUtils.IsPass(lastItem.Stone) &&
+                        StoneUtils.IsPass(item.Stone))
+                    {
+                        game.Game.ToPreviousMove(true);
+                        IncrementCount(game);
+
+                        game.Game.ToPreviousMove(true);
+                    }
+
+                    lastItem = item;
                 }
                 game.ToStart();
             }
 
             return game;
+        }
+
+        public static void IncrementCount(GameWrap game)
+        {
+            string countStr = game.Game.CurrentComment;
+            int.TryParse(countStr, out int count);
+
+            count++;
+            game.CommentCount(count);
         }
 
         public static void FilterByCount(GoNode node, int minCount)

@@ -32,7 +32,7 @@ namespace AIPatterns
 
         void createFullSgf(SequenceList sequenceList, string savePath)
         {
-            GameWrap game = TreeBuilder.SequenceListToGame(sequenceList);
+            GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, true);
             TreeBuilder.AddMarkup(game);
 
             game.SaveAsSgf(savePath);
@@ -40,7 +40,7 @@ namespace AIPatterns
 
         void createFilteredSGF(SequenceList sequenceList, string savePath)
         {
-            GameWrap game = TreeBuilder.SequenceListToGame(sequenceList);
+            GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, true);
             foreach (GoNode node in game.Game.RootNode.ChildNodes)
             {
                 GoMoveNode? move = node as GoMoveNode;

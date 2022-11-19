@@ -1,3 +1,2 @@
-﻿Somehow combine (the count of) identical sequences without and after a pass.
-Random playout
+﻿Random playout
 Write in sgf comments which side and moves are inperfect
