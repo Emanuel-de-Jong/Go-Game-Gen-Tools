@@ -1,2 +1,4 @@
-﻿Random playout
+﻿don't filter everything but pass if everything combined is bigger than pass
+noPassCount on every node
+Random playout
 Write in sgf comments which side and moves are inperfect

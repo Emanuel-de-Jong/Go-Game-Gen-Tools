@@ -99,12 +99,6 @@ namespace AIPatterns
                         GoMoveNode? childMove2 = childNode2 as GoMoveNode;
                         if (childMove2 == null) continue;
 
-                        if (StoneUtils.IsPass(childMove2.Stone))
-                        {
-                            removeChild = true;
-                            break;
-                        }
-
                         int.TryParse(childMove2.Comment, out int count2);
                         if (count2 > count || (count2 == count && StoneUtils.IsPass(childMove2.Stone)))
                         {
