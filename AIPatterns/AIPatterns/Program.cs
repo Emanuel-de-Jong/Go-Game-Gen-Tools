@@ -48,25 +48,25 @@ namespace AIPatterns
 
                 int minCount = 0;
                 Stone stone = move.Stone;
-                if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 3) // 4-4 3149
+                if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 3) // 4-4 3657
+                {
+                    minCount = 14;
+                }
+                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 3) // 3-4 2865
+                {
+                    minCount = 12;
+                }
+                else if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 4) // 4-5 512
                 {
                     minCount = 6;
                 }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 3) // 3-4 2423
+                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 4) // 3-5 540
                 {
                     minCount = 6;
                 }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 4) // 4-5 433
+                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 2) // 3-3 397
                 {
-                    minCount = 4;
-                }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 4) // 3-5 440
-                {
-                    minCount = 4;
-                }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 2) // 3-3 336
-                {
-                    minCount = 4;
+                    minCount = 6;
                 }
 
                 TreeBuilder.FilterByCount(node, minCount);
