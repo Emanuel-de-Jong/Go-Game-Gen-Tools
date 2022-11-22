@@ -1,6 +1,7 @@
 ﻿using IGOEnchi.GoGameLogic;
 using IGOEnchi.SmartGameLib;
 using System.Reflection;
+using System.Xml.Linq;
 
 namespace AIPatterns
 {
@@ -27,8 +28,8 @@ namespace AIPatterns
 
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
             createFullSgf(sequenceList, savePathDir + "AI-Josekis-All");
-            createFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 7, 6, 4, 4, 4);
-            createFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 14, 12, 6, 6, 6);
+            createFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 0.08f, 5, 5, 3, 3, 3);
+            createFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 0.35f, 11, 10, 6, 6, 6);
         }
 
         void createFullSgf(SequenceList sequenceList, string savePath)
@@ -39,7 +40,7 @@ namespace AIPatterns
             game.SaveAsSgf(savePath);
         }
 
-        void createFilteredSGF(SequenceList sequenceList, string savePath, int min44, int min34, int min45, int min35, int min33)
+        void createFilteredSGF(SequenceList sequenceList, string savePath, float maxDiff, int min44, int min34, int min45, int min35, int min33)
         {
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
             foreach (GoNode node in game.Game.RootNode.ChildNodes)
@@ -70,13 +71,14 @@ namespace AIPatterns
                     minCount = min33;
                 }
 
-                TreeBuilder.FilterByCount(node, minCount);
+                TreeBuilder.FilterByCount(node, maxDiff, minCount);
             }
 
             TreeBuilder.AddMarkup(game);
             TreeBuilder.RemoveRedundentPasses(game);
 
             game.SaveAsSgf(savePath +
+                "-" + maxDiff +
                 "-" + min44 +
                 "-" + min34 +
                 "-" + min45 +

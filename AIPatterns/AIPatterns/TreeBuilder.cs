@@ -70,12 +70,12 @@ namespace AIPatterns
             return game;
         }
 
-        public static void FilterByCount(GoNode node, int minCount)
+        public static void FilterByCount(GoNode node, float maxDiff, int minCount)
         {
-            FilterByCountLoop(node, minCount);
+            FilterByCountLoop(node, maxDiff, minCount);
         }
 
-        private static void FilterByCountLoop(GoNode node, int minCount)
+        private static void FilterByCountLoop(GoNode node, float maxDiff, int minCount)
         {
             GoMoveNode childPass = null;
             List<GoMoveNode> childMoves = new();
@@ -94,6 +94,18 @@ namespace AIPatterns
                 }
             }
 
+            int highestCount = Comment.GetCount(childPass);
+            foreach (GoMoveNode childMove in childMoves)
+            {
+                int count = Comment.GetCount(childMove);
+                if (highestCount < count)
+                {
+                    highestCount = count;
+                }
+            }
+
+            int localMinCount = Math.Max(minCount, (int)Math.Round(highestCount * maxDiff));
+
             Comment comment = new(node);
 
             bool overrulePass = false;
@@ -103,7 +115,7 @@ namespace AIPatterns
                 foreach (GoMoveNode childMove in childMoves)
                 {
                     int count = Comment.GetCount(childMove);
-                    if (count >= minCount || count > comment.PassCount)
+                    if (count >= localMinCount || count > comment.PassCount)
                     {
                         hasStone = true;
                         break;
@@ -123,7 +135,7 @@ namespace AIPatterns
             foreach (GoMoveNode childMove in childMoves)
             {
                 int count = Comment.GetCount(childMove);
-                if (count >= minCount) continue;
+                if (count >= localMinCount) continue;
 
                 bool removeChild = false;
                 if (isParentPass)
@@ -150,7 +162,7 @@ namespace AIPatterns
 
             foreach (GoNode childNode in node.ChildNodes)
             {
-                FilterByCountLoop(childNode, minCount);
+                FilterByCountLoop(childNode, maxDiff, minCount);
             }
         }
 
