@@ -26,8 +26,9 @@ namespace AIPatterns
                 });
 
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
-            createFullSgf(sequenceList, savePathDir + "AI-Josekis-All.sgf");
-            createFilteredSGF(sequenceList, savePathDir + "AI-Josekis.sgf");
+            createFullSgf(sequenceList, savePathDir + "AI-Josekis-All");
+            createFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 7, 6, 4, 4, 4);
+            createFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 14, 12, 6, 6, 6);
         }
 
         void createFullSgf(SequenceList sequenceList, string savePath)
@@ -38,7 +39,7 @@ namespace AIPatterns
             game.SaveAsSgf(savePath);
         }
 
-        void createFilteredSGF(SequenceList sequenceList, string savePath)
+        void createFilteredSGF(SequenceList sequenceList, string savePath, int min44, int min34, int min45, int min35, int min33)
         {
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
             foreach (GoNode node in game.Game.RootNode.ChildNodes)
@@ -50,23 +51,23 @@ namespace AIPatterns
                 Stone stone = move.Stone;
                 if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 3) // 4-4 3657
                 {
-                    minCount = 14;
+                    minCount = min44;
                 }
                 else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 3) // 3-4 2865
                 {
-                    minCount = 12;
+                    minCount = min34;
                 }
                 else if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 4) // 4-5 512
                 {
-                    minCount = 6;
+                    minCount = min45;
                 }
                 else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 4) // 3-5 540
                 {
-                    minCount = 6;
+                    minCount = min35;
                 }
                 else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 2) // 3-3 397
                 {
-                    minCount = 6;
+                    minCount = min33;
                 }
 
                 TreeBuilder.FilterByCount(node, minCount);
@@ -75,7 +76,12 @@ namespace AIPatterns
             TreeBuilder.AddMarkup(game);
             TreeBuilder.RemoveRedundentPasses(game);
 
-            game.SaveAsSgf(savePath);
+            game.SaveAsSgf(savePath +
+                "-" + min44 +
+                "-" + min34 +
+                "-" + min45 +
+                "-" + min35 +
+                "-" + min33);
         }
 
         void Test()
@@ -84,7 +90,7 @@ namespace AIPatterns
 
 
 
-            game.SaveAsSgf(@"E:\Media\Downloads\test2.sgf");
+            game.SaveAsSgf(@"E:\Media\Downloads\test2");
         }
 
     }

@@ -56,6 +56,8 @@ namespace AIPatterns
 
         public void SaveAsSgf(string path)
         {
+            path += ".sgf";
+
             Game.Info.Komi = 6.5f;
 
             var builder = new GoSgfBuilder(Game);
