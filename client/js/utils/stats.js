@@ -50,8 +50,9 @@ stats.updateRatio = function(isRight, isPerfect) {
 	stats.ratioHistory[coord.y][coord.x] = type;
 }
 
-stats.setRatio = function() {
+stats.getRatio = function() {
     let ratios = [];
+
     let node = board.editor.getCurrent();
     do {
         let x = node.navTreeX;
@@ -66,8 +67,7 @@ stats.setRatio = function() {
     } while (node)
 
     if (ratios.length == 0) {
-        stats.clearRatio();
-        return;
+        return null;
     }
 
     ratios = ratios.reverse();
@@ -93,13 +93,36 @@ stats.setRatio = function() {
         }
     });
 
-    stats.rightPercentElement.innerHTML = Math.round((right / ratios.length) * 100);
-    stats.rightStreakElement.innerHTML = rightStreak;
-    stats.rightTopStreakElement.innerHTML = rightTopStreak;
+    return new Ratio(
+        ratios.length,
 
-    stats.perfectPercentElement.innerHTML = Math.round((perfect / ratios.length) * 100);
-    stats.perfectStreakElement.innerHTML = perfectStreak;
-    stats.perfectTopStreakElement.innerHTML = perfectTopStreak;
+        right,
+        Math.round((right / ratios.length) * 100),
+        rightStreak,
+        rightTopStreak,
+
+        perfect,
+        Math.round((perfect / ratios.length) * 100),
+        perfectStreak,
+        perfectTopStreak
+    );
+}
+
+stats.setRatio = function() {
+    let ratio = stats.getRatio();
+
+    if (ratio == null) {
+        stats.clearRatio();
+        return;
+    }
+
+    stats.rightPercentElement.innerHTML = ratio.rightPercent;
+    stats.rightStreakElement.innerHTML = ratio.rightStreak;
+    stats.rightTopStreakElement.innerHTML = ratio.rightTopStreak;
+
+    stats.perfectPercentElement.innerHTML = ratio.perfectPercent;
+    stats.perfectStreakElement.innerHTML = ratio.perfectStreak;
+    stats.perfectTopStreakElement.innerHTML = ratio.perfectTopStreak;
 };
 
 stats.clearRatio = function() {

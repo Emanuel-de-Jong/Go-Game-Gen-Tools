@@ -74,35 +74,21 @@ sgf.createInitComment = function() {
 
 sgf.createPreComment = function() {
 	return "Pre move" +
-	"\nStrength: " + settings.preVisits +
-	"\nOptions: " + settings.preOptions +
-	"\nOption chance: " + settings.preOptionPerc +
 	sgf.createCommentGrades();
 };
 
 sgf.createSelfplayComment = function() {
 	return "Selfplay move" +
-	"\nStrength: " + settings.selfplayVisits +
 	sgf.createCommentGrades();
 };
 
 sgf.createPlayerComment = function() {
 	return "Player move" +
-	"\nStrength: " + settings.suggestionVisits +
-	"\nOptions: " + settings.suggestionOptions +
-	"\nShow options: " + settings.showOptions +
-	"\nShow weaker options: " + settings.showWeakerOptions +
-	"\nMin strength: " + (settings.minVisitsPercSwitch ? settings.minVisitsPerc : "false") +
-	"\nMax strength difference" + (settings.maxVisitDiffPercSwitch ?  settings.maxVisitDiffPerc : "false") +
 	sgf.createCommentGrades();
 };
 
 sgf.createOpponentComment = function() {
 	return "Opponent move" +
-	"\nStrength: " + settings.opponentVisits +
-	"\nOptions: " + (settings.opponentOptionsSwitch ? settings.opponentOptions : "false") +
-	"\nOption chance: " + settings.opponentOptionPerc +
-	"\nShow options: " + settings.showOpponentOptions +
 	sgf.createCommentGrades();
 };
 
