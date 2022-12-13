@@ -5,6 +5,8 @@ import gotrainer.humanai.MoveSuggestion;
 import gotrainer.humanai.Moves;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -180,6 +182,23 @@ public class Kata {
 
     private void clearReader() throws Exception {
         while (!reader.readLine().equals("")) {}
+    }
+
+    public synchronized void sgf() throws Exception {
+        write("printsgf");
+        String sgfStr = reader.readLine().substring(2);
+        clearReader();
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM_HH-mm-ss");
+        File sgf = new File("sgfs\\" + dtf.format(LocalDateTime.now()) + ".sgf");
+
+        if (sgf.exists()) sgf.delete();
+
+        if (sgf.createNewFile()) {
+            FileWriter fileWriter = new FileWriter(sgf);
+            fileWriter.write(sgfStr);
+            fileWriter.close();
+        }
     }
 
 }

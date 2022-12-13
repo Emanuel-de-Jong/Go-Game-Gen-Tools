@@ -78,4 +78,10 @@ public class KataController {
 //         System.out.println("play " + color + " " + coord);
         kata.play(color, coord);
     }
+
+    @GetMapping("/sgf")
+    public void getSGF() throws Exception {
+        kata.sgf();
+    }
+    
 }

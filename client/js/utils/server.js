@@ -144,6 +144,17 @@ server.play = async function(coord, color = board.getColor()) {
         }));
 };
 
+server.sgf = async function() {
+    return server.sendRequest(fetch(server.URL + "sgf", {
+        method: "GET" })
+        .then(response => {
+            return response;
+        })
+        .catch(error => {
+            return error;
+        }));
+};
+
 server.sendRequest = async function(request) {
     // before
     let response = await request;
