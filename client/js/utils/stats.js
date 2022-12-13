@@ -26,7 +26,7 @@ stats.init = function() {
 };
 
 stats.clear = function() {
-    stats.history = [];
+    stats.ratioHistory = [];
     
     stats.clearRatio();
     stats.clearVisits();
@@ -34,7 +34,7 @@ stats.clear = function() {
 };
 
 
-stats.setRatio = function(isRight, isPerfect) {
+stats.updateRatio = function(isRight, isPerfect) {
 	let coord = board.getNodeCoord();
 
     let type = stats.TYPE.WRONG;
@@ -44,53 +44,65 @@ stats.setRatio = function(isRight, isPerfect) {
         type = stats.TYPE.RIGHT;
     }
 
-	if (!stats.history[coord.y]) {
-		stats.history[coord.y] = [];
+	if (!stats.ratioHistory[coord.y]) {
+		stats.ratioHistory[coord.y] = [];
 	}
-	stats.history[coord.y][coord.x] = type;
+	stats.ratioHistory[coord.y][coord.x] = type;
+}
 
-    stats.total++;
+stats.setRatio = function() {
+    let ratios = [];
+    let node = board.editor.getCurrent();
+    do {
+        let x = node.navTreeX;
+        let y = node.navTreeY;
 
-    if (isRight) {
-        stats.rightCorrect++;
-        stats.rightStreak++;
-        if (stats.rightStreak > stats.rightTopStreak) {
-            stats.rightTopStreak = stats.rightStreak;
-        }
-    } else {
-        stats.rightStreak = 0;
+        node = node.parent;
+
+        if (stats.ratioHistory[y] == null) continue;
+        if (stats.ratioHistory[y][x] == null) continue;
+
+        ratios.push(stats.ratioHistory[y][x])
+    } while (node)
+
+    if (ratios.length == 0) {
+        stats.clearRatio();
+        return;
     }
 
-    if (isPerfect) {
-        stats.perfectCorrect++;
-        stats.perfectStreak++;
-        if (stats.perfectStreak > stats.perfectTopStreak) {
-            stats.perfectTopStreak = stats.perfectStreak;
+    ratios = ratios.reverse();
+
+    let perfect=0, perfectStreak=0, perfectTopStreak=0;
+    let right=0, rightStreak=0, rightTopStreak=0;
+
+    ratios.forEach((ratio) => {
+        if (ratio == stats.TYPE.PERFECT || ratio == stats.TYPE.RIGHT) {
+            right++;
+            rightStreak++;
+            if (rightTopStreak < rightStreak) rightTopStreak = rightStreak;
+        } else {
+            rightStreak = 0;
         }
-    } else {
-        stats.perfectStreak = 0;
-    }
 
-    stats.rightPercentElement.innerHTML = Math.round((stats.rightCorrect / stats.total) * 100);
-    stats.rightStreakElement.innerHTML = stats.rightStreak;
-    stats.rightTopStreakElement.innerHTML = stats.rightTopStreak;
+        if (ratio == stats.TYPE.PERFECT) {
+            perfect++;
+            perfectStreak++;
+            if (perfectTopStreak < perfectStreak) perfectTopStreak = perfectStreak;
+        } else {
+            perfectStreak = 0;
+        }
+    });
 
-    stats.perfectPercentElement.innerHTML = Math.round((stats.perfectCorrect / stats.total) * 100);
-    stats.perfectStreakElement.innerHTML = stats.perfectStreak;
-    stats.perfectTopStreakElement.innerHTML = stats.perfectTopStreak;
+    stats.rightPercentElement.innerHTML = Math.round((right / ratios.length) * 100);
+    stats.rightStreakElement.innerHTML = rightStreak;
+    stats.rightTopStreakElement.innerHTML = rightTopStreak;
+
+    stats.perfectPercentElement.innerHTML = Math.round((perfect / ratios.length) * 100);
+    stats.perfectStreakElement.innerHTML = perfectStreak;
+    stats.perfectTopStreakElement.innerHTML = perfectTopStreak;
 };
 
 stats.clearRatio = function() {
-    stats.total = 0;
-
-    stats.rightCorrect = 0;
-    stats.rightStreak = 0;
-    stats.rightTopStreak = 0;
-
-    stats.perfectCorrect = 0;
-    stats.perfectStreak = 0;
-    stats.perfectTopStreak = 0;
-
     stats.rightPercentElement.innerHTML = "-";
     stats.rightStreakElement.innerHTML = 0;
     stats.rightTopStreakElement.innerHTML = 0;

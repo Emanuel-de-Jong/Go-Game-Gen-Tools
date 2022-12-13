@@ -131,6 +131,8 @@ main.handleJumped = async function() {
 main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPlay, markupCoord) {
 	let opponentOptions = main.getOpponentOptions();
 
+	stats.updateRatio(isRightChoice, isPerfectChoice);
+
 	if (!settings.disableAICorrection || isRightChoice) {
 		await board.play(suggestionToPlay, utils.MOVE_TYPE.PLAYER);
 
@@ -140,8 +142,6 @@ main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPla
 	} else {
 		await board.draw(markupCoord, "auto", false, utils.MOVE_TYPE.PLAYER);
 	}
-
-	stats.setRatio(isRightChoice, isPerfectChoice);
 
 	if (settings.disableAICorrection && !isRightChoice) {
 		scoreChart.update(await server.analyzeMove(markupCoord));
@@ -180,6 +180,8 @@ main.opponentTurn = async function() {
 
 main.treeJumpedCheckListener = function(event) {
 	if (event.navChange) {
+		stats.setRatio();
+
 		if (!event.treeChange ||
 				(settings.showOptions && settings.color == board.getColor()) ||
 				(settings.showOpponentOptions && settings.color != board.getColor())) {

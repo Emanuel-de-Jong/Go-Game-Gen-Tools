@@ -221,7 +221,7 @@ board.getMoveNumber = function() {
 };
 
 board.getNodeCoord = function() {
-	return new Coord(board.getMoveNumber(), board.editor.getCurrent().navTreeY);
+	return new Coord(board.editor.getCurrent().navTreeX, board.editor.getCurrent().navTreeY);
 }
 
 board.getMoves = function() {
