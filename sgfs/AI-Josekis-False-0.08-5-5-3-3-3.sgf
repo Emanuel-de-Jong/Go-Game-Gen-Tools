@@ -8,7 +8,10 @@ E: 397]LB[pd:A][qd:B][qe:C][pe:D][qc:E](;B[pd]C[Count: 3657
 No pass: 2902
 A: 2087
 B: 755 Pass
-C: 743]LB[qc:A][qf:C](;W[qc]C[Count: 2087
+C: 743
+D: 64
+E: 5
+F: 3]LB[qc:A][qf:C][qd:D][qh:E][qg:F](;W[qc]C[Count: 2087
 No pass: 2069
 A: 2069
 B: 18 Pass]LB[qd:A]TR[dc][ed][op][pq]MA[ce][ql][qo][dp](;B[qd]C[Count: 2069
@@ -63,7 +66,7 @@ A: 36 Pass
 B: 5]LB[pj:B]TR[cc][ql][qm][qn][po][pp][pq]MA[rm][rn][qo][qp][cq][qq](;B[]C[Count: 36
 No pass: 36
 A: 10
-B: 10]LB[pi:A][ne:B]TR[cc][ql][qm][qn][po][pp][pq]MA[rm][rn][qo][qp][cq][qq](;W[pi]C[Count: 10
+A: 10]LB[pi:A][ne:A]TR[cc][ql][qm][qn][po][pp][pq]MA[rm][rn][qo][qp][cq][qq](;W[pi]C[Count: 10
 No pass: 0
 A: 10 Pass]TR[cc][ql][qm][qn][po][jp][pp][fq][pq]MA[rm][dn][on][rn][qo][qp][cq][qq]
 ;B[]C[Count: 10
@@ -73,7 +76,7 @@ B: 1 Pass]LB[ne:A]TR[cc][ql][qm][qn][po][jp][pp][fq][pq]MA[rm][dn][on][rn][qo][q
 ;W[ne]C[Count: 9
 No pass: 9
 A: 3
-B: 3]LB[oh:A][rc:B]MA[bb][cb][ac][cc][ec][bd][cf][ck][nn][pn][do][dq]TR[dc][cd][ed][fd][be][de][po][qo][gq][jq][pq](;B[oh]C[Count: 3
+A: 3]LB[oh:A][rc:A]MA[bb][cb][ac][cc][ec][bd][cf][ck][nn][pn][do][dq]TR[dc][cd][ed][fd][be][de][po][qo][gq][jq][pq](;B[oh]C[Count: 3
 No pass: 3
 A: 3]LB[nd:A]TR[cc][gd][ql][qm][qn][do][po][dp][fp][ip][kp][lp][pp][dq][pq]MA[cg][rm][cn][dn][fn][on][rn][co][lo][qo][mp][qp][cq][qq][cr]
 ;W[nd]C[Count: 3
@@ -91,7 +94,7 @@ A: 2]LB[kc:A]TR[cc][gd][ql][qm][qn][do][po][dp][fp][ip][kp][lp][pp][dq][pq]MA[cg
 ;W[kc]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[lb:A][le:B]TR[cc][ql][mm][qm][gn][qn][mo][po][dp][fp][hp][ip][pp][dq][pq]MA[dk][rm][dn][on][rn][do][io][jo][qo][cp][jp][lp][qp][cq][qq](;B[lb]C[Count: 1
+A: 1]LB[lb:A][le:A]TR[cc][ql][mm][qm][gn][qn][mo][po][dp][fp][hp][ip][pp][dq][pq]MA[dk][rm][dn][on][rn][do][io][jo][qo][cp][jp][lp][qp][cq][qq](;B[lb]C[Count: 1
 No pass: 1
 A: 1]LB[kd:A]TR[cc][ql][mm][qm][gn][qn][mo][po][dp][fp][hp][ip][pp][dq][pq]MA[dk][rm][dn][on][rn][do][io][jo][qo][cp][jp][lp][qp][cq][qq]
 ;W[kd]C[Count: 1
@@ -285,7 +288,7 @@ A: 2]LB[pf:A]MA[dc][ed][qm][rn][qp][qq]TR[ce][po][cp][lp][pp][pq]
 ;B[pf]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[jd:A][kc:B]MA[dc][ed][qm][rn][qp][qq]TR[ce][po][cp][lp][pp][pq](;W[jd]C[Count: 1
+A: 1]LB[jd:A][kc:A]MA[dc][ed][qm][rn][qp][qq]TR[ce][po][cp][lp][pp][pq](;W[jd]C[Count: 1
 No pass: 1
 A: 1]LB[jf:A]TR[dc][cd][cf][co][do][po][qp]MA[ec][ed][cp][fp][lp][dq][oq]
 ;B[jf]C[Count: 1
@@ -330,9 +333,9 @@ A: 4]LB[mc:A]MA[cc][cd][ce][bf][bg][qo][cp][dp][ep][qp][fq][gq][hq][qq][pr][qr]T
 ;B[mc]C[Count: 4
 No pass: 3
 A: 1 Pass
-B: 1
-C: 1
-D: 1]LB[pj:B][ne:C][qj:D]TR[dc][ed][kp][op][pq]MA[ce][pl][do][qo][dq](;W[pj]C[Count: 1
+A: 1
+A: 1
+A: 1]LB[pj:A][ne:A][qj:A]TR[dc][ed][kp][op][pq]MA[ce][pl][do][qo][dq](;W[pj]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[dd][qn][co]TR[cf][pp][dq])
 (;W[ne]C[Count: 1
@@ -375,14 +378,14 @@ B: 1 Pass]LB[rd:A]TR[cc][qn][mp][np][op][pp][oq][qq]MA[do][dq][mq][nq][pq][or][p
 ;W[rd]C[Count: 5
 No pass: 4
 A: 2
-B: 2
-C: 1 Pass]LB[re:A][ne:B]TR[cc][qn][mp][np][op][pp][oq][qq]MA[do][dq][mq][nq][pq][or][pr][qr](;B[re]C[Count: 2
+A: 2
+B: 1 Pass]LB[re:A][ne:A]TR[cc][qn][mp][np][op][pp][oq][qq]MA[do][dq][mq][nq][pq][or][pr][qr](;B[re]C[Count: 2
 No pass: 2
 A: 2]LB[sc:A]MA[bb][fb][cc][dc][ec][dh][di][dj][ck][dk][em][do][ep][cq][dq]TR[bc][fc][cd][dd][ed][cf][ci][bj][cj][bk][cm][qn][dp][fp][pp][jq]
 ;W[sc]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[pf:A][ne:B]MA[bb][fb][cc][dc][ec][dh][di][dj][ck][dk][em][do][ep][cq][dq]TR[bc][fc][cd][dd][ed][cf][ci][bj][cj][bk][cm][qn][dp][fp][pp][jq](;B[pf]C[Count: 1
+A: 1]LB[pf:A][ne:A]MA[bb][fb][cc][dc][ec][dh][di][dj][ck][dk][em][do][ep][cq][dq]TR[bc][fc][cd][dd][ed][cf][ci][bj][cj][bk][cm][qn][dp][fp][pp][jq](;B[pf]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[dd][pn][ep][fp][pp][fq][lq][mq][nq][pq][qq][nr][rr]TR[cn][on][no][po][qo][ro][cp][np][op][qp][dq][eq][rq][mr][sr])
 (;B[ne]C[Count: 1
@@ -402,8 +405,8 @@ A: 6]LB[ob:A]MA[dd][rm][rn][co][qp][qq]TR[ql][qm][qn][pp][dq][pq]
 ;B[ob]C[Count: 6
 No pass: 6
 A: 2
-B: 2
-C: 2]LB[nd:A][oa:B][pb:C]MA[fa][eb][gb][bc][cc][dc][fc][co][dq][nq][pq][qq][mr][or][ns]TR[bb][cb][db][ec][cd][dd][ed][op][pp][qp][oq][pr][qr](;W[nd]C[Count: 2
+A: 2
+A: 2]LB[nd:A][oa:A][pb:A]MA[fa][eb][gb][bc][cc][dc][fc][co][dq][nq][pq][qq][mr][or][ns]TR[bb][cb][db][ec][cd][dd][ed][op][pp][qp][oq][pr][qr](;W[nd]C[Count: 2
 No pass: 2
 A: 2]LB[mc:A]MA[dc][ed][rn][dp][ep][fp][jp][qp][fq][qq]TR[ce][cn][po][cp][pp][cq][dq][eq][lq][pq]
 ;B[mc]C[Count: 2
@@ -415,7 +418,7 @@ A: 2]LB[mb:A]MA[dc][ed][rn][dp][ep][fp][jp][qp][fq][qq]TR[ce][cn][po][cp][pp][cq
 ;B[mb]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[rd:A][ne:B]MA[dc][ed][rn][dp][ep][fp][jp][qp][fq][qq]TR[ce][cn][po][cp][pp][cq][dq][eq][lq][pq](;W[rd]C[Count: 1
+A: 1]LB[rd:A][ne:A]MA[dc][ed][rn][dp][ep][fp][jp][qp][fq][qq]TR[ce][cn][po][cp][pp][cq][dq][eq][lq][pq](;W[rd]C[Count: 1
 No pass: 1
 A: 1]LB[re:A]MA[fa][eb][gb][bc][cc][dc][fc][cp][fq][nq][pq][qr]TR[bb][cb][db][ec][cd][dd][ed][qn][pp][qq][rr]
 ;B[re]C[Count: 1
@@ -583,10 +586,10 @@ No pass: 39
 A: 27 Pass
 B: 14
 C: 5
-D: 5]LB[md:B][pg:C][pi:D]TR[dd][pp][cq]MA[dn][bo][eq](;W[]C[Count: 27
+C: 5]LB[md:B][pg:C][pi:C]TR[dd][pp][cq]MA[dn][bo][eq](;W[]C[Count: 27
 No pass: 27
 A: 5
-B: 5]LB[ke:A][qk:B]TR[cc][cq]MA[po][pq](;B[ke]C[Count: 5
+A: 5]LB[ke:A][qk:A]TR[cc][cq]MA[po][pq](;B[ke]C[Count: 5
 No pass: 4
 A: 3
 B: 1 Pass]LB[ph:A]TR[cc][fd][cq]MA[po][jp][pq]
@@ -611,8 +614,8 @@ A: 7 Pass]TR[cd][ed][op][pq]MA[ql][qo][cp][fq][mq])
 No pass: 3
 A: 2 Pass
 B: 1
-C: 1
-D: 1]LB[mh:B][nh:C][qi:D]TR[cc][dp][cq][dq][fq][nq][br]MA[ck][qm][cn][bp][cp][pp][bq][lq](;B[mh]C[Count: 1
+B: 1
+B: 1]LB[mh:B][nh:B][qi:B]TR[cc][dp][cq][dq][fq][nq][br]MA[ck][qm][cn][bp][cp][pp][bq][lq](;B[mh]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[dc][fd][ck][dp][np][op][gq][nq]TR[ce][ci][qn][qp][oq][pq])
 (;B[nh]C[Count: 1
@@ -668,8 +671,8 @@ A: 1 Pass]TR[cc][dp][cq][dq][fq][nq][br]MA[ck][qm][cn][bp][cp][pp][bq][lq])
 No pass: 3
 A: 2 Pass
 B: 1
-C: 1
-D: 1]LB[ni:B][le:C][qg:D]TR[dd][po][op][pp][jq][lq][mq][nq][pq]MA[cf][pm][pn][co][oo][qo][kp][lp][mp][np][dq](;B[ni]C[Count: 1
+B: 1
+B: 1]LB[ni:B][le:B][qg:B]TR[dd][po][op][pp][jq][lq][mq][nq][pq]MA[cf][pm][pn][co][oo][qo][kp][lp][mp][np][dq](;B[ni]C[Count: 1
 No pass: 1
 A: 1]LB[qg:A]TR[dc][cf][rn][go][qo][cp][dp][ep][fp][hp][ip][qp][qq][rq][pr][rr][qs]MA[fc][ci][cl][fm][pm][rm][hn][qn][po][ro][pp][rp][cq][dq][fq][hq][pq][gr]
 ;W[qg]C[Count: 1
@@ -708,13 +711,13 @@ A: 10 Pass]TR[dd][qp]MA[cq][oq])
 No pass: 6
 A: 4 Pass
 B: 2
-C: 2]LB[qh:B][qk:C]MA[cc][cd][ce][bf][cq]TR[dc][dd][de][cf][pp](;W[qh]C[Count: 2
+B: 2]LB[qh:B][qk:B]MA[cc][cd][ce][bf][cq]TR[dc][dd][de][cf][pp](;W[qh]C[Count: 2
 No pass: 0
 A: 2 Pass]MA[cc][cd][ce][bf][cq]TR[dc][dd][de][cf][pp])
 (;W[qk]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[qi:A][pj:B]MA[cc][cd][ce][bg][po][pq]TR[dc][dd][de][df][cq](;B[qi]C[Count: 1
+A: 1]LB[qi:A][pj:A]MA[cc][cd][ce][bg][po][pq]TR[dc][dd][de][df][cq](;B[qi]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[cc][cd][ce][bg][po][pq]TR[dc][dd][de][df][cq])
 (;B[pj]C[Count: 1
@@ -815,8 +818,8 @@ B: 5 Pass]LB[ne:A]TR[cc][qn][do][dp][dq]MA[bn][cp][hp][pp][cq][nq]
 ;W[ne]C[Count: 9
 No pass: 8
 A: 3
-B: 3
-C: 1 Pass]LB[of:A][rc:B]TR[cc][qn][do][dp][dq]MA[bn][cp][hp][pp][cq][nq](;B[of]C[Count: 3
+A: 3
+B: 1 Pass]LB[of:A][rc:A]TR[cc][qn][do][dp][dq]MA[bn][cp][hp][pp][cq][nq](;B[of]C[Count: 3
 No pass: 2
 A: 2
 B: 1 Pass]LB[le:A]TR[dd][op][pp][qp][nq]MA[cp][fq][oq][pq][qq][nr]
@@ -829,7 +832,7 @@ A: 2]LB[rb:A]TR[dd][qn][np][op][pp][oq][qq]MA[cp][fq][mq][nq][pq][or][pr][qr]
 ;W[rb]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[oh:A][qb:B]TR[dd][qn][np][op][pp][oq][qq]MA[cp][fq][mq][nq][pq][or][pr][qr](;B[oh]C[Count: 1
+A: 1]LB[oh:A][qb:A]TR[dd][qn][np][op][pp][oq][qq]MA[cp][fq][mq][nq][pq][or][pr][qr](;B[oh]C[Count: 1
 No pass: 1
 A: 1]LB[oi:A]TR[dd][qn][np][op][pp][oq][qq]MA[cp][fq][mq][nq][pq][or][pr][qr]
 ;W[oi]C[Count: 1
@@ -934,8 +937,8 @@ A: 19]LB[ne:A]TR[db][eb][dc][fc][cd][ed][ce][ee][fe][bf][cf][bg][ch][go][cp][dp]
 ;W[ne]C[Count: 19
 No pass: 18
 A: 9
-B: 9
-C: 1 Pass]LB[rc:A][le:B]TR[db][eb][dc][fc][cd][ed][ce][ee][fe][bf][cf][bg][ch][go][cp][dp][ep][fp]MA[cc][dd][fd][de][df][ef][ff][cg][dg][bh][ci][cl][fm][pp][cq][dq][fq][gr](;B[rc]C[Count: 9
+A: 9
+B: 1 Pass]LB[rc:A][le:A]TR[db][eb][dc][fc][cd][ed][ce][ee][fe][bf][cf][bg][ch][go][cp][dp][ep][fp]MA[cc][dd][fd][de][df][ef][ff][cg][dg][bh][ci][cl][fm][pp][cq][dq][fq][gr](;B[rc]C[Count: 9
 No pass: 9
 A: 9]LB[rb:A]TR[cc][po][qo][lp][mp][np][op]MA[do][pp][dq][kq][mq][nq][oq][qq]
 ;W[rb]C[Count: 9
@@ -950,7 +953,7 @@ A: 2]LB[le:A]TR[cc][pm][qm][ln][rn][do][mo][po][qo][ro][dp][mp][np][op][qp][dq][
 ;B[le]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[ph:A][kd:B]TR[cc][pm][qm][ln][rn][do][mo][po][qo][ro][dp][mp][np][op][qp][dq][mq][qq]MA[rm][bn][mn][nn][pn][qn][ko][lo][no][oo][cp][hp][pp][cq][kq][pq][nr][or][qr](;W[ph]C[Count: 1
+A: 1]LB[ph:A][kd:A]TR[cc][pm][qm][ln][rn][do][mo][po][qo][ro][dp][mp][np][op][qp][dq][mq][qq]MA[rm][bn][mn][nn][pn][qn][ko][lo][no][oo][cp][hp][pp][cq][kq][pq][nr][or][qr](;W[ph]C[Count: 1
 No pass: 1
 A: 1]LB[of:A]TR[cc][pm][qm][ln][rn][do][mo][po][qo][ro][dp][mp][np][op][qp][dq][mq][qq]MA[rm][bn][mn][nn][pn][qn][ko][lo][no][oo][cp][hp][pp][cq][kq][pq][nr][or][qr]
 ;B[of]C[Count: 1
@@ -990,7 +993,7 @@ A: 2]LB[me:A]TR[cc][cf][bo][co][do][eo][fo][jo][cp][ep][gp][hp][ip][kp][pp][qp][
 ;B[me]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[ng:A][nf:B]MA[cc][cd][ce][bf][qm][cn][rn][do][qo][dp][qp][dq][qq][qr]TR[dc][dd][de][cf][bn][pn][qn][co][po][cp][pp][cq][pq](;W[ng]C[Count: 1
+A: 1]LB[ng:A][nf:A]MA[cc][cd][ce][bf][qm][cn][rn][do][qo][dp][qp][dq][qq][qr]TR[dc][dd][de][cf][bn][pn][qn][co][po][cp][pp][cq][pq](;W[ng]C[Count: 1
 No pass: 1
 A: 1]LB[pg:A]MA[cc][cd][ce][bf][qm][cn][rn][do][qo][dp][qp][dq][qq][qr]TR[dc][dd][de][cf][bn][pn][qn][co][po][cp][pp][cq][pq]
 ;B[pg]C[Count: 1
@@ -1211,7 +1214,7 @@ A: 19]LB[md:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][n
 ;W[md]C[Count: 19
 No pass: 19
 A: 9
-B: 9]LB[pe:A][of:B]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr](;B[pe]C[Count: 9
+A: 9]LB[pe:A][of:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr](;B[pe]C[Count: 9
 No pass: 9
 A: 9]LB[qf:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr]
 ;W[qf]C[Count: 9
@@ -1229,7 +1232,7 @@ A: 7]LB[mf:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
 ;W[mf]C[Count: 7
 No pass: 7
 A: 3
-B: 3]LB[pg:A][oh:B]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq](;B[pg]C[Count: 3
+A: 3]LB[pg:A][oh:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq](;B[pg]C[Count: 3
 No pass: 3
 A: 3]LB[qg:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr]
 ;W[qg]C[Count: 3
@@ -1290,7 +1293,7 @@ A: 6]LB[kc:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr
 ;B[kc]C[Count: 6
 No pass: 6
 A: 3
-B: 3]LB[ph:A][qh:B]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr](;W[ph]C[Count: 3
+A: 3]LB[ph:A][qh:A]TR[cc][cd][ce][bf][op][pp][qp][cq]MA[dc][dd][de][cf][pl][pq][qq][nr](;W[ph]C[Count: 3
 No pass: 2
 A: 2
 B: 1 Pass]LB[oh:A]MA[dd][pn][qn][po][eq]TR[qo][cp][qp][nq][pq]
@@ -1577,7 +1580,7 @@ A: 2]LB[mc:A]MA[fa][eb][gb][bc][cc][dc][fc][cm][bp][gp][kp][op][qp][nq]TR[bb][cb
 ;B[mc]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[qf:A][qg:B]MA[fa][eb][gb][bc][cc][dc][fc][cm][bp][gp][kp][op][qp][nq]TR[bb][cb][db][ec][cd][dd][ed][go][ko][lo][dp][fp][fq][lq](;W[qf]C[Count: 1
+A: 1]LB[qf:A][qg:A]MA[fa][eb][gb][bc][cc][dc][fc][cm][bp][gp][kp][op][qp][nq]TR[bb][cb][db][ec][cd][dd][ed][go][ko][lo][dp][fp][fq][lq](;W[qf]C[Count: 1
 No pass: 1
 A: 1]LB[of:A]MA[fa][eb][gb][cc][dc][fc][gn][gp][lp][op][qp]TR[cb][db][ec][cd][dd][ed][ck][ql][dp][fp][fq]
 ;B[of]C[Count: 1
@@ -1641,7 +1644,7 @@ B: 8]LB[pk:B]MA[cc][bn][co][cp][cq]TR[cn][pn][do][dp][dq][pq](;B[]C[Count: 33
 No pass: 33
 A: 19
 B: 5
-C: 5]LB[oc:A][pj:B][qk:C]MA[cc][rn][qp][qq]TR[po][pp][cq][pq](;W[oc]C[Count: 19
+B: 5]LB[oc:A][pj:B][qk:B]MA[cc][rn][qp][qq]TR[po][pp][cq][pq](;W[oc]C[Count: 19
 No pass: 19
 A: 19]LB[od:A]MA[bb][db][cc][cd][ce][bf][qo][qp][pq][nr][or][qr]TR[cb][dc][dd][de][cf][bg][dg][pn][po][dp][pp][nq][oq]
 ;B[od]C[Count: 19
@@ -1764,7 +1767,7 @@ A: 4]LB[qe:A]TR[cd][ed][eq]MA[cp][pp]
 ;W[qe]C[Count: 4
 No pass: 4
 A: 2
-B: 2]LB[pi:A][oh:B]TR[cd][ed][eq]MA[cp][pp](;B[pi]C[Count: 2
+A: 2]LB[pi:A][oh:A]TR[cd][ed][eq]MA[cp][pp](;B[pi]C[Count: 2
 No pass: 0
 A: 2 Pass]TR[cd][ed][eq]MA[cp][pp])
 (;B[oh]C[Count: 2
@@ -1957,7 +1960,7 @@ A: 2]LB[pk:A]TR[cc][cp][pp][cq][dr][er]MA[co][do][dq][eq][gq]
 ;B[pk]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[oj:A][jc:B]TR[cc][cp][pp][cq][dr][er]MA[co][do][dq][eq][gq](;W[oj]C[Count: 1
+A: 1]LB[oj:A][jc:A]TR[cc][cp][pp][cq][dr][er]MA[co][do][dq][eq][gq](;W[oj]C[Count: 1
 No pass: 0
 A: 1 Pass]TR[cc][cp][pp][cq][dr][er]MA[co][do][dq][eq][gq])
 (;W[jc]C[Count: 1
@@ -1992,7 +1995,7 @@ A: 8]LB[oe:A]MA[dd][pp][fq]TR[cn][dp][qp][qq]
 ;B[oe]C[Count: 8
 No pass: 8
 A: 4
-B: 4]LB[pe:A][ne:B]MA[dd][pp][fq]TR[cn][dp][qp][qq](;W[pe]C[Count: 4
+A: 4]LB[pe:A][ne:A]MA[dd][pp][fq]TR[cn][dp][qp][qq](;W[pe]C[Count: 4
 No pass: 4
 A: 4]LB[re:A]TR[eb][cc][cd][cn][dn][do][ep][eq]MA[dd][de][bm][bn][co][dp][qp][cq]
 ;B[re]C[Count: 4
@@ -2025,7 +2028,7 @@ A: 2]LB[rb:A]MA[cc][po][pp]TR[qo][qp][cq][qq]
 ;W[rb]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[rg:A][oh:B]MA[cc][po][pp]TR[qo][qp][cq][qq](;B[rg]C[Count: 1
+A: 1]LB[rg:A][oh:A]MA[cc][po][pp]TR[qo][qp][cq][qq](;B[rg]C[Count: 1
 No pass: 1
 A: 1]LB[rh:A]MA[dc][cd][fd][ce][ff][ch][qn]TR[de][cf][df][eg][fi][cn][pp][dq]
 ;W[rh]C[Count: 1
@@ -2221,7 +2224,7 @@ A: 2]LB[sb:A]MA[dd][pp][fq]TR[cn][dp][qp][qq]
 ;W[sb]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[oh:A][le:B]MA[dd][pp][fq]TR[cn][dp][qp][qq](;B[oh]C[Count: 1
+A: 1]LB[oh:A][le:A]MA[dd][pp][fq]TR[cn][dp][qp][qq](;B[oh]C[Count: 1
 No pass: 1
 A: 1]LB[pk:A]MA[dc][ed][po][qo][pp]TR[ce][dp][qp][nq][pq][qq]
 ;W[pk]C[Count: 1
@@ -2290,7 +2293,7 @@ A: 2]LB[oc:A]MA[dc][ed][po][qo][pp]TR[ce][dp][qp][nq][pq][qq]
 ;W[oc]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[jc:A][sb:B]MA[dc][ed][po][qo][pp]TR[ce][dp][qp][nq][pq][qq](;B[jc]C[Count: 1
+A: 1]LB[jc:A][sb:A]MA[dc][ed][po][qo][pp]TR[ce][dp][qp][nq][pq][qq](;B[jc]C[Count: 1
 No pass: 1
 A: 1]LB[pg:A]MA[cc][cd][ce][bf][dp][ep][eq][qq]TR[dc][dd][de][cf][do][cp][cq][dq]
 ;W[pg]C[Count: 1
@@ -2499,8 +2502,8 @@ B: 1 Pass]LB[lc:A]MA[cc][dc][dd][df][cn][dn][fn][cp][cq]TR[cd][ce][cf][ch][do][d
 ;W[lc]C[Count: 3
 No pass: 2
 A: 1 Pass
-B: 1
-C: 1]LB[md:B][mb:C]MA[cc][dc][dd][df][cn][dn][fn][cp][cq]TR[cd][ce][cf][ch][do][dp][qp][dq][nq][cr](;B[md]C[Count: 1
+A: 1
+A: 1]LB[md:A][mb:A]MA[cc][dc][dd][df][cn][dn][fn][cp][cq]TR[cd][ce][cf][ch][do][dp][qp][dq][nq][cr](;B[md]C[Count: 1
 No pass: 1
 A: 1]LB[mb:A]MA[cc][cd][ce][bf][bg][qp][oq]TR[dc][dd][de][cf][cg][ch][co][dq]
 ;W[mb]C[Count: 1
@@ -2593,7 +2596,7 @@ A: 2]LB[mf:A]TR[ec][cd][ed][dh][cn][dp]MA[fd][gf][op][qp][fq][jq]
 ;B[mf]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[lh:A][lg:B]TR[ec][cd][ed][dh][cn][dp]MA[fd][gf][op][qp][fq][jq](;W[lh]C[Count: 1
+A: 1]LB[lh:A][lg:A]TR[ec][cd][ed][dh][cn][dp]MA[fd][gf][op][qp][fq][jq](;W[lh]C[Count: 1
 No pass: 1
 A: 1]LB[md:A]TR[cd][ed][cm][dp]MA[op][qp][fq][jq]
 ;B[md]C[Count: 1
@@ -2673,12 +2676,12 @@ A: 12 Pass]MA[ec][ci][ck][po][cq][dq][eq][gq][pq][br][fr][hr]TR[gc][cd][de][dk][
 (;B[id]C[Count: 8
 No pass: 5
 A: 3 Pass
-B: 3]LB[mc:B]MA[dc][cd][df][ff][cg][qm][rn][co][ep][fp][qp][qq]TR[ec][ed][ch][dh][cl][po][lp][pp][dq][eq][gq][pq]
+A: 3]LB[mc:A]MA[dc][cd][df][ff][cg][qm][rn][co][ep][fp][qp][qq]TR[ec][ed][ch][dh][cl][po][lp][pp][dq][eq][gq][pq]
 ;W[mc]C[Count: 3
 No pass: 2
 A: 1
-B: 1
-C: 1 Pass]LB[qi:A][qj:B]MA[dc][cd][df][ff][cg][qm][rn][co][ep][fp][qp][qq]TR[ec][ed][ch][dh][cl][po][lp][pp][dq][eq][gq][pq](;B[qi]C[Count: 1
+A: 1
+A: 1 Pass]LB[qi:A][qj:A]MA[dc][cd][df][ff][cg][qm][rn][co][ep][fp][qp][qq]TR[ec][ed][ch][dh][cl][po][lp][pp][dq][eq][gq][pq](;B[qi]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[cb][dc][bd][dd][fd][ch][cn][do][bp][cp][ep][dq][fq][iq][er]TR[bc][cc][cd][be][de][cf][ef][cl][el][co][eo][fo][pp][cq][dr])
 (;B[qj]C[Count: 1
@@ -2735,8 +2738,8 @@ A: 1 Pass]MA[dd][eg][ch][dh][bi][cj][dk][dl][fl][gl][dm][gm][bn][cn][pn][qn][fp]
 No pass: 40
 A: 30 Pass
 B: 13
-C: 13
-D: 5]LB[qi:B][ph:C][qj:D]MA[dd][cn][dn][fn][cp][cq]TR[do][dp][qp][dq][nq][cr](;B[]C[Count: 30
+B: 13
+C: 5]LB[qi:B][ph:B][qj:C]MA[dd][cn][dn][fn][cp][cq]TR[do][dp][qp][dq][nq][cr](;B[]C[Count: 30
 No pass: 17
 A: 11 Pass
 B: 10]LB[qh:B]TR[dd][cn][dn][fn][cp][cq]MA[do][dp][qp][dq][nq][cr](;W[]C[Count: 11
@@ -2779,7 +2782,7 @@ A: 2]LB[nj:A]TR[cc][do][dp][dq]MA[bn][cp][hp][pp][cq][nq]
 ;W[nj]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[oj:A][nk:B]TR[cc][do][dp][dq]MA[bn][cp][hp][pp][cq][nq](;B[oj]C[Count: 1
+A: 1]LB[oj:A][nk:A]TR[cc][do][dp][dq]MA[bn][cp][hp][pp][cq][nq](;B[oj]C[Count: 1
 No pass: 1
 A: 1]LB[lg:A]TR[cc][do][dp][dq]MA[bn][cp][hp][pp][cq][nq]
 ;W[lg]C[Count: 1
@@ -2848,7 +2851,7 @@ B: 15 Pass
 C: 5]LB[mc:A][qk:C]MA[cc][bn][co][cp][cq]TR[cn][do][dp][pp][dq](;W[mc]C[Count: 18
 No pass: 10
 A: 8 Pass
-B: 8]LB[md:B]MA[cc][dk][bl][dl][cm][hm][bn][ho][cp][cq][hq]TR[el][dm][cn][qn][do][ko][dp][pp][dq][kq]
+A: 8]LB[md:A]MA[cc][dk][bl][dl][cm][hm][bn][ho][cp][cq][hq]TR[el][dm][cn][qn][do][ko][dp][pp][dq][kq]
 ;B[md]C[Count: 8
 No pass: 6
 A: 6
@@ -2942,7 +2945,7 @@ A: 2]LB[rc:A]MA[dc][ed][pq][qq][nr]TR[ce][op][pp][qp][cq]
 ;B[rc]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[mh:A][rb:B]MA[dc][ed][pq][qq][nr]TR[ce][op][pp][qp][cq](;W[mh]C[Count: 1
+A: 1]LB[mh:A][rb:A]MA[dc][ed][pq][qq][nr]TR[ce][op][pp][qp][cq](;W[mh]C[Count: 1
 No pass: 1
 A: 1]LB[mk:A]MA[dc][ed][pq][qq][nr]TR[ce][op][pp][qp][cq]
 ;B[mk]C[Count: 1
@@ -3139,7 +3142,7 @@ A: 2 Pass]MA[fc][cq][dq][pq][fr]TR[dd][cp][dp][ep])
 (;B[rc]C[Count: 24
 No pass: 13
 A: 11 Pass
-B: 11]LB[ne:B]TR[dd][cp][dp][ep]MA[cq][dq][pq][fr](;W[]C[Count: 11
+A: 11]LB[ne:A]TR[dd][cp][dp][ep]MA[cq][dq][pq][fr](;W[]C[Count: 11
 No pass: 1
 A: 10 Pass]MA[dd][cp][dp][ep]TR[cq][dq][pq][fr]
 ;B[]C[Count: 10
@@ -3191,7 +3194,7 @@ No pass: 29
 A: 14
 B: 6
 C: 5 Pass
-D: 5]LB[qh:A][ph:B][qj:D]MA[cd][ed][cp][dp][ep][fq]TR[po][cq][dq][eq][pq][fr](;W[qh]C[Count: 14
+C: 5]LB[qh:A][ph:B][qj:C]MA[cd][ed][cp][dp][ep][fq]TR[po][cq][dq][eq][pq][fr](;W[qh]C[Count: 14
 No pass: 11
 A: 5
 B: 3 Pass]LB[me:A]TR[cd][ed][cp][dp][ep][fq]MA[ck][po][cq][dq][eq][pq][fr]
@@ -3207,11 +3210,11 @@ A: 3 Pass]TR[cd][ed][cp][dp][ep][fq]MA[ck][po][cq][dq][eq][pq][fr])
 (;W[ph]C[Count: 6
 No pass: 4
 A: 2 Pass
-B: 2
-C: 2]LB[qj:B][me:C]TR[cc][dj][cn][dn][do][qo]MA[qm][pn][co][po][cp][fp][dq][pq](;B[qj]C[Count: 2
+A: 2
+A: 2]LB[qj:A][me:A]TR[cc][dj][cn][dn][do][qo]MA[qm][pn][co][po][cp][fp][dq][pq](;B[qj]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[mf:A][pj:B]TR[dd][do][dp][dq]MA[bn][po][cp][cq][iq][pq](;W[mf]C[Count: 1
+A: 1]LB[mf:A][pj:A]TR[dd][do][dp][dq]MA[bn][po][cp][cq][iq][pq](;W[mf]C[Count: 1
 No pass: 1
 A: 1]LB[me:A]TR[dd][cp][dp][ep]MA[qp][cq][dq][fq][oq][gr]
 ;B[me]C[Count: 1
@@ -3464,7 +3467,7 @@ A: 2]LB[ng:A]TR[dc][ec][fc][cd][qo][dp]MA[ed][ce][de][di][ql][np][pq]
 ;W[ng]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[pg:A][rc:B]TR[fc][dm][dn][do][po][ep][jp][pp][eq][pq]MA[dd][bl][qm][cn][rn][co][dp][lp][qp][cq][qq](;B[pg]C[Count: 1
+A: 1]LB[pg:A][rc:A]TR[fc][dm][dn][do][po][ep][jp][pp][eq][pq]MA[dd][bl][qm][cn][rn][co][dp][lp][qp][cq][qq](;B[pg]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[cb][cc][cd][ce][bf][cg][qm][rn][qo][cp][dp][ep][fp][qp][fq][qq][qr]TR[dc][dd][de][cf][df][pn][qn][po][pp][bq][cq][dq][eq][gq][pq][fr])
 (;B[rc]C[Count: 1
@@ -3525,8 +3528,8 @@ B: 3]LB[mc:B]TR[fc][cd][qn][co][po][pp][pq]MA[rn][qo][ep][qp][dq][qq]
 ;B[mc]C[Count: 3
 No pass: 3
 A: 1
-B: 1
-C: 1]LB[pk:A][pi:B][md:C]TR[fc][cd][qn][co][po][pp][pq]MA[rn][qo][ep][qp][dq][qq](;W[pk]C[Count: 1
+A: 1
+A: 1]LB[pk:A][pi:A][md:A]TR[fc][cd][qn][co][po][pp][pq]MA[rn][qo][ep][qp][dq][qq](;W[pk]C[Count: 1
 No pass: 1
 A: 1]LB[mb:A]MA[cc][pp][nq][oq][qq][lr]TR[po][qo][cp][mp][np][op]
 ;B[mb]C[Count: 1
@@ -3675,7 +3678,7 @@ A: 13 Pass
 B: 8]LB[rd:B]TR[dd][co][po][oq][pq][or]MA[rn][ep][qp][dq][qq][pr](;W[]C[Count: 13
 No pass: 8
 A: 5 Pass
-B: 5]LB[nc:B]MA[cc][cd][ce][bf][rn][qo][cp][dp][ep][qp][fq][qq]TR[dc][dd][de][cf][qn][po][pp][cq][dq][eq][pq][fr]
+A: 5]LB[nc:A]MA[cc][cd][ce][bf][rn][qo][cp][dp][ep][qp][fq][qq]TR[dc][dd][de][cf][qn][po][pp][cq][dq][eq][pq][fr]
 ;B[nc]C[Count: 5
 No pass: 5
 A: 5]LB[rd:A]MA[cc][cd][ce][bf][rm][rn][qo][cp][dp][ep][qp][fq][gq][qq]TR[dc][dd][de][cf][ql][qm][qn][po][pp][cq][dq][eq][pq][fr][gr]
@@ -3753,7 +3756,7 @@ B: 7]LB[me:B]MA[hb][cc][ec][fc][dd][dj][ek][gk][hl][en][po][qo][op][pq][pr]TR[ed
 ;B[me]C[Count: 7
 No pass: 7
 A: 3
-B: 3]LB[pj:A][qk:B]MA[fb][bc][cc][dc][fc][bd][qn][dp][pp][cq][eq][fq][hr]TR[gc][cd][dd][ed][fd][be][cf][dj][gj][co][do][ep][fp][gp](;W[pj]C[Count: 3
+A: 3]LB[pj:A][qk:A]MA[fb][bc][cc][dc][fc][bd][qn][dp][pp][cq][eq][fq][hr]TR[gc][cd][dd][ed][fd][be][cf][dj][gj][co][do][ep][fp][gp](;W[pj]C[Count: 3
 No pass: 1
 A: 2 Pass]MA[ea][bb][db][fb][cc][dc][ec][cp][dp][ep][eq][cr][dr]TR[gb][bc][fc][gc][cd][dd][ed][qo][cq][dq][fq][pq][er][gr][fs])
 (;W[qk]C[Count: 3
@@ -4014,8 +4017,8 @@ No pass: 260
 A: 112
 B: 72
 C: 11
-D: 11
-E: 9]LB[nc:A][pg:B][jc:C][ic:D][ob:E]TR[ec][cd][cq][nq]MA[qn][pp](;W[nc]C[Count: 112
+C: 11
+D: 9]LB[nc:A][pg:B][jc:C][ic:C][ob:D]TR[ec][cd][cq][nq]MA[qn][pp](;W[nc]C[Count: 112
 No pass: 71
 A: 41 Pass
 B: 27
@@ -4141,7 +4144,7 @@ A: 2]LB[oc:A]TR[bb][ac][cc][fc][bd][dd][ch][pn][rn][qo][lp][qp][cq][nq][qq][pr][
 ;B[oc]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[nb:A][pe:B]MA[cc][iq]TR[cn][po][dp][pq](;W[nb]C[Count: 1
+A: 1]LB[nb:A][pe:A]MA[cc][iq]TR[cn][po][dp][pq](;W[nb]C[Count: 1
 No pass: 1
 A: 1]LB[jc:A]MA[cc][iq]TR[cn][po][dp][pq]
 ;B[jc]C[Count: 1
@@ -4218,7 +4221,7 @@ A: 15 Pass]MA[bc][dc][bd][dd][ce][de][bn][co][cp][cq]TR[cc][cd][be][af][cf][bg][
 ;B[]C[Count: 15
 No pass: 9
 A: 5
-B: 5 Pass]LB[mc:A]MA[bc][dc][bd][dd][ce][de][bn][co][cp][cq]TR[cc][cd][be][af][cf][bg][pl][cn][do][po][dp][jp][dq][pq]
+A: 5 Pass]LB[mc:A]MA[bc][dc][bd][dd][ce][de][bn][co][cp][cq]TR[cc][cd][be][af][cf][bg][pl][cn][do][po][dp][jp][dq][pq]
 ;W[mc]C[Count: 5
 No pass: 4
 A: 4
@@ -4272,10 +4275,10 @@ A: 5]LB[pb:A]TR[ba][bb][fb][cc][ec][gc][cd][dd][ed][dk][cm][om][rm][pn][co][qo][
 ;B[pb]C[Count: 5
 No pass: 5
 A: 1
-B: 1
-C: 1
-D: 1
-E: 1]LB[id:A][ic:B][jc:C][pj:D][pc:E]TR[dc][cd][de][fm][bn][cn][bp][op][bq][cq][dq][fq][pq]MA[ec][hd][ch][ck][an][gn][bo][co][qo][cp][dp][ep](;W[id]C[Count: 1
+A: 1
+A: 1
+A: 1
+A: 1]LB[id:A][ic:A][jc:A][pj:A][pc:A]TR[dc][cd][de][fm][bn][cn][bp][op][bq][cq][dq][fq][pq]MA[ec][hd][ch][ck][an][gn][bo][co][qo][cp][dp][ep](;W[id]C[Count: 1
 No pass: 0
 A: 1 Pass]TR[ec][op][cq][pq]MA[cd][df][qo])
 (;W[ic]C[Count: 1
@@ -4315,7 +4318,7 @@ A: 5]LB[pf:A]TR[bc][cd][be][cg][eg][cp][fp][op][qp]MA[dc][dd][ce][de][gf][cj][cm
 ;B[pf]C[Count: 5
 No pass: 3
 A: 2
-B: 2 Pass]LB[ng:A]MA[cc][cd][ce][cn][qn]TR[dd][df][ql][dp][pp][fq][nq]
+A: 2 Pass]LB[ng:A]MA[cc][cd][ce][cn][qn]TR[dd][df][ql][dp][pp][fq][nq]
 ;W[ng]C[Count: 2
 No pass: 0
 A: 2 Pass]MA[dc][ed][dm][fm]TR[ce][dh][cn][pn][dp][iq][qq])
@@ -4371,8 +4374,8 @@ A: 3]LB[kf:A]TR[bb][bc][dc][bd][dd][ce][de][cj][dm][cn][co][qo][cp][qp][fq][hq][
 ;B[kf]C[Count: 3
 No pass: 2
 A: 1
-B: 1 Pass
-C: 1]LB[le:A][od:C]TR[bb][bc][dc][bd][dd][ce][de][cj][dm][cn][co][qo][cp][qp][fq][hq][nq][pq]MA[cb][cc][cd][be][af][cf][bg][dn][en][mn][pn][qn][po][dp][mp][cq][dq](;W[le]C[Count: 1
+A: 1 Pass
+A: 1]LB[le:A][od:A]TR[bb][bc][dc][bd][dd][ce][de][cj][dm][cn][co][qo][cp][qp][fq][hq][nq][pq]MA[cb][cc][cd][be][af][cf][bg][dn][en][mn][pn][qn][po][dp][mp][cq][dq](;W[le]C[Count: 1
 No pass: 1
 A: 1]LB[md:A]TR[bb][bc][dc][bd][dd][ce][de][cj][dm][cn][co][qo][cp][qp][fq][hq][nq][pq][rq][er]MA[cb][cc][cd][be][af][cf][bg][dn][en][mn][pn][qn][go][po][dp][mp][pp][cq][dq]
 ;B[md]C[Count: 1
@@ -4439,10 +4442,10 @@ A: 8]LB[pg:A]TR[cc][dd][hd][ce][cf][ch][dh][pn][qn][go][ko][lo][po][mp][op][cq][
 No pass: 5
 A: 3 Pass
 B: 2
-C: 2]LB[pi:B][qj:C]MA[cc][df][ci][qn]TR[ck][ql][dp][pp][fq][nq](;B[pi]C[Count: 2
+B: 2]LB[pi:B][qj:B]MA[cc][df][ci][qn]TR[ck][ql][dp][pp][fq][nq](;B[pi]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[qg:A][ng:B]MA[cc][fd][jl][lm][gn][ln][pn][qn][ko][mo][no][oo][kp][lq][kr]TR[df][cj][jn][kn][nn][ho][lo][qo][dp][lp][mp][np][pp][fq][mq][lr][nr][ms](;W[qg]C[Count: 1
+A: 1]LB[qg:A][ng:A]MA[cc][fd][jl][lm][gn][ln][pn][qn][ko][mo][no][oo][kp][lq][kr]TR[df][cj][jn][kn][nn][ho][lo][qo][dp][lp][mp][np][pp][fq][mq][lr][nr][ms](;W[qg]C[Count: 1
 No pass: 1
 A: 1]LB[pf:A]TR[cc][df][cj][dp][fq][nq][pq][or][pr][qr]MA[fd][pn][mo][op][pp][oq][qq]
 ;B[pf]C[Count: 1
@@ -4567,7 +4570,7 @@ A: 5]LB[nd:A]TR[cc][pn][qp]MA[dp][fq][oq]
 ;W[nd]C[Count: 5
 No pass: 3
 A: 2
-B: 2 Pass]LB[lc:A]TR[cc][pn][qp]MA[dp][fq][oq]
+A: 2 Pass]LB[lc:A]TR[cc][pn][qp]MA[dp][fq][oq]
 ;B[lc]C[Count: 2
 No pass: 0
 A: 2 Pass]TR[cc][pn][qp]MA[cn][dp][oq])
@@ -4619,7 +4622,7 @@ A: 2]LB[pf:A]TR[cc][gd][qq]MA[cq]
 ;B[pf]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[qk:A][pk:B]TR[cc][gd][qq]MA[cq](;W[qk]C[Count: 1
+A: 1]LB[qk:A][pk:A]TR[cc][gd][qq]MA[cq](;W[qk]C[Count: 1
 No pass: 0
 A: 1 Pass]TR[cc][gd][cq]MA[qq])
 (;W[pk]C[Count: 1
@@ -4828,7 +4831,7 @@ B: 1 Pass]LB[kd:A]MA[ec][de][df][pn][qn][co][ro][ep][gp][qp][pq]TR[cd][ce][cg][p
 ;B[kd]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[ke:A][me:B]TR[cc][cd][bf][po][cp][pp][lq][mq][pq][nr]MA[dc][dd][de][on][pn][qn][no][mp][op][qp][nq][qq](;W[ke]C[Count: 1
+A: 1]LB[ke:A][me:A]TR[cc][cd][bf][po][cp][pp][lq][mq][pq][nr]MA[dc][dd][de][on][pn][qn][no][mp][op][qp][nq][qq](;W[ke]C[Count: 1
 No pass: 1
 A: 1]LB[je:A]TR[cc][cd][bf][po][cp][pp][lq][pq]MA[dc][dd][de][on][pn][qn][qp][eq][qq]
 ;B[je]C[Count: 1
@@ -4979,7 +4982,7 @@ A: 2]LB[og:A]TR[cd][ed][np][pq]MA[dj][qo][cp][ep]
 ;W[og]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[mf:A][ng:B]TR[cd][ed][np][pq]MA[dj][qo][cp][ep](;B[mf]C[Count: 1
+A: 1]LB[mf:A][ng:A]TR[cd][ed][np][pq]MA[dj][qo][cp][ep](;B[mf]C[Count: 1
 No pass: 1
 A: 1]LB[ng:A]TR[cd][ed][dn][co][fo][pp]MA[ci][cl][qn][ep][dq][hq]
 ;W[ng]C[Count: 1
@@ -5123,8 +5126,8 @@ A: 6]LB[rd:A]MA[bb][cc][cd][ce][bf][cg][bh][eh][cp][dp][ep][fp]TR[cb][dc][dd][hd
 ;W[rd]C[Count: 6
 No pass: 6
 A: 2
-B: 2
-C: 2]LB[re:A][pe:B][pf:C]MA[bb][cc][cd][ce][bf][cg][bh][eh][cp][dp][ep][fp]TR[cb][dc][dd][hd][de][cf][df][qn][cq][dq][eq][pq][gr](;B[re]C[Count: 2
+A: 2
+A: 2]LB[re:A][pe:A][pf:A]MA[bb][cc][cd][ce][bf][cg][bh][eh][cp][dp][ep][fp]TR[cb][dc][dd][hd][de][cf][df][qn][cq][dq][eq][pq][gr](;B[re]C[Count: 2
 No pass: 2
 A: 2]LB[pe:A]MA[dc][ed][dn][do][eq][oq]TR[ce][cm][pn][co][cp][qp]
 ;W[pe]C[Count: 2
@@ -5154,7 +5157,7 @@ A: 2]LB[ne:A]MA[dc][ed][dn][do][eq][oq]TR[ce][cm][pn][co][cp][qp]
 ;W[ne]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[ng:A][lc:B]MA[dc][ed][dn][do][eq][oq]TR[ce][cm][pn][co][cp][qp](;B[ng]C[Count: 1
+A: 1]LB[ng:A][lc:A]MA[dc][ed][dn][do][eq][oq]TR[ce][cm][pn][co][cp][qp](;B[ng]C[Count: 1
 No pass: 1
 A: 1]LB[nf:A]TR[cc][co][pp][nq]MA[qn][ep][dq]
 ;W[nf]C[Count: 1
@@ -5357,8 +5360,8 @@ A: 9]LB[pe:A]MA[hc][cd][dh][cn][dn][do]TR[co][cp][dq][fq][qq]
 ;B[pe]C[Count: 9
 No pass: 7
 A: 3
-B: 3
-C: 2 Pass]LB[ie:A][rg:B]MA[hc][cd][dh][cn][dn][do]TR[co][cp][dq][fq][qq](;W[ie]C[Count: 3
+A: 3
+B: 2 Pass]LB[ie:A][rg:A]MA[hc][cd][dh][cn][dn][do]TR[co][cp][dq][fq][qq](;W[ie]C[Count: 3
 No pass: 1
 A: 2 Pass]MA[fb][bc][cc][dc][ec][gc][cn][dp]TR[fc][cd][dd][ed][fd][qp][fq][nq])
 (;W[rg]C[Count: 3
@@ -5375,8 +5378,8 @@ C: 14]LB[qd:B][pk:C]MA[dc][ed][pq][qq][nr]TR[ce][op][pp][qp][cq](;W[]C[Count: 13
 No pass: 48
 A: 81 Pass
 B: 10
-C: 10
-D: 7]LB[jd:B][qe:C][qi:D]MA[dc][ed]TR[ce][dp][qp](;B[]C[Count: 81
+B: 10
+C: 7]LB[jd:B][qe:B][qi:C]MA[dc][ed]TR[ce][dp][qp](;B[]C[Count: 81
 No pass: 81
 A: 33
 B: 16]LB[qd:A][of:B]MA[dc][ed]TR[ce][dp][qp](;W[qd]C[Count: 33
@@ -5425,7 +5428,7 @@ B: 3 Pass]LB[md:A]MA[cc][cd][bf][cg][on][fo][pp][cq][fq][jq][qq][dr]TR[dc][dd][d
 ;W[md]C[Count: 5
 No pass: 5
 A: 2
-B: 2]LB[mc:A][qe:B]MA[bb][cc][cd][hd][bf][cg][dl][on][fo][pp][cq][fq][jq][qq][dr]TR[cb][eb][dc][dd][de][ql][dn][qn][ho][cp][dp][hq][lq][nq][pr](;B[mc]C[Count: 2
+A: 2]LB[mc:A][qe:A]MA[bb][cc][cd][hd][bf][cg][dl][on][fo][pp][cq][fq][jq][qq][dr]TR[cb][eb][dc][dd][de][ql][dn][qn][ho][cp][dp][hq][lq][nq][pr](;B[mc]C[Count: 2
 No pass: 0
 A: 2 Pass]TR[cc][ol][ql][ko][ip][lp][op][pq]MA[mm][nn][pn][qo][cp][fq][iq][jq][rq])
 (;B[qe]C[Count: 2
@@ -5437,7 +5440,7 @@ A: 2]LB[kc:A]MA[bb][cc][cd][hd][bf][cg][dl][on][fo][pp][cq][fq][jq][qq][dr]TR[cb
 ;B[kc]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[nd:A][je:B]MA[bb][cc][cd][hd][bf][cg][dl][on][fo][pp][cq][fq][jq][qq][dr]TR[cb][eb][dc][dd][de][ql][dn][qn][ho][cp][dp][hq][lq][nq][pr](;W[nd]C[Count: 1
+A: 1]LB[nd:A][je:A]MA[bb][cc][cd][hd][bf][cg][dl][on][fo][pp][cq][fq][jq][qq][dr]TR[cb][eb][dc][dd][de][ql][dn][qn][ho][cp][dp][hq][lq][nq][pr](;W[nd]C[Count: 1
 No pass: 1
 A: 1]LB[mc:A]MA[cc][cd][hd][bf][cg][on][fo][pp][cq][fq][jq][dr]TR[dc][dd][de][ql][dn][qn][ho][cp][dp][hq][lq][nq]
 ;B[mc]C[Count: 1
@@ -5468,7 +5471,7 @@ A: 10]LB[pf:A]TR[bc][bd][cd][be][cf][cg][cq][qq]MA[cc][fc][dd][ce][de][df]
 No pass: 6
 A: 4 Pass
 B: 2
-C: 2]LB[qj:B][pj:C]TR[bc][bd][cd][be][cf][cg][cq][qq]MA[cc][fc][dd][ce][de][df](;B[qj]C[Count: 2
+B: 2]LB[qj:B][pj:B]TR[bc][bd][cd][be][cf][cg][cq][qq]MA[cc][fc][dd][ce][de][df](;B[qj]C[Count: 2
 No pass: 2
 A: 2]LB[me:A]TR[dc][ed][dn][do][pp][eq][nq]MA[ce][cm][qn][co][cp]
 ;W[me]C[Count: 2
@@ -5554,7 +5557,7 @@ A: 6]LB[pb:A]MA[cd][ed]TR[cq][qq]
 ;W[pb]C[Count: 6
 No pass: 6
 A: 3
-B: 3]LB[pg:A][ph:B]MA[cd][ed]TR[cq][qq](;B[pg]C[Count: 3
+A: 3]LB[pg:A][ph:A]MA[cd][ed]TR[cq][qq](;B[pg]C[Count: 3
 No pass: 3
 A: 3]LB[ne:A]MA[cd][ed]TR[cq][qq]
 ;W[ne]C[Count: 3
@@ -5578,7 +5581,7 @@ A: 2]LB[kh:A]MA[cd][ed]TR[cq][qq]
 ;W[kh]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[jg:A][lg:B]MA[cd][ed]TR[cq][qq](;B[jg]C[Count: 1
+A: 1]LB[jg:A][lg:A]MA[cd][ed]TR[cq][qq](;B[jg]C[Count: 1
 No pass: 1
 A: 1]LB[qk:A]MA[cd][ed]TR[cq][qq]
 ;W[qk]C[Count: 1
@@ -5630,7 +5633,7 @@ A: 2]LB[mh:A]MA[cc][ed][ee][bp][cp][bq][eq][ar][cr][dr]TR[de][di][cm][co][do][dp
 ;W[mh]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[le:A][jd:B]MA[cc][ed][ee][bp][cp][bq][eq][ar][cr][dr]TR[de][di][cm][co][do][dp][cq][dq][qq][br](;B[le]C[Count: 1
+A: 1]LB[le:A][jd:A]MA[cc][ed][ee][bp][cp][bq][eq][ar][cr][dr]TR[de][di][cm][co][do][dp][cq][dq][qq][br](;B[le]C[Count: 1
 No pass: 1
 A: 1]LB[mi:A]MA[cd][ed]TR[cq][qq]
 ;W[mi]C[Count: 1
@@ -5771,8 +5774,8 @@ A: 3]LB[rf:A]TR[dc][ce][ek][dm][mn][hp][op][dq][eq][oq][gr]MA[fl][en][pn][co][jo
 ;W[rf]C[Count: 3
 No pass: 3
 A: 1
-B: 1
-C: 1]LB[pb:A][oh:B][lc:C]TR[dc][ce][ek][dm][mn][hp][op][dq][eq][oq][gr]MA[fl][en][pn][co][jo][ep][fp][qp][jq][pq](;B[pb]C[Count: 1
+A: 1
+A: 1]LB[pb:A][oh:A][lc:A]TR[dc][ce][ek][dm][mn][hp][op][dq][eq][oq][gr]MA[fl][en][pn][co][jo][ep][fp][qp][jq][pq](;B[pb]C[Count: 1
 No pass: 1
 A: 1]LB[qb:A]TR[cc][qo][np][op]MA[cq][mq][oq][pq]
 ;W[qb]C[Count: 1
@@ -5841,7 +5844,7 @@ A: 7]LB[pf:A]TR[cc][cd][ce][bf][bg][fm][fn][pn][do][eo][ho][cp][jp][kp][lp][qp][
 ;B[pf]C[Count: 7
 No pass: 4
 A: 3 Pass
-B: 3]LB[qc:B]TR[cc][cd][ce][bf][bg][fm][fn][pn][do][eo][ho][cp][jp][kp][lp][qp][hq][mq]MA[dc][dd][de][cf][cg][ch][ql][en][gn][fo][go][jo][fp][ip][eq][iq][kq][oq]
+A: 3]LB[qc:A]TR[cc][cd][ce][bf][bg][fm][fn][pn][do][eo][ho][cp][jp][kp][lp][qp][hq][mq]MA[dc][dd][de][cf][cg][ch][ql][en][gn][fo][go][jo][fp][ip][eq][iq][kq][oq]
 ;W[qc]C[Count: 3
 No pass: 3
 A: 3]LB[pc:A]TR[dc][de][qo][ro][op][qp][cq][dq][fq][er][gr][fs]MA[cp][dp][ep][rp][eq][pq][qq][cr][dr][nr]
@@ -5857,7 +5860,7 @@ A: 2]LB[rf:A]TR[dc][de][qo][ro][op][qp][cq][dq][fq][er][gr][fs]MA[cp][dp][ep][rp
 ;W[rf]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[pb:A][lc:B]TR[dc][de][qo][ro][op][qp][cq][dq][fq][er][gr][fs]MA[cp][dp][ep][rp][eq][pq][qq][cr][dr][nr](;B[pb]C[Count: 1
+A: 1]LB[pb:A][lc:A]TR[dc][de][qo][ro][op][qp][cq][dq][fq][er][gr][fs]MA[cp][dp][ep][rp][eq][pq][qq][cr][dr][nr](;B[pb]C[Count: 1
 No pass: 1
 A: 1]LB[qb:A]TR[fc][cd][pn][qp]MA[co][kp][dq][oq]
 ;W[qb]C[Count: 1
@@ -5978,8 +5981,8 @@ A: 5]LB[qj:A]TR[ec][cd][np][pq]MA[qo][dp][fq]
 ;W[qj]C[Count: 5
 No pass: 4
 A: 2
-B: 2
-C: 1 Pass]LB[rd:A][oh:B]TR[ec][cd][np][pq]MA[qo][dp][fq](;B[rd]C[Count: 2
+A: 2
+B: 1 Pass]LB[rd:A][oh:A]TR[ec][cd][np][pq]MA[qo][dp][fq](;B[rd]C[Count: 2
 No pass: 2
 A: 2]LB[kc:A]MA[cc][co][bp][dp][mp][cq][dq][eq][oq]TR[cn][bo][do][eo][fo][po][ep][gp][fq][qq]
 ;W[kc]C[Count: 2
@@ -6033,8 +6036,8 @@ A: 3]LB[nd:A]MA[cc][co][bp][dp][mp][cq][dq][eq][oq]TR[cn][bo][do][eo][fo][po][ep
 ;B[nd]C[Count: 3
 No pass: 3
 A: 1
-B: 1
-C: 1]LB[rd:A][mf:B][oj:C]MA[cc][co][bp][dp][mp][cq][dq][eq][oq]TR[cn][bo][do][eo][fo][po][ep][gp][fq][qq](;W[rd]C[Count: 1
+A: 1
+A: 1]LB[rd:A][mf:A][oj:A]MA[cc][co][bp][dp][mp][cq][dq][eq][oq]TR[cn][bo][do][eo][fo][po][ep][gp][fq][qq](;W[rd]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[cc][co][bp][dp][mp][cq][dq][eq][oq]TR[cn][bo][do][eo][fo][po][ep][gp][fq][qq])
 (;W[mf]C[Count: 1
@@ -6103,7 +6106,7 @@ A: 1 Pass]MA[cc][co][bp][dp][mp][cq][dq][eq][oq]TR[cn][bo][do][eo][fo][po][ep][g
 No pass: 16
 A: 15 Pass
 B: 4
-C: 4]LB[pj:B][oe:C]MA[ec][cl][cm][cn][do][dp][dq][lq][oq]TR[cd][de][bm][bn][co][po][cp][qp][cq](;W[]C[Count: 15
+B: 4]LB[pj:B][oe:B]MA[ec][cl][cm][cn][do][dp][dq][lq][oq]TR[cd][de][bm][bn][co][po][cp][qp][cq](;W[]C[Count: 15
 No pass: 9
 A: 8
 B: 6 Pass]LB[qe:A]MA[ec][cl][cm][cn][do][dp][dq][lq][oq]TR[cd][de][bm][bn][co][po][cp][qp][cq]
@@ -6121,12 +6124,332 @@ No pass: 2
 A: 2 Pass]TR[ec][do][dp][op][qp][dq]MA[cd][de][bn][cp][cq])
 )
 )
+(;W[qd]C[Count: 64
+No pass: 59
+A: 53
+B: 6
+C: 5 Pass]LB[qc:A][qe:B]TR[dc][fc][cd][ko][dp][lp][pp][lq][nq][oq][qq]MA[ce][de][di][ln][lo][po][qo][mp][np][op](;B[qc]C[Count: 53
+No pass: 53
+A: 53]LB[qe:A]MA[eb][fb][cc][fc][dd][ed][cm][co][cp][jp][cq][hq]TR[ec][gc][fd][hd][fe][df][dn][fn][dp][lp][op][qp][fq]
+;W[qe]C[Count: 53
+No pass: 53
+A: 45
+B: 5]LB[pc:A][pe:B]MA[eb][fb][cc][fc][dd][ed][cm][co][cp][jp][cq][hq]TR[ec][gc][fd][hd][fe][df][dn][fn][dp][lp][op][qp][fq](;B[pc]C[Count: 45
+No pass: 44
+A: 38
+B: 5
+C: 1 Pass]LB[qh:A][qi:B]MA[eb][fb][cc][fc][dd][ed][cm][co][cp][jp][cq][hq]TR[ec][gc][fd][hd][fe][df][dn][fn][dp][lp][op][qp][fq](;W[qh]C[Count: 38
+No pass: 31
+A: 29
+B: 7 Pass]LB[pf:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;B[pf]C[Count: 29
+No pass: 29
+A: 29]LB[qf:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;W[qf]C[Count: 29
+No pass: 0
+A: 29 Pass]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;B[]C[Count: 29
+No pass: 29
+A: 24]LB[qk:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;W[qk]C[Count: 24
+No pass: 6
+A: 18 Pass
+B: 6]LB[pg:B]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[gc][cd][dd][ed][nn][pn][qn][qp][qq](;B[]C[Count: 18
+No pass: 0
+A: 18 Pass]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[gc][cd][dd][ed][nn][pn][qn][qp][qq]
+;W[]C[Count: 18
+No pass: 18
+A: 18]LB[pg:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[gc][cd][dd][ed][nn][pn][qn][qp][qq]
+;B[pg]C[Count: 18
+No pass: 3
+A: 15 Pass]TR[fb][bc][cc][dc][fc][bd][po][cp][pp][fq][pq][qr]MA[gb][gc][cd][dd][ed][fd][be][nn][pn][qn][qp][qq]
+;W[]C[Count: 15
+No pass: 15
+A: 12]LB[jf:A]TR[fb][bc][cc][dc][fc][bd][po][cp][pp][fq][pq][qr]MA[gb][gc][cd][dd][ed][fd][be][nn][pn][qn][qp][qq]
+;B[jf]C[Count: 12
+No pass: 12
+A: 9]LB[qg:A]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr]
+;W[qg]C[Count: 9
+No pass: 8
+A: 6
+B: 1 Pass]LB[pk:A]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr]
+;B[pk]C[Count: 6
+No pass: 6
+A: 6]LB[pj:A]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr]
+;W[pj]C[Count: 6
+No pass: 6
+A: 6]LB[oj:A]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr]
+;B[oj]C[Count: 6
+No pass: 6
+A: 4]LB[nc:A]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr]
+;W[nc]C[Count: 4
+No pass: 4
+A: 4]LB[pe:A]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr]
+;B[pe]C[Count: 4
+No pass: 4
+A: 4]LB[jc:A]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr]
+;W[jc]C[Count: 4
+No pass: 4
+A: 3]LB[lc:A]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr]
+;B[lc]C[Count: 3
+No pass: 3
+A: 3]LB[ld:A]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr]
+;W[ld]C[Count: 3
+No pass: 3
+A: 3]LB[mc:A]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr]
+;B[mc]C[Count: 3
+No pass: 3
+A: 3]LB[md:A]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr]
+;W[md]C[Count: 3
+No pass: 3
+A: 3]LB[nb:A]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr]
+;B[nb]C[Count: 3
+No pass: 0
+A: 3 Pass]MA[fa][gb][gc][cd][dd][ed][fd][be][nn][pn][qn][ro][qp][qq]TR[eb][fb][bc][cc][dc][fc][bd][po][qo][cp][pp][fq][pq][qr][rr])
+(;B[pg]C[Count: 6
+No pass: 0
+A: 6 Pass]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[gc][cd][dd][ed][nn][pn][qn][qp][qq])
+)
+(;W[qi]C[Count: 5
+No pass: 1
+A: 4 Pass]MA[eb][fb][cc][fc][dd][ed][cm][co][cp][jp][cq][hq]TR[ec][gc][fd][hd][fe][df][dn][fn][dp][lp][op][qp][fq])
+)
+(;B[pe]C[Count: 5
+No pass: 5
+A: 4]LB[rc:A]TR[hb][cc][ec][fc][dd][dh][cn][po][qo][cp][qp][dq][kq][qq]MA[ed][fd][gd][ce][de][ch][di][pn][ko][ep][ip][pp][eq]
+;W[rc]C[Count: 4
+No pass: 4
+A: 3]LB[pc:A]TR[hb][cc][ec][fc][dd][dh][cn][po][qo][cp][qp][dq][kq][qq]MA[ed][fd][gd][ce][de][ch][di][pn][ko][ep][ip][pp][eq]
+;B[pc]C[Count: 3
+No pass: 3
+A: 3]LB[qg:A]TR[cc][co][po][qo][lp][mp][np][op]MA[ep][pp][dq][kq][lq][nq][oq][qq]
+;W[qg]C[Count: 3
+No pass: 2
+A: 1
+A: 1 Pass
+A: 1]LB[pf:A][rb:A]TR[cc][co][po][qo][lp][mp][np][op]MA[ep][pp][dq][kq][lq][nq][oq][qq](;B[pf]C[Count: 1
+No pass: 1
+A: 1]LB[rh:A]MA[fb][gb][cc][dc][ec][dh][cl][do][go][ho][ep][gp][ip][eq][iq][jq][oq][hr]TR[fc][gc][hc][cd][dd][ed][dn][pn][co][io][jo][cp][hp][lp][qp][fq][gq][hq][kq]
+;W[rh]C[Count: 1
+No pass: 1
+A: 1]LB[oh:A]MA[fb][gb][cc][dc][ec][dh][cl][do][go][ho][ep][gp][ip][eq][iq][jq][oq][hr]TR[fc][gc][hc][cd][dd][ed][dn][pn][co][io][jo][cp][hp][lp][qp][fq][gq][hq][kq]
+;B[oh]C[Count: 1
+No pass: 1
+A: 1]LB[kd:A]MA[fb][gb][cc][dc][ec][dh][cl][do][go][ho][ep][gp][ip][eq][iq][jq][oq][hr]TR[fc][gc][hc][cd][dd][ed][dn][pn][co][io][jo][cp][hp][lp][qp][fq][gq][hq][kq]
+;W[kd]C[Count: 1
+No pass: 0
+A: 1 Pass]MA[fb][gb][cc][dc][ec][dh][cl][do][go][ho][ep][gp][ip][eq][iq][jq][oq][hr]TR[fc][gc][hc][cd][dd][ed][dn][pn][co][io][jo][cp][hp][lp][qp][fq][gq][hq][kq])
+(;B[rb]C[Count: 1
+No pass: 1
+A: 1]LB[pj:A]TR[cc][co][po][qo][lp][mp][np][op]MA[ep][pp][dq][kq][lq][nq][oq][qq]
+;W[pj]C[Count: 1
+No pass: 0
+A: 1 Pass]TR[cc][co][po][qo][lp][mp][np][op]MA[ep][pp][dq][kq][lq][nq][oq][qq])
+)
+)
+(;B[qe]C[Count: 6
+No pass: 5
+A: 5
+B: 1 Pass]LB[qc:A]TR[dc][fc][cd][ko][dp][lp][pp][lq][nq][oq][qq]MA[ce][de][di][ln][lo][po][qo][mp][np][op]
+;W[qc]C[Count: 5
+No pass: 5
+A: 3]LB[pe:A]TR[dc][fc][cd][ko][dp][lp][pp][lq][nq][oq][qq]MA[ce][de][di][ln][lo][po][qo][mp][np][op]
+;B[pe]C[Count: 3
+No pass: 3
+A: 3]LB[ob:A]TR[dc][fc][cd][ko][dp][lp][pp][lq][nq][oq][qq]MA[ce][de][di][ln][lo][po][qo][mp][np][op]
+;W[ob]C[Count: 3
+No pass: 3
+A: 2]LB[nc:A]TR[dc][fc][cd][ko][dp][lp][pp][lq][nq][oq][qq]MA[ce][de][di][ln][lo][po][qo][mp][np][op]
+;B[nc]C[Count: 2
+No pass: 2
+A: 2]LB[oc:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;W[oc]C[Count: 2
+No pass: 2
+A: 2]LB[nd:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;B[nd]C[Count: 2
+No pass: 2
+A: 2]LB[od:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;W[od]C[Count: 2
+No pass: 2
+A: 2]LB[oe:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;B[oe]C[Count: 2
+No pass: 2
+A: 2]LB[ne:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;W[ne]C[Count: 2
+No pass: 2
+A: 2]LB[ld:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;B[ld]C[Count: 2
+No pass: 2
+A: 2]LB[me:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;W[me]C[Count: 2
+No pass: 2
+A: 2]LB[kc:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;B[kc]C[Count: 2
+No pass: 2
+A: 2]LB[le:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;W[le]C[Count: 2
+No pass: 2
+A: 1
+A: 1]LB[re:A][ke:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq](;B[re]C[Count: 1
+No pass: 1
+A: 1]LB[jd:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;W[jd]C[Count: 1
+No pass: 1
+A: 1]LB[jc:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;B[jc]C[Count: 1
+No pass: 1
+A: 1]LB[nb:A]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq]
+;W[nb]C[Count: 1
+No pass: 0
+A: 1 Pass]TR[fb][cc][dc][po][cp][pp][fq][pq][qr]MA[cd][dd][ed][nn][pn][qn][qp][qq])
+(;B[ke]C[Count: 1
+No pass: 1
+A: 1]LB[kf:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;W[kf]C[Count: 1
+No pass: 1
+A: 1]LB[je:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;B[je]C[Count: 1
+No pass: 1
+A: 1]LB[jf:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;W[jf]C[Count: 1
+No pass: 1
+A: 1]LB[if:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;B[if]C[Count: 1
+No pass: 1
+A: 1]LB[ie:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;W[ie]C[Count: 1
+No pass: 1
+A: 1]LB[ic:A]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq]
+;B[ic]C[Count: 1
+No pass: 0
+A: 1 Pass]TR[cd][co][do][oo][qo][ep][fp][gp]MA[ql][dp][np][cq][eq][fq][hq][pq])
+)
+)
+(;W[qh]C[Count: 5
+No pass: 2
+A: 3 Pass]MA[fb][cc][dc][ec][po][qo][lp][mp][np][op][lq]TR[fc][cd][dd][ed][dj][cp][ep][pp][mq][nq][oq][qq])
+(;W[qg]C[Count: 3
+No pass: 2
+A: 2
+B: 1 Pass]LB[qi:A]TR[dd][dk][bl][co][do][jo][no][dp][ep][np][qp][cq][fq][iq][oq][pq][qq][rq][cr][gr][or]MA[dl][cm][bn][mn][nn][bo][po][qo][ro][bp][cp][lp][op][pp][rp][bq][mq][nq][br][er][fr]
+;B[qi]C[Count: 2
+No pass: 2
+A: 2]LB[pi:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[pi]C[Count: 2
+No pass: 2
+A: 2]LB[pj:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[pj]C[Count: 2
+No pass: 2
+A: 2]LB[oi:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[oi]C[Count: 2
+No pass: 2
+A: 2]LB[qj:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[qj]C[Count: 2
+No pass: 2
+A: 1
+A: 1]LB[nf:A][rd:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq](;W[nf]C[Count: 1
+No pass: 1
+A: 1]LB[nd:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[nd]C[Count: 1
+No pass: 1
+A: 1]LB[qd:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[qd]C[Count: 1
+No pass: 1
+A: 1]LB[qe:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[qe]C[Count: 1
+No pass: 1
+A: 1]LB[pe:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[pe]C[Count: 1
+No pass: 1
+A: 1]LB[re:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[re]C[Count: 1
+No pass: 1
+A: 1]LB[qc:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[qc]C[Count: 1
+No pass: 1
+A: 1]LB[pc:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[pc]C[Count: 1
+No pass: 1
+A: 1]LB[pb:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[pb]C[Count: 1
+No pass: 1
+A: 1]LB[rg:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[rg]C[Count: 1
+No pass: 1
+A: 1]LB[pf:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[pf]C[Count: 1
+No pass: 1
+A: 1]LB[ob:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[ob]C[Count: 1
+No pass: 1
+A: 1]LB[qb:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[qb]C[Count: 1
+No pass: 1
+A: 1]LB[qh:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[qh]C[Count: 1
+No pass: 1
+A: 1]LB[nc:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[nc]C[Count: 1
+No pass: 1
+A: 1]LB[md:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[md]C[Count: 1
+No pass: 1
+A: 1]LB[nb:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[nb]C[Count: 1
+No pass: 1
+A: 1]LB[od:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[od]C[Count: 1
+No pass: 1
+A: 1]LB[lc:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[lc]C[Count: 1
+No pass: 1
+A: 1]LB[ld:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[ld]C[Count: 1
+No pass: 1
+A: 1]LB[kc:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[kc]C[Count: 1
+No pass: 1
+A: 1]LB[kd:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[kd]C[Count: 1
+No pass: 1
+A: 1]LB[kg:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[kg]C[Count: 1
+No pass: 1
+A: 1]LB[jd:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[jd]C[Count: 1
+No pass: 1
+A: 1]LB[oc:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[oc]C[Count: 1
+No pass: 1
+A: 1]LB[ki:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[ki]C[Count: 1
+No pass: 1
+A: 1]LB[jf:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[jf]C[Count: 1
+No pass: 0
+A: 1 Pass]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq])
+(;W[rd]C[Count: 1
+No pass: 1
+A: 1]LB[qc:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[qc]C[Count: 1
+No pass: 1
+A: 1]LB[nf:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;W[nf]C[Count: 1
+No pass: 1
+A: 1]LB[md:A]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq]
+;B[md]C[Count: 1
+No pass: 0
+A: 1 Pass]TR[cc][cd][bf][dn][po][qo][cp][pp][dq][eq][pq][qr][rr]MA[dc][dd][de][on][pn][qn][ro][ep][fp][np][qp][fq][qq])
+)
 )
 (;B[qd]C[Count: 2865
 No pass: 1782
 A: 1308
 B: 1083 Pass
-C: 434]LB[oc:A][od:C]TR[pp](;W[oc]C[Count: 1308
+C: 434
+D: 38
+E: 1
+E: 1]LB[oc:A][od:C][pd:D][lc:E][of:E]TR[pp](;W[oc]C[Count: 1308
 No pass: 841
 A: 470
 B: 467 Pass
@@ -6145,10 +6468,10 @@ A: 72
 B: 31
 C: 13
 D: 12
-E: 12
-F: 11
-G: 9
-H: 8]LB[lc:A][ld:B][kd:C][qk:D][md:E][pk:F][qi:G][qh:H]MA[cd][pp]TR[dp](;W[lc]C[Count: 72
+D: 12
+E: 11
+F: 9
+G: 8]LB[lc:A][ld:B][kd:C][qk:D][md:D][pk:E][qi:F][qh:G]MA[cd][pp]TR[dp](;W[lc]C[Count: 72
 No pass: 7
 A: 65 Pass]TR[dc][cf][dm][cn][co][cp][op][pp][qp][cq][nq][cr]MA[dk][cl][cm][dn][do][dp][dq][oq][pq][qq][nr]
 ;B[]C[Count: 65
@@ -6156,7 +6479,7 @@ No pass: 35
 A: 25 Pass
 B: 11
 C: 5
-D: 5]LB[qh:B][qj:C][qk:D]MA[dc][cf][dm][cn][co][cp][op][pp][qp][cq][nq][cr]TR[dk][cl][cm][dn][do][dp][dq][oq][pq][qq][nr](;W[]C[Count: 25
+C: 5]LB[qh:B][qj:C][qk:C]MA[dc][cf][dm][cn][co][cp][op][pp][qp][cq][nq][cr]TR[dk][cl][cm][dn][do][dp][dq][oq][pq][qq][nr](;W[]C[Count: 25
 No pass: 25
 A: 9
 B: 5]LB[jc:A][pj:B]MA[dc][cf][dm][cn][co][cp][op][pp][qp][cq][nq][cr]TR[dk][cl][cm][dn][do][dp][dq][oq][pq][qq][nr](;B[jc]C[Count: 9
@@ -6218,7 +6541,7 @@ A: 6 Pass]TR[fc][cd][co][cp][op][pp][qp][cq][nq][rq][cr][dr][mr][or]MA[cm][cn][d
 (;W[qh]C[Count: 8
 No pass: 5
 A: 3 Pass
-B: 3]LB[kc:B]TR[dc][de][qn][qo][np][op][pp][oq]MA[dp][qp][nq][pq][rq][or][pr][qr]
+A: 3]LB[kc:A]TR[dc][de][qn][qo][np][op][pp][oq]MA[dp][qp][nq][pq][rq][or][pr][qr]
 ;B[kc]C[Count: 3
 No pass: 1
 A: 2 Pass]TR[dc][de][qn][qo][np][op][pp][oq]MA[dp][qp][nq][pq][rq][or][pr][qr])
@@ -6236,8 +6559,8 @@ A: 11
 B: 5]LB[nd:A][oe:B]MA[dd][fd][ql][qm][qn][po][pp][eq][hq][pq]TR[cf][rm][rn][do][qo][cp][qp][qq](;W[nd]C[Count: 11
 No pass: 9
 A: 4
-B: 4
-C: 2 Pass]LB[pb:A][le:B]MA[cc][cf][fm][dn][qn][co][fo][bq]TR[ch][cl][el][ep][hp][pp][dq][gq][nq](;B[pb]C[Count: 4
+A: 4
+B: 2 Pass]LB[pb:A][le:A]MA[cc][cf][fm][dn][qn][co][fo][bq]TR[ch][cl][el][ep][hp][pp][dq][gq][nq](;B[pb]C[Count: 4
 No pass: 3
 A: 3
 B: 1 Pass]LB[nf:A]MA[cc][cf][fm][dn][qn][co][fo][bq]TR[ch][cl][el][ep][hp][pp][dq][gq][nq]
@@ -6498,7 +6821,7 @@ A: 2]LB[mg:A]TR[fc][cd][dm][dn][do][io][qo][ep][eq]MA[bl][cn][co][dp][kp][op][cq
 ;W[mg]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[ic:A][jc:B]TR[fc][cd][dm][dn][do][io][qo][ep][eq]MA[bl][cn][co][dp][kp][op][cq][iq][pq](;B[ic]C[Count: 1
+A: 1]LB[ic:A][jc:A]TR[fc][cd][dm][dn][do][io][qo][ep][eq]MA[bl][cn][co][dp][kp][op][cq][iq][pq](;B[ic]C[Count: 1
 No pass: 1
 A: 1]LB[nf:A]MA[fb][gb][cc][ec][dd][pl][ql][nm][om][rn][no][oo][np][pp][qp][eq][jq][lq][mq][ir]TR[fc][ed][fd][ce][de][pm][dn][pn][po][qo][ro][cp][kp][lp][mp][op][nq][oq][pq][qr]
 ;W[nf]C[Count: 1
@@ -6561,7 +6884,7 @@ A: 20 Pass]TR[dc][qq]MA[ce][dp]
 ;W[]C[Count: 20
 No pass: 15
 A: 5 Pass
-B: 5]LB[md:B]MA[dc][qq]TR[ce][dp]
+A: 5]LB[md:A]MA[dc][qq]TR[ce][dp]
 ;B[md]C[Count: 5
 No pass: 1
 A: 4 Pass]MA[ec][cd][po][qo]TR[dp][np][qp][pq])
@@ -6598,7 +6921,7 @@ A: 5 Pass]MA[dc][cd][fd][gd][ce][he][cj][dp]TR[de][fe][ge][cf][df][pp][cq][dq])
 (;W[pb]C[Count: 6
 No pass: 6
 A: 3
-B: 3]LB[od:A][qb:B]TR[dd][qp]MA[po][cq][oq](;B[od]C[Count: 3
+A: 3]LB[od:A][qb:A]TR[dd][qp]MA[po][cq][oq](;B[od]C[Count: 3
 No pass: 3
 A: 3]LB[pd:A]MA[dc][de][ee][ef]TR[ce][df][cp][pp]
 ;W[pd]C[Count: 3
@@ -6610,8 +6933,8 @@ A: 3]LB[nb:A]MA[dc][de][ee][ef]TR[ce][df][cp][pp]
 ;W[nb]C[Count: 3
 No pass: 3
 A: 1
-B: 1
-C: 1]LB[qe:A][qf:B][nc:C]MA[dc][de][ee][ef]TR[ce][df][cp][pp](;B[qe]C[Count: 1
+A: 1
+A: 1]LB[qe:A][qf:A][nc:A]MA[dc][de][ee][ef]TR[ce][df][cp][pp](;B[qe]C[Count: 1
 No pass: 1
 A: 1]LB[pf:A]MA[dc][de][ef]TR[df][cp][pp]
 ;W[pf]C[Count: 1
@@ -6692,9 +7015,9 @@ A: 56
 B: 49
 C: 23
 D: 8
-E: 8
-F: 7
-G: 5]LB[pe:A][pc:B][pf:C][ld:D][md:E][kc:F][jc:G]MA[dd][pq]TR[qo][cq](;B[pe]C[Count: 56
+D: 8
+E: 7
+F: 5]LB[pe:A][pc:B][pf:C][ld:D][md:D][kc:E][jc:F]MA[dd][pq]TR[qo][cq](;B[pe]C[Count: 56
 No pass: 16
 A: 40 Pass
 B: 5]LB[lc:B]MA[fb][cc][dc][qn][pq]TR[cd][dd][ed][cp][fq](;W[]C[Count: 40
@@ -6711,8 +7034,8 @@ B: 2 Pass]LB[nd:A]TR[cc][ep][dq][nq]MA[co][pp]
 ;W[nd]C[Count: 7
 No pass: 5
 A: 2 Pass
-B: 2
-C: 2]LB[le:B][pb:C]TR[cc][ep][dq][nq]MA[co][pp](;B[le]C[Count: 2
+A: 2
+A: 2]LB[le:A][pb:A]TR[cc][ep][dq][nq]MA[co][pp](;B[le]C[Count: 2
 No pass: 2
 A: 2]LB[qb:A]TR[cc][ep][dq][nq]MA[co][pp]
 ;W[qb]C[Count: 2
@@ -6729,7 +7052,7 @@ A: 2 Pass]TR[cc][ep][dq][nq]MA[co][pp])
 (;W[lc]C[Count: 5
 No pass: 3
 A: 2 Pass
-B: 2]LB[pj:B]TR[dc][de][ci][cp][dp][ep]MA[op][qp][cq][dq][fr]
+A: 2]LB[pj:A]TR[dc][de][ci][cp][dp][ep]MA[op][qp][cq][dq][fr]
 ;B[pj]C[Count: 2
 No pass: 0
 A: 2 Pass]TR[dc][de][ci][cp][dp][ep]MA[op][qp][cq][dq][fr])
@@ -6793,7 +7116,7 @@ A: 5]LB[pf:A]TR[ec][fd][do][po][dp][dq][pq]MA[hc][cd][de][bn][cp][cq][jq]
 ;W[pf]C[Count: 5
 No pass: 5
 A: 2
-B: 2]LB[qf:A][qg:B]TR[ec][fd][do][po][dp][dq][pq]MA[hc][cd][de][bn][cp][cq][jq](;B[qf]C[Count: 2
+A: 2]LB[qf:A][qg:A]TR[ec][fd][do][po][dp][dq][pq]MA[hc][cd][de][bn][cp][cq][jq](;B[qf]C[Count: 2
 No pass: 1
 A: 1 Pass]MA[cc][co][ep][fp][gp]TR[op][qp][dq][eq][fq][hq])
 (;B[qg]C[Count: 2
@@ -6808,7 +7131,7 @@ A: 3 Pass]MA[bb][db][eb][ac][cc][dc][fc][bd][fd][fe][cf][df][cj][ho][mo][ep][gp]
 No pass: 13
 A: 15 Pass
 B: 5
-C: 5]LB[od:B][pe:C]TR[dd][cq]MA[op][qp](;B[]C[Count: 15
+B: 5]LB[od:B][pe:B]TR[dd][cq]MA[op][qp](;B[]C[Count: 15
 No pass: 9
 A: 6
 B: 5 Pass]LB[pd:A]TR[dd][cq]MA[op][qp]
@@ -6848,7 +7171,7 @@ A: 2]LB[rd:A]MA[cc][cd][bf][op][qp]TR[dc][dd][de][cq]
 ;B[rd]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[rf:A][rg:B]MA[cc][cd][bf][op][qp]TR[dc][dd][de][cq](;W[rf]C[Count: 1
+A: 1]LB[rf:A][rg:A]MA[cc][cd][bf][op][qp]TR[dc][dd][de][cq](;W[rf]C[Count: 1
 No pass: 1
 A: 1]LB[qb:A]TR[cc][cd][ed][cn][dn][do][dp][dq]MA[dd][df][cm][bn][co][cp][cq][qq][cr]
 ;B[qb]C[Count: 1
@@ -6952,8 +7275,8 @@ A: 3]LB[qf:A]TR[dc][fc][cd][ce][op][pq]MA[de][cf][df][dj][qo][dp]
 ;B[qf]C[Count: 3
 No pass: 3
 A: 1
-B: 1
-C: 1]LB[ne:A][of:B][pg:C]TR[dc][fc][cd][ce][op][pq]MA[de][cf][df][dj][qo][dp](;W[ne]C[Count: 1
+A: 1
+A: 1]LB[ne:A][of:A][pg:A]TR[dc][fc][cd][ce][op][pq]MA[de][cf][df][dj][qo][dp](;W[ne]C[Count: 1
 No pass: 1
 A: 1]LB[nc:A]TR[cc][cp][dq][fq]MA[ck][co][do][op][qp]
 ;B[nc]C[Count: 1
@@ -7119,7 +7442,7 @@ A: 2]LB[pd:A]TR[cc][np][op][pp][qp][nq]MA[dp][mq][oq][pq][qq][rq][nr]
 ;B[pd]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[md:A][qg:B]TR[cc][np][op][pp][qp][nq]MA[dp][mq][oq][pq][qq][rq][nr](;W[md]C[Count: 1
+A: 1]LB[md:A][qg:A]TR[cc][np][op][pp][qp][nq]MA[dp][mq][oq][pq][qq][rq][nr](;W[md]C[Count: 1
 No pass: 1
 A: 1]LB[qg:A]TR[cc][np][op][pp][qp][nq]MA[dp][mq][oq][pq][qq][rq][nr]
 ;B[qg]C[Count: 1
@@ -7348,8 +7671,8 @@ B: 7 Pass]LB[kc:A]MA[dd][cl][cn][co][dp][cq]TR[dm][dn][do][ep][pp][eq]
 ;B[kc]C[Count: 15
 No pass: 13
 A: 5
-B: 5
-C: 2 Pass]LB[og:A][ng:B]TR[fc][dm][dn][do][ep][pp][eq]MA[dd][cl][cn][co][dp][cq](;W[og]C[Count: 5
+A: 5
+B: 2 Pass]LB[og:A][ng:A]TR[fc][dm][dn][do][ep][pp][eq]MA[dd][cl][cn][co][dp][cq](;W[og]C[Count: 5
 No pass: 1
 A: 4 Pass]MA[cc]TR[do][qp][dq])
 (;W[ng]C[Count: 5
@@ -7448,9 +7771,9 @@ E: 12
 F: 10
 G: 7
 H: 6
-I: 6
-J: 5
-K: 5]LB[nd:A][qj:B][mc:C][jc:D][pj:E][qe:F][pk:G][kc:H][qk:I][qi:J][kd:K]TR[dd][dq]MA[pp](;W[nd]C[Count: 27
+H: 6
+I: 5
+I: 5]LB[nd:A][qj:B][mc:C][jc:D][pj:E][qe:F][pk:G][kc:H][qk:H][qi:I][kd:I]TR[dd][dq]MA[pp](;W[nd]C[Count: 27
 No pass: 27
 A: 16
 B: 9]LB[ne:A][nc:B]TR[cd][ed][dp][np][op][nq]MA[qm][qp][oq][pq](;B[ne]C[Count: 16
@@ -7521,7 +7844,7 @@ A: 6]LB[ob:A]TR[cd][ed][dp][np][op][nq]MA[qm][qp][oq][pq]
 ;B[ob]C[Count: 6
 No pass: 6
 A: 3
-B: 3]LB[pc:A][mf:B]TR[cd][ed][dp][np][op][nq]MA[qm][qp][oq][pq](;W[pc]C[Count: 3
+A: 3]LB[pc:A][mf:A]TR[cd][ed][dp][np][op][nq]MA[qm][qp][oq][pq](;W[pc]C[Count: 3
 No pass: 3
 A: 3]LB[pd:A]TR[cd][ed][dp][np][op][nq]MA[qm][qp][oq][pq]
 ;B[pd]C[Count: 3
@@ -7545,7 +7868,7 @@ A: 2]LB[lf:A]MA[cc][dp][lp][oq]TR[ec][be][df][po][qp]
 ;B[lf]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[id:A][lg:B]MA[cc][dp][lp][oq]TR[ec][be][df][po][qp](;W[id]C[Count: 1
+A: 1]LB[id:A][lg:A]MA[cc][dp][lp][oq]TR[ec][be][df][po][qp](;W[id]C[Count: 1
 No pass: 1
 A: 1]LB[lh:A]MA[cc][dp][fq][oq]TR[dc][ed][de][pn][qp]
 ;B[lh]C[Count: 1
@@ -7616,7 +7939,7 @@ A: 2]LB[nf:A]TR[dc][ce][do][mp][dq]MA[ip][np][pp][nq]
 ;B[nf]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[lc:A][kc:B]TR[dc][ce][do][mp][dq]MA[ip][np][pp][nq](;W[lc]C[Count: 1
+A: 1]LB[lc:A][kc:A]TR[dc][ce][do][mp][dq]MA[ip][np][pp][nq](;W[lc]C[Count: 1
 No pass: 1
 A: 1]LB[mb:A]MA[fb][cc][dc][dj][fj][pl][op][pp][qp]TR[cd][dd][ed][ck][dp][fq][nq][pq][qq][mr]
 ;B[mb]C[Count: 1
@@ -7697,8 +8020,8 @@ A: 3]LB[pg:A]TR[dc][ce][bm][bn][co][po][cp][qp][cq]MA[cl][cm][cn][do][dp][dq][lq
 ;B[pg]C[Count: 3
 No pass: 3
 A: 1
-B: 1
-C: 1]LB[qh:A][rd:B][pf:C]MA[cc][dd][fd][dg][ch]TR[ee][cf][cj][np][qp][cq](;W[qh]C[Count: 1
+A: 1
+A: 1]LB[qh:A][rd:A][pf:A]MA[cc][dd][fd][dg][ch]TR[ee][cf][cj][np][qp][cq](;W[qh]C[Count: 1
 No pass: 1
 A: 1]LB[id:A]MA[cc][dd][ch]TR[cf][np][qp][cq]
 ;B[id]C[Count: 1
@@ -7810,7 +8133,7 @@ B: 1 Pass]LB[qi:A]TR[ec][de][df][qn][ep][dq][pq]MA[cd][ce][cg][co][kq]
 ;B[qi]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[ph:A][oi:B]TR[ec][de][df][qn][ep][dq][pq]MA[cd][ce][cg][co][kq](;W[ph]C[Count: 1
+A: 1]LB[ph:A][oi:A]TR[ec][de][df][qn][ep][dq][pq]MA[cd][ce][cg][co][kq](;W[ph]C[Count: 1
 No pass: 1
 A: 1]LB[pi:A]TR[dc][de][co][pp]MA[fp][dq]
 ;B[pi]C[Count: 1
@@ -7850,7 +8173,7 @@ A: 5 Pass]MA[hb][cc][ec][fc][dd][ko][lo][mo][no][op][qp][rp][nq][pq][rq][rr]TR[e
 (;W[kd]C[Count: 5
 No pass: 3
 A: 2
-B: 2 Pass]LB[ic:A]TR[ec][de][df][dg][dh][dp][qq]MA[cd][ce][cg][ch][ci]
+A: 2 Pass]LB[ic:A]TR[ec][de][df][dg][dh][dp][qq]MA[cd][ce][cg][ch][ci]
 ;B[ic]C[Count: 2
 No pass: 2
 A: 2]LB[nd:A]TR[ec][de][df][dg][dh][dp][qq]MA[cd][ce][cg][ch][ci]
@@ -7900,7 +8223,7 @@ B: 1 Pass]LB[ke:A]TR[fc][dd][fd][ee][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[g
 ;B[ke]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[qb:A][jd:B]TR[fc][dd][fd][ee][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gc][gd][fe][op][pp][qp][cq][dq][fq][nq][er][gr][fs](;W[qb]C[Count: 1
+A: 1]LB[qb:A][jd:A]TR[fc][dd][fd][ee][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gc][gd][fe][op][pp][qp][cq][dq][fq][nq][er][gr][fs](;W[qb]C[Count: 1
 No pass: 0
 A: 1 Pass]TR[fc][dd][fd][ee][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gc][gd][fe][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs])
 (;W[jd]C[Count: 1
@@ -7963,7 +8286,7 @@ A: 2]LB[qj:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf
 ;B[qj]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[mc:A][oi:B]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs](;W[mc]C[Count: 1
+A: 1]LB[mc:A][oi:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][cr][dr][nr]MA[gd][gf][op][pp][qp][cq][dq][fq][nq][er][gr][fs](;W[mc]C[Count: 1
 No pass: 1
 A: 1]LB[md:A]TR[fc][dd][fd][ci][cp][dp][ep][eq][oq][pq][qq][br][cr][dr][nr]MA[gd][gf][op][pp][qp][bq][cq][dq][fq][nq][er][gr][fs]
 ;B[md]C[Count: 1
@@ -8048,7 +8371,7 @@ A: 2 Pass]TR[cc][dp][fq]MA[qq])
 No pass: 17
 A: 34 Pass
 B: 5
-C: 5]LB[qk:B][qj:C]TR[cc][hc][cd][cf][gf][bg][qn][do][po][pp][dq][iq][pq]MA[dc][dd][de][df][eg][rn][qo][qp][kq][qq](;W[]C[Count: 34
+B: 5]LB[qk:B][qj:B]TR[cc][hc][cd][cf][gf][bg][qn][do][po][pp][dq][iq][pq]MA[dc][dd][de][df][eg][rn][qo][qp][kq][qq](;W[]C[Count: 34
 No pass: 21
 A: 12 Pass
 B: 8]LB[pj:B]TR[cc][hc][cd][cf][gf][bg][qn][do][po][pp][dq][iq][pq]MA[dc][dd][de][df][eg][rn][qo][qp][kq][qq]
@@ -8077,16 +8400,16 @@ C: 18]LB[pi:B][qj:C]TR[cc][qp][oq]MA[dp](;B[]C[Count: 189
 No pass: 189
 A: 36
 B: 15
-C: 15
-D: 12
-E: 11
-F: 10
-G: 10
-H: 10
-I: 9
-J: 9
-K: 7
-L: 6]LB[pd:A][pi:B][pj:C][qj:D][qk:E][ic:F][lc:G][qi:H][id:I][qf:J][jd:K][kc:L]TR[cc][qp][oq]MA[dp](;W[pd]C[Count: 36
+B: 15
+C: 12
+D: 11
+E: 10
+E: 10
+E: 10
+F: 9
+F: 9
+G: 7
+H: 6]LB[pd:A][pi:B][pj:B][qj:C][qk:D][ic:E][lc:E][qi:E][id:F][qf:F][jd:G][kc:H]TR[cc][qp][oq]MA[dp](;W[pd]C[Count: 36
 No pass: 36
 A: 17
 B: 16]LB[pe:A][pc:B]TR[dd][co][pp]MA[fp][dq](;B[pe]C[Count: 17
@@ -8129,7 +8452,7 @@ A: 4]LB[of:A]MA[cb][dc][dd][de][mq][pq][qq][nr]TR[cc][cd][cf][df][ff][dp][op][pp
 ;B[of]C[Count: 4
 No pass: 4
 A: 2
-B: 2]LB[mc:A][nf:B]MA[cb][dc][dd][de][mq][pq][qq][nr]TR[cc][cd][cf][df][ff][dp][op][pp][qp](;W[mc]C[Count: 2
+A: 2]LB[mc:A][nf:A]MA[cb][dc][dd][de][mq][pq][qq][nr]TR[cc][cd][cf][df][ff][dp][op][pp][qp](;W[mc]C[Count: 2
 No pass: 2
 A: 2]LB[mb:A]MA[cb][dc][dd][de][mq][pq][qq][nr]TR[cc][cd][cf][df][ff][dp][op][pp][qp]
 ;B[mb]C[Count: 2
@@ -8257,11 +8580,11 @@ A: 8 Pass]TR[cc][df][dk][bm][an][cn][bo][cp][qp][cq][oq]MA[hc][em][co][do][bp][d
 (;W[qf]C[Count: 9
 No pass: 7
 A: 2 Pass
-B: 2]LB[qh:B]TR[bb][cc][dc][bd][de][ee][ch][eh][fj][dk][bl][dl][cm][dm][qm][cn][gn][eo][ho][io][qo][ep][gp][qp][cq][dq][pq]MA[bc][hd][be][cf][df][ef][gf][fh][el][bm][em][bn][dn][en][pn][bo][do][po][cp][hp][bq][gq][hq][kq][oq][or]
+A: 2]LB[qh:A]TR[bb][cc][dc][bd][de][ee][ch][eh][fj][dk][bl][dl][cm][dm][qm][cn][gn][eo][ho][io][qo][ep][gp][qp][cq][dq][pq]MA[bc][hd][be][cf][df][ef][gf][fh][el][bm][em][bn][dn][en][pn][bo][do][po][cp][hp][bq][gq][hq][kq][oq][or]
 ;B[qh]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[og:A][ne:B]TR[bb][cc][dc][bd][de][ee][ch][eh][fj][dk][bl][dl][cm][dm][qm][cn][gn][eo][ho][io][qo][ep][gp][qp][cq][dq][pq]MA[bc][hd][be][cf][df][ef][gf][fh][el][bm][em][bn][dn][en][pn][bo][do][po][cp][hp][bq][gq][hq][kq][oq][or](;W[og]C[Count: 1
+A: 1]LB[og:A][ne:A]TR[bb][cc][dc][bd][de][ee][ch][eh][fj][dk][bl][dl][cm][dm][qm][cn][gn][eo][ho][io][qo][ep][gp][qp][cq][dq][pq]MA[bc][hd][be][cf][df][ef][gf][fh][el][bm][em][bn][dn][en][pn][bo][do][po][cp][hp][bq][gq][hq][kq][oq][or](;W[og]C[Count: 1
 No pass: 0
 A: 1 Pass]TR[fc][dd][ce][dl][ol][ql][em][dn][fn][go][ho][ko][fp][hp][kp][np][pp][nq][pq][qq]MA[cf][df][cl][ml][cm][dm][cn][lo][no][po][dp][gp][ip][op][qp][cq][fq][gq][hq])
 (;W[ne]C[Count: 1
@@ -8296,8 +8619,8 @@ B: 5]LB[jc:B]TR[cc][cd][bf][cg][cp][dp][ep][op][qp][fq][gq][hq]MA[dc][dd][hd][de
 No pass: 3
 A: 2 Pass
 B: 1
-C: 1
-D: 1]LB[ie:B][je:C][if:D]TR[cc][cd][bf][cg][cp][dp][ep][op][qp][fq][gq][hq]MA[dc][dd][hd][de][cq][dq][eq][fr][gr](;B[ie]C[Count: 1
+B: 1
+B: 1]LB[ie:B][je:B][if:B]TR[cc][cd][bf][cg][cp][dp][ep][op][qp][fq][gq][hq]MA[dc][dd][hd][de][cq][dq][eq][fr][gr](;B[ie]C[Count: 1
 No pass: 1
 A: 1]LB[je:A]TR[cc][cd][bf][cg][cp][dp][ep][op][qp][fq][gq][hq]MA[dc][dd][hd][de][cq][dq][eq][fr][gr]
 ;W[je]C[Count: 1
@@ -8402,7 +8725,7 @@ A: 33
 B: 21
 C: 8
 D: 5
-E: 5]LB[lc:A][pk:B][pj:C][pi:D][qk:E]MA[dd][qn][co]TR[ep][pp][dq][nq](;W[lc]C[Count: 33
+D: 5]LB[lc:A][pk:B][pj:C][pi:D][qk:D]MA[dd][qn][co]TR[ep][pp][dq][nq](;W[lc]C[Count: 33
 No pass: 6
 A: 27 Pass]TR[cc][fc][cd][bf][cf][ef][gg][cl][el][ep][pp][dq][gq][hq][iq][nq][qq][pr]MA[ec][gc][dd][fd][ce][fe][dn][fn][kn][qn][co][go][ro][hp][jp][qp][rq]
 ;B[]C[Count: 27
@@ -8430,8 +8753,8 @@ A: 3]LB[le:A]MA[cc][cd][cf][bg][dg][dh][op][pp][qp][nq]TR[dc][dd][de][df][eg][cq
 ;W[le]C[Count: 3
 No pass: 3
 A: 1
-B: 1
-C: 1]LB[ob:A][mf:B][od:C]MA[cc][cd][cf][bg][dg][dh][op][pp][qp][nq]TR[dc][dd][de][df][eg][cq][oq][pq][qq][nr](;B[ob]C[Count: 1
+A: 1
+A: 1]LB[ob:A][mf:A][od:A]MA[cc][cd][cf][bg][dg][dh][op][pp][qp][nq]TR[dc][dd][de][df][eg][cq][oq][pq][qq][nr](;B[ob]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[dc][ec][cd][cf][qn][cq][dq][eq][fr]TR[fc][ed][fd][ql][cp][dp][ep][pp][fq])
 (;B[mf]C[Count: 1
@@ -8647,8 +8970,8 @@ A: 3]LB[mg:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
 ;W[mg]C[Count: 3
 No pass: 3
 A: 1
-B: 1
-C: 1]LB[og:A][lf:B][lb:C]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr](;B[og]C[Count: 1
+A: 1
+A: 1]LB[og:A][lf:A][lb:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr](;B[og]C[Count: 1
 No pass: 1
 A: 1]LB[kd:A]MA[fc][fe][cp][dp][ep]TR[dd][hd][dg][pp][cq][dq][fr]
 ;W[kd]C[Count: 1
@@ -8756,7 +9079,7 @@ No pass: 30
 A: 29 Pass
 B: 8
 C: 6
-D: 6]LB[jd:B][jc:C][lc:D]TR[cd][ed][eq]MA[cp][qp](;B[]C[Count: 29
+C: 6]LB[jd:B][jc:C][lc:C]TR[cd][ed][eq]MA[cp][qp](;B[]C[Count: 29
 No pass: 29
 A: 10
 B: 9]LB[jd:A][qh:B]MA[dc][pp]TR[ce][cq](;W[jd]C[Count: 10
@@ -8817,8 +9140,8 @@ A: 5]LB[ph:A]TR[dd][qq]MA[co][dq]
 ;W[ph]C[Count: 5
 No pass: 4
 A: 2
-B: 2
-C: 1 Pass]LB[nf:A][jd:B]TR[dd][qq]MA[co][dq](;B[nf]C[Count: 2
+A: 2
+B: 1 Pass]LB[nf:A][jd:A]TR[dd][qq]MA[co][dq](;B[nf]C[Count: 2
 No pass: 2
 A: 2]LB[jd:A]TR[dc][cq]MA[op][qp]
 ;W[jd]C[Count: 2
@@ -8827,7 +9150,7 @@ A: 2 Pass]TR[dc][cq]MA[op][qp])
 (;B[jd]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[id:A][pg:B]TR[dd][qq]MA[co][dq](;W[id]C[Count: 1
+A: 1]LB[id:A][pg:A]TR[dd][qq]MA[co][dq](;W[id]C[Count: 1
 No pass: 1
 A: 1]LB[jc:A]TR[dd][dp]MA[qq]
 ;B[jc]C[Count: 1
@@ -8860,7 +9183,7 @@ A: 1 Pass]TR[dd][qq]MA[co][dq])
 (;B[]C[Count: 10
 No pass: 5
 A: 5
-B: 5 Pass]LB[qe:A]TR[cd][cp]MA[ed][qq]
+A: 5 Pass]LB[qe:A]TR[cd][cp]MA[ed][qq]
 ;W[qe]C[Count: 5
 No pass: 5
 A: 5]LB[re:A]MA[ec][hc][dp][oq][pq][qq][nr]TR[cd][de][op][pp][qp][nq]
@@ -8895,7 +9218,7 @@ A: 4]LB[jc:A]MA[ec][hc][dp][oq][pq][qq][nr]TR[cd][de][op][pp][qp][nq]
 ;W[jc]C[Count: 4
 No pass: 4
 A: 2
-B: 2]LB[mg:A][mf:B]MA[ec][hc][dp][oq][pq][qq][nr]TR[cd][de][op][pp][qp][nq](;B[mg]C[Count: 2
+A: 2]LB[mg:A][mf:A]MA[ec][hc][dp][oq][pq][qq][nr]TR[cd][de][op][pp][qp][nq](;B[mg]C[Count: 2
 No pass: 2
 A: 2]LB[pf:A]MA[ec][hc][cp][fq]TR[cd][de][qq]
 ;W[pf]C[Count: 2
@@ -8907,7 +9230,7 @@ A: 2]LB[ld:A]MA[ec][hc][cp][fq]TR[cd][de][qq]
 ;W[ld]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[mh:A][mi:B]MA[ec][hc][cp][fq]TR[cd][de][qq](;B[mh]C[Count: 1
+A: 1]LB[mh:A][mi:A]MA[ec][hc][cp][fq]TR[cd][de][qq](;B[mh]C[Count: 1
 No pass: 1
 A: 1]LB[oi:A]MA[ec][hc][cp][fq]TR[cd][de][qq]
 ;W[oi]C[Count: 1
@@ -8929,7 +9252,7 @@ A: 2]LB[kd:A]MA[ec][hc][dp][oq][pq][qq][nr]TR[cd][de][op][pp][qp][nq]
 ;W[kd]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[qh:A][pg:B]MA[ec][hc][dp][oq][pq][qq][nr]TR[cd][de][op][pp][qp][nq](;B[qh]C[Count: 1
+A: 1]LB[qh:A][pg:A]MA[ec][hc][dp][oq][pq][qq][nr]TR[cd][de][op][pp][qp][nq](;B[qh]C[Count: 1
 No pass: 1
 A: 1]LB[pg:A]MA[ec][hc][dp][oq][pq][qq][nr]TR[cd][de][op][pp][qp][nq]
 ;W[pg]C[Count: 1
@@ -8975,7 +9298,7 @@ B: 23
 C: 19]LB[qc:B][qe:C]TR[cd][cp]MA[qo][pq](;W[]C[Count: 34
 No pass: 34
 A: 16
-B: 16]LB[lc:A][oc:B]MA[ec][dp][oq][pq][qq][nr]TR[cd][de][op][pp][qp][nq](;B[lc]C[Count: 16
+A: 16]LB[lc:A][oc:A]MA[ec][dp][oq][pq][qq][nr]TR[cd][de][op][pp][qp][nq](;B[lc]C[Count: 16
 No pass: 14
 A: 8
 B: 2 Pass]LB[qc:A]MA[eb][ec][ee][ef][pl][dp][np][rp][oq][pq][qq][nr][rr]TR[dc][cd][de][ch][lm][no][op][pp][qp][mq][nq][rq][mr]
@@ -9033,7 +9356,7 @@ B: 1 Pass]LB[nd:A]TR[dc][ec][cd][qq]MA[fc][ed][cq]
 ;W[nd]C[Count: 9
 No pass: 6
 A: 3 Pass
-B: 3]LB[qf:B]TR[dc][ec][cd][qq]MA[fc][ed][cq]
+A: 3]LB[qf:A]TR[dc][ec][cd][qq]MA[fc][ed][cq]
 ;B[qf]C[Count: 3
 No pass: 2
 A: 2
@@ -9214,6 +9537,101 @@ No pass: 1
 A: 2 Pass]MA[ec][de][df][ep][dq]TR[cd][ce][cg][co][pp])
 )
 )
+(;W[pd]C[Count: 38
+No pass: 34
+A: 18
+B: 15
+C: 4 Pass]LB[pc:A][qc:B]TR[dc][ec][cd][df][dq]MA[fc][ed][fd][co][pp](;B[pc]C[Count: 18
+No pass: 17
+A: 11
+B: 5
+C: 1 Pass]LB[qe:A][oc:B]MA[hb][cc][ec][fc][dd][eq]TR[ed][fd][gd][ce][de][cp][pp](;W[qe]C[Count: 11
+No pass: 11
+A: 9]LB[qc:A]MA[hb][cc][ec][fc][dd][eq]TR[ed][fd][gd][ce][de][cp][pp]
+;B[qc]C[Count: 9
+No pass: 8
+A: 7
+B: 1 Pass]LB[pe:A]MA[hb][cc][ec][fc][dd][eq]TR[ed][fd][gd][ce][de][cp][pp]
+;W[pe]C[Count: 7
+No pass: 7
+A: 6]LB[nc:A]MA[dd][co][pq][qq][nr]TR[ep][pp][qp][dq][nq]
+;B[nc]C[Count: 6
+No pass: 1
+A: 5 Pass]MA[dd][co][pq][qq][nr]TR[ep][pp][qp][dq][nq])
+(;W[oc]C[Count: 5
+No pass: 5
+A: 4]LB[qc:A]TR[cc][rn][qo][cp][dp][qp][fq][qq]MA[qn][po][pp][cq][dq][pq][fr]
+;B[qc]C[Count: 4
+No pass: 3
+A: 3
+B: 1 Pass]LB[od:A]TR[cc][rn][qo][cp][dp][qp][fq][qq]MA[qn][po][pp][cq][dq][pq][fr]
+;W[od]C[Count: 3
+No pass: 2
+A: 1
+A: 1
+A: 1 Pass]LB[qf:A][pe:A]MA[fb][cc][dc][pq]TR[fc][cd][dd][cp](;B[qf]C[Count: 1
+No pass: 1
+A: 1]LB[kd:A]MA[cc][dd][ce][cf][cg][eo][op][qp][eq][dr]TR[ec][ed][de][df][dg][dh][cp][dq][hq][cr]
+;W[kd]C[Count: 1
+No pass: 0
+A: 1 Pass]MA[cc][dd][ce][cf][cg][eo][op][qp][eq][dr]TR[ec][ed][de][df][dg][dh][cp][dq][hq][cr])
+(;B[pe]C[Count: 1
+No pass: 1
+A: 1]LB[kc:A]TR[cc][cd][cf][df][eg][fg][gg][co][po][dp][fp][pp][pq]MA[dc][dd][de][ef][ff][gf][hf][cn][dn][rn][qp][qq]
+;W[kc]C[Count: 1
+No pass: 0
+A: 1 Pass]TR[cc][cd][cf][df][eg][fg][gg][co][po][dp][fp][pp][pq]MA[dc][dd][de][ef][ff][gf][hf][cn][dn][rn][qp][qq])
+)
+)
+(;B[qc]C[Count: 15
+No pass: 10
+A: 7
+B: 5 Pass]LB[pe:A]TR[dc][ec][cd][df][dq]MA[fc][ed][fd][co][pp]
+;W[pe]C[Count: 7
+No pass: 7
+A: 5]LB[qe:A]MA[dd][dm][dn][do][qo][dp][pp][qp][eq][oq][qq][dr][er][fr][pr]TR[cl][cm][pm][on][qn][co][oo][po][cp][ep][op][cq][dq][fq][nq]
+;B[qe]C[Count: 5
+No pass: 4
+A: 2
+B: 1 Pass]LB[pf:A]MA[dd][dm][dn][do][qo][dp][pp][qp][eq][oq][qq][dr][er][fr][pr]TR[cl][cm][pm][on][qn][co][oo][po][cp][ep][op][cq][dq][fq][nq]
+;W[pf]C[Count: 2
+No pass: 2
+A: 1
+A: 1]LB[rg:A][qf:A]MA[dd][dm][dn][do][qo][dp][pp][qp][eq][oq][qq][dr][er][fr][pr]TR[cl][cm][pm][on][qn][co][oo][po][cp][ep][op][cq][dq][fq][nq](;B[rg]C[Count: 1
+No pass: 0
+A: 1 Pass]TR[fb][cc][dc][ec][pm][qm][qo][ep][qp][dq]MA[fc][cd][dd][ed][dl][pn][co][po][hq][oq])
+(;B[qf]C[Count: 1
+No pass: 0
+A: 1 Pass]MA[dd][dm][dn][do][qo][dp][pp][qp][eq][oq][qq][dr][er][fr][pr]TR[cl][cm][pm][on][qn][co][oo][po][cp][ep][op][cq][dq][fq][nq])
+)
+)
+(;W[lc]C[Count: 1
+No pass: 1
+A: 1]LB[nc:A]TR[cc][cd][cf][df][eg][fg][co][po][dp][fp][pp][pq]MA[dc][dd][de][ef][ff][gf][cn][dn][rn][qp][qq]
+;B[nc]C[Count: 1
+No pass: 1
+A: 1]LB[ic:A]TR[cc][cd][cf][df][eg][fg][co][po][dp][fp][pp][pq]MA[dc][dd][de][ef][ff][gf][cn][dn][rn][qp][qq]
+;W[ic]C[Count: 1
+No pass: 0
+A: 1 Pass]TR[cc][cd][cf][df][eg][fg][co][po][dp][fp][pp][pq]MA[dc][dd][de][ef][ff][gf][cn][dn][rn][qp][qq])
+(;W[of]C[Count: 1
+No pass: 1
+A: 1]LB[pg:A]
+;B[pg]C[Count: 1
+No pass: 1
+A: 1]LB[pf:A]
+;W[pf]C[Count: 1
+No pass: 1
+A: 1]LB[oi:A]
+;B[oi]C[Count: 1
+No pass: 1
+A: 1]LB[md:A]
+;W[md]C[Count: 1
+No pass: 1
+A: 1]LB[nd:A]
+;B[nd]C[Count: 1
+No pass: 0
+A: 1 Pass])
 )
 (;B[qe]C[Count: 540
 No pass: 294
@@ -9232,17 +9650,17 @@ B: 17
 C: 15
 D: 14
 E: 12
-F: 12
-G: 11]LB[pj:B][pk:C][kd:D][jd:E][jc:F][qk:G]MA[cc]TR[dp][pp](;B[]C[Count: 117
+E: 12
+F: 11]LB[pj:B][pk:C][kd:D][jd:E][jc:E][qk:F]MA[cc]TR[dp][pp](;B[]C[Count: 117
 No pass: 117
 A: 39
 B: 12
-C: 12
-D: 9
-E: 9
-F: 4
-G: 4
-H: 3]LB[pf:A][ic:B][jc:C][pk:D][kc:E][pj:F][oc:G][kd:H]MA[cc]TR[dp][pp](;W[pf]C[Count: 39
+B: 12
+C: 9
+C: 9
+D: 4
+D: 4
+E: 3]LB[pf:A][ic:B][jc:B][pk:C][kc:C][pj:D][oc:D][kd:E]MA[cc]TR[dp][pp](;W[pf]C[Count: 39
 No pass: 29
 A: 16
 B: 10 Pass
@@ -9361,8 +9779,8 @@ A: 3]LB[pe:A]TR[dc][de][ci][op][pp][qp][eq][nq]MA[do][cp][oq][pq][qq][nr]
 ;B[pe]C[Count: 3
 No pass: 2
 A: 1 Pass
-B: 1
-C: 1]LB[qf:B][nf:C]TR[dc][de][ci][op][pp][qp][eq][nq]MA[do][cp][oq][pq][qq][nr](;W[qf]C[Count: 1
+A: 1
+A: 1]LB[qf:A][nf:A]TR[dc][de][ci][op][pp][qp][eq][nq]MA[do][cp][oq][pq][qq][nr](;W[qf]C[Count: 1
 No pass: 1
 A: 1]LB[of:A]TR[ec][hc][pn][cp][dp][pp][fq][gq][hq]MA[cd][de][di][cq][dq][fr][gr]
 ;B[of]C[Count: 1
@@ -9407,7 +9825,7 @@ A: 7 Pass]TR[cc][ed][cl][dl][dm][en][fn][no][ep][fp][np][pp][fq][qq]MA[cm][em][c
 No pass: 197
 A: 174
 B: 20 Pass
-C: 20]LB[od:A][nd:C]TR[dd][dq]MA[pp](;B[od]C[Count: 174
+B: 20]LB[od:A][nd:B]TR[dd][dq]MA[pp](;B[od]C[Count: 174
 No pass: 171
 A: 162
 B: 3 Pass]LB[pd:A]TR[dd][dq]MA[pp]
@@ -9476,7 +9894,7 @@ A: 2 Pass]MA[dd][co][qo]TR[np][dq][pq])
 (;W[]C[Count: 7
 No pass: 7
 A: 3
-B: 3]LB[pi:A][pj:B]MA[dd]TR[do][pp](;B[pi]C[Count: 3
+A: 3]LB[pi:A][pj:A]MA[dd]TR[do][pp](;B[pi]C[Count: 3
 No pass: 0
 A: 3 Pass]MA[dd][cm][cn][co][dp][cq]TR[dl][dm][dn][do][ep][pp][eq])
 (;B[pj]C[Count: 3
@@ -9528,7 +9946,7 @@ No pass: 18
 A: 12 Pass
 B: 7
 C: 3
-D: 3]LB[ld:B][nk:C][ph:D]TR[dd]MA[pp][dq](;W[]C[Count: 12
+C: 3]LB[ld:B][nk:C][ph:C]TR[dd]MA[pp][dq](;W[]C[Count: 12
 No pass: 12
 A: 8]LB[ld:A]TR[dd]MA[dp][qp]
 ;B[ld]C[Count: 8
@@ -9543,8 +9961,8 @@ A: 4 Pass]TR[dd][cp][dq][fq]MA[dk][co][do][pp])
 (;W[nk]C[Count: 3
 No pass: 2
 A: 1 Pass
-B: 1
-C: 1]LB[pj:B][pi:C]TR[cd][ed][cn][cp][dq][eq]MA[ql][ep][fp][pp][fq][nq](;B[pj]C[Count: 1
+A: 1
+A: 1]LB[pj:A][pi:A]TR[cd][ed][cn][cp][dq][eq]MA[ql][ep][fp][pp][fq][nq](;B[pj]C[Count: 1
 No pass: 1
 A: 1]LB[ld:A]TR[dd][cf][cq]MA[ql][pp][nq]
 ;W[ld]C[Count: 1
@@ -9566,8 +9984,8 @@ A: 1 Pass]TR[cd][ed][cn][cp][dq][eq]MA[ql][ep][fp][pp][fq][nq])
 (;W[ph]C[Count: 3
 No pass: 2
 A: 1
-B: 1 Pass
-C: 1]LB[qk:A][ld:C]TR[dd][cq]MA[ql][pp](;B[qk]C[Count: 1
+A: 1 Pass
+A: 1]LB[qk:A][ld:A]TR[dd][cq]MA[ql][pp](;B[qk]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[fa][eb][gb][bc][cc][dc][fc][ci][cl][cm][pn][qn][bo][co][po][jp][pp][sp][fq][hq][pq][rq][qr]TR[bb][cb][db][ec][cd][dd][ed][ol][rl][dm][qm][rn][do][qo][ro][bp][cp][ep][qp][rp][dq][qq])
 (;B[ld]C[Count: 1
@@ -9620,13 +10038,13 @@ A: 12 Pass
 B: 6
 C: 5
 D: 3
-E: 3]LB[ph:B][ld:C][pi:D][qi:E]MA[dc]TR[dq][qq](;W[]C[Count: 12
+D: 3]LB[ph:B][ld:C][pi:D][qi:D]MA[dc]TR[dq][qq](;W[]C[Count: 12
 No pass: 12
 A: 5]LB[lc:A]MA[cc]TR[cq][pq]
 ;B[lc]C[Count: 5
 No pass: 3
 A: 2 Pass
-B: 2]LB[qi:B]MA[cc][co]TR[ep][pp][dq]
+A: 2]LB[qi:A]MA[cc][co]TR[ep][pp][dq]
 ;W[qi]C[Count: 2
 No pass: 2
 A: 2]LB[lb:A]MA[cc][co]TR[ep][pp][dq]
@@ -9645,8 +10063,8 @@ A: 3 Pass]MA[dc][ed][pn][po][oq]TR[ce][qm][qo][qp][cq])
 (;W[pi]C[Count: 3
 No pass: 2
 A: 1
-B: 1
-C: 1 Pass]LB[pk:A][lc:B]MA[dd][co]TR[pp][dq](;B[pk]C[Count: 1
+A: 1
+A: 1 Pass]LB[pk:A][lc:A]MA[dd][co]TR[pp][dq](;B[pk]C[Count: 1
 No pass: 1
 A: 1]LB[ld:A]TR[dd][dp]MA[qp][oq]
 ;W[ld]C[Count: 1
@@ -9692,8 +10110,8 @@ A: 1 Pass]MA[cd][ed][qo][np]TR[do][dq][pq])
 (;W[qi]C[Count: 3
 No pass: 2
 A: 1
-B: 1
-C: 1 Pass]LB[lc:A][rc:B]TR[cc][de][co][do][ep][fp][gp][pp]MA[dc][cg][ck][dp][cq][eq][fq][hr](;B[lc]C[Count: 1
+A: 1
+A: 1 Pass]LB[lc:A][rc:A]TR[cc][de][co][do][ep][fp][gp][pp]MA[dc][cg][ck][dp][cq][eq][fq][hr](;B[lc]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[dd][dp][cq][eq][fq][hr]TR[co][do][ep][fp][gp][pp])
 (;B[rc]C[Count: 1
@@ -9766,7 +10184,7 @@ B: 1 Pass]LB[ld:A]MA[cb][db][eb][fb][bc][dc][pq]TR[cc][ec][dd][ed][de][po][dp]
 ;B[ld]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[pk:A][qj:B]TR[dc][ec][gc][qq]MA[ed][fd][ce][dp](;W[pk]C[Count: 1
+A: 1]LB[pk:A][qj:A]TR[dc][ec][gc][qq]MA[ed][fd][ce][dp](;W[pk]C[Count: 1
 No pass: 0
 A: 1 Pass]TR[dc][ec][gc][qq]MA[ed][fd][ce][dp])
 (;W[qj]C[Count: 1
@@ -9776,8 +10194,8 @@ A: 1 Pass]TR[dc][ec][gc][qq]MA[ed][fd][ce][dp])
 (;W[md]C[Count: 3
 No pass: 3
 A: 1
-B: 1
-C: 1]LB[oe:A][pi:B][qi:C]TR[cd][ed][qo]MA[op][cq][qq](;B[oe]C[Count: 1
+A: 1
+A: 1]LB[oe:A][pi:A][qi:A]TR[cd][ed][qo]MA[op][cq][qq](;B[oe]C[Count: 1
 No pass: 1
 A: 1]LB[nc:A]MA[dd][qq]TR[pp][cq]
 ;W[nc]C[Count: 1
@@ -9880,7 +10298,7 @@ A: 2]LB[nc:A]TR[dd][ep][qq]MA[cp]
 ;W[nc]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[md:A][mc:B]TR[dd][ep][qq]MA[cp](;B[md]C[Count: 1
+A: 1]LB[md:A][mc:A]TR[dd][ep][qq]MA[cp](;B[md]C[Count: 1
 No pass: 1
 A: 1]LB[ob:A]TR[cc][do][pp]MA[dq]
 ;W[ob]C[Count: 1
@@ -9985,7 +10403,7 @@ A: 3 Pass]TR[dc][de][eq][hq][cr][fr]MA[do][qo][fp][cq][fq][pq])
 (;B[nd]C[Count: 5
 No pass: 5
 A: 2
-B: 2]LB[od:A][pe:B]TR[dc][ed][qq]MA[ce][dp](;W[od]C[Count: 2
+A: 2]LB[od:A][pe:A]TR[dc][ed][qq]MA[ce][dp](;W[od]C[Count: 2
 No pass: 2
 A: 2]LB[oe:A]MA[dc][de][bm][bn][co][cp][cq]TR[cl][cm][cn][do][dp][dq][qq]
 ;B[oe]C[Count: 2
@@ -10030,7 +10448,7 @@ A: 2]LB[qc:A]TR[dc][ed][qq]MA[ce][dp]
 ;B[qc]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[nc:A][re:B]TR[dc][ed][qq]MA[ce][dp](;W[nc]C[Count: 1
+A: 1]LB[nc:A][re:A]TR[dc][ed][qq]MA[ce][dp](;W[nc]C[Count: 1
 No pass: 1
 A: 1]LB[md:A]MA[cd][dn][do][np][eq]TR[cm][co][cp][op][qp][oq]
 ;B[md]C[Count: 1
@@ -10167,7 +10585,7 @@ A: 5]LB[nc:A]MA[ec][cp][ep]TR[cd][qq]
 ;W[nc]C[Count: 5
 No pass: 3
 A: 2 Pass
-B: 2]LB[pj:B]MA[ec][cp][ep]TR[cd][qq]
+A: 2]LB[pj:A]MA[ec][cp][ep]TR[cd][qq]
 ;B[pj]C[Count: 2
 No pass: 0
 A: 2 Pass]MA[ec][cp][ep]TR[cd][qq])
@@ -10186,7 +10604,7 @@ A: 2]LB[mb:A]TR[dc][ed][qn][op][pp][oq][qq]MA[ce][dp][nq][pq][or][pr][qr]
 ;W[mb]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[qj:A][og:B]TR[cc][op][pp][qp]MA[cq][pq][qq][nr](;B[qj]C[Count: 1
+A: 1]LB[qj:A][og:A]TR[cc][op][pp][qp]MA[cq][pq][qq][nr](;B[qj]C[Count: 1
 No pass: 1
 A: 1]LB[oh:A]TR[dc][cd][fd][ce][np][op][pp][qp]MA[de][cf][df][dp][oq][pq][qq][mr]
 ;W[oh]C[Count: 1
@@ -10321,7 +10739,7 @@ B: 1 Pass]LB[kd:A]TR[dc][fc][cd][cq]MA[ce][de][di][pp]
 ;W[kd]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[qb:A][kc:B]TR[cc][cp][dp][ep][fq]MA[pp][cq][dq][eq][fr](;B[qb]C[Count: 1
+A: 1]LB[qb:A][kc:A]TR[cc][cp][dp][ep][fq]MA[pp][cq][dq][eq][fr](;B[qb]C[Count: 1
 No pass: 1
 A: 1]LB[rb:A]TR[cc][cp][dp][ep][fq]MA[cq][dq][eq][pq][fr]
 ;W[rb]C[Count: 1
@@ -10350,7 +10768,7 @@ A: 6 Pass
 B: 3]LB[ic:B]TR[cc][cp][dp][ep][fq]MA[pp][cq][dq][eq][fr](;B[]C[Count: 6
 No pass: 3
 A: 3 Pass
-B: 3]LB[le:B]TR[cc][cp][dp][ep][fq]MA[pp][cq][dq][eq][fr]
+A: 3]LB[le:A]TR[cc][cp][dp][ep][fq]MA[pp][cq][dq][eq][fr]
 ;W[le]C[Count: 3
 No pass: 1
 A: 2 Pass]MA[ec][de][df][dg][dh][op][pq]TR[cd][ce][cf][cg][qo][dp])
@@ -10395,7 +10813,7 @@ C: 3]LB[ph:B][id:C]TR[dd][dp]MA[pq](;B[]C[Count: 27
 No pass: 12
 A: 12 Pass
 B: 3
-C: 3]LB[kc:B][ph:C]MA[dd][dp]TR[pq](;W[]C[Count: 12
+B: 3]LB[kc:B][ph:B]MA[dd][dp]TR[pq](;W[]C[Count: 12
 No pass: 12
 A: 9]LB[ph:A]TR[dd][qp]MA[dp]
 ;B[ph]C[Count: 9
@@ -10420,8 +10838,8 @@ A: 1 Pass]TR[bb][cc][cd][dd][ed][po][qp]MA[cb][dc][ec][gc][cq][oq])
 (;W[kc]C[Count: 3
 No pass: 2
 A: 1 Pass
-B: 1
-C: 1]LB[ic:B][ke:C]TR[dd][cp][dp][ep]MA[cq][dq][pq][fr](;B[ic]C[Count: 1
+A: 1
+A: 1]LB[ic:A][ke:A]TR[dd][cp][dp][ep]MA[cq][dq][pq][fr](;B[ic]C[Count: 1
 No pass: 1
 A: 1]LB[ke:A]MA[dd][bm][bn][cn][cp][cq][kq]TR[cl][cm][dn][do][dp][dq][qq]
 ;W[ke]C[Count: 1
@@ -10517,7 +10935,7 @@ A: 7]LB[qh:A]MA[ce][cp]TR[oq]
 ;B[qh]C[Count: 7
 No pass: 4
 A: 3
-B: 3 Pass]LB[kc:A]TR[dc][ce][cp]MA[qp][oq]
+A: 3 Pass]LB[kc:A]TR[dc][ce][cp]MA[qp][oq]
 ;W[kc]C[Count: 3
 No pass: 2
 A: 2
@@ -10568,7 +10986,7 @@ A: 6
 B: 4 Pass]LB[pg:A]TR[cc][dq]MA[ec][qp](;W[pg]C[Count: 6
 No pass: 6
 A: 3
-B: 3]LB[kd:A][oe:B]MA[cc][hc][dp]TR[ec][pp](;B[kd]C[Count: 3
+A: 3]LB[kd:A][oe:A]MA[cc][hc][dp]TR[ec][pp](;B[kd]C[Count: 3
 No pass: 1
 A: 2 Pass]TR[cd][pq]MA[do][dq])
 (;B[oe]C[Count: 3
@@ -10669,11 +11087,11 @@ A: 6]LB[nc:A]TR[cd][pq]MA[dp]
 ;B[nc]C[Count: 6
 No pass: 4
 A: 2
-B: 2 Pass
-C: 2]LB[nb:A][rd:C]TR[cd][pq]MA[dp](;W[nb]C[Count: 2
+A: 2 Pass
+A: 2]LB[nb:A][rd:A]TR[cd][pq]MA[dp](;W[nb]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[lc:A][mc:B]TR[cd][pq]MA[dp](;B[lc]C[Count: 1
+A: 1]LB[lc:A][mc:A]TR[cd][pq]MA[dp](;B[lc]C[Count: 1
 No pass: 0
 A: 1 Pass]TR[cd][pp]MA[co])
 (;B[mc]C[Count: 1
@@ -10798,8 +11216,8 @@ A: 3]LB[ic:A]MA[fc][pp]TR[dd][cq]
 ;B[ic]C[Count: 3
 No pass: 2
 A: 1 Pass
-B: 1
-C: 1]LB[ke:B][qf:C]MA[fc][pp]TR[dd][cq](;W[ke]C[Count: 1
+A: 1
+A: 1]LB[ke:A][qf:A]MA[fc][pp]TR[dd][cq](;W[ke]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[fc][pp]TR[dd][cq])
 (;W[qf]C[Count: 1
@@ -10833,7 +11251,7 @@ B: 1 Pass]LB[qd:A]TR[dd][dq]MA[qq]
 ;B[qd]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[rd:A][rc:B]TR[dd][dq]MA[qq](;W[rd]C[Count: 1
+A: 1]LB[rd:A][rc:A]TR[dd][dq]MA[qq](;W[rd]C[Count: 1
 No pass: 1
 A: 1]LB[re:A]TR[cd][pp]MA[cq]
 ;B[re]C[Count: 1
@@ -10865,7 +11283,7 @@ A: 6]LB[qe:A]MA[dc][cq]TR[do][pp][eq]
 ;W[qe]C[Count: 6
 No pass: 3
 A: 3
-B: 3 Pass]LB[qf:A]MA[dc][cq]TR[do][pp][eq]
+A: 3 Pass]LB[qf:A]MA[dc][cq]TR[do][pp][eq]
 ;B[qf]C[Count: 3
 No pass: 3
 A: 3]LB[rf:A]MA[dd][ql][pq][nr][or][pr][qr]TR[po][mp][op][pp][cq][oq][qq]
@@ -10898,13 +11316,13 @@ D: 10]LB[jd:B][ic:C][qj:D]TR[cc][pp]MA[cq](;B[]C[Count: 116
 No pass: 116
 A: 38
 B: 15
-C: 15
-D: 7
-E: 6
-F: 5
-G: 4
-H: 4
-I: 4]LB[pf:A][jc:B][qg:C][jd:D][qj:E][qi:F][oc:G][kc:H][ic:I]TR[cc][pp]MA[cq](;W[pf]C[Count: 38
+B: 15
+C: 7
+D: 6
+E: 5
+F: 4
+F: 4
+F: 4]LB[pf:A][jc:B][qg:B][jd:C][qj:D][qi:E][oc:F][kc:F][ic:F]TR[cc][pp]MA[cq](;W[pf]C[Count: 38
 No pass: 38
 A: 14
 B: 13
@@ -11023,7 +11441,7 @@ A: 10 Pass]MA[bb][db][fb][cc][dc][ec][fd][fe][cq]TR[eb][gb][bc][fc][gc][cd][dd][
 (;W[qg]C[Count: 15
 No pass: 10
 A: 5 Pass
-B: 5]LB[qi:B]TR[cc][qn][pp]MA[cq][nq]
+A: 5]LB[qi:A]TR[cc][qn][pp]MA[cq][nq]
 ;B[qi]C[Count: 5
 No pass: 2
 A: 3 Pass]TR[bb][bc][dc][bd][dd][ce][de][cm][rm][bn][pn][co][cp][qp][cq][pq][cr]MA[cb][cc][cd][be][af][cf][bg][ql][cn][dn][do][dp][kp][op][dq][oq][or])
@@ -11040,7 +11458,7 @@ A: 3 Pass]MA[fc][dd][cn]TR[po][dp][fq][pq])
 (;W[qi]C[Count: 5
 No pass: 3
 A: 2 Pass
-B: 2]LB[pj:B]TR[dc][qo][np][qp][dq][pq]MA[ce][pn][qn][co][po]
+A: 2]LB[pj:A]TR[dc][qo][np][qp][dq][pq]MA[ce][pn][qn][co][po]
 ;B[pj]C[Count: 2
 No pass: 2
 A: 2]LB[qj:A]TR[dc][qo][np][qp][dq][pq]MA[ce][pn][qn][co][po]
@@ -11053,7 +11471,7 @@ A: 2]LB[qf:A]TR[dc][qo][np][qp][dq][pq]MA[ce][pn][qn][co][po]
 ;W[qf]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[qe:A][pf:B]TR[dc][qo][np][qp][dq][pq]MA[ce][pn][qn][co][po](;B[qe]C[Count: 1
+A: 1]LB[qe:A][pf:A]TR[dc][qo][np][qp][dq][pq]MA[ce][pn][qn][co][po](;B[qe]C[Count: 1
 No pass: 1
 A: 1]LB[re:A]TR[cc][dn][do][dp][dq][mq][oq][pq][qq][rq][nr]MA[bm][co][lo][cp][np][op][pp][qp][cq][nq]
 ;W[re]C[Count: 1
@@ -11186,7 +11604,7 @@ A: 4]LB[qd:A]MA[cc][dd][hd][ce][cf][bh][op][pp][qp]TR[ec][ed][de][df][dg][cp][pq
 ;B[qd]C[Count: 4
 No pass: 4
 A: 2
-B: 2]LB[ob:A][mc:B]MA[cc][dd][hd][ce][cf][bh][op][pp][qp]TR[ec][ed][de][df][dg][cp][pq][qq][nr](;W[ob]C[Count: 2
+A: 2]LB[ob:A][mc:A]MA[cc][dd][hd][ce][cf][bh][op][pp][qp]TR[ec][ed][de][df][dg][cp][pq][qq][nr](;W[ob]C[Count: 2
 No pass: 1
 A: 1 Pass]MA[dd][jp][np][op][nq]TR[qn][do][qp][dq][oq][pq])
 (;W[mc]C[Count: 2
@@ -11247,7 +11665,7 @@ B: 1 Pass]LB[lc:A]MA[dd][pn][qo][qp][qq]TR[qm][qn][po][dp][pp][oq]
 ;W[lc]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[qi:A][ld:B]TR[dc][co][dp][ep][fq][gq]MA[fp][cq][dq][eq][pq](;B[qi]C[Count: 1
+A: 1]LB[qi:A][ld:A]TR[dc][co][dp][ep][fq][gq]MA[fp][cq][dq][eq][pq](;B[qi]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[dd][on][pn][qo][qp][qq]TR[pl][qm][qn][po][dp][pp][oq])
 (;B[ld]C[Count: 1
@@ -11277,18 +11695,21 @@ C: 62
 D: 59
 E: 46
 F: 34
-G: 17]LB[pd:B][qf:C][pf:D][qe:E][qh:F][qg:G](;W[]C[Count: 89
+G: 17
+H: 5
+I: 3
+J: 1]LB[pd:B][qf:C][pf:D][qe:E][qh:F][qg:G][qd:H][pg:I][pe:J](;W[]C[Count: 89
 No pass: 89
 A: 57
 B: 13
 C: 8
-D: 8]LB[pf:A][pe:B][pg:C][ph:D](;B[pf]C[Count: 57
+C: 8]LB[pf:A][pe:B][pg:C][ph:C](;B[pf]C[Count: 57
 No pass: 25
 A: 32 Pass
 B: 9
 C: 6
 D: 3
-E: 3]LB[od:B][kc:C][lc:D][qh:E]TR[fc][cd][po][qo][pp][rp][pq][rq]MA[rm][qn][sn][ro][cp][qp][eq][qq](;W[]C[Count: 32
+D: 3]LB[od:B][kc:C][lc:D][qh:D]TR[fc][cd][po][qo][pp][rp][pq][rq]MA[rm][qn][sn][ro][cp][qp][eq][qq](;W[]C[Count: 32
 No pass: 20
 A: 9 Pass
 B: 6
@@ -11319,12 +11740,12 @@ B: 2 Pass]LB[pd:A]TR[ec][cd][ed][qm][on][qn][po][ro][pp][pq][qr]MA[fd][pn][rn][q
 ;B[pd]C[Count: 7
 No pass: 6
 A: 3
-B: 3
-C: 1 Pass]LB[kc:A][oe:B]TR[cb][db][cc][ec][cd][ce][de][bf][ef][cn][dp][qq]MA[eb][dc][dd][ee][fe][cf][df][ff][bg][eh](;W[kc]C[Count: 3
+A: 3
+B: 1 Pass]LB[kc:A][oe:A]TR[cb][db][cc][ec][cd][ce][de][bf][ef][cn][dp][qq]MA[eb][dc][dd][ee][fe][cf][df][ff][bg][eh](;W[kc]C[Count: 3
 No pass: 2
 A: 1
-B: 1 Pass
-C: 1]LB[md:A][mc:C]TR[cb][db][cc][ec][cd][ce][de][bf][ef][cn][dp][qq]MA[eb][dc][dd][ee][fe][cf][df][ff][bg][eh](;B[md]C[Count: 1
+A: 1 Pass
+A: 1]LB[md:A][mc:A]TR[cb][db][cc][ec][cd][ce][de][bf][ef][cn][dp][qq]MA[eb][dc][dd][ee][fe][cf][df][ff][bg][eh](;B[md]C[Count: 1
 No pass: 1
 A: 1]LB[pk:A]TR[db][cc][dd][fd][ce][fe][df][fg][pn][cq][dq][eq][qq][fr][gr]MA[eb][dc][ec][fc][gd][cf][ci][ej][cp][dp][ep][fq][gq][hq]
 ;W[pk]C[Count: 1
@@ -11347,8 +11768,8 @@ A: 3 Pass]MA[ec][pl][rm][rn][qo][kp][pp][qq]TR[cd][df][pn][qn][po][dp][op][gq][o
 (;W[lc]C[Count: 3
 No pass: 2
 A: 1
-B: 1 Pass
-C: 1]LB[oc:A][ld:C]TR[bb][cc][cd][dd][ch][eh][cn][pn][qn][po][dp][ip][pp][pq]MA[cb][eb][dc][ed][df][fg][pm][qm][rn][qo][qp][qq][qr](;B[oc]C[Count: 1
+A: 1 Pass
+A: 1]LB[oc:A][ld:A]TR[bb][cc][cd][dd][ch][eh][cn][pn][qn][po][dp][ip][pp][pq]MA[cb][eb][dc][ed][df][fg][pm][qm][rn][qo][qp][qq][qr](;B[oc]C[Count: 1
 No pass: 0
 A: 1 Pass]TR[fc][dd][bm][bn][co][cp][kp][op][cq][pq]MA[cl][ql][cm][cn][do][qo][dp][dq])
 (;B[ld]C[Count: 1
@@ -11375,7 +11796,7 @@ A: 6 Pass]TR[dc][fc][cd][ce][fe][fj][dl][fl][pn][qn][qo][gq][iq][qq][dr][er][qr]
 No pass: 5
 A: 3 Pass
 B: 2
-C: 2]LB[nd:B][pd:C]TR[dd][cf][dl][co][po][pp][nq][qq][pr]MA[pn][qn][ro][fp][qp][dq][rq](;W[nd]C[Count: 2
+B: 2]LB[nd:B][pd:B]TR[dd][cf][dl][co][po][pp][nq][qq][pr]MA[pn][qn][ro][fp][qp][dq][rq](;W[nd]C[Count: 2
 No pass: 1
 A: 1 Pass]TR[dd][cf][dl][co][po][pp][nq][qq][pr]MA[pn][qn][ro][fp][qp][dq][rq])
 (;W[pd]C[Count: 2
@@ -11440,8 +11861,8 @@ A: 2 Pass]MA[cd][fd][di][cn][en]TR[bp][dp][pp][fq][nq])
 (;B[pg]C[Count: 3
 No pass: 2
 A: 1
-B: 1 Pass
-C: 1]LB[of:A][og:C]MA[dd][cf][pn][qn][ro][qp][rq]TR[cn][po][dp][pp][nq][qq][pr](;W[of]C[Count: 1
+A: 1 Pass
+A: 1]LB[of:A][og:A]MA[dd][cf][pn][qn][ro][qp][rq]TR[cn][po][dp][pp][nq][qq][pr](;W[of]C[Count: 1
 No pass: 1
 A: 1]LB[qg:A]MA[cd][ed][dj][qo]TR[cp][np][fq][pq]
 ;B[qg]C[Count: 1
@@ -11480,7 +11901,7 @@ A: 13 Pass]MA[dc][cd][cf][qn]TR[ec][ed][do][pp][dq]
 ;W[]C[Count: 13
 No pass: 9
 A: 3
-B: 3 Pass]LB[pj:A]MA[dc][cd][cf][qn]TR[ec][ed][do][pp][dq]
+A: 3 Pass]LB[pj:A]MA[dc][cd][cf][qn]TR[ec][ed][do][pp][dq]
 ;B[pj]C[Count: 3
 No pass: 0
 A: 3 Pass]MA[dc][cd][cf][pp][oq][qq][mr][nr]TR[ec][ed][po][qo][dp][np][op][lq][nq])
@@ -11489,19 +11910,19 @@ A: 3 Pass]MA[dc][cd][cf][pp][oq][qq][mr][nr]TR[ec][ed][po][qo][dp][np][op][lq][n
 No pass: 20
 A: 8
 B: 6
-C: 6
-D: 3 Pass]LB[ob:A][qe:B][pc:C]TR[gb][dc][ec][hd][cg][cj][pn][qn][po][ip][pp][eq][pq]MA[ed][fd][ce][eg][dl][qm][rn][do][qo][cp][qp][qq][qr](;B[ob]C[Count: 8
+B: 6
+C: 3 Pass]LB[ob:A][qe:B][pc:B]TR[gb][dc][ec][hd][cg][cj][pn][qn][po][ip][pp][eq][pq]MA[ed][fd][ce][eg][dl][qm][rn][do][qo][cp][qp][qq][qr](;B[ob]C[Count: 8
 No pass: 5
 A: 3
-B: 3 Pass]LB[qe:A]TR[gb][dc][ec][hd][cg][cj][pn][qn][po][ip][pp][eq][pq]MA[ed][fd][ce][eg][dl][qm][rn][do][qo][cp][qp][qq][qr]
+A: 3 Pass]LB[qe:A]TR[gb][dc][ec][hd][cg][cj][pn][qn][po][ip][pp][eq][pq]MA[ed][fd][ce][eg][dl][qm][rn][do][qo][cp][qp][qq][qr]
 ;W[qe]C[Count: 3
 No pass: 1
 A: 2 Pass]TR[gb][dc][ec][hd][cg][cj][pn][qn][po][ip][pp][eq][pq]MA[ed][fd][ce][eg][dl][qm][rn][do][qo][cp][qp][qq][qr])
 (;B[qe]C[Count: 6
 No pass: 6
 A: 2
-B: 2
-C: 2]LB[pg:A][qf:B][pf:C]TR[fb][cc][dc][cn][dn][do][dp][hp][qp][dq][nq]MA[gc][cd][dd][ed][cm][dm][bn][co][cp][cq][cr](;W[pg]C[Count: 2
+A: 2
+A: 2]LB[pg:A][qf:A][pf:A]TR[fb][cc][dc][cn][dn][do][dp][hp][qp][dq][nq]MA[gc][cd][dd][ed][cm][dm][bn][co][cp][cq][cr](;W[pg]C[Count: 2
 No pass: 2
 A: 2]LB[qf:A]TR[dc][de][qo][cp][dp][ep]MA[dk][op][cq][dq][pq][fr]
 ;B[qf]C[Count: 2
@@ -11516,7 +11937,7 @@ A: 2]LB[qg:A]TR[cc][fc][ql][qo][pp][mq]MA[cf][di][pn][qn][co][dq]
 ;W[qg]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[pc:A][ob:B]TR[cc][fc][ql][qo][pp][mq]MA[cf][di][pn][qn][co][dq](;B[pc]C[Count: 1
+A: 1]LB[pc:A][ob:A]TR[cc][fc][ql][qo][pp][mq]MA[cf][di][pn][qn][co][dq](;B[pc]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[bb][cc][bd][cd][ce][bf][df][cq][dq][nq][or]TR[cb][dc][dd][be][de][cf][ef][cg][qn][dp][pp][oq])
 (;B[ob]C[Count: 1
@@ -11568,7 +11989,7 @@ A: 8 Pass]MA[eb][dc][cd][dd][ed][fd][ce][fi][fj][ek][dl][fl][dm][cp][dp][bq][gq]
 ;B[]C[Count: 8
 No pass: 8
 A: 4
-B: 4]LB[pe:A][pf:B]MA[eb][dc][cd][dd][ed][fd][ce][fi][fj][ek][dl][fl][dm][cp][dp][bq][gq]TR[fb][ec][fc][hd][de][cf][df][ei][ej][ck][dk][cl][ep][cq][dq][eq][qq][br](;W[pe]C[Count: 4
+A: 4]LB[pe:A][pf:A]MA[eb][dc][cd][dd][ed][fd][ce][fi][fj][ek][dl][fl][dm][cp][dp][bq][gq]TR[fb][ec][fc][hd][de][cf][df][ei][ej][ck][dk][cl][ep][cq][dq][eq][qq][br](;W[pe]C[Count: 4
 No pass: 2
 A: 2 Pass]MA[cb][eb][dc][cd][dd][ed][fd][ce][fi][fj][ek][dl][fl][dm][cp][dp][bq][gq]TR[db][fb][ec][fc][hd][de][cf][df][ei][ej][ck][dk][cl][ep][cq][dq][eq][qq][br])
 (;W[pf]C[Count: 4
@@ -11594,7 +12015,7 @@ B: 1 Pass]LB[nc:A]TR[cc][ed][fd][ch][dl][fl][il][ql][qm][qn][fo][io][po][pp][cq]
 ;W[nc]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[nb:A][oc:B]TR[cc][ed][fd][ch][dl][fl][il][ql][qm][qn][fo][io][po][pp][cq][dq][eq][pq][br][fr][gr][qr]MA[ee][cf][dh][dj][fj][rm][on][rn][go][qo][cp][dp][ep][fp][kp][qp][rp][bq][fq][gq][hq][qq][sq][rr][qs][ss](;B[nb]C[Count: 1
+A: 1]LB[nb:A][oc:A]TR[cc][ed][fd][ch][dl][fl][il][ql][qm][qn][fo][io][po][pp][cq][dq][eq][pq][br][fr][gr][qr]MA[ee][cf][dh][dj][fj][rm][on][rn][go][qo][cp][dp][ep][fp][kp][qp][rp][bq][fq][gq][hq][qq][sq][rr][qs][ss](;B[nb]C[Count: 1
 No pass: 0
 A: 1 Pass]TR[cc][co][do][dp][cq][eq][qq]MA[bo][bp][cp][ep][fp][dq][dr])
 (;B[oc]C[Count: 1
@@ -11635,7 +12056,7 @@ A: 2]LB[je:A]MA[cc][bm][cm][dn][mn][bo][co][do][ep][eq][cr][dr][bs]TR[bn][eo][fo
 ;B[je]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[oc:A][nk:B]MA[cc][ml][bm][cm][dn][mn][bo][co][do][ep][eq][cr][dr][bs]TR[om][bn][eo][fo][po][bp][cp][dp][gp][bq][hq][pq][br][fr](;W[oc]C[Count: 1
+A: 1]LB[oc:A][nk:A]MA[cc][ml][bm][cm][dn][mn][bo][co][do][ep][eq][cr][dr][bs]TR[om][bn][eo][fo][po][bp][cp][dp][gp][bq][hq][pq][br][fr](;W[oc]C[Count: 1
 No pass: 1
 A: 1]LB[nc:A]MA[cc][bm][cm][dn][mn][bo][co][do][ep][eq][cr][dr][bs]TR[bn][eo][fo][po][bp][cp][dp][gp][bq][hq][pq][br][fr]
 ;B[nc]C[Count: 1
@@ -11746,7 +12167,7 @@ A: 2]LB[of:A]TR[dc][fc][cd][ce][ej][cn][gn][do][qq]MA[de][cf][df][di][dj][cl][co
 ;W[of]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[oe:A][od:B]TR[cc][dc][cd][dg][cn][po][gp][ip][kp][gq][qq]MA[dd][fd][ck][dm][om][go][io][cp][dp][fp][fq][pq](;B[oe]C[Count: 1
+A: 1]LB[oe:A][od:A]TR[cc][dc][cd][dg][cn][po][gp][ip][kp][gq][qq]MA[dd][fd][ck][dm][om][go][io][cp][dp][fp][fq][pq](;B[oe]C[Count: 1
 No pass: 1
 A: 1]LB[mc:A]MA[fb][cc][dc][gc][cl][dm][em][pn][po][cp][dp][ep][fp][bq][fq][oq]TR[cd][dd][ed][cj][dk][dl][qm][qo][qp][cq][dq][eq][gq][br][fr][hr]
 ;W[mc]C[Count: 1
@@ -11823,7 +12244,7 @@ A: 2]LB[ph:A]TR[cc][nm][qm][rm][bn][qn][co][po][cp][jp][pp][cq][pq][qr]MA[cn][rn
 ;W[ph]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[ng:A][oh:B]TR[cc][nm][qm][rm][bn][qn][co][po][cp][jp][pp][cq][pq][qr]MA[cn][rn][do][qo][so][dp][lp][qp][rp][dq][hq][jq][qq][rr](;B[ng]C[Count: 1
+A: 1]LB[ng:A][oh:A]TR[cc][nm][qm][rm][bn][qn][co][po][cp][jp][pp][cq][pq][qr]MA[cn][rn][do][qo][so][dp][lp][qp][rp][dq][hq][jq][qq][rr](;B[ng]C[Count: 1
 No pass: 1
 A: 1]LB[ob:A]MA[cc][cd][bf][po][qo][pp][rp][pq][rq]TR[dc][dd][de][rm][qn][sn][ro][qp][cq][qq]
 ;W[ob]C[Count: 1
@@ -11852,10 +12273,10 @@ A: 1 Pass]TR[cc][nm][qm][rm][bn][qn][co][po][cp][jp][pp][cq][pq][qr]MA[cn][rn][d
 (;W[pf]C[Count: 59
 No pass: 47
 A: 18
-B: 18
-C: 12 Pass
-D: 4
-E: 4]LB[nd:A][nc:B][qh:D][ph:E]MA[cc][pp][lq][nq][oq][qq]TR[po][qo][dp][mp][np][op](;B[nd]C[Count: 18
+A: 18
+B: 12 Pass
+C: 4
+C: 4]LB[nd:A][nc:A][qh:C][ph:C]MA[cc][pp][lq][nq][oq][qq]TR[po][qo][dp][mp][np][op](;B[nd]C[Count: 18
 No pass: 14
 A: 7
 B: 5
@@ -11908,9 +12329,9 @@ A: 4 Pass]TR[cc][ec][fc][gc][dd][cm][po][dp][pq]MA[hc][ed][fd][gd][hd][ce][de][j
 (;B[nc]C[Count: 18
 No pass: 16
 A: 4
-B: 4
-C: 4
-D: 2 Pass]LB[pj:A][od:B][qj:C]MA[cc][pp][lq][nq][oq][qq]TR[po][qo][dp][mp][np][op](;W[pj]C[Count: 4
+A: 4
+A: 4
+B: 2 Pass]LB[pj:A][od:A][qj:A]MA[cc][pp][lq][nq][oq][qq]TR[po][qo][dp][mp][np][op](;W[pj]C[Count: 4
 No pass: 0
 A: 4 Pass]MA[cc][pp][lq][nq][oq][qq]TR[po][qo][dp][mp][np][op]
 ;B[]C[Count: 4
@@ -11919,7 +12340,7 @@ A: 4]LB[od:A]TR[cc][pp][lq][nq][oq][qq]MA[po][qo][dp][mp][np][op]
 ;W[od]C[Count: 4
 No pass: 4
 A: 2
-B: 2]LB[oc:A][nd:B]MA[cc][cn][pp][lq][nq][oq][qq]TR[po][qo][dp][mp][np][op](;B[oc]C[Count: 2
+A: 2]LB[oc:A][nd:A]MA[cc][cn][pp][lq][nq][oq][qq]TR[po][qo][dp][mp][np][op](;B[oc]C[Count: 2
 No pass: 1
 A: 1 Pass]MA[cc][cd][hd][ce][bf][bg][cn][mn][pn][qn][dp][lp]TR[dc][dd][de][cf][cg][gg][ch][ql][qo][pp][nq])
 (;B[nd]C[Count: 2
@@ -11957,7 +12378,7 @@ A: 2]LB[pd:A]MA[fb][gb][bc][cc][dc][ec][dn][pn][qn][jo][no][cp][ep][fp][gp][dq][
 ;W[pd]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[qd:A][nd:B]MA[fb][gb][bc][cc][dc][ec][dn][pn][qn][jo][no][cp][ep][fp][gp][dq][gq][jq][lq]TR[fc][gc][hc][bd][cd][dd][ed][dj][cl][ql][qo][pp][eq][fq][hq][nq][gr][ir][jr](;B[qd]C[Count: 1
+A: 1]LB[qd:A][nd:A]MA[fb][gb][bc][cc][dc][ec][dn][pn][qn][jo][no][cp][ep][fp][gp][dq][gq][jq][lq]TR[fc][gc][hc][bd][cd][dd][ed][dj][cl][ql][qo][pp][eq][fq][hq][nq][gr][ir][jr](;B[qd]C[Count: 1
 No pass: 1
 A: 1]LB[me:A]MA[fb][gb][cc][dc][ec][fm][dn][nn][pn][qn][cp][lp][dq][gq][cr]TR[fc][gc][hc][cd][dd][ed][dj][cl][qo][pp][eq][kq][lq][nq][dr]
 ;W[me]C[Count: 1
@@ -12025,7 +12446,7 @@ A: 2]LB[nd:A]TR[cc][qo][pp][nq]MA[pn][qn][cq]
 ;W[nd]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[pd:A][oh:B]TR[cc][qo][pp][nq]MA[pn][qn][cq](;B[pd]C[Count: 1
+A: 1]LB[pd:A][oh:A]TR[cc][qo][pp][nq]MA[pn][qn][cq](;B[pd]C[Count: 1
 No pass: 1
 A: 1]LB[nf:A]TR[cc][qo][pp][nq]MA[pn][qn][cp][fq]
 ;W[nf]C[Count: 1
@@ -12071,7 +12492,7 @@ A: 2]LB[nd:A]TR[dd][qn][do][po][cp][qp][rp][pq][rq][pr]MA[qm][rn][qo][ro][hp][op
 ;W[nd]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[oc:A][pd:B]TR[dd][qn][do][po][cp][qp][rp][pq][rq][pr]MA[qm][rn][qo][ro][hp][op][pp][eq][nq][qq](;B[oc]C[Count: 1
+A: 1]LB[oc:A][pd:A]TR[dd][qn][do][po][cp][qp][rp][pq][rq][pr]MA[qm][rn][qo][ro][hp][op][pp][eq][nq][qq](;B[oc]C[Count: 1
 No pass: 1
 A: 1]LB[ng:A]TR[dc][cd][cf][po][qo][pp][rp][bq][cq][dq][eq][gq][pq][rq][fr]MA[ec][ed][dl][rm][pn][qn][sn][ro][cp][dp][ep][fp][qp][fq][qq]
 ;W[ng]C[Count: 1
@@ -12182,7 +12603,7 @@ No pass: 25
 A: 11
 B: 8
 C: 4
-D: 4 Pass]LB[pg:A][qh:B][rc:C]TR[dd][qo][dp][pp][qp][oq][qq][pr]MA[pm][on][qn][oo][po][op][nq][or](;W[pg]C[Count: 11
+C: 4 Pass]LB[pg:A][qh:B][rc:C]TR[dd][qo][dp][pp][qp][oq][qq][pr]MA[pm][on][qn][oo][po][op][nq][or](;W[pg]C[Count: 11
 No pass: 2
 A: 9 Pass]TR[dd][qo][dp][pp][qp][oq][qq][pr]MA[pm][on][qn][oo][po][op][nq][or]
 ;B[]C[Count: 9
@@ -12212,7 +12633,7 @@ B: 1 Pass]LB[rd:A]TR[ec][fc][cd][dd][pn][rn][qo][fp][qp][dq][qq][pr][rr][qs]MA[f
 ;W[rd]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[mc:A][md:B]TR[ec][fc][cd][dd][pn][rn][qo][fp][qp][dq][qq][pr][rr][qs]MA[fd][ce][cj][qm][rm][on][qn][co][po][pp][pq][or](;B[mc]C[Count: 1
+A: 1]LB[mc:A][md:A]TR[ec][fc][cd][dd][pn][rn][qo][fp][qp][dq][qq][pr][rr][qs]MA[fd][ce][cj][qm][rm][on][qn][co][po][pp][pq][or](;B[mc]C[Count: 1
 No pass: 1
 A: 1]LB[qh:A]MA[dc][cd][fd][ce][ol][pl][mm][pm][rm][qn][qp][qq][rr]TR[de][cf][df][dl][il][om][pn][io][po][cp][pp][iq][pq][qr]
 ;W[qh]C[Count: 1
@@ -12229,9 +12650,9 @@ A: 1 Pass]TR[ec][fc][cd][dd][pn][rn][qo][fp][qp][dq][qq][pr][rr][qs]MA[fd][ce][c
 (;B[pg]C[Count: 4
 No pass: 3
 A: 1
-B: 1
-C: 1
-D: 1 Pass]LB[pj:A][pf:B][pi:C]TR[cc][lm][ln][rn][ko][mo][po][qo][ro][so][mp][np][op][qp][cq][dq][eq][kq][mq][qq][rq][lr][rr][sr][ls][ms][ps]MA[ll][ml][ql][mm][rm][sm][mn][pn][qn][sn][lo][no][oo][dp][ep][pp][sp][oq][pq][sq][mr][nr][or][qr][ns][os][qs][rs](;W[pj]C[Count: 1
+A: 1
+A: 1
+A: 1 Pass]LB[pj:A][pf:A][pi:A]TR[cc][lm][ln][rn][ko][mo][po][qo][ro][so][mp][np][op][qp][cq][dq][eq][kq][mq][qq][rq][lr][rr][sr][ls][ms][ps]MA[ll][ml][ql][mm][rm][sm][mn][pn][qn][sn][lo][no][oo][dp][ep][pp][sp][oq][pq][sq][mr][nr][or][qr][ns][os][qs][rs](;W[pj]C[Count: 1
 No pass: 0
 A: 1 Pass]TR[cc][on][rn][po][qo][cp][dp][ep][qp][oq][qq][pr][qr]MA[ol][rm][nn][pn][qn][no][oo][pp][cq][dq][pq][fr][or])
 (;W[pf]C[Count: 1
@@ -12322,7 +12743,7 @@ A: 2]LB[rc:A]TR[bc][dc][bd][dd][ce][de][qm][bn][rn][bo][bp][fp][lp][qp][cq][jq][
 ;W[rc]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[rb:A][qg:B]TR[dd][bo][co][ep][fp][gp][rp][gq][nq][oq][pq]MA[qo][ro][cp][mp][np][op][dq][eq][fq][mq][qq](;B[rb]C[Count: 1
+A: 1]LB[rb:A][qg:A]TR[dd][bo][co][ep][fp][gp][rp][gq][nq][oq][pq]MA[qo][ro][cp][mp][np][op][dq][eq][fq][mq][qq](;B[rb]C[Count: 1
 No pass: 1
 A: 1]LB[qd:A]MA[cc][om][in][go][ep][gp][op][eq][gq][hq][mq][oq][gr]TR[cn][ln][qn][cp][hp][ip][lp][qp][dq][iq][jq][lq][pq][hr]
 ;W[qd]C[Count: 1
@@ -12372,14 +12793,14 @@ A: 3 Pass]MA[cc][lo][mq][oq][pq][qq][lr][nr][or][pr]TR[do][np][op][pp][qp][dq][n
 (;B[qf]C[Count: 5
 No pass: 3
 A: 2
-B: 2 Pass]LB[nk:A]MA[fb][cc][dc][ec][no][oo][po][ro][kp][lp][mp][op][qp][rq]TR[fc][cd][dd][ed][do][np][pp][dq][lq][mq][nq][oq][pq][qq]
+A: 2 Pass]LB[nk:A]MA[fb][cc][dc][ec][no][oo][po][ro][kp][lp][mp][op][qp][rq]TR[fc][cd][dd][ed][do][np][pp][dq][lq][mq][nq][oq][pq][qq]
 ;W[nk]C[Count: 2
 No pass: 2
 A: 2]LB[qj:A]MA[bb][cb][db][dc][ec][cd][ed][cf][om][pm][ln][pn][qn][do][ko][mo][qo][cp][fp][np][op][gq]TR[eb][bc][cc][fc][dd][fd][ce][de][ee][ci][pl][ql][qm][lo][po][lp][mp][pp][eq][mq][oq][pq]
 ;B[qj]C[Count: 2
 No pass: 2
 A: 1
-B: 1]LB[oh:A][pj:B]MA[bb][cb][db][dc][ec][cd][ed][cf][om][pm][ln][pn][qn][do][ko][mo][qo][cp][fp][np][op][gq]TR[eb][bc][cc][fc][dd][fd][ce][de][ee][ci][pl][ql][qm][lo][po][lp][mp][pp][eq][mq][oq][pq](;W[oh]C[Count: 1
+A: 1]LB[oh:A][pj:A]MA[bb][cb][db][dc][ec][cd][ed][cf][om][pm][ln][pn][qn][do][ko][mo][qo][cp][fp][np][op][gq]TR[eb][bc][cc][fc][dd][fd][ce][de][ee][ci][pl][ql][qm][lo][po][lp][mp][pp][eq][mq][oq][pq](;W[oh]C[Count: 1
 No pass: 0
 A: 1 Pass]MA[bb][cb][db][dc][ec][cd][ed][cf][om][pm][ln][pn][qn][do][ko][mo][qo][cp][fp][np][op][gq]TR[eb][bc][cc][fc][dd][fd][ce][de][ee][ci][pl][ql][qm][lo][po][lp][mp][pp][eq][mq][oq][pq])
 (;W[pj]C[Count: 1
@@ -12414,5 +12835,35 @@ A: 2]LB[pk:A]MA[cc][jq]TR[qn][pp][cq]
 ;W[pk]C[Count: 2
 No pass: 1
 A: 1 Pass]TR[cc][qp][nq]MA[dp][fp])
+(;W[qd]C[Count: 5
+No pass: 1
+A: 4 Pass]MA[ec][qn][po][ep][pp][dq][fq][pq][cr][er]TR[cd][de][rm][cn][rn][bp][dp][qp][cq][qq][dr])
+(;W[pg]C[Count: 3
+No pass: 1
+A: 2 Pass]MA[bb][cb][db][dc][ec][cd][ed][cf][mn][do][mo][qo][cp][fp][np][op]TR[eb][bc][cc][fc][dd][fd][ce][de][ee][ci][lo][mp][eq][mq][oq][pq])
+(;W[pe]C[Count: 1
+No pass: 1
+A: 1]LB[oc:A]MA[fb][bc][cc][dc][ec][gc][ei][el][rm][cn][dn][gn][rn][do][qo][dp][qp][dq][fq][hq][iq][qq][gr][pr][qr]TR[fc][cd][dd][ed][fd][ch][ql][rl][cm][qm][bn][in][qn][co][po][cp][gp][hp][ip][jp][pp][cq][gq][pq][cr][or]
+;B[oc]C[Count: 1
+No pass: 1
+A: 1]LB[qd:A]MA[fb][bc][cc][dc][ec][gc][ei][el][rm][cn][dn][gn][rn][do][qo][dp][qp][dq][fq][hq][iq][qq][gr][pr][qr]TR[fc][cd][dd][ed][fd][ch][ql][rl][cm][qm][bn][in][qn][co][po][cp][gp][hp][ip][jp][pp][cq][gq][pq][cr][or]
+;W[qd]C[Count: 1
+No pass: 1
+A: 1]LB[rc:A]MA[fb][bc][cc][dc][ec][gc][ei][el][rm][cn][dn][gn][rn][do][qo][dp][qp][dq][fq][hq][iq][qq][gr][pr][qr]TR[fc][cd][dd][ed][fd][ch][ql][rl][cm][qm][bn][in][qn][co][po][cp][gp][hp][ip][jp][pp][cq][gq][pq][cr][or]
+;B[rc]C[Count: 1
+No pass: 1
+A: 1]LB[nd:A]MA[fb][bc][cc][dc][ec][gc][ei][el][rm][cn][dn][gn][rn][do][qo][dp][qp][dq][fq][hq][iq][qq][gr][pr][qr]TR[fc][cd][dd][ed][fd][ch][ql][rl][cm][qm][bn][in][qn][co][po][cp][gp][hp][ip][jp][pp][cq][gq][pq][cr][or]
+;W[nd]C[Count: 1
+No pass: 1
+A: 1]LB[nc:A]MA[fb][bc][cc][dc][ec][gc][ei][el][rm][cn][dn][gn][rn][do][qo][dp][qp][dq][fq][hq][iq][qq][gr][pr][qr]TR[fc][cd][dd][ed][fd][ch][ql][rl][cm][qm][bn][in][qn][co][po][cp][gp][hp][ip][jp][pp][cq][gq][pq][cr][or]
+;B[nc]C[Count: 1
+No pass: 1
+A: 1]LB[md:A]MA[fb][bc][cc][dc][ec][gc][ei][el][rm][cn][dn][gn][rn][do][qo][dp][qp][dq][fq][hq][iq][qq][gr][pr][qr]TR[fc][cd][dd][ed][fd][ch][ql][rl][cm][qm][bn][in][qn][co][po][cp][gp][hp][ip][jp][pp][cq][gq][pq][cr][or]
+;W[md]C[Count: 1
+No pass: 1
+A: 1]LB[nj:A]MA[fb][bc][cc][dc][ec][gc][ei][el][rm][cn][dn][gn][rn][do][qo][dp][qp][dq][fq][hq][iq][qq][gr][pr][qr]TR[fc][cd][dd][ed][fd][ch][ql][rl][cm][qm][bn][in][qn][co][po][cp][gp][hp][ip][jp][pp][cq][gq][pq][cr][or]
+;B[nj]C[Count: 1
+No pass: 0
+A: 1 Pass]MA[fb][bc][cc][dc][ec][gc][ei][el][rm][cn][dn][gn][rn][do][qo][dp][qp][dq][fq][hq][iq][qq][gr][pr][qr]TR[fc][cd][dd][ed][fd][ch][ql][rl][cm][qm][bn][in][qn][co][po][cp][gp][hp][ip][jp][pp][cq][gq][pq][cr][or])
 )
 )

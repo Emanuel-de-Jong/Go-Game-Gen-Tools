@@ -192,16 +192,20 @@ namespace AIPatterns
 
             node.EnsureMarkup();
 
+            int index = -1;
             for (int i=0; i<moveCounts.Count; i++)
             {
-                GoMoveNode move = moveCounts[i].Key;
+                var moveCount = moveCounts[i];
+                if (i == 0 || moveCount.Value.Count != moveCounts[i - 1].Value.Count) index++;
+
+                GoMoveNode move = moveCount.Key;
 
                 node.RemoveNode(move);
                 node.ChildNodes.Insert(i, move);
 
-                string grade = ((char)(65 + i)).ToString();
+                string grade = ((char)(65 + index)).ToString();
 
-                node.Comment += "\n" + grade + ": " + moveCounts[i].Value.Count;
+                node.Comment += "\n" + grade + ": " + moveCount.Value.Count;
 
                 if (StoneUtils.IsPass(move))
                 {

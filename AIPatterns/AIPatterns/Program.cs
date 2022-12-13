@@ -27,12 +27,12 @@ namespace AIPatterns
                 });
 
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
-            createFullSgf(sequenceList, savePathDir + "AI-Josekis-All");
-            createFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 0.08f, 5, 5, 3, 3, 3);
-            createFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 0.35f, 11, 10, 6, 6, 6);
+            CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-All");
+            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", false, 0.08f, 5, 5, 3, 3, 3);
+            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", false, 0.3f, 10, 9, 6, 6, 6);
         }
 
-        void createFullSgf(SequenceList sequenceList, string savePath)
+        void CreateFullSgf(SequenceList sequenceList, string savePath)
         {
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
             TreeBuilder.AddMarkup(game);
@@ -40,7 +40,7 @@ namespace AIPatterns
             game.SaveAsSgf(savePath);
         }
 
-        void createFilteredSGF(SequenceList sequenceList, string savePath, float maxDiff, int min44, int min34, int min45, int min35, int min33)
+        void CreateFilteredSGF(SequenceList sequenceList, string savePath, bool filterSecondLayer, float maxDiff, int min44, int min34, int min45, int min35, int min33)
         {
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
             foreach (GoNode node in game.Game.RootNode.ChildNodes)
@@ -71,13 +71,23 @@ namespace AIPatterns
                     minCount = min33;
                 }
 
-                TreeBuilder.FilterByCount(node, maxDiff, minCount);
+                if (filterSecondLayer)
+                {
+                    TreeBuilder.FilterByCount(node, maxDiff, minCount);
+                } else
+                {
+                    foreach (GoNode childNode in node.ChildNodes)
+                    {
+                        TreeBuilder.FilterByCount(childNode, maxDiff, minCount);
+                    }
+                }
             }
 
             TreeBuilder.AddMarkup(game);
             TreeBuilder.RemoveRedundentPasses(game);
 
             game.SaveAsSgf(savePath +
+                "-" + filterSecondLayer +
                 "-" + maxDiff +
                 "-" + min44 +
                 "-" + min34 +
