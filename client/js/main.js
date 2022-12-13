@@ -1,6 +1,8 @@
 var main = {};
 
 
+main.VERSION = 8;
+
 main.OPPONENT_MIN_VISITS_PERC = 10;
 main.OPPONENT_MAX_VISIT_DIFF_PERC = 50;
 

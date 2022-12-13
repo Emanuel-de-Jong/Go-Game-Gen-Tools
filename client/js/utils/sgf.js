@@ -68,6 +68,10 @@ sgf.sgfLoadedEventListener = function() {
 };
 
 
+sgf.createInitComment = function() {
+	return "GoTrainer-HumanAI " + main.VERSION;
+};
+
 sgf.createPreComment = function() {
 	return "Pre move" +
 	"\nStrength: " + settings.preVisits +
@@ -87,17 +91,18 @@ sgf.createPlayerComment = function() {
 	"\nStrength: " + settings.suggestionVisits +
 	"\nOptions: " + settings.suggestionOptions +
 	"\nShow options: " + settings.showOptions +
-	(settings.showOptions ? "\nShow weaker options: " + settings.showWeakerOptions : "") +
-	(settings.minVisitsPercSwitch ? "\nMin strength: " + settings.minVisitsPerc : "") +
-	(settings.maxVisitDiffPercSwitch ? "\nMax strength difference" + settings.maxVisitDiffPerc : "") +
+	"\nShow weaker options: " + settings.showWeakerOptions +
+	"\nMin strength: " + (settings.minVisitsPercSwitch ? settings.minVisitsPerc : "false") +
+	"\nMax strength difference" + (settings.maxVisitDiffPercSwitch ?  settings.maxVisitDiffPerc : "false") +
 	sgf.createCommentGrades();
 };
 
 sgf.createOpponentComment = function() {
 	return "Opponent move" +
 	"\nStrength: " + settings.opponentVisits +
-	(settings.opponentOptionsSwitch ? "\nOptions: " + settings.opponentOptions : "") +
+	"\nOptions: " + (settings.opponentOptionsSwitch ? settings.opponentOptions : "false") +
 	"\nOption chance: " + settings.opponentOptionPerc +
+	"\nShow options: " + settings.showOpponentOptions +
 	sgf.createCommentGrades();
 };
 
