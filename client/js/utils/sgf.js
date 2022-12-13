@@ -187,7 +187,7 @@ sgf.createCommentScore = function() {
 	console.log(score);
 	if (score == null) return "";
 
-	return "\nScore" +
+	return "\nScore " + utils.colorNumToName(score.color) +
 		"\nWinrate: " + score.winrate +
 		"\nScore: " + score.score;
 }

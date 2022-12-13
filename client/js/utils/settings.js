@@ -2,8 +2,6 @@ var settings = {};
 
 
 settings.SETTINGS = {
-    scoreChartColor: utils.TYPE.INT,
-
     boardsize: utils.TYPE.INT,
     handicap: utils.TYPE.INT,
     colorType: utils.TYPE.STRING,
