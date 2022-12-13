@@ -47,6 +47,12 @@ board.init = function() {
 	];
 	board.lastPlaceStoneAudioIndex = 0;
 
+	// Disable mouse 3/4 triggering prev/next in browser
+	document.addEventListener("mouseup", e => {
+		if (typeof e === "object" && (e.button == 3 || e.button == 4)) {
+			e.preventDefault();
+		}
+ 	});
 	utils.addEventsListener(document, ["keydown", "mousedown"], board.keydownAndMousedownListener);
 	
 	board.clear();
@@ -234,7 +240,7 @@ board.getMoves = function() {
 };
 
 board.keydownAndMousedownListener = function(event) {
-	if (event.code == "Space" || event.code == "Enter" || event.button == 1) {
+	if (event.code == "Space" || event.code == "Enter" || event.button == 1 || event.button == 3 || event.button == 4) {
 		board.nextButton.click();
 	}
 };
