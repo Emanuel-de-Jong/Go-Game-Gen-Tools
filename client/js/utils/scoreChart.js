@@ -149,15 +149,11 @@ scoreChart.canvasClickListener = function(click) {
 };
 
 scoreChart.update = function(suggestion) {
-    let moveNumber = board.getMoveNumber();
+    let moveNumber = board.getMoveNumber() + 1;
     if (scoreChart.labels.includes(moveNumber)) return;
 
-    let index;
-    for (index=0; index<scoreChart.labels.length; index++) {
-        if (scoreChart.labels[index] > moveNumber) {
-            break;
-        }
-    }
+    let index = scoreChart.getMoveNumberIndex(moveNumber);
+    if (index == -1) index = scoreChart.labels.length;
 
     scoreChart.labels.splice(index, 0, moveNumber);
 
@@ -170,6 +166,27 @@ scoreChart.update = function(suggestion) {
     scoreChart.scores.splice(index, 0, score.toFixed(1));
 
     scoreChart.chart.update();
+};
+
+scoreChart.getMoveNumberIndex = function(moveNumber = board.getMoveNumber()) {
+    let index = -1;
+    for (let i=0; i<scoreChart.labels.length; i++) {
+        if (scoreChart.labels[i] > moveNumber) {
+            index = i;
+            break;
+        }
+    }
+    return index;
+}
+
+scoreChart.getCurrent = function() {
+    let index = scoreChart.getMoveNumberIndex();
+    if (index == -1) return null;
+
+    return {
+        winrate: scoreChart.winrates[index],
+        score: scoreChart.scores[index]
+    };
 };
 
 scoreChart.settingsColorElementInputListener = function() {

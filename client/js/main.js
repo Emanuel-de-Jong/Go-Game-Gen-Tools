@@ -137,20 +137,15 @@ main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPla
 
 	if (!settings.disableAICorrection || isRightChoice) {
 		await board.play(suggestionToPlay, utils.MOVE_TYPE.PLAYER);
-
 		if (!isRightChoice) await board.draw(markupCoord, "cross");
-
-		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions, main.OPPONENT_MIN_VISITS_PERC, main.OPPONENT_MAX_VISIT_DIFF_PERC);
+		
 	} else {
-		await board.draw(markupCoord, "auto", false, utils.MOVE_TYPE.PLAYER);
-	}
-
-	if (settings.disableAICorrection && !isRightChoice) {
 		scoreChart.update(await server.analyzeMove(markupCoord));
+		await board.draw(markupCoord, "auto", false, utils.MOVE_TYPE.PLAYER);
 		await server.play(markupCoord);
-
-		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions, main.OPPONENT_MIN_VISITS_PERC, main.OPPONENT_MAX_VISIT_DIFF_PERC);
 	}
+
+	main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions, main.OPPONENT_MIN_VISITS_PERC, main.OPPONENT_MAX_VISIT_DIFF_PERC);
 };
 
 main.getOpponentOptions = function() {

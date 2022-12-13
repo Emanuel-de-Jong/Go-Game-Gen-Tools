@@ -1,5 +1,6 @@
 Winrate and score in comments
-Color type
+Comment code in seperate file
+Don't analyzeMove when score chart already has it
 
 CLIENT
     SETTINGS

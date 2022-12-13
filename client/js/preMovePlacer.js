@@ -19,8 +19,6 @@ preMovePlacer.clear = function() {
 
 
 preMovePlacer.start = async function() {
-	sgf.setComment(utils.MOVE_TYPE.INIT);
-
 	await board.placeHandicap();
 	
 	preMovePlacer.stopButton.hidden = false;

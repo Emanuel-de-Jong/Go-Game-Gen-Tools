@@ -116,33 +116,47 @@ sgf.createInitComment = function() {
 		"\nShow options: " + settings.showOpponentOptions;
 };
 
+sgf.createHandicapComment = function() {
+	return "Handicap move" +
+		sgf.createCommentScore();
+};
+
+sgf.createCornerPreComment = function() {
+	return "Corner pre move" +
+		sgf.createCommentScore();
+};
+
 sgf.createPreComment = function() {
 	return "Pre move" +
-		sgf.createCommentGrades();
+		sgf.createCommentVisits() +
+		"\n" + sgf.createCommentScore();
 };
 
 sgf.createSelfplayComment = function() {
 	return "Selfplay move" +
-		sgf.createCommentGrades();
+		sgf.createCommentVisits() +
+		"\n" + sgf.createCommentScore();
 };
 
 sgf.createPlayerComment = function() {
 	return "Player move" +
-		sgf.createCommentGrades() +
-		sgf.createCommentRatio();
+		sgf.createCommentVisits() +
+		"\n" + sgf.createCommentRatio() +
+		"\n" + sgf.createCommentScore();
 };
 
 sgf.createOpponentComment = function() {
 	return "Opponent move" +
-		sgf.createCommentGrades() +
-		sgf.createCommentRatio();
+		sgf.createCommentVisits() +
+		"\n" + sgf.createCommentRatio() +
+		"\n" + sgf.createCommentScore();
 };
 
-sgf.createCommentGrades = function() {
+sgf.createCommentVisits = function() {
 	let suggestions = main.suggestions;
 	if (suggestions == null) return "";
 
-	comment = "";
+	comment = "\nVisits";
 	for (let i=0; i<suggestions.length(); i++) {
 		let suggestion = suggestions.get(i);
         if (i != 0 && suggestion.visits == suggestions.get(i - 1).visits) continue;
@@ -157,7 +171,7 @@ sgf.createCommentRatio = function() {
 	let ratio = stats.ratio;
 	if (ratio == null) return "";
 
-	return "\n\nRight" +
+	return "\nRight" +
 		"\nRatio: " + ratio.rightPercent + "%" +
 		"\nStreak: " + ratio.rightStreak +
 		"\nTop streak: " + ratio.rightTopStreak +
@@ -166,6 +180,16 @@ sgf.createCommentRatio = function() {
 		"\nRatio: " + ratio.perfectPercent + "%" +
 		"\nStreak: " + ratio.perfectStreak +
 		"\nTop streak: " + ratio.perfectTopStreak;
+}
+
+sgf.createCommentScore = function() {
+	let score = scoreChart.getCurrent();
+	console.log(score);
+	if (score == null) return "";
+
+	return "\nScore" +
+		"\nWinrate: " + score.winrate +
+		"\nScore: " + score.score;
 }
 
 
@@ -207,10 +231,10 @@ sgf.setComment = function(moveType) {
 			comment = sgf.createInitComment();
 			break;
 		case utils.MOVE_TYPE.HANDICAP:
-			comment = "Handicap move";
+			comment = sgf.createHandicapComment();
 			break;
 		case utils.MOVE_TYPE.PRE_CORNER:
-			comment = "Corner pre move";
+			comment = sgf.createCornerPreComment();
 			break;
 		case utils.MOVE_TYPE.PRE:
 			comment = sgf.createPreComment();

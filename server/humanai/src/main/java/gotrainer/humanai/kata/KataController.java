@@ -39,7 +39,7 @@ public class KataController {
     }
 
     @GetMapping("/setruleset")
-    public void getSetRuleset(@RequestParam @Pattern(regexp="(japanese|chinese)") String ruleset) throws Exception {
+    public void getSetRuleset(@RequestParam @Pattern(regexp="(Japanese|Chinese)") String ruleset) throws Exception {
         System.out.println("setRules");
         kata.setRuleset(ruleset);
     }

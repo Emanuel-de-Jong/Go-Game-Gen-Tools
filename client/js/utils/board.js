@@ -94,6 +94,8 @@ board.clear = function() {
 	board.editor.addListener(main.treeJumpedCheckListener);
 	board.nextButton.addEventListener("click", main.nextButtonClickListener);
 	
+	sgf.setComment(utils.MOVE_TYPE.INIT);
+	
 	// console.log(besogo);
 	// console.log(board.editor);
 	// console.log(board.editor.getCurrent());
@@ -108,8 +110,8 @@ board.placeHandicap = async function() {
 			if (i < coords.length - 1) {
 				await board.draw(coord, "playB", true, utils.MOVE_TYPE.HANDICAP);
 			} else {
-				await board.draw(coord, "playB", false, utils.MOVE_TYPE.HANDICAP);
 				scoreChart.update(await server.analyzeMove(coord, -1));
+				await board.draw(coord, "playB", false, utils.MOVE_TYPE.HANDICAP);
 				await server.play(coord, -1);
 			}
 		}
@@ -117,8 +119,8 @@ board.placeHandicap = async function() {
 };
 
 board.play = async function(suggestion, moveType = utils.MOVE_TYPE.NONE, tool = "auto") {
-	await board.draw(suggestion.coord, tool, true, moveType);
 	scoreChart.update(suggestion);
+	await board.draw(suggestion.coord, tool, true, moveType);
 };
 
 board.draw = async function(coord, tool = "auto", sendToServer = true, moveType = utils.MOVE_TYPE.NONE) {
