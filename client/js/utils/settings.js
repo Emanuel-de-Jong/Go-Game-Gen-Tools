@@ -6,7 +6,7 @@ settings.SETTINGS = {
 
     boardsize: utils.TYPE.INT,
     handicap: utils.TYPE.INT,
-    colorType: utils.TYPE.INT,
+    colorType: utils.TYPE.STRING,
     preMovesSwitch: utils.TYPE.BOOL,
     preMoves: utils.TYPE.INT,
     preVisits: utils.TYPE.INT,
@@ -42,8 +42,8 @@ settings.SETTINGS = {
     
     opponentOptionsSwitch: utils.TYPE.BOOL,
     opponentOptions: utils.TYPE.INT,
-    showOpponentOptions: utils.TYPE.BOOL,
     opponentOptionPerc: utils.TYPE.FLOAT,
+    showOpponentOptions: utils.TYPE.BOOL,
 };
 
 
@@ -99,10 +99,16 @@ settings.updateSetting = function(name) {
     }
 
     if (name == "colorType") {
-        if (value != 0) {
-            settings.color = value;
-        } else {
-            settings.color = utils.randomInt(2) == 0 ? -1 : 1;
+        switch (value) {
+            case "Black":
+                settings.color = -1;
+                break;
+            case "White":
+                settings.color = 1;
+                break;
+            case "Random":
+                settings.color = utils.randomInt(2) == 0 ? -1 : 1;
+                break;
         }
     }
     
@@ -169,7 +175,7 @@ settings.rulesetElementInputListener = async function() {
 };
 
 settings.komiChangeStyleElementInputListener = function() {
-    if (settings.komiChangeStyle == "auto") {
+    if (settings.komiChangeStyle == "Automatic") {
         settings.komiElement.disabled = true;
         settings.setKomi();
     } else {
@@ -183,7 +189,7 @@ settings.komiElementInputListener = async function() {
 };
 
 settings.setKomi = function() {
-    if (settings.komiChangeStyle != "auto") return;
+    if (settings.komiChangeStyle != "Automatic") return;
 
     let oldKomi = settings.komi;
     let komi;
@@ -191,7 +197,7 @@ settings.setKomi = function() {
     if (settings.handicap != 0) {
         komi = 0.5;
     } else {
-        if (settings.ruleset == "japanese") {
+        if (settings.ruleset == "Japanese") {
             switch (settings.boardsize) {
                 case 19:
                     komi = 6.5;
@@ -203,7 +209,7 @@ settings.setKomi = function() {
                     komi = 6.5;
                     break;
             }
-        } else if (settings.ruleset == "chinese") {
+        } else if (settings.ruleset == "Chinese") {
             switch (settings.boardsize) {
                 case 19:
                     komi = 7.5;

@@ -31,6 +31,10 @@ main {
     right: 5px;
 }
 
+#game .besogo-gameInfo {
+    display: none !important;
+}
+
 #game .besogo-tree {
     flex-basis: 3%;
 }
@@ -45,6 +49,11 @@ main {
 
 #stats > div {
     margin-bottom: 40px;
+}
+
+#stats #title {
+    font-size: 1.75rem;
+    font-weight: 800;
 }
 
 #stats #scoreChartColor {

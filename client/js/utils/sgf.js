@@ -69,7 +69,51 @@ sgf.sgfLoadedEventListener = function() {
 
 
 sgf.createInitComment = function() {
-	return "GoTrainer-HumanAI " + main.VERSION;
+	return "GoTrainer-HumanAI " + main.VERSION +
+		"\nBoard size: " + settings.boardsize +
+		"\nHandicap: " + settings.handicap +
+		"\nColor: " + settings.colorType +
+		"\nPre moves switch: " + settings.preMovesSwitch +
+		"\nPre moves: " + settings.preMoves +
+		"\nPre move strength: " + settings.preVisits +
+		"\nSelfplay strength: " + settings.selfplayVisits +
+		"\nSuggestion strength: " + settings.suggestionVisits +
+		"\nOpponent strength: " + settings.opponentVisits +
+		"\nDisable AI correction: " + settings.disableAICorrection +
+
+		"\n\nGame" +
+		"\nRuleset: " + settings.ruleset +
+		"\nKomi change style: " + settings.komiChangeStyle +
+		"\nKomi: " + settings.komi +
+
+		"\n\nPre moves" +
+		"\nOptions: " + settings.preOptions +
+		"\nOption chance: " + settings.preOptionPerc + "%" +
+		"\n4-4 switch: " + settings.cornerSwitch44 +
+		"\n4-4 chance: " + settings.cornerChance44 +
+		"\n3-4 switch: " + settings.cornerSwitch34 +
+		"\n3-4 chance: " + settings.cornerChance34 +
+		"\n3-3 switch: " + settings.cornerSwitch33 +
+		"\n3-3 chance: " + settings.cornerChance33 +
+		"\n4-5 switch: " + settings.cornerSwitch45 +
+		"\n4-5 chance: " + settings.cornerChance45 +
+		"\n3-5 switch: " + settings.cornerSwitch35 +
+		"\n3-5 chance: " + settings.cornerChance35 +
+
+		"\n\nFilters" +
+		"\nSuggestion options: " + settings.suggestionOptions +
+		"\nShow options: " + settings.showOptions +
+		"\nShow weaker options: " + settings.showWeakerOptions +
+		"\nMin strength switch: " + settings.minVisitsPercSwitch +
+		"\nMin strength: " + settings.minVisitsPerc + "%" +
+		"\nMax strength difference switch: " + settings.maxVisitDiffPercSwitch +
+		"\nMax strength difference: " + settings.maxVisitDiffPerc +
+
+		"\n\nOpponent" +
+		"\nOptions switch: " + settings.opponentOptionsSwitch +
+		"\nOptions: " + settings.opponentOptions +
+		"\nOption chance: " + settings.opponentOptionPerc + "%" +
+		"\nShow options: " + settings.showOpponentOptions;
 };
 
 sgf.createPreComment = function() {
@@ -159,6 +203,9 @@ sgf.setComment = function(moveType) {
 
 	let comment;
 	switch (moveType) {
+		case utils.MOVE_TYPE.INIT:
+			comment = sgf.createInitComment();
+			break;
 		case utils.MOVE_TYPE.HANDICAP:
 			comment = "Handicap move";
 			break;

@@ -25,6 +25,9 @@
         
                 <div class="col">
                     <div id="stats">
+                        <div>
+                            <h1 id="title">GoTrainer-HumanAI V8</h1>
+                        </div>
                         <div class="accordion accordion-flush">
                             <div class="accordion-item">
                                 <h3 class="accordion-header" id="scoreChartAccordionHeader">
@@ -130,9 +133,9 @@
                                                     <div class="col-12">
                                                         <label for="colorType" class="form-label">Color</label>
                                                         <select class="form-select" id="colorType">
-                                                            <option value="-1">Black</option>
-                                                            <option value="1">White</option>
-                                                            <option value="0" selected>Random</option>
+                                                            <option value="Black">Black</option>
+                                                            <option value="White">White</option>
+                                                            <option value="Random" selected>Random</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -200,8 +203,8 @@
                                                     <div class="col-12">
                                                         <label for="ruleset" class="form-label">Ruleset</label>
                                                         <select class="form-select" id="ruleset">
-                                                            <option value="japanese">Japanese</option>
-                                                            <option value="chinese">Chinese</option>
+                                                            <option value="Japanese">Japanese</option>
+                                                            <option value="Chinese">Chinese</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -212,8 +215,8 @@
                                                     <div class="col-12">
                                                         <label for="komi" class="form-label">Komi</label>
                                                         <select class="form-select" id="komiChangeStyle">
-                                                            <option value="auto">Automatic</option>
-                                                            <option value="custom">Custom</option>
+                                                            <option value="Automatic">Automatic</option>
+                                                            <option value="Custom">Custom</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -395,16 +398,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="showOpponentOptions">
-                                                            <label class="form-check-label" for="showOpponentOptions">
-                                                                Show options
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                 
                                             <div class="col-6">
@@ -415,6 +408,16 @@
                                                             <input type="number" class="form-control" id="opponentOptionPerc" value="10" step="0.1" min="0" max="100">
                                                             <span class="input-group-text">%</span>
                                                             <div class="form-invalid-message"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="showOpponentOptions">
+                                                            <label class="form-check-label" for="showOpponentOptions">
+                                                                Show options
+                                                            </label>
                                                         </div>
                                                     </div>
                                                 </div>
