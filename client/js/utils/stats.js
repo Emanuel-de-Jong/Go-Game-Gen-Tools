@@ -27,6 +27,7 @@ stats.init = function() {
 
 stats.clear = function() {
     stats.ratioHistory = [];
+    stats.ratio = null;
     
     stats.clearRatio();
     stats.clearVisits();
@@ -34,7 +35,7 @@ stats.clear = function() {
 };
 
 
-stats.updateRatio = function(isRight, isPerfect) {
+stats.updateRatioHistory = function(isRight, isPerfect) {
 	let coord = board.getNodeCoord();
 
     let type = stats.TYPE.WRONG;
@@ -50,7 +51,7 @@ stats.updateRatio = function(isRight, isPerfect) {
 	stats.ratioHistory[coord.y][coord.x] = type;
 }
 
-stats.getRatio = function() {
+stats.updateRatio = function() {
     let ratios = [];
 
     let node = board.editor.getCurrent();
@@ -67,7 +68,7 @@ stats.getRatio = function() {
     } while (node)
 
     if (ratios.length == 0) {
-        return null;
+        return;
     }
 
     ratios = ratios.reverse();
@@ -93,7 +94,7 @@ stats.getRatio = function() {
         }
     });
 
-    return new Ratio(
+    stats.ratio = new Ratio(
         ratios.length,
 
         right,
@@ -109,20 +110,20 @@ stats.getRatio = function() {
 }
 
 stats.setRatio = function() {
-    let ratio = stats.getRatio();
+    this.updateRatio();
 
-    if (ratio == null) {
+    if (stats.ratio == null) {
         stats.clearRatio();
         return;
     }
 
-    stats.rightPercentElement.innerHTML = ratio.rightPercent;
-    stats.rightStreakElement.innerHTML = ratio.rightStreak;
-    stats.rightTopStreakElement.innerHTML = ratio.rightTopStreak;
+    stats.rightPercentElement.innerHTML = stats.ratio.rightPercent;
+    stats.rightStreakElement.innerHTML = stats.ratio.rightStreak;
+    stats.rightTopStreakElement.innerHTML = stats.ratio.rightTopStreak;
 
-    stats.perfectPercentElement.innerHTML = ratio.perfectPercent;
-    stats.perfectStreakElement.innerHTML = ratio.perfectStreak;
-    stats.perfectTopStreakElement.innerHTML = ratio.perfectTopStreak;
+    stats.perfectPercentElement.innerHTML = stats.ratio.perfectPercent;
+    stats.perfectStreakElement.innerHTML = stats.ratio.perfectStreak;
+    stats.perfectTopStreakElement.innerHTML = stats.ratio.perfectTopStreak;
 };
 
 stats.clearRatio = function() {

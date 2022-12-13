@@ -74,35 +74,55 @@ sgf.createInitComment = function() {
 
 sgf.createPreComment = function() {
 	return "Pre move" +
-	sgf.createCommentGrades();
+		sgf.createCommentGrades();
 };
 
 sgf.createSelfplayComment = function() {
 	return "Selfplay move" +
-	sgf.createCommentGrades();
+		sgf.createCommentGrades();
 };
 
 sgf.createPlayerComment = function() {
 	return "Player move" +
-	sgf.createCommentGrades();
+		sgf.createCommentGrades() +
+		sgf.createCommentRatio();
 };
 
 sgf.createOpponentComment = function() {
 	return "Opponent move" +
-	sgf.createCommentGrades();
+		sgf.createCommentGrades() +
+		sgf.createCommentRatio();
 };
 
 sgf.createCommentGrades = function() {
+	let suggestions = main.suggestions;
+	if (suggestions == null) return "";
+
 	comment = "";
-	for (let i=0; i<main.suggestions.length(); i++) {
-		let suggestion = main.suggestions.get(i);
-        if (i != 0 && suggestion.visits == main.suggestions.get(i - 1).visits) continue;
+	for (let i=0; i<suggestions.length(); i++) {
+		let suggestion = suggestions.get(i);
+        if (i != 0 && suggestion.visits == suggestions.get(i - 1).visits) continue;
 
 		comment += "\n" + suggestion.grade + ": " + suggestion.visits;
 	}
 
 	return comment;
 };
+
+sgf.createCommentRatio = function() {
+	let ratio = stats.ratio;
+	if (ratio == null) return "";
+
+	return "\n\nRight" +
+		"\nRatio: " + ratio.rightPercent + "%" +
+		"\nStreak: " + ratio.rightStreak +
+		"\nTop streak: " + ratio.rightTopStreak +
+
+		"\n\nPerfect" +
+		"\nRatio: " + ratio.perfectPercent + "%" +
+		"\nStreak: " + ratio.perfectStreak +
+		"\nTop streak: " + ratio.perfectTopStreak;
+}
 
 
 sgf.setPlayers = function() {

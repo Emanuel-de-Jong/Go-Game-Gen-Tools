@@ -22,13 +22,17 @@ main {
 #game #board {
     position: relative;
     width: 630px;
-    height: 882px;
+    height: 1200px;
 }
 
 #game #next {
     position: absolute;
     top: 5px;
     right: 5px;
+}
+
+#game .besogo-tree {
+    flex-basis: 3%;
 }
 
 

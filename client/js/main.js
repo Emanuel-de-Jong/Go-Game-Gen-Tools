@@ -133,7 +133,7 @@ main.handleJumped = async function() {
 main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPlay, markupCoord) {
 	let opponentOptions = main.getOpponentOptions();
 
-	stats.updateRatio(isRightChoice, isPerfectChoice);
+	stats.updateRatioHistory(isRightChoice, isPerfectChoice);
 
 	if (!settings.disableAICorrection || isRightChoice) {
 		await board.play(suggestionToPlay, utils.MOVE_TYPE.PLAYER);
