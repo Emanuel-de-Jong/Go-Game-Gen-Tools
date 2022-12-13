@@ -145,11 +145,6 @@ main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPla
 	}
 
 	stats.updateRatio(isRightChoice, isPerfectChoice);
-	stats.setVisits(suggestions);
-
-	if (!settings.skipNextButton) {
-		board.drawCoords(suggestions);
-	}
 
 	if (settings.disableAICorrection && !isRightChoice) {
 		scoreChart.update(await server.analyzeMove(markupCoord));
@@ -181,10 +176,6 @@ main.opponentTurn = async function() {
 	if (main.isPassed) return;
 	if (opponentTurnId != main.opponentTurnId) return;
 
-	if (settings.skipNextButton) {
-		board.drawCoords(main.suggestions);
-	}
-
 	await board.play(main.suggestions.get(utils.randomInt(main.suggestions.length())), utils.MOVE_TYPE.OPPONENT);
 
 	main.givePlayerControl();
@@ -192,20 +183,21 @@ main.opponentTurn = async function() {
 
 main.treeJumpedCheckListener = function(event) {
 	if (event.navChange) {
-		stats.clearVisits();
+		if (!event.treeChange ||
+				(settings.showOptions && settings.color == board.getColor()) ||
+				(settings.showOpponentOptions && settings.color != board.getColor())) {
+			stats.clearVisits();
 
-		if (!event.treeChange) {
-			main.suggestions = null;
 			let currentMove = board.editor.getCurrent();
-			if (main.suggestionsHistory[currentMove.navTreeY]) {
-				main.suggestions = main.suggestionsHistory[currentMove.navTreeY][currentMove.moveNumber];
-			}
-
+			main.setSuggestions(currentMove.moveNumber, currentMove.navTreeY)
+	
 			if (main.suggestions) {
 				stats.setVisits(main.suggestions);
 				board.drawCoords(main.suggestions);
 			}
+		}
 
+		if (!event.treeChange) {
 			main.givePlayerControl(false);
 	
 			if (!main.isJumped) {
@@ -214,5 +206,12 @@ main.treeJumpedCheckListener = function(event) {
 				board.nextButton.disabled = true;
 			}
 		}
+	}
+};
+
+main.setSuggestions = function(x, y) {
+	main.suggestions = null;
+	if (main.suggestionsHistory[y]) {
+		main.suggestions = main.suggestionsHistory[y][x];
 	}
 };

@@ -33,6 +33,7 @@ settings.SETTINGS = {
     cornerChance35: utils.TYPE.INT,
 
     suggestionOptions: utils.TYPE.INT,
+    showOptions: utils.TYPE.BOOL,
     hideWeakerOptions: utils.TYPE.BOOL,
     minVisitsPercSwitch: utils.TYPE.BOOL,
     minVisitsPerc: utils.TYPE.FLOAT,
@@ -41,6 +42,7 @@ settings.SETTINGS = {
     
     opponentOptionsSwitch: utils.TYPE.BOOL,
     opponentOptions: utils.TYPE.INT,
+    showOpponentOptions: utils.TYPE.BOOL,
     opponentOptionPerc: utils.TYPE.FLOAT,
     
     skipNextButton: utils.TYPE.BOOL,
