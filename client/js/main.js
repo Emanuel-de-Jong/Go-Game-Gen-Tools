@@ -108,14 +108,14 @@ main.playerTurn = async function(markupCoord) {
 		}
 	}
 
-	if (settings.hideWeakerOptions) {
+	if (!settings.showWeakerOptions) {
 		main.suggestions.filterWeakerThan(markupCoord);
 		main.updateSuggestionsHistory();
 	}
 	
 	await main.playerPlay(isRightChoice, isPerfectChoice, suggestionToPlay, markupCoord);
 
-	if (!settings.skipNextButton) {
+	if (settings.showOptions) {
 		board.nextButton.disabled = false;
 	} else {
 		await main.nextButtonClickListener();

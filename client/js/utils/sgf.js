@@ -86,7 +86,8 @@ sgf.createPlayerComment = function() {
 	return "Player move" +
 	"\nStrength: " + settings.suggestionVisits +
 	"\nOptions: " + settings.suggestionOptions +
-	"\nHide weaker options: " + settings.hideWeakerOptions +
+	"\nShow options: " + settings.showOptions +
+	(settings.showOptions ? "\nShow weaker options: " + settings.showWeakerOptions : "") +
 	(settings.minVisitsPercSwitch ? "\nMin strength: " + settings.minVisitsPerc : "") +
 	(settings.maxVisitDiffPercSwitch ? "\nMax strength difference" + settings.maxVisitDiffPerc : "") +
 	sgf.createCommentGrades();

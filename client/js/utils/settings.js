@@ -34,7 +34,7 @@ settings.SETTINGS = {
 
     suggestionOptions: utils.TYPE.INT,
     showOptions: utils.TYPE.BOOL,
-    hideWeakerOptions: utils.TYPE.BOOL,
+    showWeakerOptions: utils.TYPE.BOOL,
     minVisitsPercSwitch: utils.TYPE.BOOL,
     minVisitsPerc: utils.TYPE.FLOAT,
     maxVisitDiffPercSwitch: utils.TYPE.BOOL,
@@ -44,8 +44,6 @@ settings.SETTINGS = {
     opponentOptions: utils.TYPE.INT,
     showOpponentOptions: utils.TYPE.BOOL,
     opponentOptionPerc: utils.TYPE.FLOAT,
-    
-    skipNextButton: utils.TYPE.BOOL,
 };
 
 
@@ -65,7 +63,7 @@ settings.init = function() {
     settings.handicapElement.addEventListener("input", settings.setKomi);
     settings.rulesetElement.addEventListener("input", settings.setKomi);
     settings.boardsizeElement.addEventListener("input", settings.setKomi);
-    settings.skipNextButtonElement.addEventListener("input", settings.skipNextButtonElementInputListener);
+    settings.showOptionsElement.addEventListener("input", settings.showOptionsElementInputListener);
 
     utils.querySelectorAlls(["input", "select"]).forEach(input => {
         if (input.type != "checkbox") {
@@ -222,8 +220,8 @@ settings.setKomi = function() {
     }
 };
 
-settings.skipNextButtonElementInputListener = function() {
-    if (settings.skipNextButtonElement.checked) {
+settings.showOptionsElementInputListener = function() {
+    if (!settings.showOptionsElement.checked) {
         if (!board.nextButton.disabled) {
             board.nextButton.click();
         }
