@@ -21,39 +21,20 @@ stats.init = function() {
     
     stats.resultDivElement = document.getElementById("resultDiv");
     stats.resultElement = document.getElementById("result");
-
-    stats.history = [];
     
     stats.clear();
 };
 
 stats.clear = function() {
-    stats.total = 0;
-
-    stats.rightCorrect = 0;
-    stats.rightStreak = 0;
-    stats.rightTopStreak = 0;
-
-    stats.perfectCorrect = 0;
-    stats.perfectStreak = 0;
-    stats.perfectTopStreak = 0;
-
-    stats.rightPercentElement.innerHTML = "-";
-    stats.rightStreakElement.innerHTML = 0;
-    stats.rightTopStreakElement.innerHTML = 0;
-
-    stats.perfectPercentElement.innerHTML = "-";
-    stats.perfectStreakElement.innerHTML = 0;
-    stats.perfectTopStreakElement.innerHTML = 0;
+    stats.history = [];
     
-    stats.visitsElement.innerHTML = "";
-
-    stats.resultElement.innerHTML = "";
-    stats.resultDivElement.hidden = true;
+    stats.clearRatio();
+    stats.clearVisits();
+    stats.clearResult();
 };
 
 
-stats.updateRatio = function(isRight, isPerfect) {
+stats.setRatio = function(isRight, isPerfect) {
 	let coord = board.getNodeCoord();
 
     let type = stats.TYPE.WRONG;
@@ -99,6 +80,27 @@ stats.updateRatio = function(isRight, isPerfect) {
     stats.perfectTopStreakElement.innerHTML = stats.perfectTopStreak;
 };
 
+stats.clearRatio = function() {
+    stats.total = 0;
+
+    stats.rightCorrect = 0;
+    stats.rightStreak = 0;
+    stats.rightTopStreak = 0;
+
+    stats.perfectCorrect = 0;
+    stats.perfectStreak = 0;
+    stats.perfectTopStreak = 0;
+
+    stats.rightPercentElement.innerHTML = "-";
+    stats.rightStreakElement.innerHTML = 0;
+    stats.rightTopStreakElement.innerHTML = 0;
+
+    stats.perfectPercentElement.innerHTML = "-";
+    stats.perfectStreakElement.innerHTML = 0;
+    stats.perfectTopStreakElement.innerHTML = 0;
+};
+
+
 stats.setVisits = function(suggestions) {
 	let visitsHtml = "";
     for (let i=0; i<suggestions.length(); i++) {
@@ -114,7 +116,13 @@ stats.clearVisits = function() {
     stats.visitsElement.innerHTML = "";
 };
 
+
 stats.setResult = function(result) {
-    stats.resultDivElement.hidden = false;
     stats.resultElement.innerHTML = result;
+    stats.resultDivElement.hidden = false;
 }
+
+stats.clearResult = function() {
+    stats.resultElement.innerHTML = "";
+    stats.resultDivElement.hidden = true;
+};

@@ -141,7 +141,7 @@ main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPla
 		await board.draw(markupCoord, "auto", false, utils.MOVE_TYPE.PLAYER);
 	}
 
-	stats.updateRatio(isRightChoice, isPerfectChoice);
+	stats.setRatio(isRightChoice, isPerfectChoice);
 
 	if (settings.disableAICorrection && !isRightChoice) {
 		scoreChart.update(await server.analyzeMove(markupCoord));
