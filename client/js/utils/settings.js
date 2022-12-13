@@ -6,7 +6,7 @@ settings.SETTINGS = {
 
     boardsize: utils.TYPE.INT,
     handicap: utils.TYPE.INT,
-    color: utils.TYPE.INT,
+    colorType: utils.TYPE.INT,
     preMovesSwitch: utils.TYPE.BOOL,
     preMoves: utils.TYPE.INT,
     preVisits: utils.TYPE.INT,
@@ -54,7 +54,7 @@ settings.init = function() {
 
     utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", settings.inputAndSelectInputListener);
     settings.handicapElement.addEventListener("input", settings.handicapElementInputListener);
-    settings.colorElement.addEventListener("input", settings.colorElementInputListener);
+    settings.colorTypeElement.addEventListener("input", settings.colorTypeElementInputListener);
     settings.suggestionVisitsElement.addEventListener("input", settings.suggestionVisitsElementInputListener);
     settings.opponentVisitsElement.addEventListener("input", settings.opponentVisitsElementInputListener);
     settings.rulesetElement.addEventListener("input", settings.rulesetElementInputListener);
@@ -82,7 +82,7 @@ settings.init = function() {
 };
 
 settings.clear = function() {
-
+    settings.updateSetting("colorType");
 };
 
 
@@ -98,8 +98,12 @@ settings.updateSetting = function(name) {
         value = parseFloat(value);
     }
 
-    if (name == "color" && value == 0) {
-        value = utils.randomInt(2) == 0 ? -1 : 1;
+    if (name == "colorType") {
+        if (value != 0) {
+            settings.color = value;
+        } else {
+            settings.color = utils.randomInt(2) == 0 ? -1 : 1;
+        }
     }
     
     settings[name] = value;
@@ -145,7 +149,7 @@ settings.handicapElementInputListener = function() {
     sgf.setHandicap();
 };
 
-settings.colorElementInputListener = function() {
+settings.colorTypeElementInputListener = function() {
     sgf.setPlayers();
     sgf.setRankPlayer();
     sgf.setRankAI();
