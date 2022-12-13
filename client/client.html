@@ -132,7 +132,7 @@
                                                         <select class="form-select" id="color">
                                                             <option value="-1">Black</option>
                                                             <option value="1">White</option>
-                                                            <option value="0">Random</option>
+                                                            <option value="0" selected>Random</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -241,14 +241,14 @@
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <label for="preOptions" class="form-label">Options</label>
-                                                        <input type="number" class="form-control" id="preOptions" value="3" min="1" max="10">
+                                                        <input type="number" class="form-control" id="preOptions" value="2" min="1" max="10">
                                                     </div>
                                                 </div>
                                                 <div class="row" id="preOptionPercDiv">
                                                     <div class="col-12">
                                                         <label for="preOptionPerc" class="form-label">Option chance</label>
                                                         <div class="input-group">
-                                                            <input type="number" class="form-control" id="preOptionPerc" value="50" step="0.1" min="0" max="100">
+                                                            <input type="number" class="form-control" id="preOptionPerc" value="20" step="0.1" min="0" max="100">
                                                             <span class="input-group-text">%</span>
                                                             <div class="form-invalid-message"></div>
                                                         </div>
@@ -391,7 +391,7 @@
                                                             <div class="input-group-text">
                                                                 <input class="form-check-input mt-0" type="checkbox" id="opponentOptionsSwitch">
                                                             </div>
-                                                            <input type="number" class="form-control" id="opponentOptions" value="3" min="1" max="10">
+                                                            <input type="number" class="form-control" id="opponentOptions" value="5" min="1" max="10">
                                                         </div>
                                                     </div>
                                                 </div>

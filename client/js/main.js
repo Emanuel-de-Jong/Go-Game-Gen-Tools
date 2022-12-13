@@ -1,8 +1,8 @@
 var main = {};
 
 
-main.BASE_MIN_VISITS_PERC = 10;
-main.BASE_MAX_VISIT_DIFF_PERC = 50;
+main.OPPONENT_MIN_VISITS_PERC = 10;
+main.OPPONENT_MAX_VISIT_DIFF_PERC = 50;
 
 
 main.init = function() {
@@ -133,13 +133,12 @@ main.handleJumped = async function() {
 main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPlay, markupCoord) {
 	let opponentOptions = main.getOpponentOptions();
 
-	let suggestions = main.suggestions;
 	if (!settings.disableAICorrection || isRightChoice) {
 		await board.play(suggestionToPlay, utils.MOVE_TYPE.PLAYER);
 
 		if (!isRightChoice) await board.draw(markupCoord, "cross");
 
-		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions, main.BASE_MIN_VISITS_PERC, main.BASE_MAX_VISIT_DIFF_PERC);
+		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions, main.OPPONENT_MIN_VISITS_PERC, main.OPPONENT_MAX_VISIT_DIFF_PERC);
 	} else {
 		await board.draw(markupCoord, "auto", false, utils.MOVE_TYPE.PLAYER);
 	}
@@ -150,7 +149,7 @@ main.playerPlay = async function(isRightChoice, isPerfectChoice, suggestionToPla
 		scoreChart.update(await server.analyzeMove(markupCoord));
 		await server.play(markupCoord);
 
-		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions, main.BASE_MIN_VISITS_PERC, main.BASE_MAX_VISIT_DIFF_PERC);
+		main.suggestionsPromise = main.analyze(settings.opponentVisits, opponentOptions, main.OPPONENT_MIN_VISITS_PERC, main.OPPONENT_MAX_VISIT_DIFF_PERC);
 	}
 };
 
@@ -176,7 +175,7 @@ main.opponentTurn = async function() {
 	if (main.isPassed) return;
 	if (opponentTurnId != main.opponentTurnId) return;
 
-	await board.play(main.suggestions.get(utils.randomInt(main.suggestions.length())), utils.MOVE_TYPE.OPPONENT);
+	await board.play(main.suggestions.get(utils.randomInt(1, main.suggestions.length())), utils.MOVE_TYPE.OPPONENT);
 
 	main.givePlayerControl();
 };

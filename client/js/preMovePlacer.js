@@ -1,6 +1,10 @@
 var preMovePlacer = {};
 
 
+preMovePlacer.MIN_VISITS_PERC = 10;
+preMovePlacer.MAX_VISIT_DIFF_PERC = 50;
+
+
 preMovePlacer.init = function() {
 	preMovePlacer.stopButton = document.getElementById("stopPreMoves");
 
@@ -116,9 +120,9 @@ preMovePlacer.play = async function() {
 		preOptions = settings.preOptions;
 	}
 
-	await main.analyze(settings.preVisits, preOptions, main.BASE_MIN_VISITS_PERC, main.BASE_MAX_VISIT_DIFF_PERC);
+	await main.analyze(settings.preVisits, preOptions, preMovePlacer.MIN_VISITS_PERC, preMovePlacer.MAX_VISIT_DIFF_PERC);
 	if (main.isPassed) preMovePlacer.isStopped = true;
 	if (preMovePlacer.isStopped) return;
 
-	await board.play(main.suggestions.get(utils.randomInt(main.suggestions.length())), utils.MOVE_TYPE.PRE);
+	await board.play(main.suggestions.get(utils.randomInt(1, main.suggestions.length())), utils.MOVE_TYPE.PRE);
 };
