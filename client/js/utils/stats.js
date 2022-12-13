@@ -1,6 +1,13 @@
 var stats = {};
 
 
+stats.TYPE = {
+    WRONG: 0,
+    RIGHT: 1,
+    PERFECT: 2
+}
+
+
 stats.init = function() {
     stats.rightPercentElement = document.getElementById("rightPercent");
     stats.rightStreakElement = document.getElementById("rightStreak");
@@ -14,6 +21,8 @@ stats.init = function() {
     
     stats.resultDivElement = document.getElementById("resultDiv");
     stats.resultElement = document.getElementById("result");
+
+    stats.history = [];
     
     stats.clear();
 };
@@ -45,6 +54,20 @@ stats.clear = function() {
 
 
 stats.updateRatio = function(isRight, isPerfect) {
+	let coord = board.getNodeCoord();
+
+    let type = stats.TYPE.WRONG;
+    if (isPerfect) {
+        type = stats.TYPE.PERFECT;
+    } else if (isRight) {
+        type = stats.TYPE.RIGHT;
+    }
+
+	if (!stats.history[coord.y]) {
+		stats.history[coord.y] = [];
+	}
+	stats.history[coord.y][coord.x] = type;
+
     stats.total++;
 
     if (isRight) {

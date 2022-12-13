@@ -62,14 +62,12 @@ main.takePlayerControl = function() {
 };
 
 main.updateSuggestionsHistory = function() {
-	let currentMove = board.editor.getCurrent();
-	let y = currentMove.navTreeY;
-	let x = currentMove.moveNumber + 1;
+	let coord = board.getNodeCoord();
 
-	if (!main.suggestionsHistory[y]) {
-		main.suggestionsHistory[y] = [];
+	if (!main.suggestionsHistory[coord.y]) {
+		main.suggestionsHistory[coord.y] = [];
 	}
-	main.suggestionsHistory[y][x] = main.suggestions;
+	main.suggestionsHistory[coord.y][coord.x+1] = main.suggestions;
 };
 
 main.playerMarkupPlacedCheckListener = async function(event) {
@@ -187,8 +185,7 @@ main.treeJumpedCheckListener = function(event) {
 				(settings.showOpponentOptions && settings.color != board.getColor())) {
 			stats.clearVisits();
 
-			let currentMove = board.editor.getCurrent();
-			main.setSuggestions(currentMove.moveNumber, currentMove.navTreeY)
+			main.setSuggestions()
 	
 			if (main.suggestions) {
 				stats.setVisits(main.suggestions);
@@ -208,9 +205,9 @@ main.treeJumpedCheckListener = function(event) {
 	}
 };
 
-main.setSuggestions = function(x, y) {
+main.setSuggestions = function(coord = board.getNodeCoord()) {
 	main.suggestions = null;
-	if (main.suggestionsHistory[y]) {
-		main.suggestions = main.suggestionsHistory[y][x];
+	if (main.suggestionsHistory[coord.y]) {
+		main.suggestions = main.suggestionsHistory[coord.y][coord.x];
 	}
 };

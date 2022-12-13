@@ -220,6 +220,10 @@ board.getMoveNumber = function() {
 	return board.editor.getCurrent().moveNumber;
 };
 
+board.getNodeCoord = function() {
+	return new Coord(board.getMoveNumber(), board.editor.getCurrent().navTreeY);
+}
+
 board.getMoves = function() {
 	let moves = [];
 	let node = board.editor.getCurrent();
