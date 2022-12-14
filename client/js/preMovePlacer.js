@@ -15,85 +15,84 @@ preMovePlacer.clear = function() {
 
 
 preMovePlacer.start = async function() {
-	let preMovesLeft = settings.preMoves;
-
-	await board.placeHandicap();
-
-	if (!settings.useHandicap) {
-		let firstMove = [
-			{x:8,y:5}, {x:8,y:4}, {x:8,y:3}, {x:8,y:2},
+	if (settings.state == utils.STATE.B) {
+		let rndMove = [
 			{x:7,y:5}, {x:7,y:4}, {x:7,y:3},
 			{x:6,y:5}, {x:6,y:4},
-			{x:5,y:5}
 		];
-		await board.draw(firstMove[utils.randomInt(firstMove.length)]);
-		preMovesLeft--;
-	}
 
-	for (let i=0; i<preMovesLeft; i++) {
-		if (preMovePlacer.isStopped) break;
-		await preMovePlacer.play(i == 0);
+		await board.draw(new Coord(5, 5));
+		await board.draw(rndMove[utils.randomInt(rndMove.length)]);
+		await preMovePlacer.play();
+		await preMovePlacer.play(2);
+		for (let i=0; i<2; i++) {
+			await preMovePlacer.play();
+		}
+	}
+	else if (settings.state == utils.STATE.W) {
+		let rndMove = [
+			{x:7,y:5}, {x:7,y:4}, {x:7,y:3},
+			{x:6,y:5}, {x:6,y:4},
+			{x:5,y:5},
+		];
+
+		await board.draw(rndMove[utils.randomInt(rndMove.length)]);
+		await preMovePlacer.play();
+		await preMovePlacer.play(2);
+		for (let i=0; i<3; i++) {
+			await preMovePlacer.play();
+		}
+	}
+	else if (settings.state == utils.STATE.BH) {
+		let rndMove = {
+			2: [
+				{x:7,y:4}, {x:7,y:5}, {x:7,y:6}, {x:7,y:7},
+				{x:6,y:4}, {x:6,y:5}, {x:6,y:6},
+				{x:5,y:5},
+			],
+			3: [
+				{x:7,y:4}, {x:7,y:5}, {x:7,y:6}, {x:7,y:7},
+				{x:6,y:4}, {x:6,y:5}, {x:6,y:6},
+				{x:5,y:5},
+			],
+			4: [
+				{x:7,y:4}, {x:7,y:5},
+				{x:6,y:4}, {x:6,y:5},
+				{x:5,y:5},
+			],
+		}
+
+		await board.placeHandicap();
+		await board.draw(rndMove[settings.handicap][utils.randomInt(rndMove[settings.handicap].length)]);
+		await preMovePlacer.play();
+		await preMovePlacer.play(2);
+		for (let i=0; i<3; i++) {
+			await preMovePlacer.play();
+		}
+	}
+	else if (settings.state == utils.STATE.WH) {
+		await board.placeHandicap();
+		await preMovePlacer.play();
+		await preMovePlacer.play(6);
+		await preMovePlacer.play();
+		await preMovePlacer.play(2);
+		for (let i=0; i<2; i++) {
+			await preMovePlacer.play();
+		}
 	}
 
 	await server.sgf();
 	init.clear();
 };
 
-preMovePlacer.fillCorners = function(cornerCount) {
-	let cornerOptions = [
-		{ c44: {x:4,y:4}, c34: {x:3,y:4}, c43: {x:4,y:3}, c33: {x:3,y:3}, c45: {x:4,y:5}, c54: {x:5,y:4}, c35: {x:3,y:5}, c53: {x:5,y:3} },
-		{ c44: {x:16,y:4}, c34: {x:17,y:4}, c43: {x:16,y:3}, c33: {x:17,y:3}, c45: {x:16,y:5}, c54: {x:15,y:4}, c35: {x:17,y:5}, c53: {x:15,y:3} },
-		{ c44: {x:4,y:16}, c34: {x:3,y:16}, c43: {x:4,y:17}, c33: {x:3,y:17}, c45: {x:4,y:15}, c54: {x:5,y:16}, c35: {x:3,y:15}, c53: {x:5,y:17} },
-		{ c44: {x:16,y:16}, c34: {x:17,y:16}, c43: {x:16,y:17}, c33: {x:17,y:17}, c45: {x:16,y:15}, c54: {x:15,y:16}, c35: {x:17,y:15}, c53: {x:15,y:17} },
-	];
-	cornerOptions = utils.shuffleArray(cornerOptions);
-
-	let coords = [];
-	let totalCornerChance = settings.cornerChance44 +
-		settings.cornerChance34 +
-		(settings.onlyCommonCorners ? 0 : settings.cornerChance33) +
-		(settings.onlyCommonCorners ? 0 : settings.cornerChance45) +
-		(settings.onlyCommonCorners ? 0 : settings.cornerChance35);
-	
-	for (let i=0; i<cornerCount; i++) {
-		let coord;
-		let cornerTypeRange = 0;
-		let rndCornerType = utils.randomInt(totalCornerChance);
-		let rndCornerSide = utils.randomInt(2);
-		if (rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance44)) {
-			coord = cornerOptions[i].c44;
-		}
-		else if (rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance34)) {
-			coord = rndCornerSide ? cornerOptions[i].c34 : cornerOptions[i].c43;
-		}
-		else if (!settings.onlyCommonCorners && rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance33)) {
-			coord = cornerOptions[i].c33;
-		}
-		else if (!settings.onlyCommonCorners && rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance45)) {
-			coord = rndCornerSide ? cornerOptions[i].c45 : cornerOptions[i].c54;
-		}
-		else {
-			coord = rndCornerSide ? cornerOptions[i].c35 : cornerOptions[i].c53;
-		}
-
-		coords.push(coord);
-	}
-
-	return coords;
-};
-
-preMovePlacer.play = async function(isFirstMove = false) {
-	let preOptions = settings.preOptions;
-	if (isFirstMove) preOptions = preMovePlacer.PRE_OPTIONS;
-
-	preMovePlacer.suggestions = await server.analyze(settings.preVisits, preOptions, preMovePlacer.BASE_MIN_VISITS_PERC, preMovePlacer.BASE_MAX_VISIT_DIFF_PERC);
-	if (preMovePlacer.isStopped) return;
+preMovePlacer.play = async function(moveOptions = 1) {
+	let suggestions = await server.analyze(moveOptions);
 
 	let suggestionsByGrade = [[]];
 	let index = 0;
 	let grade = "A";
-	for (let i=0; i<preMovePlacer.suggestions.length(); i++) {
-		let suggestion = preMovePlacer.suggestions.get(i);
+	for (let i=0; i<suggestions.length(); i++) {
+		let suggestion = suggestions.get(i);
 
 		if (grade != suggestion.grade) {
 			grade = suggestion.grade;
@@ -104,14 +103,7 @@ preMovePlacer.play = async function(isFirstMove = false) {
 		suggestionsByGrade[index].push(suggestion);
 	}
 
-	let suggestions = suggestionsByGrade[suggestionsByGrade.length-1];
+	let filteredSuggestions = suggestionsByGrade[utils.randomInt(suggestionsByGrade.length)];
 
-	for (let i=0; i<suggestionsByGrade.length-1; i++) {
-		if (utils.randomInt(2) < 1) {
-			suggestions = suggestionsByGrade[i];
-			break;
-		}
-	}
-
-	await board.play(suggestions[utils.randomInt(suggestions.length)]);
+	await board.play(filteredSuggestions[utils.randomInt(filteredSuggestions.length)]);
 };

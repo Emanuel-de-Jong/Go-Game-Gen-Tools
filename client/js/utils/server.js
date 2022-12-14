@@ -81,10 +81,10 @@ server.analyzeMove = async function(coord, color = board.getNextColor()) {
 };
 
 server.analyze = async function(
-        maxVisits = settings.suggestionVisits,
-        moveOptions = settings.suggestionOptions,
-        minVisitsPerc = settings.minVisitsPerc,
-        maxVisitDiffPerc = settings.maxVisitDiffPerc,
+        moveOptions = 1,
+        maxVisits = settings.preVisits,
+        minVisitsPerc = preMovePlacer.BASE_MIN_VISITS_PERC,
+        maxVisitDiffPerc = preMovePlacer.BASE_MAX_VISIT_DIFF_PERC,
         color = board.getNextColor()) {
     // console.log("analyze " + maxVisits + " " + moveOptions + " " + minVisitsPerc + " " + maxVisitDiffPerc + " " + color);
     
@@ -151,6 +151,7 @@ server.sgf = async function() {
         "&visits=" + settings.preVisits +
         "&moves=" + settings.preMoves +
         "&minVisitsPerc=" + preMovePlacer.BASE_MIN_VISITS_PERC +
+        "&state=" + settings.state +
         "&handicap=" + settings.handicap +
         "&cornerChance44=" + settings.cornerChance44 +
         "&cornerChance34=" + settings.cornerChance34 +

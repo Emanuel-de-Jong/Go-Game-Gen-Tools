@@ -3,6 +3,7 @@ package gotrainer.humanai.kata;
 import gotrainer.humanai.Move;
 import gotrainer.humanai.MoveSuggestion;
 import gotrainer.humanai.Moves;
+import gotrainer.humanai.State;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -180,6 +181,7 @@ public class Kata {
                                  int visits,
                                  int moves,
                                  int minVisitsPerc,
+                                 int state,
                                  int handicap,
                                  int cornerChance44,
                                  int cornerChance34,
@@ -190,9 +192,12 @@ public class Kata {
         String sgfStr = reader.readLine().substring(2);
         clearReader();
 
+        String stateStr = (State.values()[state]).name();
+
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM_HH-mm-ss");
-        File sgf = new File("sgfs\\" + handicap + "\\" +
+        File sgf = new File("sgfs\\" + stateStr + "\\" + handicap + "\\" +
                 dtf.format(LocalDateTime.now()) +
+                "_" + stateStr +
                 "_" + visits +
                 "_" + moves +
                 "_" + handicap +

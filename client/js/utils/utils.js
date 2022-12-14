@@ -9,6 +9,13 @@ utils.TYPE = {
     STRING: 4,
 };
 
+utils.STATE = {
+    B: 0,
+    W: 1,
+    BH: 2,
+    WH: 3,
+};
+
 
 utils.colorNumToName = function(num) {
     return num == 1 ? "W" : "B";
