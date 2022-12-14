@@ -71,9 +71,36 @@ preMovePlacer.start = async function() {
 		}
 	}
 	else if (settings.state == utils.STATE.WH) {
+		let rndMove = {
+			2: [
+				{x:7,y:4}, {x:8,y:5}, {x:5,y:6},
+				{x:6,y:6}, {x:7,y:6}, {x:6,y:7},
+			],
+			3: [
+				{x:5,y:4}, {x:6,y:4}, {x:7,y:5},
+				{x:6,y:6}, {x:7,y:6}, {x:6,y:7},
+			],
+			4: [
+				{x:5,y:3}, {x:4,y:4}, {x:5,y:4},
+				{x:7,y:4}, {x:3,y:5}, {x:5,y:5},
+			],
+		}
+
 		await board.placeHandicap();
-		await preMovePlacer.play();
-		await preMovePlacer.play(6);
+
+		switch (settings.handicap) {
+			case 2:
+				await board.draw(new Coord(6, 4));
+				break;
+			case 3:
+				await board.draw(new Coord(6, 5));
+				break;
+			case 4:
+				await board.draw(new Coord(7, 5));
+				break;
+		}
+
+		await board.draw(rndMove[settings.handicap][utils.randomInt(rndMove[settings.handicap].length)]);
 		await preMovePlacer.play();
 		await preMovePlacer.play(2);
 		for (let i=0; i<2; i++) {

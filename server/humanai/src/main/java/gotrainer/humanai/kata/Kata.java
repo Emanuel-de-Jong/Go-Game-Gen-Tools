@@ -197,9 +197,8 @@ public class Kata {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM_HH-mm-ss");
         File sgf = new File("sgfs\\" + stateStr + "\\" + handicap + "\\" +
                 dtf.format(LocalDateTime.now()) +
-                "_" + stateStr +
                 "_" + visits +
-                "_" + moves +
+                "_" + stateStr +
                 "_" + handicap +
                 "_0.3_9x9" +
                 ".sgf");

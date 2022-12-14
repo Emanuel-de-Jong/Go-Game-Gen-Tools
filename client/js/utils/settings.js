@@ -26,6 +26,7 @@ settings.init = function() {
 
 settings.clear = function() {
     settings.state = utils.STATE[Object.keys(utils.STATE)[utils.randomInt(4)]];
+    // settings.state = utils.STATE.WH;
 
     settings.useHandicap = settings.state == utils.STATE.BH || settings.state == utils.STATE.WH;
 
