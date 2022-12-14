@@ -151,6 +151,7 @@ server.sgf = async function() {
         "&visits=" + settings.preVisits +
         "&moves=" + settings.preMoves +
         "&minVisitsPerc=" + preMovePlacer.BASE_MIN_VISITS_PERC +
+        "&handicap=" + settings.handicap +
         "&cornerChance44=" + settings.cornerChance44 +
         "&cornerChance34=" + settings.cornerChance34 +
         "&cornerChance33=" + (settings.onlyCommonCorners ? 0 : settings.cornerChance33) +

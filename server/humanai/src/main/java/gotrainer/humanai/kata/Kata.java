@@ -180,6 +180,7 @@ public class Kata {
                                  int visits,
                                  int moves,
                                  int minVisitsPerc,
+                                 int handicap,
                                  int cornerChance44,
                                  int cornerChance34,
                                  int cornerChance33,
@@ -190,12 +191,12 @@ public class Kata {
         clearReader();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM_HH-mm-ss");
-        File sgf = new File("sgfs\\" +
+        File sgf = new File("sgfs\\" + handicap + "\\" +
                 dtf.format(LocalDateTime.now()) +
                 "_" + visits +
                 "_" + moves +
-                "_" + cornerChance44 + "-" + cornerChance34 + "-" + cornerChance33 + "-" + cornerChance45 + "-" + cornerChance35 +
-                "_0.3" +
+                "_" + handicap +
+                "_0.3_9x9" +
                 ".sgf");
 
         if (sgf.exists()) sgf.delete();

@@ -1,7 +1,7 @@
 var preMovePlacer = {};
 
 
-preMovePlacer.PRE_OPTIONS = 1;
+preMovePlacer.PRE_OPTIONS = 3;
 preMovePlacer.BASE_MIN_VISITS_PERC = 5;
 preMovePlacer.BASE_MAX_VISIT_DIFF_PERC = 100;
 
@@ -17,12 +17,16 @@ preMovePlacer.clear = function() {
 preMovePlacer.start = async function() {
 	let preMovesLeft = settings.preMoves;
 
-	let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
-	let cornerCoords = preMovePlacer.fillCorners(cornerCount);
-	for (let i=0; i<cornerCount; i++) {
-		if (preMovePlacer.isStopped) break;
+	await board.placeHandicap();
 
-		await board.draw(cornerCoords[i]);
+	if (!settings.useHandicap) {
+		let firstMove = [
+			{x:8,y:5}, {x:8,y:4}, {x:8,y:3}, {x:8,y:2},
+			{x:7,y:5}, {x:7,y:4}, {x:7,y:3},
+			{x:6,y:5}, {x:6,y:4},
+			{x:5,y:5}
+		];
+		await board.draw(firstMove[utils.randomInt(firstMove.length)]);
 		preMovesLeft--;
 	}
 
@@ -102,12 +106,10 @@ preMovePlacer.play = async function(isFirstMove = false) {
 
 	let suggestions = suggestionsByGrade[suggestionsByGrade.length-1];
 
-	if (suggestions[0].color != settings.color) {
-		for (let i=0; i<suggestionsByGrade.length-1; i++) {
-			if (utils.randomInt(3) < 2) {
-				suggestions = suggestionsByGrade[i];
-				break;
-			}
+	for (let i=0; i<suggestionsByGrade.length-1; i++) {
+		if (utils.randomInt(2) < 1) {
+			suggestions = suggestionsByGrade[i];
+			break;
 		}
 	}
 

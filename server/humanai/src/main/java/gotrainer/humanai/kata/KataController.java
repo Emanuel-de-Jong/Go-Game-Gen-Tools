@@ -85,12 +85,13 @@ public class KataController {
                        @RequestParam int visits,
                        @RequestParam int moves,
                        @RequestParam int minVisitsPerc,
+                       @RequestParam int handicap,
                        @RequestParam int cornerChance44,
                        @RequestParam int cornerChance34,
                        @RequestParam int cornerChance33,
                        @RequestParam int cornerChance45,
                        @RequestParam int cornerChance35) throws Exception {
-        kata.sgf(options, color, visits, moves, minVisitsPerc, cornerChance44, cornerChance34, cornerChance33,
+        kata.sgf(options, color, visits, moves, minVisitsPerc, handicap, cornerChance44, cornerChance34, cornerChance33,
                 cornerChance45, cornerChance35);
     }
 }
