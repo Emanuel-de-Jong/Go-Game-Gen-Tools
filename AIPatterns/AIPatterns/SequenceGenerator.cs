@@ -42,7 +42,7 @@ namespace AIPatterns
 
         void AddSequenceFromGame(GameWrap game, EState state)
         {
-            Sequence sequence = new(game);
+            Sequence sequence = new(game, state);
 
             game.ToStart();
 

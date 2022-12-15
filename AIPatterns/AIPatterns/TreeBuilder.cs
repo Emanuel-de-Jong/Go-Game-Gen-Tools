@@ -10,7 +10,7 @@ namespace AIPatterns
 {
     internal class TreeBuilder
     {
-        public static GameWrap SequenceListToGame(SequenceList sequenceList, bool combineIdenticalSequences)
+        public static GameWrap SequenceListToGame(SequenceList sequenceList, bool combineIdenticalSequences, EState state)
         {
             GameWrap game = new();
 
@@ -19,20 +19,24 @@ namespace AIPatterns
             GoSetupNode[] handicapSetupNodes = new GoSetupNode[5];
 
             handicapSetupNodes[0] = new(game.Game.RootNode);
+            handicapSetupNodes[0].Comment = state.ToString();
             rootNode.AddNode(handicapSetupNodes[0]);
 
             handicapSetupNodes[2] = new(game.Game.RootNode);
+            handicapSetupNodes[2].Comment = state == EState.B ? EState.BH.ToString() : EState.WH.ToString();
             handicapSetupNodes[2].AddStone(new Stone(6, 2, true));
             handicapSetupNodes[2].AddStone(new Stone(2, 6, true));
             rootNode.AddNode(handicapSetupNodes[2]);
 
             handicapSetupNodes[3] = new(game.Game.RootNode);
+            handicapSetupNodes[3].Comment = state == EState.B ? EState.BH.ToString() : EState.WH.ToString();
             handicapSetupNodes[3].AddStone(new Stone(2, 2, true));
             handicapSetupNodes[3].AddStone(new Stone(6, 2, true));
             handicapSetupNodes[3].AddStone(new Stone(2, 6, true));
             rootNode.AddNode(handicapSetupNodes[3]);
 
             handicapSetupNodes[4] = new(game.Game.RootNode);
+            handicapSetupNodes[4].Comment = state == EState.B ? EState.BH.ToString() : EState.WH.ToString();
             handicapSetupNodes[4].AddStone(new Stone(2, 2, true));
             handicapSetupNodes[4].AddStone(new Stone(6, 2, true));
             handicapSetupNodes[4].AddStone(new Stone(2, 6, true));
@@ -79,6 +83,38 @@ namespace AIPatterns
             }
 
             return game;
+        }
+
+        public static void KeepHighestCount(GoNode node)
+        {
+            int highestCount = 0;
+            GoNode highestNode = null;
+            List<GoNode> nodesToRemove = new();
+            foreach (GoNode childNode in node.ChildNodes)
+            {
+                GoMoveNode? childMove = childNode as GoMoveNode;
+                if (childMove != null)
+                {
+                    int count = Comment.GetCount(childMove);
+                    if (highestCount < count)
+                    {
+                        highestCount = count;
+                        highestNode = childNode;
+                    }
+                }
+            }
+
+            foreach (GoNode childNode in new List<GoNode>(node.ChildNodes))
+            {
+                GoMoveNode? childMove = childNode as GoMoveNode;
+                if (childMove != null)
+                {
+                    if (childNode != highestNode)
+                    {
+                        node.RemoveNode(childNode);
+                    }
+                }
+            }
         }
 
         public static void FilterByCount(GoNode node, float maxDiff, int minCount)

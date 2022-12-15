@@ -35,7 +35,8 @@ namespace AIPatterns
 
             if (commentSections.Length > 0)
             {
-                Count = int.Parse(commentSections[0]);
+                int.TryParse(commentSections[0], out int count);
+                Count = count;
             }
 
             if (commentSections.Length > 1)

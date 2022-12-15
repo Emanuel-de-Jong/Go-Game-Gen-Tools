@@ -15,90 +15,68 @@ namespace AIPatterns
 
         public Program()
         {
-            Start();
+            Start(EState.B);
+            Start(EState.W);
             //Test();
         }
 
-        void Start()
+        void Start(EState state)
         {
             SequenceGenerator sequenceGenerator = new();
 
             Dictionary<string, EState> paths = new Dictionary<string, EState>();
-            paths.Add(@"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\learning\9x9\B\", EState.B);
-            paths.Add(@"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\learning\9x9\BH\", EState.BH);
-            //paths.Add(@"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\learning\9x9\W\", EState.W);
-            //paths.Add(@"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\learning\9x9\WH\", EState.WH);
+            if (state == EState.B)
+            {
+                paths.Add(@"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\learning\9x9\B\", EState.B);
+                paths.Add(@"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\learning\9x9\BH\", EState.BH);
+            } else
+            {
+                paths.Add(@"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\learning\9x9\W\", EState.W);
+                paths.Add(@"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\learning\9x9\WH\", EState.WH);
+            }
 
             SequenceList sequenceList = sequenceGenerator.Generate(paths);
 
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\";
-            CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-9x9-All");
-            //CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", false, 0.08f, 5, 5, 3, 3, 3);
-            //CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", false, 0.3f, 10, 9, 6, 6, 6);
+            //CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-9x9-All", state);
+            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis-9x9-", state, 0.08f, 5);
         }
 
-        void CreateFullSgf(SequenceList sequenceList, string savePath)
+        void CreateFullSgf(SequenceList sequenceList, string savePath, EState state)
         {
-            GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
+            GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false, state);
             TreeBuilder.AddMarkup(game);
 
-            game.SaveAsSgf(savePath);
+            game.SaveAsSgf(savePath + "-" + state);
         }
 
-        void CreateFilteredSGF(SequenceList sequenceList, string savePath, bool filterSecondLayer, float maxDiff, int min44, int min34, int min45, int min35, int min33)
+        void CreateFilteredSGF(SequenceList sequenceList, string savePath, EState state, float maxDiff, int min)
         {
-            GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
+            GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false, state);
+
             foreach (GoNode node in game.Game.RootNode.ChildNodes)
             {
-                GoMoveNode? move = node as GoMoveNode;
-                if (move == null) continue;
+                GoSetupNode? setupNode = node as GoSetupNode;
+                if (setupNode == null) continue;
 
-                int minCount = 0;
-                Stone stone = move.Stone;
-                if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 3) // 4-4 3657
+                Enum.TryParse(setupNode.Comment, out EState nodeState);
+                switch (nodeState)
                 {
-                    minCount = min44;
-                }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 3) // 3-4 2865
-                {
-                    minCount = min34;
-                }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 4) // 4-5 512
-                {
-                    minCount = min45;
-                }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 4) // 3-5 540
-                {
-                    minCount = min35;
-                }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 2) // 3-3 397
-                {
-                    minCount = min33;
-                }
-
-                if (filterSecondLayer)
-                {
-                    TreeBuilder.FilterByCount(node, maxDiff, minCount);
-                } else
-                {
-                    foreach (GoNode childNode in node.ChildNodes)
-                    {
-                        TreeBuilder.FilterByCount(childNode, maxDiff, minCount);
-                    }
+                    case EState.B:
+                        foreach (GoNode childNode in node.ChildNodes[0].ChildNodes)
+                        {
+                            TreeBuilder.KeepHighestCount(childNode);
+                        }
+                        break;
                 }
             }
 
             TreeBuilder.AddMarkup(game);
-            TreeBuilder.RemoveRedundentPasses(game);
 
             game.SaveAsSgf(savePath +
-                "-" + filterSecondLayer +
+                "-" + state +
                 "-" + maxDiff +
-                "-" + min44 +
-                "-" + min34 +
-                "-" + min45 +
-                "-" + min35 +
-                "-" + min33);
+                "-" + min);
         }
 
         void Test()

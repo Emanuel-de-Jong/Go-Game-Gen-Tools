@@ -10,11 +10,13 @@ namespace AIPatterns
     internal class Sequence : List<SequenceItem>
     {
         public int Handicap { get; set; }
+        public EState State { get; set; }
 
 
-        public Sequence(GameWrap game)
+        public Sequence(GameWrap game, EState state)
         {
             Handicap = game.Game.Info.Handicap;
+            State = state;
         }
 
 
