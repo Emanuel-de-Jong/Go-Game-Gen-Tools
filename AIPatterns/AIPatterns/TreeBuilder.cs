@@ -35,22 +35,6 @@ namespace AIPatterns
 
                     new Comment(game).IncCount();
 
-                    GoNode node = game.Game.CurrentNode;
-                    node.EnsureMarkup();
-                    node.Markup.Marks.Clear();
-                    for (int y=0; y<G.BOARD_SIZE; y++)
-                    {
-                        for (int x=0; x< G.BOARD_SIZE; x++)
-                        {
-                            if (item.BlackAndWhite[x, y])
-                            {
-                                Stone stone = new(x, y, item.Black[x, y]);
-                                if (game.Game.board.BlackAndWhite[x, y]) continue;
-                                node.Markup.Marks.Add(new Mark(stone.X, stone.Y, stone.IsBlack ? MarkType.Mark : MarkType.Triangle));
-                            }
-                        }
-                    }
-
                     if (combineIdenticalSequences &&
                         lastItem != null &&
                         StoneUtils.IsPass(lastItem) &&
@@ -196,7 +180,7 @@ namespace AIPatterns
             for (int i=0; i<moveCounts.Count; i++)
             {
                 var moveCount = moveCounts[i];
-                if (i == 0 || moveCount.Value.Count != moveCounts[i - 1].Value.Count) index++;
+                index++;
 
                 GoMoveNode move = moveCount.Key;
 

@@ -26,6 +26,11 @@ namespace AIPatterns
             Add(new SequenceItem(move.Stone, game.Game.board));
         }
 
+        public void Add(Stone stone, GameWrap game)
+        {
+            Add(new SequenceItem(stone, game.Game.board));
+        }
+
         public void Add(Stone stone, Board board)
         {
             Add(new SequenceItem(stone, board));

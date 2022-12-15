@@ -23,13 +23,13 @@ namespace AIPatterns
         {
             SequenceGenerator sequenceGenerator = new();
             SequenceList sequenceList = sequenceGenerator.Generate(new string[] {
-                @"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\learning",
+                @"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\learning\9x9\",
                 });
 
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\";
-            CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-All");
-            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", false, 0.08f, 5, 5, 3, 3, 3);
-            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", false, 0.3f, 10, 9, 6, 6, 6);
+            CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-9x9-All");
+            //CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", false, 0.08f, 5, 5, 3, 3, 3);
+            //CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", false, 0.3f, 10, 9, 6, 6, 6);
         }
 
         void CreateFullSgf(SequenceList sequenceList, string savePath)

@@ -8,7 +8,7 @@ namespace AIPatterns
 {
     internal class G
     {
-        public const int BOARD_SIZE = 19;
+        public const int BOARD_SIZE = 9;
         public const int BOARD_SIZE_INDEX = BOARD_SIZE - 1;
     }
 }
