@@ -39,7 +39,7 @@ namespace AIPatterns
 
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\";
             //CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-9x9-All", state);
-            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis-9x9-", state, 0.08f, 15);
+            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis-9x9-", state, 0.08f, 30);
         }
 
         void CreateFullSgf(SequenceList sequenceList, string savePath, EState state)
