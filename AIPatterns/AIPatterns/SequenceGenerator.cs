@@ -68,29 +68,10 @@ namespace AIPatterns
             //    game = GameUtils.Flip(game, false);
             //}
 
-            Sequence sequence = new();
-
-            int handicap = game.Game.Info.Handicap;
-            switch (handicap)
-            {
-                case 2:
-                    sequence.Add(new Stone(6, 2, true), game);
-                    sequence.Add(new Stone(2, 6, true), game);
-                    break;
-                case 3:
-                    sequence.Add(new Stone(2, 2, true), game);
-                    sequence.Add(new Stone(6, 2, true), game);
-                    sequence.Add(new Stone(2, 6, true), game);
-                    break;
-                case 4:
-                    sequence.Add(new Stone(2, 2, true), game);
-                    sequence.Add(new Stone(6, 2, true), game);
-                    sequence.Add(new Stone(2, 6, true), game);
-                    sequence.Add(new Stone(6, 6, true), game);
-                    break;
-            }
-
+            Sequence sequence = new(game);
             game.ToStart();
+            if (sequence.Handicap != 0) game.ToNextMove();
+
             while (game.ToNextMove())
             {
                 move = game.Game.CurrentNode as GoMoveNode;

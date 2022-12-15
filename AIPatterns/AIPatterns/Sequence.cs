@@ -9,6 +9,15 @@ namespace AIPatterns
 {
     internal class Sequence : List<SequenceItem>
     {
+        public int Handicap { get; set; }
+
+
+        public Sequence(GameWrap game)
+        {
+            Handicap = game.Game.Info.Handicap;
+        }
+
+
         public GameWrap ToGame()
         {
             GameWrap game = new();

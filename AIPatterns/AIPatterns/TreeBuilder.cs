@@ -14,8 +14,35 @@ namespace AIPatterns
         {
             GameWrap game = new();
 
+            GoNode rootNode = game.Game.RootNode;
+
+            GoSetupNode[] handicapSetupNodes = new GoSetupNode[5];
+
+            handicapSetupNodes[0] = new(game.Game.RootNode);
+            rootNode.AddNode(handicapSetupNodes[0]);
+
+            handicapSetupNodes[2] = new(game.Game.RootNode);
+            handicapSetupNodes[2].AddStone(new Stone(6, 2, true));
+            handicapSetupNodes[2].AddStone(new Stone(2, 6, true));
+            rootNode.AddNode(handicapSetupNodes[2]);
+
+            handicapSetupNodes[3] = new(game.Game.RootNode);
+            handicapSetupNodes[3].AddStone(new Stone(2, 2, true));
+            handicapSetupNodes[3].AddStone(new Stone(6, 2, true));
+            handicapSetupNodes[3].AddStone(new Stone(2, 6, true));
+            rootNode.AddNode(handicapSetupNodes[3]);
+
+            handicapSetupNodes[4] = new(game.Game.RootNode);
+            handicapSetupNodes[4].AddStone(new Stone(2, 2, true));
+            handicapSetupNodes[4].AddStone(new Stone(6, 2, true));
+            handicapSetupNodes[4].AddStone(new Stone(2, 6, true));
+            handicapSetupNodes[4].AddStone(new Stone(6, 6, true));
+            rootNode.AddNode(handicapSetupNodes[4]);
+
             foreach (Sequence sequence in sequenceList)
             {
+                game.Game.ToMove(handicapSetupNodes[sequence.Handicap]);
+
                 SequenceItem lastItem = null;
                 foreach (SequenceItem item in sequence)
                 {
