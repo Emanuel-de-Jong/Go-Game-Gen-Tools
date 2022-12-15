@@ -66,6 +66,7 @@ namespace AIPatterns
                         game = GameUtils.Flip(game, false);
                     }
                     break;
+
                 case EState.W:
                     prevMove = GetNextMove(game);
                     move = GetNextMove(game);
@@ -75,15 +76,17 @@ namespace AIPatterns
                         if (move.Stone.Y > 4)
                         {
                             game = GameUtils.Flip(game, true);
+                            GetNextMove(game);
+                            move = GetNextMove(game);
                         }
 
                         if (move.Stone.X < 4)
                         {
                             game = GameUtils.Flip(game, false);
+                            GetNextMove(game);
+                            move = GetNextMove(game);
                         }
 
-                        GetNextMove(game);
-                        move = GetNextMove(game);
                         if (G.BOARD_SIZE_INDEX - move.Stone.X > move.Stone.Y)
                         {
                             game = GameUtils.Rotate(game);
@@ -99,6 +102,93 @@ namespace AIPatterns
                     {
                         game = GameUtils.Rotate(game);
                         game = GameUtils.Flip(game, false);
+                    }
+                    break;
+
+                case EState.BH:
+                    GetNextMove(game);
+
+                    if (sequence.Handicap == 2)
+                    {
+                        prevMove = GetNextMove(game);
+                        move = GetNextMove(game);
+                        if (G.BOARD_SIZE_INDEX - prevMove.Stone.X == prevMove.Stone.Y &&
+                            G.BOARD_SIZE_INDEX - move.Stone.X > move.Stone.Y)
+                        {
+                            game = GameUtils.Rotate(game);
+                            game = GameUtils.Flip(game, false);
+                        }
+
+                        if (prevMove.Stone.X == prevMove.Stone.Y &&
+                            move.Stone.X < move.Stone.Y)
+                        {
+                            game = GameUtils.Rotate(game);
+                            game = GameUtils.Flip(game, true);
+                        }
+                    }
+                    else if (sequence.Handicap == 3)
+                    {
+                        prevMove = GetNextMove(game);
+                        move = GetNextMove(game);
+                        if (prevMove.Stone.X == prevMove.Stone.Y &&
+                            move.Stone.X < move.Stone.Y)
+                        {
+                            game = GameUtils.Rotate(game);
+                            game = GameUtils.Flip(game, true);
+                        }
+                    }
+                    else if (sequence.Handicap == 4)
+                    {
+                        prevMove = GetNextMove(game);
+                        move = GetNextMove(game);
+                        if (prevMove.Stone.X == 4 && prevMove.Stone.Y == 4)
+                        {
+                            if (move.Stone.Y > 4)
+                            {
+                                game = GameUtils.Flip(game, true);
+                                GetNextMove(game);
+                                GetNextMove(game);
+                                move = GetNextMove(game);
+                            }
+
+                            if (move.Stone.X < 4)
+                            {
+                                game = GameUtils.Flip(game, false);
+                                GetNextMove(game);
+                                GetNextMove(game);
+                                move = GetNextMove(game);
+                            }
+
+                            if (G.BOARD_SIZE_INDEX - move.Stone.X > move.Stone.Y)
+                            {
+                                game = GameUtils.Rotate(game);
+                                game = GameUtils.Flip(game, false);
+                            }
+                        }
+                        else if (prevMove.Stone.Y == 4 && move.Stone.Y > 4)
+                        {
+                            game = GameUtils.Flip(game, true);
+                        }
+                        else if (G.BOARD_SIZE_INDEX - prevMove.Stone.X == prevMove.Stone.Y &&
+                            G.BOARD_SIZE_INDEX - move.Stone.X > move.Stone.Y)
+                        {
+                            game = GameUtils.Rotate(game);
+                            game = GameUtils.Flip(game, false);
+                        }
+                    }
+                    break;
+
+                case EState.WH:
+                    if (sequence.Handicap == 4)
+                    {
+                        GetNextMove(game);
+                        GetNextMove(game);
+                        prevMove = GetNextMove(game);
+                        move = GetNextMove(game);
+                        if (prevMove.Stone.Y == 4 && move.Stone.Y > 4)
+                        {
+                            game = GameUtils.Flip(game, true);
+                        }
                     }
                     break;
             }

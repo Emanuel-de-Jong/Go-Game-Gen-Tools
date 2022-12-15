@@ -186,8 +186,7 @@ namespace AIPatterns
         private static void AddMarkupLoop(GoNode node)
         {
             Comment comment = new(node);
-            node.Comment = "Count: " + comment.Count +
-                "\nNo pass: " + comment.NoPassCount;
+            node.Comment = "Count: " + comment.Count;
 
             List<KeyValuePair<GoMoveNode, Comment>> moveCounts = new();
             foreach (GoNode childNode in node.ChildNodes)
