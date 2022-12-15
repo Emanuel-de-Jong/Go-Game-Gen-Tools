@@ -39,7 +39,7 @@ namespace AIPatterns
 
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\";
             //CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-9x9-All", state);
-            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis-9x9-", state, 0.08f, 5);
+            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis-9x9-", state, 0.08f, 15);
         }
 
         void CreateFullSgf(SequenceList sequenceList, string savePath, EState state)
@@ -54,6 +54,8 @@ namespace AIPatterns
         {
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false, state);
 
+            TreeBuilder.KeepHighestCount(game.Game.RootNode, state);
+
             foreach (GoNode node in game.Game.RootNode.ChildNodes)
             {
                 GoSetupNode? setupNode = node as GoSetupNode;
@@ -63,9 +65,27 @@ namespace AIPatterns
                 switch (nodeState)
                 {
                     case EState.B:
-                        foreach (GoNode childNode in node.ChildNodes[0].ChildNodes)
+                        foreach (GoNode childNode in setupNode.ChildNodes[0].ChildNodes)
                         {
-                            TreeBuilder.KeepHighestCount(childNode);
+                            TreeBuilder.FilterByCount(childNode, maxDiff, min);
+                        }
+                        break;
+                    case EState.W:
+                        foreach (GoNode childNode in setupNode.ChildNodes)
+                        {
+                            TreeBuilder.FilterByCount(childNode, maxDiff, min);
+                        }
+                        break;
+                    case EState.BH:
+                        foreach (GoNode childNode in setupNode.ChildNodes)
+                        {
+                            TreeBuilder.FilterByCount(childNode, maxDiff, min);
+                        }
+                        break;
+                    case EState.WH:
+                        foreach (GoNode childNode in setupNode.ChildNodes[0].ChildNodes)
+                        {
+                            TreeBuilder.FilterByCount(childNode, maxDiff, min);
                         }
                         break;
                 }
@@ -74,9 +94,10 @@ namespace AIPatterns
             TreeBuilder.AddMarkup(game);
 
             game.SaveAsSgf(savePath +
-                "-" + state +
-                "-" + maxDiff +
-                "-" + min);
+                "-" + state
+                //"-" + maxDiff +
+                //"-" + min
+                );
         }
 
         void Test()

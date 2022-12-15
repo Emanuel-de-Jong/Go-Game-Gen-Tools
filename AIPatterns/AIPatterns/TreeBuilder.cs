@@ -85,35 +85,58 @@ namespace AIPatterns
             return game;
         }
 
-        public static void KeepHighestCount(GoNode node)
+        public static void KeepHighestCount(GoNode node, EState state)
         {
-            int highestCount = 0;
-            GoNode highestNode = null;
-            List<GoNode> nodesToRemove = new();
+            KeepHighestCountLoop(node, state);
+        }
+
+        public static void KeepHighestCountLoop(GoNode node, EState state)
+        {
+            bool isRightColor = false;
+            List<GoMoveNode> childMoves = new();
             foreach (GoNode childNode in node.ChildNodes)
             {
                 GoMoveNode? childMove = childNode as GoMoveNode;
                 if (childMove != null)
                 {
+                    if (childMove.Stone.IsBlack == (state == EState.B))
+                    {
+                        isRightColor = true;
+                    } else
+                    {
+                        break;
+                    }
+
+                    childMoves.Add(childMove);
+                }
+            }
+
+            if (isRightColor)
+            {
+                int highestCount = 0;
+                GoMoveNode highestNode = null;
+                foreach (GoMoveNode childMove in childMoves)
+                {
                     int count = Comment.GetCount(childMove);
                     if (highestCount < count)
                     {
                         highestCount = count;
-                        highestNode = childNode;
+                        highestNode = childMove;
+                    }
+                }
+
+                foreach (GoMoveNode childMove in childMoves)
+                {
+                    if (childMove != highestNode)
+                    {
+                        node.RemoveNode(childMove);
                     }
                 }
             }
 
-            foreach (GoNode childNode in new List<GoNode>(node.ChildNodes))
+            foreach (GoNode childNode in node.ChildNodes)
             {
-                GoMoveNode? childMove = childNode as GoMoveNode;
-                if (childMove != null)
-                {
-                    if (childNode != highestNode)
-                    {
-                        node.RemoveNode(childNode);
-                    }
-                }
+                KeepHighestCountLoop(childNode, state);
             }
         }
 
@@ -124,83 +147,29 @@ namespace AIPatterns
 
         private static void FilterByCountLoop(GoNode node, float maxDiff, int minCount)
         {
-            GoMoveNode childPass = null;
             List<GoMoveNode> childMoves = new();
             foreach (GoNode childNode in node.ChildNodes)
             {
                 GoMoveNode? childMove = childNode as GoMoveNode;
                 if (childMove != null)
                 {
-                    if (StoneUtils.IsPass(childMove))
-                    {
-                        childPass = childMove;
-                    } else
-                    {
-                        childMoves.Add(childMove);
-                    }
+                    childMoves.Add(childMove);
                 }
             }
-
-            int highestCount = Comment.GetCount(childPass);
-            foreach (GoMoveNode childMove in childMoves)
-            {
-                int count = Comment.GetCount(childMove);
-                if (highestCount < count)
-                {
-                    highestCount = count;
-                }
-            }
-
-            int localMinCount = Math.Max(minCount, (int)Math.Round(highestCount * maxDiff));
-
-            Comment comment = new(node);
-
-            bool overrulePass = false;
-            if (childPass != null)
-            {
-                bool hasStone = false;
-                foreach (GoMoveNode childMove in childMoves)
-                {
-                    int count = Comment.GetCount(childMove);
-                    if (count >= localMinCount || count > comment.PassCount)
-                    {
-                        hasStone = true;
-                        break;
-                    }
-                }
-
-                if (!hasStone && comment.NoPassCount > comment.PassCount)
-                {
-                    overrulePass = true;
-                }
-            }
-
-            bool isParentPass = false;
-            GoMoveNode? move = node as GoMoveNode;
-            if (move != null && StoneUtils.IsPass(move)) isParentPass = true;
 
             foreach (GoMoveNode childMove in childMoves)
             {
                 int count = Comment.GetCount(childMove);
-                if (count >= localMinCount) continue;
+                if (count >= minCount) continue;
 
                 bool removeChild = false;
-                if (isParentPass)
+                foreach (GoMoveNode childMove2 in childMoves)
                 {
-                    removeChild = true;
-                } else if (!overrulePass && count <= comment.PassCount)
-                {
-                    removeChild = true;
-                } else
-                {
-                    foreach (GoMoveNode childMove2 in childMoves)
+                    int count2 = Comment.GetCount(childMove2);
+                    if (count < count2)
                     {
-                        int count2 = Comment.GetCount(childMove2);
-                        if (count < count2)
-                        {
-                            removeChild = true;
-                            break;
-                        }
+                        removeChild = true;
+                        break;
                     }
                 }
 
