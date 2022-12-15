@@ -18,17 +18,17 @@ namespace AIPatterns
 
         SequenceList sequenceList = new();
 
-        public SequenceList Generate(string[] paths)
+        public SequenceList Generate(Dictionary<string, EState> paths)
         {
             sequenceList = new SequenceList();
 
-            foreach (string path in paths)
+            foreach (KeyValuePair<string, EState> entry in paths)
             {
-                string[] sgfPaths = Directory.GetFiles(path, "*.sgf", SearchOption.AllDirectories);
+                string[] sgfPaths = Directory.GetFiles(entry.Key, "*.sgf", SearchOption.AllDirectories);
                 foreach (string sgfPath in sgfPaths)
                 {
                     GameWrap game = GameUtils.OpenFile(sgfPath);
-                    AddSequencesFromGame(game);
+                    AddSequenceFromGame(game, entry.Value);
                 }
             }
 
@@ -40,17 +40,68 @@ namespace AIPatterns
             return sequenceList;
         }
 
-        void AddSequencesFromGame(GameWrap game)
+        void AddSequenceFromGame(GameWrap game, EState state)
         {
-            AddSequenceFromGame(game);
-        }
+            Sequence sequence = new(game);
 
-        void AddSequenceFromGame(GameWrap game)
-        {
-            // Check if first stone exists and is black
             game.ToStart();
-            GoMoveNode? move = GetNextMoveInRange(game);
-            if (move == null) return;
+
+            GoMoveNode? prevMove;
+            GoMoveNode? move;
+            switch (state)
+            {
+                case EState.B:
+                    for (int i = 0; i < 1; i++) game.ToNextMove();
+                    prevMove = GetNextMove(game);
+                    move = GetNextMove(game);
+
+                    if (prevMove.Stone.Y == 4 && move.Stone.Y > 4)
+                    {
+                        game = GameUtils.Flip(game, true);
+                    }
+                    else if (G.BOARD_SIZE_INDEX -  prevMove.Stone.X == prevMove.Stone.Y &&
+                        G.BOARD_SIZE_INDEX - move.Stone.X > move.Stone.Y)
+                    {
+                        game = GameUtils.Rotate(game);
+                        game = GameUtils.Flip(game, false);
+                    }
+                    break;
+                case EState.W:
+                    prevMove = GetNextMove(game);
+                    move = GetNextMove(game);
+
+                    if (prevMove.Stone.X == 4 && prevMove.Stone.Y == 4)
+                    {
+                        if (move.Stone.Y > 4)
+                        {
+                            game = GameUtils.Flip(game, true);
+                        }
+
+                        if (move.Stone.X < 4)
+                        {
+                            game = GameUtils.Flip(game, false);
+                        }
+
+                        GetNextMove(game);
+                        move = GetNextMove(game);
+                        if (G.BOARD_SIZE_INDEX - move.Stone.X > move.Stone.Y)
+                        {
+                            game = GameUtils.Rotate(game);
+                            game = GameUtils.Flip(game, false);
+                        }
+                    }
+                    else if (prevMove.Stone.Y == 4 && move.Stone.Y > 4)
+                    {
+                        game = GameUtils.Flip(game, true);
+                    }
+                    else if (G.BOARD_SIZE_INDEX - prevMove.Stone.X == prevMove.Stone.Y &&
+                        G.BOARD_SIZE_INDEX - move.Stone.X > move.Stone.Y)
+                    {
+                        game = GameUtils.Rotate(game);
+                        game = GameUtils.Flip(game, false);
+                    }
+                    break;
+            }
 
             // Find first non diagnally centered stone
             //game.ToStart();
@@ -68,23 +119,18 @@ namespace AIPatterns
             //    game = GameUtils.Flip(game, false);
             //}
 
-            Sequence sequence = new(game);
             game.ToStart();
             if (sequence.Handicap != 0) game.ToNextMove();
 
-            while (game.ToNextMove())
+            while ((move = GetNextMove(game)) != null)
             {
-                move = game.Game.CurrentNode as GoMoveNode;
-                if (move != null)
-                {
-                    sequence.Add(move, game);
-                }
+                sequence.Add(move, game);
             }
 
             sequenceList.Add(sequence);
         }
 
-        GoMoveNode? GetNextMoveInRange(GameWrap game)
+        GoMoveNode? GetNextMove(GameWrap game)
         {
             while (game.ToNextMove())
             {

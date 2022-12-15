@@ -34,6 +34,8 @@ namespace AIPatterns
             }
             while (oldGame.ToNextMove());
 
+            game.ToStart();
+
             return game;
         }
 
@@ -55,6 +57,8 @@ namespace AIPatterns
                 }
             }
             while (oldGame.ToNextMove());
+
+            game.ToStart();
 
             return game;
         }
