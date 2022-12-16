@@ -157,10 +157,22 @@ namespace AIPatterns
                 }
             }
 
+            int highestCount = 0;
             foreach (GoMoveNode childMove in childMoves)
             {
                 int count = Comment.GetCount(childMove);
-                if (count >= minCount) continue;
+                if (highestCount < count)
+                {
+                    highestCount = count;
+                }
+            }
+
+            int localMinCount = Math.Max(minCount, (int)Math.Round(highestCount * maxDiff));
+
+            foreach (GoMoveNode childMove in childMoves)
+            {
+                int count = Comment.GetCount(childMove);
+                if (count >= localMinCount) continue;
 
                 bool removeChild = false;
                 foreach (GoMoveNode childMove2 in childMoves)
