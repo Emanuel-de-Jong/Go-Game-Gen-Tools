@@ -1,1 +1,1 @@
-﻿Use maxDiff instead of min in FilterByCount
+﻿Right color after handicap for easier navigation in Sabaki
