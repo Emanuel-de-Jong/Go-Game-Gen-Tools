@@ -19,29 +19,29 @@ namespace AIPatterns
             GoSetupNode[] handicapSetupNodes = new GoSetupNode[5];
 
             handicapSetupNodes[0] = new(game.Game.RootNode);
-            handicapSetupNodes[0].Comment = state.ToString();
             rootNode.AddNode(handicapSetupNodes[0]);
+            game.SetupNodes.Add(handicapSetupNodes[0], state);
 
             handicapSetupNodes[2] = new(game.Game.RootNode);
-            handicapSetupNodes[2].Comment = state == EState.B ? EState.BH.ToString() : EState.WH.ToString();
             handicapSetupNodes[2].AddStone(new Stone(6, 2, true));
             handicapSetupNodes[2].AddStone(new Stone(2, 6, true));
             rootNode.AddNode(handicapSetupNodes[2]);
+            game.SetupNodes.Add(handicapSetupNodes[2], state == EState.B ? EState.BH : EState.WH);
 
             handicapSetupNodes[3] = new(game.Game.RootNode);
-            handicapSetupNodes[3].Comment = state == EState.B ? EState.BH.ToString() : EState.WH.ToString();
             handicapSetupNodes[3].AddStone(new Stone(2, 2, true));
             handicapSetupNodes[3].AddStone(new Stone(6, 2, true));
             handicapSetupNodes[3].AddStone(new Stone(2, 6, true));
             rootNode.AddNode(handicapSetupNodes[3]);
+            game.SetupNodes.Add(handicapSetupNodes[3], state == EState.B ? EState.BH : EState.WH);
 
             handicapSetupNodes[4] = new(game.Game.RootNode);
-            handicapSetupNodes[4].Comment = state == EState.B ? EState.BH.ToString() : EState.WH.ToString();
             handicapSetupNodes[4].AddStone(new Stone(2, 2, true));
             handicapSetupNodes[4].AddStone(new Stone(6, 2, true));
             handicapSetupNodes[4].AddStone(new Stone(2, 6, true));
             handicapSetupNodes[4].AddStone(new Stone(6, 6, true));
             rootNode.AddNode(handicapSetupNodes[4]);
+            game.SetupNodes.Add(handicapSetupNodes[4], state == EState.B ? EState.BH : EState.WH);
 
             foreach (Sequence sequence in sequenceList)
             {

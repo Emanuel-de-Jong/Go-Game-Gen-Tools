@@ -13,6 +13,7 @@ namespace AIPatterns
     internal class GameWrap
     {
         public GoGame Game { get; set; }
+        public Dictionary<GoSetupNode, EState> SetupNodes { get; set; } = new();
 
         public GameWrap()
         {

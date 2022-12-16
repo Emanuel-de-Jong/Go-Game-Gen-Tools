@@ -1,2 +1,1 @@
-﻿Fix bug SetupNode has comment overwritten
-Use maxDiff instead of min in FilterByCount
+﻿Use maxDiff instead of min in FilterByCount

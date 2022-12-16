@@ -38,7 +38,7 @@ namespace AIPatterns
             SequenceList sequenceList = sequenceGenerator.Generate(paths);
 
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI-Joseki\sgfs\";
-            //CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-9x9-All", state);
+            CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-9x9-All", state);
             CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis-9x9-", state, 0.08f, 30);
         }
 
@@ -61,8 +61,7 @@ namespace AIPatterns
                 GoSetupNode? setupNode = node as GoSetupNode;
                 if (setupNode == null) continue;
 
-                Enum.TryParse(setupNode.Comment, out EState nodeState);
-                switch (nodeState)
+                switch (game.SetupNodes[setupNode])
                 {
                     case EState.B:
                         foreach (GoNode childNode in setupNode.ChildNodes[0].ChildNodes)
