@@ -1,0 +1,1279 @@
+(;GM[1]FF[4]CA[UTF-8]SZ[9]KM[6.5]PW[white]PB[black]C[Count: 0](;C[Count: 0
+A: 138
+B: 122
+C: 120
+D: 117
+E: 113
+F: 105]LB[fe:A][gc:B][fd:C][ge:D][gd:E][ee:F](;B[fe]C[Count: 138
+A: 138]LB[de:A]
+;W[de]C[Count: 138
+A: 79
+B: 59]LB[eg:A][ec:B](;B[eg]C[Count: 79
+A: 79]LB[dc:A]
+;W[dc]C[Count: 79
+A: 32
+B: 25
+C: 22]LB[ed:A][cf:B][cg:C](;B[ed]C[Count: 32
+A: 32]LB[dd:A]
+;W[dd]C[Count: 32])
+(;B[cf]C[Count: 25
+A: 25]LB[ce:A]
+;W[ce]C[Count: 25])
+(;B[cg]C[Count: 22
+A: 16
+B: 6]LB[gc:A][cf:B](;W[gc]C[Count: 16])
+(;W[cf]C[Count: 6])
+)
+)
+(;B[ec]C[Count: 59
+A: 59]LB[dg:A]
+;W[dg]C[Count: 59
+A: 25
+B: 18
+C: 16]LB[ef:A][cc:B][cd:C](;B[ef]C[Count: 25
+A: 25]LB[df:A]
+;W[df]C[Count: 25])
+(;B[cc]C[Count: 18
+A: 12
+B: 6]LB[gg:A][cd:B](;W[gg]C[Count: 12])
+(;W[cd]C[Count: 6])
+)
+(;B[cd]C[Count: 16
+A: 16]LB[ce:A]
+;W[ce]C[Count: 16])
+)
+)
+(;B[gc]C[Count: 122
+A: 83
+B: 39]LB[fd:A][df:B](;W[fd]C[Count: 83
+A: 43
+B: 36
+C: 4]LB[dd:A][ff:B][df:C](;B[dd]C[Count: 43
+A: 35
+B: 8]LB[fc:A][ff:B](;W[fc]C[Count: 35
+A: 35]LB[ff:A]
+;B[ff]C[Count: 35
+A: 34
+B: 1]LB[gf:A][gd:B](;W[gf]C[Count: 34])
+(;W[gd]C[Count: 1])
+)
+(;W[ff]C[Count: 8
+A: 7
+B: 1]LB[fc:A][ef:B](;B[fc]C[Count: 7
+A: 7]LB[cf:A]
+;W[cf]C[Count: 7])
+(;B[ef]C[Count: 1
+A: 1]LB[eg:A]
+;W[eg]C[Count: 1])
+)
+)
+(;B[ff]C[Count: 36
+A: 27
+B: 9]LB[gd:A][dd:B](;W[gd]C[Count: 27
+A: 27]LB[dd:A]
+;B[dd]C[Count: 27
+A: 26
+B: 1]LB[dc:A][fc:B](;W[dc]C[Count: 26])
+(;W[fc]C[Count: 1])
+)
+(;W[dd]C[Count: 9
+A: 9]LB[gd:A]
+;B[gd]C[Count: 9
+A: 9]LB[dg:A]
+;W[dg]C[Count: 9])
+)
+(;B[df]C[Count: 4
+A: 3
+B: 1]LB[dd:A][ff:B](;W[dd]C[Count: 3
+A: 2
+B: 1]LB[gd:A][cd:B](;B[gd]C[Count: 2
+A: 2]LB[ff:A]
+;W[ff]C[Count: 2])
+(;B[cd]C[Count: 1
+A: 1]LB[cc:A]
+;W[cc]C[Count: 1])
+)
+(;W[ff]C[Count: 1
+A: 1]LB[fg:A]
+;B[fg]C[Count: 1
+A: 1]LB[gg:A]
+;W[gg]C[Count: 1])
+)
+)
+(;W[df]C[Count: 39
+A: 23
+B: 16]LB[ff:A][dd:B](;B[ff]C[Count: 23
+A: 22
+B: 1]LB[dd:A][dc:B](;W[dd]C[Count: 22
+A: 22]LB[be:A]
+;B[be]C[Count: 22
+A: 21
+B: 1]LB[ce:A][cd:B](;W[ce]C[Count: 21])
+(;W[cd]C[Count: 1])
+)
+(;W[dc]C[Count: 1
+A: 1]LB[cg:A]
+;B[cg]C[Count: 1
+A: 1]LB[fg:A]
+;W[fg]C[Count: 1])
+)
+(;B[dd]C[Count: 16
+A: 15
+B: 1]LB[ff:A][fe:B](;W[ff]C[Count: 15
+A: 15]LB[eh:A]
+;B[eh]C[Count: 15
+A: 14
+B: 1]LB[eg:A][fg:B](;W[eg]C[Count: 14])
+(;W[fg]C[Count: 1])
+)
+(;W[fe]C[Count: 1
+A: 1]LB[fg:A]
+;B[fg]C[Count: 1
+A: 1]LB[fc:A]
+;W[fc]C[Count: 1])
+)
+)
+)
+(;B[fd]C[Count: 120
+A: 120]LB[df:A]
+;W[df]C[Count: 120
+A: 65
+B: 53
+C: 1
+D: 1]LB[de:A][ef:B][ff:C][eg:D](;B[de]C[Count: 65
+A: 65]LB[ce:A]
+;W[ce]C[Count: 65
+A: 39
+B: 26]LB[ef:A][cd:B](;B[ef]C[Count: 39
+A: 39]LB[eg:A]
+;W[eg]C[Count: 39])
+(;B[cd]C[Count: 26
+A: 25
+B: 1]LB[cf:A][ee:B](;W[cf]C[Count: 25])
+(;W[ee]C[Count: 1])
+)
+)
+(;B[ef]C[Count: 53
+A: 53]LB[eg:A]
+;W[eg]C[Count: 53
+A: 31
+B: 21
+C: 1]LB[de:A][fg:B][dg:C](;B[de]C[Count: 31
+A: 31]LB[ce:A]
+;W[ce]C[Count: 31])
+(;B[fg]C[Count: 21
+A: 21]LB[dg:A]
+;W[dg]C[Count: 21])
+(;B[dg]C[Count: 1
+A: 1]LB[cg:A]
+;W[cg]C[Count: 1])
+)
+(;B[ff]C[Count: 1
+A: 1]LB[dd:A]
+;W[dd]C[Count: 1
+A: 1]LB[be:A]
+;B[be]C[Count: 1
+A: 1]LB[ce:A]
+;W[ce]C[Count: 1])
+(;B[eg]C[Count: 1
+A: 1]LB[dg:A]
+;W[dg]C[Count: 1
+A: 1]LB[ef:A]
+;B[ef]C[Count: 1
+A: 1]LB[dd:A]
+;W[dd]C[Count: 1])
+)
+(;B[ge]C[Count: 117
+A: 117]LB[de:A]
+;W[de]C[Count: 117
+A: 52
+B: 33
+C: 32]LB[ee:A][df:B][dd:C](;B[ee]C[Count: 52
+A: 34
+B: 18]LB[df:A][dd:B](;W[df]C[Count: 34
+A: 34]LB[dd:A]
+;B[dd]C[Count: 34
+A: 34]LB[cd:A]
+;W[cd]C[Count: 34])
+(;W[dd]C[Count: 18
+A: 18]LB[df:A]
+;B[df]C[Count: 18
+A: 18]LB[cf:A]
+;W[cf]C[Count: 18])
+)
+(;B[df]C[Count: 33
+A: 28
+B: 5]LB[ee:A][cf:B](;W[ee]C[Count: 28
+A: 19
+B: 9]LB[ef:A][ce:B](;B[ef]C[Count: 19
+A: 19]LB[fe:A]
+;W[fe]C[Count: 19])
+(;B[ce]C[Count: 9
+A: 9]LB[ef:A]
+;W[ef]C[Count: 9])
+)
+(;W[cf]C[Count: 5
+A: 5]LB[ee:A]
+;B[ee]C[Count: 5
+A: 4
+B: 1]LB[dd:A][ed:B](;W[dd]C[Count: 4])
+(;W[ed]C[Count: 1])
+)
+)
+(;B[dd]C[Count: 32
+A: 28
+B: 4]LB[ee:A][cd:B](;W[ee]C[Count: 28
+A: 19
+B: 5
+C: 4]LB[ed:A][cd:B][ce:C](;B[ed]C[Count: 19
+A: 19]LB[fe:A]
+;W[fe]C[Count: 19])
+(;B[cd]C[Count: 5
+A: 3
+B: 2]LB[ed:A][ce:B](;W[ed]C[Count: 3])
+(;W[ce]C[Count: 2])
+)
+(;B[ce]C[Count: 4
+A: 4]LB[ed:A]
+;W[ed]C[Count: 4])
+)
+(;W[cd]C[Count: 4
+A: 4]LB[ee:A]
+;B[ee]C[Count: 4
+A: 4]LB[df:A]
+;W[df]C[Count: 4])
+)
+)
+(;B[gd]C[Count: 113
+A: 62
+B: 21
+C: 16
+D: 10
+E: 2
+F: 2]LB[de:A][df:B][ed:C][dd:D][fe:E][ef:F](;W[de]C[Count: 62
+A: 52
+B: 6
+C: 2
+D: 2]LB[ff:A][fg:B][ef:C][dc:D](;B[ff]C[Count: 52
+A: 45
+B: 7]LB[eg:A][dg:B](;W[eg]C[Count: 45
+A: 24
+B: 9
+C: 8
+D: 3
+E: 1]LB[fg:A][cg:B][dc:C][cc:D][dd:E](;B[fg]C[Count: 24
+A: 24]LB[dc:A]
+;W[dc]C[Count: 24])
+(;B[cg]C[Count: 9
+A: 8
+B: 1]LB[dg:A][fg:B](;W[dg]C[Count: 8])
+(;W[fg]C[Count: 1])
+)
+(;B[dc]C[Count: 8
+A: 7
+B: 1]LB[fg:A][ed:B](;W[fg]C[Count: 7])
+(;W[ed]C[Count: 1])
+)
+(;B[cc]C[Count: 3
+A: 3]LB[fd:A]
+;W[fd]C[Count: 3])
+(;B[dd]C[Count: 1
+A: 1]LB[ee:A]
+;W[ee]C[Count: 1])
+)
+(;W[dg]C[Count: 7
+A: 4
+B: 3]LB[cc:A][eg:B](;B[cc]C[Count: 4
+A: 4]LB[fd:A]
+;W[fd]C[Count: 4])
+(;B[eg]C[Count: 3
+A: 2
+B: 1]LB[eh:A][fc:B](;W[eh]C[Count: 2])
+(;W[fc]C[Count: 1])
+)
+)
+)
+(;B[fg]C[Count: 6
+A: 5
+B: 1]LB[ff:A][fe:B](;W[ff]C[Count: 5
+A: 4
+B: 1]LB[ef:A][gf:B](;B[ef]C[Count: 4
+A: 4]LB[ee:A]
+;W[ee]C[Count: 4])
+(;B[gf]C[Count: 1
+A: 1]LB[gg:A]
+;W[gg]C[Count: 1])
+)
+(;W[fe]C[Count: 1
+A: 1]LB[ge:A]
+;B[ge]C[Count: 1
+A: 1]LB[fd:A]
+;W[fd]C[Count: 1])
+)
+(;B[ef]C[Count: 2
+A: 2]LB[cg:A]
+;W[cg]C[Count: 2
+A: 1
+B: 1]LB[dg:A][ec:B](;B[dg]C[Count: 1
+A: 1]LB[ee:A]
+;W[ee]C[Count: 1])
+(;B[ec]C[Count: 1
+A: 1]LB[dc:A]
+;W[dc]C[Count: 1])
+)
+(;B[dc]C[Count: 2
+A: 1
+B: 1]LB[fe:A][dg:B](;W[fe]C[Count: 1
+A: 1]LB[fd:A]
+;B[fd]C[Count: 1
+A: 1]LB[dg:A]
+;W[dg]C[Count: 1])
+(;W[dg]C[Count: 1
+A: 1]LB[eg:A]
+;B[eg]C[Count: 1
+A: 1]LB[fe:A]
+;W[fe]C[Count: 1])
+)
+)
+(;W[df]C[Count: 21
+A: 20
+B: 1]LB[ef:A][de:B](;B[ef]C[Count: 20
+A: 20]LB[de:A]
+;W[de]C[Count: 20
+A: 20]LB[dg:A]
+;B[dg]C[Count: 20
+A: 18
+B: 2]LB[ee:A][cg:B](;W[ee]C[Count: 18])
+(;W[cg]C[Count: 2])
+)
+(;B[de]C[Count: 1
+A: 1]LB[ef:A]
+;W[ef]C[Count: 1
+A: 1]LB[cf:A]
+;B[cf]C[Count: 1
+A: 1]LB[fd:A]
+;W[fd]C[Count: 1])
+)
+(;W[ed]C[Count: 16
+A: 9
+B: 6
+C: 1]LB[ff:A][df:B][ce:C](;B[ff]C[Count: 9
+A: 9]LB[ef:A]
+;W[ef]C[Count: 9
+A: 9]LB[fg:A]
+;B[fg]C[Count: 9
+A: 7
+B: 1
+C: 1]LB[cd:A][cf:B][gc:C](;W[cd]C[Count: 7])
+(;W[cf]C[Count: 1])
+(;W[gc]C[Count: 1])
+)
+(;B[df]C[Count: 6
+A: 5
+B: 1]LB[ef:A][fe:B](;W[ef]C[Count: 5
+A: 5]LB[de:A]
+;B[de]C[Count: 5
+A: 5]LB[ee:A]
+;W[ee]C[Count: 5])
+(;W[fe]C[Count: 1
+A: 1]LB[ge:A]
+;B[ge]C[Count: 1
+A: 1]LB[gf:A]
+;W[gf]C[Count: 1])
+)
+(;B[ce]C[Count: 1
+A: 1]LB[df:A]
+;W[df]C[Count: 1
+A: 1]LB[cf:A]
+;B[cf]C[Count: 1
+A: 1]LB[dg:A]
+;W[dg]C[Count: 1])
+)
+(;W[dd]C[Count: 10
+A: 8
+B: 2]LB[ef:A][df:B](;B[ef]C[Count: 8
+A: 7
+B: 1]LB[ec:A][cf:B](;W[ec]C[Count: 7
+A: 7]LB[fe:A]
+;B[fe]C[Count: 7
+A: 6
+B: 1]LB[cf:A][eh:B](;W[cf]C[Count: 6])
+(;W[eh]C[Count: 1])
+)
+(;W[cf]C[Count: 1
+A: 1]LB[cg:A]
+;B[cg]C[Count: 1
+A: 1]LB[fe:A]
+;W[fe]C[Count: 1])
+)
+(;B[df]C[Count: 2
+A: 2]LB[fe:A]
+;W[fe]C[Count: 2
+A: 2]LB[fd:A]
+;B[fd]C[Count: 2
+A: 2]LB[ed:A]
+;W[ed]C[Count: 2])
+)
+(;W[fe]C[Count: 2
+A: 1
+B: 1]LB[fd:A][ge:B](;B[fd]C[Count: 1
+A: 1]LB[de:A]
+;W[de]C[Count: 1
+A: 1]LB[ed:A]
+;B[ed]C[Count: 1
+A: 1]LB[cc:A]
+;W[cc]C[Count: 1])
+(;B[ge]C[Count: 1
+A: 1]LB[ff:A]
+;W[ff]C[Count: 1
+A: 1]LB[fd:A]
+;B[fd]C[Count: 1
+A: 1]LB[de:A]
+;W[de]C[Count: 1])
+)
+(;W[ef]C[Count: 2
+A: 1
+B: 1]LB[ed:A][dd:B](;B[ed]C[Count: 1
+A: 1]LB[cf:A]
+;W[cf]C[Count: 1
+A: 1]LB[cd:A]
+;B[cd]C[Count: 1
+A: 1]LB[gf:A]
+;W[gf]C[Count: 1])
+(;B[dd]C[Count: 1
+A: 1]LB[gf:A]
+;W[gf]C[Count: 1
+A: 1]LB[ce:A]
+;B[ce]C[Count: 1
+A: 1]LB[cg:A]
+;W[cg]C[Count: 1])
+)
+)
+(;B[ee]C[Count: 105
+A: 105]LB[gd:A]
+;W[gd]C[Count: 105
+A: 56
+B: 49]LB[fc:A][ec:B](;B[fc]C[Count: 56
+A: 56]LB[gf:A]
+;W[gf]C[Count: 56
+A: 56]LB[cf:A]
+;B[cf]C[Count: 56
+A: 56]LB[cc:A]
+;W[cc]C[Count: 56])
+(;B[ec]C[Count: 49
+A: 49]LB[gf:A]
+;W[gf]C[Count: 49
+A: 45
+B: 4]LB[dg:A][cf:B](;B[dg]C[Count: 45
+A: 44
+B: 1]LB[cf:A][dd:B](;W[cf]C[Count: 44])
+(;W[dd]C[Count: 1])
+)
+(;B[cf]C[Count: 4
+A: 4]LB[eg:A]
+;W[eg]C[Count: 4])
+)
+)
+)
+(;AB[cg][gc]C[Count: 0
+A: 230]LB[fd:A]
+;W[fd]C[Count: 230
+A: 43
+B: 42
+C: 40
+D: 39
+E: 34
+F: 32]LB[fg:A][ef:B][he:C][gf:D][gd:E][ff:F](;B[fg]C[Count: 43
+A: 43]LB[df:A]
+;W[df]C[Count: 43
+A: 26
+B: 12
+C: 5]LB[fc:A][gd:B][dg:C](;B[fc]C[Count: 26
+A: 26]LB[dg:A]
+;W[dg]C[Count: 26
+A: 26]LB[dd:A]
+;B[dd]C[Count: 26])
+(;B[gd]C[Count: 12
+A: 8
+B: 4]LB[ge:A][ff:B](;W[ge]C[Count: 8
+A: 8]LB[fe:A]
+;B[fe]C[Count: 8])
+(;W[ff]C[Count: 4
+A: 4]LB[gf:A]
+;B[gf]C[Count: 4])
+)
+(;B[dg]C[Count: 5
+A: 5]LB[fc:A]
+;W[fc]C[Count: 5
+A: 5]LB[gd:A]
+;B[gd]C[Count: 5])
+)
+(;B[ef]C[Count: 42
+A: 18
+B: 14
+C: 5
+D: 4
+E: 1]LB[dd:A][gd:B][fc:C][dc:D][ff:E](;W[dd]C[Count: 18
+A: 12
+B: 6]LB[gf:A][gd:B](;B[gf]C[Count: 12
+A: 12]LB[gd:A]
+;W[gd]C[Count: 12
+A: 12]LB[hd:A]
+;B[hd]C[Count: 12])
+(;B[gd]C[Count: 6
+A: 6]LB[ff:A]
+;W[ff]C[Count: 6
+A: 6]LB[fg:A]
+;B[fg]C[Count: 6])
+)
+(;W[gd]C[Count: 14
+A: 9
+B: 3
+C: 2]LB[dd:A][fc:B][dc:C](;B[dd]C[Count: 9
+A: 9]LB[df:A]
+;W[df]C[Count: 9
+A: 9]LB[fc:A]
+;B[fc]C[Count: 9])
+(;B[fc]C[Count: 3
+A: 3]LB[dc:A]
+;W[dc]C[Count: 3
+A: 3]LB[db:A]
+;B[db]C[Count: 3])
+(;B[dc]C[Count: 2
+A: 2]LB[fc:A]
+;W[fc]C[Count: 2
+A: 2]LB[dd:A]
+;B[dd]C[Count: 2])
+)
+(;W[fc]C[Count: 5
+A: 5]LB[gf:A]
+;B[gf]C[Count: 5
+A: 5]LB[ge:A]
+;W[ge]C[Count: 5
+A: 5]LB[he:A]
+;B[he]C[Count: 5])
+(;W[dc]C[Count: 4
+A: 2
+B: 2]LB[gd:A][fc:B](;B[gd]C[Count: 2
+A: 2]LB[fe:A]
+;W[fe]C[Count: 2
+A: 2]LB[hf:A]
+;B[hf]C[Count: 2])
+(;B[fc]C[Count: 2
+A: 2]LB[gd:A]
+;W[gd]C[Count: 2
+A: 2]LB[db:A]
+;B[db]C[Count: 2])
+)
+(;W[ff]C[Count: 1
+A: 1]LB[fc:A]
+;B[fc]C[Count: 1
+A: 1]LB[dd:A]
+;W[dd]C[Count: 1
+A: 1]LB[fg:A]
+;B[fg]C[Count: 1])
+)
+(;B[he]C[Count: 40
+A: 40]LB[fc:A]
+;W[fc]C[Count: 40
+A: 21
+B: 18
+C: 1]LB[gb:A][ff:B][dd:C](;B[gb]C[Count: 21
+A: 13
+B: 5
+C: 3]LB[gf:A][de:B][df:C](;W[gf]C[Count: 13
+A: 9
+B: 4]LB[de:A][ge:B](;B[de]C[Count: 9])
+(;B[ge]C[Count: 4])
+)
+(;W[de]C[Count: 5
+A: 5]LB[df:A]
+;B[df]C[Count: 5])
+(;W[df]C[Count: 3
+A: 3]LB[cf:A]
+;B[cf]C[Count: 3])
+)
+(;B[ff]C[Count: 18
+A: 17
+B: 1]LB[ef:A][gd:B](;W[ef]C[Count: 17
+A: 12
+B: 5]LB[ee:A][ce:B](;B[ee]C[Count: 12])
+(;B[ce]C[Count: 5])
+)
+(;W[gd]C[Count: 1
+A: 1]LB[hd:A]
+;B[hd]C[Count: 1])
+)
+(;B[dd]C[Count: 1
+A: 1]LB[gd:A]
+;W[gd]C[Count: 1
+A: 1]LB[hd:A]
+;B[hd]C[Count: 1])
+)
+(;B[gf]C[Count: 39
+A: 39]LB[df:A]
+;W[df]C[Count: 39
+A: 31
+B: 6
+C: 2]LB[cf:A][dg:B][gd:C](;B[cf]C[Count: 31
+A: 31]LB[gd:A]
+;W[gd]C[Count: 31
+A: 31]LB[dd:A]
+;B[dd]C[Count: 31])
+(;B[dg]C[Count: 6
+A: 3
+B: 2
+C: 1]LB[eg:A][gd:B][ff:C](;W[eg]C[Count: 3
+A: 3]LB[ef:A]
+;B[ef]C[Count: 3])
+(;W[gd]C[Count: 2
+A: 2]LB[fc:A]
+;B[fc]C[Count: 2])
+(;W[ff]C[Count: 1
+A: 1]LB[fg:A]
+;B[fg]C[Count: 1])
+)
+(;B[gd]C[Count: 2
+A: 2]LB[cf:A]
+;W[cf]C[Count: 2
+A: 2]LB[dg:A]
+;B[dg]C[Count: 2])
+)
+(;B[gd]C[Count: 34
+A: 32
+B: 2]LB[fe:A][ff:B](;W[fe]C[Count: 32
+A: 18
+B: 14]LB[eb:A][ge:B](;B[eb]C[Count: 18
+A: 18]LB[dc:A]
+;W[dc]C[Count: 18
+A: 18]LB[de:A]
+;B[de]C[Count: 18])
+(;B[ge]C[Count: 14
+A: 10
+B: 4]LB[ff:A][de:B](;W[ff]C[Count: 10
+A: 10]LB[dd:A]
+;B[dd]C[Count: 10])
+(;W[de]C[Count: 4
+A: 4]LB[ff:A]
+;B[ff]C[Count: 4])
+)
+)
+(;W[ff]C[Count: 2
+A: 2]LB[dd:A]
+;B[dd]C[Count: 2
+A: 2]LB[fc:A]
+;W[fc]C[Count: 2
+A: 2]LB[gf:A]
+;B[gf]C[Count: 2])
+)
+(;B[ff]C[Count: 32
+A: 32]LB[gd:A]
+;W[gd]C[Count: 32
+A: 18
+B: 14]LB[fc:A][dc:B](;B[fc]C[Count: 18
+A: 18]LB[ed:A]
+;W[ed]C[Count: 18
+A: 18]LB[dc:A]
+;B[dc]C[Count: 18])
+(;B[dc]C[Count: 14
+A: 10
+B: 2
+C: 2]LB[eb:A][dd:B][ee:C](;W[eb]C[Count: 10
+A: 9
+B: 1]LB[fc:A][ee:B](;B[fc]C[Count: 9])
+(;B[ee]C[Count: 1])
+)
+(;W[dd]C[Count: 2
+A: 2]LB[fc:A]
+;B[fc]C[Count: 2])
+(;W[ee]C[Count: 2
+A: 2]LB[fc:A]
+;B[fc]C[Count: 2])
+)
+)
+)
+(;AB[cc][cg][gc]C[Count: 0
+A: 232]LB[fe:A]
+;W[fe]C[Count: 232
+A: 48
+B: 47
+C: 41
+D: 36
+E: 31
+F: 29]LB[gf:A][ed:B][ge:C][fd:D][ff:E][fg:F](;B[gf]C[Count: 48
+A: 30
+B: 18]LB[dd:A][df:B](;W[dd]C[Count: 30
+A: 20
+B: 9
+C: 1]LB[ff:A][ge:B][cd:C](;B[ff]C[Count: 20
+A: 15
+B: 4
+C: 1]LB[df:A][eb:B][dc:C](;W[df]C[Count: 15
+A: 14
+B: 1]LB[cd:A][ee:B](;B[cd]C[Count: 14])
+(;B[ee]C[Count: 1])
+)
+(;W[eb]C[Count: 4
+A: 4]LB[cd:A]
+;B[cd]C[Count: 4])
+(;W[dc]C[Count: 1
+A: 1]LB[df:A]
+;B[df]C[Count: 1])
+)
+(;B[ge]C[Count: 9
+A: 8
+B: 1]LB[cd:A][ce:B](;W[cd]C[Count: 8
+A: 8]LB[df:A]
+;B[df]C[Count: 8])
+(;W[ce]C[Count: 1
+A: 1]LB[be:A]
+;B[be]C[Count: 1])
+)
+(;B[cd]C[Count: 1
+A: 1]LB[ge:A]
+;W[ge]C[Count: 1
+A: 1]LB[he:A]
+;B[he]C[Count: 1])
+)
+(;W[df]C[Count: 18
+A: 10
+B: 8]LB[ff:A][cf:B](;B[ff]C[Count: 10
+A: 10]LB[dd:A]
+;W[dd]C[Count: 10
+A: 8
+B: 2]LB[cd:A][ee:B](;B[cd]C[Count: 8])
+(;B[ee]C[Count: 2])
+)
+(;B[cf]C[Count: 8
+A: 8]LB[de:A]
+;W[de]C[Count: 8
+A: 8]LB[cd:A]
+;B[cd]C[Count: 8])
+)
+)
+(;B[ed]C[Count: 47
+A: 47]LB[ee:A]
+;W[ee]C[Count: 47
+A: 25
+B: 21
+C: 1]LB[fg:A][dd:B][eg:C](;B[fg]C[Count: 25
+A: 25]LB[eg:A]
+;W[eg]C[Count: 25
+A: 25]LB[eh:A]
+;B[eh]C[Count: 25])
+(;B[dd]C[Count: 21
+A: 21]LB[gd:A]
+;W[gd]C[Count: 21
+A: 20
+B: 1]LB[hd:A][fd:B](;B[hd]C[Count: 20])
+(;B[fd]C[Count: 1])
+)
+(;B[eg]C[Count: 1
+A: 1]LB[df:A]
+;W[df]C[Count: 1
+A: 1]LB[fh:A]
+;B[fh]C[Count: 1])
+)
+(;B[ge]C[Count: 41
+A: 28
+B: 7
+C: 6]LB[dg:A][fd:B][gf:C](;W[dg]C[Count: 28
+A: 15
+B: 13]LB[ff:A][df:B](;B[ff]C[Count: 15
+A: 15]LB[de:A]
+;W[de]C[Count: 15
+A: 12
+B: 3]LB[cf:A][eg:B](;B[cf]C[Count: 12])
+(;B[eg]C[Count: 3])
+)
+(;B[df]C[Count: 13
+A: 13]LB[eg:A]
+;W[eg]C[Count: 13
+A: 13]LB[gf:A]
+;B[gf]C[Count: 13])
+)
+(;W[fd]C[Count: 7
+A: 5
+B: 2]LB[gf:A][gd:B](;B[gf]C[Count: 5
+A: 3
+B: 2]LB[de:A][gd:B](;W[de]C[Count: 3
+A: 3]LB[ce:A]
+;B[ce]C[Count: 3])
+(;W[gd]C[Count: 2
+A: 2]LB[ff:A]
+;B[ff]C[Count: 2])
+)
+(;B[gd]C[Count: 2
+A: 2]LB[ff:A]
+;W[ff]C[Count: 2
+A: 2]LB[gf:A]
+;B[gf]C[Count: 2])
+)
+(;W[gf]C[Count: 6
+A: 6]LB[ff:A]
+;B[ff]C[Count: 6
+A: 3
+B: 3]LB[gd:A][ef:B](;W[gd]C[Count: 3
+A: 3]LB[he:A]
+;B[he]C[Count: 3])
+(;W[ef]C[Count: 3
+A: 3]LB[fg:A]
+;B[fg]C[Count: 3])
+)
+)
+(;B[fd]C[Count: 36
+A: 21
+B: 15]LB[df:A][ge:B](;W[df]C[Count: 21
+A: 11
+B: 7
+C: 2
+D: 1]LB[dg:A][ge:B][fg:C][ee:D](;B[dg]C[Count: 11
+A: 9
+B: 2]LB[ed:A][dd:B](;W[ed]C[Count: 9
+A: 9]LB[ec:A]
+;B[ec]C[Count: 9])
+(;W[dd]C[Count: 2
+A: 2]LB[fg:A]
+;B[fg]C[Count: 2])
+)
+(;B[ge]C[Count: 7
+A: 6
+B: 1]LB[cf:A][cd:B](;W[cf]C[Count: 6
+A: 6]LB[fg:A]
+;B[fg]C[Count: 6])
+(;W[cd]C[Count: 1
+A: 1]LB[dd:A]
+;B[dd]C[Count: 1])
+)
+(;B[fg]C[Count: 2
+A: 1
+B: 1]LB[ff:A][ed:B](;W[ff]C[Count: 1
+A: 1]LB[eh:A]
+;B[eh]C[Count: 1])
+(;W[ed]C[Count: 1
+A: 1]LB[ge:A]
+;B[ge]C[Count: 1])
+)
+(;B[ee]C[Count: 1
+A: 1]LB[eg:A]
+;W[eg]C[Count: 1
+A: 1]LB[fg:A]
+;B[fg]C[Count: 1])
+)
+(;W[ge]C[Count: 15
+A: 8
+B: 7]LB[fg:A][ee:B](;B[fg]C[Count: 8
+A: 7
+B: 1]LB[ed:A][dd:B](;W[ed]C[Count: 7
+A: 7]LB[ec:A]
+;B[ec]C[Count: 7])
+(;W[dd]C[Count: 1
+A: 1]LB[dc:A]
+;B[dc]C[Count: 1])
+)
+(;B[ee]C[Count: 7
+A: 7]LB[ef:A]
+;W[ef]C[Count: 7
+A: 7]LB[de:A]
+;B[de]C[Count: 7])
+)
+)
+(;B[ff]C[Count: 31
+A: 13
+B: 11
+C: 6
+D: 1]LB[ee:A][ef:B][gf:C][ge:D](;W[ee]C[Count: 13
+A: 10
+B: 3]LB[gf:A][ge:B](;B[gf]C[Count: 10
+A: 7
+B: 3]LB[ef:A][cd:B](;W[ef]C[Count: 7
+A: 6
+B: 1]LB[ge:A][eg:B](;B[ge]C[Count: 6])
+(;B[eg]C[Count: 1])
+)
+(;W[cd]C[Count: 3
+A: 3]LB[ce:A]
+;B[ce]C[Count: 3])
+)
+(;B[ge]C[Count: 3
+A: 3]LB[ef:A]
+;W[ef]C[Count: 3
+A: 3]LB[gf:A]
+;B[gf]C[Count: 3])
+)
+(;W[ef]C[Count: 11
+A: 7
+B: 3
+C: 1]LB[ee:A][fg:B][gf:C](;B[ee]C[Count: 7
+A: 5
+B: 2]LB[eg:A][ge:B](;W[eg]C[Count: 5
+A: 3
+B: 2]LB[fg:A][gf:B](;B[fg]C[Count: 3])
+(;B[gf]C[Count: 2])
+)
+(;W[ge]C[Count: 2
+A: 1
+B: 1]LB[fg:A][gf:B](;B[fg]C[Count: 1])
+(;B[gf]C[Count: 1])
+)
+)
+(;B[fg]C[Count: 3
+A: 2
+B: 1]LB[fd:A][dd:B](;W[fd]C[Count: 2
+A: 2]LB[fc:A]
+;B[fc]C[Count: 2])
+(;W[dd]C[Count: 1
+A: 1]LB[fd:A]
+;B[fd]C[Count: 1])
+)
+(;B[gf]C[Count: 1
+A: 1]LB[dd:A]
+;W[dd]C[Count: 1
+A: 1]LB[df:A]
+;B[df]C[Count: 1])
+)
+(;W[gf]C[Count: 6
+A: 3
+B: 2
+C: 1]LB[ge:A][gg:B][fd:C](;B[ge]C[Count: 3
+A: 2
+B: 1]LB[gd:A][ef:B](;W[gd]C[Count: 2
+A: 2]LB[he:A]
+;B[he]C[Count: 2])
+(;W[ef]C[Count: 1
+A: 1]LB[fg:A]
+;B[fg]C[Count: 1])
+)
+(;B[gg]C[Count: 2
+A: 2]LB[ef:A]
+;W[ef]C[Count: 2
+A: 2]LB[fg:A]
+;B[fg]C[Count: 2])
+(;B[fd]C[Count: 1
+A: 1]LB[ge:A]
+;W[ge]C[Count: 1
+A: 1]LB[ee:A]
+;B[ee]C[Count: 1])
+)
+(;W[ge]C[Count: 1
+A: 1]LB[gf:A]
+;B[gf]C[Count: 1
+A: 1]LB[hf:A]
+;W[hf]C[Count: 1
+A: 1]LB[df:A]
+;B[df]C[Count: 1])
+)
+(;B[fg]C[Count: 29
+A: 19
+B: 6
+C: 4]LB[ef:A][gg:B][df:C](;W[ef]C[Count: 19
+A: 15
+B: 3
+C: 1]LB[eg:A][ed:B][ge:C](;B[eg]C[Count: 15
+A: 14
+B: 1]LB[df:A][fc:B](;W[df]C[Count: 14
+A: 14]LB[ed:A]
+;B[ed]C[Count: 14])
+(;W[fc]C[Count: 1
+A: 1]LB[fb:A]
+;B[fb]C[Count: 1])
+)
+(;B[ed]C[Count: 3
+A: 3]LB[eg:A]
+;W[eg]C[Count: 3
+A: 3]LB[eh:A]
+;B[eh]C[Count: 3])
+(;B[ge]C[Count: 1
+A: 1]LB[gf:A]
+;W[gf]C[Count: 1
+A: 1]LB[ff:A]
+;B[ff]C[Count: 1])
+)
+(;W[gg]C[Count: 6
+A: 3
+B: 2
+C: 1]LB[ff:A][ed:B][gh:C](;B[ff]C[Count: 3
+A: 3]LB[gf:A]
+;W[gf]C[Count: 3
+A: 3]LB[ge:A]
+;B[ge]C[Count: 3])
+(;B[ed]C[Count: 2
+A: 2]LB[ee:A]
+;W[ee]C[Count: 2
+A: 2]LB[gh:A]
+;B[gh]C[Count: 2])
+(;B[gh]C[Count: 1
+A: 1]LB[ff:A]
+;W[ff]C[Count: 1
+A: 1]LB[eg:A]
+;B[eg]C[Count: 1])
+)
+(;W[df]C[Count: 4
+A: 2
+B: 2]LB[dg:A][ed:B](;B[dg]C[Count: 2
+A: 1
+B: 1]LB[gg:A][fc:B](;W[gg]C[Count: 1
+A: 1]LB[ff:A]
+;B[ff]C[Count: 1])
+(;W[fc]C[Count: 1
+A: 1]LB[fb:A]
+;B[fb]C[Count: 1])
+)
+(;B[ed]C[Count: 2
+A: 2]LB[ff:A]
+;W[ff]C[Count: 2
+A: 2]LB[eh:A]
+;B[eh]C[Count: 2])
+)
+)
+)
+(;AB[cc][cg][gc][gg]C[Count: 0
+A: 244]LB[ge:A]
+;W[ge]C[Count: 244
+A: 44
+B: 43
+C: 42
+D: 40
+E: 38
+F: 37]LB[ee:A][ce:B][ed:C][dd:D][gd:E][ec:F](;B[ee]C[Count: 44
+A: 44]LB[dd:A]
+;W[dd]C[Count: 44
+A: 17
+B: 13
+C: 5
+D: 5
+E: 4]LB[cd:A][fc:B][fd:C][eb:D][dc:E](;B[cd]C[Count: 17
+A: 15
+B: 2]LB[de:A][dg:B](;W[de]C[Count: 15
+A: 15]LB[ef:A]
+;B[ef]C[Count: 15])
+(;W[dg]C[Count: 2
+A: 2]LB[df:A]
+;B[df]C[Count: 2])
+)
+(;B[fc]C[Count: 13
+A: 13]LB[eg:A]
+;W[eg]C[Count: 13
+A: 10
+B: 2
+C: 1]LB[df:A][ff:B][cf:C](;B[df]C[Count: 10])
+(;B[ff]C[Count: 2])
+(;B[cf]C[Count: 1])
+)
+(;B[fd]C[Count: 5
+A: 4
+B: 1]LB[cd:A][hc:B](;W[cd]C[Count: 4
+A: 4]LB[dc:A]
+;B[dc]C[Count: 4])
+(;W[hc]C[Count: 1
+A: 1]LB[fb:A]
+;B[fb]C[Count: 1])
+)
+(;B[eb]C[Count: 5
+A: 5]LB[cd:A]
+;W[cd]C[Count: 5
+A: 5]LB[bc:A]
+;B[bc]C[Count: 5])
+(;B[dc]C[Count: 4
+A: 4]LB[ed:A]
+;W[ed]C[Count: 4
+A: 4]LB[fe:A]
+;B[fe]C[Count: 4])
+)
+(;B[ce]C[Count: 43
+A: 43]LB[dd:A]
+;W[dd]C[Count: 43
+A: 33
+B: 9
+C: 1]LB[dc:A][fd:B][fc:C](;B[dc]C[Count: 33
+A: 32
+B: 1]LB[ec:A][fg:B](;W[ec]C[Count: 32
+A: 32]LB[eb:A]
+;B[eb]C[Count: 32])
+(;W[fg]C[Count: 1
+A: 1]LB[gf:A]
+;B[gf]C[Count: 1])
+)
+(;B[fd]C[Count: 9
+A: 6
+B: 3]LB[fg:A][fe:B](;W[fg]C[Count: 6
+A: 6]LB[fh:A]
+;B[fh]C[Count: 6])
+(;W[fe]C[Count: 3
+A: 3]LB[ee:A]
+;B[ee]C[Count: 3])
+)
+(;B[fc]C[Count: 1
+A: 1]LB[cd:A]
+;W[cd]C[Count: 1
+A: 1]LB[de:A]
+;B[de]C[Count: 1])
+)
+(;B[ed]C[Count: 42
+A: 42]LB[dd:A]
+;W[dd]C[Count: 42
+A: 37
+B: 3
+C: 1
+D: 1]LB[dc:A][ec:B][de:C][ee:D](;B[dc]C[Count: 37
+A: 37]LB[dg:A]
+;W[dg]C[Count: 37
+A: 37]LB[df:A]
+;B[df]C[Count: 37])
+(;B[ec]C[Count: 3
+A: 2
+B: 1]LB[dc:A][fg:B](;W[dc]C[Count: 2
+A: 2]LB[de:A]
+;B[de]C[Count: 2])
+(;W[fg]C[Count: 1
+A: 1]LB[fh:A]
+;B[fh]C[Count: 1])
+)
+(;B[de]C[Count: 1
+A: 1]LB[fd:A]
+;W[fd]C[Count: 1
+A: 1]LB[fe:A]
+;B[fe]C[Count: 1])
+(;B[ee]C[Count: 1
+A: 1]LB[dc:A]
+;W[dc]C[Count: 1
+A: 1]LB[cd:A]
+;B[cd]C[Count: 1])
+)
+(;B[dd]C[Count: 40
+A: 40]LB[dg:A]
+;W[dg]C[Count: 40
+A: 23
+B: 17]LB[eg:A][df:B](;B[eg]C[Count: 23
+A: 20
+B: 3]LB[hg:A][hc:B](;W[hg]C[Count: 20
+A: 11
+B: 9]LB[gf:A][fh:B](;B[gf]C[Count: 11])
+(;B[fh]C[Count: 9])
+)
+(;W[hc]C[Count: 3
+A: 3]LB[hb:A]
+;B[hb]C[Count: 3])
+)
+(;B[df]C[Count: 17
+A: 15
+B: 2]LB[hc:A][gd:B](;W[hc]C[Count: 15
+A: 12
+B: 3]LB[hb:A][gf:B](;B[hb]C[Count: 12])
+(;B[gf]C[Count: 3])
+)
+(;W[gd]C[Count: 2
+A: 2]LB[fc:A]
+;B[fc]C[Count: 2])
+)
+)
+(;B[gd]C[Count: 38
+A: 21
+B: 14
+C: 3]LB[cd:A][fg:B][eg:C](;W[cd]C[Count: 21
+A: 15
+B: 6]LB[dd:A][dc:B](;B[dd]C[Count: 15
+A: 11
+B: 4]LB[fg:A][dc:B](;W[fg]C[Count: 11
+A: 11]LB[gf:A]
+;B[gf]C[Count: 11])
+(;W[dc]C[Count: 4
+A: 4]LB[de:A]
+;B[de]C[Count: 4])
+)
+(;B[dc]C[Count: 6
+A: 6]LB[fg:A]
+;W[fg]C[Count: 6
+A: 4
+B: 2]LB[ff:A][gf:B](;B[ff]C[Count: 4])
+(;B[gf]C[Count: 2])
+)
+)
+(;W[fg]C[Count: 14
+A: 7
+B: 7]LB[gf:A][ff:B](;B[gf]C[Count: 7
+A: 5
+B: 1
+C: 1]LB[cf:A][fe:B][cd:C](;W[cf]C[Count: 5
+A: 5]LB[dg:A]
+;B[dg]C[Count: 5])
+(;W[fe]C[Count: 1
+A: 1]LB[he:A]
+;B[he]C[Count: 1])
+(;W[cd]C[Count: 1
+A: 1]LB[dd:A]
+;B[dd]C[Count: 1])
+)
+(;B[ff]C[Count: 7
+A: 4
+B: 3]LB[cd:A][ef:B](;W[cd]C[Count: 4
+A: 4]LB[dc:A]
+;B[dc]C[Count: 4])
+(;W[ef]C[Count: 3
+A: 2
+B: 1]LB[gf:A][eg:B](;B[gf]C[Count: 2])
+(;B[eg]C[Count: 1])
+)
+)
+)
+(;W[eg]C[Count: 3
+A: 2
+B: 1]LB[fg:A][df:B](;B[fg]C[Count: 2
+A: 1
+B: 1]LB[fd:A][ee:B](;W[fd]C[Count: 1
+A: 1]LB[fc:A]
+;B[fc]C[Count: 1])
+(;W[ee]C[Count: 1
+A: 1]LB[eh:A]
+;B[eh]C[Count: 1])
+)
+(;B[df]C[Count: 1
+A: 1]LB[dc:A]
+;W[dc]C[Count: 1
+A: 1]LB[dd:A]
+;B[dd]C[Count: 1])
+)
+)
+(;B[ec]C[Count: 37
+A: 37]LB[dd:A]
+;W[dd]C[Count: 37
+A: 22
+B: 12
+C: 2
+D: 1]LB[ed:A][df:B][ef:C][cd:D](;B[ed]C[Count: 22
+A: 12
+B: 8
+C: 2]LB[fg:A][dc:B][cd:C](;W[fg]C[Count: 12
+A: 11
+B: 1]LB[fh:A][gh:B](;B[fh]C[Count: 11])
+(;B[gh]C[Count: 1])
+)
+(;W[dc]C[Count: 8
+A: 8]LB[de:A]
+;B[de]C[Count: 8])
+(;W[cd]C[Count: 2
+A: 2]LB[de:A]
+;B[de]C[Count: 2])
+)
+(;B[df]C[Count: 12
+A: 11
+B: 1]LB[dc:A][hg:B](;W[dc]C[Count: 11
+A: 11]LB[db:A]
+;B[db]C[Count: 11])
+(;W[hg]C[Count: 1
+A: 1]LB[gf:A]
+;B[gf]C[Count: 1])
+)
+(;B[ef]C[Count: 2
+A: 2]LB[dc:A]
+;W[dc]C[Count: 2
+A: 2]LB[eb:A]
+;B[eb]C[Count: 2])
+(;B[cd]C[Count: 1
+A: 1]LB[dc:A]
+;W[dc]C[Count: 1
+A: 1]LB[de:A]
+;B[de]C[Count: 1])
+)
+)
+)
