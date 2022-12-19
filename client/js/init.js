@@ -2,6 +2,8 @@ var init = {};
 
 
 init.init = async function() {
+	// alert("Start");
+
 	init.restartButton = document.getElementById("restart");
 
 	init.restartButton.addEventListener("click", init.restartButtonClickListener);
