@@ -50,10 +50,17 @@ public class KataController {
         kata.setKomi(komi);
     }
 
-    @PostMapping("/setboard")
-    public void postSetBoard(@RequestBody @Valid Moves moves) throws Exception {
-        System.out.println("setBoard");
-        kata.setBoard(moves);
+    @PostMapping("/analyzemove")
+    public MoveSuggestion postAnalyzeMove(@RequestParam @Pattern(regexp="(B|W)") String color,
+                                          @RequestParam @Pattern(regexp="([A-H]|[J-T])(1[0-9]|[1-9])") String coord) throws Exception {
+        return kata.analyzeMove(color, coord);
+    }
+
+    @GetMapping("/play")
+    public void getPlay(@RequestParam @Pattern(regexp="(B|W)") String color,
+                        @RequestParam @Pattern(regexp="([A-H]|[J-T])(1[0-9]|[1-9])") String coord) throws Exception {
+//         System.out.println("play " + color + " " + coord);
+        kata.play(color, coord);
     }
 
     @PostMapping("/analyze")
@@ -65,18 +72,10 @@ public class KataController {
         return kata.analyze(color, maxVisits, minVisitsPerc, maxVisitDiffPerc);
     }
 
-    @PostMapping("/analyzemove")
-    public MoveSuggestion postAnalyzeMove(@RequestParam @Pattern(regexp="(B|W)") String color,
-                                                @RequestParam @Pattern(regexp="([A-H]|[J-T])(1[0-9]|[1-9])") String coord) throws Exception {
-        return kata.analyzeMove(color, coord);
-    }
-
-
-    @GetMapping("/play")
-    public void getPlay(@RequestParam @Pattern(regexp="(B|W)") String color,
-                        @RequestParam @Pattern(regexp="([A-H]|[J-T])(1[0-9]|[1-9])") String coord) throws Exception {
-//         System.out.println("play " + color + " " + coord);
-        kata.play(color, coord);
+    @PostMapping("/setboard")
+    public void postSetBoard(@RequestBody @Valid Moves moves) throws Exception {
+        System.out.println("setBoard");
+        kata.setBoard(moves);
     }
 
     @GetMapping("/sgf")

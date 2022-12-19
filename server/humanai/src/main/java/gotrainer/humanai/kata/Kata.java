@@ -63,12 +63,35 @@ public class Kata {
         clearReader();
     }
 
-    public synchronized void setBoard(Moves moves) throws Exception {
-        clear();
-
-        for (Move move : moves.moves) {
-            play(move.color, move.coord);
+    public synchronized MoveSuggestion analyzeMove(String color, String coord) throws Exception {
+        int maxVisits = 100;
+        if (lastMaxVisits != maxVisits) {
+            lastMaxVisits = maxVisits;
+            write("kata-set-param maxVisits " + maxVisits);
+            clearReader();
         }
+
+        write("kata-genmove_analyze " + color + " allow " + color + " " + coord + " 1");
+        reader.readLine(); // Ignore '= '
+        String[] analysis = reader.readLine().split(" ");
+        clearReader();
+
+        write("undo");
+        clearReader();
+
+        MoveSuggestion suggestion = new MoveSuggestion(
+                color,
+                coord,
+                analysis[4],
+                analysis[8],
+                analysis[14]
+        );
+        return suggestion;
+    }
+
+    public synchronized void play(String color, String coord) throws Exception {
+        write("play " + color + " " + coord);
+        clearReader();
     }
 
     public synchronized List<MoveSuggestion> analyze(String color, int maxVisits, float minVisitsPerc,
@@ -144,44 +167,12 @@ public class Kata {
         return filteredSuggestions;
     }
 
-    public synchronized MoveSuggestion analyzeMove(String color, String coord) throws Exception {
-        int maxVisits = 100;
-        if (lastMaxVisits != maxVisits) {
-            lastMaxVisits = maxVisits;
-            write("kata-set-param maxVisits " + maxVisits);
-            clearReader();
+    public synchronized void setBoard(Moves moves) throws Exception {
+        clear();
+
+        for (Move move : moves.moves) {
+            play(move.color, move.coord);
         }
-
-        write("kata-genmove_analyze " + color + " allow " + color + " " + coord + " 1");
-        reader.readLine(); // Ignore '= '
-        String[] analysis = reader.readLine().split(" ");
-        clearReader();
-
-        write("undo");
-        clearReader();
-
-        MoveSuggestion suggestion = new MoveSuggestion(
-                color,
-                coord,
-                analysis[4],
-                analysis[8],
-                analysis[14]
-        );
-        return suggestion;
-    }
-
-    public synchronized void play(String color, String coord) throws Exception {
-        write("play " + color + " " + coord);
-        clearReader();
-    }
-
-    private void write(String command) throws Exception {
-        writer.write(command + "\n");
-        writer.flush();
-    }
-
-    private void clearReader() throws Exception {
-        while (!reader.readLine().equals("")) {}
     }
 
     public synchronized void sgf() throws Exception {
@@ -199,6 +190,16 @@ public class Kata {
             fileWriter.write(sgfStr);
             fileWriter.close();
         }
+    }
+
+
+    private void write(String command) throws Exception {
+        writer.write(command + "\n");
+        writer.flush();
+    }
+
+    private void clearReader() throws Exception {
+        while (!reader.readLine().equals("")) {}
     }
 
 }

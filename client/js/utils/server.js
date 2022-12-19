@@ -80,6 +80,18 @@ server.analyzeMove = async function(coord, color = board.getNextColor()) {
         }));
 };
 
+server.play = async function(coord, color = board.getColor()) {
+    // console.log("play " + color + " " + server.coordNumToName(coord));
+    return server.sendRequest(fetch(server.URL + "play?color=" + utils.colorNumToName(color) + "&coord=" + server.coordNumToName(coord), {
+        method: "GET" })
+        .then(response => {
+            return response;
+        })
+        .catch(error => {
+            return error;
+        }));
+};
+
 server.analyze = async function(
         maxVisits = settings.suggestionVisits,
         moveOptions = settings.suggestionOptions,
@@ -124,18 +136,6 @@ server.setBoard = async function() {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: '{"moves":' + JSON.stringify(serverMoves) + "}" })
-        .then(response => {
-            return response;
-        })
-        .catch(error => {
-            return error;
-        }));
-};
-
-server.play = async function(coord, color = board.getColor()) {
-    // console.log("play " + color + " " + server.coordNumToName(coord));
-    return server.sendRequest(fetch(server.URL + "play?color=" + utils.colorNumToName(color) + "&coord=" + server.coordNumToName(coord), {
-        method: "GET" })
         .then(response => {
             return response;
         })
