@@ -23,28 +23,24 @@ namespace TempAPI.Controllers
         [HttpGet("restart")]
         public void GetRestart()
         {
-            if (G.Log) Console.WriteLine("Restart");
             kataGo.Restart();
         }
 
         [HttpGet("setboardsize")]
         public void GetSetBoardsize([RegularExpression(@"(9|13|19)")] string boardsize)
         {
-            if (G.Log) Console.WriteLine("SetBoardsize " + boardsize);
             kataGo.SetBoardsize(int.Parse(boardsize));
         }
 
         [HttpGet("setruleset")]
         public void GetSetRuleset([RegularExpression(@"(Japanese|Chinese)")] string ruleset)
         {
-            if (G.Log) Console.WriteLine("SetRuleset " + ruleset);
             kataGo.SetRuleset(ruleset);
         }
 
         [HttpGet("setkomi")]
         public void GetSetKomi([Range(-150, 150)] float komi)
         {
-            if (G.Log) Console.WriteLine("SetKomi " + komi);
             kataGo.SetKomi(komi);
         }
 
@@ -52,7 +48,6 @@ namespace TempAPI.Controllers
         public MoveSuggestion PostAnalyzeMove([RegularExpression(@"(B|W)")] string color,
             [RegularExpression(@"([A-H]|[J-T])(1[0-9]|[1-9])")] string coord)
         {
-            if (G.Log) Console.WriteLine("AnalyzeMove " + color + " " + coord);
             MoveSuggestion output = kataGo.AnalyzeMove(color, coord);
             //MoveSuggestion output = new(color, coord, 200, 0.8f, 1.5f);
             return output;
@@ -64,7 +59,6 @@ namespace TempAPI.Controllers
             [Range(0, 100)] float minVisitsPerc,
             [Range(0, 100)] float maxVisitDiffPerc)
         {
-            if (G.Log) Console.WriteLine("Analyze " + color + " " + maxVisits + " " + minVisitsPerc + " " + maxVisitDiffPerc);
             List<MoveSuggestion> output = kataGo.Analyze(color, maxVisits, minVisitsPerc, maxVisitDiffPerc);
             //List<MoveSuggestion> output = new()
             //{
@@ -78,21 +72,18 @@ namespace TempAPI.Controllers
         public void GetPlay([RegularExpression(@"(B|W)")] string color,
             [RegularExpression(@"([A-H]|[J-T])(1[0-9]|[1-9])")] string coord)
         {
-            if (G.Log) Console.WriteLine("Play " + color + " " + coord);
             kataGo.Play(color, coord);
         }
 
         [HttpPost("setboard")]
         public void PostSetBoard([FromBody] Moves moves)
         {
-            if (G.Log) Console.WriteLine("SetBoard " + moves);
             kataGo.SetBoard(moves);
         }
 
         [HttpGet("sgf")]
         public void GetSGF()
         {
-            if (G.Log) Console.WriteLine("SGF");
             kataGo.SGF();
         }
     }
