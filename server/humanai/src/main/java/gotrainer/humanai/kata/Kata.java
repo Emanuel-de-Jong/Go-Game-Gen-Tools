@@ -89,11 +89,6 @@ public class Kata {
         return suggestion;
     }
 
-    public synchronized void play(String color, String coord) throws Exception {
-        write("play " + color + " " + coord);
-        clearReader();
-    }
-
     public synchronized List<MoveSuggestion> analyze(String color, int maxVisits, float minVisitsPerc,
                                                      float maxVisitDiffPerc) throws Exception {
 //        System.out.println(color + " " + maxVisits + " " + minVisitsPerc + " " + maxVisitDiffPerc);
@@ -165,6 +160,11 @@ public class Kata {
         }
 
         return filteredSuggestions;
+    }
+
+    public synchronized void play(String color, String coord) throws Exception {
+        write("play " + color + " " + coord);
+        clearReader();
     }
 
     public synchronized void setBoard(Moves moves) throws Exception {

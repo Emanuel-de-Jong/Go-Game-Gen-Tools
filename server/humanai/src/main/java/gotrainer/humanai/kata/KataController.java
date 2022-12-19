@@ -56,13 +56,6 @@ public class KataController {
         return kata.analyzeMove(color, coord);
     }
 
-    @GetMapping("/play")
-    public void getPlay(@RequestParam @Pattern(regexp="(B|W)") String color,
-                        @RequestParam @Pattern(regexp="([A-H]|[J-T])(1[0-9]|[1-9])") String coord) throws Exception {
-//         System.out.println("play " + color + " " + coord);
-        kata.play(color, coord);
-    }
-
     @PostMapping("/analyze")
     public List<MoveSuggestion> postAnalyze(@RequestParam @Pattern(regexp="(B|W)") String color,
                                             @RequestParam @Min(2) @Max(5000) int maxVisits,
@@ -70,6 +63,13 @@ public class KataController {
                                             @RequestParam @Min(0) @Max(100) float maxVisitDiffPerc) throws Exception {
 //         System.out.println("analyze " + color);
         return kata.analyze(color, maxVisits, minVisitsPerc, maxVisitDiffPerc);
+    }
+
+    @GetMapping("/play")
+    public void getPlay(@RequestParam @Pattern(regexp="(B|W)") String color,
+                        @RequestParam @Pattern(regexp="([A-H]|[J-T])(1[0-9]|[1-9])") String coord) throws Exception {
+//         System.out.println("play " + color + " " + coord);
+        kata.play(color, coord);
     }
 
     @PostMapping("/setboard")
