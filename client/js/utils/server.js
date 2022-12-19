@@ -1,7 +1,7 @@
 var server = {};
 
 
-server.URL = "http://localhost:5001/kata/";
+server.URL = "https://localhost:5001/kata/";
 
 
 server.init = async function() {
