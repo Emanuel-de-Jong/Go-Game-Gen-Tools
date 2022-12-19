@@ -1,8 +1,8 @@
 1. Copy `client` dir content.
-2. Copy `README.md`
-3. Copy `server/humanai/katago` dir.
-4. Remove `gtp_logs` and `KataGoData` in `katago` dir.
-5. Run `gradle build` in `server/humanai` dir.
-6. Copy `server/humanai/build/libs/humanai-0.0.1-SNAPSHOT.jar`.
-7. Rename `humanai-0.0.1-SNAPSHOT.jar` to `server.jar`.
+2. Copy `README.md`.
+3. Copy `server/TempAPI/TempAPI/Dependencies`.
+4. Remove `gtp_logs` and `KataGoData` in `Dependencies/KataGo`.
+5. Run `server/TempAPI/build.bat`.
+6. Copy `server/TempAPI/TempAPI/bin/Release/net6.0/win-x64`.
+7. Rename `win-x64` to `server`.
 8. Copy `HumanAI.bat` from last release.
