@@ -13,7 +13,7 @@ namespace TempAPI.KataGo
 
         private void Start()
         {
-            if (G.Log) Console.WriteLine("Start");
+            if (G.Log) Console.WriteLine("KataGoWrapper.Start");
 
             process = new Process();
             process.StartInfo.FileName = Environment.CurrentDirectory + "\\Dependencies\\KataGo\\katago.exe";
@@ -38,7 +38,7 @@ namespace TempAPI.KataGo
 
         private void Clear()
         {
-            if (G.Log) Console.WriteLine("Clear");
+            if (G.Log) Console.WriteLine("KataGoWrapper.Clear");
 
             Write("clear_board");
             ClearReader();
@@ -48,7 +48,7 @@ namespace TempAPI.KataGo
 
         public void Restart()
         {
-            if (G.Log) Console.WriteLine("Restart");
+            if (G.Log) Console.WriteLine("KataGoWrapper.Restart");
 
             if (process != null) Write("quit");
             Start();
@@ -56,7 +56,7 @@ namespace TempAPI.KataGo
 
         public void SetBoardsize(int boardsize)
         {
-            if (G.Log) Console.WriteLine("SetBoardsize " + boardsize);
+            if (G.Log) Console.WriteLine("KataGoWrapper.SetBoardsize " + boardsize);
 
             Write("boardsize " + boardsize);
             ClearReader();
@@ -64,7 +64,7 @@ namespace TempAPI.KataGo
 
         public void SetRuleset(string ruleset)
         {
-            if (G.Log) Console.WriteLine("SetRuleset " + ruleset);
+            if (G.Log) Console.WriteLine("KataGoWrapper.SetRuleset " + ruleset);
 
             Write("kata-set-rules " + ruleset);
             ClearReader();
@@ -72,7 +72,7 @@ namespace TempAPI.KataGo
 
         public void SetKomi(float komi)
         {
-            if (G.Log) Console.WriteLine("SetKomi " + komi);
+            if (G.Log) Console.WriteLine("KataGoWrapper.SetKomi " + komi);
 
             Write("komi " + komi);
             ClearReader();
@@ -80,7 +80,7 @@ namespace TempAPI.KataGo
 
         public MoveSuggestion AnalyzeMove(string color, string coord)
         {
-            if (G.Log) Console.WriteLine("AnalyzeMove " + color + " " + coord);
+            if (G.Log) Console.WriteLine("KataGoWrapper.AnalyzeMove " + color + " " + coord);
 
             int maxVisits = 100;
             if (lastMaxVisits != maxVisits)
@@ -110,7 +110,7 @@ namespace TempAPI.KataGo
 
         public List<MoveSuggestion> Analyze(string color, int maxVisits, float minVisitsPerc, float maxVisitDiffPerc)
         {
-            if (G.Log) Console.WriteLine("Analyze " + color + " " + maxVisits + " " + minVisitsPerc + " " + maxVisitDiffPerc);
+            if (G.Log) Console.WriteLine("KataGoWrapper.Analyze " + color + " " + maxVisits + " " + minVisitsPerc + " " + maxVisitDiffPerc);
 
             if (lastMaxVisits != maxVisits)
             {
@@ -193,7 +193,7 @@ namespace TempAPI.KataGo
 
         public void Play(string color, string coord)
         {
-            if (G.Log) Console.WriteLine("Play " + color + " " + coord);
+            if (G.Log) Console.WriteLine("KataGoWrapper.Play " + color + " " + coord);
 
             Write("play " + color + " " + coord);
             ClearReader();
@@ -201,7 +201,7 @@ namespace TempAPI.KataGo
 
         public void SetBoard(Moves moves)
         {
-            if (G.Log) Console.WriteLine("SetBoard " + moves);
+            if (G.Log) Console.WriteLine("KataGoWrapper.SetBoard " + moves);
 
             Clear();
 
@@ -213,7 +213,7 @@ namespace TempAPI.KataGo
 
         public void SGF()
         {
-            if (G.Log) Console.WriteLine("SGF");
+            if (G.Log) Console.WriteLine("KataGoWrapper.SGF");
 
             Write("printsgf");
             string sgfStr = Read().Substring(2);

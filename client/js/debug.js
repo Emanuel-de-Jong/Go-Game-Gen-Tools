@@ -1,6 +1,9 @@
 var debug = {};
 
 
+debug.LOG = true;
+
+
 debug.init = function() {
     debug.testButton = document.getElementById("test");
     

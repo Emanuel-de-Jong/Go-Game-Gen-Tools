@@ -20,7 +20,8 @@ server.clear = async function() {
 
 
 server.restart = async function() {
-    // console.log("restart");
+    if (debug.LOG) console.log("server.restart");
+
     return server.sendRequest(fetch(server.URL + "restart", {
         method: "GET" })
         .then(response => {
@@ -32,7 +33,8 @@ server.restart = async function() {
 };
 
 server.setBoardsize = async function() {
-    // console.log("setBoardsize");
+    if (debug.LOG) console.log("server.setBoardsize " + settings.boardsize);
+
     return server.sendRequest(fetch(server.URL + "setboardsize?boardsize=" + settings.boardsize, {
         method: "GET" })
         .then(response => {
@@ -44,7 +46,8 @@ server.setBoardsize = async function() {
 };
 
 server.setRuleset = async function() {
-    // console.log("setRuleset");
+    if (debug.LOG) console.log("server.setRuleset " + settings.ruleset);
+
     return server.sendRequest(fetch(server.URL + "setruleset?ruleset=" + settings.ruleset, {
         method: "GET" })
         .then(response => {
@@ -56,7 +59,8 @@ server.setRuleset = async function() {
 };
 
 server.setKomi = async function() {
-    // console.log("setKomi");
+    if (debug.LOG) console.log("server.setKomi " + settings.komi);
+
     return server.sendRequest(fetch(server.URL + "setkomi?komi=" + settings.komi, {
         method: "GET" })
         .then(response => {
@@ -68,6 +72,8 @@ server.setKomi = async function() {
 };
 
 server.analyzeMove = async function(coord, color = board.getNextColor()) {
+    if (debug.LOG) console.log("server.analyzeMove " + utils.colorNumToName(color) + " " + server.coordNumToName(coord));
+
     return server.sendRequest(fetch(server.URL + "analyzemove?color=" + utils.colorNumToName(color) +
             "&coord=" + server.coordNumToName(coord), {
         method: "POST" })
@@ -86,10 +92,11 @@ server.analyze = async function(
         minVisitsPerc = settings.minVisitsPerc,
         maxVisitDiffPerc = settings.maxVisitDiffPerc,
         color = board.getNextColor()) {
-    // console.log("analyze " + maxVisits + " " + moveOptions + " " + minVisitsPerc + " " + maxVisitDiffPerc + " " + color);
     
     minVisitsPerc = settings.minVisitsPercSwitch ? minVisitsPerc : 0;
     maxVisitDiffPerc = settings.maxVisitDiffPercSwitch ? maxVisitDiffPerc : 100;
+
+    if (debug.LOG) console.log("server.analyze " + maxVisits + " " + moveOptions + " " + minVisitsPerc + " " + maxVisitDiffPerc + " " + color);
 
     return await server.sendRequest(fetch(server.URL + "analyze?color=" + utils.colorNumToName(color) +
             "&maxVisits=" + maxVisits +
@@ -110,7 +117,8 @@ server.analyze = async function(
 };
 
 server.play = async function(coord, color = board.getColor()) {
-    // console.log("play " + color + " " + server.coordNumToName(coord));
+    if (debug.LOG) console.log("server.play " + utils.colorNumToName(color) + " " + server.coordNumToName(coord));
+
     return server.sendRequest(fetch(server.URL + "play?color=" + utils.colorNumToName(color) + "&coord=" + server.coordNumToName(coord), {
         method: "GET" })
         .then(response => {
@@ -122,7 +130,8 @@ server.play = async function(coord, color = board.getColor()) {
 };
 
 server.setBoard = async function() {
-    // console.log("setBoard");
+    if (debug.LOG) console.log("server.setBoard");
+
     let moves = board.getMoves();
     let serverMoves = [];
     moves.forEach(move => {
@@ -145,6 +154,8 @@ server.setBoard = async function() {
 };
 
 server.sgf = async function() {
+    if (debug.LOG) console.log("server.sgf");
+
     return server.sendRequest(fetch(server.URL + "sgf", {
         method: "GET" })
         .then(response => {
