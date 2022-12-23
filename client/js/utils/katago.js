@@ -98,7 +98,7 @@ katago.analyze = async function (
 
     if (G.LOG) console.log("katago.analyze " + maxVisits + " " + moveOptions + " " + minVisitsPerc + " " + maxVisitDiffPerc + " " + color);
 
-    return await katago.sendRequest(fetch(katago.URL + "analyze?color=" + G.colorNumToName(color) +
+    return katago.sendRequest(fetch(katago.URL + "analyze?color=" + G.colorNumToName(color) +
             "&maxVisits=" + maxVisits +
             "&minVisitsPerc=" + minVisitsPerc +
             "&maxVisitDiffPerc=" + maxVisitDiffPerc, {
@@ -119,7 +119,7 @@ katago.analyze = async function (
 katago.play = async function (coord, color = board.getColor()) {
     if (G.LOG) console.log("katago.play " + G.colorNumToName(color) + " " + katago.coordNumToName(coord));
 
-    katago.sendRequest(fetch(katago.URL + "play?color=" + G.colorNumToName(color) + "&coord=" + katago.coordNumToName(coord), {
+    return katago.sendRequest(fetch(katago.URL + "play?color=" + G.colorNumToName(color) + "&coord=" + katago.coordNumToName(coord), {
         method: "GET" })
         .then(response => {
             return response;
