@@ -99,13 +99,13 @@ settings.updateSetting = function(name) {
     if (name == "colorType") {
         switch (value) {
             case "Black":
-                settings.color = -1;
+                settings.color = G.COLOR_TYPE.B;
                 break;
             case "White":
-                settings.color = 1;
+                settings.color = G.COLOR_TYPE.W;
                 break;
             case "Random":
-                settings.color = utils.randomInt(2) == 0 ? -1 : 1;
+                settings.color = utils.randomInt(2) == 0 ? G.COLOR_TYPE.B : G.COLOR_TYPE.W;
                 break;
         }
     }
@@ -169,7 +169,7 @@ settings.opponentVisitsElementInputListener = function() {
 
 settings.rulesetElementInputListener = async function() {
     sgf.setRuleset();
-    await server.setRuleset();
+    await katago.setRuleset();
 };
 
 settings.komiChangeStyleElementInputListener = function() {
@@ -183,7 +183,7 @@ settings.komiChangeStyleElementInputListener = function() {
 
 settings.komiElementInputListener = async function() {
     sgf.setKomi();
-    await server.setKomi();
+    await katago.setKomi();
 };
 
 settings.setKomi = function() {

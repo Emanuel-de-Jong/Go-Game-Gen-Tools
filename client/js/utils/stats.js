@@ -95,6 +95,7 @@ stats.updateRatio = function() {
     });
 
     stats.ratio = new Ratio(
+        null,
         ratios.length,
 
         right,

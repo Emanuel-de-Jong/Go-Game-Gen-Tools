@@ -15,19 +15,21 @@ selfplay.clear = function() {
 };
 
 
-selfplay.start = async function() {
-	await main.handleJumped();
+selfplay.start = async function () {
+	G.setPhase(G.PHASE_TYPE.SELFPLAY);
+
+	await gameplay.handleJumped();
 
 	while (selfplay.isPlaying || settings.color != board.getNextColor()) {
-		await main.analyze(settings.selfplayVisits, 1);
-		if (main.isPassed) {
+		await G.analyze(settings.selfplayVisits, 1);
+		if (G.isPassed) {
 			selfplay.button.click();
 			return;
 		}
 
 		if (!selfplay.isPlaying && settings.color == board.getNextColor()) return;
 
-		await board.play(main.suggestions.get(0), utils.MOVE_TYPE.SELFPLAY);
+		await board.play(G.suggestions.get(0), G.MOVE_TYPE.SELFPLAY);
 	}
 };
 
@@ -36,7 +38,7 @@ selfplay.buttonClickListener = async function() {
 		selfplay.isPlaying = true;
 		selfplay.button.innerHTML = "Stop selfplay";
 
-		main.takePlayerControl();
+		gameplay.takePlayerControl();
 		board.nextButton.disabled = true;
 
 		selfplay.startPromise = selfplay.start();
@@ -46,8 +48,8 @@ selfplay.buttonClickListener = async function() {
 
 		await selfplay.startPromise;
 
-		if (!main.isPassed) {
-			main.givePlayerControl();
+		if (!G.isPassed) {
+			gameplay.givePlayerControl();
 		}
 	}
 };

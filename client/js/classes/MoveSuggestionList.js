@@ -74,15 +74,23 @@ class MoveSuggestionList {
         return firstSuggestion;
     }
 
-    filterWeakerThan(suggestion) {
+    filterWeakerThan(coord) {
         let index;
         for (index=0; index<this.suggestions.length; index++) {
-            if (this.suggestions[index].coord.compare(suggestion)) {
+            if (this.suggestions[index].coord.compare(coord)) {
                 break;
             }
         }
 
         this.suggestions = this.suggestions.splice(0, index);
+    }
+
+    find(coord) {
+        for (i=0; i<this.suggestions.length; i++) {
+            if (this.suggestions[i].coord.compare(coord)) {
+                return this.suggestions[i];
+            }
+        }
     }
 
 

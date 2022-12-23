@@ -22,8 +22,8 @@ class MoveSuggestion {
 
     
     fillWithServerSuggestion(serverSuggestion) {
-        this.color = utils.colorNameToNum(serverSuggestion.move.color);
-        this.coord = server.coordNameToNum(serverSuggestion.move.coord);
+        this.color = G.colorNameToNum(serverSuggestion.move.color);
+        this.coord = katago.coordNameToNum(serverSuggestion.move.coord);
         this.visits = serverSuggestion.visits;
         this.winrate = serverSuggestion.winrate;
         this.scoreLead = serverSuggestion.scoreLead;

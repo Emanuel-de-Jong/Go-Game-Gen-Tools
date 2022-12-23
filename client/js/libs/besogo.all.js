@@ -1589,7 +1589,9 @@ besogo.makeEditor = function(sizeX, sizeY) {
         coord = 'none', // Selected coordinate system
 
         // Variant style: even/odd - children/siblings, <2 - show auto markup for variants
-        variantStyle = 0; // 0-3, 0 is default
+        variantStyle = 0, // 0-3, 0 is default
+
+        isTreeJumpAllowed = true;
 
     return {
         addListener: addListener,
@@ -1618,8 +1620,14 @@ besogo.makeEditor = function(sizeX, sizeY) {
         promote: promote,
         demote: demote,
         getRoot: getRoot,
-        loadRoot: loadRoot // Loads new game state
+        loadRoot: loadRoot, // Loads new game state
+        notifyListeners: notifyListeners,
+        setIsTreeJumpAllowed: setIsTreeJumpAllowed,
     };
+
+    function setIsTreeJumpAllowed(value) {
+        isTreeJumpAllowed = value;
+    }
 
     // Returns the active tool
     function getTool() {
@@ -1838,7 +1846,7 @@ besogo.makeEditor = function(sizeX, sizeY) {
 
     // Sets the current node
     function setCurrent(node) {
-        if (current !== node) {
+        if (isTreeJumpAllowed && current !== node) {
             current = node;
             // Notify listeners of navigation (with no tree edits)
             notifyListeners({ navChange: true });
@@ -2545,13 +2553,17 @@ besogo.loadSgf = function(sgf, editor) {
     var size = { x: 19, y: 19 }, // Default size (may be changed by load)
         root;
 
+    editor.notifyListeners({ sgfEvent: true, sgfLoaded: false });
+
     loadRootProps(sgf); // Load size, variants style and game info
     root = besogo.makeGameRoot(size.x, size.y);
 
     loadNodeTree(sgf, root); // Load the rest of game tree
     editor.loadRoot(root); // Load root into the editor
 
-    
+    editor.notifyListeners({ sgfEvent: true, sgfLoaded: true });
+
+
     // Loads the game tree
     function loadNodeTree(sgfNode, gameNode) {
         var i, nextGameNode;

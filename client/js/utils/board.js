@@ -90,11 +90,11 @@ board.clear = function() {
 
 	board.lastMove = board.editor.getCurrent();
 
-	board.editor.addListener(main.playerMarkupPlacedCheckListener);
-	board.editor.addListener(main.treeJumpedCheckListener);
-	board.nextButton.addEventListener("click", main.nextButtonClickListener);
-	
-	sgf.setComment(utils.MOVE_TYPE.INIT);
+	board.editor.addListener(gameplay.playerMarkupPlacedCheckListener);
+	board.editor.addListener(gameplay.treeJumpedCheckListener);
+	board.editor.addListener(sgf.boardEditorListener);
+	board.nextButton.addEventListener("click", gameplay.nextButtonClickListener);
+	G.phaseChangedEvent.add(board.phaseChangedListener);
 	
 	// console.log(besogo);
 	// console.log(board.editor);
@@ -104,26 +104,26 @@ board.clear = function() {
 
 board.placeHandicap = async function() {
 	if (settings.handicap) {
+		G.setPhase(G.PHASE_TYPE.HANDICAP);
+
 		let coords = board.HANDICAP_COORDS[settings.boardsize][settings.handicap];
 		for (let i=0; i<coords.length; i++) {
 			let coord = coords[i];
 			if (i < coords.length - 1) {
-				await board.draw(coord, "playB", true, utils.MOVE_TYPE.HANDICAP);
+				await board.draw(coord, "playB", true, G.MOVE_TYPE.HANDICAP);
 			} else {
-				scoreChart.update(await server.analyzeMove(coord, -1));
-				await board.draw(coord, "playB", false, utils.MOVE_TYPE.HANDICAP);
-				await server.play(coord, -1);
+				await board.play(await katago.analyzeMove(coord, G.COLOR_TYPE.B), G.MOVE_TYPE.HANDICAP, "playB");
 			}
 		}
 	}
 };
 
-board.play = async function(suggestion, moveType = utils.MOVE_TYPE.NONE, tool = "auto") {
+board.play = async function(suggestion, moveType = G.MOVE_TYPE.NONE, tool = "auto") {
 	scoreChart.update(suggestion);
 	await board.draw(suggestion.coord, tool, true, moveType);
 };
 
-board.draw = async function(coord, tool = "auto", sendToServer = true, moveType = utils.MOVE_TYPE.NONE) {
+board.draw = async function(coord, tool = "auto", sendToServer = true, moveType = G.MOVE_TYPE.NONE) {
 	board.editor.setTool(tool);
 	board.editor.click(coord.x, coord.y, false, false);
 	board.editor.setTool("navOnly");
@@ -131,7 +131,8 @@ board.draw = async function(coord, tool = "auto", sendToServer = true, moveType 
 	if (tool == "auto" || tool == "playB" || tool == "playW") {
 		board.playPlaceStoneAudio();
 
-		sgf.setComment(moveType);
+		G.updateMoveTypeHistory(moveType);
+		sgfComment.setComment(moveType);
 
 		if (board.lastMove.navTreeY != board.editor.getCurrent().navTreeY) {
 			scoreChart.clear();
@@ -141,11 +142,11 @@ board.draw = async function(coord, tool = "auto", sendToServer = true, moveType 
 
 		if (sendToServer) {
 			if (tool == "auto") {
-				await server.play(coord);
+				await katago.play(coord);
 			} else if (tool == "playB") {
-				await server.play(coord, -1);
+				await katago.play(coord, G.COLOR_TYPE.B);
 			} else if (tool == "playW") {
-				await server.play(coord, 1);
+				await katago.play(coord, G.COLOR_TYPE.W);
 			}
 		}
 	}
@@ -177,7 +178,7 @@ board.getNextColor = function() {
 		}
 		return currentMove.move.color * -1;
 	}
-	return -1;
+	return G.COLOR_TYPE.B;
 };
 
 board.pass = function() {
@@ -222,8 +223,16 @@ board.getMoveNumber = function() {
 	return board.editor.getCurrent().moveNumber;
 };
 
+board.getNodeX = function() {
+	return board.editor.getCurrent().navTreeX;
+};
+
+board.getNodeY = function() {
+	return board.editor.getCurrent().navTreeY;
+};
+
 board.getNodeCoord = function() {
-	return new Coord(board.editor.getCurrent().navTreeX, board.editor.getCurrent().navTreeY);
+	return new Coord(board.getNodeX(), board.getNodeY());
 }
 
 board.getMoves = function() {
@@ -248,5 +257,13 @@ board.getMoves = function() {
 board.keydownAndMousedownListener = function(event) {
 	if (event.code == "Space" || event.code == "Enter" || event.button == 1 || event.button == 3 || event.button == 4) {
 		board.nextButton.click();
+	}
+};
+
+board.phaseChangedListener = function() {
+	if (G.phase == G.PHASE_TYPE.GAMEPLAY || G.phase == G.PHASE_TYPE.FINISHED) {
+		board.editor.setIsTreeJumpAllowed(true);
+	} else {
+		board.editor.setIsTreeJumpAllowed(false);
 	}
 };

@@ -9,25 +9,6 @@ utils.TYPE = {
     STRING: 4,
 };
 
-utils.MOVE_TYPE = {
-    NONE: 0,
-    INIT: 1,
-    HANDICAP: 2,
-    PRE_CORNER: 3,
-    PRE: 4,
-    SELFPLAY: 5,
-    PLAYER: 6,
-    OPPONENT: 7,
-};
-
-
-utils.colorNumToName = function(num) {
-    return num == 1 ? "W" : "B";
-};
-
-utils.colorNameToNum = function(name) {
-    return name == "W" ? 1 : -1;
-};
 
 // 0 to (max-1)
 utils.randomInt = function(max) {

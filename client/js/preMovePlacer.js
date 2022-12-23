@@ -18,8 +18,8 @@ preMovePlacer.clear = function() {
 };
 
 
-preMovePlacer.start = async function() {
-	await board.placeHandicap();
+preMovePlacer.start = async function () {
+	G.setPhase(G.PHASE_TYPE.PREMOVES);
 	
 	preMovePlacer.stopButton.hidden = false;
 	selfplay.button.hidden = true;
@@ -36,10 +36,10 @@ preMovePlacer.start = async function() {
 				let cornerCount = preMovesLeft < 4 ? preMovesLeft : 4;
 				let cornerCoords = preMovePlacer.fillCorners(cornerCount);
 				for (let i=0; i<cornerCount; i++) {
-					let suggestion = await server.analyzeMove(cornerCoords[i]);
+					let suggestion = await katago.analyzeMove(cornerCoords[i]);
 					if (preMovePlacer.isStopped) break;
 
-					await board.play(suggestion, utils.MOVE_TYPE.PRE_CORNER);
+					await board.play(suggestion, G.MOVE_TYPE.PRE_CORNER);
 					preMovesLeft--;
 				}
 			}
@@ -58,8 +58,8 @@ preMovePlacer.start = async function() {
 	preMovePlacer.stopButton.hidden = true;
 	selfplay.button.hidden = false;
 
-	if (!main.isPassed) {
-	    main.givePlayerControl();
+	if (!G.isPassed) {
+	    gameplay.givePlayerControl();
 	}
 };
 
@@ -120,9 +120,9 @@ preMovePlacer.play = async function() {
 		preOptions = settings.preOptions;
 	}
 
-	await main.analyze(settings.preVisits, preOptions, preMovePlacer.MIN_VISITS_PERC, preMovePlacer.MAX_VISIT_DIFF_PERC);
-	if (main.isPassed) preMovePlacer.isStopped = true;
+	await G.analyze(settings.preVisits, preOptions, preMovePlacer.MIN_VISITS_PERC, preMovePlacer.MAX_VISIT_DIFF_PERC);
+	if (G.isPassed) preMovePlacer.isStopped = true;
 	if (preMovePlacer.isStopped) return;
 
-	await board.play(main.suggestions.get(utils.randomInt(1, main.suggestions.length())), utils.MOVE_TYPE.PRE);
+	await board.play(G.suggestions.get(utils.randomInt(1, G.suggestions.length())), G.MOVE_TYPE.PRE);
 };

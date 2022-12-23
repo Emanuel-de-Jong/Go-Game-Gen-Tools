@@ -1,47 +1,44 @@
 var debug = {};
 
 
-debug.LOG = true;
-
-
-debug.init = function() {
+debug.init = function () {
     debug.testButton = document.getElementById("test");
-    
+
     debug.testButton.addEventListener("click", debug.testButtonClickListener);
-    
+
     // debug.logAllFuncCalls();
-    
-	debug.clear();
+
+    debug.clear();
 }
 
-debug.clear = function() {
+debug.clear = function () {
 
 };
 
 
-debug.logAllFuncCalls = function() {
+debug.logAllFuncCalls = function () {
     let objs = [
         board,
         main,
         debug,
-        server,
+        katago,
         settings,
         stats,
         utils,
     ];
-    
-    for (let i=0; i<objs.length; i++) {
+
+    for (let i = 0; i < objs.length; i++) {
         let obj = objs[i];
         let funcNames = Object.getOwnPropertyNames(obj).filter(item => typeof obj[item] === 'function');
-        for (let j=0; j<funcNames.length; j++) {
+        for (let j = 0; j < funcNames.length; j++) {
             let funcName = funcNames[j];
 
-            obj[funcName] = (function() {
+            obj[funcName] = (function () {
                 let cachedFunc = obj[funcName];
-                
-                return function() {
+
+                return function () {
                     let log = funcName + "(";
-                    for (let x=0; x<arguments.length; x++) {
+                    for (let x = 0; x < arguments.length; x++) {
                         let argument = arguments[x];
                         switch (typeof argument) {
                             case "object":
@@ -69,6 +66,6 @@ debug.logAllFuncCalls = function() {
     }
 };
 
-debug.testButtonClickListener = async function() {
+debug.testButtonClickListener = async function () {
     console.log();
 };
