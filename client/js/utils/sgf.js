@@ -47,15 +47,15 @@ sgf.sgfLoadedListener = function() {
 
 	if (!confirm("Would you like to use the komi and ruleset of the SGF?")) return;
 
-	settings.setSetting("komiChangeStyle", "custom");
+	settings.setSetting("komiChangeStyle", "Custom");
 	settings.setSetting("komi", parseFloat(gameInfo.KM));
 
 	if (gameInfo.RU) {
 		let ruleset = gameInfo.RU.toLowerCase();
 		if (ruleset.includes("japan")) {
-			settings.setSetting("ruleset", "japanese");
+			settings.setSetting("ruleset", "Japanese");
 		} else if (ruleset.includes("chin") || ruleset.includes("korea")) {
-			settings.setSetting("ruleset", "chinese");
+			settings.setSetting("ruleset", "Chinese");
 		}
 	}
 
