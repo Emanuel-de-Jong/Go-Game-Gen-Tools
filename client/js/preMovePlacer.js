@@ -7,19 +7,20 @@ preMovePlacer.MAX_VISIT_DIFF_PERC = 50;
 
 preMovePlacer.init = function() {
 	preMovePlacer.stopButton = document.getElementById("stopPreMoves");
-
 	preMovePlacer.stopButton.addEventListener("click", preMovePlacer.stopButtonClickListener);
 	
     preMovePlacer.clear();
 };
 
 preMovePlacer.clear = function() {
-	preMovePlacer.isStopped = false;
+	preMovePlacer.isStopped = true;
 };
 
 
 preMovePlacer.start = async function () {
 	G.setPhase(G.PHASE_TYPE.PREMOVES);
+
+	preMovePlacer.isStopped = false;
 	
 	preMovePlacer.stopButton.hidden = false;
 	selfplay.button.hidden = true;
@@ -58,7 +59,7 @@ preMovePlacer.start = async function () {
 	preMovePlacer.stopButton.hidden = true;
 	selfplay.button.hidden = false;
 
-	if (!G.isPassed) {
+	if (!G.isPassed && !sgf.isSGFLoading) {
 	    gameplay.givePlayerControl();
 	}
 };
@@ -115,6 +116,8 @@ preMovePlacer.fillCorners = function(cornerCount) {
 };
 
 preMovePlacer.play = async function() {
+	if (preMovePlacer.isStopped) return;
+
 	let preOptions = 1;
 	if ((utils.randomInt(100) + 1) <= settings.preOptionPerc) {
 		preOptions = settings.preOptions;

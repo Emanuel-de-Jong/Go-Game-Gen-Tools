@@ -40,7 +40,7 @@ G.init = function (dotNetRef) {
 };
 
 G.clear = function() {
-	G.phase = G.PHASE_TYPE.NONE;
+	G.setPhase(G.PHASE_TYPE.NONE);
 	G.suggestions = null;
 	G.suggestionsHistory = [];
 	G.moveTypeHistory = [];

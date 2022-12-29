@@ -19,6 +19,19 @@ katago.clear = async function() {
 };
 
 
+katago.clearBoard = async function () {
+    if (G.LOG) console.log("katago.clearBoard");
+
+    return katago.sendRequest(fetch(katago.URL + "clearboard", {
+        method: "GET" })
+        .then(response => {
+            return response;
+        })
+        .catch(error => {
+            return error;
+        }));
+};
+
 katago.restart = async function () {
     if (G.LOG) console.log("katago.restart");
 

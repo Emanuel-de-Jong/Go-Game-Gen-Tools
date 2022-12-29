@@ -20,6 +20,12 @@ namespace TempAPI.Controllers
             _logger = logger;
         }
 
+        [HttpGet("clearboard")]
+        public void GetClearBoard()
+        {
+            kataGo.ClearBoard();
+        }
+
         [HttpGet("restart")]
         public void GetRestart()
         {

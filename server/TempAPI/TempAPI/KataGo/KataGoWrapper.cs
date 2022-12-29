@@ -36,9 +36,9 @@ namespace TempAPI.KataGo
             } while (!line.Contains("GTP ready"));
         }
 
-        private void Clear()
+        public void ClearBoard()
         {
-            if (G.Log) Console.WriteLine("KataGoWrapper.Clear");
+            if (G.Log) Console.WriteLine("KataGoWrapper.ClearBoard");
 
             Write("clear_board");
             ClearReader();
@@ -203,7 +203,7 @@ namespace TempAPI.KataGo
         {
             if (G.Log) Console.WriteLine("KataGoWrapper.SetBoard " + moves);
 
-            Clear();
+            ClearBoard();
 
             foreach (Move move in moves.moves)
             {

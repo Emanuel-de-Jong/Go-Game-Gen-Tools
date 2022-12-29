@@ -1,17 +1,20 @@
 var selfplay = {};
 
 
-selfplay.init = function() {
+selfplay.init = async function() {
 	selfplay.button = document.getElementById("selfplay");
-
 	selfplay.button.addEventListener("click", selfplay.buttonClickListener);
-	
-    selfplay.clear();
-};
 
-selfplay.clear = function() {
 	selfplay.isPlaying = false;
 	selfplay.startPromise = null;
+	
+    await selfplay.clear();
+};
+
+selfplay.clear = async function() {
+	if (selfplay.isPlaying) {
+		await selfplay.buttonClickListener();
+	}
 };
 
 
@@ -48,7 +51,7 @@ selfplay.buttonClickListener = async function() {
 
 		await selfplay.startPromise;
 
-		if (!G.isPassed) {
+		if (!G.isPassed && !sgf.isSGFLoading) {
 			gameplay.givePlayerControl();
 		}
 	}

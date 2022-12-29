@@ -18,9 +18,10 @@ init.init = async function (dotNetRef) {
 	debug.init();
 	gameplay.init();
 	preMovePlacer.init();
-	selfplay.init();
+	await selfplay.init();
 	await katago.init();
 
+	sgf.sgfLoadingEvent.add(init.sgfLoadingListener);
 	sgf.sgfLoadedEvent.add(init.sgfLoadedListener);
 
 	await init.start();
@@ -37,7 +38,7 @@ init.clear = async function() {
 	debug.clear();
 	gameplay.clear();
 	preMovePlacer.clear();
-	selfplay.clear();
+	await selfplay.clear();
 	await katago.clear();
 	await init.start();
 };
@@ -53,15 +54,21 @@ init.restartButtonClickListener = async function() {
 	await init.clear();
 };
 
-init.sgfLoadedListener = async function() {
+init.sgfLoadingListener = async function() {
+	preMovePlacer.clear();
+	await selfplay.clear();
 	G.clear();
+};
+
+init.sgfLoadedListener = async function() {
 	sgfComment.clear();
 	scoreChart.clear();
 	stats.clear();
 	gameplay.clear();
-	await katago.clear();
-	await preMovePlacer.clear();
-	await selfplay.clear();
+
+	await katago.clearBoard();
+
+	gameplay.givePlayerControl();
 };
 
 
