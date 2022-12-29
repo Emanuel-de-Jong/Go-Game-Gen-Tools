@@ -1,10 +1,11 @@
 var stats = {};
 
 
-stats.TYPE = {
-    WRONG: 0,
-    RIGHT: 1,
-    PERFECT: 2
+stats.RATIO_TYPE = {
+    NONE: 0,
+    WRONG: 1,
+    RIGHT: 2,
+    PERFECT: 3,
 }
 
 
@@ -38,11 +39,11 @@ stats.clear = function() {
 stats.updateRatioHistory = function(isRight, isPerfect) {
 	let coord = board.getNodeCoord();
 
-    let type = stats.TYPE.WRONG;
+    let type = stats.RATIO_TYPE.WRONG;
     if (isPerfect) {
-        type = stats.TYPE.PERFECT;
+        type = stats.RATIO_TYPE.PERFECT;
     } else if (isRight) {
-        type = stats.TYPE.RIGHT;
+        type = stats.RATIO_TYPE.RIGHT;
     }
 
 	if (!stats.ratioHistory[coord.y]) {
@@ -50,6 +51,16 @@ stats.updateRatioHistory = function(isRight, isPerfect) {
 	}
 	stats.ratioHistory[coord.y][coord.x] = type;
 }
+
+stats.normalizeRatioHistory = function() {
+    for (let y=0; y<stats.ratioHistory.length; y++) {
+        if (!stats.ratioHistory[y]) stats.ratioHistory[y] = [];
+        
+        for (let x=0; x<stats.ratioHistory[y].length; x++) {
+            if (stats.ratioHistory[y][x] == null) stats.ratioHistory[y][x] = stats.RATIO_TYPE.NONE;
+        }
+    }
+};
 
 stats.updateRatio = function() {
     let ratios = [];
@@ -61,8 +72,8 @@ stats.updateRatio = function() {
 
         node = node.parent;
 
-        if (stats.ratioHistory[y] == null) continue;
-        if (stats.ratioHistory[y][x] == null) continue;
+        if (!stats.ratioHistory[y] || stats.ratioHistory[y].length == 0) continue;
+        if (!stats.ratioHistory[y][x]) continue;
 
         ratios.push(stats.ratioHistory[y][x])
     } while (node)
@@ -77,7 +88,7 @@ stats.updateRatio = function() {
     let right=0, rightStreak=0, rightTopStreak=0;
 
     ratios.forEach((ratio) => {
-        if (ratio == stats.TYPE.PERFECT || ratio == stats.TYPE.RIGHT) {
+        if (ratio == stats.RATIO_TYPE.PERFECT || ratio == stats.RATIO_TYPE.RIGHT) {
             right++;
             rightStreak++;
             if (rightTopStreak < rightStreak) rightTopStreak = rightStreak;
@@ -85,7 +96,7 @@ stats.updateRatio = function() {
             rightStreak = 0;
         }
 
-        if (ratio == stats.TYPE.PERFECT) {
+        if (ratio == stats.RATIO_TYPE.PERFECT) {
             perfect++;
             perfectStreak++;
             if (perfectTopStreak < perfectStreak) perfectTopStreak = perfectStreak;
