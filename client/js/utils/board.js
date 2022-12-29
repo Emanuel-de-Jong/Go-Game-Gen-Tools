@@ -172,12 +172,16 @@ board.getColor = function() {
 
 board.getNextColor = function() {
 	let currentMove = board.editor.getCurrent();
-	if (currentMove.move != null) {
+	if (currentMove != null) {
 		if (currentMove.children.length > 0) {
 			return currentMove.children[0].move.color;
 		}
-		return currentMove.move.color * -1;
+
+		if (currentMove.move != null) {
+			return currentMove.move.color * -1;
+		}
 	}
+	
 	return G.COLOR_TYPE.B;
 };
 
