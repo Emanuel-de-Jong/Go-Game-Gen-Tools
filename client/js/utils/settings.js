@@ -118,6 +118,14 @@ settings.setSetting = function(name, value) {
     settings[name + "Element"].dispatchEvent(new Event("input"));
 }
 
+settings.setColor = function(color = board.getNextColor()) {
+    settings.color = color;
+
+    sgf.setPlayers();
+    sgf.setRankPlayer();
+    sgf.setRankAI();
+}
+
 settings.inputAndSelectInputListener = function(event) {
     let element = event.target;
     if (settings.validateInput(element)) {

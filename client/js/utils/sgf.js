@@ -45,6 +45,8 @@ sgf.sgfLoadedListener = function() {
 		stats.setResult(gameInfo.RE);
 	}
 
+	settings.setColor();
+
 	if (confirm("Would you like to use the komi and ruleset of the SGF?")) {
 		settings.setSetting("komiChangeStyle", "Custom");
 		settings.setSetting("komi", parseFloat(gameInfo.KM));

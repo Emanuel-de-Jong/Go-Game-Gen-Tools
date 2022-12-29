@@ -46,6 +46,10 @@ gameplay.playerMarkupPlacedCheckListener = async function(event) {
 	if (event.markupChange && event.mark == 4 && gameplay.isPlayerControlling && !sgf.isSGFLoading) {
 		gameplay.takePlayerControl();
 
+		if (board.getNextColor() != settings.color) {
+			settings.setColor();
+		}
+
 		let markupCoord = new Coord(event.x, event.y);
 		board.removeMarkup(markupCoord);
 
