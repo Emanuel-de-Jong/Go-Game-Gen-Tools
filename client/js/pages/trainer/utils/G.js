@@ -1,7 +1,7 @@
 var G = {}
 
 
-G.VERSION = "0.9.1";
+G.VERSION = "0.10";
 G.LOG = true;
 
 G.COLOR_TYPE = {

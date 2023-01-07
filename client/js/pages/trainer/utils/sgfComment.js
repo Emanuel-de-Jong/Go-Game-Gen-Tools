@@ -62,6 +62,8 @@ sgfComment.createInitComment = function() {
 		"\n\nPre moves" +
 		"\nOptions: " + settings.preOptions +
 		"\nOption chance: " + settings.preOptionPerc + "%" +
+		"\nForce opponent first corner: " + settings.forceOpponentFirstCorner +
+		"\nForce opponent second corner: " + settings.forceOpponentSecondCorner +
 		"\n4-4 switch: " + settings.cornerSwitch44 +
 		"\n4-4 chance: " + settings.cornerChance44 +
 		"\n3-4 switch: " + settings.cornerSwitch34 +
