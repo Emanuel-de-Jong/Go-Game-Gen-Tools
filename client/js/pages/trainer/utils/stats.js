@@ -8,6 +8,8 @@ stats.RATIO_TYPE = {
     PERFECT: 3,
 }
 
+stats.RATIO_Y_INDICATOR = -1;
+
 
 stats.init = function() {
     stats.rightPercentElement = document.getElementById("rightPercent");
@@ -27,18 +29,33 @@ stats.init = function() {
 };
 
 stats.clear = function() {
-    stats.ratioHistory = [];
+    stats.ratioHistory = new History();
     stats.ratio = null;
     
     stats.clearRatio();
     stats.clearVisits();
     stats.clearResult();
+
+    if (debug.TEST_DATA == 1) {
+        stats.ratioHistory.add(stats.RATIO_TYPE.WRONG, 1, 0);
+        stats.ratioHistory.add(stats.RATIO_TYPE.RIGHT, 3, 0);
+        stats.ratioHistory.add(stats.RATIO_TYPE.PERFECT, 5, 0);
+        
+        stats.ratioHistory.add(stats.RATIO_TYPE.RIGHT, 1, 1);
+        stats.ratioHistory.add(stats.RATIO_TYPE.PERFECT, 3, 1);
+        stats.ratioHistory.add(stats.RATIO_TYPE.WRONG, 5, 1);
+        stats.ratioHistory.add(stats.RATIO_TYPE.WRONG, 7, 1);
+    
+        stats.ratioHistory.add(stats.RATIO_TYPE.RIGHT, 5, 2);
+    } else if (debug.TEST_DATA == 2) {
+        for (let i=1; i<240; i+=2) {
+            stats.ratioHistory.add(utils.randomInt(4, 1), i, 0);
+        }
+    }
 };
 
 
 stats.updateRatioHistory = function(isRight, isPerfect) {
-	let coord = board.getNodeCoord();
-
     let type = stats.RATIO_TYPE.WRONG;
     if (isPerfect) {
         type = stats.RATIO_TYPE.PERFECT;
@@ -46,37 +63,137 @@ stats.updateRatioHistory = function(isRight, isPerfect) {
         type = stats.RATIO_TYPE.RIGHT;
     }
 
-	if (!stats.ratioHistory[coord.y]) {
-		stats.ratioHistory[coord.y] = [];
-	}
-	stats.ratioHistory[coord.y][coord.x] = type;
+    stats.ratioHistory.add(type);
 }
 
-stats.normalizeRatioHistory = function() {
-    for (let y=0; y<stats.ratioHistory.length; y++) {
-        if (!stats.ratioHistory[y]) stats.ratioHistory[y] = [];
-        
-        for (let x=0; x<stats.ratioHistory[y].length; x++) {
-            if (stats.ratioHistory[y][x] == null) stats.ratioHistory[y][x] = stats.RATIO_TYPE.NONE;
+stats.encodeRatioHistory = function() {
+    let encoded = stats.encodeRatioHistoryLoop();
+
+    let firstY = byteUtils.numToBytes(stats.RATIO_Y_INDICATOR, 2);
+    firstY = byteUtils.numToBytes(0, 2, firstY);
+    firstY = byteUtils.numToBytes(0, 2, firstY);
+    firstY = byteUtils.numToBytes(0, 2, firstY);
+
+    encoded = firstY.concat(encoded);
+
+    // stats.decodeRatioHistory(encoded);
+
+    return encoded;
+};
+
+stats.encodeRatioHistoryLoop = function(node = board.editor.getRoot()) {
+    let encoded = [];
+
+    for (let i = 0; i < node.children.length; i++) {
+        let childNode = node.children[i];
+
+        if (!stats.ratioHistory.hasY(childNode.navTreeY)) continue;
+
+        if (i > 0) {
+            let parentNode = node;
+            while (parentNode.parent != null) {
+                if (stats.ratioHistory.get(parentNode.navTreeX, parentNode.navTreeY)) {
+                    break;
+                }
+
+                parentNode = parentNode.parent;
+            }
+
+            encoded = byteUtils.numToBytes(stats.RATIO_Y_INDICATOR, 2, encoded);
+            encoded = byteUtils.numToBytes(childNode.navTreeY, 2, encoded);
+            encoded = byteUtils.numToBytes(parentNode.navTreeY, 2, encoded);
+            encoded = byteUtils.numToBytes(parentNode.navTreeX, 2, encoded);
         }
+
+        let val = stats.ratioHistory.get(childNode.navTreeX, childNode.navTreeY);
+        if (val) {
+            encoded = byteUtils.numToBytes(childNode.navTreeX, 2, encoded);
+            encoded = byteUtils.numToBytes(val, 1, encoded);
+            // console.log(childNode.navTreeY + ", " + childNode.navTreeX + ": " + val);
+        }
+
+        encoded = encoded.concat(stats.encodeRatioHistoryLoop(childNode));
+    }
+
+    return encoded;
+};
+
+stats.decodeRatioHistory = function(encoded) {
+    let rootNode = new CNode();
+
+    let i = 0;
+    let y = 0;
+    let node = rootNode;
+    while (i < encoded.length) {
+        let x = encoded[i];
+        if (x == stats.RATIO_Y_INDICATOR) {
+            y = encoded[i+1];
+            node = rootNode.nodes.get(encoded[i+3], encoded[i+2]);
+            i += 4;
+        } else {
+            node = node.add(encoded[i+1], x, y);
+            i += 2;
+        }
+    }
+
+    console.log(rootNode);
+
+    stats.printDecodedRatioHistory(rootNode);
+}
+
+stats.printDecodedRatioHistory = function(node) {
+    for (let i = 0; i < node.children.length; i++) {
+        let childNode = node.children[i];
+        console.log(childNode.y + ", " + childNode.x + ": " + childNode.value);
+        stats.printDecodedRatioHistory(childNode);
     }
 };
 
-stats.updateRatio = function() {
+stats.getMostRatiosBranch = function(node = board.editor.getRoot(), ratioCount = 0) {
+    if (stats.ratioHistory.get(node.navTreeX, node.navTreeY)) ratioCount++;
+
+    if (node.children.length == 0) {
+        return {
+            node: node,
+            count: ratioCount
+        };
+    }
+
+    let childRatioCounts = [];
+    for (let i=0; i<node.children.length; i++) {
+        childRatioCounts.push(stats.getMostRatiosBranch(node.children[i], ratioCount));
+    }
+
+    childRatioCounts.sort((a, b) => { return b.count - a.count });
+    return childRatioCounts[0];
+};
+
+stats.getRatio = function(rangeStart, rangeEnd = Number.MAX_SAFE_INTEGER) {
     let ratios = [];
 
-    let node = board.editor.getCurrent();
+    let node;
+    if (rangeStart == null) {
+        node = board.editor.getCurrent();
+    } else {
+        node = board.editor.getRoot();
+        while (node.children.length != 0 && node.moveNumber < rangeEnd) {
+            node = node.children[0];
+        }
+    }
+
+    let moveNumber = node.moveNumber;
+
     do {
         let x = node.navTreeX;
         let y = node.navTreeY;
 
         node = node.parent;
 
-        if (!stats.ratioHistory[y] || stats.ratioHistory[y].length == 0) continue;
-        if (!stats.ratioHistory[y][x]) continue;
+        let ratio = stats.ratioHistory.get(x, y);
+        if (!ratio) continue;
 
-        ratios.push(stats.ratioHistory[y][x])
-    } while (node)
+        ratios.push(ratio);
+    } while (node && (rangeStart == null || node.moveNumber >= rangeStart))
 
     if (ratios.length == 0) {
         return;
@@ -105,8 +222,9 @@ stats.updateRatio = function() {
         }
     });
 
-    stats.ratio = new Ratio(
+    return new Ratio(
         null,
+        moveNumber,
         ratios.length,
 
         right,
@@ -122,7 +240,7 @@ stats.updateRatio = function() {
 }
 
 stats.setRatio = function() {
-    this.updateRatio();
+    stats.ratio = stats.getRatio();
 
     if (stats.ratio == null) {
         stats.clearRatio();
@@ -149,11 +267,13 @@ stats.clearRatio = function() {
 };
 
 
-stats.setVisits = function(suggestions) {
+stats.setVisits = function(suggestionList) {
+    let suggestions = suggestionList.getFilterByWeaker();
+    
 	let visitsHtml = "";
-    for (let i=0; i<suggestions.length(); i++) {
-        let suggestion = suggestions.get(i);
-        if (i != 0 && suggestion.visits == suggestions.get(i - 1).visits) continue;
+    for (let i=0; i<suggestions.length; i++) {
+        let suggestion = suggestions[i];
+        if (i != 0 && suggestion.visits == suggestions[i - 1].visits) continue;
 
 		visitsHtml += "<div>" + suggestion.grade + ": " + suggestion.visits + "</div>";
 	}

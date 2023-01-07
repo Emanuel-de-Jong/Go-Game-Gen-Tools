@@ -23,14 +23,14 @@ selfplay.start = async function () {
 
 	await gameplay.handleJumped();
 
-	while (selfplay.isPlaying || settings.color != board.getNextColor()) {
+	while (selfplay.isPlaying || G.color != board.getNextColor()) {
 		await G.analyze(settings.selfplayVisits, 1);
 		if (G.isPassed) {
 			selfplay.button.click();
 			return;
 		}
 
-		if (!selfplay.isPlaying && settings.color == board.getNextColor()) return;
+		if (!selfplay.isPlaying && G.color == board.getNextColor()) return;
 
 		await board.play(G.suggestions.get(0), G.MOVE_TYPE.SELFPLAY);
 	}

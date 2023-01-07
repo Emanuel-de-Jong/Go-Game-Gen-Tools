@@ -11,15 +11,17 @@ init.init = async function (dotNetRef) {
 
 	settings.init();
 	board.init();
-	sgf.init();
+	await sgf.init();
 	sgfComment.init();
 	scoreChart.init();
 	stats.init();
 	debug.init();
 	gameplay.init();
+	cornerPlacer.init();
 	preMovePlacer.init();
 	await selfplay.init();
 	await katago.init();
+	db.init();
 
 	sgf.sgfLoadingEvent.add(init.sgfLoadingListener);
 	sgf.sgfLoadedEvent.add(init.sgfLoadedListener);
@@ -28,25 +30,28 @@ init.init = async function (dotNetRef) {
 };
 
 init.clear = async function() {
+	G.setPhase(G.PHASE_TYPE.INIT);
+
 	G.clear();
 	settings.clear();
 	board.clear();
-	sgf.clear();
+	await sgf.clear();
 	sgfComment.clear();
 	scoreChart.clear();
 	stats.clear();
 	debug.clear();
 	gameplay.clear();
+	cornerPlacer.clear();
 	preMovePlacer.clear();
 	await selfplay.clear();
 	await katago.clear();
+	db.clear();
+
 	await init.start();
 };
 
 
 init.start = async function() {
-	await board.placeHandicap();
-
 	await preMovePlacer.start();
 };
 
@@ -67,6 +72,8 @@ init.sgfLoadedListener = async function() {
 	gameplay.clear();
 
 	await katago.clearBoard();
+	await katago.setBoardsize();
+	await katago.setHandicap();
 
 	gameplay.givePlayerControl();
 };

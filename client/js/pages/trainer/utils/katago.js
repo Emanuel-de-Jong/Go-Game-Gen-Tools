@@ -16,6 +16,7 @@ katago.clear = async function() {
     await katago.setBoardsize();
     await katago.setRuleset();
     await katago.setKomi();
+    await katago.setHandicap();
 };
 
 
@@ -46,9 +47,9 @@ katago.restart = async function () {
 };
 
 katago.setBoardsize = async function () {
-    if (G.LOG) console.log("katago.setBoardsize " + settings.boardsize);
+    if (G.LOG) console.log("katago.setBoardsize " + board.boardsize);
 
-    return katago.sendRequest(fetch(katago.URL + "setboardsize?boardsize=" + settings.boardsize, {
+    return katago.sendRequest(fetch(katago.URL + "setboardsize?boardsize=" + board.boardsize, {
         method: "GET" })
         .then(response => {
             return response;
@@ -59,9 +60,9 @@ katago.setBoardsize = async function () {
 };
 
 katago.setRuleset = async function () {
-    if (G.LOG) console.log("katago.setRuleset " + settings.ruleset);
+    if (G.LOG) console.log("katago.setRuleset " + sgf.ruleset);
 
-    return katago.sendRequest(fetch(katago.URL + "setruleset?ruleset=" + settings.ruleset, {
+    return katago.sendRequest(fetch(katago.URL + "setruleset?ruleset=" + sgf.ruleset, {
         method: "GET" })
         .then(response => {
             return response;
@@ -72,9 +73,22 @@ katago.setRuleset = async function () {
 };
 
 katago.setKomi = async function () {
-    if (G.LOG) console.log("katago.setKomi " + settings.komi);
+    if (G.LOG) console.log("katago.setKomi " + sgf.komi);
 
-    return katago.sendRequest(fetch(katago.URL + "setkomi?komi=" + settings.komi, {
+    return katago.sendRequest(fetch(katago.URL + "setkomi?komi=" + sgf.komi, {
+        method: "GET" })
+        .then(response => {
+            return response;
+        })
+        .catch(error => {
+            return error;
+        }));
+};
+
+katago.setHandicap = async function () {
+    if (G.LOG) console.log("katago.setHandicap " + board.handicap);
+
+    return katago.sendRequest(fetch(katago.URL + "sethandicap?handicap=" + board.handicap, {
         method: "GET" })
         .then(response => {
             return response;
@@ -142,22 +156,28 @@ katago.play = async function (coord, color = board.getColor()) {
         }));
 };
 
-katago.setBoard = async function () {
-    if (G.LOG) console.log("katago.setBoard");
+katago.playRange = async function () {
+	let moves = board.getMoves();
+    if (moves.length == 0) return;
 
-    let moves = board.getMoves();
-    let serverMoves = [];
-    moves.forEach(move => {
-        serverMoves.push({
+    let serverMoves = {
+        moves: []
+    };
+
+	for (let i=0; i<moves.length; i++) {
+		let move = moves[i];
+		serverMoves.moves.push({
             color: G.colorNumToName(move.color),
             coord: katago.coordNumToName(move.coord)
         });
-    });
+	}
 
-    return katago.sendRequest(fetch(katago.URL + "setboard", {
+    if (G.LOG) console.log("katago.playRange " + serverMoves);
+
+    return katago.sendRequest(fetch(katago.URL + "playrange", {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
-        body: '{"moves":' + JSON.stringify(serverMoves) + "}" })
+        body: JSON.stringify(serverMoves) })
         .then(response => {
             return response;
         })
@@ -167,9 +187,9 @@ katago.setBoard = async function () {
 };
 
 katago.sgf = async function () {
-    if (G.LOG) console.log("katago.sgf");
+    if (G.LOG) console.log("katago.sgf " + false);
 
-    return katago.sendRequest(fetch(katago.URL + "sgf", {
+    return katago.sendRequest(fetch(katago.URL + "sgf?shouldWriteFile=" + false, {
         method: "GET" })
         .then(response => {
             return response;
@@ -180,9 +200,9 @@ katago.sgf = async function () {
 };
 
 katago.sendRequest = async function (request) {
-    // before
+    // Before
     let response = await request;
-    // after
+    // After
     return response;
 };
 
@@ -210,8 +230,7 @@ katago.coordNumToName = function (numCoord) {
     };
 
     let x = xConvert[numCoord.x];
-    let y = settings.boardsize + 1 - numCoord.y;
-    // console.log("katago.coordNumToName " + numCoord.x + ", " + numCoord.y + " = " + x + y);
+    let y = board.boardsize + 1 - numCoord.y;
     return "" + x + y;
 };
 
@@ -243,6 +262,6 @@ katago.coordNameToNum = function (nameCoord) {
     let nums = nameCoord.substring(1).split(" ");
 
     let x = xConvert[nameCoord[0]];
-    let y = settings.boardsize + 1 - parseInt(nums[0]);
+    let y = board.boardsize + 1 - parseInt(nums[0]);
     return new Coord(x, y);
 };

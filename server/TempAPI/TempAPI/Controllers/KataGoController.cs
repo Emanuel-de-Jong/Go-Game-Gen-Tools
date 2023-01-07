@@ -50,6 +50,12 @@ namespace TempAPI.Controllers
             kataGo.SetKomi(komi);
         }
 
+        [HttpGet("sethandicap")]
+        public void GetSetHandicap([Range(2, 9)] int handicap)
+        {
+            kataGo.SetHandicap(handicap);
+        }
+
         [HttpPost("analyzemove")]
         public MoveSuggestion PostAnalyzeMove([RegularExpression(@"(B|W)")] string color,
             [RegularExpression(@"([A-H]|[J-T])(1[0-9]|[1-9])")] string coord)
@@ -81,16 +87,16 @@ namespace TempAPI.Controllers
             kataGo.Play(color, coord);
         }
 
-        [HttpPost("setboard")]
-        public void PostSetBoard([FromBody] Moves moves)
+        [HttpPost("playrange")]
+        public void PostPlayRange([FromBody] Moves moves)
         {
-            kataGo.SetBoard(moves);
+            kataGo.PlayRange(moves);
         }
 
         [HttpGet("sgf")]
-        public void GetSGF()
+        public void GetSGF(bool shouldWriteFile)
         {
-            kataGo.SGF();
+            kataGo.SGF(shouldWriteFile);
         }
     }
 }

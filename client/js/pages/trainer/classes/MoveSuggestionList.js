@@ -2,6 +2,8 @@ class MoveSuggestionList {
 
     suggestions = [];
     passSuggestion;
+    playedCoord;
+    chosenCoord;
     isPass = false;
 
 
@@ -21,18 +23,11 @@ class MoveSuggestionList {
     
     fillWithServerSuggestions(serverSuggestions) {
         let nameCoords = [];
-        // let isPassed = false;
         serverSuggestions.forEach(serverSuggestion => {
-            // if (isPassed) return;
-            // if (serverSuggestion.move.coord == "pass") {
-            //     isPassed = true;
-            // }
-
             nameCoords.push(serverSuggestion.move.coord);
             this.suggestions.push(new MoveSuggestion(serverSuggestion));
         });
 
-        // console.log(this.suggestions);
         console.log(nameCoords);
     }
 
@@ -74,23 +69,43 @@ class MoveSuggestionList {
         return firstSuggestion;
     }
 
-    filterWeakerThan(coord) {
+    getFilterByWeaker() {
+        if (settings.showWeakerOptions ||
+                (this.chosenCoord && !this.chosenCoord.compare(this.playedCoord) ||
+                !this.find(this.playedCoord))) {
+            return this.suggestions;
+        }
+        
         let index;
         for (index=0; index<this.suggestions.length; index++) {
-            if (this.suggestions[index].coord.compare(coord)) {
+            if (this.suggestions[index].coord.compare(this.playedCoord)) {
                 break;
             }
         }
 
-        this.suggestions = this.suggestions.splice(0, index);
+        return this.suggestions.splice(0, index);
     }
 
     find(coord) {
-        for (i=0; i<this.suggestions.length; i++) {
+        for (let i=0; i<this.suggestions.length; i++) {
             if (this.suggestions[i].coord.compare(coord)) {
                 return this.suggestions[i];
             }
         }
+    }
+
+    encode() {
+        let encoded = [];
+        encoded = byteUtils.numToBytes(this.suggestions.length, 2, encoded);
+
+        for (let i=0; i<this.suggestions.length; i++) {
+            let suggestion = this.suggestions[i];
+            encoded = byteUtils.numToBytes(suggestion.visits, 4, encoded);
+            encoded = byteUtils.numToBytes(suggestion.grade.charCodeAt(0), 1, encoded);
+            encoded = encoded.concat(suggestion.coord.encode());
+        }
+        
+        return encoded;
     }
 
 

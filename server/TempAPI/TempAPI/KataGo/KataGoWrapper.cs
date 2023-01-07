@@ -78,6 +78,14 @@ namespace TempAPI.KataGo
             ClearReader();
         }
 
+        public void SetHandicap(int handicap)
+        {
+            if (G.Log) Console.WriteLine("KataGoWrapper.SetHandicap " + handicap);
+
+            Write("fixed_handicap " + handicap);
+            ClearReader();
+        }
+
         public MoveSuggestion AnalyzeMove(string color, string coord)
         {
             if (G.Log) Console.WriteLine("KataGoWrapper.AnalyzeMove " + color + " " + coord);
@@ -199,11 +207,9 @@ namespace TempAPI.KataGo
             ClearReader();
         }
 
-        public void SetBoard(Moves moves)
+        public void PlayRange(Moves moves)
         {
-            if (G.Log) Console.WriteLine("KataGoWrapper.SetBoard " + moves);
-
-            ClearBoard();
+            if (G.Log) Console.WriteLine("KataGoWrapper.PlayRange " + moves);
 
             foreach (Move move in moves.moves)
             {
@@ -211,19 +217,24 @@ namespace TempAPI.KataGo
             }
         }
 
-        public void SGF()
+        public string SGF(bool shouldWriteFile)
         {
-            if (G.Log) Console.WriteLine("KataGoWrapper.SGF");
+            if (G.Log) Console.WriteLine("KataGoWrapper.SGF " + shouldWriteFile);
 
             Write("printsgf");
             string sgfStr = Read().Substring(2);
             ClearReader();
 
-            StreamWriter sgfWriter = new(File.Create("SGFs\\" +
-                DateTime.Now.ToString("dd-MM_HH-mm-ss") +
-                ".sgf"));
-            sgfWriter.Write(sgfStr);
-            sgfWriter.Close();
+            if (shouldWriteFile)
+            {
+                StreamWriter sgfWriter = new(File.Create("SGFs\\" +
+                    DateTime.Now.ToString("dd-MM_HH-mm-ss") +
+                    ".sgf"));
+                sgfWriter.Write(sgfStr);
+                sgfWriter.Close();
+            }
+
+            return sgfStr;
         }
 
         private string Read()

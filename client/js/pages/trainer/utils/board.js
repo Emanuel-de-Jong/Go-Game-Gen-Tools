@@ -1,43 +1,42 @@
 var board = {};
 
-board.HANDICAP_COORDS = {
+board.HANDICAP_SGFS = {
 	19: {
-		0: [],
-		2: [ {x:16,y:4}, {x:4,y:16} ],
-		3: [ {x:16,y:4}, {x:4,y:16}, {x:16,y:16} ],
-		4: [ {x:4,y:4}, {x:16,y:4}, {x:4,y:16}, {x:16,y:16} ],
-		5: [ {x:4,y:4}, {x:16,y:4}, {x:10,y:10}, {x:4,y:16}, {x:16,y:16} ],
-		6: [ {x:4,y:4}, {x:16,y:4}, {x:4,y:10}, {x:16,y:10}, {x:4,y:16}, {x:16,y:16} ],
-		7: [ {x:4,y:4}, {x:16,y:4}, {x:4,y:10}, {x:10,y:10}, {x:16,y:10}, {x:4,y:16}, {x:16,y:16} ],
-		8: [ {x:4,y:4}, {x:10,y:4}, {x:16,y:4}, {x:4,y:10}, {x:16,y:10}, {x:4,y:16}, {x:10,y:16}, {x:16,y:16} ],
-		9: [ {x:4,y:4}, {x:10,y:4}, {x:16,y:4}, {x:4,y:10}, {x:10,y:10}, {x:16,y:10}, {x:4,y:16}, {x:10,y:16}, {x:16,y:16} ],
+		2: "[pd][dp]",
+		3: "[dd][pd][dp]",
+		4: "[dd][pd][dp][pp]",
+		5: "[dd][pd][jj][dp][pp]",
+		6: "[dd][pd][dj][pj][dp][pp]",
+		7: "[dd][pd][dj][jj][pj][dp][pp]",
+		8: "[dd][jd][pd][dj][pj][dp][jp][pp]",
+		9: "[dd][jd][pd][dj][jj][pj][dp][jp][pp]",
 	},
 	13: {
-		0: [],
-		2: [ {x:10,y:4}, {x:4,y:10} ],
-		3: [ {x:10,y:4}, {x:4,y:10}, {x:10,y:10} ],
-		4: [ {x:4,y:4}, {x:10,y:4}, {x:4,y:10}, {x:10,y:10} ],
-		5: [ {x:4,y:4}, {x:10,y:4}, {x:7,y:7}, {x:4,y:10}, {x:10,y:10} ],
-		6: [ {x:4,y:4}, {x:10,y:4}, {x:4,y:7}, {x:10,y:7}, {x:4,y:10}, {x:10,y:10} ],
-		7: [ {x:4,y:4}, {x:10,y:4}, {x:4,y:7}, {x:7,y:7}, {x:10,y:7}, {x:4,y:10}, {x:10,y:10} ],
-		8: [ {x:4,y:4}, {x:7,y:4}, {x:10,y:4}, {x:4,y:7}, {x:10,y:7}, {x:4,y:10}, {x:7,y:10}, {x:10,y:10} ],
-		9: [ {x:4,y:4}, {x:7,y:4}, {x:10,y:4}, {x:4,y:7}, {x:7,y:7}, {x:10,y:7}, {x:4,y:10}, {x:7,y:10}, {x:10,y:10} ],
+		2: "[jd][dj]",
+		3: "[dd][jd][dj]",
+		4: "[dd][jd][dj][jj]",
+		5: "[dd][jd][gg][dj][jj]",
+		6: "[dd][jd][dg][jg][dj][jj]",
+		7: "[dd][jd][dg][gg][jg][dj][jj]",
+		8: "[dd][gd][jd][dg][jg][dj][gj][jj]",
+		9: "[dd][gd][jd][dg][gg][jg][dj][gj][jj]",
 	},
 	9: {
-		0: [],
-		2: [ {x:7,y:3}, {x:3,y:7} ],
-		3: [ {x:7,y:3}, {x:3,y:7}, {x:7,y:7} ],
-		4: [ {x:3,y:3}, {x:7,y:3}, {x:3,y:7}, {x:7,y:7} ],
-		5: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
-		6: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
-		7: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
-		8: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
-		9: [ {x:3,y:3}, {x:7,y:3}, {x:5,y:5}, {x:3,y:7}, {x:7,y:7} ],
+		2: "[gc][cg]",
+		3: "[cc][gc][cg]",
+		4: "[cc][gc][cg][gg]",
+		5: "[cc][gc][ee][cg][gg]",
+		6: "[cc][gc][ce][ge][cg][gg]",
+		7: "[cc][gc][ce][ee][ge][cg][gg]",
+		8: "[cc][ec][gc][ce][ge][cg][eg][gg]",
+		9: "[cc][ec][gc][ce][ee][ge][cg][eg][gg]",
 	},
 };
 
 
 board.init = function() {
+	board.handicapElement = document.getElementById("currentHandicap");
+
 	board.placeStoneAudios = [
 		new Audio("resources/placeStone0.mp3"),
 		new Audio("resources/placeStone1.mp3"),
@@ -59,16 +58,35 @@ board.init = function() {
 };
 
 board.clear = function() {
+	board.boardsize = settings.boardsize;
+	board.setHandicap(settings.handicap);
+	
 	board.element = document.getElementById("board");
-	besogo.create(board.element, {
+
+	let besogoOptions = {
 		resize: "fixed",
 		panels: "control+names+tree+comment+file",
 		coord: "western",
 		tool: "navOnly",
-		size: settings.boardsize,
+		size: board.boardsize,
 		variants: 2,
-		nowheel: true
-	});
+		nowheel: true,
+	};
+	if (board.handicap != 0) {
+		besogoOptions.sgf = "(;" +
+			"SZ[" + board.boardsize + "]" +
+			"HA[" + board.handicap + "]" +
+			"AB" + board.HANDICAP_SGFS[board.boardsize][board.handicap] +
+			")";
+	}
+
+	if (debug.TEST_DATA == 1) {
+		besogoOptions.sgf = "(;GM[1]FF[4]CA[UTF-8]AP[Sabaki:0.52.0]KM[7.5]SZ[19]DT[2022-12-29](;B[pd];W[qc](;B[qd];W[pc];B[od])(;B[pc];W[qd](;B[pe];W[qe];B[qf];W[rf])(;B[qe];W[re])))(;B[dp]))";
+	} else if (debug.TEST_DATA == 2) {
+		besogoOptions.sgf = "(;GM[1]FF[4]CA[UTF-8]AP[Sabaki:0.52.0]KM[6.5]SZ[19]DT[2022-11-09]PB[KataGo 1.11];B[pd];W[dp];B[pp]SBKV[47.95];W[dd]SBKV[48.06];B[fc]SBKV[47.97];W[qq]SBKV[48.22];B[pq];W[qp]SBKV[48.12];B[po]SBKV[48.08];W[rn]SBKV[48.27];B[cf]SBKV[48.05];W[ef]SBKV[48.53];B[ci]SBKV[47.88];W[nc]SBKV[48.18];B[cn];W[qf];B[pf];W[pg];B[of];W[qe];B[qd]SBKV[49.94];W[kc]SBKV[51.19];B[fp]SBKV[50.3];W[ec];B[fd];W[qm];B[oc];W[nd];B[pe];W[kp];B[ic];W[eb];B[kd];W[jc];B[jd];W[ld];B[le];W[lc];B[ib];W[ob];B[pb];W[jb];B[me];W[hp];B[bd];W[eo];B[ie];W[ce];B[be];W[df];B[cg];W[dm];B[eh];W[cc];B[bb];W[cb];B[fb];W[gf];B[ee];W[de];B[fg];W[ff];B[hg];W[ed];B[fe];W[gg];B[gh];W[hf];B[ig];W[pj];B[md]SBKV[99.5];W[mb]SBKV[99.88];B[mc]SBKV[99.56];W[bc]SBKV[99.73];B[ac]SBKV[99.5];W[ab]SBKV[99.74];B[aa]SBKV[99.58];W[nq]SBKV[99.85];B[pm];W[pl];B[qn];W[rm];B[qr];W[qo];B[or];W[pn];B[mq];W[lq];B[mp];W[om];B[qg];W[rg];B[qh];W[ph];B[rh];W[qi];B[re];W[ri];B[rf];W[if];B[jg];W[cm];B[ck];W[km];B[bm];W[bl];B[bo];W[cl];B[cq];W[cp];B[bp];W[dq];B[cr];W[dr];B[ds];W[en];B[er]SBKV[99.85];W[fq]SBKV[99.96];B[fk];W[gm];B[ij];W[fr];B[mr];W[lr];B[hl];W[hm];B[nh]SBKV[99.89];W[mi]SBKV[99.97];B[mh]SBKV[99.8];W[ja]SBKV[99.94];B[la]SBKV[99.88];W[gb]SBKV[99.97];B[gc]SBKV[99.85];W[hd]SBKV[99.97];B[id]SBKV[99.87];W[ki]SBKV[99.98];B[oi]SBKV[99.93];W[oj];B[ls];W[ks];B[ms];W[jr];B[ni];W[nj];B[li];W[mm];B[kj];W[rr];B[rs];W[am];B[bn];W[rq];B[lo]SBKV[99.89];W[ko]SBKV[99.99];B[il]SBKV[99.91];W[im]SBKV[99.99];B[dk]SBKV[99.87];W[pc]SBKV[99.99];B[qc]SBKV[99.92];W[bh]SBKV[99.97];B[ch]SBKV[99.93];W[aq]SBKV[99.99];B[bq]SBKV[99.93];W[cs]SBKV[99.98];B[bs]SBKV[99.94];W[ar]SBKV[99.98];B[an]SBKV[99.92];W[ap]SBKV[99.99];B[fm]SBKV[99.94];W[gl];B[em]SBKV[99.92];W[dn]SBKV[99.99];B[gk]SBKV[99.93];W[eq]SBKV[99.99];B[fn]SBKV[99.93];W[fo]SBKV[100];B[pi]SBKV[99.94];W[ak]SBKV[99.99];B[mj]SBKV[99.93];W[si]SBKV[99.99];B[nk]SBKV[99.92];W[gn]SBKV[99.99];B[qj];W[qk]SBKV[99.99];B[bj]SBKV[99.91];W[aj]SBKV[99.99];B[sh]SBKV[99.9];W[rj]SBKV[99.98];B[bk]SBKV[99.93];W[ai]SBKV[99.99];B[oo]SBKV[99.94];W[mk]SBKV[99.99];B[ml]SBKV[99.9];W[lk]SBKV[99.99];B[ll]SBKV[99.92];W[kk]SBKV[99.99];B[kl]SBKV[99.93];W[jk]SBKV[99.99];B[jl]SBKV[99.92];W[nl]SBKV[100];B[ik]SBKV[99.94];W[al]SBKV[99.98];B[ok]SBKV[99.89];W[ol]SBKV[99.98];B[jj]SBKV[99.88];W[pk]SBKV[99.98];B[es]SBKV[99.89];W[fs]SBKV[99.98];B[ln]SBKV[99.89];W[kn]SBKV[99.99];B[cs]SBKV[99.9];W[el];B[fl];W[dl];B[bg];W[lm];B[jm];W[jn];B[ek];W[nk];B[nn];W[lj];B[mn];W[mi];B[lh];W[sr];B[ag];W[ss];B[qs];W[gp];B[co];W[do];B[lp];W[on];B[nm];W[mj];B[as];W[bi];B[ah];W[])";
+	}
+
+	besogo.create(board.element, besogoOptions);
 
 	board.editor = board.element.besogoEditor;
 	
@@ -102,40 +120,25 @@ board.clear = function() {
 };
 
 
-board.placeHandicap = async function() {
-	if (settings.handicap) {
-		G.setPhase(G.PHASE_TYPE.HANDICAP);
-
-		let coords = board.HANDICAP_COORDS[settings.boardsize][settings.handicap];
-		for (let i=0; i<coords.length; i++) {
-			let coord = coords[i];
-			if (i < coords.length - 1) {
-				await board.draw(coord, "playB", true, G.MOVE_TYPE.HANDICAP);
-			} else {
-				await board.play(await katago.analyzeMove(coord, G.COLOR_TYPE.B), G.MOVE_TYPE.HANDICAP, "playB");
-			}
-		}
-	}
-};
-
 board.play = async function(suggestion, moveType = G.MOVE_TYPE.NONE, tool = "auto") {
-	scoreChart.update(suggestion);
+	if (G.suggestions) {
+		G.suggestions.playedCoord = suggestion.coord;
+		G.updateSuggestionsHistory();
+	}
+
 	await board.draw(suggestion.coord, tool, true, moveType);
+	scoreChart.update(suggestion);
+	sgfComment.setComment(moveType);
 };
 
-board.draw = async function(coord, tool = "auto", sendToServer = true, moveType = G.MOVE_TYPE.NONE) {
+board.draw = async function(coord, tool = "auto", sendToServer = true) {
 	board.editor.setTool(tool);
 	board.editor.click(coord.x, coord.y, false, false);
 	board.editor.setTool("navOnly");
 
 	if (tool == "auto" || tool == "playB" || tool == "playW") {
-		board.playPlaceStoneAudio();
-
-		G.updateMoveTypeHistory(moveType);
-		sgfComment.setComment(moveType);
-
-		if (board.lastMove.navTreeY != board.editor.getCurrent().navTreeY) {
-			scoreChart.clear();
+		if (G.phase == G.PHASE_TYPE.CORNERS || G.phase == G.PHASE_TYPE.PREMOVES || G.phase == G.PHASE_TYPE.GAMEPLAY) {
+			board.playPlaceStoneAudio();
 		}
 
 		board.lastMove = board.editor.getCurrent();
@@ -162,27 +165,36 @@ board.playPlaceStoneAudio = function() {
 	board.placeStoneAudios[placeStoneAudioIndex].play();
 };
 
+board.syncWithServer = async function() {
+    await katago.clearBoard();
+    await katago.setHandicap();
+    await katago.playRange();
+};
+
 board.getColor = function() {
 	let currentMove = board.editor.getCurrent();
-	if (currentMove.move != null) {
-		return currentMove.move.color
+	if (currentMove.move) {
+		return currentMove.move.color;
 	}
-	return 1;
+
+	if (currentMove.moveNumber == 0) {
+		return !board.handicap ? G.COLOR_TYPE.W : G.COLOR_TYPE.B;
+	}
+
+	return G.COLOR_TYPE.B;
 };
 
 board.getNextColor = function() {
 	let currentMove = board.editor.getCurrent();
-	if (currentMove != null) {
-		if (currentMove.children.length > 0) {
-			return currentMove.children[0].move.color;
-		}
-
-		if (currentMove.move != null) {
-			return currentMove.move.color * -1;
-		}
+	if (currentMove.children && currentMove.children.length > 0) {
+		return currentMove.children[0].move.color;
 	}
-	
-	return G.COLOR_TYPE.B;
+
+	return board.getColor() * -1;
+};
+
+board.findStone = function(coord) {
+	return board.editor.getCurrent().getStone(coord.x, coord.y);
 };
 
 board.pass = function() {
@@ -191,10 +203,12 @@ board.pass = function() {
 
 board.removeMarkup = function(coord) {
 	let markup = board.editor.getCurrent().markup;
-	markup[(coord.x - 1) * settings.boardsize + (coord.y - 1)] = 0;
+	markup[(coord.x - 1) * board.boardsize + (coord.y - 1)] = 0;
 };
 
-board.drawCoords = function(suggestions) {
+board.drawCoords = function(suggestionList) {
+	let suggestions = suggestionList.getFilterByWeaker();
+
 	let markup = board.editor.getCurrent().markup;
 	for (let i=0; i<markup.length; i++) {
 		if (markup[i] && markup[i] != 4) {
@@ -203,10 +217,10 @@ board.drawCoords = function(suggestions) {
 	}
 
 	board.editor.setTool("label");
-	for (let i=0; i<suggestions.length(); i++) {
-		let coord = suggestions.get(i).coord;
+	for (let i=0; i<suggestions.length; i++) {
+		let coord = suggestions[i].coord;
 		
-		board.editor.setLabel(suggestions.get(i).grade);
+		board.editor.setLabel(suggestions[i].grade);
 		board.editor.click(coord.x, coord.y, false, false);
 	}
 
@@ -256,6 +270,12 @@ board.getMoves = function() {
 
 	moves = moves.reverse();
 	return moves;
+};
+
+board.setHandicap = function(handicap) {
+	board.handicap = handicap;
+	board.handicapElement.innerHTML = handicap;
+	if (G.phase != G.PHASE_TYPE.NONE && G.phase != G.PHASE_TYPE.INIT) sgf.setHandicapMeta();
 };
 
 board.keydownAndMousedownListener = function(event) {

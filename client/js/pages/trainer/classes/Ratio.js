@@ -1,5 +1,6 @@
 class Ratio {
 
+    moveNumber;
     total;
 
     right;
@@ -13,7 +14,7 @@ class Ratio {
     perfectTopStreak;
 
 
-    constructor(oldRatio, total, right, rightPercent, rightStreak, rightTopStreak,
+    constructor(oldRatio, moveNumber, total, right, rightPercent, rightStreak, rightTopStreak,
             perfect, perfectPercent, perfectStreak, perfectTopStreak) {
         if (oldRatio) {
             this.constructFromOld(oldRatio);
@@ -23,6 +24,7 @@ class Ratio {
             return;
         }
         
+        this.moveNumber = moveNumber;
         this.total = total;
 
         this.right = right;
@@ -37,6 +39,7 @@ class Ratio {
     }
 
     constructFromOld(oldRatio) {
+        this.moveNumber = oldRatio.moveNumber;
         this.total = oldRatio.total;
 
         this.right = oldRatio.right;
@@ -51,6 +54,7 @@ class Ratio {
     }
 
     constructEmpty() {
+        this.moveNumber = 0;
         this.total = 0;
 
         this.right = 0;

@@ -1,6 +1,9 @@
 var debug = {};
 
 
+debug.TEST_DATA = 0;
+
+
 debug.init = function () {
     debug.testButton = document.getElementById("test");
 
@@ -67,5 +70,11 @@ debug.logAllFuncCalls = function () {
 };
 
 debug.testButtonClickListener = async function () {
-    console.log();
+    let openingRatio = stats.getRatio(0, db.OPENING_RATIO_MOVENUMBER);
+    let midgameRatio = stats.getRatio(db.OPENING_RATIO_MOVENUMBER+1, db.MIDGAME_RATIO_MOVENUMBER);
+    let endgameRatio = stats.getRatio(db.MIDGAME_RATIO_MOVENUMBER+1);
+
+    console.log(openingRatio);
+    console.log(midgameRatio);
+    console.log(endgameRatio);
 };

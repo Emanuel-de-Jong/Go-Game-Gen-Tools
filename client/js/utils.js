@@ -10,9 +10,19 @@ utils.TYPE = {
 };
 
 
-// 0 to (max-1)
-utils.randomInt = function(max) {
-	return Math.floor(Math.random() * max);
+// min to (max-1)
+utils.randomInt = function(max, min = 0) {
+	return Math.floor(Math.random() * (max - min)) + min;
+};
+
+utils.randomColor = function() {
+	return [ utils.randomInt(256), utils.randomInt(256), utils.randomInt(256), utils.randomInt(10)/10.0 ];
+};
+
+utils.randomColorStr = function(hasAlpha = false) {
+    let color = utils.randomColor();
+	return "rgb" + (hasAlpha ? "a" : "") +
+        "(" + color[0] + ", " + color[1] + ", " + color[2] + (hasAlpha ? ", " + color[3] : "") + ")";
 };
 
 utils.shuffleArray = function(array) {

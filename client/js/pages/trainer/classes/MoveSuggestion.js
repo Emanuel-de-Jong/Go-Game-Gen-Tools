@@ -3,8 +3,7 @@ class MoveSuggestion {
     color;
     coord;
     visits;
-    winrate;
-    scoreLead;
+    score;
     grade;
 
 
@@ -13,8 +12,7 @@ class MoveSuggestion {
             this.color = color;
             this.coord = coord;
             this.visits = visits;
-            this.winrate = winrate;
-            this.scoreLead = scoreLead;
+            this.score = new Score(winrate, scoreLead);
         } else {
             this.fillWithServerSuggestion(serverSuggestion);
         }
@@ -25,8 +23,7 @@ class MoveSuggestion {
         this.color = G.colorNameToNum(serverSuggestion.move.color);
         this.coord = katago.coordNameToNum(serverSuggestion.move.coord);
         this.visits = serverSuggestion.visits;
-        this.winrate = serverSuggestion.winrate;
-        this.scoreLead = serverSuggestion.scoreLead;
+        this.score = new Score(serverSuggestion.winrate, serverSuggestion.scoreLead);
     }
 
     isPass() {

@@ -4,7 +4,7 @@ var settings = {};
 settings.SETTINGS = {
     boardsize: utils.TYPE.INT,
     handicap: utils.TYPE.INT,
-    colorType: utils.TYPE.STRING,
+    colorType: utils.TYPE.INT,
     preMovesSwitch: utils.TYPE.BOOL,
     preMoves: utils.TYPE.INT,
     preVisits: utils.TYPE.INT,
@@ -19,6 +19,8 @@ settings.SETTINGS = {
 
     preOptions: utils.TYPE.INT,
     preOptionPerc: utils.TYPE.FLOAT,
+    forceOpponentFirstCorner: utils.TYPE.BOOL,
+    forceOpponentSecondCorner: utils.TYPE.BOOL,
     cornerSwitch44: utils.TYPE.BOOL,
     cornerSwitch34: utils.TYPE.BOOL,
     cornerSwitch33: utils.TYPE.BOOL,
@@ -51,13 +53,9 @@ settings.init = function() {
     }
 
     utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", settings.inputAndSelectInputListener);
-    settings.handicapElement.addEventListener("input", settings.handicapElementInputListener);
-    settings.colorTypeElement.addEventListener("input", settings.colorTypeElementInputListener);
     settings.suggestionVisitsElement.addEventListener("input", settings.suggestionVisitsElementInputListener);
     settings.opponentVisitsElement.addEventListener("input", settings.opponentVisitsElementInputListener);
-    settings.rulesetElement.addEventListener("input", settings.rulesetElementInputListener);
     settings.komiChangeStyleElement.addEventListener("input", settings.komiChangeStyleElementInputListener);
-    settings.komiElement.addEventListener("input", settings.komiElementInputListener);
     settings.handicapElement.addEventListener("input", settings.setKomi);
     settings.rulesetElement.addEventListener("input", settings.setKomi);
     settings.boardsizeElement.addEventListener("input", settings.setKomi);
@@ -97,17 +95,7 @@ settings.updateSetting = function(name) {
     }
 
     if (name == "colorType") {
-        switch (value) {
-            case "Black":
-                settings.color = G.COLOR_TYPE.B;
-                break;
-            case "White":
-                settings.color = G.COLOR_TYPE.W;
-                break;
-            case "Random":
-                settings.color = utils.randomInt(2) == 0 ? G.COLOR_TYPE.B : G.COLOR_TYPE.W;
-                break;
-        }
+        G.setColor(value);
     }
     
     settings[name] = value;
@@ -116,14 +104,6 @@ settings.updateSetting = function(name) {
 settings.setSetting = function(name, value) {
     settings[name + "Element"].value = value;
     settings[name + "Element"].dispatchEvent(new Event("input"));
-}
-
-settings.setColor = function(color = board.getNextColor()) {
-    settings.color = color;
-
-    sgf.setPlayers();
-    sgf.setRankPlayer();
-    sgf.setRankAI();
 }
 
 settings.inputAndSelectInputListener = function(event) {
@@ -157,27 +137,12 @@ settings.hideInvalidMessage = function(input) {
     messageDiv.innerHTML = "";
 };
 
-settings.handicapElementInputListener = function() {
-    sgf.setHandicap();
-};
-
-settings.colorTypeElementInputListener = function() {
-    sgf.setPlayers();
-    sgf.setRankPlayer();
-    sgf.setRankAI();
-};
-
 settings.suggestionVisitsElementInputListener = function() {
-    sgf.setRankPlayer();
+    sgf.setRankPlayerMeta();
 };
 
 settings.opponentVisitsElementInputListener = function() {
-    sgf.setRankAI();
-};
-
-settings.rulesetElementInputListener = async function() {
-    sgf.setRuleset();
-    await katago.setRuleset();
+    sgf.setRankAIMeta();
 };
 
 settings.komiChangeStyleElementInputListener = function() {
@@ -187,11 +152,6 @@ settings.komiChangeStyleElementInputListener = function() {
     } else {
         settings.komiElement.disabled = false;
     }
-};
-
-settings.komiElementInputListener = async function() {
-    sgf.setKomi();
-    await katago.setKomi();
 };
 
 settings.setKomi = function() {
@@ -232,7 +192,6 @@ settings.setKomi = function() {
 
     if (komi != oldKomi) {
         settings.setSetting("komi", komi);
-        sgf.setKomi();
     }
 };
 

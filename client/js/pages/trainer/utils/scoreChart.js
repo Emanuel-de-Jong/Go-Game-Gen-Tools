@@ -1,6 +1,8 @@
 var scoreChart = {};
 
 
+scoreChart.SCORE_Y_INDICATOR = -1;
+
 scoreChart.DATA = {
     datasets: [
         {
@@ -132,15 +134,38 @@ scoreChart.init = function() {
     
     scoreChart.chart.canvas.onclick = scoreChart.canvasClickListener;
     scoreChart.colorElement.addEventListener("input", scoreChart.colorElementInputListener);
+
+    scoreChart.clear();
 };
 
 scoreChart.clear = function() {
+    scoreChart.clearChart();
+    scoreChart.history = new History();
+
+    if (debug.TEST_DATA == 1) {
+        scoreChart.history.add(new Score(5_0_1_00000, 0), 1, 0);
+        scoreChart.history.add(new Score(5_0_2_00000, 0), 2, 0);
+        scoreChart.history.add(new Score(5_0_3_00000, 0), 3, 0);
+        scoreChart.history.add(new Score(5_0_4_00000, 0), 4, 0);
+        scoreChart.history.add(new Score(5_0_5_00000, 0), 5, 0);
+    
+        scoreChart.history.add(new Score(5_1_1_00000, 0), 1, 1);
+        scoreChart.history.add(new Score(5_1_3_00000, 0), 3, 1);
+        scoreChart.history.add(new Score(5_1_4_00000, 0), 4, 1);
+        scoreChart.history.add(new Score(5_1_5_00000, 0), 5, 1);
+    
+        scoreChart.history.add(new Score(5_2_5_00000, 0), 5, 2);
+        scoreChart.history.add(new Score(5_2_6_00000, 0), 6, 2);
+    }
+};
+
+
+scoreChart.clearChart = function() {
     scoreChart.labels.length = 0;
     scoreChart.winrates.length = 0;
     scoreChart.scores.length = 0;
     scoreChart.chart.update();
-};
-
+}
 
 scoreChart.canvasClickListener = function(click) {
     const points = scoreChart.chart.getElementsAtEventForMode(click, "nearest", { intersect: false }, true);
@@ -150,7 +175,7 @@ scoreChart.canvasClickListener = function(click) {
 };
 
 scoreChart.update = function(suggestion) {
-    let moveNumber = board.getMoveNumber() + 1;
+    let moveNumber = board.getMoveNumber();
     if (scoreChart.labels.includes(moveNumber)) return;
 
     let index;
@@ -162,34 +187,49 @@ scoreChart.update = function(suggestion) {
 
     scoreChart.labels.splice(index, 0, moveNumber);
 
-    let winrate = suggestion.winrate;
-    winrate = suggestion.color == scoreChart.colorElement.value ? winrate : 100 - winrate;
-    scoreChart.winrates.splice(index, 0, winrate.toFixed(2));
+    let winrate = suggestion.score.formatWinrate(suggestion.color != scoreChart.colorElement.value);
+    scoreChart.winrates.splice(index, 0, winrate);
 
-    let score = suggestion.scoreLead;
-    score = suggestion.color == scoreChart.colorElement.value ? score : score * -1;
-    scoreChart.scores.splice(index, 0, score.toFixed(1));
+    let score = suggestion.score.formatScoreLead(suggestion.color != scoreChart.colorElement.value);
+    scoreChart.scores.splice(index, 0, score);
 
     scoreChart.chart.update();
+
+    let point = suggestion.score.copy();
+    if (suggestion.color == scoreChart.colorElement.value) point.reverse();
+    scoreChart.history.add(point, moveNumber);
 };
 
-scoreChart.getCurrent = function() {
-    let moveNumber = board.getMoveNumber();
+scoreChart.refresh = function() {
+    let points = [];
+    let node = board.editor.getCurrent();
+    do {
+        let x = node.navTreeX;
+        let y = node.navTreeY;
 
-    let index = -1;
-    for (let i=0; i<scoreChart.labels.length; i++) {
-        if (scoreChart.labels[i] == moveNumber) {
-            index = i;
-            break;
-        }
+        node = node.parent;
+
+        let point = scoreChart.history.get(x, y);
+        if (!point) continue;
+
+        point.index = x;
+        points.push(point);
+    } while (node)
+
+    points = points.reverse();
+    let i;
+    for (i=0; i<points.length; i++) {
+        let point = points[i];
+        scoreChart.labels[i] = point.index;
+        scoreChart.winrates[i] = point.formatWinrate();
+        scoreChart.scores[i] = point.formatScoreLead();
     }
-    if (index == -1) return null;
 
-    return {
-        winrate: scoreChart.winrates[index],
-        score: scoreChart.scores[index],
-        color: parseInt(scoreChart.colorElement.value)
-    };
+    scoreChart.labels.length = i;
+    scoreChart.winrates.length = i;
+    scoreChart.scores.length = i;
+
+    scoreChart.chart.update();
 };
 
 scoreChart.colorElementInputListener = function() {
@@ -198,13 +238,7 @@ scoreChart.colorElementInputListener = function() {
 
 scoreChart.reverse = function() {
     for (let i=0; i<scoreChart.winrates.length; i++) {
-        let winrate = scoreChart.winrates[i];
-        if (winrate > 50) {
-            winrate = 50 - (winrate - 50);
-        } else {
-            winrate = 50 + (50 - winrate);
-        }
-        scoreChart.winrates[i] = winrate.toFixed(2);
+        scoreChart.winrates[i] = (100 - scoreChart.winrates[i]).toFixed(2);
     }
 
     for (let i=0; i<scoreChart.scores.length; i++) {
@@ -212,4 +246,8 @@ scoreChart.reverse = function() {
     }
 
     scoreChart.chart.update();
+
+    for (const point of scoreChart.history.iterateData()) {
+        point.reverse();
+    }
 };

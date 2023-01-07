@@ -17,4 +17,11 @@ class Coord {
         return false;
     }
 
+    encode(byteCount = 1) {
+        let encoded = [];
+        encoded = byteUtils.numToBytes(this.x, byteCount, encoded);
+        encoded = byteUtils.numToBytes(this.y, byteCount, encoded);
+        return encoded;
+    }
+
 }

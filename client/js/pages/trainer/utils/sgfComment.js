@@ -18,11 +18,8 @@ sgfComment.setComment = function(moveType) {
 		case G.MOVE_TYPE.INIT:
 			comment = sgfComment.createInitComment();
 			break;
-		case G.MOVE_TYPE.HANDICAP:
-			comment = sgfComment.createHandicapComment();
-			break;
-		case G.MOVE_TYPE.PRE_CORNER:
-			comment = sgfComment.createCornerPreComment();
+		case G.MOVE_TYPE.FORCED_CORNER:
+			comment = sgfComment.createForcedCornerComment();
 			break;
 		case G.MOVE_TYPE.PRE:
 			comment = sgfComment.createPreComment();
@@ -40,13 +37,15 @@ sgfComment.setComment = function(moveType) {
 
 	board.editor.setComment(comment);
 	board.commentElement.scrollTop = 0;
+	
+	G.moveTypeHistory.add(moveType);
 };
 
 sgfComment.createInitComment = function() {
 	return "GoTrainer-HumanAI " + G.VERSION +
-		"\nBoard size: " + settings.boardsize +
-		"\nHandicap: " + settings.handicap +
-		"\nColor: " + settings.colorType +
+		"\nBoard size: " + board.boardsize +
+		"\nHandicap: " + board.handicap +
+		"\nColor: " + G.colorNumToFullName(G.color) +
 		"\nPre moves switch: " + settings.preMovesSwitch +
 		"\nPre moves: " + settings.preMoves +
 		"\nPre move strength: " + settings.preVisits +
@@ -56,9 +55,9 @@ sgfComment.createInitComment = function() {
 		"\nDisable AI correction: " + settings.disableAICorrection +
 
 		"\n\nGame" +
-		"\nRuleset: " + settings.ruleset +
+		"\nRuleset: " + sgf.ruleset +
 		"\nKomi change style: " + settings.komiChangeStyle +
-		"\nKomi: " + settings.komi +
+		"\nKomi: " + sgf.komi +
 
 		"\n\nPre moves" +
 		"\nOptions: " + settings.preOptions +
@@ -90,13 +89,8 @@ sgfComment.createInitComment = function() {
 		"\nShow options: " + settings.showOpponentOptions;
 };
 
-sgfComment.createHandicapComment = function() {
-	return "Handicap move" +
-		sgfComment.createCommentScore();
-};
-
-sgfComment.createCornerPreComment = function() {
-	return "Corner pre move" +
+sgfComment.createForcedCornerComment = function() {
+	return "Forced corner move" +
 		sgfComment.createCommentScore();
 };
 
@@ -157,10 +151,10 @@ sgfComment.createCommentRatio = function() {
 }
 
 sgfComment.createCommentScore = function() {
-	let score = scoreChart.getCurrent();
+	let score = scoreChart.history.get();
 	if (score == null) return "";
 
-	return "\nScore " + G.colorNumToName(score.color) +
-		"\nWinrate: " + score.winrate +
-		"\nScore: " + score.score;
+	return "\nScore " + G.colorNumToName(scoreChart.colorElement.value) +
+		"\nWinrate: " + score.formatWinrate() +
+		"\nScore: " + score.formatScoreLead();
 }

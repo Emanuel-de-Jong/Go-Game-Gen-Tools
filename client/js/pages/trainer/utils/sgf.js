@@ -1,26 +1,31 @@
 var sgf = {};
 
 
-sgf.init = function() {
+sgf.init = async function() {
+	sgf.rulesetElement = document.getElementById("currentRuleset");
+	sgf.komiElement = document.getElementById("currentKomi");
+
 	sgf.sgfLoadingEvent = new CEvent(sgf.sgfLoadingListener);
 	sgf.sgfLoadedEvent = new CEvent(sgf.sgfLoadedListener);
 
-	sgf.clear();
+	await sgf.clear();
 };
 
-sgf.clear = function() {
+sgf.clear = async function() {
 	sgf.isSGFLoading = false;
+	sgf.isThirdParty = false;
+
+	await sgf.setRuleset(settings.ruleset);
+	await sgf.setKomi(settings.komi);
 
 	board.editor.setGameInfo("GoTrainer-HumanAI", "GN");
 	board.editor.setGameInfo("GoTrainer-HumanAI", "SO");
 	board.editor.setGameInfo(Date(), "DT");
 
-	sgf.setPlayers();
-	sgf.setRankPlayer();
-	sgf.setRankAI();
-	sgf.setHandicap();
-	sgf.setRuleset();
-	sgf.setKomi();
+	sgf.setPlayersMeta();
+	sgf.setRankPlayerMeta();
+	sgf.setRankAIMeta();
+	sgf.setHandicapMeta();
 };
 
 
@@ -38,58 +43,82 @@ sgf.sgfLoadingListener = function() {
 	sgf.isSGFLoading = true;
 };
 
-sgf.sgfLoadedListener = function() {
+sgf.sgfLoadedListener = async function() {
+	sgf.isThirdParty = true;
+
 	let gameInfo = board.editor.getGameInfo();
 
 	if (gameInfo.RE) {
 		stats.setResult(gameInfo.RE);
 	}
 
-	settings.setColor();
+	G.setColor();
 
-	if (confirm("Would you like to use the komi and ruleset of the SGF?")) {
-		settings.setSetting("komiChangeStyle", "Custom");
-		settings.setSetting("komi", parseFloat(gameInfo.KM));
-	
+	if (gameInfo.SZ) {
+		board.boardsize = parseInt(gameInfo.SZ);
+	}
+
+	if (gameInfo.HA) {
+		board.setHandicap(parseInt(gameInfo.HA));
+	}
+
+	if (confirm("Would you like to use the ruleset and komi of the SGF?")) {
 		if (gameInfo.RU) {
 			let ruleset = gameInfo.RU.toLowerCase();
 			if (ruleset.includes("japan")) {
-				settings.setSetting("ruleset", "Japanese");
+				await sgf.setRuleset("Japanese");
 			} else if (ruleset.includes("chin") || ruleset.includes("korea")) {
-				settings.setSetting("ruleset", "Chinese");
+				await sgf.setRuleset("Chinese");
 			}
 		}
+
+		await sgf.setKomi(parseFloat(gameInfo.KM));
 	}
 
 	sgf.isSGFLoading = false;
 };
 
 
-sgf.setPlayers = function() {
-	board.editor.setGameInfo("Player", "P" + G.colorNumToName(settings.color));
-	board.editor.setGameInfo("AI", "P" + G.colorNumToName(settings.color * -1));
+sgf.setRuleset = async function(ruleset) {
+	sgf.ruleset = ruleset;
+	sgf.setRulesetMeta();
+	sgf.rulesetElement.innerHTML = ruleset;
+	if (G.phase != G.PHASE_TYPE.NONE && G.phase != G.PHASE_TYPE.INIT) await katago.setRuleset();
 };
 
-sgf.setRankPlayer = function() {
-	board.editor.setGameInfo(settings.suggestionVisits + "", G.colorNumToName(settings.color) + "R");
+sgf.setKomi = async function(komi) {
+	sgf.komi = komi;
+	sgf.setKomiMeta();
+	sgf.komiElement.innerHTML = komi;
+	if (G.phase != G.PHASE_TYPE.NONE && G.phase != G.PHASE_TYPE.INIT) await katago.setKomi();
 };
 
-sgf.setRankAI = function() {
-	board.editor.setGameInfo(settings.opponentVisits + "", G.colorNumToName(settings.color * -1) + "R");
+
+sgf.setPlayersMeta = function() {
+	board.editor.setGameInfo("Player", "P" + G.colorNumToName(G.color));
+	board.editor.setGameInfo("AI", "P" + G.colorNumToName(G.color * -1));
 };
 
-sgf.setHandicap = function() {
-	board.editor.setGameInfo(settings.handicap + "", "HA");
+sgf.setRankPlayerMeta = function() {
+	board.editor.setGameInfo(settings.suggestionVisits + "", G.colorNumToName(G.color) + "R");
 };
 
-sgf.setRuleset = function() {
-	board.editor.setGameInfo(settings.ruleset, "RU");
+sgf.setRankAIMeta = function() {
+	board.editor.setGameInfo(settings.opponentVisits + "", G.colorNumToName(G.color * -1) + "R");
 };
 
-sgf.setKomi = function() {
-	board.editor.setGameInfo(settings.komi + "", "KM");
+sgf.setHandicapMeta = function() {
+	board.editor.setGameInfo(board.handicap + "", "HA");
 };
 
-sgf.setResult = function(result) {
+sgf.setRulesetMeta = function() {
+	board.editor.setGameInfo(sgf.ruleset, "RU");
+};
+
+sgf.setKomiMeta = function() {
+	board.editor.setGameInfo(sgf.komi + "", "KM");
+};
+
+sgf.setResultMeta = function(result) {
 	board.editor.setGameInfo(result, "RE");
 };
