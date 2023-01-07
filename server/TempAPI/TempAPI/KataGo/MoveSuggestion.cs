@@ -4,8 +4,8 @@
     {
         public Move move { get; set; }
         public int visits { get; set; }
-        public float winrate { get; set; }
-        public float scoreLead { get; set; }
+        public int winrate { get; set; }
+        public int scoreLead { get; set; }
 
         public MoveSuggestion() { }
 
@@ -17,7 +17,7 @@
             SetScoreLead(scoreLead);
         }
 
-        public MoveSuggestion(string color, string coord, int visits, float winrate, float scoreLead)
+        public MoveSuggestion(string color, string coord, int visits, int winrate, int scoreLead)
         {
             SetMove(color, coord);
             this.visits = visits;
@@ -37,12 +37,12 @@
 
         public void SetWinrate(string winrate)
         {
-            this.winrate = (float)(Math.Round(float.Parse(winrate) * 10_000.0) / 100.0);
+            this.winrate = (int)(float.Parse(winrate) * 100_000_000);
         }
 
         public void SetScoreLead(string scoreLead)
         {
-            this.scoreLead = (float)(Math.Round(float.Parse(scoreLead) * 10.0) / 10.0);
+            this.scoreLead = (int)(float.Parse(scoreLead) * 1_000_000);
         }
     }
 }
