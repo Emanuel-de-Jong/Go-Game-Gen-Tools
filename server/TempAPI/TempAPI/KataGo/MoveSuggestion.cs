@@ -27,7 +27,7 @@
 
         public void SetMove(string color, string coord)
         {
-            move = new Move(color, coord);
+            this.move = new Move(color, coord);
         }
 
         public void SetVisits(string visits)
@@ -38,11 +38,13 @@
         public void SetWinrate(string winrate)
         {
             this.winrate = (int)(float.Parse(winrate) * 100_000_000);
+            if (move.color == "W") this.winrate = 100_000_000 - this.winrate;
         }
 
         public void SetScoreLead(string scoreLead)
         {
             this.scoreLead = (int)(float.Parse(scoreLead) * 1_000_000);
+            if (move.color == "W") this.scoreLead *= -1;
         }
     }
 }
