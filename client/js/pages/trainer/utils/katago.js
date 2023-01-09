@@ -107,8 +107,8 @@ katago.analyzeMove = async function (coord, color = board.getNextColor()) {
             "&coord=" + katago.coordNumToName(coord), {
         method: "POST" })
         .then(response => response.json())
-        .then(serverSuggestion => {
-            return new MoveSuggestion(serverSuggestion);
+        .then(kataGoSuggestion => {
+            return MoveSuggestion.fromKataGo(kataGoSuggestion);
         })
         .catch(error => {
             return error;
@@ -133,8 +133,8 @@ katago.analyze = async function (
             "&maxVisitDiffPerc=" + maxVisitDiffPerc, {
         method: "POST" })
         .then(response => response.json())
-        .then(serverSuggestions => {
-            let suggestions = new MoveSuggestionList(serverSuggestions);
+        .then(kataGoSuggestions => {
+            let suggestions = MoveSuggestionList.fromKataGo(kataGoSuggestions);
             suggestions.filterByPass();
             suggestions.filterByMoveOptions(moveOptions);
             suggestions.addGrades();
