@@ -16,6 +16,7 @@ db.save = async function () {
     await db.saveTrainerSettingConfig();
     await db.saveGameStats();
     await db.saveGame();
+    alert("Game saved successfully");
 };
 
 db.saveTrainerSettingConfig = async function() {
@@ -39,6 +40,7 @@ db.saveTrainerSettingConfig = async function() {
 
         settings.preOptions,
         settings.preOptionPerc,
+        settings.forceOpponentCorners,
         settings.cornerSwitch44,
         settings.cornerSwitch34,
         settings.cornerSwitch33,
@@ -116,14 +118,17 @@ db.saveGame = async function () {
     if (G.LOG) console.log("db.saveGame");
 
     return G.dotNetRef.invokeMethodAsync('SaveGame',
-        G.color,
         G.result ? G.result.scoreLead : null,
         board.getNodeX(),
         board.getNodeY(),
+        board.boardsize,
+        board.handicap,
+        G.color,
+        sgf.ruleset,
+        sgf.komi,
         besogo.composeSgf(board.editor),
         new Uint8Array(stats.encodeRatioHistory()),
         new Uint8Array(G.suggestionsHistory.encode()),
-        new Uint8Array(scoreChart.history.encode()),
         new Uint8Array(G.moveTypeHistory.encode()),
         new Uint8Array(gameplay.chosenNotPlayedCoordHistory.encode()),
         G.wasPassed,

@@ -1,22 +1,22 @@
 var sgf = {};
 
 
-sgf.init = async function() {
+sgf.init = async function(serverKomi, serverRuleset) {
 	sgf.rulesetElement = document.getElementById("currentRuleset");
 	sgf.komiElement = document.getElementById("currentKomi");
 
 	sgf.sgfLoadingEvent = new CEvent(sgf.sgfLoadingListener);
 	sgf.sgfLoadedEvent = new CEvent(sgf.sgfLoadedListener);
 
-	await sgf.clear();
+	await sgf.clear(serverKomi, serverRuleset);
 };
 
-sgf.clear = async function() {
+sgf.clear = async function(serverKomi, serverRuleset) {
 	sgf.isSGFLoading = false;
 	sgf.isThirdParty = false;
 
-	await sgf.setRuleset(settings.ruleset);
-	await sgf.setKomi(settings.komi);
+	await sgf.setRuleset(serverKomi != null ? serverKomi : settings.ruleset);
+	await sgf.setKomi(serverRuleset ? serverRuleset : settings.komi);
 
 	board.editor.setGameInfo("GoTrainer-HumanAI", "GN");
 	board.editor.setGameInfo("GoTrainer-HumanAI", "SO");

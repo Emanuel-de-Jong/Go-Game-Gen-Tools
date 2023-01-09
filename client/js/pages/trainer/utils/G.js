@@ -43,25 +43,41 @@ G.PHASE_TYPE = {
 };
 
 
-G.init = function (dotNetRef) {
+G.isLoadingServerData = false;
+
+
+G.init = function (dotNetRef, serverSuggestions, serverMoveTypes) {
 	G.dotNetRef = dotNetRef;
 
 	G.phaseChangedEvent = new CEvent();
 
-	G.clear();
+	G.clear(serverSuggestions, serverMoveTypes);
 };
 
-G.clear = function() {
+G.clear = function(serverSuggestions, serverMoveTypes) {
 	G.setPhase(G.PHASE_TYPE.NONE);
 	G.setColor(null);
 	G.suggestions = null;
-	G.suggestionsHistory = new History();
-	G.moveTypeHistory = new History();
+	G.suggestionsHistory = serverSuggestions ? History.fromServer(serverSuggestions, MoveSuggestionList) : new History();
+	G.moveTypeHistory = serverMoveTypes ? History.fromServer(serverMoveTypes) : new History();
 	G.result = null;
 	G.isPassed = false;
 	G.wasPassed = false;
 
-	if (debug.TEST_DATA == 1) {
+	if (debug.testData == 1) {
+		G.suggestionsHistory.add(new MoveSuggestionList([
+				new MoveSuggestion(new Coord(16, 4), 700, 50_000_000, 800_000),
+				new MoveSuggestion(new Coord(17, 4), 500, 49_000_000, -200_000),
+			],
+			new MoveSuggestion(new Coord(12, 12), 250, 20_000_000, -6_000_000)
+		).addGrades(), 1, 0);
+		G.suggestionsHistory.add(new MoveSuggestionList([
+			new MoveSuggestion(new Coord(16, 3), 600, 51_000_000, 1_200_000),
+			new MoveSuggestion(new Coord(17, 4), 600, 51_000_000, 1_200_000),
+		]).addGrades(), 3, 0);
+	}
+
+	if (debug.testData == 1) {
         G.moveTypeHistory.add(G.MOVE_TYPE.PLAYER, 1, 0);
         G.moveTypeHistory.add(G.MOVE_TYPE.OPPONENT, 2, 0);
         G.moveTypeHistory.add(G.MOVE_TYPE.PLAYER, 3, 0);
@@ -115,10 +131,18 @@ G.colorFullNameToNum = function(name) {
 
 G.analyze = async function(maxVisits, moveOptions, minVisitsPerc, maxVisitDiffPerc, color) {
 	G.suggestions = await katago.analyze(maxVisits, moveOptions, minVisitsPerc, maxVisitDiffPerc, color);
-
 	await G.pass(G.suggestions.passSuggestion);
+};
 
-	G.updateSuggestionsHistory();
+G.analyzeMove = async function(coord) {
+	let suggestion = await katago.analyzeMove(coord);
+
+	if (!G.suggestions) {
+		G.suggestions = new MoveSuggestionList();
+	}
+	G.suggestions.analyzeMoveSuggestion = suggestion;
+	
+	return suggestion;
 };
 
 G.pass = async function(suggestion) {
@@ -130,7 +154,6 @@ G.pass = async function(suggestion) {
 	board.nextButton.disabled = true;
 
 	G.result = suggestion.score.copy();
-	if (suggestion.color != G.COLOR_TYPE.B) G.result.reverse();
 
 	let resultStr = G.getResultStr();
 	stats.setResult(resultStr);
@@ -146,8 +169,4 @@ G.getResultStr = function() {
         return G.COLOR_NAME_TYPE.B + "+" + G.result.formatScoreLead();
     }
     return G.COLOR_NAME_TYPE.W + "+" + G.result.formatScoreLead(true);
-}
-
-G.updateSuggestionsHistory = function() {
-	G.suggestionsHistory.add(G.suggestions, board.getNodeX() + 1);
 };

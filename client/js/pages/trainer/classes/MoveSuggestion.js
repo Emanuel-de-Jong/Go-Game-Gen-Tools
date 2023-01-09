@@ -1,33 +1,47 @@
 class MoveSuggestion {
     
-    color;
     coord;
     visits;
     score;
     grade;
 
 
-    constructor(serverSuggestion, color, coord, visits, winrate, scoreLead) {
-        if (!serverSuggestion) {
-            this.color = color;
-            this.coord = coord;
-            this.visits = visits;
-            this.score = new Score(winrate, scoreLead);
-        } else {
-            this.fillWithServerSuggestion(serverSuggestion);
-        }
+    constructor(coord, visits, winrate, scoreLead) {
+        this.coord = coord;
+        this.visits = visits;
+        this.score = new Score(winrate, scoreLead);
     }
 
-    
-    fillWithServerSuggestion(serverSuggestion) {
-        this.color = G.colorNameToNum(serverSuggestion.move.color);
-        this.coord = katago.coordNameToNum(serverSuggestion.move.coord);
-        this.visits = serverSuggestion.visits;
-        this.score = new Score(serverSuggestion.winrate, serverSuggestion.scoreLead);
-    }
 
     isPass() {
-        return this.coord == "pass";
+        return this.coord.x == 0;
+    }
+
+    encode() {
+        let encoded = [];
+        encoded = encoded.concat(this.coord.encode());
+        encoded = byteUtils.numToBytes(this.visits, 4, encoded);
+        encoded = encoded.concat(this.score.encode());
+        return encoded;
+    }
+
+
+    static fromKataGo(kataGoSuggestion) {
+        return new MoveSuggestion(
+            katago.coordNameToNum(kataGoSuggestion.move.coord),
+            kataGoSuggestion.visits,
+            kataGoSuggestion.winrate,
+            kataGoSuggestion.scoreLead
+        );
+    }
+
+    static fromServer(serverSuggestion) {
+        return new MoveSuggestion(
+            Coord.fromServer(serverSuggestion.coord),
+            serverSuggestion.visits,
+            serverSuggestion.score.winrate,
+            serverSuggestion.score.scoreLead
+        );
     }
 
 }

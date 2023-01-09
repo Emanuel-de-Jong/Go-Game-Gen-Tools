@@ -43,4 +43,9 @@ class Score {
         return encoded;
     }
 
+
+    static fromServer(serverScore) {
+        return new Score(serverScore.winrate, serverScore.scoreLead);
+    }
+
 }

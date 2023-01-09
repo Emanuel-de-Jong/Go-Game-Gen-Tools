@@ -1,7 +1,7 @@
 var debug = {};
 
 
-debug.TEST_DATA = 0;
+debug.testData = 0;
 
 
 debug.init = function () {

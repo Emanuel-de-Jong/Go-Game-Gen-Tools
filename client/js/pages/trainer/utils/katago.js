@@ -207,6 +207,8 @@ katago.sendRequest = async function (request) {
 };
 
 katago.coordNumToName = function (numCoord) {
+    if (numCoord.x == 0) return "pass";
+
     let xConvert = {
         1: "A",
         2: "B",
@@ -235,7 +237,7 @@ katago.coordNumToName = function (numCoord) {
 };
 
 katago.coordNameToNum = function (nameCoord) {
-    if (nameCoord == "pass") return nameCoord;
+    if (nameCoord == "pass") return new Coord(0, 0);
 
     let xConvert = {
         "A": 1,

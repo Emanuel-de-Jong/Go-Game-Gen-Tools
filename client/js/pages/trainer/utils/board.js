@@ -34,7 +34,7 @@ board.HANDICAP_SGFS = {
 };
 
 
-board.init = function() {
+board.init = function(serverBoardsize, serverHandicap, serverSGF) {
 	board.handicapElement = document.getElementById("currentHandicap");
 
 	board.placeStoneAudios = [
@@ -54,12 +54,12 @@ board.init = function() {
  	});
 	utils.addEventsListener(document, ["keydown", "mousedown"], board.keydownAndMousedownListener);
 	
-	board.clear();
+	board.clear(serverBoardsize, serverHandicap, serverSGF);
 };
 
-board.clear = function() {
-	board.boardsize = settings.boardsize;
-	board.setHandicap(settings.handicap);
+board.clear = function(serverBoardsize, serverHandicap, serverSGF) {
+	board.boardsize = serverBoardsize ? serverBoardsize : settings.boardsize;
+	board.setHandicap(serverHandicap != null ? serverHandicap : settings.handicap);
 	
 	board.element = document.getElementById("board");
 
@@ -72,7 +72,10 @@ board.clear = function() {
 		variants: 2,
 		nowheel: true,
 	};
-	if (board.handicap != 0) {
+
+	if (serverSGF) {
+		besogoOptions.sgf = serverSGF;
+	} else if (board.handicap != 0) {
 		besogoOptions.sgf = "(;" +
 			"SZ[" + board.boardsize + "]" +
 			"HA[" + board.handicap + "]" +
@@ -80,9 +83,9 @@ board.clear = function() {
 			")";
 	}
 
-	if (debug.TEST_DATA == 1) {
+	if (debug.testData == 1) {
 		besogoOptions.sgf = "(;GM[1]FF[4]CA[UTF-8]AP[Sabaki:0.52.0]KM[7.5]SZ[19]DT[2022-12-29](;B[pd];W[qc](;B[qd];W[pc];B[od])(;B[pc];W[qd](;B[pe];W[qe];B[qf];W[rf])(;B[qe];W[re])))(;B[dp]))";
-	} else if (debug.TEST_DATA == 2) {
+	} else if (debug.testData == 2) {
 		besogoOptions.sgf = "(;GM[1]FF[4]CA[UTF-8]AP[Sabaki:0.52.0]KM[6.5]SZ[19]DT[2022-11-09]PB[KataGo 1.11];B[pd];W[dp];B[pp]SBKV[47.95];W[dd]SBKV[48.06];B[fc]SBKV[47.97];W[qq]SBKV[48.22];B[pq];W[qp]SBKV[48.12];B[po]SBKV[48.08];W[rn]SBKV[48.27];B[cf]SBKV[48.05];W[ef]SBKV[48.53];B[ci]SBKV[47.88];W[nc]SBKV[48.18];B[cn];W[qf];B[pf];W[pg];B[of];W[qe];B[qd]SBKV[49.94];W[kc]SBKV[51.19];B[fp]SBKV[50.3];W[ec];B[fd];W[qm];B[oc];W[nd];B[pe];W[kp];B[ic];W[eb];B[kd];W[jc];B[jd];W[ld];B[le];W[lc];B[ib];W[ob];B[pb];W[jb];B[me];W[hp];B[bd];W[eo];B[ie];W[ce];B[be];W[df];B[cg];W[dm];B[eh];W[cc];B[bb];W[cb];B[fb];W[gf];B[ee];W[de];B[fg];W[ff];B[hg];W[ed];B[fe];W[gg];B[gh];W[hf];B[ig];W[pj];B[md]SBKV[99.5];W[mb]SBKV[99.88];B[mc]SBKV[99.56];W[bc]SBKV[99.73];B[ac]SBKV[99.5];W[ab]SBKV[99.74];B[aa]SBKV[99.58];W[nq]SBKV[99.85];B[pm];W[pl];B[qn];W[rm];B[qr];W[qo];B[or];W[pn];B[mq];W[lq];B[mp];W[om];B[qg];W[rg];B[qh];W[ph];B[rh];W[qi];B[re];W[ri];B[rf];W[if];B[jg];W[cm];B[ck];W[km];B[bm];W[bl];B[bo];W[cl];B[cq];W[cp];B[bp];W[dq];B[cr];W[dr];B[ds];W[en];B[er]SBKV[99.85];W[fq]SBKV[99.96];B[fk];W[gm];B[ij];W[fr];B[mr];W[lr];B[hl];W[hm];B[nh]SBKV[99.89];W[mi]SBKV[99.97];B[mh]SBKV[99.8];W[ja]SBKV[99.94];B[la]SBKV[99.88];W[gb]SBKV[99.97];B[gc]SBKV[99.85];W[hd]SBKV[99.97];B[id]SBKV[99.87];W[ki]SBKV[99.98];B[oi]SBKV[99.93];W[oj];B[ls];W[ks];B[ms];W[jr];B[ni];W[nj];B[li];W[mm];B[kj];W[rr];B[rs];W[am];B[bn];W[rq];B[lo]SBKV[99.89];W[ko]SBKV[99.99];B[il]SBKV[99.91];W[im]SBKV[99.99];B[dk]SBKV[99.87];W[pc]SBKV[99.99];B[qc]SBKV[99.92];W[bh]SBKV[99.97];B[ch]SBKV[99.93];W[aq]SBKV[99.99];B[bq]SBKV[99.93];W[cs]SBKV[99.98];B[bs]SBKV[99.94];W[ar]SBKV[99.98];B[an]SBKV[99.92];W[ap]SBKV[99.99];B[fm]SBKV[99.94];W[gl];B[em]SBKV[99.92];W[dn]SBKV[99.99];B[gk]SBKV[99.93];W[eq]SBKV[99.99];B[fn]SBKV[99.93];W[fo]SBKV[100];B[pi]SBKV[99.94];W[ak]SBKV[99.99];B[mj]SBKV[99.93];W[si]SBKV[99.99];B[nk]SBKV[99.92];W[gn]SBKV[99.99];B[qj];W[qk]SBKV[99.99];B[bj]SBKV[99.91];W[aj]SBKV[99.99];B[sh]SBKV[99.9];W[rj]SBKV[99.98];B[bk]SBKV[99.93];W[ai]SBKV[99.99];B[oo]SBKV[99.94];W[mk]SBKV[99.99];B[ml]SBKV[99.9];W[lk]SBKV[99.99];B[ll]SBKV[99.92];W[kk]SBKV[99.99];B[kl]SBKV[99.93];W[jk]SBKV[99.99];B[jl]SBKV[99.92];W[nl]SBKV[100];B[ik]SBKV[99.94];W[al]SBKV[99.98];B[ok]SBKV[99.89];W[ol]SBKV[99.98];B[jj]SBKV[99.88];W[pk]SBKV[99.98];B[es]SBKV[99.89];W[fs]SBKV[99.98];B[ln]SBKV[99.89];W[kn]SBKV[99.99];B[cs]SBKV[99.9];W[el];B[fl];W[dl];B[bg];W[lm];B[jm];W[jn];B[ek];W[nk];B[nn];W[lj];B[mn];W[mi];B[lh];W[sr];B[ag];W[ss];B[qs];W[gp];B[co];W[do];B[lp];W[on];B[nm];W[mj];B[as];W[bi];B[ah];W[])";
 	}
 
@@ -121,11 +124,6 @@ board.clear = function() {
 
 
 board.play = async function(suggestion, moveType = G.MOVE_TYPE.NONE, tool = "auto") {
-	if (G.suggestions) {
-		G.suggestions.playedCoord = suggestion.coord;
-		G.updateSuggestionsHistory();
-	}
-
 	await board.draw(suggestion.coord, tool, true, moveType);
 	scoreChart.update(suggestion);
 	sgfComment.setComment(moveType);
@@ -142,6 +140,8 @@ board.draw = async function(coord, tool = "auto", sendToServer = true) {
 		}
 
 		board.lastMove = board.editor.getCurrent();
+
+		G.suggestionsHistory.add(G.suggestions);
 
 		if (sendToServer) {
 			if (tool == "auto") {

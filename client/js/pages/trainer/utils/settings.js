@@ -19,8 +19,7 @@ settings.SETTINGS = {
 
     preOptions: utils.TYPE.INT,
     preOptionPerc: utils.TYPE.FLOAT,
-    forceOpponentFirstCorner: utils.TYPE.BOOL,
-    forceOpponentSecondCorner: utils.TYPE.BOOL,
+    forceOpponentCorners: utils.TYPE.STRING,
     cornerSwitch44: utils.TYPE.BOOL,
     cornerSwitch34: utils.TYPE.BOOL,
     cornerSwitch33: utils.TYPE.BOOL,
@@ -47,7 +46,7 @@ settings.SETTINGS = {
 };
 
 
-settings.init = function() {
+settings.init = function(serverColor) {
     for (const name of Object.keys(settings.SETTINGS)) {
         settings[name + "Element"] = document.getElementById(name);
     }
@@ -74,11 +73,11 @@ settings.init = function() {
         settings.updateSetting(name);
     }
 
-	settings.clear();
+	settings.clear(serverColor);
 };
 
-settings.clear = function() {
-    settings.updateSetting("colorType");
+settings.clear = function(serverColor) {
+    G.setColor(serverColor ? serverColor : settings.colorType);
 };
 
 
@@ -92,10 +91,6 @@ settings.updateSetting = function(name) {
         value = parseInt(value);
     } else if (type == utils.TYPE.FLOAT) {
         value = parseFloat(value);
-    }
-
-    if (name == "colorType") {
-        G.setColor(value);
     }
     
     settings[name] = value;

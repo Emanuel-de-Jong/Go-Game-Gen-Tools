@@ -1,6 +1,7 @@
 class History {
 
     static ENCODE_Y_INDICATOR = -1;
+    
     grid;
     dataType;
 
@@ -49,6 +50,7 @@ class History {
         return encoded;
     }
 
+
     *iterateData() {
         for (let y=0; y<this.grid.length; y++) {
             if (!this.grid[y]) continue;
@@ -77,6 +79,23 @@ class History {
                 };
             }
         }
+    }
+
+
+    static fromServer(serverHistory, dataClass) {
+        let history = new History();
+        for (let y in serverHistory) {
+            for (let x in serverHistory[y]) {
+                let data = serverHistory[y][x];
+                if (dataClass) {
+                    data = dataClass.fromServer(data);
+                }
+
+                history.add(data, x, y);
+            }
+        }
+
+        return history;
     }
 
 }

@@ -24,4 +24,9 @@ class Coord {
         return encoded;
     }
 
+
+    static fromServer(serverCoord) {
+        return new Coord(serverCoord.x, serverCoord.y);
+    }
+
 }

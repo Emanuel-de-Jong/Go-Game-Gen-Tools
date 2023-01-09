@@ -271,22 +271,13 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="forceOpponentFirstCorner" checked>
-                                                        <label class="form-check-label" for="forceOpponentFirstCorner">
-                                                            Force opponent first corner
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="forceOpponentSecondCorner" checked>
-                                                        <label class="form-check-label" for="forceOpponentSecondCorner">
-                                                            Force opponent second corner
-                                                        </label>
-                                                    </div>
+                                                    <label for="forceOpponentCorners" class="form-label">Force opponent corners</label>
+                                                    <select class="form-select" id="forceOpponentCorners">
+                                                        <option value="None">None</option>
+                                                        <option value="First">First</option>
+                                                        <option value="Second">Second</option>
+                                                        <option value="Both" selected>Both</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>

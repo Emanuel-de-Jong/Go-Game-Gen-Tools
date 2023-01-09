@@ -11,7 +11,7 @@ stats.RATIO_TYPE = {
 stats.RATIO_Y_INDICATOR = -1;
 
 
-stats.init = function() {
+stats.init = function(serverRatios) {
     stats.rightPercentElement = document.getElementById("rightPercent");
     stats.rightStreakElement = document.getElementById("rightStreak");
     stats.rightTopStreakElement = document.getElementById("rightTopStreak");
@@ -25,18 +25,18 @@ stats.init = function() {
     stats.resultDivElement = document.getElementById("resultDiv");
     stats.resultElement = document.getElementById("result");
     
-    stats.clear();
+    stats.clear(serverRatios);
 };
 
-stats.clear = function() {
-    stats.ratioHistory = new History();
+stats.clear = function(serverRatios) {
+    stats.ratioHistory = serverRatios ? History.fromServer(serverRatios) : new History();
     stats.ratio = null;
     
     stats.clearRatio();
     stats.clearVisits();
     stats.clearResult();
 
-    if (debug.TEST_DATA == 1) {
+    if (debug.testData == 1) {
         stats.ratioHistory.add(stats.RATIO_TYPE.WRONG, 1, 0);
         stats.ratioHistory.add(stats.RATIO_TYPE.RIGHT, 3, 0);
         stats.ratioHistory.add(stats.RATIO_TYPE.PERFECT, 5, 0);
@@ -47,7 +47,7 @@ stats.clear = function() {
         stats.ratioHistory.add(stats.RATIO_TYPE.WRONG, 7, 1);
     
         stats.ratioHistory.add(stats.RATIO_TYPE.RIGHT, 5, 2);
-    } else if (debug.TEST_DATA == 2) {
+    } else if (debug.testData == 2) {
         for (let i=1; i<240; i+=2) {
             stats.ratioHistory.add(utils.randomInt(4, 1), i, 0);
         }
@@ -195,9 +195,9 @@ stats.getRatio = function(rangeStart, rangeEnd = Number.MAX_SAFE_INTEGER) {
         ratios.push(ratio);
     } while (node && (rangeStart == null || node.moveNumber >= rangeStart))
 
-    if (ratios.length == 0) {
-        return;
-    }
+    // if (ratios.length == 0) {
+    //     return;
+    // }
 
     ratios = ratios.reverse();
 
@@ -223,7 +223,6 @@ stats.getRatio = function(rangeStart, rangeEnd = Number.MAX_SAFE_INTEGER) {
     });
 
     return new Ratio(
-        null,
         moveNumber,
         ratios.length,
 

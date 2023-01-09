@@ -142,7 +142,11 @@ scoreChart.clear = function() {
     scoreChart.clearChart();
     scoreChart.history = new History();
 
-    if (debug.TEST_DATA == 1) {
+    if (G.isLoadingServerData) {
+        scoreChart.fillHistoryWithSuggestionHistory();
+    }
+
+    if (debug.testData == 1) {
         scoreChart.history.add(new Score(5_0_1_00000, 0), 1, 0);
         scoreChart.history.add(new Score(5_0_2_00000, 0), 2, 0);
         scoreChart.history.add(new Score(5_0_3_00000, 0), 3, 0);
@@ -159,6 +163,24 @@ scoreChart.clear = function() {
     }
 };
 
+
+scoreChart.fillHistoryWithSuggestionHistory = function(node = board.editor.getRoot()) {
+    for (let i=0; i<node.children.length; i++) {
+        scoreChart.fillHistoryWithSuggestionHistory(node.children[i]);
+    }
+
+    if (!node.move) return;
+
+    let suggestionList = G.suggestionsHistory.get(node.navTreeX, node.navTreeY);
+    if (!suggestionList) return;
+
+    let suggestion = suggestionList.find(new Coord(node.move.x, node.move.y))
+    if (!suggestion) {
+        suggestion = suggestionList.analyzeMoveSuggestion;
+    }
+
+    scoreChart.history.add(suggestion.score, node.navTreeX, node.navTreeY);
+}
 
 scoreChart.clearChart = function() {
     scoreChart.labels.length = 0;
@@ -187,17 +209,17 @@ scoreChart.update = function(suggestion) {
 
     scoreChart.labels.splice(index, 0, moveNumber);
 
-    let winrate = suggestion.score.formatWinrate(suggestion.color != scoreChart.colorElement.value);
+    let point = suggestion.score.copy();
+    if (scoreChart.colorElement.value != G.COLOR_TYPE.B) point.reverse();
+    scoreChart.history.add(point, moveNumber);
+
+    let winrate = point.formatWinrate();
     scoreChart.winrates.splice(index, 0, winrate);
 
-    let score = suggestion.score.formatScoreLead(suggestion.color != scoreChart.colorElement.value);
+    let score = point.formatScoreLead();
     scoreChart.scores.splice(index, 0, score);
 
     scoreChart.chart.update();
-
-    let point = suggestion.score.copy();
-    if (suggestion.color == scoreChart.colorElement.value) point.reverse();
-    scoreChart.history.add(point, moveNumber);
 };
 
 scoreChart.refresh = function() {

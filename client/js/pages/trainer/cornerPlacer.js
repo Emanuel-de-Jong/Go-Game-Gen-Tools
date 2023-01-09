@@ -23,10 +23,10 @@ cornerPlacer.shouldForce = function(moveNumber = board.getMoveNumber()) {
 
     if (board.handicap == 0 &&
         board.boardsize == 19 && (
-            settings.forceOpponentFirstCorner && (
+            (settings.forceOpponentCorners == "First" || settings.forceOpponentCorners == "Both") && (
                 G.color == G.COLOR_TYPE.W && moveNumber == 0 ||
                 G.color == G.COLOR_TYPE.B && moveNumber == 1) ||
-            settings.forceOpponentSecondCorner && (
+				(settings.forceOpponentCorners == "Second" || settings.forceOpponentCorners == "Both") && (
                 G.color == G.COLOR_TYPE.W && moveNumber == 2 ||
                 G.color == G.COLOR_TYPE.B && moveNumber == 3))) {
         return true;
@@ -37,7 +37,7 @@ cornerPlacer.shouldForce = function(moveNumber = board.getMoveNumber()) {
 cornerPlacer.getSuggestion = async function() {
     let cornerOptions = cornerPlacer.getEmptyCorner();
     let coord = cornerPlacer.chooseCornerOption(cornerOptions);
-    return await katago.analyzeMove(coord);
+    return await G.analyzeMove(coord);
 };
 
 cornerPlacer.play = async function(suggestion) {
