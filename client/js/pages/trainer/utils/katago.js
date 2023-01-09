@@ -86,6 +86,8 @@ katago.setKomi = async function () {
 };
 
 katago.setHandicap = async function () {
+    if (!board.handicap) return;
+
     if (G.LOG) console.log("katago.setHandicap " + board.handicap);
 
     return katago.sendRequest(fetch(katago.URL + "sethandicap?handicap=" + board.handicap, {
