@@ -1,7 +1,11 @@
 var init = {};
 
 
-init.init = async function (dotNetRef,
+init.init = async function (
+		dotNetRef,
+		userName,
+		kataGoVersion,
+		
 		serverBoardsize,
 		serverHandicap,
 		serverColor,
@@ -29,7 +33,7 @@ init.init = async function (dotNetRef,
 	// console.log(serverMoveTypes);
 	// console.log(serverChosenNotPlayedCoords);
 
-	G.init(dotNetRef, serverSuggestions, serverMoveTypes);
+	G.init(dotNetRef, kataGoVersion, serverSuggestions, serverMoveTypes);
 	G.setPhase(G.PHASE_TYPE.INIT);
 
 	init.restartButton = document.getElementById("restart");
@@ -37,7 +41,7 @@ init.init = async function (dotNetRef,
 
 	settings.init(serverColor);
 	board.init(serverBoardsize, serverHandicap, serverSGF);
-	await sgf.init(serverKomi, serverRuleset);
+	await sgf.init(userName, serverKomi, serverRuleset);
 	sgfComment.init();
 	scoreChart.init();
 	stats.init(serverRatios);
@@ -54,8 +58,6 @@ init.init = async function (dotNetRef,
 	// console.log(G.moveTypeHistory);
 	// console.log(gameplay.chosenNotPlayedCoordHistory);
 	// console.log(scoreChart.history);
-
-	G.isLoadingServerData = false;
 
 	sgf.sgfLoadingEvent.add(init.sgfLoadingListener);
 	sgf.sgfLoadedEvent.add(init.sgfLoadedListener);
@@ -86,7 +88,12 @@ init.clear = async function() {
 
 
 init.start = async function() {
-	await preMovePlacer.start();
+	if (G.isLoadingServerData || debug.testData) {
+		G.isLoadingServerData = false;
+		gameplay.givePlayerControl(false);
+	} else {
+		await preMovePlacer.start();
+	}
 };
 
 init.restartButtonClickListener = async function() {

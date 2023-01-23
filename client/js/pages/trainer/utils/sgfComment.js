@@ -42,7 +42,7 @@ sgfComment.setComment = function(moveType) {
 };
 
 sgfComment.createInitComment = function() {
-	return "GoTrainer-HumanAI " + G.VERSION +
+	return "GOSUJI " + G.VERSION +
 		"\nBoard size: " + board.boardsize +
 		"\nHandicap: " + board.handicap +
 		"\nColor: " + G.colorNumToFullName(G.color) +
@@ -87,39 +87,44 @@ sgfComment.createInitComment = function() {
 		"\nOptions switch: " + settings.opponentOptionsSwitch +
 		"\nOptions: " + settings.opponentOptions +
 		"\nOption chance: " + settings.opponentOptionPerc + "%" +
-		"\nShow options: " + settings.showOpponentOptions;
+		"\nShow options: " + settings.showOpponentOptions +
+
+		"\n\nKataGo" +
+		"\nVersion: " + G.kataGoVersion.version +
+		"\nModel: " + G.kataGoVersion.model;
 };
 
 sgfComment.createForcedCornerComment = function() {
-	return "Forced corner move" +
+	return "FORCED CORNER MOVE" +
 		sgfComment.createCommentScore();
 };
 
 sgfComment.createPreComment = function() {
-	return "Pre move" +
+	return "PRE MOVE" +
 		sgfComment.createCommentVisits() +
 		"\n" + sgfComment.createCommentScore();
 };
 
 sgfComment.createSelfplayComment = function() {
-	return "Selfplay move" +
+	return "SELFPLAY MOVE" +
 		sgfComment.createCommentVisits() +
 		"\n" + sgfComment.createCommentScore();
 };
 
 sgfComment.createPlayerComment = function() {
-	return "Player move" +
+	return "PLAYER MOVE" +
 		sgfComment.createCommentVisits() +
 		"\n" + sgfComment.createCommentRatio() +
 		"\n" + sgfComment.createCommentScore();
 };
 
 sgfComment.createOpponentComment = function() {
-	return "Opponent move" +
+	return "OPPONENT MOVE" +
 		sgfComment.createCommentVisits() +
 		"\n" + sgfComment.createCommentRatio() +
 		"\n" + sgfComment.createCommentScore();
 };
+
 
 sgfComment.createCommentVisits = function() {
 	let suggestions = G.suggestions;
@@ -141,12 +146,12 @@ sgfComment.createCommentRatio = function() {
 	if (ratio == null) return "";
 
 	return "\nRight" +
-		"\nRatio: " + ratio.rightPercent + "%" +
+		"\nRatio: " + ratio.getRightPercent() + "%" +
 		"\nStreak: " + ratio.rightStreak +
 		"\nTop streak: " + ratio.rightTopStreak +
 
-		"\n\nPerfect" +
-		"\nRatio: " + ratio.perfectPercent + "%" +
+		"\n\nPerfect (A)" +
+		"\nRatio: " + ratio.getPerfectPercent() + "%" +
 		"\nStreak: " + ratio.perfectStreak +
 		"\nTop streak: " + ratio.perfectTopStreak;
 }
@@ -156,6 +161,6 @@ sgfComment.createCommentScore = function() {
 	if (score == null) return "";
 
 	return "\nScore " + G.colorNumToName(scoreChart.colorElement.value) +
-		"\nWinrate: " + score.formatWinrate() +
+		"\nWinrate: " + score.formatWinrate() + "%" +
 		"\nScore: " + score.formatScoreLead();
 }

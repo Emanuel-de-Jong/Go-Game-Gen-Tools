@@ -14,16 +14,40 @@
 }
 
 
+#flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.flex-item {
+    display: contents;
+    flex: auto;
+}
+
+
 #game #board {
     position: relative;
-    width: 500px;
-    height: 1200px;
+    width: 725px;
 }
 
 #game #next {
     position: absolute;
     top: 5px;
     right: 5px;
+}
+
+#game .besogo-container {
+    background-color: transparent;
+}
+
+#game .besogo-whiteInfo {
+    background-color: rgb(200, 200, 200);
+}
+
+#game .besogo-blackInfo {
+    background-color: rgb(50, 50, 50);
 }
 
 #game .besogo-gameInfo {
@@ -36,9 +60,7 @@
 
 
 #stats {
-    max-width: 350px;
-    margin-left: 20px;
-    margin-right: 20px;
+    width: 400px;
     font-size: 22px;
 }
 
@@ -61,7 +83,7 @@
 
 
 #settings {
-    width: 450px;
+    width: 400px;
 }
 
 #settings .accordion-body .row .row {
@@ -111,4 +133,11 @@
 .accordion-body {
     padding-left: 0 !important;
     padding-right: 0 !important;
+}
+
+
+
+/* DARK MODE */
+
+html[data-bs-theme="dark"] {
 }

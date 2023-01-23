@@ -1,6 +1,9 @@
 var debug = {};
 
-
+// 0: none
+// 1: tree
+// 2: full game
+// 3: full game except last move and pass
 debug.testData = 0;
 
 
@@ -22,11 +25,21 @@ debug.clear = function () {
 debug.logAllFuncCalls = function () {
     let objs = [
         board,
-        main,
-        debug,
+        db,
+        G,
         katago,
+        scoreChart,
         settings,
+        sgf,
+        sgfComment,
         stats,
+        cornerPlacer,
+        gameplay,
+        init,
+        preMovePlacer,
+        selfplay,
+        byteUtils,
+        custom,
         utils,
     ];
 
@@ -70,11 +83,5 @@ debug.logAllFuncCalls = function () {
 };
 
 debug.testButtonClickListener = async function () {
-    let openingRatio = stats.getRatio(0, db.OPENING_RATIO_MOVENUMBER);
-    let midgameRatio = stats.getRatio(db.OPENING_RATIO_MOVENUMBER+1, db.MIDGAME_RATIO_MOVENUMBER);
-    let endgameRatio = stats.getRatio(db.MIDGAME_RATIO_MOVENUMBER+1);
-
-    console.log(openingRatio);
-    console.log(midgameRatio);
-    console.log(endgameRatio);
+    console.log();
 };

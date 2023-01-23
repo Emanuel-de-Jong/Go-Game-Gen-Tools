@@ -60,6 +60,8 @@ gameplay.playerTurn = async function(markupCoord) {
 	await gameplay.handleJumped();
 	if (playerTurnId != gameplay.playerTurnId) return;
 
+	if (!gameplay.suggestionsPromise) gameplay.suggestionsPromise = G.analyze();
+
 	await gameplay.suggestionsPromise;
 	if (G.isPassed) return;
 	if (playerTurnId != gameplay.playerTurnId) return;

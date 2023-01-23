@@ -1,9 +1,11 @@
 var sgf = {};
 
 
-sgf.init = async function(serverKomi, serverRuleset) {
+sgf.init = async function(userName, serverKomi, serverRuleset) {
 	sgf.rulesetElement = document.getElementById("currentRuleset");
 	sgf.komiElement = document.getElementById("currentKomi");
+
+	sgf.userName = userName;
 
 	sgf.sgfLoadingEvent = new CEvent(sgf.sgfLoadingListener);
 	sgf.sgfLoadedEvent = new CEvent(sgf.sgfLoadedListener);
@@ -95,7 +97,7 @@ sgf.setKomi = async function(komi) {
 
 
 sgf.setPlayersMeta = function() {
-	board.editor.setGameInfo("Player", "P" + G.colorNumToName(G.color));
+	board.editor.setGameInfo(sgf.userName ? sgf.userName : "Player", "P" + G.colorNumToName(G.color));
 	board.editor.setGameInfo("AI", "P" + G.colorNumToName(G.color * -1));
 };
 

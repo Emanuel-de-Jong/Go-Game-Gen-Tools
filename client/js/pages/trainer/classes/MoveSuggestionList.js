@@ -79,9 +79,17 @@ class MoveSuggestionList {
         }
         
         let index;
+        let playedCoordIndex;
         for (index=0; index<this.suggestions.length; index++) {
-            if (this.suggestions[index].coord.compare(playedCoord)) {
-                break;
+            if (playedCoordIndex == null) {
+                if (this.suggestions[index].coord.compare(playedCoord)) {
+                    playedCoordIndex = index;
+                }
+            } else {
+                if (this.suggestions[index].visits != this.suggestions[playedCoordIndex].visits) {
+                    index--;
+                    break;
+                }
             }
         }
 

@@ -1,8 +1,8 @@
 var G = {}
 
 
-G.VERSION = "0.10.1";
-G.LOG = true;
+G.VERSION = "0.2.1";
+G.LOG = false;
 
 G.COLOR_TYPE = {
     B: -1,
@@ -46,8 +46,9 @@ G.PHASE_TYPE = {
 G.isLoadingServerData = false;
 
 
-G.init = function (dotNetRef, serverSuggestions, serverMoveTypes) {
+G.init = function (dotNetRef, kataGoVersion, serverSuggestions, serverMoveTypes) {
 	G.dotNetRef = dotNetRef;
+	G.kataGoVersion = kataGoVersion;
 
 	G.phaseChangedEvent = new CEvent();
 
@@ -161,6 +162,7 @@ G.pass = async function(suggestion) {
 
 	board.pass();
 
+	alert("Game finished!");
 	// await db.save();
 };
 

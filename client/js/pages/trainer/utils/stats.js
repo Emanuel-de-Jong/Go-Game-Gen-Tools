@@ -48,7 +48,7 @@ stats.clear = function(serverRatios) {
     
         stats.ratioHistory.add(stats.RATIO_TYPE.RIGHT, 5, 2);
     } else if (debug.testData == 2) {
-        for (let i=1; i<240; i+=2) {
+        for (let i=utils.randomInt(61, 1); i<utils.randomInt(241, 80); i+=2) {
             stats.ratioHistory.add(utils.randomInt(4, 1), i, 0);
         }
     }
@@ -136,8 +136,6 @@ stats.decodeRatioHistory = function(encoded) {
         }
     }
 
-    console.log(rootNode);
-
     stats.printDecodedRatioHistory(rootNode);
 }
 
@@ -169,21 +167,21 @@ stats.getMostRatiosBranch = function(node = board.editor.getRoot(), ratioCount =
 };
 
 stats.getRatio = function(rangeStart, rangeEnd = Number.MAX_SAFE_INTEGER) {
-    let ratios = [];
-
     let node;
     if (rangeStart == null) {
         node = board.editor.getCurrent();
     } else {
         node = board.editor.getRoot();
         while (node.children.length != 0 && node.moveNumber < rangeEnd) {
+            if (node.children[0].moveNumber > rangeEnd) break;
             node = node.children[0];
         }
     }
 
     let moveNumber = node.moveNumber;
 
-    do {
+    let ratios = [];
+    while (node && (rangeStart == null || node.moveNumber >= rangeStart)) {
         let x = node.navTreeX;
         let y = node.navTreeY;
 
@@ -193,7 +191,7 @@ stats.getRatio = function(rangeStart, rangeEnd = Number.MAX_SAFE_INTEGER) {
         if (!ratio) continue;
 
         ratios.push(ratio);
-    } while (node && (rangeStart == null || node.moveNumber >= rangeStart))
+    }
 
     // if (ratios.length == 0) {
     //     return;
@@ -227,12 +225,10 @@ stats.getRatio = function(rangeStart, rangeEnd = Number.MAX_SAFE_INTEGER) {
         ratios.length,
 
         right,
-        Math.round((right / ratios.length) * 100),
         rightStreak,
         rightTopStreak,
 
         perfect,
-        Math.round((perfect / ratios.length) * 100),
         perfectStreak,
         perfectTopStreak
     );
@@ -246,11 +242,11 @@ stats.setRatio = function() {
         return;
     }
 
-    stats.rightPercentElement.innerHTML = stats.ratio.rightPercent;
+    stats.rightPercentElement.innerHTML = stats.ratio.getRightPercent();
     stats.rightStreakElement.innerHTML = stats.ratio.rightStreak;
     stats.rightTopStreakElement.innerHTML = stats.ratio.rightTopStreak;
 
-    stats.perfectPercentElement.innerHTML = stats.ratio.perfectPercent;
+    stats.perfectPercentElement.innerHTML = stats.ratio.getPerfectPercent();
     stats.perfectStreakElement.innerHTML = stats.ratio.perfectStreak;
     stats.perfectTopStreakElement.innerHTML = stats.ratio.perfectTopStreak;
 };

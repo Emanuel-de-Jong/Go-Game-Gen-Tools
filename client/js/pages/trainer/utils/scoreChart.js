@@ -91,8 +91,10 @@ scoreChart.SCALES = {
         },
         grid: {
             color: function(context) {
-                if (context.tick.value == 0) return "#000000";
-                return "#ffffff";
+                if (context.tick.value == 0) {
+                    return custom.theme == custom.THEME_TYPES.DARK ? "rgb(200, 200, 200)" : "rgb(0, 0, 0)";
+                }
+                return custom.theme == custom.THEME_TYPES.DARK ? "rgb(33, 37, 41)" : "rgb(255, 255, 255)";
             },
         },
         afterDataLimits: function(axis) {
@@ -135,6 +137,8 @@ scoreChart.init = function() {
     scoreChart.chart.canvas.onclick = scoreChart.canvasClickListener;
     scoreChart.colorElement.addEventListener("input", scoreChart.colorElementInputListener);
 
+    custom.themeChangedEvent.add(scoreChart.themeChangedListener);
+
     scoreChart.clear();
 };
 
@@ -164,6 +168,10 @@ scoreChart.clear = function() {
 };
 
 
+scoreChart.themeChangedListener = function(e) {
+    scoreChart.chart.update();
+};
+
 scoreChart.fillHistoryWithSuggestionHistory = function(node = board.editor.getRoot()) {
     for (let i=0; i<node.children.length; i++) {
         scoreChart.fillHistoryWithSuggestionHistory(node.children[i]);
@@ -180,14 +188,14 @@ scoreChart.fillHistoryWithSuggestionHistory = function(node = board.editor.getRo
     }
 
     scoreChart.history.add(suggestion.score, node.navTreeX, node.navTreeY);
-}
+};
 
 scoreChart.clearChart = function() {
     scoreChart.labels.length = 0;
     scoreChart.winrates.length = 0;
     scoreChart.scores.length = 0;
     scoreChart.chart.update();
-}
+};
 
 scoreChart.canvasClickListener = function(click) {
     const points = scoreChart.chart.getElementsAtEventForMode(click, "nearest", { intersect: false }, true);

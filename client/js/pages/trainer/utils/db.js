@@ -75,37 +75,12 @@ db.saveTrainerSettingConfig = async function() {
 db.saveGameStats = async function () {
     if (G.LOG) console.log("db.saveGameStats");
 
+    let gameRatio = stats.getRatio(0);
     let openingRatio = stats.getRatio(0, db.OPENING_RATIO_MOVENUMBER);
     let midgameRatio = stats.getRatio(db.OPENING_RATIO_MOVENUMBER+1, db.MIDGAME_RATIO_MOVENUMBER);
     let endgameRatio = stats.getRatio(db.MIDGAME_RATIO_MOVENUMBER+1);
 
-    return G.dotNetRef.invokeMethodAsync('SaveGameStats',
-        openingRatio.moveNumber,
-        openingRatio.total,
-        openingRatio.right,
-        openingRatio.rightStreak,
-        openingRatio.rightTopStreak,
-        openingRatio.perfect,
-        openingRatio.perfectStreak,
-        openingRatio.perfectTopStreak,
-
-        midgameRatio.moveNumber,
-        midgameRatio.total,
-        midgameRatio.right,
-        midgameRatio.rightStreak,
-        midgameRatio.rightTopStreak,
-        midgameRatio.perfect,
-        midgameRatio.perfectStreak,
-        midgameRatio.perfectTopStreak,
-
-        endgameRatio.moveNumber,
-        endgameRatio.total,
-        endgameRatio.right,
-        endgameRatio.rightStreak,
-        endgameRatio.rightTopStreak,
-        endgameRatio.perfect,
-        endgameRatio.perfectStreak,
-        endgameRatio.perfectTopStreak)
+    return G.dotNetRef.invokeMethodAsync('SaveGameStats', gameRatio, openingRatio, midgameRatio, endgameRatio)
     .then(response => {
         return response;
     })
