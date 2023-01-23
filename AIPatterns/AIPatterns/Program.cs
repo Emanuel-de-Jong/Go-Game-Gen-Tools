@@ -28,8 +28,8 @@ namespace AIPatterns
 
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
             CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-All");
-            //CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 0.08f, 5);
-            //CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 0.3f, 10);
+            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 0, 6);
+            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 0, 1000);
         }
 
         void CreateFullSgf(SequenceList sequenceList, string savePath)
