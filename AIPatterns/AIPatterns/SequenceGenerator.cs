@@ -42,121 +42,80 @@ namespace AIPatterns
 
         void AddSequencesFromGame(GameWrap game)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                AddSequenceFromGame(game);
-                if (i < 4)
-                {
-                    game = GameUtils.Rotate(game);
-                }
-            }
+            AddSequenceFromGame(game);
         }
 
         void AddSequenceFromGame(GameWrap game)
         {
-            // Check if first stone exists and is black
             game.ToStart();
-            GoMoveNode? move = GetNextMoveInRange(game);
+            GoMoveNode? move = GetNextMove(game);
             if (move == null) return;
-            bool isFirstStoneBlack = move.Stone.IsBlack;
 
-            // Check if second stone exists and is in range
-            move = GetNextMoveInRange(game);
-            if (move == null) return;
-            if (!IsMoveInRange(move, SECOND_STONE_RANGE_X, SECOND_STONE_RANGE_Y)) return;
-
-            // Swap all stone colors if first stone not black
-            if (!isFirstStoneBlack)
+            Stone stone = move.Stone;
+            if (stone.X == 15 && stone.Y == 15)
             {
-                game.ToStart();
-                while (game.ToNextMove())
-                {
-                    move = game.Game.CurrentNode as GoMoveNode;
-                    if (move != null)
-                    {
-                        move.Stone.IsBlack = !move.Stone.IsBlack;
-                    }
-                }
+                game = GameUtils.Rotate(game);
+            }
+            else if (stone.X == 3 && stone.Y == 15)
+            {
+                game = GameUtils.Rotate(game);
+                game = GameUtils.Rotate(game);
+            }
+            else if (stone.X == 3 && stone.Y == 3)
+            {
+                game = GameUtils.Rotate(game);
+                game = GameUtils.Rotate(game);
+                game = GameUtils.Rotate(game);
             }
 
-            // Find first non diagnally centered stone
-            game.ToStart();
-            do
-            {
-                move = GetNextMoveInRange(game);
-                if (move == null) return;
 
-            } while (G.BOARD_SIZE_INDEX - move.Stone.X == move.Stone.Y);
+            move = GetNextMove(game);
+            if (move == null) return;
 
-            // Flip board if stone on wrong side
-            if (G.BOARD_SIZE_INDEX - move.Stone.X > move.Stone.Y)
+            move = GetNextMove(game);
+            if (move == null) return;
+
+            stone = move.Stone;
+            if (stone.X == 3 && stone.Y == 3)
             {
                 game = GameUtils.Rotate(game);
                 game = GameUtils.Flip(game, false);
             }
 
-            Sequence sequence = new();
 
-            // Add first stone
-            game.ToStart();
-            move = GetNextMoveInRange(game);
+            move = GetNextMove(game);
+            if (move == null) return;
 
-            sequence.Add(move, game);
-            GoMoveNode lastMove = move;
+            move = GetNextMove(game);
+            if (move == null) return;
 
-            // Add second stone
-            move = GetNextMoveInRange(game);
-            if (move.Stone.IsBlack)
+            stone = move.Stone;
+            if (stone.X == 5 && stone.Y == 16)
             {
-                sequence.Add(new Stone(20, 20, false), lastMove.BoardCopy);
+                game = GameUtils.Flip(game, false);
             }
 
-            sequence.Add(move, game);
-            lastMove = move;
 
-            // Add other stones
-            bool moveOutOfRange = false;
-            bool lastColorBlack = move.Stone.IsBlack;
+            game.ToStart();
+            Sequence sequence = new();
             while (game.ToNextMove())
             {
                 move = game.Game.CurrentNode as GoMoveNode;
                 if (move != null)
                 {
-                    if (IsMoveInRange(move))
-                    {
-                        if (moveOutOfRange)
-                        {
-                            sequence.Add(new Stone(20, 20, !lastColorBlack), lastMove.BoardCopy);
-
-                            if (move.Stone.IsBlack != lastColorBlack)
-                            {
-                                sequence.Add(new Stone(20, 20, lastColorBlack), lastMove.BoardCopy);
-                            }
-                        }
-
-                        sequence.Add(move, game);
-                        lastMove = move;
-
-                        moveOutOfRange = false;
-                        lastColorBlack = move.Stone.IsBlack;
-                    } else
-                    {
-                        moveOutOfRange = true;
-                    }
+                    sequence.Add(move, game);
                 }
             }
-
-            sequence.Add(new Stone(20, 20, !lastColorBlack), lastMove.BoardCopy);
 
             sequenceList.Add(sequence);
         }
 
-        GoMoveNode? GetNextMoveInRange(GameWrap game)
+        GoMoveNode? GetNextMove(GameWrap game)
         {
             while (game.ToNextMove())
             {
                 GoMoveNode? move = game.Game.CurrentNode as GoMoveNode;
-                if (move != null && IsMoveInRange(move))
+                if (move != null)
                 {
                     return move;
                 }
