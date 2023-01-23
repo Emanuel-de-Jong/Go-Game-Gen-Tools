@@ -16,8 +16,8 @@ namespace TempAPI.KataGo
             if (G.Log) Console.WriteLine("KataGoWrapper.Start");
 
             process = new Process();
-            process.StartInfo.FileName = Environment.CurrentDirectory + "\\Dependencies\\KataGo\\katago.exe";
-            process.StartInfo.Arguments = "gtp";
+            process.StartInfo.FileName = @"Resources\KataGo\katago.exe";
+            process.StartInfo.Arguments = @"gtp -model Resources\KataGo\b18c384nbt-uec.bin.gz";
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.RedirectStandardInput = true;
