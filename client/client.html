@@ -89,9 +89,9 @@
                                                         <label for="preMoves" class="form-label">Pre moves</label>
                                                         <div class="input-group">
                                                             <div class="input-group-text">
-                                                                <input class="form-check-input mt-0" type="checkbox" id="preMovesSwitch">
+                                                                <input class="form-check-input mt-0" type="checkbox" id="preMovesSwitch" checked>
                                                             </div>
-                                                            <input type="number" class="form-control" id="preMoves" value="4" min="0" max="350">
+                                                            <input type="number" class="form-control" id="preMoves" value="60" min="0" max="350">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -101,7 +101,7 @@
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <label for="preVisits" class="form-label">Pre move strength</label>
-                                                        <input type="number" class="form-control" id="preVisits" value="1000" min="2" max="5000">
+                                                        <input type="number" class="form-control" id="preVisits" value="2000" min="2" max="5000">
                                                     </div>
                                                     <div class="col-6">
                                                         <label for="selfplayVisits" class="form-label">Selfplay strength</label>
@@ -189,7 +189,7 @@
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <label for="preOptions" class="form-label">Options</label>
-                                                        <input type="number" class="form-control" id="preOptions" value="2" min="1" max="10">
+                                                        <input type="number" class="form-control" id="preOptions" value="1" min="1" max="10">
                                                     </div>
                                                 </div>
                                                 <div class="row" id="preOptionPercDiv">
@@ -206,10 +206,10 @@
                                                     <div class="col-12">
                                                         <label for="forceOpponentCorners" class="form-label">Force opponent corners</label>
                                                         <select class="form-select" id="forceOpponentCorners">
-                                                            <option value="None">None</option>
+                                                            <option value="None" selected>None</option>
                                                             <option value="First">First</option>
                                                             <option value="Second">Second</option>
-                                                            <option value="Both" selected>Both</option>
+                                                            <option value="Both">Both</option>
                                                         </select>
                                                     </div>
                                                 </div>

@@ -41,6 +41,10 @@ preMovePlacer.start = async function () {
 		}
 	}
 
+	await katago.sgf();
+	init.clear();
+	return;
+
 	while (G.color != board.getNextColor() && !G.isPassed && !sgf.isSGFLoading) {
 		await preMovePlacer.play(true);
 	}
