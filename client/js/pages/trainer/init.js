@@ -118,10 +118,3 @@ init.sgfLoadedListener = async function() {
 
 	gameplay.givePlayerControl();
 };
-
-
-(function () {
-
-	init.init();
-
-})();

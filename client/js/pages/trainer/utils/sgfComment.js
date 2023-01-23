@@ -89,9 +89,7 @@ sgfComment.createInitComment = function() {
 		"\nOption chance: " + settings.opponentOptionPerc + "%" +
 		"\nShow options: " + settings.showOpponentOptions +
 
-		"\n\nKataGo" +
-		"\nVersion: " + G.kataGoVersion.version +
-		"\nModel: " + G.kataGoVersion.model;
+		"\n" + sgfComment.createCommentKataGo();
 };
 
 sgfComment.createForcedCornerComment = function() {
@@ -163,4 +161,12 @@ sgfComment.createCommentScore = function() {
 	return "\nScore " + G.colorNumToName(scoreChart.colorElement.value) +
 		"\nWinrate: " + score.formatWinrate() + "%" +
 		"\nScore: " + score.formatScoreLead();
+}
+
+sgfComment.createCommentKataGo = function() {
+	if (G.kataGoVersion == null) return "";
+
+	return "\nKataGo" +
+		"\nVersion: " + G.kataGoVersion.version +
+		"\nModel: " + G.kataGoVersion.model;
 }

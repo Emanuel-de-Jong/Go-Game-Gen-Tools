@@ -11,7 +11,9 @@ custom.init = function() {
     custom.htmlElement = document.getElementsByTagName("html")[0];
 
     custom.darkThemeSwitch = document.getElementById("darkThemeSwitch");
-    custom.darkThemeSwitch.addEventListener("input", custom.darkThemeSwitchInputListener);
+    if (custom.darkThemeSwitch) {
+        custom.darkThemeSwitch.addEventListener("input", custom.darkThemeSwitchInputListener);
+    }
 
     custom.themeChangedEvent = new CEvent();
 
