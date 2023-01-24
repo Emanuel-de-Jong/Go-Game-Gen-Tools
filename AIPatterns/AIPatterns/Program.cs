@@ -36,7 +36,7 @@ namespace AIPatterns
         {
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
 
-            TreeBuilder.OrderBranchesByCount(game);
+            TreeBuilder.AddMarkup(game);
 
             game.SaveAsSgf(savePath);
         }
@@ -46,7 +46,7 @@ namespace AIPatterns
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
 
             TreeBuilder.FilterByCount(game.Game.RootNode, maxDiff, min);
-            TreeBuilder.OrderBranchesByCount(game);
+            TreeBuilder.AddMarkup(game);
 
             game.SaveAsSgf(savePath +
                 "-" + maxDiff +

@@ -252,6 +252,7 @@ namespace AIPatterns
             return true;
         }
 
+        // AddMarkup does this too. But use this if you don't use AddMarkup.
         public static void OrderBranchesByCount(GameWrap game)
         {
             game.ToStart();
