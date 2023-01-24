@@ -28,13 +28,15 @@ namespace AIPatterns
 
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
             CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-All");
-            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 0, 100);
+            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 0, 50);
             CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 0, 1_000_000);
         }
 
         void CreateFullSgf(SequenceList sequenceList, string savePath)
         {
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
+
+            TreeBuilder.OrderBranchesByCount(game);
 
             game.SaveAsSgf(savePath);
         }
@@ -44,6 +46,7 @@ namespace AIPatterns
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
 
             TreeBuilder.FilterByCount(game.Game.RootNode, maxDiff, min);
+            TreeBuilder.OrderBranchesByCount(game);
 
             game.SaveAsSgf(savePath +
                 "-" + maxDiff +
