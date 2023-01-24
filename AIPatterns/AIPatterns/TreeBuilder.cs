@@ -251,5 +251,25 @@ namespace AIPatterns
 
             return true;
         }
+
+        public static void OrderBranchesByCount(GameWrap game)
+        {
+            game.ToStart();
+            OrderBranchesByCountLoop(game.Game.RootNode);
+        }
+
+        public static void OrderBranchesByCountLoop(GoNode node)
+        {
+            if (node.HasChildren)
+            {
+                node.ChildNodes.Sort((n1, n2) => Comment.GetCount(n2) - Comment.GetCount(n1));
+                node.GetChild(0);
+            }
+
+            foreach (GoNode childNode in node.ChildNodes)
+            {
+                OrderBranchesByCountLoop(childNode);
+            }
+        }
     }
 }
