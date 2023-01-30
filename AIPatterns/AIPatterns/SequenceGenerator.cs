@@ -47,73 +47,10 @@ namespace AIPatterns
 
         void AddSequenceFromGame(GameWrap game)
         {
-            game.ToStart();
-            GoMoveNode? move = GetNextMove(game);
-            if (move == null) return;
-
-            Stone stone = move.Stone;
-            if (stone.X == 15 && stone.Y == 15)
-            {
-                game = GameUtils.Flip(game, true);
-            }
-            else if (stone.X == 3 && stone.Y == 15)
-            {
-                game = GameUtils.Rotate(game);
-                game = GameUtils.Rotate(game);
-            }
-            else if (stone.X == 3 && stone.Y == 3)
-            {
-                game = GameUtils.Flip(game, false);
-            }
-
-
-            game.ToStart();
-            move = GetNextMove(game);
-            move = GetNextMove(game);
-            move = GetNextMove(game);
-            if (move == null) return;
-
-            stone = move.Stone;
-            if (stone.X == 3 && stone.Y == 3)
-            {
-                game = GameUtils.Rotate(game);
-                game = GameUtils.Flip(game, false);
-            }
-
-
-            game.ToStart();
-            move = GetNextMove(game);
-            move = GetNextMove(game);
-            move = GetNextMove(game);
-            move = GetNextMove(game);
-            move = GetNextMove(game);
-            if (move == null) return;
-
-            stone = move.Stone;
-            if (stone.X == 5 && stone.Y == 16)
-            {
-                game = GameUtils.Flip(game, true);
-
-                move = game.Game.RootNode.ChildNodes[0] as GoMoveNode;
-                move.Stone.X = 15;
-                move.Stone.Y = 3;
-                move = game.Game.RootNode.ChildNodes[0].ChildNodes[0] as GoMoveNode;
-                move.Stone.X = 3;
-                move.Stone.Y = 15;
-                move = game.Game.RootNode.ChildNodes[0].ChildNodes[0].ChildNodes[0] as GoMoveNode;
-                move.Stone.X = 15;
-                move.Stone.Y = 15;
-                move = game.Game.RootNode.ChildNodes[0].ChildNodes[0].ChildNodes[0].ChildNodes[0] as GoMoveNode;
-                move.Stone.X = 3;
-                move.Stone.Y = 3;
-            }
-
-
-            game.ToStart();
             Sequence sequence = new();
             while (game.ToNextMove())
             {
-                move = game.Game.CurrentNode as GoMoveNode;
+                GoMoveNode? move = game.Game.CurrentNode as GoMoveNode;
                 if (move != null)
                 {
                     sequence.Add(move, game);

@@ -22,14 +22,16 @@ namespace AIPatterns
         void Start()
         {
             SequenceGenerator sequenceGenerator = new();
-            SequenceList sequenceList = sequenceGenerator.Generate(new string[] {
-                @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\2000 visits",
+            SequenceList sequenceListB = sequenceGenerator.Generate(new string[] {
+                @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\B",
+                });
+            SequenceList sequenceListW = sequenceGenerator.Generate(new string[] {
+                @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\W",
                 });
 
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
-            CreateFullSgf(sequenceList, savePathDir + "Perfect-Seq-All");
-            CreateFilteredSGF(sequenceList, savePathDir + "Perfect-Seq", 0, 50);
-            CreateFilteredSGF(sequenceList, savePathDir + "Perfect-Seq", 0, 1_000_000);
+            CreateFullSgf(sequenceListB, savePathDir + "Perfect-Seq-B");
+            CreateFullSgf(sequenceListW, savePathDir + "Perfect-Seq-W");
         }
 
         void CreateFullSgf(SequenceList sequenceList, string savePath)
