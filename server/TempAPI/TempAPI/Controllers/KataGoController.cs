@@ -114,11 +114,12 @@ namespace TempAPI.Controllers
         }
 
         [HttpGet("sgf")]
-        public string GetSGF(bool shouldWriteFile)
+        public string GetSGF(bool shouldWriteFile,
+            [RegularExpression(@"(B|W)")] string color)
         {
             if (G.Log) Console.WriteLine("KataGoController.SGF " + shouldWriteFile);
 
-            return kataGoWrapper.SGF(shouldWriteFile);
+            return kataGoWrapper.SGF(shouldWriteFile, color);
         }
     }
 }

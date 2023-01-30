@@ -217,7 +217,7 @@ namespace TempAPI.KataGo
             }
         }
 
-        public string SGF(bool shouldWriteFile)
+        public string SGF(bool shouldWriteFile, string color)
         {
             if (G.Log) Console.WriteLine("KataGoWrapper.SGF " + shouldWriteFile);
 
@@ -228,6 +228,7 @@ namespace TempAPI.KataGo
             if (shouldWriteFile)
             {
                 StreamWriter sgfWriter = new(File.Create("SGFs\\" +
+                    color + "\\" +
                     DateTime.Now.ToString("dd-MM_HH-mm-ss") +
                     ".sgf"));
                 sgfWriter.Write(sgfStr);

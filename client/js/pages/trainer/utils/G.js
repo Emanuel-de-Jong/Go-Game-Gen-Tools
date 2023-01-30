@@ -57,7 +57,6 @@ G.init = function (dotNetRef, kataGoVersion, serverSuggestions, serverMoveTypes)
 
 G.clear = function(serverSuggestions, serverMoveTypes) {
 	G.setPhase(G.PHASE_TYPE.NONE);
-	G.setColor(null);
 	G.suggestions = null;
 	G.suggestionsHistory = serverSuggestions ? History.fromServer(serverSuggestions, MoveSuggestionList) : new History();
 	G.moveTypeHistory = serverMoveTypes ? History.fromServer(serverMoveTypes) : new History();
@@ -103,7 +102,11 @@ G.setPhase = function(phase) {
 
 G.setColor = function(color = board.getNextColor()) {
 	if (color == G.COLOR_TYPE.RANDOM) {
-		color = utils.randomInt(2) == 0 ? G.COLOR_TYPE.B : G.COLOR_TYPE.W;
+		if (G.color != null) {
+			color = G.color * -1;
+		} else {
+			color = utils.randomInt(2) == 0 ? G.COLOR_TYPE.B : G.COLOR_TYPE.W;
+		}
 	}
 
 	G.color = color;
@@ -136,7 +139,7 @@ G.analyze = async function(maxVisits, moveOptions, minVisitsPerc, maxVisitDiffPe
 };
 
 G.analyzeMove = async function(coord) {
-	let suggestion = await katago.analyzeMove(coord);
+	let suggestion = new MoveSuggestion(coord, 0, 0, 0);
 
 	if (!G.suggestions) {
 		G.suggestions = new MoveSuggestionList();
@@ -162,7 +165,7 @@ G.pass = async function(suggestion) {
 
 	board.pass();
 
-	alert("Game finished!");
+	// alert("Game finished!");
 	// await db.save();
 };
 

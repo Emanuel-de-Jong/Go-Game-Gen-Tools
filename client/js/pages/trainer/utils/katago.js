@@ -191,7 +191,8 @@ katago.playRange = async function () {
 katago.sgf = async function () {
     if (G.LOG) console.log("katago.sgf " + false);
 
-    return katago.sendRequest(fetch(katago.URL + "sgf?shouldWriteFile=" + true, {
+    return katago.sendRequest(fetch(katago.URL + "sgf?shouldWriteFile=" + true +
+            "&color=" + G.colorNumToName(G.color), {
         method: "GET" })
         .then(response => {
             return response;
