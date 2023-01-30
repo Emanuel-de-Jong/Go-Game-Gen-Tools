@@ -38,9 +38,9 @@ preMovePlacer.start = async function () {
 			else {
 				if (i == 0 && G.color == G.COLOR_TYPE.B) {
 					await board.draw(new Coord(16, 4));
+				} else {
+					await preMovePlacer.play();
 				}
-
-				await preMovePlacer.play();
 			}
 		}
 	}
