@@ -23,10 +23,10 @@ namespace AIPatterns
         {
             SequenceGenerator sequenceGenerator = new();
             SequenceList sequenceListB = sequenceGenerator.Generate(new string[] {
-                @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\B",
+                @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\corners\B",
                 });
             SequenceList sequenceListW = sequenceGenerator.Generate(new string[] {
-                @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\W",
+                @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\corners\W",
                 });
 
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";

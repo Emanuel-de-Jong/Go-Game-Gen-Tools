@@ -1,0 +1,206 @@
+(;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[Count: 0
+No pass: 323
+A: 323]LB[pd:A]
+;B[pd]C[Count: 323
+No pass: 323
+A: 44
+B: 41
+C: 40
+D: 37
+E: 35
+F: 34
+F: 34
+G: 31
+H: 27]LB[dc:A][qp:B][pp:C][cd:D][pq:E][dq:F][dd:F][cp:G][dp:H](;W[dc]C[Count: 44
+No pass: 44
+A: 44]LB[dp:A]
+;B[dp]C[Count: 44
+No pass: 44
+A: 16
+B: 14
+B: 14]LB[pp:A][qp:B][pq:B](;W[pp]C[Count: 16
+No pass: 0])
+(;W[qp]C[Count: 14
+No pass: 0])
+(;W[pq]C[Count: 14
+No pass: 0])
+)
+(;W[qp]C[Count: 41
+No pass: 41
+A: 41]LB[dp:A]
+;B[dp]C[Count: 41
+No pass: 41
+A: 19
+B: 13
+C: 9]LB[dd:A][cd:B][dc:C](;W[dd]C[Count: 19
+No pass: 0])
+(;W[cd]C[Count: 13
+No pass: 0])
+(;W[dc]C[Count: 9
+No pass: 0])
+)
+(;W[pp]C[Count: 40
+No pass: 40
+A: 37
+B: 3]LB[dp:A][qn:B](;B[dp]C[Count: 37
+No pass: 37
+A: 13
+A: 13
+B: 11]LB[dd:A][dc:A][cd:B](;W[dd]C[Count: 13
+No pass: 0])
+(;W[dc]C[Count: 13
+No pass: 0])
+(;W[cd]C[Count: 11
+No pass: 0])
+)
+(;B[qn]C[Count: 3
+No pass: 3
+A: 2
+B: 1]LB[dd:A][dc:B](;W[dd]C[Count: 2
+No pass: 0])
+(;W[dc]C[Count: 1
+No pass: 0])
+)
+)
+(;W[cd]C[Count: 37
+No pass: 37
+A: 21
+B: 16]LB[pp:A][dp:B](;B[pp]C[Count: 21
+No pass: 21
+A: 9
+B: 6
+B: 6]LB[dq:A][dp:B][cp:B](;W[dq]C[Count: 9
+No pass: 0])
+(;W[dp]C[Count: 6
+No pass: 0])
+(;W[cp]C[Count: 6
+No pass: 0])
+)
+(;B[dp]C[Count: 16
+No pass: 16
+A: 7
+B: 6
+C: 3]LB[pq:A][qp:B][pp:C](;W[pq]C[Count: 7
+No pass: 0])
+(;W[qp]C[Count: 6
+No pass: 0])
+(;W[pp]C[Count: 3
+No pass: 0])
+)
+)
+(;W[pq]C[Count: 35
+No pass: 35
+A: 30
+B: 5]LB[dd:A][dp:B](;B[dd]C[Count: 30
+No pass: 30
+A: 14
+B: 10
+C: 6]LB[cp:A][dq:B][dp:C](;W[cp]C[Count: 14
+No pass: 0])
+(;W[dq]C[Count: 10
+No pass: 0])
+(;W[dp]C[Count: 6
+No pass: 0])
+)
+(;B[dp]C[Count: 5
+No pass: 5
+A: 2
+A: 2
+B: 1]LB[cd:A][dc:A][dd:B](;W[cd]C[Count: 2
+No pass: 0])
+(;W[dc]C[Count: 2
+No pass: 0])
+(;W[dd]C[Count: 1
+No pass: 0])
+)
+)
+(;W[dq]C[Count: 34
+No pass: 34
+A: 34]LB[dd:A]
+;B[dd]C[Count: 34
+No pass: 34
+A: 14
+B: 12
+C: 8]LB[pq:A][pp:B][qp:C](;W[pq]C[Count: 14
+No pass: 0])
+(;W[pp]C[Count: 12
+No pass: 0])
+(;W[qp]C[Count: 8
+No pass: 0])
+)
+(;W[dd]C[Count: 34
+No pass: 34
+A: 28
+B: 5
+C: 1]LB[dp:A][fc:B][pp:C](;B[dp]C[Count: 28
+No pass: 28
+A: 10
+A: 10
+B: 8]LB[qp:A][pp:A][pq:B](;W[qp]C[Count: 10
+No pass: 0])
+(;W[pp]C[Count: 10
+No pass: 0])
+(;W[pq]C[Count: 8
+No pass: 0])
+)
+(;B[fc]C[Count: 5
+No pass: 5
+A: 2
+B: 1
+B: 1
+B: 1]LB[pp:A][dq:B][qp:B][cp:B](;W[pp]C[Count: 2
+No pass: 0])
+(;W[dq]C[Count: 1
+No pass: 0])
+(;W[qp]C[Count: 1
+No pass: 0])
+(;W[cp]C[Count: 1
+No pass: 0])
+)
+(;B[pp]C[Count: 1
+No pass: 1
+A: 1]LB[cp:A]
+;W[cp]C[Count: 1
+No pass: 0])
+)
+(;W[cp]C[Count: 31
+No pass: 31
+A: 31]LB[pp:A]
+;B[pp]C[Count: 31
+No pass: 31
+A: 15
+B: 9
+C: 7]LB[dc:A][cd:B][dd:C](;W[dc]C[Count: 15
+No pass: 0])
+(;W[cd]C[Count: 9
+No pass: 0])
+(;W[dd]C[Count: 7
+No pass: 0])
+)
+(;W[dp]C[Count: 27
+No pass: 27
+A: 15
+B: 12]LB[dd:A][pp:B](;B[dd]C[Count: 15
+No pass: 15
+A: 10
+B: 4
+C: 1]LB[pp:A][pq:B][qp:C](;W[pp]C[Count: 10
+No pass: 0])
+(;W[pq]C[Count: 4
+No pass: 0])
+(;W[qp]C[Count: 1
+No pass: 0])
+)
+(;B[pp]C[Count: 12
+No pass: 12
+A: 5
+B: 4
+C: 3]LB[dc:A][dd:B][cd:C](;W[dc]C[Count: 5
+No pass: 0])
+(;W[dd]C[Count: 4
+No pass: 0])
+(;W[cd]C[Count: 3
+No pass: 0])
+)
+)
+)
