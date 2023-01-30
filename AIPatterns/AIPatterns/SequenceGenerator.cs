@@ -47,6 +47,7 @@ namespace AIPatterns
 
         void AddSequenceFromGame(GameWrap game)
         {
+            game.ToStart();
             Sequence sequence = new();
             while (game.ToNextMove())
             {
