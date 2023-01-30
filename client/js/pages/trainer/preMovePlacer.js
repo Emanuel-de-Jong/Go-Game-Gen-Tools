@@ -29,16 +29,21 @@ preMovePlacer.start = async function () {
 		for (let i=0; i<settings.preMoves; i++) {
 			if (preMovePlacer.isStopped) break;
 
-			if (cornerPlacer.shouldForce()) {
-				let suggestion = await cornerPlacer.getSuggestion();
-				if (preMovePlacer.isStopped) break;
-				
-				await cornerPlacer.play(suggestion);
-			}
-			else {
-				if (i == 0 && G.color == G.COLOR_TYPE.B) {
+			if (i == 0) {
+				if (G.color == G.COLOR_TYPE.B) {
 					await board.draw(new Coord(16, 4));
 				} else {
+					let coord = utils.randomInt(2) == 0 ? new Coord(16, 4) : new Coord(17, 4);
+					await board.draw(coord);
+				}
+			} else {
+				if (cornerPlacer.shouldForce()) {
+					let suggestion = await cornerPlacer.getSuggestion();
+					if (preMovePlacer.isStopped) break;
+					
+					await cornerPlacer.play(suggestion);
+				}
+				else {
 					await preMovePlacer.play();
 				}
 			}
