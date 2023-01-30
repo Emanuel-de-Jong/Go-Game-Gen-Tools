@@ -36,6 +36,10 @@ preMovePlacer.start = async function () {
 				await cornerPlacer.play(suggestion);
 			}
 			else {
+				if (i == 0 && G.color == G.COLOR_TYPE.B) {
+					await board.draw(new Coord(16, 4));
+				}
+
 				await preMovePlacer.play();
 			}
 		}
