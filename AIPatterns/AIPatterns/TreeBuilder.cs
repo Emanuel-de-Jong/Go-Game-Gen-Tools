@@ -77,6 +77,16 @@ namespace AIPatterns
 
         private static void FilterByCountLoop(GoNode node, float maxDiff, int minCount)
         {
+            int depth = NodeUtils.GetDepth(node);
+            if (NodeUtils.GetDepth(node) < 4)
+            {
+                foreach (GoNode childNode in node.ChildNodes)
+                {
+                    FilterByCountLoop(childNode, maxDiff, minCount);
+                }
+                return;
+            }
+
             GoMoveNode childPass = null;
             List<GoMoveNode> childMoves = new();
             foreach (GoNode childNode in node.ChildNodes)

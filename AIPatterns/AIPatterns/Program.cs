@@ -30,8 +30,8 @@ namespace AIPatterns
             SequenceList sequenceListB = sequenceGenerator.Generate(new string[] { rootPath + @"learning\B" });
             SequenceList sequenceListW = sequenceGenerator.Generate(new string[] { rootPath + @"learning\W" });
 
-            CreateFilteredSGF(sequenceListB, "Perfect-Seq-B", 0, 1_000_000);
-            CreateFilteredSGF(sequenceListW, "Perfect-Seq-W", 0, 1_000_000);
+            CreateFilteredSGF(sequenceListB, rootPath + "Perfect-Seq-B", 0, 1_000_000);
+            CreateFilteredSGF(sequenceListW, rootPath + "Perfect-Seq-W", 0, 1_000_000);
 
 
             List<string> sequencePaths = new();
