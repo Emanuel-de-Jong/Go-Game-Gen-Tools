@@ -21,17 +21,20 @@ namespace AIPatterns
 
         void Start()
         {
-            SequenceGenerator sequenceGenerator = new();
-            SequenceList sequenceListB = sequenceGenerator.Generate(new string[] {
-                @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\corners\B",
-                });
-            SequenceList sequenceListW = sequenceGenerator.Generate(new string[] {
-                @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\corners\W",
-                });
+            List<string> paths = new();
+            paths.AddRange(Directory.GetDirectories(@"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\B"));
+            paths.AddRange(Directory.GetDirectories(@"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\W"));
 
+            SequenceGenerator sequenceGenerator = new();
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
-            CreateFullSgf(sequenceListB, savePathDir + "Perfect-Seq-B");
-            CreateFullSgf(sequenceListW, savePathDir + "Perfect-Seq-W");
+            foreach (string path in paths)
+            {
+                SequenceList sequenceList = sequenceGenerator.Generate(new string[] { path });
+
+                string sequenceName = Path.GetFileName(path);
+                char color = Path.GetDirectoryName(path).Last();
+                CreateFullSgf(sequenceList, savePathDir + color + "-" + sequenceName);
+            }
         }
 
         void CreateFullSgf(SequenceList sequenceList, string savePath)
