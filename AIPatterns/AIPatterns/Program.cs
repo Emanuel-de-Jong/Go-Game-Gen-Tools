@@ -29,11 +29,12 @@ namespace AIPatterns
             string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
             foreach (string path in paths)
             {
-                SequenceList sequenceList = sequenceGenerator.Generate(new string[] { path });
-
-                string sequenceName = Path.GetFileName(path);
                 char color = Path.GetDirectoryName(path).Last();
-                CreateFullSgf(sequenceList, savePathDir + color + "-" + sequenceName);
+                string sequenceName = Path.GetFileName(path);
+
+                SequenceList sequenceList = sequenceGenerator.Generate(new string[] { path }, color, sequenceName);
+
+                CreateFilteredSGF(sequenceList, savePathDir + color + "-" + sequenceName, 0, 1_000_000);
             }
         }
 
@@ -53,9 +54,10 @@ namespace AIPatterns
             TreeBuilder.FilterByCount(game.Game.RootNode, maxDiff, min);
             TreeBuilder.AddMarkup(game);
 
-            game.SaveAsSgf(savePath +
-                "-" + maxDiff +
-                "-" + min);
+            game.SaveAsSgf(savePath);
+            //game.SaveAsSgf(savePath +
+            //    "-" + maxDiff +
+            //    "-" + min);
         }
 
         void Test()

@@ -58,5 +58,13 @@ namespace AIPatterns
 
             return game;
         }
+
+        public static GameWrap FlipDiagonal(GameWrap oldGame, bool leftToRight)
+        {
+            GameWrap game = Rotate(oldGame);
+            game = Flip(game, leftToRight);
+
+            return game;
+        }
     }
 }
