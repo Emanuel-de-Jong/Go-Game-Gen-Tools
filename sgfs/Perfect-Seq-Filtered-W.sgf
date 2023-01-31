@@ -40,10 +40,7 @@ B: 124
 C: 117
 D: 105
 E: 100
-F: 97]LB[pp:A][cp:B][dq:C][dp:D][pq:E][qp:F](;B[pp]C[Count: 134
-No pass: 134
-A: 134]LB[dp:A];W[dp]C[Count: 134
-No pass: 0])(;B[cp]C[Count: 124
+F: 97]LB[pp:A][cp:B][dq:C][dp:D][pq:E][qp:F](;B[cp]C[Count: 124
 No pass: 124
 A: 110
 B: 14]LB[pp:A][pq:B];W[pp]C[Count: 110

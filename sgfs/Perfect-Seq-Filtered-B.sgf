@@ -37,9 +37,8 @@ C: 5]LB[dp:A][fc:B][pp:C];B[dp]C[Count: 160
 No pass: 160
 A: 63
 B: 50
-C: 47]LB[qp:A][pp:B][pq:C](;W[pp]C[Count: 50
-No pass: 0])(;W[pq]C[Count: 47
-No pass: 0]))(;W[dp]C[Count: 181
+C: 47]LB[qp:A][pp:B][pq:C];W[pp]C[Count: 50
+No pass: 0])(;W[dp]C[Count: 181
 No pass: 181
 A: 101
 B: 80]LB[dd:A][pp:B];B[pp]C[Count: 80
@@ -48,14 +47,4 @@ A: 27
 A: 27
 B: 26]LB[dc:A][dd:A][cd:B](;W[dc]C[Count: 27
 No pass: 0])(;W[dd]C[Count: 27
-No pass: 0])(;W[cd]C[Count: 26
-No pass: 0]))(;W[cp]C[Count: 180
-No pass: 180
-A: 180]LB[pp:A];B[pp]C[Count: 180
-No pass: 180
-A: 71
-B: 56
-C: 53]LB[dc:A][dd:B][cd:C](;W[dc]C[Count: 71
-No pass: 0])(;W[dd]C[Count: 56
-No pass: 0])(;W[cd]C[Count: 53
 No pass: 0])))

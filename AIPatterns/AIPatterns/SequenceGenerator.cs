@@ -42,43 +42,47 @@ namespace AIPatterns
 
         void AddSequenceFromGame(GameWrap game, string sequenceName, char color)
         {
-            Stone? stone = GetStone(game, 5);
-            if (color == 'B')
-            {
-                if (sequenceName == "s4_3_n_17_16")
-                {
-                    if (stone.X < G.BOARD_SIZE/2)
-                    {
-                        game = GameUtils.FlipDiagonal(game, false);
-                    }
-                }
-                else if (sequenceName == "s4_3_n_17_16")
-                {
-                    if (stone.X < G.BOARD_SIZE / 2)
-                    {
-                        game = GameUtils.Flip(game, true);
-                        game = GameUtils.Flip(game, false);
-                    }
-                }
-                else if (sequenceName == "s3_4_n_3_16")
-                {
-                    if (stone.Y < G.BOARD_SIZE / 2)
-                    {
-                        game = GameUtils.Flip(game, false);
-                    }
-                }
-                else if (sequenceName == "s4_4_n_16_16")
-                {
-                    if (stone.X < G.BOARD_SIZE / 2)
-                    {
-                        game = GameUtils.FlipDiagonal(game, false);
-                    }
-                    if (stone.X > stone.Y)
-                    {
-                        game = GameUtils.FlipDiagonal(game, true);
-                    }
-                }
-            }
+            //Stone? stone = GetStone(game, 5);
+            //if (color == 'B')
+            //{
+            //    if (sequenceName == "s4_3_n_17_16" && stone.X < G.BOARD_SIZE / 2)
+            //    {
+            //        game = GameUtils.FlipDiagonal(game, false);
+            //    } else if (sequenceName == "s4_3_n_16_17" && stone.X < G.BOARD_SIZE / 2)
+            //    {
+            //        game = GameUtils.Flip(game, true);
+            //        game = GameUtils.Flip(game, false);
+            //    } else if (sequenceName == "s3_4_n_3_16" && stone.Y < G.BOARD_SIZE / 2)
+            //    {
+            //        game = GameUtils.Flip(game, false);
+            //    } else if (sequenceName == "s4_4_n_16_16" && stone.X < G.BOARD_SIZE / 2)
+            //    {
+            //        game = GameUtils.FlipDiagonal(game, false);
+            //        if (stone.X > stone.Y)
+            //        {
+            //            game = GameUtils.FlipDiagonal(game, true);
+            //        }
+            //    } else if (sequenceName == "s4_16_n_4_4" && stone.Y < G.BOARD_SIZE / 2)
+            //    {
+            //        game = GameUtils.Flip(game, false);
+            //    }
+            //} else
+            //{
+            //    if (sequenceName == "s16_4_n_16_16" && stone.Y < G.BOARD_SIZE / 2)
+            //    {
+            //        game = GameUtils.Flip(game, false);
+            //    } else if (sequenceName == "s17_4_n_3_16" && stone.Y < G.BOARD_SIZE / 2)
+            //    {
+            //        game = GameUtils.Flip(game, true);
+            //        game = GameUtils.Flip(game, false);
+            //    } else if (sequenceName == "s17_4_n_4_17" && stone.Y < G.BOARD_SIZE / 2)
+            //    {
+            //        game = GameUtils.FlipDiagonal(game, true);
+            //    } else if (sequenceName == "s17_4_n_17_16" && stone.Y < G.BOARD_SIZE / 2)
+            //    {
+            //        game = GameUtils.Flip(game, false);
+            //    }
+            //}
 
             game.ToStart();
             Sequence sequence = new();
