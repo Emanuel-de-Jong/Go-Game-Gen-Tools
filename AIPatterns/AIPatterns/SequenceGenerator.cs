@@ -18,17 +18,22 @@ namespace AIPatterns
 
         SequenceList sequenceList = new();
 
-        public SequenceList Generate(string[] paths, string sequenceName, char color)
+        public SequenceList Generate(string[] paths)
+        {
+            return Generate(paths, null, null);
+        }
+
+        public SequenceList Generate(string[] paths, char? color, string? sequenceName)
         {
             sequenceList = new SequenceList();
 
             foreach (string path in paths)
             {
-                string[] sgfPaths = Directory.GetFiles(path, "*.sgf");
+                string[] sgfPaths = Directory.GetFiles(path, "*.sgf", SearchOption.AllDirectories);
                 foreach (string sgfPath in sgfPaths)
                 {
                     GameWrap game = GameUtils.OpenFile(sgfPath);
-                    AddSequenceFromGame(game, sequenceName, color);
+                    AddSequenceFromGame(game, color, sequenceName);
                 }
             }
 
@@ -40,7 +45,7 @@ namespace AIPatterns
             return sequenceList;
         }
 
-        void AddSequenceFromGame(GameWrap game, string sequenceName, char color)
+        void AddSequenceFromGame(GameWrap game, char? color, string? sequenceName)
         {
             //Stone? stone = GetStone(game, 5);
             //if (color == 'B')
@@ -48,37 +53,45 @@ namespace AIPatterns
             //    if (sequenceName == "s4_3_n_17_16" && stone.X < G.BOARD_SIZE / 2)
             //    {
             //        game = GameUtils.FlipDiagonal(game, false);
-            //    } else if (sequenceName == "s4_3_n_16_17" && stone.X < G.BOARD_SIZE / 2)
+            //    }
+            //    else if (sequenceName == "s4_3_n_16_17" && stone.X < G.BOARD_SIZE / 2)
             //    {
             //        game = GameUtils.Flip(game, true);
             //        game = GameUtils.Flip(game, false);
-            //    } else if (sequenceName == "s3_4_n_3_16" && stone.Y < G.BOARD_SIZE / 2)
+            //    }
+            //    else if (sequenceName == "s3_4_n_3_16" && stone.Y < G.BOARD_SIZE / 2)
             //    {
             //        game = GameUtils.Flip(game, false);
-            //    } else if (sequenceName == "s4_4_n_16_16" && stone.X < G.BOARD_SIZE / 2)
+            //    }
+            //    else if (sequenceName == "s4_4_n_16_16" && stone.X < G.BOARD_SIZE / 2)
             //    {
             //        game = GameUtils.FlipDiagonal(game, false);
             //        if (stone.X > stone.Y)
             //        {
             //            game = GameUtils.FlipDiagonal(game, true);
             //        }
-            //    } else if (sequenceName == "s4_16_n_4_4" && stone.Y < G.BOARD_SIZE / 2)
+            //    }
+            //    else if (sequenceName == "s4_16_n_4_4" && stone.Y < G.BOARD_SIZE / 2)
             //    {
             //        game = GameUtils.Flip(game, false);
             //    }
-            //} else
+            //}
+            //else if (color == 'W')
             //{
             //    if (sequenceName == "s16_4_n_16_16" && stone.Y < G.BOARD_SIZE / 2)
             //    {
             //        game = GameUtils.Flip(game, false);
-            //    } else if (sequenceName == "s17_4_n_3_16" && stone.Y < G.BOARD_SIZE / 2)
+            //    }
+            //    else if (sequenceName == "s17_4_n_3_16" && stone.Y < G.BOARD_SIZE / 2)
             //    {
             //        game = GameUtils.Flip(game, true);
             //        game = GameUtils.Flip(game, false);
-            //    } else if (sequenceName == "s17_4_n_4_17" && stone.Y < G.BOARD_SIZE / 2)
+            //    }
+            //    else if (sequenceName == "s17_4_n_4_17" && stone.Y < G.BOARD_SIZE / 2)
             //    {
             //        game = GameUtils.FlipDiagonal(game, true);
-            //    } else if (sequenceName == "s17_4_n_17_16" && stone.Y < G.BOARD_SIZE / 2)
+            //    }
+            //    else if (sequenceName == "s17_4_n_17_16" && stone.Y < G.BOARD_SIZE / 2)
             //    {
             //        game = GameUtils.Flip(game, false);
             //    }

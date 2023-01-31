@@ -1,5 +1,7 @@
 ﻿using IGOEnchi.GoGameLogic;
 using IGOEnchi.SmartGameLib;
+using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Xml.Linq;
 
@@ -21,20 +23,28 @@ namespace AIPatterns
 
         void Start()
         {
-            List<string> paths = new();
-            paths.AddRange(Directory.GetDirectories(@"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\B"));
-            paths.AddRange(Directory.GetDirectories(@"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\learning\W"));
+            string rootPath = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
 
             SequenceGenerator sequenceGenerator = new();
-            string savePathDir = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
-            foreach (string path in paths)
+
+            SequenceList sequenceListB = sequenceGenerator.Generate(new string[] { rootPath + @"learning\B" });
+            SequenceList sequenceListW = sequenceGenerator.Generate(new string[] { rootPath + @"learning\W" });
+
+            CreateFilteredSGF(sequenceListB, "Perfect-Seq-B", 0, 1_000_000);
+            CreateFilteredSGF(sequenceListW, "Perfect-Seq-W", 0, 1_000_000);
+
+
+            List<string> sequencePaths = new();
+            sequencePaths.AddRange(Directory.GetDirectories(rootPath + @"learning\B"));
+            sequencePaths.AddRange(Directory.GetDirectories(rootPath + @"learning\W"));
+            foreach (string path in sequencePaths)
             {
                 char color = Path.GetDirectoryName(path).Last();
                 string sequenceName = Path.GetFileName(path);
 
                 SequenceList sequenceList = sequenceGenerator.Generate(new string[] { path }, color, sequenceName);
 
-                CreateFilteredSGF(sequenceList, savePathDir + color + "-" + sequenceName, 0, 1_000_000);
+                CreateFilteredSGF(sequenceList, rootPath + color + "-" + sequenceName, 0, 1_000_000);
             }
         }
 
