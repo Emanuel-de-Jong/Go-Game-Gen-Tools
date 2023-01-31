@@ -1,6 +1,17 @@
 var preMovePlacer = {};
 
 
+preMovePlacer.SEQUENCES = {
+	B: {
+		s4_3_n_16_16: [ {x:16,y:4}, {x:4,y:3}, {x:4,y:16}, {x:16,y:16} ],
+		s4_3_n_17_16: [ {x:16,y:4}, {x:4,y:3}, {x:4,y:16}, {x:17,y:16} ],
+	},
+	W: {
+		s16_4_n_16_16: [ {x:16,y:4}, {x:4,y:16}, {x:16,y:16}, {x:4,y:4} ],
+		s16_4_n_17_16: [ {x:16,y:4}, {x:4,y:16}, {x:17,y:16}, {x:4,y:4} ],
+	}
+};
+
 preMovePlacer.MIN_VISITS_PERC = 10;
 preMovePlacer.MAX_VISIT_DIFF_PERC = 50;
 
@@ -25,28 +36,20 @@ preMovePlacer.start = async function () {
 	preMovePlacer.stopButton.hidden = false;
 	selfplay.button.hidden = true;
 
+	let sequences = preMovePlacer.SEQUENCES[G.colorNumToName(G.color)];
+	let sequenceKeys = Object.keys(sequences);
+	preMovePlacer.sequenceKey = sequenceKeys[utils.randomInt(sequenceKeys.length)];
+	let sequence = sequences[preMovePlacer.sequenceKey];
+
+	for (let i=0; i<sequence.length; i++) {
+		await board.draw(sequence[i]);
+	}
+
 	if (settings.preMovesSwitch) {
-		for (let i=0; i<settings.preMoves; i++) {
+		for (let i=sequence.length; i<settings.preMoves; i++) {
 			if (preMovePlacer.isStopped) break;
 
-			if (i == 0) {
-				if (G.color == G.COLOR_TYPE.B) {
-					await board.draw(new Coord(16, 4));
-				} else {
-					let coord = utils.randomInt(2) == 0 ? new Coord(16, 4) : new Coord(17, 4);
-					await board.draw(coord);
-				}
-			} else {
-				if (cornerPlacer.shouldForce()) {
-					let suggestion = await cornerPlacer.getSuggestion();
-					if (preMovePlacer.isStopped) break;
-					
-					await cornerPlacer.play(suggestion);
-				}
-				else {
-					await preMovePlacer.play();
-				}
-			}
+			await preMovePlacer.play();
 		}
 	}
 
