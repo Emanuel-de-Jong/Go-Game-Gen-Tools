@@ -32,8 +32,8 @@ namespace AIPatterns
 
             CreateFilteredSGF(sequenceListB, rootPath + "Perfect-Seq-B", 0, 1_000_000);
             CreateFilteredSGF(sequenceListW, rootPath + "Perfect-Seq-W", 0, 1_000_000);
-            //CreateFullSgf(sequenceListB, rootPath + "Perfect-Seq-B-Full");
-            //CreateFullSgf(sequenceListW, rootPath + "Perfect-Seq-W-Full");
+            CreateFullSgf(sequenceListB, rootPath + "Perfect-Seq-B-Full");
+            CreateFullSgf(sequenceListW, rootPath + "Perfect-Seq-W-Full");
 
 
             List<string> sequencePaths = new();

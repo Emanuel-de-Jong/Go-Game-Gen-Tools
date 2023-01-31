@@ -1,28 +1,28 @@
 (;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[Count: 0
-No pass: 11
-A: 11]LB[qd:A]
-;B[qd]C[Count: 11
-No pass: 11
-A: 11]LB[dd:A]
-;W[dd]C[Count: 11
-No pass: 11
-A: 11]LB[cp:A]
-;B[cp]C[Count: 11
-No pass: 11
-A: 11]LB[pp:A]
-;W[pp]C[Count: 11
-No pass: 11
-A: 11]LB[fq:A]
-;B[fq]C[Count: 11
-No pass: 11
-A: 11]LB[oc:A]
-;W[oc]C[Count: 11
-No pass: 11
-A: 11]LB[pf:A]
-;B[pf]C[Count: 11
-No pass: 11
-A: 6]LB[fc:A]
-;W[fc]C[Count: 6
+No pass: 12
+A: 12]LB[qd:A]
+;B[qd]C[Count: 12
+No pass: 12
+A: 12]LB[dd:A]
+;W[dd]C[Count: 12
+No pass: 12
+A: 12]LB[cp:A]
+;B[cp]C[Count: 12
+No pass: 12
+A: 12]LB[pp:A]
+;W[pp]C[Count: 12
+No pass: 12
+A: 12]LB[fq:A]
+;B[fq]C[Count: 12
+No pass: 12
+A: 12]LB[oc:A]
+;W[oc]C[Count: 12
+No pass: 12
+A: 12]LB[pf:A]
+;B[pf]C[Count: 12
+No pass: 12
+A: 6
+A: 6]LB[fc:A][qh:A](;W[fc]C[Count: 6
 No pass: 6
 A: 4]LB[nq:A]
 ;B[nq]C[Count: 4
@@ -60,3 +60,42 @@ No pass: 3
 A: 3]LB[bb:A]
 ;W[bb]C[Count: 3
 No pass: 0])
+(;W[qh]C[Count: 6
+No pass: 6
+A: 4]LB[mc:A]
+;B[mc]C[Count: 4
+No pass: 4
+A: 3]LB[nd:A]
+;W[nd]C[Count: 3
+No pass: 3
+A: 3]LB[pc:A]
+;B[pc]C[Count: 3
+No pass: 3
+A: 3]LB[md:A]
+;W[md]C[Count: 3
+No pass: 3
+A: 2]LB[kc:A]
+;B[kc]C[Count: 2
+No pass: 2
+A: 2]LB[gc:A]
+;W[gc]C[Count: 2
+No pass: 2
+A: 2]LB[qp:A]
+;B[qp]C[Count: 2
+No pass: 2
+A: 2]LB[qq:A]
+;W[qq]C[Count: 2
+No pass: 2
+A: 2]LB[qo:A]
+;B[qo]C[Count: 2
+No pass: 2
+A: 2]LB[po:A]
+;W[po]C[Count: 2
+No pass: 2
+A: 2]LB[qn:A]
+;B[qn]C[Count: 2
+No pass: 2
+A: 2]LB[rq:A]
+;W[rq]C[Count: 2
+No pass: 0])
+)

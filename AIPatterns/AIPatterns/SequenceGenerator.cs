@@ -71,14 +71,18 @@ namespace AIPatterns
                         game = GameUtils.Flip(game, true);
                         isGameChanged = true;
                     }
-                    else if (sequenceName == "s4_4_n_16_16" && stone.X < G.BOARD_SIZE / 2)
+                    else if (sequenceName == "s4_4_n_16_16")
                     {
-                        game = GameUtils.FlipDiagonal(game, false);
+                        if (stone.X < G.BOARD_SIZE / 2)
+                        {
+                            game = GameUtils.FlipDiagonal(game, false);
+                            isGameChanged = true;
+                        }
                         if (stone.X > stone.Y)
                         {
                             game = GameUtils.FlipDiagonal(game, true);
+                            isGameChanged = true;
                         }
-                        isGameChanged = true;
                     }
                     else if (sequenceName == "s4_16_n_4_4" && stone.Y < G.BOARD_SIZE / 2)
                     {
