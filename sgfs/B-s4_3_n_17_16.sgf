@@ -12,90 +12,90 @@ No pass: 3
 A: 3]LB[qp:A]
 ;W[qp]C[Count: 3
 No pass: 3
+A: 3]LB[oq:A]
+;B[oq]C[Count: 3
+No pass: 3
+A: 2]LB[po:A]
+;W[po]C[Count: 2
+No pass: 2
 A: 2]LB[ce:A]
 ;B[ce]C[Count: 2
 No pass: 2
-A: 2]LB[ed:A]
-;W[ed]C[Count: 2
-No pass: 2
-A: 2]LB[oq:A]
-;B[oq]C[Count: 2
-No pass: 2
 A: 1
-A: 1]LB[pn:A][po:A](;W[pn]C[Count: 1
+A: 1]LB[fd:A][ed:A](;W[fd]C[Count: 1
 No pass: 1
-A: 1]LB[ch:A]
-;B[ch]C[Count: 1
+A: 1]LB[lq:A]
+;B[lq]C[Count: 1
 No pass: 1
-A: 1]LB[qf:A]
-;W[qf]C[Count: 1
+A: 1]LB[nc:A]
+;W[nc]C[Count: 1
 No pass: 1
-A: 1]LB[nd:A]
-;B[nd]C[Count: 1
+A: 1]LB[pf:A]
+;B[pf]C[Count: 1
 No pass: 1
-A: 1]LB[lc:A]
-;W[lc]C[Count: 1
+A: 1]LB[qh:A]
+;W[qh]C[Count: 1
 No pass: 1
-A: 1]LB[jc:A]
-;B[jc]C[Count: 1
+A: 1]LB[qj:A]
+;B[qj]C[Count: 1
 No pass: 1
-A: 1]LB[le:A]
-;W[le]C[Count: 1
+A: 1]LB[oh:A]
+;W[oh]C[Count: 1
 No pass: 1
-A: 1]LB[gc:A]
-;B[gc]C[Count: 1
+A: 1]LB[qm:A]
+;B[qm]C[Count: 1
 No pass: 1
 A: 1]LB[oe:A]
 ;W[oe]C[Count: 1
 No pass: 1
-A: 1]LB[ne:A]
-;B[ne]C[Count: 1
+A: 1]LB[of:A]
+;B[of]C[Count: 1
 No pass: 1
-A: 1]LB[od:A]
-;W[od]C[Count: 1
+A: 1]LB[pe:A]
+;W[pe]C[Count: 1
 No pass: 1
-A: 1]LB[oc:A]
-;B[oc]C[Count: 1
+A: 1]LB[qe:A]
+;B[qe]C[Count: 1
 No pass: 1
-A: 1]LB[nc:A]
-;W[nc]C[Count: 1
+A: 1]LB[qf:A]
+;W[qf]C[Count: 1
 No pass: 0])
-(;W[po]C[Count: 1
+(;W[ed]C[Count: 1
 No pass: 1
-A: 1]LB[hc:A]
-;B[hc]C[Count: 1
+A: 1]LB[ql:A]
+;B[ql]C[Count: 1
 No pass: 1
-A: 1]LB[nc:A]
-;W[nc]C[Count: 1
+A: 1]LB[qf:A]
+;W[qf]C[Count: 1
 No pass: 1
-A: 1]LB[kc:A]
-;B[kc]C[Count: 1
+A: 1]LB[qi:A]
+;B[qi]C[Count: 1
 No pass: 1
 A: 1]LB[qc:A]
 ;W[qc]C[Count: 1
 No pass: 1
-A: 1]LB[pc:A]
-;B[pc]C[Count: 1
-No pass: 1
 A: 1]LB[qd:A]
-;W[qd]C[Count: 1
+;B[qd]C[Count: 1
 No pass: 1
-A: 1]LB[pe:A]
-;B[pe]C[Count: 1
+A: 1]LB[pc:A]
+;W[pc]C[Count: 1
 No pass: 1
-A: 1]LB[pb:A]
-;W[pb]C[Count: 1
+A: 1]LB[od:A]
+;B[od]C[Count: 1
 No pass: 1
-A: 1]LB[ob:A]
-;B[ob]C[Count: 1
+A: 1]LB[rd:A]
+;W[rd]C[Count: 1
 No pass: 1
-A: 1]LB[qb:A]
-;W[qb]C[Count: 1
+A: 1]LB[re:A]
+;B[re]C[Count: 1
 No pass: 1
-A: 1]LB[oc:A]
-;B[oc]C[Count: 1
+A: 1]LB[rc:A]
+;W[rc]C[Count: 1
 No pass: 1
-A: 1]LB[qf:A]
-;W[qf]C[Count: 1
+A: 1]LB[qe:A]
+;B[qe]C[Count: 1
+No pass: 1
+A: 1]LB[nc:A]
+;W[nc]C[Count: 1
 No pass: 0])
 )
