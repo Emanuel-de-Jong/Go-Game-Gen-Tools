@@ -66,7 +66,7 @@ board.clear = function(serverBoardsize, serverHandicap, serverSGF) {
 	let besogoOptions = {
 		resize: "auto",
 		orient: "portrait",
-		panels: "control+names+tree+comment+file",
+		panels: "names+tree",
 		coord: "western",
 		tool: "navOnly",
 		size: board.boardsize,
@@ -96,21 +96,21 @@ board.clear = function(serverBoardsize, serverHandicap, serverSGF) {
 
 	board.editor = board.element.besogoEditor;
 	
-	document.querySelector('#game button[title="Variants: [child]/sibling"]').remove();
-	document.querySelector('#game button[title="Variants: show/[hide]"]').remove();
-	document.querySelector('#game input[value="9x9"]').remove();
-	document.querySelector('#game input[value="13x13"]').remove();
-	document.querySelector('#game input[value="19x19"]').remove();
-	document.querySelector('#game input[value="?x?"]').remove();
-	document.querySelector('#game input[value="Comment"]').remove();
-	document.querySelector('#game input[value="Edit Info"]').remove();
-	document.querySelector('#game input[value="Info"]').remove();
+	// document.querySelector('#game button[title="Variants: [child]/sibling"]').remove();
+	// document.querySelector('#game button[title="Variants: show/[hide]"]').remove();
+	// document.querySelector('#game input[value="9x9"]').remove();
+	// document.querySelector('#game input[value="13x13"]').remove();
+	// document.querySelector('#game input[value="19x19"]').remove();
+	// document.querySelector('#game input[value="?x?"]').remove();
+	// document.querySelector('#game input[value="Comment"]').remove();
+	// document.querySelector('#game input[value="Edit Info"]').remove();
+	// document.querySelector('#game input[value="Info"]').remove();
 	
 	document.querySelector("#game .besogo-board")
 		.insertAdjacentHTML("beforeend", '<button type="button" class="btn btn-secondary" id="next" disabled>></button>');
 	board.nextButton = document.getElementById("next");
 
-	board.commentElement = document.querySelector('#game .besogo-comment textarea');
+	// board.commentElement = document.querySelector('#game .besogo-comment textarea');
 
 	board.lastMove = board.editor.getCurrent();
 
