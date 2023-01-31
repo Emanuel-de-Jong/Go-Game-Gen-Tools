@@ -139,7 +139,7 @@ board.draw = async function(coord, tool = "auto", sendToServer = true) {
 
 	if (tool == "auto" || tool == "playB" || tool == "playW") {
 		if (G.phase == G.PHASE_TYPE.CORNERS || G.phase == G.PHASE_TYPE.PREMOVES || G.phase == G.PHASE_TYPE.GAMEPLAY) {
-			board.playPlaceStoneAudio();
+			// board.playPlaceStoneAudio();
 		}
 
 		board.lastMove = board.editor.getCurrent();
