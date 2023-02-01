@@ -1,62 +1,62 @@
 (;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[Count: 0
-No pass: 80
-A: 80]LB[pd:A]
-;B[pd]C[Count: 80
-No pass: 80
-A: 80]LB[dp:A]
-;W[dp]C[Count: 80
-No pass: 80
-A: 80]LB[pq:A]
-;B[pq]C[Count: 80
-No pass: 80
-A: 80]LB[dd:A]
-;W[dd]C[Count: 80
-No pass: 80
-A: 80]LB[cq:A]
-;B[cq]C[Count: 80
-No pass: 80
-A: 80]LB[dq:A]
-;W[dq]C[Count: 80
-No pass: 80
-A: 80]LB[cp:A]
-;B[cp]C[Count: 80
-No pass: 80
-A: 80]LB[do:A]
-;W[do]C[Count: 80
-No pass: 80
-A: 80]LB[bn:A]
-;B[bn]C[Count: 80
-No pass: 80
-A: 80]LB[qc:A]
-;W[qc]C[Count: 80
-No pass: 80
-A: 80]LB[qd:A]
-;B[qd]C[Count: 80
-No pass: 80
-A: 80]LB[pc:A]
-;W[pc]C[Count: 80
-No pass: 80
-A: 80]LB[od:A]
-;B[od]C[Count: 80
-No pass: 80
-A: 80]LB[nc:A]
-;W[nc]C[Count: 80
-No pass: 80
-A: 50]LB[rc:A]
-;B[rc]C[Count: 50
-No pass: 50
-A: 44]LB[nd:A]
-;W[nd]C[Count: 44
-No pass: 44
-A: 44]LB[qn:A]
-;B[qn]C[Count: 44
-No pass: 44
-A: 44]LB[nf:A]
-;W[nf]C[Count: 44
-No pass: 44
-A: 41]LB[cm:A]
-;B[cm]C[Count: 41
-No pass: 41
-A: 35]LB[iq:A]
-;W[iq]C[Count: 35
+No pass: 106
+A: 106]LB[pd:A]
+;B[pd]C[Count: 106
+No pass: 106
+A: 106]LB[dp:A]
+;W[dp]C[Count: 106
+No pass: 106
+A: 106]LB[pq:A]
+;B[pq]C[Count: 106
+No pass: 106
+A: 106]LB[dd:A]
+;W[dd]C[Count: 106
+No pass: 106
+A: 106]LB[cq:A]
+;B[cq]C[Count: 106
+No pass: 106
+A: 106]LB[dq:A]
+;W[dq]C[Count: 106
+No pass: 106
+A: 106]LB[cp:A]
+;B[cp]C[Count: 106
+No pass: 106
+A: 106]LB[do:A]
+;W[do]C[Count: 106
+No pass: 106
+A: 106]LB[bn:A]
+;B[bn]C[Count: 106
+No pass: 106
+A: 106]LB[qc:A]
+;W[qc]C[Count: 106
+No pass: 106
+A: 106]LB[qd:A]
+;B[qd]C[Count: 106
+No pass: 106
+A: 106]LB[pc:A]
+;W[pc]C[Count: 106
+No pass: 106
+A: 106]LB[od:A]
+;B[od]C[Count: 106
+No pass: 106
+A: 106]LB[nc:A]
+;W[nc]C[Count: 106
+No pass: 106
+A: 68]LB[rc:A]
+;B[rc]C[Count: 68
+No pass: 68
+A: 61]LB[nd:A]
+;W[nd]C[Count: 61
+No pass: 61
+A: 61]LB[qn:A]
+;B[qn]C[Count: 61
+No pass: 61
+A: 61]LB[nf:A]
+;W[nf]C[Count: 61
+No pass: 61
+A: 57]LB[cm:A]
+;B[cm]C[Count: 57
+No pass: 57
+A: 50]LB[iq:A]
+;W[iq]C[Count: 50
 No pass: 0])

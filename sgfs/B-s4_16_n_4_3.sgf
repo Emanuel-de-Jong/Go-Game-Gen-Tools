@@ -1,65 +1,62 @@
 (;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[Count: 0
-No pass: 71
-A: 71]LB[pd:A]
-;B[pd]C[Count: 71
-No pass: 71
-A: 71]LB[dp:A]
-;W[dp]C[Count: 71
-No pass: 71
-A: 71]LB[pp:A]
-;B[pp]C[Count: 71
-No pass: 71
-A: 71]LB[dc:A]
-;W[dc]C[Count: 71
-No pass: 71
-A: 71]LB[cq:A]
-;B[cq]C[Count: 71
-No pass: 71
-A: 70]LB[cp:A]
-;W[cp]C[Count: 70
-No pass: 70
-A: 70]LB[dq:A]
-;B[dq]C[Count: 70
-No pass: 70
-A: 70]LB[ep:A]
-;W[ep]C[Count: 70
-No pass: 70
-A: 70]LB[fq:A]
-;B[fq]C[Count: 70
-No pass: 70
-A: 70]LB[qc:A]
-;W[qc]C[Count: 70
-No pass: 70
-A: 49]LB[qd:A]
-;B[qd]C[Count: 49
-No pass: 49
-A: 49]LB[pc:A]
-;W[pc]C[Count: 49
-No pass: 49
-A: 47]LB[od:A]
-;B[od]C[Count: 47
-No pass: 47
-A: 47]LB[nb:A]
-;W[nb]C[Count: 47
-No pass: 47
-A: 25]LB[gr:A]
-;B[gr]C[Count: 25
-No pass: 25
-A: 25]LB[cf:A]
-;W[cf]C[Count: 25
-No pass: 25
-A: 16]LB[cl:A]
-;B[cl]C[Count: 16
-No pass: 16
-A: 16]LB[go:A]
-;W[go]C[Count: 16
-No pass: 16
-A: 16]LB[ci:A]
-;B[ci]C[Count: 16
-No pass: 16
-A: 6
-A: 6]LB[pi:A][el:A](;W[pi]C[Count: 6
+No pass: 89
+A: 89]LB[pd:A]
+;B[pd]C[Count: 89
+No pass: 89
+A: 89]LB[dp:A]
+;W[dp]C[Count: 89
+No pass: 89
+A: 89]LB[pp:A]
+;B[pp]C[Count: 89
+No pass: 89
+A: 89]LB[dc:A]
+;W[dc]C[Count: 89
+No pass: 89
+A: 89]LB[cq:A]
+;B[cq]C[Count: 89
+No pass: 89
+A: 88]LB[cp:A]
+;W[cp]C[Count: 88
+No pass: 88
+A: 88]LB[dq:A]
+;B[dq]C[Count: 88
+No pass: 88
+A: 88]LB[ep:A]
+;W[ep]C[Count: 88
+No pass: 88
+A: 88]LB[fq:A]
+;B[fq]C[Count: 88
+No pass: 88
+A: 88]LB[qc:A]
+;W[qc]C[Count: 88
+No pass: 88
+A: 59]LB[qd:A]
+;B[qd]C[Count: 59
+No pass: 59
+A: 59]LB[pc:A]
+;W[pc]C[Count: 59
+No pass: 59
+A: 57]LB[od:A]
+;B[od]C[Count: 57
+No pass: 57
+A: 57]LB[nb:A]
+;W[nb]C[Count: 57
+No pass: 57
+A: 30]LB[gr:A]
+;B[gr]C[Count: 30
+No pass: 30
+A: 30]LB[cf:A]
+;W[cf]C[Count: 30
+No pass: 30
+A: 20]LB[cl:A]
+;B[cl]C[Count: 20
+No pass: 20
+A: 20]LB[go:A]
+;W[go]C[Count: 20
+No pass: 20
+A: 20]LB[ci:A]
+;B[ci]C[Count: 20
+No pass: 20
+A: 9]LB[pi:A]
+;W[pi]C[Count: 9
 No pass: 0])
-(;W[el]C[Count: 6
-No pass: 0])
-)
