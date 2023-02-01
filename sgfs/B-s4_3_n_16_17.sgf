@@ -1,74 +1,74 @@
 (;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[Count: 0
-No pass: 7
-A: 7]LB[pd:A]
-;B[pd]C[Count: 7
-No pass: 7
-A: 7]LB[dc:A]
-;W[dc]C[Count: 7
-No pass: 7
-A: 7]LB[dp:A]
-;B[dp]C[Count: 7
-No pass: 7
-A: 7]LB[pq:A]
-;W[pq]C[Count: 7
-No pass: 7
-A: 7]LB[qo:A]
-;B[qo]C[Count: 7
-No pass: 7
-A: 7]LB[op:A]
-;W[op]C[Count: 7
-No pass: 7
-A: 7]LB[ce:A]
-;B[ce]C[Count: 7
-No pass: 7
-A: 6]LB[fd:A]
-;W[fd]C[Count: 6
-No pass: 6
-A: 5]LB[qf:A]
-;B[qf]C[Count: 5
+No pass: 72
+A: 72]LB[pd:A]
+;B[pd]C[Count: 72
+No pass: 72
+A: 72]LB[dc:A]
+;W[dc]C[Count: 72
+No pass: 72
+A: 72]LB[dp:A]
+;B[dp]C[Count: 72
+No pass: 72
+A: 72]LB[pq:A]
+;W[pq]C[Count: 72
+No pass: 72
+A: 72]LB[qo:A]
+;B[qo]C[Count: 72
+No pass: 72
+A: 46]LB[op:A]
+;W[op]C[Count: 46
+No pass: 46
+A: 46]LB[ce:A]
+;B[ce]C[Count: 46
+No pass: 46
+A: 28]LB[fd:A]
+;W[fd]C[Count: 28
+No pass: 28
+A: 26]LB[qf:A]
+;B[qf]C[Count: 26
+No pass: 26
+A: 16]LB[cn:A]
+;W[cn]C[Count: 16
+No pass: 16
+A: 9]LB[fp:A]
+;B[fp]C[Count: 9
+No pass: 9
+A: 5]LB[ci:A]
+;W[ci]C[Count: 5
 No pass: 5
-A: 3]LB[cn:A]
-;W[cn]C[Count: 3
-No pass: 3
-A: 2]LB[fq:A]
-;B[fq]C[Count: 2
+A: 4]LB[kq:A]
+;B[kq]C[Count: 4
+No pass: 4
+A: 4]LB[cq:A]
+;W[cq]C[Count: 4
+No pass: 4
+A: 4]LB[cp:A]
+;B[cp]C[Count: 4
+No pass: 4
+A: 4]LB[bp:A]
+;W[bp]C[Count: 4
+No pass: 4
+A: 2
+A: 2]LB[dq:A][bo:A](;B[dq]C[Count: 2
 No pass: 2
-A: 2]LB[ch:A]
-;W[ch]C[Count: 2
+A: 2]LB[br:A]
+;W[br]C[Count: 2
 No pass: 2
-A: 2]LB[pl:A]
-;B[pl]C[Count: 2
+A: 2]LB[cr:A]
+;B[cr]C[Count: 2
 No pass: 2
-A: 2]LB[en:A]
-;W[en]C[Count: 2
-No pass: 2
-A: 2]LB[kc:A]
-;B[kc]C[Count: 2
-No pass: 2
-A: 2]LB[gp:A]
-;W[gp]C[Count: 2
-No pass: 2
-A: 1
-A: 1]LB[co:A][gq:A](;B[co]C[Count: 1
-No pass: 1
-A: 1]LB[bn:A]
-;W[bn]C[Count: 1
-No pass: 1
-A: 1]LB[gq:A]
-;B[gq]C[Count: 1
-No pass: 1
-A: 1]LB[ip:A]
-;W[ip]C[Count: 1
+A: 2]LB[bq:A]
+;W[bq]C[Count: 2
 No pass: 0])
-(;B[gq]C[Count: 1
-No pass: 1
-A: 1]LB[ip:A]
-;W[ip]C[Count: 1
-No pass: 1
-A: 1]LB[co:A]
-;B[co]C[Count: 1
-No pass: 1
-A: 1]LB[bn:A]
-;W[bn]C[Count: 1
+(;B[bo]C[Count: 2
+No pass: 2
+A: 2]LB[bq:A]
+;W[bq]C[Count: 2
+No pass: 2
+A: 2]LB[bn:A]
+;B[bn]C[Count: 2
+No pass: 2
+A: 2]LB[er:A]
+;W[er]C[Count: 2
 No pass: 0])
 )
