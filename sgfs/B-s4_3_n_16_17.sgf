@@ -1,68 +1,68 @@
 (;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[Count: 0
-No pass: 95
-A: 95]LB[pd:A]
-;B[pd]C[Count: 95
-No pass: 95
-A: 95]LB[dc:A]
-;W[dc]C[Count: 95
-No pass: 95
-A: 95]LB[dp:A]
-;B[dp]C[Count: 95
-No pass: 95
-A: 95]LB[pq:A]
-;W[pq]C[Count: 95
-No pass: 95
-A: 95]LB[qo:A]
-;B[qo]C[Count: 95
-No pass: 95
-A: 60]LB[op:A]
-;W[op]C[Count: 60
-No pass: 60
-A: 60]LB[ce:A]
-;B[ce]C[Count: 60
-No pass: 60
-A: 36]LB[fd:A]
-;W[fd]C[Count: 36
-No pass: 36
-A: 34]LB[qf:A]
-;B[qf]C[Count: 34
-No pass: 34
-A: 23]LB[cn:A]
-;W[cn]C[Count: 23
+No pass: 183
+A: 183]LB[pd:A]
+;B[pd]C[Count: 183
+No pass: 183
+A: 183]LB[dc:A]
+;W[dc]C[Count: 183
+No pass: 183
+A: 183]LB[dp:A]
+;B[dp]C[Count: 183
+No pass: 183
+A: 183]LB[pq:A]
+;W[pq]C[Count: 183
+No pass: 183
+A: 183]LB[qo:A]
+;B[qo]C[Count: 183
+No pass: 183
+A: 114]LB[op:A]
+;W[op]C[Count: 114
+No pass: 114
+A: 114]LB[ce:A]
+;B[ce]C[Count: 114
+No pass: 114
+A: 71]LB[fd:A]
+;W[fd]C[Count: 71
+No pass: 71
+A: 69]LB[qf:A]
+;B[qf]C[Count: 69
+No pass: 69
+A: 50]LB[cn:A]
+;W[cn]C[Count: 50
+No pass: 50
+A: 29]LB[fp:A]
+;B[fp]C[Count: 29
+No pass: 29
+A: 23]LB[ch:A]
+;W[ch]C[Count: 23
 No pass: 23
-A: 12]LB[fp:A]
-;B[fp]C[Count: 12
-No pass: 12
-A: 7]LB[ch:A]
-;W[ch]C[Count: 7
+A: 23]LB[pl:A]
+;B[pl]C[Count: 23
+No pass: 23
+A: 22]LB[hq:A]
+;W[hq]C[Count: 22
+No pass: 22
+A: 22]LB[jq:A]
+;B[jq]C[Count: 22
+No pass: 22
+A: 22]LB[ho:A]
+;W[ho]C[Count: 22
+No pass: 22
+A: 22]LB[mq:A]
+;B[mq]C[Count: 22
+No pass: 22
+A: 15]LB[jo:A]
+;W[jo]C[Count: 15
+No pass: 15
+A: 7
+A: 7]LB[lo:A][ln:A](;B[lo]C[Count: 7
 No pass: 7
-A: 7]LB[pl:A]
-;B[pl]C[Count: 7
-No pass: 7
-A: 6]LB[hq:A]
-;W[hq]C[Count: 6
-No pass: 6
-A: 6]LB[jq:A]
-;B[jq]C[Count: 6
-No pass: 6
-A: 6]LB[ho:A]
-;W[ho]C[Count: 6
-No pass: 6
-A: 6]LB[mq:A]
-;B[mq]C[Count: 6
-No pass: 6
-A: 4]LB[jo:A]
-;W[jo]C[Count: 4
-No pass: 4
-A: 2
-A: 2]LB[lo:A][ln:A](;B[lo]C[Count: 2
-No pass: 2
-A: 2]LB[on:A]
-;W[on]C[Count: 2
+A: 5]LB[on:A]
+;W[on]C[Count: 5
 No pass: 0])
-(;B[ln]C[Count: 2
-No pass: 2
-A: 2]LB[on:A]
-;W[on]C[Count: 2
+(;B[ln]C[Count: 7
+No pass: 7
+A: 7]LB[on:A]
+;W[on]C[Count: 7
 No pass: 0])
 )

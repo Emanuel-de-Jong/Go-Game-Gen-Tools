@@ -1,62 +1,62 @@
 (;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[Count: 0
-No pass: 108
-A: 108]LB[pd:A]
-;B[pd]C[Count: 108
-No pass: 108
-A: 108]LB[cd:A]
-;W[cd]C[Count: 108
-No pass: 108
-A: 108]LB[pp:A]
-;B[pp]C[Count: 108
-No pass: 108
-A: 108]LB[cp:A]
-;W[cp]C[Count: 108
-No pass: 108
-A: 105]LB[eq:A]
-;B[eq]C[Count: 105
-No pass: 105
-A: 104]LB[do:A]
-;W[do]C[Count: 104
-No pass: 104
-A: 88]LB[ec:A]
-;B[ec]C[Count: 88
-No pass: 88
-A: 88]LB[de:A]
-;W[de]C[Count: 88
-No pass: 88
-A: 56]LB[nq:A]
-;B[nq]C[Count: 56
-No pass: 56
-A: 52]LB[qc:A]
-;W[qc]C[Count: 52
-No pass: 52
-A: 52]LB[qd:A]
-;B[qd]C[Count: 52
-No pass: 52
-A: 52]LB[pc:A]
-;W[pc]C[Count: 52
-No pass: 52
-A: 37]LB[od:A]
-;B[od]C[Count: 37
-No pass: 37
-A: 30]LB[nb:A]
-;W[nb]C[Count: 30
-No pass: 30
-A: 30]LB[qk:A]
-;B[qk]C[Count: 30
-No pass: 30
-A: 25]LB[fp:A]
-;W[fp]C[Count: 25
-No pass: 25
-A: 25]LB[gq:A]
-;B[gq]C[Count: 25
-No pass: 25
-A: 25]LB[io:A]
-;W[io]C[Count: 25
-No pass: 25
-A: 15]LB[dj:A]
-;B[dj]C[Count: 15
-No pass: 15
-A: 15]LB[cl:A]
-;W[cl]C[Count: 15
+No pass: 206
+A: 206]LB[pd:A]
+;B[pd]C[Count: 206
+No pass: 206
+A: 206]LB[cd:A]
+;W[cd]C[Count: 206
+No pass: 206
+A: 206]LB[pp:A]
+;B[pp]C[Count: 206
+No pass: 206
+A: 206]LB[cp:A]
+;W[cp]C[Count: 206
+No pass: 206
+A: 202]LB[eq:A]
+;B[eq]C[Count: 202
+No pass: 202
+A: 199]LB[do:A]
+;W[do]C[Count: 199
+No pass: 199
+A: 171]LB[ec:A]
+;B[ec]C[Count: 171
+No pass: 171
+A: 171]LB[de:A]
+;W[de]C[Count: 171
+No pass: 171
+A: 95]LB[nq:A]
+;B[nq]C[Count: 95
+No pass: 95
+A: 90]LB[qc:A]
+;W[qc]C[Count: 90
+No pass: 90
+A: 90]LB[qd:A]
+;B[qd]C[Count: 90
+No pass: 90
+A: 90]LB[pc:A]
+;W[pc]C[Count: 90
+No pass: 90
+A: 66]LB[od:A]
+;B[od]C[Count: 66
+No pass: 66
+A: 57]LB[nb:A]
+;W[nb]C[Count: 57
+No pass: 57
+A: 57]LB[qk:A]
+;B[qk]C[Count: 57
+No pass: 57
+A: 44]LB[fp:A]
+;W[fp]C[Count: 44
+No pass: 44
+A: 44]LB[gq:A]
+;B[gq]C[Count: 44
+No pass: 44
+A: 44]LB[io:A]
+;W[io]C[Count: 44
+No pass: 44
+A: 26]LB[dj:A]
+;B[dj]C[Count: 26
+No pass: 26
+A: 26]LB[cl:A]
+;W[cl]C[Count: 26
 No pass: 0])
