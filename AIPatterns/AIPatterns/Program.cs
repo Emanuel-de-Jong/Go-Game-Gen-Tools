@@ -30,8 +30,8 @@ namespace AIPatterns
             SequenceList sequenceListB = sequenceGenerator.Generate(new string[] { rootPath + @"learning\B" });
             SequenceList sequenceListW = sequenceGenerator.Generate(new string[] { rootPath + @"learning\W" });
 
-            CreateFilteredSGF(sequenceListB, rootPath + "Perfect-Seq-B", 0, 1_000_000);
-            CreateFilteredSGF(sequenceListW, rootPath + "Perfect-Seq-W", 0, 1_000_000);
+            CreateFilteredSGF(sequenceListB, rootPath + "Perfect-Seq-B", 0, 1_000_000, true);
+            CreateFilteredSGF(sequenceListW, rootPath + "Perfect-Seq-W", 0, 1_000_000, true);
             CreateFullSgf(sequenceListB, rootPath + "Perfect-Seq-B-Full");
             CreateFullSgf(sequenceListW, rootPath + "Perfect-Seq-W-Full");
 
@@ -46,7 +46,7 @@ namespace AIPatterns
 
                 SequenceList sequenceList = sequenceGenerator.Generate(new string[] { path }, color, sequenceName);
 
-                CreateFilteredSGF(sequenceList, rootPath + color + "-" + sequenceName, 0, 1_000_000);
+                CreateFilteredSGF(sequenceList, rootPath + color + "-" + sequenceName, 0, 1_000_000, false);
                 //CreateFullSgf(sequenceList, rootPath + color + "-" + sequenceName);
             }
         }
@@ -60,12 +60,12 @@ namespace AIPatterns
             game.SaveAsSgf(savePath);
         }
 
-        void CreateFilteredSGF(SequenceList sequenceList, string savePath, float maxDiff, int min)
+        void CreateFilteredSGF(SequenceList sequenceList, string savePath, float maxDiff, int min, bool addMarkup)
         {
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
 
             TreeBuilder.FilterByCount(game.Game.RootNode, maxDiff, min);
-            TreeBuilder.AddMarkup(game);
+            if (addMarkup) TreeBuilder.AddMarkup(game);
 
             game.SaveAsSgf(savePath);
             //game.SaveAsSgf(savePath +

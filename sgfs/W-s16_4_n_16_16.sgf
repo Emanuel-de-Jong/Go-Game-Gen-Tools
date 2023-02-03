@@ -1,11 +1,11 @@
 (;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[Count: 0
 No pass: 228
-A: 228]LB[pd:A]AP[Sabaki:0.52.0];B[pd]C[Count: 228
+A: 228]AP[Sabaki:0.52.0];B[pd]C[Count: 228
 No pass: 228
-A: 228]LB[dp:A];W[dp]C[Count: 228
+A: 228];W[dp]C[Count: 228
 No pass: 228
-A: 228]LB[pp:A];B[pp]C[Count: 228
+A: 228];B[pp]C[Count: 228
 No pass: 228
-A: 228]LB[dd:A];W[dd]C[Count: 228
+A: 228];W[dd]C[Count: 228
 No pass: 228
 A: 228];B[fc];W[qq];B[pq];W[qp];B[po];W[rn];B[cf];W[ef];B[ci];W[nc];B[db];W[cc];B[hc];W[gd];B[oc];W[gc];B[gb];W[hd];B[ic];W[id];B[ec];W[ed];B[fq];W[jd];B[cn];W[jb];B[nd];W[ha])

@@ -1,62 +1,63 @@
-(;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[Count: 0
-No pass: 248
-A: 248]LB[pd:A]
-;B[pd]C[Count: 248
-No pass: 248
-A: 248]LB[dp:A]
-;W[dp]C[Count: 248
-No pass: 248
-A: 248]LB[pp:A]
-;B[pp]C[Count: 248
-No pass: 248
-A: 248]LB[dc:A]
-;W[dc]C[Count: 248
-No pass: 248
-A: 248]LB[cq:A]
-;B[cq]C[Count: 248
-No pass: 248
-A: 247]LB[cp:A]
-;W[cp]C[Count: 247
-No pass: 247
-A: 247]LB[dq:A]
-;B[dq]C[Count: 247
-No pass: 247
-A: 247]LB[ep:A]
-;W[ep]C[Count: 247
-No pass: 247
-A: 247]LB[fq:A]
-;B[fq]C[Count: 247
-No pass: 247
-A: 246]LB[qc:A]
-;W[qc]C[Count: 246
-No pass: 246
-A: 174]LB[qd:A]
-;B[qd]C[Count: 174
-No pass: 174
-A: 174]LB[pc:A]
-;W[pc]C[Count: 174
-No pass: 174
-A: 171]LB[od:A]
-;B[od]C[Count: 171
-No pass: 171
-A: 171]LB[nb:A]
-;W[nb]C[Count: 171
-No pass: 171
-A: 94]LB[gr:A]
-;B[gr]C[Count: 94
-No pass: 94
-A: 94]LB[cf:A]
-;W[cf]C[Count: 94
-No pass: 94
-A: 68]LB[cl:A]
-;B[cl]C[Count: 68
-No pass: 68
-A: 68]LB[go:A]
-;W[go]C[Count: 68
-No pass: 68
-A: 68]LB[ci:A]
-;B[ci]C[Count: 68
-No pass: 68
-A: 30]LB[pi:A]
-;W[pi]C[Count: 30
-No pass: 0])
+(;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[0
+0
+248]
+;B[pd]C[248
+0
+248]
+;W[dp]C[248
+0
+248]
+;B[pp]C[248
+0
+248]
+;W[dc]C[248
+0
+248]
+;B[cq]C[248
+0
+248]
+;W[cp]C[247
+0
+247]
+;B[dq]C[247
+0
+247]
+;W[ep]C[247
+0
+247]
+;B[fq]C[247
+0
+247]
+;W[qc]C[246
+0
+246]
+;B[qd]C[174
+0
+174]
+;W[pc]C[174
+0
+174]
+;B[od]C[171
+0
+171]
+;W[nb]C[171
+0
+171]
+;B[gr]C[94
+0
+94]
+;W[cf]C[94
+0
+94]
+;B[cl]C[68
+0
+68]
+;W[go]C[68
+0
+68]
+;B[ci]C[68
+0
+68]
+;W[pi]C[30
+0
+0])
