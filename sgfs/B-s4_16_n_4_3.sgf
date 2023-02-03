@@ -1,62 +1,62 @@
 (;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[Count: 0
-No pass: 179
-A: 179]LB[pd:A]
-;B[pd]C[Count: 179
-No pass: 179
-A: 179]LB[dp:A]
-;W[dp]C[Count: 179
-No pass: 179
-A: 179]LB[pp:A]
-;B[pp]C[Count: 179
-No pass: 179
-A: 179]LB[dc:A]
-;W[dc]C[Count: 179
-No pass: 179
-A: 179]LB[cq:A]
-;B[cq]C[Count: 179
-No pass: 179
-A: 178]LB[cp:A]
-;W[cp]C[Count: 178
-No pass: 178
-A: 178]LB[dq:A]
-;B[dq]C[Count: 178
-No pass: 178
-A: 178]LB[ep:A]
-;W[ep]C[Count: 178
-No pass: 178
-A: 178]LB[fq:A]
-;B[fq]C[Count: 178
-No pass: 178
-A: 177]LB[qc:A]
-;W[qc]C[Count: 177
-No pass: 177
-A: 130]LB[qd:A]
-;B[qd]C[Count: 130
-No pass: 130
-A: 130]LB[pc:A]
-;W[pc]C[Count: 130
-No pass: 130
-A: 128]LB[od:A]
-;B[od]C[Count: 128
-No pass: 128
-A: 128]LB[nb:A]
-;W[nb]C[Count: 128
-No pass: 128
-A: 68]LB[gr:A]
-;B[gr]C[Count: 68
+No pass: 248
+A: 248]LB[pd:A]
+;B[pd]C[Count: 248
+No pass: 248
+A: 248]LB[dp:A]
+;W[dp]C[Count: 248
+No pass: 248
+A: 248]LB[pp:A]
+;B[pp]C[Count: 248
+No pass: 248
+A: 248]LB[dc:A]
+;W[dc]C[Count: 248
+No pass: 248
+A: 248]LB[cq:A]
+;B[cq]C[Count: 248
+No pass: 248
+A: 247]LB[cp:A]
+;W[cp]C[Count: 247
+No pass: 247
+A: 247]LB[dq:A]
+;B[dq]C[Count: 247
+No pass: 247
+A: 247]LB[ep:A]
+;W[ep]C[Count: 247
+No pass: 247
+A: 247]LB[fq:A]
+;B[fq]C[Count: 247
+No pass: 247
+A: 246]LB[qc:A]
+;W[qc]C[Count: 246
+No pass: 246
+A: 174]LB[qd:A]
+;B[qd]C[Count: 174
+No pass: 174
+A: 174]LB[pc:A]
+;W[pc]C[Count: 174
+No pass: 174
+A: 171]LB[od:A]
+;B[od]C[Count: 171
+No pass: 171
+A: 171]LB[nb:A]
+;W[nb]C[Count: 171
+No pass: 171
+A: 94]LB[gr:A]
+;B[gr]C[Count: 94
+No pass: 94
+A: 94]LB[cf:A]
+;W[cf]C[Count: 94
+No pass: 94
+A: 68]LB[cl:A]
+;B[cl]C[Count: 68
 No pass: 68
-A: 68]LB[cf:A]
-;W[cf]C[Count: 68
+A: 68]LB[go:A]
+;W[go]C[Count: 68
 No pass: 68
-A: 48]LB[cl:A]
-;B[cl]C[Count: 48
-No pass: 48
-A: 48]LB[go:A]
-;W[go]C[Count: 48
-No pass: 48
-A: 48]LB[ci:A]
-;B[ci]C[Count: 48
-No pass: 48
-A: 19]LB[pi:A]
-;W[pi]C[Count: 19
+A: 68]LB[ci:A]
+;B[ci]C[Count: 68
+No pass: 68
+A: 30]LB[pi:A]
+;W[pi]C[Count: 30
 No pass: 0])

@@ -1,62 +1,62 @@
 (;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[Count: 0
-No pass: 206
-A: 206]LB[pd:A]
-;B[pd]C[Count: 206
-No pass: 206
-A: 206]LB[cd:A]
-;W[cd]C[Count: 206
-No pass: 206
-A: 206]LB[pp:A]
-;B[pp]C[Count: 206
-No pass: 206
-A: 206]LB[cp:A]
-;W[cp]C[Count: 206
-No pass: 206
-A: 202]LB[eq:A]
-;B[eq]C[Count: 202
-No pass: 202
-A: 199]LB[do:A]
-;W[do]C[Count: 199
-No pass: 199
-A: 171]LB[ec:A]
-;B[ec]C[Count: 171
-No pass: 171
-A: 171]LB[de:A]
-;W[de]C[Count: 171
-No pass: 171
-A: 95]LB[nq:A]
-;B[nq]C[Count: 95
+No pass: 288
+A: 288]LB[pd:A]
+;B[pd]C[Count: 288
+No pass: 288
+A: 288]LB[cd:A]
+;W[cd]C[Count: 288
+No pass: 288
+A: 288]LB[pp:A]
+;B[pp]C[Count: 288
+No pass: 288
+A: 288]LB[cp:A]
+;W[cp]C[Count: 288
+No pass: 288
+A: 284]LB[eq:A]
+;B[eq]C[Count: 284
+No pass: 284
+A: 280]LB[do:A]
+;W[do]C[Count: 280
+No pass: 280
+A: 244]LB[ec:A]
+;B[ec]C[Count: 244
+No pass: 244
+A: 244]LB[de:A]
+;W[de]C[Count: 244
+No pass: 244
+A: 135]LB[nq:A]
+;B[nq]C[Count: 135
+No pass: 135
+A: 127]LB[qc:A]
+;W[qc]C[Count: 127
+No pass: 127
+A: 127]LB[qd:A]
+;B[qd]C[Count: 127
+No pass: 127
+A: 127]LB[pc:A]
+;W[pc]C[Count: 127
+No pass: 127
+A: 95]LB[od:A]
+;B[od]C[Count: 95
 No pass: 95
-A: 90]LB[qc:A]
-;W[qc]C[Count: 90
-No pass: 90
-A: 90]LB[qd:A]
-;B[qd]C[Count: 90
-No pass: 90
-A: 90]LB[pc:A]
-;W[pc]C[Count: 90
-No pass: 90
-A: 66]LB[od:A]
-;B[od]C[Count: 66
+A: 84]LB[nb:A]
+;W[nb]C[Count: 84
+No pass: 84
+A: 84]LB[qk:A]
+;B[qk]C[Count: 84
+No pass: 84
+A: 66]LB[fp:A]
+;W[fp]C[Count: 66
 No pass: 66
-A: 57]LB[nb:A]
-;W[nb]C[Count: 57
-No pass: 57
-A: 57]LB[qk:A]
-;B[qk]C[Count: 57
-No pass: 57
-A: 44]LB[fp:A]
-;W[fp]C[Count: 44
-No pass: 44
-A: 44]LB[gq:A]
-;B[gq]C[Count: 44
-No pass: 44
-A: 44]LB[io:A]
-;W[io]C[Count: 44
-No pass: 44
-A: 26]LB[dj:A]
-;B[dj]C[Count: 26
-No pass: 26
-A: 26]LB[cl:A]
-;W[cl]C[Count: 26
+A: 66]LB[gq:A]
+;B[gq]C[Count: 66
+No pass: 66
+A: 66]LB[io:A]
+;W[io]C[Count: 66
+No pass: 66
+A: 43]LB[dj:A]
+;B[dj]C[Count: 43
+No pass: 43
+A: 43]LB[cl:A]
+;W[cl]C[Count: 43
 No pass: 0])

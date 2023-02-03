@@ -1,62 +1,62 @@
 (;GM[1]FF[4]CA[UTF-8]SZ[19]KM[6.5]PW[white]PB[black]C[Count: 0
-No pass: 200
-A: 200]LB[pd:A]
-;B[pd]C[Count: 200
-No pass: 200
-A: 200]LB[dc:A]
-;W[dc]C[Count: 200
-No pass: 200
-A: 200]LB[dp:A]
-;B[dp]C[Count: 200
-No pass: 200
-A: 200]LB[pp:A]
-;W[pp]C[Count: 200
-No pass: 200
-A: 115]LB[ce:A]
-;B[ce]C[Count: 115
-No pass: 115
-A: 115]LB[ed:A]
-;W[ed]C[Count: 115
-No pass: 115
-A: 115]LB[qq:A]
-;B[qq]C[Count: 115
-No pass: 115
-A: 115]LB[pq:A]
-;W[pq]C[Count: 115
-No pass: 115
-A: 115]LB[qp:A]
-;B[qp]C[Count: 115
-No pass: 115
-A: 115]LB[qn:A]
-;W[qn]C[Count: 115
-No pass: 115
-A: 115]LB[qo:A]
-;B[qo]C[Count: 115
-No pass: 115
-A: 115]LB[po:A]
-;W[po]C[Count: 115
-No pass: 115
-A: 115]LB[rn:A]
-;B[rn]C[Count: 115
-No pass: 115
-A: 115]LB[qc:A]
-;W[qc]C[Count: 115
-No pass: 115
-A: 115]LB[pc:A]
-;B[pc]C[Count: 115
-No pass: 115
-A: 115]LB[qd:A]
-;W[qd]C[Count: 115
-No pass: 115
-A: 115]LB[qe:A]
-;B[qe]C[Count: 115
-No pass: 115
-A: 115]LB[re:A]
-;W[re]C[Count: 115
-No pass: 115
-A: 115]LB[rf:A]
-;B[rf]C[Count: 115
-No pass: 115
-A: 115]LB[qf:A]
-;W[qf]C[Count: 115
+No pass: 300
+A: 300]LB[pd:A]
+;B[pd]C[Count: 300
+No pass: 300
+A: 300]LB[dc:A]
+;W[dc]C[Count: 300
+No pass: 300
+A: 300]LB[dp:A]
+;B[dp]C[Count: 300
+No pass: 300
+A: 300]LB[pp:A]
+;W[pp]C[Count: 300
+No pass: 300
+A: 173]LB[ce:A]
+;B[ce]C[Count: 173
+No pass: 173
+A: 173]LB[ed:A]
+;W[ed]C[Count: 173
+No pass: 173
+A: 173]LB[qq:A]
+;B[qq]C[Count: 173
+No pass: 173
+A: 173]LB[pq:A]
+;W[pq]C[Count: 173
+No pass: 173
+A: 173]LB[qp:A]
+;B[qp]C[Count: 173
+No pass: 173
+A: 173]LB[qn:A]
+;W[qn]C[Count: 173
+No pass: 173
+A: 173]LB[qo:A]
+;B[qo]C[Count: 173
+No pass: 173
+A: 173]LB[po:A]
+;W[po]C[Count: 173
+No pass: 173
+A: 173]LB[rn:A]
+;B[rn]C[Count: 173
+No pass: 173
+A: 173]LB[qc:A]
+;W[qc]C[Count: 173
+No pass: 173
+A: 173]LB[pc:A]
+;B[pc]C[Count: 173
+No pass: 173
+A: 173]LB[qd:A]
+;W[qd]C[Count: 173
+No pass: 173
+A: 173]LB[qe:A]
+;B[qe]C[Count: 173
+No pass: 173
+A: 173]LB[re:A]
+;W[re]C[Count: 173
+No pass: 173
+A: 173]LB[rf:A]
+;B[rf]C[Count: 173
+No pass: 173
+A: 173]LB[qf:A]
+;W[qf]C[Count: 173
 No pass: 0])
