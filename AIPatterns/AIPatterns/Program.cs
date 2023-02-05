@@ -23,7 +23,7 @@ namespace AIPatterns
 
         void Start()
         {
-            string rootPath = @"E:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
+            string rootPath = @"E:\Coding\Repos\GoTrainer-HumanAI-perfect-seq\sgfs\";
 
             SequenceGenerator sequenceGenerator = new();
 
@@ -35,12 +35,26 @@ namespace AIPatterns
             CreateFullSgf(sequenceListB, rootPath + "Perfect-Seq-B-Full");
             CreateFullSgf(sequenceListW, rootPath + "Perfect-Seq-W-Full");
 
-
+            string[] pathsToIgnore = new string[] {
+                @"B\s4_16_n_4_4",
+                @"W\s16_4_n_16_16"
+            };
             List<string> sequencePaths = new();
             sequencePaths.AddRange(Directory.GetDirectories(rootPath + @"learning\B"));
             sequencePaths.AddRange(Directory.GetDirectories(rootPath + @"learning\W"));
             foreach (string path in sequencePaths)
             {
+                bool shouldIgnorePath = false;
+                foreach (string pathToIgnore in pathsToIgnore)
+                {
+                    if (path.Contains(pathToIgnore))
+                    {
+                        shouldIgnorePath = true;
+                        break;
+                    }
+                }
+                if (shouldIgnorePath) continue;
+
                 char color = Path.GetDirectoryName(path).Last();
                 string sequenceName = Path.GetFileName(path);
 
