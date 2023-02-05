@@ -232,6 +232,21 @@ namespace AIPatterns
             }
         }
 
+        public static void RemoveComments(GameWrap game)
+        {
+            RemoveCommentsLoop(game.Game.RootNode);
+        }
+
+        private static void RemoveCommentsLoop(GoNode node)
+        {
+            node.Comment = null;
+
+            foreach (GoNode childNode in node.ChildNodes)
+            {
+                RemoveCommentsLoop(childNode);
+            }
+        }
+
         public static void RemoveRedundentPasses(GameWrap game)
         {
             game.ToStart();

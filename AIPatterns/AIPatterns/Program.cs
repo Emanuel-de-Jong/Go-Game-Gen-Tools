@@ -79,7 +79,13 @@ namespace AIPatterns
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
 
             TreeBuilder.FilterByCount(game.Game.RootNode, maxDiff, min);
-            if (addMarkup) TreeBuilder.AddMarkup(game);
+            if (addMarkup)
+            {
+                TreeBuilder.AddMarkup(game);
+            } else
+            {
+                TreeBuilder.RemoveComments(game);
+            }
 
             game.SaveAsSgf(savePath);
             //game.SaveAsSgf(savePath +
