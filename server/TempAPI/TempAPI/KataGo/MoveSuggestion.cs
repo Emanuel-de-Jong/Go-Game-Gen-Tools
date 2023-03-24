@@ -27,7 +27,7 @@
 
         public void SetMove(string color, string coord)
         {
-            this.move = new Move(color, coord);
+            move = new Move(color, coord);
         }
 
         public void SetVisits(string visits)

@@ -7,7 +7,7 @@
         public override string ToString()
         {
             string output = "";
-            foreach (var move in moves)
+            foreach (Move move in moves)
             {
                 output += move.ToString() + ", ";
             }
