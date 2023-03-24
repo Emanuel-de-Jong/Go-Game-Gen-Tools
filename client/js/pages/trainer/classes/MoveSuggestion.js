@@ -1,5 +1,4 @@
 class MoveSuggestion {
-    
     coord;
     visits;
     score;
@@ -43,5 +42,4 @@ class MoveSuggestion {
             serverSuggestion.score.scoreLead
         );
     }
-
 }

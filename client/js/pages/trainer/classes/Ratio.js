@@ -1,5 +1,4 @@
 class Ratio {
-
     moveNumber;
     total;
 
@@ -11,10 +10,7 @@ class Ratio {
     perfectStreak;
     perfectTopStreak;
 
-
-    constructor(moveNumber, total,
-            right, rightStreak, rightTopStreak,
-            perfect, perfectStreak, perfectTopStreak) {
+    constructor(moveNumber, total, right, rightStreak, rightTopStreak, perfect, perfectStreak, perfectTopStreak) {
         this.moveNumber = moveNumber;
         this.total = total;
 
@@ -39,5 +35,4 @@ class Ratio {
     getPercent(count) {
         return Math.round((count / this.total) * 100);
     }
-
 }

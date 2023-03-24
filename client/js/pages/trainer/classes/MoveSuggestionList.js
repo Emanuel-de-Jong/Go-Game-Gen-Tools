@@ -1,5 +1,4 @@
 class MoveSuggestionList {
-
     static ENCODE_ANALYZE_MOVE_INDICATOR = -2;
 
     suggestions = [];
@@ -30,7 +29,7 @@ class MoveSuggestionList {
 
     addGrades() {
         let gradeIndex = 0;
-        for (let i=0; i<this.suggestions.length; i++) {
+        for (let i = 0; i < this.suggestions.length; i++) {
             let suggestion = this.suggestions[i];
             if (suggestion.isPass()) continue;
 
@@ -45,20 +44,20 @@ class MoveSuggestionList {
     filterByMoveOptions(moveOptions) {
         let moveOptionCount = 1;
         let index;
-        for (index=0; index<this.suggestions.length; index++) {
+        for (index = 0; index < this.suggestions.length; index++) {
             if (index != 0 && this.suggestions[index].visits != this.suggestions[index - 1].visits) {
                 moveOptionCount++;
                 if (moveOptionCount == moveOptions + 1) break;
             }
         }
-        
+
         this.suggestions = this.suggestions.splice(0, index);
         return this;
     }
 
     filterByPass() {
         let filteredSuggestions = [];
-        this.suggestions.forEach(suggestion => {
+        this.suggestions.forEach((suggestion) => {
             if (!suggestion.isPass()) filteredSuggestions.push(suggestion);
         });
 
@@ -77,10 +76,10 @@ class MoveSuggestionList {
         if (settings.showWeakerOptions || gameplay.chosenNotPlayedCoordHistory.get() || !this.find(playedCoord)) {
             return this.suggestions;
         }
-        
+
         let index;
         let playedCoordIndex;
-        for (index=0; index<this.suggestions.length; index++) {
+        for (index = 0; index < this.suggestions.length; index++) {
             if (playedCoordIndex == null) {
                 if (this.suggestions[index].coord.compare(playedCoord)) {
                     playedCoordIndex = index;
@@ -97,7 +96,7 @@ class MoveSuggestionList {
     }
 
     find(coord) {
-        for (let i=0; i<this.suggestions.length; i++) {
+        for (let i = 0; i < this.suggestions.length; i++) {
             if (this.suggestions[i].coord.compare(coord)) {
                 return this.suggestions[i];
             }
@@ -114,10 +113,10 @@ class MoveSuggestionList {
 
         encoded = byteUtils.numToBytes(this.suggestions.length, 2, encoded);
 
-        for (let i=0; i<this.suggestions.length; i++) {
+        for (let i = 0; i < this.suggestions.length; i++) {
             encoded = encoded.concat(this.suggestions[i].encode());
         }
-        
+
         return encoded;
     }
 
@@ -134,11 +133,11 @@ class MoveSuggestionList {
         return this.suggestions.length;
     }
 
-    
+
     static fromKataGo(kataGoSuggestions) {
         let nameCoords = [];
         let suggestions = [];
-        kataGoSuggestions.forEach(kataGoSuggestion => {
+        kataGoSuggestions.forEach((kataGoSuggestion) => {
             nameCoords.push(kataGoSuggestion.move.coord);
             suggestions.push(MoveSuggestion.fromKataGo(kataGoSuggestion));
         });
@@ -151,7 +150,7 @@ class MoveSuggestionList {
     static fromServer(serverSuggestions) {
         let suggestionList = new MoveSuggestionList(null, serverSuggestions.analyzeMoveSuggestion);
 
-        for (let i=0; i<serverSuggestions.suggestions.length; i++) {
+        for (let i = 0; i < serverSuggestions.suggestions.length; i++) {
             if (!serverSuggestions.suggestions[i]) continue;
 
             suggestionList.add(MoveSuggestion.fromServer(serverSuggestions.suggestions[i]));
@@ -161,5 +160,4 @@ class MoveSuggestionList {
 
         return suggestionList;
     }
-
 }

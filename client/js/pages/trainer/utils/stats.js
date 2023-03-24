@@ -6,32 +6,32 @@ stats.RATIO_TYPE = {
     WRONG: 1,
     RIGHT: 2,
     PERFECT: 3,
-}
+};
 
 stats.RATIO_Y_INDICATOR = -1;
 
 
-stats.init = function(serverRatios) {
+stats.init = function (serverRatios) {
     stats.rightPercentElement = document.getElementById("rightPercent");
     stats.rightStreakElement = document.getElementById("rightStreak");
     stats.rightTopStreakElement = document.getElementById("rightTopStreak");
-    
+
     stats.perfectPercentElement = document.getElementById("perfectPercent");
     stats.perfectStreakElement = document.getElementById("perfectStreak");
     stats.perfectTopStreakElement = document.getElementById("perfectTopStreak");
-    
+
     stats.visitsElement = document.getElementById("visits");
-    
+
     stats.resultDivElement = document.getElementById("resultDiv");
     stats.resultElement = document.getElementById("result");
-    
+
     stats.clear(serverRatios);
 };
 
-stats.clear = function(serverRatios) {
+stats.clear = function (serverRatios) {
     stats.ratioHistory = serverRatios ? History.fromServer(serverRatios) : new History();
     stats.ratio = null;
-    
+
     stats.clearRatio();
     stats.clearVisits();
     stats.clearResult();
@@ -40,22 +40,22 @@ stats.clear = function(serverRatios) {
         stats.ratioHistory.add(stats.RATIO_TYPE.WRONG, 1, 0);
         stats.ratioHistory.add(stats.RATIO_TYPE.RIGHT, 3, 0);
         stats.ratioHistory.add(stats.RATIO_TYPE.PERFECT, 5, 0);
-        
+
         stats.ratioHistory.add(stats.RATIO_TYPE.RIGHT, 1, 1);
         stats.ratioHistory.add(stats.RATIO_TYPE.PERFECT, 3, 1);
         stats.ratioHistory.add(stats.RATIO_TYPE.WRONG, 5, 1);
         stats.ratioHistory.add(stats.RATIO_TYPE.WRONG, 7, 1);
-    
+
         stats.ratioHistory.add(stats.RATIO_TYPE.RIGHT, 5, 2);
     } else if (debug.testData == 2) {
-        for (let i=utils.randomInt(61, 1); i<utils.randomInt(241, 80); i+=2) {
+        for (let i = utils.randomInt(61, 1); i < utils.randomInt(241, 80); i += 2) {
             stats.ratioHistory.add(utils.randomInt(4, 1), i, 0);
         }
     }
 };
 
 
-stats.updateRatioHistory = function(isRight, isPerfect) {
+stats.updateRatioHistory = function (isRight, isPerfect) {
     let type = stats.RATIO_TYPE.WRONG;
     if (isPerfect) {
         type = stats.RATIO_TYPE.PERFECT;
@@ -64,9 +64,9 @@ stats.updateRatioHistory = function(isRight, isPerfect) {
     }
 
     stats.ratioHistory.add(type);
-}
+};
 
-stats.encodeRatioHistory = function() {
+stats.encodeRatioHistory = function () {
     let encoded = stats.encodeRatioHistoryLoop();
 
     let firstY = byteUtils.numToBytes(stats.RATIO_Y_INDICATOR, 2);
@@ -81,7 +81,7 @@ stats.encodeRatioHistory = function() {
     return encoded;
 };
 
-stats.encodeRatioHistoryLoop = function(node = board.editor.getRoot()) {
+stats.encodeRatioHistoryLoop = function (node = board.editor.getRoot()) {
     let encoded = [];
 
     for (let i = 0; i < node.children.length; i++) {
@@ -118,7 +118,7 @@ stats.encodeRatioHistoryLoop = function(node = board.editor.getRoot()) {
     return encoded;
 };
 
-stats.decodeRatioHistory = function(encoded) {
+stats.decodeRatioHistory = function (encoded) {
     let rootNode = new CNode();
 
     let i = 0;
@@ -127,19 +127,19 @@ stats.decodeRatioHistory = function(encoded) {
     while (i < encoded.length) {
         let x = encoded[i];
         if (x == stats.RATIO_Y_INDICATOR) {
-            y = encoded[i+1];
-            node = rootNode.nodes.get(encoded[i+3], encoded[i+2]);
+            y = encoded[i + 1];
+            node = rootNode.nodes.get(encoded[i + 3], encoded[i + 2]);
             i += 4;
         } else {
-            node = node.add(encoded[i+1], x, y);
+            node = node.add(encoded[i + 1], x, y);
             i += 2;
         }
     }
 
     stats.printDecodedRatioHistory(rootNode);
-}
+};
 
-stats.printDecodedRatioHistory = function(node) {
+stats.printDecodedRatioHistory = function (node) {
     for (let i = 0; i < node.children.length; i++) {
         let childNode = node.children[i];
         console.log(childNode.y + ", " + childNode.x + ": " + childNode.value);
@@ -147,26 +147,28 @@ stats.printDecodedRatioHistory = function(node) {
     }
 };
 
-stats.getMostRatiosBranch = function(node = board.editor.getRoot(), ratioCount = 0) {
+stats.getMostRatiosBranch = function (node = board.editor.getRoot(), ratioCount = 0) {
     if (stats.ratioHistory.get(node.navTreeX, node.navTreeY)) ratioCount++;
 
     if (node.children.length == 0) {
         return {
             node: node,
-            count: ratioCount
+            count: ratioCount,
         };
     }
 
     let childRatioCounts = [];
-    for (let i=0; i<node.children.length; i++) {
+    for (let i = 0; i < node.children.length; i++) {
         childRatioCounts.push(stats.getMostRatiosBranch(node.children[i], ratioCount));
     }
 
-    childRatioCounts.sort((a, b) => { return b.count - a.count });
+    childRatioCounts.sort((a, b) => {
+        return b.count - a.count;
+    });
     return childRatioCounts[0];
 };
 
-stats.getRatio = function(rangeStart, rangeEnd = Number.MAX_SAFE_INTEGER) {
+stats.getRatio = function (rangeStart, rangeEnd = Number.MAX_SAFE_INTEGER) {
     let node;
     if (rangeStart == null) {
         node = board.editor.getCurrent();
@@ -199,8 +201,12 @@ stats.getRatio = function(rangeStart, rangeEnd = Number.MAX_SAFE_INTEGER) {
 
     ratios = ratios.reverse();
 
-    let perfect=0, perfectStreak=0, perfectTopStreak=0;
-    let right=0, rightStreak=0, rightTopStreak=0;
+    let perfect = 0,
+        perfectStreak = 0,
+        perfectTopStreak = 0;
+    let right = 0,
+        rightStreak = 0,
+        rightTopStreak = 0;
 
     ratios.forEach((ratio) => {
         if (ratio == stats.RATIO_TYPE.PERFECT || ratio == stats.RATIO_TYPE.RIGHT) {
@@ -232,9 +238,9 @@ stats.getRatio = function(rangeStart, rangeEnd = Number.MAX_SAFE_INTEGER) {
         perfectStreak,
         perfectTopStreak
     );
-}
+};
 
-stats.setRatio = function() {
+stats.setRatio = function () {
     stats.ratio = stats.getRatio();
 
     if (stats.ratio == null) {
@@ -251,7 +257,7 @@ stats.setRatio = function() {
     stats.perfectTopStreakElement.innerHTML = stats.ratio.perfectTopStreak;
 };
 
-stats.clearRatio = function() {
+stats.clearRatio = function () {
     stats.rightPercentElement.innerHTML = "-";
     stats.rightStreakElement.innerHTML = 0;
     stats.rightTopStreakElement.innerHTML = 0;
@@ -262,30 +268,30 @@ stats.clearRatio = function() {
 };
 
 
-stats.setVisits = function(suggestionList) {
+stats.setVisits = function (suggestionList) {
     let suggestions = suggestionList.getFilterByWeaker();
-    
-	let visitsHtml = "";
-    for (let i=0; i<suggestions.length; i++) {
+
+    let visitsHtml = "";
+    for (let i = 0; i < suggestions.length; i++) {
         let suggestion = suggestions[i];
         if (i != 0 && suggestion.visits == suggestions[i - 1].visits) continue;
 
-		visitsHtml += "<div>" + suggestion.grade + ": " + suggestion.visits + "</div>";
-	}
+        visitsHtml += "<div>" + suggestion.grade + ": " + suggestion.visits + "</div>";
+    }
     stats.visitsElement.innerHTML = visitsHtml;
 };
 
-stats.clearVisits = function() {
+stats.clearVisits = function () {
     stats.visitsElement.innerHTML = "";
 };
 
 
-stats.setResult = function(result) {
+stats.setResult = function (result) {
     stats.resultElement.innerHTML = result;
     stats.resultDivElement.hidden = false;
-}
+};
 
-stats.clearResult = function() {
+stats.clearResult = function () {
     stats.resultElement.innerHTML = "";
     stats.resultDivElement.hidden = true;
 };

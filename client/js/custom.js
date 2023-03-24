@@ -7,7 +7,7 @@ custom.THEME_TYPES = {
 };
 
 
-custom.init = function() {
+custom.init = function () {
     custom.htmlElement = document.getElementsByTagName("html")[0];
 
     custom.darkThemeSwitch = document.getElementById("darkThemeSwitch");
@@ -21,7 +21,7 @@ custom.init = function() {
 };
 
 
-custom.darkThemeSwitchInputListener = function() {
+custom.darkThemeSwitchInputListener = function () {
     if (custom.darkThemeSwitch.checked) {
         custom.enableDarkTheme();
     } else {
@@ -31,12 +31,12 @@ custom.darkThemeSwitchInputListener = function() {
     custom.themeChangedEvent.dispatch({ theme: custom.theme });
 };
 
-custom.enableDarkTheme = function() {
+custom.enableDarkTheme = function () {
     custom.theme = custom.THEME_TYPES.DARK;
     custom.htmlElement.dataset.bsTheme = "dark";
 };
 
-custom.disableDarkTheme = function() {
+custom.disableDarkTheme = function () {
     custom.theme = custom.THEME_TYPES.LIGHT;
     custom.htmlElement.dataset.bsTheme = "light";
 };

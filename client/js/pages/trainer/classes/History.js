@@ -1,7 +1,6 @@
 class History {
-
     static ENCODE_Y_INDICATOR = -1;
-    
+
     grid;
     dataType;
 
@@ -52,9 +51,9 @@ class History {
 
 
     *iterateData() {
-        for (let y=0; y<this.grid.length; y++) {
+        for (let y = 0; y < this.grid.length; y++) {
             if (!this.grid[y]) continue;
-            for (let x=0; x<this.grid[y].length; x++) {
+            for (let x = 0; x < this.grid[y].length; x++) {
                 if (!this.grid[y][x]) continue;
                 yield this.grid[y][x];
             }
@@ -62,20 +61,20 @@ class History {
     }
 
     *iterateGrid() {
-        for (let y=0; y<this.grid.length; y++) {
+        for (let y = 0; y < this.grid.length; y++) {
             if (!this.grid[y]) continue;
             yield {
                 y: y,
                 x: null,
-                data: null
+                data: null,
             };
 
-            for (let x=0; x<this.grid[y].length; x++) {
+            for (let x = 0; x < this.grid[y].length; x++) {
                 if (!this.grid[y][x]) continue;
                 yield {
                     y: y,
                     x: x,
-                    data: this.grid[y][x]
+                    data: this.grid[y][x],
                 };
             }
         }
@@ -97,5 +96,4 @@ class History {
 
         return history;
     }
-
 }

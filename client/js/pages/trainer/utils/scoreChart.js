@@ -16,7 +16,7 @@ scoreChart.DATA = {
         },
         {
             label: "Score",
-            yAxisID: 'y1',
+            yAxisID: "y1",
             pointRadius: 1,
             borderColor: "rgb(0, 0, 255)",
             backgroundColor: "rgba(0, 0, 255, 0.3)",
@@ -43,22 +43,20 @@ scoreChart.PLUGINS = {
         labels: {
             generateLabels: (chart) => {
                 let visibility = [];
-                for (let i=0; i<chart.data.datasets.length; i++) {
+                for (let i = 0; i < chart.data.datasets.length; i++) {
                     if (chart.isDatasetVisible(i) === false) {
                         visibility.push(true);
                     } else {
                         visibility.push(false);
                     }
                 }
-                return chart.data.datasets.map(
-                    (dataset, index) => ({
-                        text: dataset.label + (dataset.data.length ? ": " + dataset.data.slice(-1) : ""),
-                        fillStyle: dataset.backgroundColor,
-                        strokeStyle: dataset.borderColor,
-                        hidden: visibility[index]
-                    })
-                )
-            }
+                return chart.data.datasets.map((dataset, index) => ({
+                    text: dataset.label + (dataset.data.length ? ": " + dataset.data.slice(-1) : ""),
+                    fillStyle: dataset.backgroundColor,
+                    strokeStyle: dataset.borderColor,
+                    hidden: visibility[index],
+                }));
+            },
         },
     },
 };
@@ -71,7 +69,7 @@ scoreChart.SCALES = {
             display: true,
             text: "Winrate",
         },
-        afterDataLimits: function(axis) {
+        afterDataLimits: function (axis) {
             let maxDiff = axis.max - 50;
             let minDiff = 50 - axis.min;
             if (maxDiff > minDiff) {
@@ -90,14 +88,14 @@ scoreChart.SCALES = {
             text: "Score",
         },
         grid: {
-            color: function(context) {
+            color: function (context) {
                 if (context.tick.value == 0) {
                     return custom.theme == custom.THEME_TYPES.DARK ? "rgb(200, 200, 200)" : "rgb(0, 0, 0)";
                 }
                 return custom.theme == custom.THEME_TYPES.DARK ? "rgb(33, 37, 41)" : "rgb(255, 255, 255)";
             },
         },
-        afterDataLimits: function(axis) {
+        afterDataLimits: function (axis) {
             if (axis.max > axis.min * -1) {
                 axis.min = axis.max * -1;
             } else if (axis.min * -1 > axis.max) {
@@ -125,7 +123,7 @@ scoreChart.CONFIG = {
 };
 
 
-scoreChart.init = function() {
+scoreChart.init = function () {
     scoreChart.colorElement = document.getElementById("scoreChartColor");
 
     scoreChart.element = document.getElementById("scoreChart");
@@ -133,7 +131,7 @@ scoreChart.init = function() {
     scoreChart.labels = scoreChart.chart.data.labels;
     scoreChart.winrates = scoreChart.chart.data.datasets[0].data;
     scoreChart.scores = scoreChart.chart.data.datasets[1].data;
-    
+
     scoreChart.chart.canvas.onclick = scoreChart.canvasClickListener;
     scoreChart.colorElement.addEventListener("input", scoreChart.colorElementInputListener);
 
@@ -142,7 +140,7 @@ scoreChart.init = function() {
     scoreChart.clear();
 };
 
-scoreChart.clear = function() {
+scoreChart.clear = function () {
     scoreChart.clearChart();
     scoreChart.history = new History();
 
@@ -156,24 +154,24 @@ scoreChart.clear = function() {
         scoreChart.history.add(new Score(5_0_3_00000, 0), 3, 0);
         scoreChart.history.add(new Score(5_0_4_00000, 0), 4, 0);
         scoreChart.history.add(new Score(5_0_5_00000, 0), 5, 0);
-    
+
         scoreChart.history.add(new Score(5_1_1_00000, 0), 1, 1);
         scoreChart.history.add(new Score(5_1_3_00000, 0), 3, 1);
         scoreChart.history.add(new Score(5_1_4_00000, 0), 4, 1);
         scoreChart.history.add(new Score(5_1_5_00000, 0), 5, 1);
-    
+
         scoreChart.history.add(new Score(5_2_5_00000, 0), 5, 2);
         scoreChart.history.add(new Score(5_2_6_00000, 0), 6, 2);
     }
 };
 
 
-scoreChart.themeChangedListener = function(e) {
+scoreChart.themeChangedListener = function (e) {
     scoreChart.chart.update();
 };
 
-scoreChart.fillHistoryWithSuggestionHistory = function(node = board.editor.getRoot()) {
-    for (let i=0; i<node.children.length; i++) {
+scoreChart.fillHistoryWithSuggestionHistory = function (node = board.editor.getRoot()) {
+    for (let i = 0; i < node.children.length; i++) {
         scoreChart.fillHistoryWithSuggestionHistory(node.children[i]);
     }
 
@@ -182,7 +180,7 @@ scoreChart.fillHistoryWithSuggestionHistory = function(node = board.editor.getRo
     let suggestionList = G.suggestionsHistory.get(node.navTreeX, node.navTreeY);
     if (!suggestionList) return;
 
-    let suggestion = suggestionList.find(new Coord(node.move.x, node.move.y))
+    let suggestion = suggestionList.find(new Coord(node.move.x, node.move.y));
     if (!suggestion) {
         suggestion = suggestionList.analyzeMoveSuggestion;
     }
@@ -190,26 +188,26 @@ scoreChart.fillHistoryWithSuggestionHistory = function(node = board.editor.getRo
     scoreChart.history.add(suggestion.score, node.navTreeX, node.navTreeY);
 };
 
-scoreChart.clearChart = function() {
+scoreChart.clearChart = function () {
     scoreChart.labels.length = 0;
     scoreChart.winrates.length = 0;
     scoreChart.scores.length = 0;
     scoreChart.chart.update();
 };
 
-scoreChart.canvasClickListener = function(click) {
+scoreChart.canvasClickListener = function (click) {
     const points = scoreChart.chart.getElementsAtEventForMode(click, "nearest", { intersect: false }, true);
     if (points[0]) {
         board.goToNode(scoreChart.labels[points[0].index]);
     }
 };
 
-scoreChart.update = function(suggestion) {
+scoreChart.update = function (suggestion) {
     let moveNumber = board.getMoveNumber();
     if (scoreChart.labels.includes(moveNumber)) return;
 
     let index;
-    for (index=0; index<scoreChart.labels.length; index++) {
+    for (index = 0; index < scoreChart.labels.length; index++) {
         if (scoreChart.labels[index] > moveNumber) {
             break;
         }
@@ -230,7 +228,7 @@ scoreChart.update = function(suggestion) {
     scoreChart.chart.update();
 };
 
-scoreChart.refresh = function() {
+scoreChart.refresh = function () {
     let points = [];
     let node = board.editor.getCurrent();
     do {
@@ -244,11 +242,11 @@ scoreChart.refresh = function() {
 
         point.index = x;
         points.push(point);
-    } while (node)
+    } while (node);
 
     points = points.reverse();
     let i;
-    for (i=0; i<points.length; i++) {
+    for (i = 0; i < points.length; i++) {
         let point = points[i];
         scoreChart.labels[i] = point.index;
         scoreChart.winrates[i] = point.formatWinrate();
@@ -262,16 +260,16 @@ scoreChart.refresh = function() {
     scoreChart.chart.update();
 };
 
-scoreChart.colorElementInputListener = function() {
+scoreChart.colorElementInputListener = function () {
     scoreChart.reverse();
 };
 
-scoreChart.reverse = function() {
-    for (let i=0; i<scoreChart.winrates.length; i++) {
+scoreChart.reverse = function () {
+    for (let i = 0; i < scoreChart.winrates.length; i++) {
         scoreChart.winrates[i] = (100 - scoreChart.winrates[i]).toFixed(2);
     }
 
-    for (let i=0; i<scoreChart.scores.length; i++) {
+    for (let i = 0; i < scoreChart.scores.length; i++) {
         scoreChart.scores[i] = (scoreChart.scores[i] * -1).toFixed(1);
     }
 

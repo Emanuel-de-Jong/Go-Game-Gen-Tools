@@ -15,11 +15,9 @@ debug.init = function () {
     // debug.logAllFuncCalls();
 
     debug.clear();
-}
-
-debug.clear = function () {
-
 };
+
+debug.clear = function () {};
 
 
 debug.logAllFuncCalls = function () {
@@ -45,7 +43,7 @@ debug.logAllFuncCalls = function () {
 
     for (let i = 0; i < objs.length; i++) {
         let obj = objs[i];
-        let funcNames = Object.getOwnPropertyNames(obj).filter(item => typeof obj[item] === 'function');
+        let funcNames = Object.getOwnPropertyNames(obj).filter((item) => typeof obj[item] === "function");
         for (let j = 0; j < funcNames.length; j++) {
             let funcName = funcNames[j];
 
@@ -76,7 +74,7 @@ debug.logAllFuncCalls = function () {
 
                     let result = cachedFunc.apply(this, arguments);
                     return result;
-                }
+                };
             })();
         }
     }

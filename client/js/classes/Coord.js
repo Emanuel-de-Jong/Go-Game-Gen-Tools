@@ -1,5 +1,4 @@
 class Coord {
-
     x;
     y;
 
@@ -9,7 +8,7 @@ class Coord {
         this.y = y;
     }
 
-    
+
     compare(coord) {
         if (this.x == coord.x && this.y == coord.y) {
             return true;
@@ -28,5 +27,4 @@ class Coord {
     static fromServer(serverCoord) {
         return new Coord(serverCoord.x, serverCoord.y);
     }
-
 }

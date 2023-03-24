@@ -38,7 +38,7 @@ settings.SETTINGS = {
     minVisitsPerc: utils.TYPE.FLOAT,
     maxVisitDiffPercSwitch: utils.TYPE.BOOL,
     maxVisitDiffPerc: utils.TYPE.FLOAT,
-    
+
     opponentOptionsSwitch: utils.TYPE.BOOL,
     opponentOptions: utils.TYPE.INT,
     opponentOptionPerc: utils.TYPE.FLOAT,
@@ -46,12 +46,16 @@ settings.SETTINGS = {
 };
 
 
-settings.init = function(serverColor) {
+settings.init = function (serverColor) {
     for (const name of Object.keys(settings.SETTINGS)) {
         settings[name + "Element"] = document.getElementById(name);
     }
 
-    utils.addEventListeners(utils.querySelectorAlls(["#settings input", "#settings select"]), "input", settings.inputAndSelectInputListener);
+    utils.addEventListeners(
+        utils.querySelectorAlls(["#settings input", "#settings select"]),
+        "input",
+        settings.inputAndSelectInputListener
+    );
     settings.suggestionVisitsElement.addEventListener("input", settings.suggestionVisitsElementInputListener);
     settings.opponentVisitsElement.addEventListener("input", settings.opponentVisitsElementInputListener);
     settings.komiChangeStyleElement.addEventListener("input", settings.komiChangeStyleElementInputListener);
@@ -60,12 +64,12 @@ settings.init = function(serverColor) {
     settings.boardsizeElement.addEventListener("input", settings.setKomi);
     settings.showOptionsElement.addEventListener("input", settings.showOptionsElementInputListener);
 
-    utils.querySelectorAlls(["input", "select"]).forEach(input => {
+    utils.querySelectorAlls(["input", "select"]).forEach((input) => {
         if (input.type != "checkbox") {
             input.required = true;
         }
         if (utils.getSiblingByClass(input, "form-invalid-message") == null) {
-            input.insertAdjacentHTML("afterend", "<div class=\"form-invalid-message\"></div>");
+            input.insertAdjacentHTML("afterend", '<div class="form-invalid-message"></div>');
         }
     });
 
@@ -73,15 +77,15 @@ settings.init = function(serverColor) {
         settings.updateSetting(name);
     }
 
-	settings.clear(serverColor);
+    settings.clear(serverColor);
 };
 
-settings.clear = function(serverColor) {
+settings.clear = function (serverColor) {
     G.setColor(serverColor ? serverColor : settings.colorType);
 };
 
 
-settings.updateSetting = function(name) {
+settings.updateSetting = function (name) {
     let type = settings.SETTINGS[name];
 
     let element = settings[name + "Element"];
@@ -92,23 +96,23 @@ settings.updateSetting = function(name) {
     } else if (type == utils.TYPE.FLOAT) {
         value = parseFloat(value);
     }
-    
-    settings[name] = value;
-}
 
-settings.setSetting = function(name, value) {
+    settings[name] = value;
+};
+
+settings.setSetting = function (name, value) {
     settings[name + "Element"].value = value;
     settings[name + "Element"].dispatchEvent(new Event("input"));
-}
+};
 
-settings.inputAndSelectInputListener = function(event) {
+settings.inputAndSelectInputListener = function (event) {
     let element = event.target;
     if (settings.validateInput(element)) {
         settings.updateSetting(element.id);
     }
 };
 
-settings.validateInput = function(input) {
+settings.validateInput = function (input) {
     let valid = input.validity.valid;
     if (valid) {
         settings.hideInvalidMessage(input);
@@ -118,29 +122,29 @@ settings.validateInput = function(input) {
     return valid;
 };
 
-settings.showInvalidMessage = function(input) {
+settings.showInvalidMessage = function (input) {
     input.classList.add("form-invalid");
 
     let messageDiv = utils.getSiblingByClass(input, "form-invalid-message");
     messageDiv.innerHTML = input.validationMessage;
 };
 
-settings.hideInvalidMessage = function(input) {
+settings.hideInvalidMessage = function (input) {
     input.classList.remove("form-invalid");
 
     let messageDiv = utils.getSiblingByClass(input, "form-invalid-message");
     messageDiv.innerHTML = "";
 };
 
-settings.suggestionVisitsElementInputListener = function() {
+settings.suggestionVisitsElementInputListener = function () {
     sgf.setRankPlayerMeta();
 };
 
-settings.opponentVisitsElementInputListener = function() {
+settings.opponentVisitsElementInputListener = function () {
     sgf.setRankAIMeta();
 };
 
-settings.komiChangeStyleElementInputListener = function() {
+settings.komiChangeStyleElementInputListener = function () {
     if (settings.komiChangeStyle == "Automatic") {
         settings.komiElement.disabled = true;
         settings.setKomi();
@@ -149,7 +153,7 @@ settings.komiChangeStyleElementInputListener = function() {
     }
 };
 
-settings.setKomi = function() {
+settings.setKomi = function () {
     if (settings.komiChangeStyle != "Automatic") return;
 
     let oldKomi = settings.komi;
@@ -190,7 +194,7 @@ settings.setKomi = function() {
     }
 };
 
-settings.showOptionsElementInputListener = function() {
+settings.showOptionsElementInputListener = function () {
     if (!settings.showOptionsElement.checked) {
         if (!board.nextButton.disabled) {
             board.nextButton.click();

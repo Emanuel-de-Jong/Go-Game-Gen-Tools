@@ -1,5 +1,4 @@
 class Score {
-
     winrate;
     scoreLead;
 
@@ -9,7 +8,7 @@ class Score {
         this.scoreLead = scoreLead;
     }
 
-    
+
     formatWinrate(shouldReverse = false) {
         return ((shouldReverse ? this.getReverseWinrate() : this.winrate) / 1_000_000.0).toFixed(2);
     }
@@ -47,5 +46,4 @@ class Score {
     static fromServer(serverScore) {
         return new Score(serverScore.winrate, serverScore.scoreLead);
     }
-
 }

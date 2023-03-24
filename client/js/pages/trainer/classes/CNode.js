@@ -1,5 +1,4 @@
 class CNode {
-
     y;
     x;
 
@@ -22,7 +21,7 @@ class CNode {
         this.nodes.add(this, x, y);
     }
 
-    
+
     add(value, x, y) {
         if (y == null) y = this.y;
 
@@ -31,5 +30,4 @@ class CNode {
 
         return newNode;
     }
-
 }

@@ -8,7 +8,7 @@ katago.init = async function () {
     await katago.clear();
 };
 
-katago.clear = async function() {
+katago.clear = async function () {
     let status;
     do {
         status = (await katago.restart()).status;
@@ -25,10 +25,10 @@ katago.clearBoard = async function () {
 
     return katago.sendRequest(fetch(katago.URL + "clearboard", {
         method: "GET" })
-        .then(response => {
+        .then((response) => {
             return response;
         })
-        .catch(error => {
+        .catch((error) => {
             return error;
         }));
 };
@@ -38,10 +38,10 @@ katago.restart = async function () {
 
     return katago.sendRequest(fetch(katago.URL + "restart", {
         method: "GET" })
-        .then(response => {
+        .then((response) => {
             return response;
         })
-        .catch(error => {
+        .catch((error) => {
             return error;
         }));
 };
@@ -51,10 +51,10 @@ katago.setBoardsize = async function () {
 
     return katago.sendRequest(fetch(katago.URL + "setboardsize?boardsize=" + board.boardsize, {
         method: "GET" })
-        .then(response => {
+        .then((response) => {
             return response;
         })
-        .catch(error => {
+        .catch((error) => {
             return error;
         }));
 };
@@ -64,10 +64,10 @@ katago.setRuleset = async function () {
 
     return katago.sendRequest(fetch(katago.URL + "setruleset?ruleset=" + sgf.ruleset, {
         method: "GET" })
-        .then(response => {
+        .then((response) => {
             return response;
         })
-        .catch(error => {
+        .catch((error) => {
             return error;
         }));
 };
@@ -77,10 +77,10 @@ katago.setKomi = async function () {
 
     return katago.sendRequest(fetch(katago.URL + "setkomi?komi=" + sgf.komi, {
         method: "GET" })
-        .then(response => {
+        .then((response) => {
             return response;
         })
-        .catch(error => {
+        .catch((error) => {
             return error;
         }));
 };
@@ -92,10 +92,10 @@ katago.setHandicap = async function () {
 
     return katago.sendRequest(fetch(katago.URL + "sethandicap?handicap=" + board.handicap, {
         method: "GET" })
-        .then(response => {
+        .then((response) => {
             return response;
         })
-        .catch(error => {
+        .catch((error) => {
             return error;
         }));
 };
@@ -106,11 +106,11 @@ katago.analyzeMove = async function (coord, color = board.getNextColor()) {
     return katago.sendRequest(fetch(katago.URL + "analyzemove?color=" + G.colorNumToName(color) +
             "&coord=" + katago.coordNumToName(coord), {
         method: "POST" })
-        .then(response => response.json())
-        .then(kataGoSuggestion => {
+        .then((response) => response.json())
+        .then((kataGoSuggestion) => {
             return MoveSuggestion.fromKataGo(kataGoSuggestion);
         })
-        .catch(error => {
+        .catch((error) => {
             return error;
         }));
 };
@@ -120,27 +120,35 @@ katago.analyze = async function (
     moveOptions = settings.suggestionOptions,
     minVisitsPerc = settings.minVisitsPerc,
     maxVisitDiffPerc = settings.maxVisitDiffPerc,
-    color = board.getNextColor()) {
-
+    color = board.getNextColor()
+) {
     minVisitsPerc = settings.minVisitsPercSwitch ? minVisitsPerc : 0;
     maxVisitDiffPerc = settings.maxVisitDiffPercSwitch ? maxVisitDiffPerc : 100;
 
-    if (G.LOG) console.log("katago.analyze " + maxVisits + " " + moveOptions + " " + minVisitsPerc + " " + maxVisitDiffPerc + " " + color);
+    if (G.LOG)
+        console.log(
+            "katago.analyze " +
+                maxVisits + " " +
+                moveOptions + " " +
+                minVisitsPerc + " " +
+                maxVisitDiffPerc + " " +
+                color
+        );
 
     return katago.sendRequest(fetch(katago.URL + "analyze?color=" + G.colorNumToName(color) +
             "&maxVisits=" + maxVisits +
             "&minVisitsPerc=" + minVisitsPerc +
             "&maxVisitDiffPerc=" + maxVisitDiffPerc, {
         method: "POST" })
-        .then(response => response.json())
-        .then(kataGoSuggestions => {
+        .then((response) => response.json())
+        .then((kataGoSuggestions) => {
             let suggestions = MoveSuggestionList.fromKataGo(kataGoSuggestions);
             suggestions.filterByPass();
             suggestions.filterByMoveOptions(moveOptions);
             suggestions.addGrades();
             return suggestions;
         })
-        .catch(error => {
+        .catch((error) => {
             return error;
         }));
 };
@@ -150,29 +158,29 @@ katago.play = async function (coord, color = board.getColor()) {
 
     return katago.sendRequest(fetch(katago.URL + "play?color=" + G.colorNumToName(color) + "&coord=" + katago.coordNumToName(coord), {
         method: "GET" })
-        .then(response => {
+        .then((response) => {
             return response;
         })
-        .catch(error => {
+        .catch((error) => {
             return error;
         }));
 };
 
 katago.playRange = async function () {
-	let moves = board.getMoves();
+    let moves = board.getMoves();
     if (moves.length == 0) return;
 
     let serverMoves = {
-        moves: []
+        moves: [],
     };
 
-	for (let i=0; i<moves.length; i++) {
-		let move = moves[i];
-		serverMoves.moves.push({
+    for (let i = 0; i < moves.length; i++) {
+        let move = moves[i];
+        serverMoves.moves.push({
             color: G.colorNumToName(move.color),
-            coord: katago.coordNumToName(move.coord)
+            coord: katago.coordNumToName(move.coord),
         });
-	}
+    }
 
     if (G.LOG) console.log("katago.playRange " + serverMoves);
 
@@ -180,10 +188,10 @@ katago.playRange = async function () {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(serverMoves) })
-        .then(response => {
+        .then((response) => {
             return response;
         })
-        .catch(error => {
+        .catch((error) => {
             return error;
         }));
 };
@@ -193,10 +201,10 @@ katago.sgf = async function () {
 
     return katago.sendRequest(fetch(katago.URL + "sgf?shouldWriteFile=" + false, {
         method: "GET" })
-        .then(response => {
+        .then((response) => {
             return response;
         })
-        .catch(error => {
+        .catch((error) => {
             return error;
         }));
 };
@@ -230,7 +238,7 @@ katago.coordNumToName = function (numCoord) {
         16: "Q",
         17: "R",
         18: "S",
-        19: "T"
+        19: "T",
     };
 
     let x = xConvert[numCoord.x];
@@ -242,25 +250,25 @@ katago.coordNameToNum = function (nameCoord) {
     if (nameCoord == "pass") return new Coord(0, 0);
 
     let xConvert = {
-        "A": 1,
-        "B": 2,
-        "C": 3,
-        "D": 4,
-        "E": 5,
-        "F": 6,
-        "G": 7,
-        "H": 8,
-        "J": 9,
-        "K": 10,
-        "L": 11,
-        "M": 12,
-        "N": 13,
-        "O": 14,
-        "P": 15,
-        "Q": 16,
-        "R": 17,
-        "S": 18,
-        "T": 19
+        A: 1,
+        B: 2,
+        C: 3,
+        D: 4,
+        E: 5,
+        F: 6,
+        G: 7,
+        H: 8,
+        J: 9,
+        K: 10,
+        L: 11,
+        M: 12,
+        N: 13,
+        O: 14,
+        P: 15,
+        Q: 16,
+        R: 17,
+        S: 18,
+        T: 19,
     };
 
     let nums = nameCoord.substring(1).split(" ");
