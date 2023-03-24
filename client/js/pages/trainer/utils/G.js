@@ -174,7 +174,7 @@ G.pass = async function (suggestion) {
 
     board.pass();
 
-    alert("Game finished!");
+    // alert("Game finished!");
     // await db.save();
 };
 
