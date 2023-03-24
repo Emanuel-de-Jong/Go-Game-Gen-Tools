@@ -40,8 +40,6 @@ namespace TempAPI
 
             app.MapControllers();
 
-            Test test = new();
-
             app.Run();
         }
     }

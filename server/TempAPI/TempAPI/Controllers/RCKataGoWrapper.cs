@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Xml.Linq;
-using TempAPI.Models;
 using TempAPI.KataGo;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
