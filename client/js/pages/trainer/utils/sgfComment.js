@@ -36,7 +36,7 @@ sgfComment.setComment = function (moveType) {
     }
 
     board.editor.setComment(comment);
-    board.commentElement.scrollTop = 0;
+    // board.commentElement.scrollTop = 0;
 
     G.moveTypeHistory.add(moveType);
 };
