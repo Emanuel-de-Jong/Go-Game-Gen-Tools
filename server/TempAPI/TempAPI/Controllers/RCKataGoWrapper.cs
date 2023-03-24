@@ -9,13 +9,13 @@ namespace TempAPI.Controllers
 {
     [ApiController]
     [Route("kata")]
-    public class KataGoController : ControllerBase
+    public class RCKataGoWrapper : ControllerBase
     {
-        private static KataGoWrapper kataGoWrapper = new();
+        private static KataGo.KataGo KataGo = new();
 
-        private readonly ILogger<KataGoController> _logger;
+        private readonly ILogger<RCKataGoWrapper> _logger;
 
-        public KataGoController(ILogger<KataGoController> logger)
+        public RCKataGoWrapper(ILogger<RCKataGoWrapper> logger)
         {
             _logger = logger;
         }
@@ -23,58 +23,58 @@ namespace TempAPI.Controllers
         [HttpGet("clearboard")]
         public void GetClearBoard()
         {
-            if (G.Log) Console.WriteLine("KataGoController.ClearBoard");
+            if (G.Log) Console.WriteLine("RCKataGoWrapper.ClearBoard");
 
-            kataGoWrapper.ClearBoard();
+            KataGo.ClearBoard();
         }
 
         [HttpGet("restart")]
         public void GetRestart()
         {
-            if (G.Log) Console.WriteLine("KataGoController.Restart");
+            if (G.Log) Console.WriteLine("RCKataGoWrapper.Restart");
 
-            kataGoWrapper.Restart();
+            KataGo.Restart();
         }
 
         [HttpGet("setboardsize")]
         public void GetSetBoardsize([RegularExpression(@"(9|13|19)")] string boardsize)
         {
-            if (G.Log) Console.WriteLine("KataGoController.SetBoardsize " + boardsize);
+            if (G.Log) Console.WriteLine("RCKataGoWrapper.SetBoardsize " + boardsize);
 
-            kataGoWrapper.SetBoardsize(int.Parse(boardsize));
+            KataGo.SetBoardsize(int.Parse(boardsize));
         }
 
         [HttpGet("setruleset")]
         public void GetSetRuleset([RegularExpression(@"(Japanese|Chinese)")] string ruleset)
         {
-            if (G.Log) Console.WriteLine("KataGoController.SetRuleset " + ruleset);
+            if (G.Log) Console.WriteLine("RCKataGoWrapper.SetRuleset " + ruleset);
 
-            kataGoWrapper.SetRuleset(ruleset);
+            KataGo.SetRuleset(ruleset);
         }
 
         [HttpGet("setkomi")]
         public void GetSetKomi([Range(-150, 150)] float komi)
         {
-            if (G.Log) Console.WriteLine("KataGoController.SetKomi " + komi);
+            if (G.Log) Console.WriteLine("RCKataGoWrapper.SetKomi " + komi);
 
-            kataGoWrapper.SetKomi(komi);
+            KataGo.SetKomi(komi);
         }
 
         [HttpGet("sethandicap")]
         public void GetSetHandicap([Range(2, 9)] int handicap)
         {
-            if (G.Log) Console.WriteLine("KataGoController.SetHandicap " + handicap);
+            if (G.Log) Console.WriteLine("RCKataGoWrapper.SetHandicap " + handicap);
 
-            kataGoWrapper.SetHandicap(handicap);
+            KataGo.SetHandicap(handicap);
         }
 
         [HttpPost("analyzemove")]
         public MoveSuggestion PostAnalyzeMove([RegularExpression(@"(B|W)")] string color,
             [RegularExpression(@"([A-H]|[J-T])(1[0-9]|[1-9])")] string coord)
         {
-            if (G.Log) Console.WriteLine("KataGoController.AnalyzeMove " + color + " " + coord);
+            if (G.Log) Console.WriteLine("RCKataGoWrapper.AnalyzeMove " + color + " " + coord);
 
-            MoveSuggestion output = kataGoWrapper.AnalyzeMove(color, coord);
+            MoveSuggestion output = KataGo.AnalyzeMove(color, coord);
             //MoveSuggestion output = new(color, coord, 200, 0.8f, 1.5f);
             return output;
         }
@@ -85,9 +85,9 @@ namespace TempAPI.Controllers
             [Range(0, 100)] float minVisitsPerc,
             [Range(0, 100)] float maxVisitDiffPerc)
         {
-            if (G.Log) Console.WriteLine("KataGoController.Analyze " + color + " " + maxVisits + " " + minVisitsPerc + " " + maxVisitDiffPerc);
+            if (G.Log) Console.WriteLine("RCKataGoWrapper.Analyze " + color + " " + maxVisits + " " + minVisitsPerc + " " + maxVisitDiffPerc);
 
-            List<MoveSuggestion> output = kataGoWrapper.Analyze(color, maxVisits, minVisitsPerc, maxVisitDiffPerc);
+            List<MoveSuggestion> output = KataGo.Analyze(color, maxVisits, minVisitsPerc, maxVisitDiffPerc);
             //List<MoveSuggestion> output = new()
             //{
             //    new MoveSuggestion(color, "A1", 200, 80_000_000, 15_000_000),
@@ -100,25 +100,25 @@ namespace TempAPI.Controllers
         public void GetPlay([RegularExpression(@"(B|W)")] string color,
             [RegularExpression(@"([A-H]|[J-T])(1[0-9]|[1-9])")] string coord)
         {
-            if (G.Log) Console.WriteLine("KataGoController.Play " + color + " " + coord);
+            if (G.Log) Console.WriteLine("RCKataGoWrapper.Play " + color + " " + coord);
 
-            kataGoWrapper.Play(color, coord);
+            KataGo.Play(color, coord);
         }
 
         [HttpPost("playrange")]
         public void PostPlayRange(Moves moves)
         {
-            if (G.Log) Console.WriteLine("KataGoController.PlayRange " + moves);
+            if (G.Log) Console.WriteLine("RCKataGoWrapper.PlayRange " + moves);
 
-            kataGoWrapper.PlayRange(moves);
+            KataGo.PlayRange(moves);
         }
 
         [HttpGet("sgf")]
         public string GetSGF(bool shouldWriteFile)
         {
-            if (G.Log) Console.WriteLine("KataGoController.SGF " + shouldWriteFile);
+            if (G.Log) Console.WriteLine("RCKataGoWrapper.SGF " + shouldWriteFile);
 
-            return kataGoWrapper.SGF(shouldWriteFile);
+            return KataGo.SGF(shouldWriteFile);
         }
     }
 }

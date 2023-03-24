@@ -2,7 +2,7 @@
 
 namespace TempAPI.KataGo
 {
-    public class KataGoWrapper
+    public class KataGo
     {
         public Process process;
         public StreamReader reader;
