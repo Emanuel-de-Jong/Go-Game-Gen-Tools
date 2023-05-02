@@ -1,12 +1,20 @@
 var cornerPlacer = {};
 
 
-cornerPlacer.CORNERS = [
-    { c44: {x:4,y:4}, c34: {x:3,y:4}, c43: {x:4,y:3}, c33: {x:3,y:3}, c45: {x:4,y:5}, c54: {x:5,y:4}, c35: {x:3,y:5}, c53: {x:5,y:3} },
-    { c44: {x:16,y:4}, c34: {x:17,y:4}, c43: {x:16,y:3}, c33: {x:17,y:3}, c45: {x:16,y:5}, c54: {x:15,y:4}, c35: {x:17,y:5}, c53: {x:15,y:3} },
-    { c44: {x:4,y:16}, c34: {x:3,y:16}, c43: {x:4,y:17}, c33: {x:3,y:17}, c45: {x:4,y:15}, c54: {x:5,y:16}, c35: {x:3,y:15}, c53: {x:5,y:17} },
-    { c44: {x:16,y:16}, c34: {x:17,y:16}, c43: {x:16,y:17}, c33: {x:17,y:17}, c45: {x:16,y:15}, c54: {x:15,y:16}, c35: {x:17,y:15}, c53: {x:15,y:17} },
-];
+cornerPlacer.CORNERS = {
+    19: [
+        { c44: {x:4,y:4}, c34: {x:3,y:4}, c43: {x:4,y:3}, c33: {x:3,y:3}, c45: {x:4,y:5}, c54: {x:5,y:4}, c35: {x:3,y:5}, c53: {x:5,y:3} },
+        { c44: {x:16,y:4}, c34: {x:17,y:4}, c43: {x:16,y:3}, c33: {x:17,y:3}, c45: {x:16,y:5}, c54: {x:15,y:4}, c35: {x:17,y:5}, c53: {x:15,y:3} },
+        { c44: {x:4,y:16}, c34: {x:3,y:16}, c43: {x:4,y:17}, c33: {x:3,y:17}, c45: {x:4,y:15}, c54: {x:5,y:16}, c35: {x:3,y:15}, c53: {x:5,y:17} },
+        { c44: {x:16,y:16}, c34: {x:17,y:16}, c43: {x:16,y:17}, c33: {x:17,y:17}, c45: {x:16,y:15}, c54: {x:15,y:16}, c35: {x:17,y:15}, c53: {x:15,y:17} },
+    ],
+    13: [
+        { c44: {x:4,y:4}, c34: {x:3,y:4}, c43: {x:4,y:3}, c33: {x:3,y:3}, c45: {x:4,y:5}, c54: {x:5,y:4}, c35: {x:3,y:5}, c53: {x:5,y:3} },
+        { c44: {x:10,y:4}, c34: {x:11,y:4}, c43: {x:10,y:3}, c33: {x:11,y:3}, c45: {x:10,y:5}, c54: {x:9,y:4}, c35: {x:11,y:5}, c53: {x:9,y:3} },
+        { c44: {x:4,y:10}, c34: {x:3,y:10}, c43: {x:4,y:11}, c33: {x:3,y:11}, c45: {x:4,y:9}, c54: {x:5,y:10}, c35: {x:3,y:9}, c53: {x:5,y:11} },
+        { c44: {x:10,y:10}, c34: {x:11,y:10}, c43: {x:10,y:11}, c33: {x:11,y:11}, c45: {x:10,y:9}, c54: {x:9,y:10}, c35: {x:11,y:9}, c53: {x:9,y:11} },
+    ],
+};
 
 
 cornerPlacer.init = function () {
@@ -19,16 +27,17 @@ cornerPlacer.clear = function () {};
 cornerPlacer.shouldForce = function (moveNumber = board.getMoveNumber()) {
     if (moveNumber > 4) return false;
 
-    if (board.handicap == 0 &&
-        board.boardsize == 19 && (
-            (settings.forceOpponentCorners == "First" || settings.forceOpponentCorners == "Both") && (
+    if (board.handicap != 0 || (board.boardsize != 19 && board.boardsize != 13)) return false;
+
+    if ((settings.forceOpponentCorners == "First" || settings.forceOpponentCorners == "Both") && (
                 G.color == G.COLOR_TYPE.W && moveNumber == 0 ||
                 G.color == G.COLOR_TYPE.B && moveNumber == 1) ||
             (settings.forceOpponentCorners == "Second" || settings.forceOpponentCorners == "Both") && (
                 G.color == G.COLOR_TYPE.W && moveNumber == 2 ||
-                G.color == G.COLOR_TYPE.B && moveNumber == 3))) {
+                G.color == G.COLOR_TYPE.B && moveNumber == 3)) {
         return true;
     }
+
     return false;
 };
 
@@ -43,11 +52,11 @@ cornerPlacer.play = async function (suggestion) {
 };
 
 cornerPlacer.getEmptyCorner = function () {
-    utils.shuffleArray(cornerPlacer.CORNERS);
+    let corners = utils.shuffleArray(cornerPlacer.CORNERS[settings.boardsize]);
 
     let stoneFound = false;
     for (let i = 0; i < 4; i++) {
-        let cornerOptions = cornerPlacer.CORNERS[i];
+        let cornerOptions = corners[i];
         for (let option in cornerOptions) {
             if (board.findStone(cornerOptions[option])) {
                 stoneFound = true;
