@@ -6,6 +6,9 @@ namespace TempAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            int port = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetValue<int>("Port");
+            //builder.WebHost.ConfigureKestrel(options => options.ListenLocalhost(port));
+
             // Add services to the container.
 
             builder.Services.AddCors(options =>
