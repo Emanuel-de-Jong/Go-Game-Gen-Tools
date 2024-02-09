@@ -1,4 +1,4 @@
-KataGo v1.12.4
+KataGo v1.14.0
 https://github.com/lightvector/KataGo
 
 For neural nets from the latest run, download from here: 
@@ -6,8 +6,8 @@ https://katagotraining.org/
 For nets from earlier runs, see:
 https://d3dndmfyhecmj0.cloudfront.net/g170/neuralnets/index.html
 
-This version v1.12 also supports a new neural net architecture. This architecture will likely be added to the latest run once enough contributors switch.
-One such neural net has already been trained, "b18c384nbt-uec" which is available at https://github.com/lightvector/KataGo/releases/ and which is similar to the 60-block nets in prediction quality but depending on hardware may be faster than the 60-block nets, in some cases close to the 40-block nets' speed.           
+For differences between this version and older versions, see releases page at
+https://github.com/lightvector/KataGo/releases/
 
 -----------------------------------------------------
 USAGE:
@@ -40,7 +40,7 @@ path/to/katago.exe gtp -model path/to/<NEURALNET>.bin.gz -config path/to/gtp_cus
 
 KataGo should be able to work with any GUI program that supports GTP, as well as any analysis program that supports Leela Zero's `lz-analyze` command, such as Lizzie (https://github.com/featurecat/lizzie) or Sabaki (https://sabaki.yichuanshen.de/).
 
-NOTE:
+NOTE for Windows users:
 If you encounter errors due to a missing "msvcp140.dll" or "msvcp140_1.dll" or "msvcp140_2.dll" or "vcruntime140.dll" or similar, you need to download and install the Microsoft Visual C++ Redistributable, here:
 https://www.microsoft.com/en-us/download/details.aspx?id=48145
 If this is for a 64-bit Windows version of KataGo, these dll files have already been included for you, otherwise you will need to install them yourself. On a 64-bit Windows version, there is a rare chance that you may need to delete them if you already have it installed yourself separately and the pre-included files are actually causing problems running KataGo.
@@ -50,19 +50,19 @@ Other things you can do:
 
 Run a JSON-based analysis engine (https://github.com/lightvector/KataGo/blob/master/docs/Analysis_Engine.md) that can do efficient batched evaluations for a backend Go service:
 
-./katago analysis -model <NEURALNET>.gz -config <ANALYSIS_CONFIG>.cfg
+./katago.exe analysis -model <NEURALNET>.gz -config <ANALYSIS_CONFIG>.cfg
 
 Run a high-performance match engine that will play a pool of bots against each other sharing the same GPU batches and CPUs with each other:
 
-./katago match -config <MATCH_CONFIG>.cfg -log-file match.log -sgf-output-dir <DIR TO WRITE THE SGFS>
+./katago.exe match -config <MATCH_CONFIG>.cfg -log-file match.log -sgf-output-dir <DIR TO WRITE THE SGFS>
 
 Force OpenCL tuner to re-tune:
 
-./katago tuner -config <GTP_CONFIG>.cfg
+./katago.exe tuner -config <GTP_CONFIG>.cfg
 
 Print version:
 
-./katago version
+./katago.exe version
 
 
 -----------------------------------------------------
