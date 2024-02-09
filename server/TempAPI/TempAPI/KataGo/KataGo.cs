@@ -222,6 +222,7 @@ namespace TempAPI.KataGo
             int visits,
             int moves,
             int minVisitsPerc,
+            int onlyCommonCornersPerc,
             int cornerChance44,
             int cornerChance34,
             int cornerChance33,
@@ -238,6 +239,7 @@ namespace TempAPI.KataGo
                 DateTime.Now.ToString("dd-MM_HH-mm-ss") +
                 "_" + visits +
                 "_" + moves +
+                "_" + onlyCommonCornersPerc +
                 "_" + cornerChance44 + "-" + cornerChance34 + "-" + cornerChance33 + "-" + cornerChance45 + "-" + cornerChance35 +
                 "_0.4" +
                 ".sgf"));

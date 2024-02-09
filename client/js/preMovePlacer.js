@@ -68,9 +68,11 @@ preMovePlacer.fillCorners = function(cornerCount) {
 		else if (!settings.onlyCommonCorners && rndCornerType < (cornerTypeRange = cornerTypeRange + settings.cornerChance45)) {
 			coord = rndCornerSide ? cornerOptions[i].c45 : cornerOptions[i].c54;
 		}
-		else {
+		else if (!settings.onlyCommonCorners) {
 			coord = rndCornerSide ? cornerOptions[i].c35 : cornerOptions[i].c53;
 		}
+
+		console.log(coord);
 
 		coords.push(coord);
 	}

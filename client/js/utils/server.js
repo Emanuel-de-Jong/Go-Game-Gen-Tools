@@ -13,9 +13,6 @@ server.clear = async function() {
     do {
         status = (await server.restart()).status;
     } while (status != 200);
-    await server.setBoardsize();
-    await server.setRuleset();
-    await server.setKomi();
 };
 
 
@@ -151,6 +148,7 @@ server.sgf = async function() {
         "&visits=" + settings.preVisits +
         "&moves=" + settings.preMoves +
         "&minVisitsPerc=" + preMovePlacer.BASE_MIN_VISITS_PERC +
+        "&onlyCommonCornersPerc=" + settings.onlyCommonCornersPerc +
         "&cornerChance44=" + settings.cornerChance44 +
         "&cornerChance34=" + settings.cornerChance34 +
         "&cornerChance33=" + (settings.onlyCommonCorners ? 0 : settings.cornerChance33) +

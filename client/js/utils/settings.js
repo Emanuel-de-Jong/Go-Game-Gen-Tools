@@ -2,13 +2,14 @@ var settings = {};
 
 
 settings.init = function() {
-    settings.preVisits = 3000;
-    settings.preMoves = 60;
-    settings.cornerChance44 = 40;
-    settings.cornerChance34 = 30;
-    settings.cornerChance33 = 15;
-    settings.cornerChance45 = 5;
-    settings.cornerChance35 = 5;
+    settings.preVisits = 15000;
+    settings.preMoves = 80;
+    settings.onlyCommonCornersPerc = 50;
+    settings.cornerChance44 = 2;
+    settings.cornerChance34 = 2;
+    settings.cornerChance33 = 1;
+    settings.cornerChance45 = 1;
+    settings.cornerChance35 = 1;
 
     settings.boardsize = 19;
     settings.ruleset = "Japanese";
@@ -35,6 +36,5 @@ settings.clear = function() {
 
     settings.color = utils.randomInt(2) == 0 ? -1 : 1;
 
-    // settings.onlyCommonCorners = utils.randomInt(5) == 0 ? true : false;
-    settings.onlyCommonCorners = false;
+    settings.onlyCommonCorners = utils.randomInt(100) < settings.onlyCommonCornersPerc ? true : false;
 };
