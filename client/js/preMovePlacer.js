@@ -72,8 +72,6 @@ preMovePlacer.fillCorners = function(cornerCount) {
 			coord = rndCornerSide ? cornerOptions[i].c35 : cornerOptions[i].c53;
 		}
 
-		console.log(coord);
-
 		coords.push(coord);
 	}
 

@@ -80,7 +80,7 @@ namespace TempAPI.Controllers
 
         [HttpPost("analyze")]
         public List<MoveSuggestion> Analyze([RegularExpression(@"(B|W)")] string color,
-            [Range(2, 5000)] int maxVisits,
+            [Range(2, 500_000)] int maxVisits,
             [Range(0, 100)] float minVisitsPerc,
             [Range(0, 100)] float maxVisitDiffPerc)
         {
