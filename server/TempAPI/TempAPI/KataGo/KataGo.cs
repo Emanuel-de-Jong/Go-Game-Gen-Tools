@@ -9,11 +9,13 @@ namespace TempAPI.KataGo
         public StreamReader? errorReader;
         public StreamWriter? writer;
 
-        private int lastMaxVisits = 0;
+        private int lastMaxVisits;
 
         private void Start()
         {
             if (G.Log) Console.WriteLine("KataGo.Start");
+
+            lastMaxVisits = 0;
 
             process = new Process();
             process.StartInfo.FileName = @"Resources\KataGo\katago.exe";
