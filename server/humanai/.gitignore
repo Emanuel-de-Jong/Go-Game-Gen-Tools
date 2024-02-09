@@ -2,7 +2,7 @@
 /gtp_logs/
 /katago/gtp_logs/
 /katago/KataGoData/
-/katago/default_model.bin.gz
+/katago/*.bin.gz
 sgfs/
 
 HELP.md
