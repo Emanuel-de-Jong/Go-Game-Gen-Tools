@@ -113,11 +113,29 @@ namespace TempAPI.Controllers
         }
 
         [HttpGet("sgf")]
-        public string SGF(bool shouldWriteFile)
+        public string SGF(int options,
+            int color,
+            int visits,
+            int moves,
+            int minVisitsPerc,
+            int cornerChance44,
+            int cornerChance34,
+            int cornerChance33,
+            int cornerChance45,
+            int cornerChance35)
         {
-            if (G.Log) Console.WriteLine("RCKataGoWrapper.SGF " + shouldWriteFile);
+            if (G.Log) Console.WriteLine("RCKataGoWrapper.SGF");
 
-            return kataGo.SGF(shouldWriteFile);
+            return kataGo.SGF(options,
+                color,
+                visits,
+                moves,
+                minVisitsPerc,
+                cornerChance44,
+                cornerChance34,
+                cornerChance33,
+                cornerChance45,
+                cornerChance35);
         }
     }
 }

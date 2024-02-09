@@ -11,7 +11,7 @@ settings.init = function() {
     settings.cornerChance35 = 5;
 
     settings.boardsize = 19;
-    settings.ruleset = "japanese";
+    settings.ruleset = "Japanese";
     settings.komi = 6.5
     settings.suggestionOptions = 4;
     settings.minVisitsPercSwitch = true;

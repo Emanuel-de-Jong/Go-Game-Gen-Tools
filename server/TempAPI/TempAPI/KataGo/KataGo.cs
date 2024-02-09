@@ -17,7 +17,7 @@ namespace TempAPI.KataGo
 
             process = new Process();
             process.StartInfo.FileName = @"Resources\KataGo\katago.exe";
-            process.StartInfo.Arguments = @"gtp -config  -model Resources\KataGo\kata1-b18c384nbt-s8980552704-d4047449493.bin.gz";
+            process.StartInfo.Arguments = @"gtp -model Resources\KataGo\kata1-b18c384nbt-s8980552704-d4047449493.bin.gz";
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.RedirectStandardInput = true;
@@ -217,22 +217,32 @@ namespace TempAPI.KataGo
             }
         }
 
-        public string SGF(bool shouldWriteFile)
+        public string SGF(int options,
+            int color,
+            int visits,
+            int moves,
+            int minVisitsPerc,
+            int cornerChance44,
+            int cornerChance34,
+            int cornerChance33,
+            int cornerChance45,
+            int cornerChance35)
         {
-            if (G.Log) Console.WriteLine("KataGo.SGF " + shouldWriteFile);
+            if (G.Log) Console.WriteLine("KataGo.SGF");
 
             Write("printsgf");
             string sgfStr = Read()[2..];
             ClearReader();
 
-            if (shouldWriteFile)
-            {
-                StreamWriter sgfWriter = new(File.Create("SGFs\\" +
-                    DateTime.Now.ToString("dd-MM_HH-mm-ss") +
-                    ".sgf"));
-                sgfWriter.Write(sgfStr);
-                sgfWriter.Close();
-            }
+            StreamWriter sgfWriter = new(File.Create("SGFs\\" +
+                DateTime.Now.ToString("dd-MM_HH-mm-ss") +
+                "_" + visits +
+                "_" + moves +
+                "_" + cornerChance44 + "-" + cornerChance34 + "-" + cornerChance33 + "-" + cornerChance45 + "-" + cornerChance35 +
+                "_0.4" +
+                ".sgf"));
+            sgfWriter.Write(sgfStr);
+            sgfWriter.Close();
 
             return sgfStr;
         }
