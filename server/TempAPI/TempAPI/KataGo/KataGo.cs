@@ -20,7 +20,7 @@ namespace TempAPI.KataGo
             process = new Process();
             process.StartInfo.FileName = @"D:\Coding\Repos\GoTrainer-HumanAI-joseki\server\TempAPI\TempAPI\Resources\KataGo\katago.exe";
             process.StartInfo.Arguments = @"gtp" +
-                @" -model D:\Coding\Repos\GoTrainer-HumanAI-joseki\server\TempAPI\TempAPI\Resources\KataGo\kata1-b18c384nbt-s8980552704-d4047449493.bin.gz" +
+                @" -model D:\Coding\Repos\GoTrainer-HumanAI-joseki\server\TempAPI\TempAPI\Resources\KataGo\default_model.bin.gz" +
                 @" -config D:\Coding\Repos\GoTrainer-HumanAI-joseki\server\TempAPI\TempAPI\Resources\KataGo\default_gtp.cfg";
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;

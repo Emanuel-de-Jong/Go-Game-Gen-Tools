@@ -2,7 +2,7 @@ var settings = {};
 
 
 settings.init = function() {
-    settings.preVisits = 10_000;
+    settings.preVisits = 5_000;
     settings.preMoves = 80;
     settings.onlyCommonCornersPerc = 50;
     settings.cornerChance44 = 2;
@@ -26,6 +26,9 @@ settings.init = function() {
 };
 
 settings.clear = function() {
+    settings.preVisits = utils.randomInt(3) == 0 ? 10_000 : 5_000
+    settings.onlyCommonCorners = utils.randomInt(100) < settings.onlyCommonCornersPerc ? true : false;
+
     if (settings.preOptionsCount < 2) {
         settings.preOptions = preMovePlacer.PRE_OPTIONS;
         settings.preOptionsCount++;
@@ -35,6 +38,4 @@ settings.clear = function() {
     }
 
     settings.color = utils.randomInt(2) == 0 ? -1 : 1;
-
-    settings.onlyCommonCorners = utils.randomInt(100) < settings.onlyCommonCornersPerc ? true : false;
 };
