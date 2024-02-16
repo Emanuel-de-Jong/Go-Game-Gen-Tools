@@ -70,12 +70,12 @@ namespace AIPatterns
             return game;
         }
 
-        public static void FilterByCount(GoNode node, float maxDiff, int minCount)
+        public static void FilterByCount(GoNode node, float minPercOfHighest, int minCount)
         {
-            FilterByCountLoop(node, maxDiff, minCount);
+            FilterByCountLoop(node, minPercOfHighest, minCount);
         }
 
-        private static void FilterByCountLoop(GoNode node, float maxDiff, int minCount)
+        private static void FilterByCountLoop(GoNode node, float minPercOfHighest, int minCount)
         {
             GoMoveNode childPass = null;
             List<GoMoveNode> childMoves = new();
@@ -104,7 +104,7 @@ namespace AIPatterns
                 }
             }
 
-            int localMinCount = Math.Max(minCount, (int)Math.Round(highestCount * maxDiff));
+            int localMinCount = Math.Max(minCount, (int)Math.Round(highestCount * minPercOfHighest));
 
             Comment comment = new(node);
 
@@ -162,7 +162,7 @@ namespace AIPatterns
 
             foreach (GoNode childNode in node.ChildNodes)
             {
-                FilterByCountLoop(childNode, maxDiff, minCount);
+                FilterByCountLoop(childNode, minPercOfHighest, minCount);
             }
         }
 

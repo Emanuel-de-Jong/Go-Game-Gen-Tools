@@ -31,7 +31,7 @@ namespace AIPatterns
                 });
 
             string savePathDir = @"D:\Coding\Repos\GoTrainer-HumanAI-joseki\sgfs\";
-            CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-All");
+            //CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-All");
             CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", false, 0.08f, 5, 5, 3, 3, 3);
             CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", false, 0.3f, 10, 9, 6, 6, 6);
         }
@@ -44,7 +44,7 @@ namespace AIPatterns
             game.SaveAsSgf(savePath);
         }
 
-        void CreateFilteredSGF(SequenceList sequenceList, string savePath, bool filterSecondLayer, float maxDiff, int min44, int min34, int min45, int min35, int min33)
+        void CreateFilteredSGF(SequenceList sequenceList, string savePath, bool filterSecondLayer, float minPercOfHighest, int min44, int min34, int min45, int min35, int min33)
         {
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
             foreach (GoNode node in game.Game.RootNode.ChildNodes)
@@ -77,12 +77,12 @@ namespace AIPatterns
 
                 if (filterSecondLayer)
                 {
-                    TreeBuilder.FilterByCount(node, maxDiff, minCount);
+                    TreeBuilder.FilterByCount(node, minPercOfHighest, minCount);
                 } else
                 {
                     foreach (GoNode childNode in node.ChildNodes)
                     {
-                        TreeBuilder.FilterByCount(childNode, maxDiff, minCount);
+                        TreeBuilder.FilterByCount(childNode, minPercOfHighest, minCount);
                     }
                 }
             }
@@ -92,7 +92,7 @@ namespace AIPatterns
 
             game.SaveAsSgf(savePath +
                 "-" + filterSecondLayer +
-                "-" + maxDiff +
+                "-" + minPercOfHighest +
                 "-" + min44 +
                 "-" + min34 +
                 "-" + min45 +
