@@ -164,6 +164,15 @@ namespace AIPatterns
 
                 if (removeChild) node.RemoveNode(childMove);
             }
+
+            // Prepare the pass to be removed by RemoveRedundentPasses.
+            if (childPass != null && comment.PassCount < localMinCount)
+            {
+                foreach (GoNode childPassChild in new List<GoNode>(childPass.ChildNodes))
+                {
+                    childPass.RemoveNode(childPassChild);
+                }
+            }
         }
 
         public static void AddMarkup(GameWrap game)

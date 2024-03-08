@@ -23,14 +23,14 @@ namespace AIPatterns
         {
             SequenceGenerator sequenceGenerator = new();
             SequenceList sequenceList = sequenceGenerator.Generate(new string[] {
-                @"D:\Media\Documents\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b18c384nbt-s8980552704-d4047449493\1-instances-24-threads",
-                //@"D:\Other\Mega\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b18c384nbt-s8980552704-d4047449493\1-instances-48-threads",
-                //@"D:\Other\Mega\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b18c384nbt-s8980552704-d4047449493\6-instances-8-threads",
-                //@"D:\Other\Mega\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b18c384nbt-s8980552704-d4047449493\6-instances-24-threads",
-                //@"D:\Other\Mega\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b18c384nbt-s8980552704-d4047449493\6-instances-48-threads",
+                @"D:\Other\Mega\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b18c384nbt-s8980552704-d4047449493\1-instances-24-threads",
+                @"D:\Other\Mega\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b18c384nbt-s8980552704-d4047449493\1-instances-48-threads",
+                @"D:\Other\Mega\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b18c384nbt-s8980552704-d4047449493\6-instances-8-threads",
+                @"D:\Other\Mega\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b18c384nbt-s8980552704-d4047449493\6-instances-24-threads",
+                @"D:\Other\Mega\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b18c384nbt-s8980552704-d4047449493\6-instances-48-threads",
                 });
 
-            string savePathDir = @"D:\Coding\Repos\GoTrainer-HumanAI\sgfs\";
+            string savePathDir = @"D:\Coding\Repos\GoTrainer-HumanAI-joseki\sgfs\";
             //CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-All");
             CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", true, 0.3f, 9, 10, 8, 8, 6);
         }
@@ -53,23 +53,23 @@ namespace AIPatterns
 
                 int minCount = 0;
                 Stone stone = move.Stone;
-                if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 3) // 4-4 3657
+                if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 3)
                 {
                     minCount = min44;
                 }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 3) // 3-4 2865
+                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 3)
                 {
                     minCount = min34;
                 }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 4) // 4-5 512
+                else if (stone.X == G.BOARD_SIZE_INDEX - 3 && stone.Y == 4)
                 {
                     minCount = min45;
                 }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 4) // 3-5 540
+                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 4)
                 {
                     minCount = min35;
                 }
-                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 2) // 3-3 397
+                else if (stone.X == G.BOARD_SIZE_INDEX - 2 && stone.Y == 2)
                 {
                     minCount = min33;
                 }
@@ -97,15 +97,5 @@ namespace AIPatterns
                 "-" + min35 +
                 "-" + min33);
         }
-
-        void Test()
-        {
-            GameWrap game = GameUtils.OpenFile(@"E:\Media\Downloads\test.sgf");
-
-
-
-            game.SaveAsSgf(@"E:\Media\Downloads\test2");
-        }
-
     }
 }
