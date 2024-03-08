@@ -24,6 +24,32 @@ namespace AIPatterns
             return IsPass(sequenceItem.Stone);
         }
 
+        public static int GetMoveDepth(GoMoveNode move)
+        {
+            return GetMoveDepthLoop(move, 0);
+        }
+
+        private static int GetMoveDepthLoop(GoMoveNode move, int currentDepth)
+        {
+            currentDepth++;
+
+            int maxChildDepth = currentDepth;
+            foreach (GoNode childNode in move.ChildNodes)
+            {
+                GoMoveNode? childMove = childNode as GoMoveNode;
+                if (childMove == null) continue;
+                if (StoneUtils.IsPass(childMove)) continue;
+
+                int childDepth = GetMoveDepthLoop(childMove, currentDepth);
+                if (childDepth > maxChildDepth)
+                {
+                    maxChildDepth = childDepth;
+                }
+            }
+
+            return maxChildDepth;
+        }
+
         public static void Print(Stone stone)
         {
             Console.WriteLine(stone.X + ", " + stone.Y + ": " + (stone.IsBlack ? "B" : "W"));

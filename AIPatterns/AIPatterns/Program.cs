@@ -16,7 +16,6 @@ namespace AIPatterns
         public Program()
         {
             Start();
-            //Test();
         }
 
         void Start()
@@ -82,6 +81,7 @@ namespace AIPatterns
                 foreach (GoNode childNode in node.ChildNodes)
                 {
                     TreeBuilder.FilterByCountLoop(childNode, minPercOfHighest, minCount);
+                    TreeBuilder.RemoveLongestNonMinCountMovesLoop(childNode, minCount);
                 }
             }
 

@@ -261,23 +261,56 @@ namespace AIPatterns
             return true;
         }
 
-        public static void OrderBranchesByCount(GameWrap game)
+        public static void RemoveLongestNonMinCountMovesLoop(GoNode node, int minCount)
         {
-            game.ToStart();
-            OrderBranchesByCountLoop(game.Game.RootNode);
-        }
-
-        public static void OrderBranchesByCountLoop(GoNode node)
-        {
-            if (node.HasChildren)
+            List<GoMoveNode> childMoves = new();
+            foreach (GoNode childNode in node.ChildNodes)
             {
-                node.ChildNodes.Sort((n1, n2) => Comment.GetCount(n2) - Comment.GetCount(n1));
-                node.GetChild(0);
+                GoMoveNode? childMove = childNode as GoMoveNode;
+                if (childMove == null) continue;
+                if (StoneUtils.IsPass(childMove)) continue;
+
+                childMoves.Add(childMove);
+            }
+
+            if (childMoves.Count > 1)
+            {
+                int highestCount = 0;
+                foreach (GoMoveNode childMove in childMoves)
+                {
+                    int count = Comment.GetCount(childMove);
+                    if (count > highestCount)
+                    {
+                        highestCount = count;
+                    }
+                }
+
+                if (highestCount < minCount)
+                {
+                    Int32 lowestDepth = Int32.MaxValue;
+                    GoMoveNode childMoveWithLowestDepth = null;
+                    foreach (GoMoveNode childMove in childMoves)
+                    {
+                        Int32 depth = StoneUtils.GetMoveDepth(childMove);
+                        if (depth < lowestDepth)
+                        {
+                            lowestDepth = depth;
+                            childMoveWithLowestDepth = childMove;
+                        }
+                    }
+
+                    foreach (GoMoveNode childMove in childMoves)
+                    {
+                        if (childMove == childMoveWithLowestDepth) continue;
+
+                        node.RemoveNode(childMove);
+                    }
+                }
             }
 
             foreach (GoNode childNode in node.ChildNodes)
             {
-                OrderBranchesByCountLoop(childNode);
+                RemoveLongestNonMinCountMovesLoop(childNode, minCount);
             }
         }
     }
