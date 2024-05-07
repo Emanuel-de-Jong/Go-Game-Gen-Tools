@@ -18,10 +18,10 @@ namespace TempAPI.KataGo
             lastMaxVisits = 0;
 
             process = new Process();
-            process.StartInfo.FileName = @"D:\Coding\Repos\GoTrainer-HumanAI-joseki\server\TempAPI\TempAPI\Resources\KataGo\katago.exe";
+            process.StartInfo.FileName = @"D:\Other\Mega\MEGAsync\Go\KataGo-TensorRT\katago.exe";
             process.StartInfo.Arguments = @"gtp" +
-                @" -model D:\Coding\Repos\GoTrainer-HumanAI-joseki\server\TempAPI\TempAPI\Resources\KataGo\default_model.bin.gz" +
-                @" -config D:\Coding\Repos\GoTrainer-HumanAI-joseki\server\TempAPI\TempAPI\Resources\KataGo\default_gtp.cfg";
+                @" -model D:\Other\Mega\MEGAsync\Go\KataGo-Assets\Models\kata1-b28c512nbt-s6797380608-d4265362003.bin.gz" +
+                @" -config D:\Other\Mega\MEGAsync\Go\KataGo-TensorRT\default_gtp.cfg";
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.RedirectStandardInput = true;
@@ -240,7 +240,7 @@ namespace TempAPI.KataGo
             ClearReader();
 
             StreamWriter sgfWriter = new(File.Create(
-                @"D:\Other\Mega\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b18c384nbt-s8980552704-d4047449493\" +
+                @"D:\Other\Mega\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b28c512nbt-s6797380608-d4265362003\" +
                 DateTime.Now.ToString("dd-MM_HH-mm-ss") +
                 "_" + visits +
                 "_" + moves +

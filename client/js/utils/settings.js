@@ -26,7 +26,18 @@ settings.init = function() {
 };
 
 settings.clear = function() {
-    settings.preVisits = utils.randomInt(3) == 0 ? 10_000 : 5_000
+    let rnd = utils.randomInt(3);
+    switch (rnd) {
+        case rnd == 0:
+            settings.preVisits = 5_000;
+            break;
+        case rnd == 1:
+            settings.preVisits = 10_000;
+            break;
+        case rnd == 2:
+            settings.preVisits = 15_000;
+            break;
+    }
     settings.onlyCommonCorners = utils.randomInt(100) < settings.onlyCommonCornersPerc ? true : false;
 
     if (settings.preOptionsCount < 2) {
