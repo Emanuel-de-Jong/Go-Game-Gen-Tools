@@ -241,12 +241,12 @@ namespace TempAPI.KataGo
 
             StreamWriter sgfWriter = new(File.Create(
                 @"D:\Other\Mega\MEGAsync\Go\SGF\AI-Training-Data\GoTrainer-HumanAI-joseki\kata1-b28c512nbt-s6797380608-d4265362003\" +
-                DateTime.Now.ToString("dd-MM_HH-mm-ss") +
-                "_" + visits +
+                visits +
                 "_" + moves +
                 "_" + onlyCommonCornersPerc +
                 "_" + cornerChance44 + "-" + cornerChance34 + "-" + cornerChance33 + "-" + cornerChance45 + "-" + cornerChance35 +
-                "_0.4" +
+                "_0.5" +
+                "_" + DateTime.Now.ToString("dd-MM_HH-mm-ss") +
                 ".sgf"));
             sgfWriter.Write(sgfStr);
             sgfWriter.Close();

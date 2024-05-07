@@ -28,13 +28,13 @@ settings.init = function() {
 settings.clear = function() {
     let rnd = utils.randomInt(3);
     switch (rnd) {
-        case rnd == 0:
+        case 0:
             settings.preVisits = 5_000;
             break;
-        case rnd == 1:
+        case 1:
             settings.preVisits = 10_000;
             break;
-        case rnd == 2:
+        case 2:
             settings.preVisits = 15_000;
             break;
     }
