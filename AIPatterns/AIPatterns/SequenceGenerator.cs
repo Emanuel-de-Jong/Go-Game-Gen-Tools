@@ -28,7 +28,24 @@ namespace AIPatterns
                 foreach (string sgfPath in sgfPaths)
                 {
                     GameWrap game = GameUtils.OpenFile(sgfPath);
-                    AddSequencesFromGame(game);
+
+                    int countMultiplier = 1;
+
+                    int visits = int.Parse(Path.GetFileNameWithoutExtension(sgfPath).Split("_")[0]);
+                    switch (visits)
+                    {
+                        case 5000:
+                            countMultiplier = 2;
+                            break;
+                        case 10000:
+                            countMultiplier = 3;
+                            break;
+                        case 15000:
+                            countMultiplier = 4;
+                            break;
+                    }
+
+                    AddSequencesFromGame(game, countMultiplier);
                 }
             }
 
@@ -40,11 +57,11 @@ namespace AIPatterns
             return sequenceList;
         }
 
-        void AddSequencesFromGame(GameWrap game)
+        void AddSequencesFromGame(GameWrap game, int countMultiplier)
         {
             for (int i = 0; i < 4; i++)
             {
-                AddSequenceFromGame(game);
+                AddSequenceFromGame(game, countMultiplier);
                 if (i < 4)
                 {
                     game = GameUtils.Rotate(game);
@@ -52,7 +69,7 @@ namespace AIPatterns
             }
         }
 
-        void AddSequenceFromGame(GameWrap game)
+        void AddSequenceFromGame(GameWrap game, int countMultiplier)
         {
             // Check if first stone exists and is black
             game.ToStart();
@@ -95,7 +112,7 @@ namespace AIPatterns
                 game = GameUtils.Flip(game, false);
             }
 
-            Sequence sequence = new();
+            Sequence sequence = new(countMultiplier);
 
             // Add first stone
             game.ToStart();

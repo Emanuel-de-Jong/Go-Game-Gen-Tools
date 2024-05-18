@@ -21,11 +21,11 @@ namespace AIPatterns
                 {
                     if (StoneUtils.IsPass(item))
                     {
-                        new Comment(game).IncPassCount();
+                        new Comment(game).IncPassCount(sequence.CountMultiplier);
                     }
                     else
                     {
-                        new Comment(game).IncNoPassCount();
+                        new Comment(game).IncNoPassCount(sequence.CountMultiplier);
                     }
 
                     if (!game.Continue(item.Stone))
@@ -33,7 +33,7 @@ namespace AIPatterns
                         game.PlaceStone(item.Stone);
                     }
 
-                    new Comment(game).IncCount();
+                    new Comment(game).IncCount(sequence.CountMultiplier);
 
                     GoNode node = game.Game.CurrentNode;
                     node.EnsureMarkup();
@@ -57,7 +57,7 @@ namespace AIPatterns
                         StoneUtils.IsPass(item))
                     {
                         game.Game.ToPreviousMove(true);
-                        new Comment(game).IncCount();
+                        new Comment(game).IncCount(sequence.CountMultiplier);
 
                         game.Game.ToPreviousMove(true);
                     }

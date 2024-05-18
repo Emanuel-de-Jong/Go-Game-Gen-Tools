@@ -49,21 +49,21 @@ namespace AIPatterns
             }
         }
 
-        public void IncCount()
+        public void IncCount(int amount)
         {
-            Count++;
+            Count += amount;
             Apply();
         }
 
-        public void IncPassCount()
+        public void IncPassCount(int amount)
         {
-            PassCount++;
+            PassCount += amount;
             Apply();
         }
 
-        public void IncNoPassCount()
+        public void IncNoPassCount(int amount)
         {
-            NoPassCount++;
+            NoPassCount += amount;
             Apply();
         }
 

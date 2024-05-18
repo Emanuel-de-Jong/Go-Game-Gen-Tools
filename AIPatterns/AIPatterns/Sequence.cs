@@ -9,6 +9,13 @@ namespace AIPatterns
 {
     internal class Sequence : List<SequenceItem>
     {
+        public int CountMultiplier {  get; set; }
+
+        public Sequence(int countMultiplier)
+        {
+            CountMultiplier = countMultiplier;
+        }
+
         public GameWrap ToGame()
         {
             GameWrap game = new();
