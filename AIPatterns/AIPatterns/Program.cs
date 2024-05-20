@@ -27,7 +27,7 @@ namespace AIPatterns
 
             string savePathDir = @"D:\Coding\Repos\GoTrainer-HumanAI-joseki\sgfs\";
             //CreateFullSgf(sequenceList, savePathDir + "AI-Josekis-All");
-            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", true, 0.3f, 40, 40, 22, 22, 16);
+            CreateFilteredSGF(sequenceList, savePathDir + "AI-Josekis", 40, 0.3f, 48, 48, 26, 26, 20);
         }
 
         void CreateFullSgf(SequenceList sequenceList, string savePath)
@@ -38,7 +38,7 @@ namespace AIPatterns
             game.SaveAsSgf(savePath);
         }
 
-        void CreateFilteredSGF(SequenceList sequenceList, string savePath, bool filterSecondLayer, float minPercOfHighest, int min44, int min34, int min45, int min35, int min33)
+        void CreateFilteredSGF(SequenceList sequenceList, string savePath, int filterSecondLayer, float minPercOfHighest, int min44, int min34, int min45, int min35, int min33)
         {
             GameWrap game = TreeBuilder.SequenceListToGame(sequenceList, false);
             foreach (GoNode node in game.Game.RootNode.ChildNodes)
@@ -69,9 +69,9 @@ namespace AIPatterns
                     minCount = min33;
                 }
 
-                if (filterSecondLayer)
+                if (filterSecondLayer != -1)
                 {
-                    TreeBuilder.FilterByCount(node, 0, 10);
+                    TreeBuilder.FilterByCount(node, 0, filterSecondLayer);
                 }
 
                 foreach (GoNode childNode in node.ChildNodes)
