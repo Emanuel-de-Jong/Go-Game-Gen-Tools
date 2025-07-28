@@ -1,4 +1,4 @@
-# GoTrainer-HumanAI
+# GoTrainer HumanAI
 
 ![Screenshot](https://raw.githubusercontent.com/Emanuel-de-Jong/GoTrainer-HumanAI/main/imgs/screenshot.png)
 
