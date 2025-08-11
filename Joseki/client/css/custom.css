@@ -1,0 +1,102 @@
+#debug {
+    background-color: lightgrey;
+    padding: 15px 25px;
+}
+
+#debug ul {
+    margin: 0;
+    padding: 0;
+}
+
+#debug li {
+    display: inline-block;
+    text-decoration: none;
+}
+
+
+main {
+    margin: 30px 10% 0 10% !important;
+}
+
+
+#game #board {
+    position: relative;
+    width: 630px;
+    height: 882px;
+}
+
+#game #next {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+
+#stats {
+    max-width: 350px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 24px;
+}
+
+#stats > div {
+    margin-bottom: 40px;
+}
+
+#stats #scoreChartColor {
+    max-width: 163px;
+}
+
+
+#settings {
+    width: 450px;
+}
+
+#settings .accordion-body .row .row {
+    margin-bottom: 15px;
+}
+
+#settings input:invalid {
+    border-color: red !important;
+}
+
+#settings .form-invalid-message {
+    width: 100%;
+    color: red;
+    font-size: 0.8125rem;
+}
+
+#settings .input-group-text input[type=checkbox] {
+    min-width: 16px;
+}
+
+#settings .input-group input[type=number],
+#settings #opponentOptionPercDiv span,
+#settings #preOptionPercDiv span,
+#settings #minVisitsPercDiv span,
+#settings #maxVisitDiffPercDiv span {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+}
+
+#settings #opponentOptionPercDiv input[type=number],
+#settings #preOptionPercDiv input[type=number],
+#settings #minVisitsPercDiv input[type=number],
+#settings #maxVisitDiffPercDiv input[type=number] {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#settings #settingsButtonDiv {
+    margin-bottom: 20px;
+}
+
+
+.accordion-button {
+    padding: 8px 20px 8px 10px !important;
+}
+
+.accordion-body {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
