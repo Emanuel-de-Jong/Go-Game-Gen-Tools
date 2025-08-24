@@ -1,4 +1,4 @@
-# Perfect Seq
+# GoTrainer HumanAI
 
 ## Usage
 1. Download and extract the latest release: https://github.com/Emanuel-de-Jong/GoTrainer-HumanAI/releases

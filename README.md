@@ -3,16 +3,9 @@ This repository and the core codebase is the predecessor of [Gosuji](https://git
 
 The base code can be found in `GoTrainer-HumanAI`. The slight modifications for analysis can be found in the other directories. You can find the results of these analyses in some of the releases.
 
-### Table of Contents
-- [About](#about)
+**Active Development:** <br>
+**Last Change:** <br>
 
 | | |
 | :---: | :---: |
-| ![GoTrainer](/Screenshots/1-GoTrainer.png) | ![](/Screenshots/2.png) |
-
-## About
-| | |
-| --- | --- |
-| | - **Project Overview** - |
-| **Active Development:** |  |
-| **Maintenance:** |  |
+| ![GoTrainer](/Screenshots/1-GoTrainer.png) | ![](/Screenshots/.png) |
