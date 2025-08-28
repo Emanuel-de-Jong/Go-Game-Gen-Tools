@@ -9,3 +9,4 @@ The base code can be found in `GoTrainer-HumanAI`. The slight modifications for 
 | | |
 | :---: | :---: |
 | ![](/Screenshots/1-GoTrainer.png) | ![](/Screenshots/.png) |
+ 
