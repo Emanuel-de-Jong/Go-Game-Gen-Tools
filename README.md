@@ -5,6 +5,7 @@ The base code can be found in `GoTrainer-HumanAI`. The slight modifications for 
 
 **Active Development:** 2022-07-09 - 2022-12-20<br>
 **Last Change:** 2025-08-11<br>
+**Highlights:** Machine Learning<br>
 
 | | |
 | :---: | :---: |
